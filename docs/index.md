@@ -18,17 +18,17 @@ Github Pages da **Equipe One** dedicado ao desenvolvimento da documentação do 
         <p>Matrícula: 241011626</p>
     </a>
     <a
-        href="https://github.com/usuario2"
+        href="https://github.com/montmarcos"
         target="_blank"
         rel="noopener noreferrer"
         class="team-card-compact"
     >
         <img
-            src="https://github.com/usuario2.png"
-            alt="Foto de Usuario 2"
+            src="https://github.com/montmarcos.png"
+            alt="Foto de marcos"
         >
-        <h3>Usuario 2</h3>
-        <p>Mat.: 987654321</p>
+        <h3>Marcos V. Monteiro</h3>
+        <p>Matrícula: 242015666</p>
     </a>
     <a
         href="https://github.com/usuario3"
