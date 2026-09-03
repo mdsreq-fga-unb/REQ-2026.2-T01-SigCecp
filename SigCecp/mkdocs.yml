@@ -46,3 +46,6 @@ markdown_extensions:
       toc_depth: "2-4"
   - pymdownx.snippets:
       base_path: ["docs"]
+
+extra_css:
+  - stylesheets/extra.css
