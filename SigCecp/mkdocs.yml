@@ -1,0 +1,48 @@
+site_name: SigCecp
+site_url: https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp
+
+nav: 
+  - Home: index.md
+
+  - Visão de Produto e Projeto:
+      - 1. Cenário Atual: 
+      - 2. Solução Proposta:
+      - 3. Intervenção Social: 
+      - 4. Estratégias de ES:
+      - 5. Engenharia de Requisitos de ES:
+      - 6. Interação com Cliente: 
+      - 7. Requisitos: 
+      - 8. DOR e DOD: 
+      - 9. MVP:
+      - 10. Lições Aprendidas:
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: black
+      accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tabbed
+  - admonition
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - toc:
+      toc_depth: "2-4"
+  - pymdownx.snippets:
+      base_path: ["docs"]
