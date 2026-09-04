@@ -31,17 +31,43 @@ Github Pages da **Equipe One** dedicado ao desenvolvimento da documentação do 
         <p>Matrícula: 242015666</p>
     </a>
     <a
-        href="https://github.com/usuario3"
+        href="https://github.com/enzocostaj"
         target="_blank"
         rel="noopener noreferrer"
         class="team-card-compact"
     >
         <img
-            src="https://github.com/usuario3.png"
+            src="https://github.com/enzocostaj.png"
             alt="Foto de Usuario 3"
         >
-        <h3>Usuario 3</h3>
-        <p>Mat.: 456789123</p>
+        <h3>Enzo Costa Azevedo Jacundá</h3>
+        <p>Matrícula: 232001999</p>
+    </a>
+    <a
+        href="https://github.com/Mariaeduardara"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="team-card-compact"
+    >
+        <img
+            src="https://github.com/Mariaeduardara.png"
+            alt="Foto de Usuario 3"
+        >
+        <h3>Maria Eduarda dos Santos Rosa</h3>
+        <p>Matrícula: 232023940</p>
+    </a>
+    <a
+        href="https://github.com/beibeharry"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="team-card-compact"
+    >
+        <img
+            src="https://github.com/beibeharry.png"
+            alt="Foto de Usuario 3"
+        >
+        <h3>Ana Paula Jardim Rezende Vilela</h3>
+        <p>Matrícula: 241010880</p>
     </a>
 </div>
 
