@@ -14,7 +14,7 @@
 ### Ferramentas de Comunicação
 
 - **WhatsApp:** utilizado em dois grupos, um grupo com o cliente, para comunicações rápidas, dúvidas pontuais e confirmações de datas/atividades; e outro grupo com a equipe, para alinhamento interno do dia a dia.
-- **Google Meet:** utilizado para as reuniões semanais da equipe e para as reuniões com o cliente a cada iteração.
+- **Google Meet ou Teams:** utilizado para as reuniões semanais da equipe e para as reuniões com o cliente a cada iteração.
 - **Discord:** utilizado eventualmente pela equipe para comunicação interna, com uso reduzido no momento por limitações na transmissão de tela.
 - **GitHub Projects:** ferramenta de gerenciamento do backlog, controle de tarefas e acompanhamento do progresso de cada unidade/iteração, permitindo que a equipe visualize o andamento do projeto.
 
@@ -36,3 +36,9 @@ O processo de validação da solução será realizado em três etapas principai
 1. **Definition of Ready (DoR):** antes de iniciar o desenvolvimento de uma funcionalidade, verifica-se se os requisitos estão claramente definidos, se há documentação suficiente e se os critérios de aceitação estão estabelecidos.
 2. **Definition of Done (DoD):** uma funcionalidade só é considerada pronta após passar pelos testes realizados pelo Analista de QA e obter aprovação funcional e visual pelos membros da equipe.
 3. **Validação com o Cliente:** após a validação interna, o produto é apresentado ao cliente durante a reunião de iteração, onde ele verifica se o sistema atende aos requisitos estabelecidos, validando cada funcionalidade com base nos critérios de aceitação definidos na etapa de DoR.
+
+## Versionamento
+
+| Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
