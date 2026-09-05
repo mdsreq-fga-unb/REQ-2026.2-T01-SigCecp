@@ -103,3 +103,9 @@ A CECP tem quatro principais tipos de clientes:
 - **Doadores:** Contribuem com o CECP por meio de doações financeiras ou de itens, como móveis, que posteriormente são reformados e revendidos pela equipe da instituição.
 
 - **Público geral:** Toma conhecimento da CECP majoritariamente pelas redes sociais, acompanhando os projetos, resultados e histórias de impacto divulgados, podendo se tornar futuros voluntários, doadores ou multiplicadores da causa junto a outras famílias da comunidade.
+
+## Versionamento
+
+| Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
