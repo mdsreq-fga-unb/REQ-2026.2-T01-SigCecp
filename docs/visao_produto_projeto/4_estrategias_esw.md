@@ -45,3 +45,9 @@ Com um semestre para entregar um MVP funcional, a ênfase do RAD em construção
 **Equipe pequena e baixa sobrecarga de gestão**
 
 Por exigir poucos papéis formais e menos cerimônias, o RAD reduz o esforço de coordenação interna, permitindo que uma equipe reduzida de estudantes concentre seu tempo no desenvolvimento e na validação com o cliente, em vez de na manutenção de ritos do processo.
+
+## Versionamento
+
+| Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
