@@ -5,17 +5,56 @@ Github Pages da **Equipe One** dedicado ao desenvolvimento da documentação do 
 ## Equipe
 <div class="team-all-in-one">
     <a
-        href="https://github.com/Romm-0"
+        href="https://github.com/El-flipante"
         target="_blank"
         rel="noopener noreferrer"
         class="team-card-compact"
     >
         <img
-            src="https://github.com/Romm-0.png"
-            alt="Foto de Romm"
+            src="https://github.com/El-flipante.png"
+            alt="Alexandre Henrique Almeida Valadares Sousa"
         >
-        <h3>Rafael O. M. Melatti</h3>
-        <p>Matrícula: 241011626</p>
+        <h3>Alexandre Henrique A. V. Sousa</h3>
+        <p>Matrícula: 242004457</p>
+    </a>
+    <a
+        href="https://github.com/beibeharry"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="team-card-compact"
+    >
+        <img
+            src="https://github.com/beibeharry.png"
+            alt="Ana Paula Jardim Rezende Vilela"
+        >
+        <h3>Ana Paula J. R. Vilela</h3>
+        <p>Matrícula: 241010880</p>
+    </a>
+    <a
+        href="https://github.com/enzocostaj"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="team-card-compact"
+    >
+        <img
+            src="https://github.com/enzocostaj.png"
+            alt="Enzo Costa Azevedo Jacundá"
+        >
+        <h3>Enzo C. A. Jacundá</h3>
+        <p>Matrícula: 232001999</p>
+    </a>
+    <a
+        href="https://github.com/Mariaeduardara"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="team-card-compact"
+    >
+        <img
+            src="https://github.com/Mariaeduardara.png"
+            alt="Maria Eduarda dos Santos Rosa"
+        >
+        <h3>Maria Eduarda S. Rosa</h3>
+        <p>Matrícula: 232023940</p>
     </a>
     <a
         href="https://github.com/montmarcos"
@@ -31,43 +70,30 @@ Github Pages da **Equipe One** dedicado ao desenvolvimento da documentação do 
         <p>Matrícula: 242015666</p>
     </a>
     <a
-        href="https://github.com/enzocostaj"
+        href="https://github.com/Romm-0"
         target="_blank"
         rel="noopener noreferrer"
         class="team-card-compact"
     >
         <img
-            src="https://github.com/enzocostaj.png"
-            alt="Foto de Usuario 3"
+            src="https://github.com/Romm-0.png"
+            alt="Foto de Romm"
         >
-        <h3>Enzo Costa Azevedo Jacundá</h3>
-        <p>Matrícula: 232001999</p>
+        <h3>Rafael O. M. Melatti</h3>
+        <p>Matrícula: 241011626</p>
     </a>
     <a
-        href="https://github.com/Mariaeduardara"
+        href="https://github.com/renatoyx"
         target="_blank"
         rel="noopener noreferrer"
         class="team-card-compact"
     >
         <img
-            src="https://github.com/Mariaeduardara.png"
-            alt="Foto de Usuario 3"
+            src="https://github.com/renatoyx.png"
+            alt="Renato Araújo Gameiro"
         >
-        <h3>Maria Eduarda dos Santos Rosa</h3>
-        <p>Matrícula: 232023940</p>
-    </a>
-    <a
-        href="https://github.com/beibeharry"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="team-card-compact"
-    >
-        <img
-            src="https://github.com/beibeharry.png"
-            alt="Foto de Usuario 3"
-        >
-        <h3>Ana Paula Jardim Rezende Vilela</h3>
-        <p>Matrícula: 241010880</p>
+        <h3>Renato A. Gameiro</h3>
+        <p>Matrícula: 242042115</p>
     </a>
 </div>
 
@@ -76,3 +102,4 @@ Github Pages da **Equipe One** dedicado ao desenvolvimento da documentação do 
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 03/09/2026 | Escrita do [Projeto SigCecp](#projeto-sigcecp) e [Equipe](#equipe) | [Rafael Melatti](https://github.com/Romm-0) | - |
+| 1.1 | 04/09/2026 | Adição dos membros [Alexandre Enrique](https://github.com/El-flipante), [Ana Paula](https://github.com/beibeharry), [Enzo](https://github.com/enzocostaj), [Maria Eduarda](https://github.com/Mariaeduardara) e [Renato](https://github.com/renatoyx) | [Rafael Melatti](https://github.com/Romm-0) | - |
