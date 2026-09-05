@@ -22,3 +22,9 @@ Ao mesmo tempo, a solução pode gerar efeitos emergentes, não totalmente previ
 - Possível uso da automação de alertas (ex.: queda de rendimento) de forma mecânica, sem a mediação humana e o cuidado pedagógico que o projeto hoje pratica informalmente.
 
 Assim, a intervenção social da solução não é apenas "digitalizar fichas de papel". Ela consiste em alterar a forma como a coordenação identifica e acompanha situações de risco escolar e social, como as decisões disciplinares são registradas e justificadas, como a instituição se comunica com as famílias e como ela se apresenta a financiadores e ao poder público — exigindo que os requisitos do sistema considerem tanto os benefícios esperados para o acompanhamento socioeducacional quanto os riscos de exclusão digital.
+
+## Versionamento
+
+| Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
