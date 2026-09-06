@@ -5,8 +5,10 @@ nav:
   - Home: index.md
   - Visão de produto e projeto:
     - Cenario atual: visao_produto_projeto/1_cenario_atual.md
+    - Solução Proposta: visao_produto_projeto/2_solucao_proposta.md
     - Intervenção social: visao_produto_projeto/3_intervencao_social.md
     - Estrategias de ESW: visao_produto_projeto/4_estrategias_esw.md
+    - Engenharia de Requisitos: visao_produto_projeto/5_engenharia_req.md
     - Interação entre a equipe e o cliente: visao_produto_projeto/7_interacao_equipe_e_cliente.md
     - Lições Aprendidas: visao_produto_projeto/11_licoes_aprendidas.md
 
