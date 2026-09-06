@@ -8,19 +8,19 @@
 
 ## 4.2. Quadro Comparativo
 
-A fim de fundamentar a escolha do processo de desenvolvimento, o quadro a seguir compara o RAD e o Scrum a partir de características relevantes para o contexto do projeto.
+A fim de fundamentar a escolha do processo de desenvolvimento, o quadro a seguir compara o RAD e o OpenUP a partir de características relevantes para o contexto do projeto.
 
-| Características | Scrum | RAD |
-|---|---|---|
-| **Abordagem Geral** | Ágil, iterativo e incremental, organizado em sprints com entregas frequentes e adaptação contínua. | Híbrido, iterativo e incremental, com forte ênfase em prototipação rápida e entrega acelerada de módulos funcionais. |
-| **Estrutura do Processo** | Estrutura leve baseada em eventos (Sprint Planning, Daily, Review e Retrospective), com menor formalização de fases. | Fases definidas (Planejamento de Requisitos, Design com o Usuário, Construção Rápida e Implantação), o que confere previsibilidade ao andamento do projeto. |
-| **Papel do Cliente** | Envolvimento contínuo ao longo de todo o projeto, com feedback ao final de cada sprint e um Product Owner dedicado priorizando o backlog. | Participação intensa e concentrada na fase de Design com o Usuário, validando protótipos que evoluem até a solução final. |
-| **Uso de Protótipos** | Protótipos podem ser usados, mas não são elemento estrutural do processo; o refinamento ocorre sobre incrementos do produto. | Prototipação é o núcleo do processo: os requisitos são refinados diretamente sobre protótipos, reduzindo ambiguidades. |
-| **Velocidade de Entrega** | Entregas incrementais a cada sprint (2 a 4 semanas), mas a velocidade depende da maturidade da equipe com as cerimônias. | Voltado a ciclos curtos com escopo controlado, priorizando a entrega rápida de um produto funcional. |
-| **Requisitos** | Mais adequado quando os requisitos mudam com frequência ao longo do projeto. | Mais adequado quando os requisitos centrais são conhecidos desde o início e podem ser modelados rapidamente com o usuário. |
-| **Papéis e Cerimônias** | Exige papéis definidos (Product Owner, Scrum Master, Time de Desenvolvimento) e cerimônias regulares, que demandam disponibilidade constante. | Exige poucos papéis formais, com sobrecarga de gestão reduzida. |
-| **Adequação à Equipe** | Compatível com equipes pequenas e médias, mas pressupõe dedicação e disponibilidade regulares para as cerimônias. | Compatível com equipes pequenas que utilizam ferramentas de desenvolvimento rápido e componentes reutilizáveis. |
-| **Adaptação ao Projeto do CECP** | Viável, porém, o envolvimento contínuo exigido do cliente conflita com a disponibilidade limitada da equipe, que participa por reuniões periódicas. | Ideal para o contexto: requisitos centrais já mapeados junto ao cliente, validação por protótipos/wireframes já prevista na ER, prazo de um semestre e necessidade de entregar um MVP funcional rapidamente. |
+| Características | OpenUP | RAD |
+| --- | --- | --- |
+| **Abordagem Geral** | Versão simplificada e leve do Unified Process, que equilibra disciplina e agilidade, mantendo natureza iterativa e incremental. | Processo híbrido/adaptativo com ênfase em prototipagem rápida e iterativa como alternativa ao planejamento extensivo. |
+| **Fases do Processo** | Concepção, Elaboração, Construção e Transição, com ênfase em arquitetura nas fases iniciais. | Planejamento de Requisitos, Design do Usuário, Construção e Cutover (implantação final). |
+| **Tratamento de Requisitos** | Requisitos capturados por casos de uso leves ou histórias de usuário, refinados progressivamente, priorizando itens de maior risco ou valor. | Requisitos de alto nível no planejamento; o detalhamento emerge durante a prototipagem, com os protótipos servindo simultaneamente de especificação e validação. |
+| **Papel do Cliente** | Colaboração próxima e regular com stakeholders ao longo de todas as iterações, por meio de revisões e demonstrações. | Colaboração intensa e concentrada nos workshops de Design do Usuário, com feedback imediato sobre protótipos funcionais. |
+| **Documentação** | Enxuta, porém estruturada: Visão, Lista de Requisitos e Modelo de Casos de Uso simplificado. | Mínima, focada em interface, fluxos de dados e modelos de banco de dados, produzida apenas quando necessária. |
+| **Velocidade de Entrega** | Ciclos de feedback rápidos, mas com investimento inicial maior em arquitetura e estruturação das fases. | Prioridade máxima: indicado para projetos com prazos muito curtos, com visualização precoce do sistema por meio de protótipos. |
+| **Cenários Adequados** | Equipes pequenas e co-localizadas, sistemas não críticos, organizações migrando gradualmente do tradicional para o ágil. | Prazos curtos, requisitos bem definidos (mas sujeitos a ajustes), escopo modularizável e ênfase em interface do usuário. |
+| **Limitações** | Menos orientação para equipes inexperientes; pode ser insuficiente para sistemas de grande escala. | Menor adequação a sistemas de missão crítica; risco de negligenciar requisitos não funcionais; exige comprometimento dos usuários nas validações. |
+| **Adaptação ao Projeto do CECP** | Viável, porém o investimento em arquitetura e estruturação de fases consome parte do semestre sem gerar as validações visuais rápidas de que a coordenação voluntária precisa. | Ideal para o contexto: requisitos centrais já mapeados, validação por protótipos/wireframes prevista na ER, escopo modular (alunos, frequência, boletins, doações) e prazo de um semestre para entrega de um MVP funcional. |
 
 ## 4.3. Justificativa
 
@@ -28,26 +28,27 @@ Com base nas características do projeto e no contexto do CECP, o RAD é o proce
 
 **Requisitos centrais conhecidos e escopo enxuto**
 
-O levantamento realizado junto à coordenação do CECP já permitiu identificar com clareza o núcleo do problema (cadastro de alunos, frequência, acompanhamento escolar e registro de doações). O RAD é indicado justamente para cenários em que os requisitos principais são conhecidos desde o início e podem ser rapidamente modelados e validados com o usuário, sem a necessidade de um processo desenhado para absorver mudanças constantes de escopo.
+O levantamento realizado junto à coordenação do CECP já permitiu identificar com clareza o núcleo do problema (cadastro de alunos, frequência, acompanhamento escolar e registro de doações), e essas funcionalidades formam módulos bem delimitados, exatamente o cenário adequado ao RAD: requisitos bem definidos, ainda que sujeitos a ajustes, em um escopo que permite modularização.
 
-**Centralidade da prototipação**
+**Prototipação como núcleo do processo e da ER**
 
-A equipe já definiu, nas atividades de Engenharia de Requisitos, o uso de wireframes e protótipos como técnica de representação e validação de requisitos. Esse fluxo é o coração do RAD, cuja fase de Design com o Usuário se apoia em protótipos que evoluem até a solução final, garantindo alinhamento natural entre o processo de desenvolvimento e as técnicas de ER adotadas.
+A equipe definiu, nas atividades de Engenharia de Requisitos, o uso de wireframes e protótipos como técnica de representação e validação de requisitos. No RAD, os protótipos funcionam simultaneamente como especificação e validação, evoluindo até o sistema final, o que garante alinhamento direto entre o processo de desenvolvimento e as técnicas de ER adotadas.
 
-**Disponibilidade limitada do cliente**
+**Forma de participação compatível com o cliente**
 
-A coordenação do CECP é formada por voluntários e o contato ocorre por reuniões periódicas por videoconferência e mensagens. O RAD concentra a participação do cliente em momentos-chave de validação de protótipos, exigindo menos disponibilidade contínua do que o Scrum, que pressupõe um Product Owner presente e feedback a cada sprint.
+A colaboração no RAD concentra-se nos momentos de design e validação de protótipos, com feedback imediato sobre versões funcionais. Esse formato é compatível com a dinâmica de contato do CECP, reuniões periódicas por videoconferência e canais de mensagens, permitindo que a coordenação voluntária participe de forma efetiva em momentos-chave, sem exigir acompanhamento diário do desenvolvimento.
 
 **Prazo da disciplina e entrega de MVP**
 
-Com um semestre para entregar um MVP funcional, a ênfase do RAD em construção rápida, ciclos curtos e uso de ferramentas de desenvolvimento acelerado favorece a entrega de valor dentro do prazo, priorizando as funcionalidades essenciais ao modelo de funcionamento do CECP.
+O RAD é indicado para projetos com prazos muito curtos onde a velocidade de entrega é prioritária. Com um semestre para entregar um MVP funcional, a ênfase do processo em prototipagem rápida e construção acelerada favorece a entrega de valor dentro do prazo da disciplina.
 
-**Equipe pequena e baixa sobrecarga de gestão**
+**Natureza do sistema compatível com as limitações do processo**
 
-Por exigir poucos papéis formais e menos cerimônias, o RAD reduz o esforço de coordenação interna, permitindo que uma equipe reduzida de estudantes concentre seu tempo no desenvolvimento e na validação com o cliente, em vez de na manutenção de ritos do processo.
+As limitações do RAD concentram-se em sistemas de grande escala ou missão crítica, o que não corresponde à plataforma proposta, um sistema de gestão de pequeno porte, centrado em interface e fluxos de cadastro. Para mitigar o risco de negligência aos requisitos não funcionais, a equipe manterá sua declaração e verificação explícitas nas atividades de Engenharia de Requisitos.
 
 ## Versionamento
 
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
+| 1.1 | 06/09/2026 | Substituição do Scrum pelo OpenUP no quadro comparativo e revisão da justificativa da escolha do RAD | [Enzo Costa](https://github.com/enzocostaj) | 
