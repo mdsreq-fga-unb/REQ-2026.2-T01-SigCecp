@@ -12,6 +12,9 @@ nav:
     - Cronograma e entrega: visao_produto_projeto/6_cronograma.md
     - Interação entre a equipe e o cliente: visao_produto_projeto/7_interacao_equipe_e_cliente.md
     - Lições Aprendidas: visao_produto_projeto/11_licoes_aprendidas.md
+  - Gravações:
+    - Apresentações:
+      - Apresentação Unidade 1: gravacoes/apresentacoes/apresentacao_unidade_1.md
 
 theme:
   name: material
