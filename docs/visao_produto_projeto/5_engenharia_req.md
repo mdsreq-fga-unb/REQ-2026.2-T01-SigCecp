@@ -35,7 +35,7 @@
 
 | Fases do RAD | Atividades de ER | Prática Técnica | Resultado Esperado |
 |---|---|---|---|
-| **Planejamento de Requisitos** | Elicitação e Descoberta — Identificação de necessidades e contexto | Entrevista com stakeholders e brainstorming dos desenvolvedores | Necessidades, dificuldades e requisitos de alto nível identificados |
+| **Planejamento de Requisitos** | Elicitação e Descoberta — Identificação de necessidades e contexto | Entrevista com stakeholders e brainstorming dos desenvolvedores | Necessidades, dificuldades e requisitos de alto nível\* identificados |
 | | Análise e Consenso — Definição de prioridades e escopo acordado | Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio) | Funcionalidades essenciais priorizadas e acordadas |
 | | Declaração — Comunicação estruturada dos requisitos | Declaração Estruturada de Requisitos | Requisitos identificados, classificados e numerados |
 | | Verificação e Validação — Verificação de qualidade interna e validação com stakeholders | Revisão por Pares (Verificação) e Revisão de Requisitos com Stakeholders (Validação) | Requisitos verificados quanto à consistência interna e confirmados como representativos das necessidades reais do CECP |
@@ -52,9 +52,11 @@
 | **Transição** | Verificação e Validação — Validação final dos requisitos | Sessão de Validação com Protótipo (Validação) | Confirmação de que os requisitos atendidos correspondem às necessidades do CECP |
 | | Organização e Atualização — Consolidação dos requisitos | Gestão de Backlog de Requisitos (via GitHub Projects) | Estado final dos requisitos e itens futuros devidamente registrados |
 
+> \*Requisitos de alto nível referem-se a requisitos amplos e ainda pouco detalhados, identificados na fase inicial de elicitação, antes do refinamento realizado nas etapas de Análise e Declaração.
+
 ## Versionamento
 
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) |  |
-| 1.1 | 19/09/2026 | Revisão das técnicas de Engenharia de Requisitos com base em feedback recebido durante o desenvolvimento do projeto | Ana Paula Jardim | |
+| 1.1 | 19/09/2026 | Revisão das técnicas de Engenharia de Requisitos com base em feedback recebido durante o desenvolvimento do projeto | Ana Paula Jardim | Marcos Monteiro |
