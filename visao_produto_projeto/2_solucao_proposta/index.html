@@ -509,6 +509,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2.2 Objetivos Específicos (OE) do Produto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-estrategia-de-migracao-dos-dados-atuais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.1 Estratégia de Migração dos Dados Atuais
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1045,6 +1062,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2.2 Objetivos Específicos (OE) do Produto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-estrategia-de-migracao-dos-dados-atuais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.1 Estratégia de Migração dos Dados Atuais
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1132,15 +1166,19 @@
 
 <h1 id="2-solucao-proposta">2 SOLUÇÃO PROPOSTA</h1>
 <h2 id="21-objetivo-geral-do-produto">2.1 Objetivo Geral do Produto</h2>
-<p>O objetivo do produto é fortalecer a gestão do Centro Esportivo Cultural de Planaltina DF (CECP) por meio de um sistema integrado de gestão de alunos e da instituição, substituindo o controle manual e descentralizado hoje utilizado pela instituição. A solução visa dar autonomia à coordenação, ampliar o alcance da instituição junto à comunidade e garantir transparência na prestação de contas a parceiros, apoiadores e órgãos de fiscalização, consolidando a capacidade organizacional da entidade.</p>
+<p>O objetivo do produto é fortalecer a gestão do Centro Esportivo Cultural de Planaltina DF (CECP) por meio de um sistema de gestão de alunos e da instituição, substituindo o controle manual e descentralizado hoje utilizado pela instituição. A solução visa dar autonomia à coordenação, ampliar o alcance da instituição junto à comunidade e garantir transparência na prestação de contas a parceiros, apoiadores e órgãos de fiscalização, consolidando a capacidade organizacional da entidade. Do ponto de vista técnico, a solução será composta por uma única plataforma integrada, organizada em dois módulos que compartilham a mesma base de dados:
+- Módulo público: divulgação institucional e manifestação de interesse online (etapa que antecede a matrícula, a qual permanece presencial).
+- Módulo administrativo: cadastro e matrícula de alunos, turmas, frequência e situação pedagógica, medidas disciplinares, comunicação com voluntários e famílias, registro de doações e captação de recursos, e documentos de prestação de contas.</p>
 <h2 id="22-objetivos-especificos-oe-do-produto">2.2 Objetivos Específicos (OE) do Produto</h2>
 <ul>
-<li><strong>OE1:</strong> Centralizar os dados dos alunos em uma base tecnológica única, eliminando o uso de planilhas e registros manuais dispersos e viabilizando a gestão digital do CECP.</li>
+<li><strong>OE1:</strong> Centralizar os dados dos alunos em uma base tecnológica única, eliminando o uso de documentos físicos e registros manuais dispersos e viabilizando a gestão digital do CECP.</li>
 <li><strong>OE2:</strong> Garantir o acompanhamento pontual da assiduidade e das condicionalidades pedagógicas dos alunos, permitindo à coordenação identificar rapidamente casos críticos e intervir antes da perda da vaga.</li>
 <li><strong>OE3:</strong> Apoiar a aplicação e o histórico de medidas disciplinares (advertências, suspensões e desligamentos), garantindo rastreabilidade das decisões tomadas pela coordenação.</li>
 <li><strong>OE4:</strong> Facilitar a comunicação entre a coordenação do projeto, os voluntários e as famílias dos alunos, reduzindo a dependência de canais informais.</li>
 <li><strong>OE5:</strong> Assegurar transparência na prestação de contas a parceiros, apoiadores e órgãos de fiscalização, dada a natureza de OSCIP da entidade.</li>
 </ul>
+<h3 id="221-estrategia-de-migracao-dos-dados-atuais">2.2.1 Estratégia de Migração dos Dados Atuais</h3>
+<p>Dado que o cenário atual do CECP é predominantemente baseado em documentos físicos (ver seção 1), a migração dos registros existentes para o sistema não será automatizada: os dados hoje em fichas de papel e nos documentos já digitalizados serão inseridos/associados manualmente na plataforma pela equipe administrativa do CECP durante a fase de implantação, com apoio da equipe de desenvolvimento na definição do processo de carga inicial. Esses materiais existentes poderão ser usados como fonte de apoio para esse cadastro manual, mas não serão importados diretamente por não seguirem um formato padronizado.</p>
 <h2 id="23-caracteristicas-de-produto-mapeadas-com-os-objetivos-especificos-do-produto">2.3 Características de Produto (mapeadas com os Objetivos Específicos do Produto)</h2>
 <p>A solução proposta para o CECP deverá contemplar, de forma preliminar, as seguintes características:</p>
 <table>
@@ -1160,40 +1198,56 @@
 <td>OE1, OE3</td>
 <td>CP1</td>
 <td>Gestão e acompanhamento de turmas</td>
-<td>A solução deverá oferecer uma plataforma digital que permita a criação, gerenciamento e exclusão das turmas, de modo que permita o gerenciamento digital igual ao atualmente utilizado de forma analógica sem ferir as regras de negócios.</td>
+<td>A solução deverá oferecer uma plataforma digital que permita a criação, gerenciamento e inativação das turmas, de modo que permita o gerenciamento digital igual ao atualmente utilizado de forma analógica sem ferir as regras de negócios.</td>
 <td>Apoio à operação, melhoria na gestão das turmas e melhoria da experiência dos administradores.</td>
 </tr>
 <tr>
 <td>OE1</td>
 <td>OE2</td>
 <td>CP2</td>
-<td>Formulário de matrícula online</td>
-<td>A solução deverá oferecer um novo meio de matrículas para novos alunos no formato digital que não exija o comparecimento presencial do aluno, diminuindo as barreiras para a realização das matrículas.</td>
-<td>Aumento da conversão de matrícula e diversificação de meios de matrícula.</td>
+<td>Manifestação de interesse online</td>
+<td>Capacidade de um candidato a aluno demonstrar interesse em participar do CECP por meio digital, dando início ao contato que leva à aula experimental, sem exigir comparecimento presencial nessa etapa.</td>
+<td>Ampliação do alcance e facilitação do primeiro contato com novos candidatos.</td>
 </tr>
 <tr>
 <td>OE5</td>
 <td>OE1</td>
 <td>CP3</td>
-<td>Canal online para doações</td>
-<td>A solução deverá apoiar a realização do controle, atração e transparência das doações, de modo a tornar o processo mais simples e eficiente para os clientes e administradores.</td>
-<td>Melhoria da experiência das doações, aumento de conversão e melhoria na gestão das doações recebidas e a serem recebidas.</td>
+<td>Registro de doações e prestação de contas</td>
+<td>Capacidade de registrar as doações e os recursos recebidos pela instituição (bens, solicitações por ofício e repasses de parcerias), sem processamento de pagamento online nesta fase.</td>
+<td>Maior controle e transparência sobre os recursos recebidos pela instituição.</td>
 </tr>
 <tr>
 <td>OE4</td>
 <td>OE5</td>
 <td>CP4</td>
-<td>Canal online de divulgação digital</td>
-<td>A solução deverá disponibilizar um canal de divulgação oficial dos eventos e acontecimentos da organização, a fim de melhorar a transparência, atrair novos alunos, doadores e atender aos requisitos de editais públicos.</td>
-<td>Aumento da visibilidade e transparência da organização pelos doadores e alunos.</td>
+<td>Gestão de conteúdo institucional</td>
+<td>Capacidade de a coordenação publicar e manter atualizadas as informações institucionais da organização (atividades, eventos e resultados), substituindo a dependência do Instagram e de um site desatualizado como únicos canais de divulgação.</td>
+<td>Aumento da visibilidade e transparência da organização perante a comunidade, doadores e avaliadores de editais.</td>
 </tr>
 <tr>
 <td>OE1</td>
-<td>OE5</td>
+<td>—</td>
 <td>CP5</td>
-<td>Segurança, privacidade e conformidade</td>
-<td>A solução deverá incorporar mecanismos e decisões de produto voltados à segurança, à privacidade e à conformidade com a LGPD, protegendo dados, transações e a operação digital do CECP.</td>
-<td>Redução de riscos, fortalecimento da confiança na organização e sustentação do crescimento digital.</td>
+<td>Cadastro e histórico de alunos</td>
+<td>Capacidade de manter o cadastro e o histórico dos alunos vinculados à instituição.</td>
+<td>Centralização da informação e suporte a comprovações históricas.</td>
+</tr>
+<tr>
+<td>OE2, OE3</td>
+<td>—</td>
+<td>CP6</td>
+<td>Acompanhamento pedagógico e disciplinar do aluno</td>
+<td>Capacidade de acompanhar a frequência e a situação pedagógica dos alunos e de registrar medidas disciplinares aplicadas.</td>
+<td>Redução da evasão, apoio à tomada de decisão e rastreabilidade.</td>
+</tr>
+<tr>
+<td>OE4</td>
+<td>—</td>
+<td>CP7</td>
+<td>Comunicação com voluntários e famílias</td>
+<td>Capacidade de comunicação entre a coordenação, os voluntários e as famílias dos alunos.</td>
+<td>Comunicação mais organizada e rastreável.</td>
 </tr>
 </tbody>
 </table>
@@ -1203,15 +1257,15 @@
 <h2 id="25-pesquisa-de-mercado-e-analise-competitiva">2.5 Pesquisa de Mercado e Análise Competitiva</h2>
 <p>O mercado de soluções de gestão voltadas a projetos sociais e esportivos no Brasil é composto majoritariamente por sistemas genéricos de gestão escolar ou de academias, que não contemplam as particularidades de uma organização social sem fins lucrativos como o CECP. Entre as soluções existentes, destacam-se:</p>
 <ul>
-<li><strong>Sistemas de gestão para academias e escolinhas esportivas</strong> (como Pacto Soluções, EVO ou Gestão Fit), voltados principalmente para controle financeiro, mensalidades e agenda de aulas — funcionalidades pouco relevantes para uma entidade que não cobra mensalidade dos alunos e cujo foco central é o acompanhamento socioeducacional.</li>
+<li><strong>Sistemas de gestão para academias e escolinhas esportivas</strong> (como Pacto Soluções, EVO ou Gestão Fit), voltados principalmente para controle financeiro, mensalidades e agenda de aulas funcionalidades pouco relevantes para uma entidade que não cobra mensalidade dos alunos e cujo foco central é o acompanhamento socioeducacional.</li>
 <li><strong>Sistemas de gestão escolar</strong> (como o SIGE ou plataformas similares usadas por escolas particulares), que possuem módulos robustos de boletim e frequência, mas são voltados à gestão pedagógica formal de uma instituição de ensino, não a um projeto social que apenas monitora o desempenho do aluno em sua escola de origem.</li>
-<li><strong>Planilhas eletrônicas e formulários avulsos</strong>, atualmente utilizados por organizações do porte do CECP, que resolvem parcialmente o problema, mas não oferecem histórico consolidado, alertas automáticos ou acesso simultâneo por múltiplos voluntários.</li>
+<li><strong>Planilhas eletrônicas</strong> (como Google Sheets ou Excel Online), amplamente utilizadas por organizações do porte do CECP por serem de fácil adoção, baixo custo e permitirem inclusive edição simultânea por múltiplos usuários, mas que não oferecem funcionalidades específicas do domínio da instituição, como alertas automáticos de frequência crítica, histórico estruturado de medidas disciplinares ou controle de acesso por perfil de usuário, dependendo de organização manual pela equipe.</li>
 </ul>
-<p>A proposta se diferencia por ser uma solução enxuta e de baixo custo, desenhada especificamente para o modelo de funcionamento de projetos sociais esportivos: sem módulos financeiros ou pedagógicos complexos, mas com foco direto no vínculo entre frequência, desempenho escolar e permanência do aluno no projeto — que é a regra de negócio central do CECP e não é atendida por nenhuma das soluções de mercado existentes de forma nativa. Adicionalmente, por ser desenvolvida sob medida, a solução tem custo de aquisição e manutenção compatível com a realidade orçamentária de uma OSCIP mantida por voluntariado.</p>
+<p>A proposta se diferencia por ser uma solução enxuta e de baixo custo, desenhada especificamente para o modelo de funcionamento de projetos sociais esportivos: sem módulos financeiros ou pedagógicos complexos, mas com foco direto no vínculo entre frequência, desempenho escolar e permanência do aluno no projeto que é a regra de negócio central do CECP e não é atendida por nenhuma das soluções de mercado existentes de forma nativa. Adicionalmente, por ser desenvolvida sob medida, a solução tem custo de aquisição e manutenção compatível com a realidade orçamentária de uma OSCIP mantida por voluntariado.</p>
 <p>Dessa forma, a proposta se posiciona como uma solução sob medida, enxuta e alinhada à realidade orçamentária e operacional de uma organização esportiva, algo que nenhuma solução genérica de mercado atende de forma nativa.</p>
 <h2 id="26-viabilidade-da-proposta">2.6 Viabilidade da Proposta</h2>
 <p>A proposta é viável no contexto da disciplina, considerando o acesso ao cliente, o escopo definido e a possibilidade de entrega incremental de um MVP funcional ao final do semestre. Embora a equipe ainda esteja em processo de consolidação do domínio sobre algumas tecnologias e integrações, o projeto foi estruturado de forma compatível com essa realidade, com sprints de no máximo uma semana a depender da complexidade das entregas, priorização das funcionalidades essenciais e validações frequentes com a cliente.</p>
-<p>O principal risco técnico está no gerenciamento de dados, uma vez que a transição de processos hoje registrados em papel para um sistema digital exige modelagem cuidadosa das entidades (alunos, matrículas, mensalidades, turmas e frequência), além de mecanismos que garantam integridade e consistência das informações migradas. Esse risco é mitigado por meio da definição incremental do modelo de dados junto à cliente, reduzindo a probabilidade de inconsistências propagarem-se para as demais funcionalidades do sistema.</p>
+<p>O principal risco técnico está no gerenciamento de dados, uma vez que a transição de processos hoje registrados em papel para um sistema digital exige modelagem cuidadosa das entidades (alunos, matrículas, turmas, frequência, medidas disciplinares e documentos de doações/prestação de contas), além de mecanismos que garantam integridade e consistência das informações migradas. Esse risco é mitigado por meio da definição incremental do modelo de dados junto à cliente, reduzindo a probabilidade de inconsistências propagarem-se para as demais funcionalidades do sistema.</p>
 <p>Assim, a proposta é considerada viável, desde que:</p>
 <ul>
 <li>O escopo do MVP permaneça controlado;</li>
@@ -1220,10 +1274,11 @@
 </ul>
 <h2 id="27-beneficios-esperados">2.7 Benefícios Esperados</h2>
 <ul>
-<li><strong>Para o Cliente:</strong> Maior controle e facilidade de acesso às fichas de inscrição dos alunos e das doações, permitindo um armazenamento de dados mais compacto por não necessitar de diversas fichas de papel e facilitando o gerenciamento dos dados e das turmas.</li>
-<li><strong>Para o Aluno que vai se matricular (Usuário):</strong> Outra opção de fazer matrícula nas turmas, removendo a necessidade de ir presencialmente ao estabelecimento para fazer a matrícula.</li>
-<li><strong>Para os avaliadores do edital (Usuário):</strong> Uma interface e disposição dos dados necessários para a avaliação de acordo com as normas dos editais.</li>
-<li><strong>Para quem irá realizar uma doação (Usuário):</strong> Um novo meio de registrar os itens que serão doados, permitindo uma comunicação facilitada.</li>
+<li><strong>Para o Cliente:</strong> Maior controle e facilidade de acesso às fichas, ao histórico e às doações dos alunos, com acompanhamento consolidado de frequência, situação pedagógica e medidas disciplinares, reduzindo a dependência de fichas de papel e facilitando o gerenciamento dos dados e das turmas.</li>
+<li><strong>Para o candidato a aluno (Usuário):</strong> Outra opção de manifestar interesse em participar do CECP de forma remota, removendo a necessidade de comparecer presencialmente para dar o primeiro passo (a matrícula em si permanece presencial).</li>
+<li><strong>Para os voluntários e famílias (Usuário):</strong> Um canal de comunicação mais direto com a coordenação, reduzindo a dependência de canais informais.</li>
+<li><strong>Para os avaliadores do edital (Usuário):</strong> Uma interface e disposição dos dados e documentos de prestação de contas necessários para a avaliação de acordo com as normas dos editais.</li>
+<li><strong>Para a coordenação, em relação às doações:</strong> Um novo meio de registrar e acompanhar os itens e recursos recebidos, permitindo maior controle e transparência.</li>
 </ul>
 <h2 id="versionamento">Versionamento</h2>
 <table>
@@ -1241,6 +1296,13 @@
 <td style="text-align: left;">1.0</td>
 <td style="text-align: left;">05/09/2026</td>
 <td style="text-align: left;">Transcrição do documento para markdown</td>
+<td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">18/09/2026</td>
+<td style="text-align: left;">Ajustando conforme o feedback da issue: Unidade 1 - Solução proposta #14</td>
 <td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
 <td style="text-align: left;"></td>
 </tr>
