@@ -4,8 +4,9 @@
 ## 2.1 Objetivo Geral do Produto
 
 O objetivo do produto é fortalecer a gestão do Centro Esportivo Cultural de Planaltina DF (CECP) por meio de um sistema de gestão de alunos e da instituição, substituindo o controle manual e descentralizado hoje utilizado pela instituição. A solução visa dar autonomia à coordenação, ampliar o alcance da instituição junto à comunidade e garantir transparência na prestação de contas a parceiros, apoiadores e órgãos de fiscalização, consolidando a capacidade organizacional da entidade. Do ponto de vista técnico, a solução será composta por uma única plataforma integrada, organizada em dois módulos que compartilham a mesma base de dados:
-- Módulo público: divulgação institucional e manifestação de interesse online (etapa que antecede a matrícula, a qual permanece presencial).
-- Módulo administrativo: cadastro e matrícula de alunos, turmas, frequência e situação pedagógica, medidas disciplinares, comunicação com voluntários e famílias, registro de doações e captação de recursos, e documentos de prestação de contas.
+
+__Módulo público__: divulgação institucional e manifestação de interesse online (etapa que antecede a matrícula, a qual permanece presencial).
+__Módulo administrativo__: cadastro e matrícula de alunos, turmas, frequência e situação pedagógica, medidas disciplinares, comunicação com voluntários e famílias, registro de doações e captação de recursos, e documentos de prestação de contas.
 
 ## 2.2 Objetivos Específicos (OE) do Produto
 
