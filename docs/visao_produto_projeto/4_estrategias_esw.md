@@ -9,7 +9,7 @@
 
 ### Por que a abordagem híbrida
 
-A equipe adota uma abordagem híbrida porque o projeto exige as duas orientações ao mesmo tempo. De um lado, o contato com a coordenação do CECP é esporádico e os requisitos ainda estão emergindo, o que pede ciclos curtos, prototipagem e adaptação. De outro, o sistema tratará dados pessoais de menores de idade, o que exige disciplina documental: requisitos declarados, critérios de aceitação verificáveis e rastreabilidade das decisões. Uma abordagem puramente ágil deixaria a segunda exigência descoberta, e uma abordagem dirigida por plano consumiria o semestre em especificação antes de qualquer validação com o cliente.
+A equipe adota uma abordagem híbrida porque o projeto exige as duas orientações ao mesmo tempo. De um lado, o contato com a coordenação do CECP se concentra em reuniões periódicas e os requisitos ainda estão emergindo, o que pede ciclos curtos, prototipagem e adaptação. De outro, o sistema tratará dados pessoais de menores de idade, o que exige disciplina documental: requisitos declarados, critérios de aceitação verificáveis e rastreabilidade das decisões. Uma abordagem puramente ágil deixaria a segunda exigência descoberta, e uma abordagem dirigida por plano consumiria o semestre em especificação antes de qualquer validação com o cliente.
 
 O RAD foi escolhido como processo justamente por ser classificado como processo híbrido/adaptativo, combinando fases definidas com prototipagem e envolvimento intenso do usuário.
 
@@ -27,7 +27,7 @@ A fim de fundamentar a escolha do processo de desenvolvimento, o quadro a seguir
 | **Velocidade de Entrega** | Ciclos de feedback rápidos, com investimento inicial maior em arquitetura e estruturação das fases. | Prioridade máxima. Indicado para projetos com prazos muito curtos, com visualização precoce do sistema por meio de protótipos. |
 | **Cenários Adequados** | Equipes pequenas e co-localizadas, sistemas não críticos, organizações migrando gradualmente do tradicional para o ágil. | Prazos curtos, escopo modularizável, ênfase em interface do usuário e requisitos difíceis de articular verbalmente, porém fáceis de visualizar. |
 | **Limitações** | Menos orientação para equipes inexperientes e possível insuficiência para sistemas de grande escala. | Menor adequação a sistemas de missão crítica, risco de negligenciar requisitos não funcionais e necessidade de comprometimento dos usuários nas validações. |
-| **Adaptação ao Projeto do CECP** | Viável. A estruturação por casos de uso desde a Concepção daria tratamento mais natural às regras de negócio e aos requisitos não funcionais, mas exige disponibilidade regular do cliente em todas as iterações, o que não corresponde à rotina de uma coordenação voluntária com reuniões esporádicas. | Adequado ao contexto, desde que adaptado. O protótipo é o artefato que a coordenação consegue avaliar sem intermediação técnica, e o escopo é modular. As limitações do processo quanto a requisitos não funcionais e regras de negócio exigem complementos explícitos, descritos na seção 4.3. |
+| **Adaptação ao Projeto do CECP** | Viável. A estruturação por casos de uso desde a Concepção daria tratamento mais natural às regras de negócio e aos requisitos não funcionais, mas exige disponibilidade regular do cliente ao longo de todas as iterações, o que não corresponde à rotina de uma coordenação voluntária, cujo contato com a equipe se concentra em momentos definidos de validação.| Adequado ao contexto, desde que adaptado. O protótipo é o artefato que a coordenação consegue avaliar sem intermediação técnica, e o escopo é modular. As limitações do processo quanto a requisitos não funcionais e regras de negócio exigem complementos explícitos, descritos na seção 4.3. |
 
 ## 4.3. Justificativa
 
@@ -51,7 +51,7 @@ A colaboração no RAD concentra-se nos momentos de design e validação de prot
 
 O RAD é indicado para projetos com prazos muito curtos, nos quais a velocidade de entrega é prioritária. Com um semestre para entregar um MVP funcional, a ênfase do processo em prototipagem rápida e construção acelerada favorece a entrega de valor dentro do prazo.
 
-**Natureza do sistema compatível com as limitações do processo**
+**Mitigação das limitações do processo**
 
 Para mitigar o risco de negligência aos requisitos não funcionais, a equipe manterá sua declaração e verificação explícitas nas atividades de Engenharia de Requisitos.
 
@@ -65,7 +65,7 @@ O RAD apoia a especificação no protótipo, que representa interface e fluxo, m
 | Requisitos não funcionais | Lista numerada de RNF, conforme a seção 5 |
 | Critérios de aceitação | Critérios verificáveis associados a cada requisito funcional |
 | Decisões sobre dados | Modelo de dados versionado, refinado a cada iteração de Design |
-| Segurança, privacidade e LGPD | RNF específicos derivados da característica CP5 |
+| Segurança, privacidade e LGPD | RNF derivados da LGPD para dados de menores, com evidência de verificação a cada incremento |
 
 ## Versionamento
 
