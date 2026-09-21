@@ -26,7 +26,7 @@ O público-alvo principal são crianças e adolescentes, bem como suas famílias
 
 ### 1.3 Rich Picture
 
-![Rich Picture](img/rich.jpeg)
+![Rich Picture](img/rich.jpg)
 
 *Figura 1 – Rich Picture*
 *Produzido pelos autores – 2026*
@@ -35,7 +35,7 @@ A Figura 1 apresenta o mapeamento do fluxo atual de operação do CECP, elaborad
 
 O cenário atual envolve o público geral, que toma conhecimento do projeto principalmente pelo Instagram; crianças e adolescentes candidatos ou participantes, seus pais ou responsáveis; professores e coordenação; administradores e funcionários; doadores financeiros; doadores de objetos; e fontes de apoio e financiamento, como editais públicos, órgãos públicos e entidades de apoio social. Esses atores se relacionam com a instituição em processos de divulgação, participação nas atividades, gestão administrativa, doações e busca de recursos.
 
-A divulgação do projeto ocorre principalmente pelo Instagram; o site institucional permanece ativo, mas está desatualizado e é pouco utilizado. No fluxo de alunos, o cadastro é predominantemente manual e realizado por ficha física. O possível aluno participa de uma aula experimental e, depois dela, a equipe pode fazer contato pelo WhatsApp. Na aula seguinte, são apresentados os documentos físicos necessários, que são assinados presencialmente. Houve tentativa anterior de uso de formulário do Google, mas o papel continua presente em grande parte do processo. Os documentos digitalizados são armazenados em pastas no computador, principalmente em PDF, sem eliminar a dependência de papel.
+A divulgação do projeto ocorre principalmente pelo Instagram. Embora o domínio e o site institucional permaneçam ativos, o site está desatualizado e não é mais utilizado. No fluxo de alunos, o cadastro é predominantemente manual e realizado por ficha física. O possível aluno participa de uma aula experimental e, depois dela, a equipe pode fazer contato pelo WhatsApp. Na aula seguinte, são apresentados os documentos físicos necessários, que são assinados presencialmente. Houve tentativa anterior de uso de formulário do Google, mas o papel continua presente em grande parte do processo. Alguns documentos são digitalizados e armazenados em pastas no computador. Essa digitalização ocorre de forma pontual, sem critérios ou regras definidos para determinar quais documentos devem ser digitalizados.
 
 Professores e coordenação acompanham as modalidades esportivas, as turmas inclusivas e o acompanhamento escolar dos participantes. A instituição precisa manter informações de alunos ativos e ex-alunos, mas não dispõe de controle estruturado de frequência, o que dificulta a emissão de comprovações de participação quando solicitadas.
 
