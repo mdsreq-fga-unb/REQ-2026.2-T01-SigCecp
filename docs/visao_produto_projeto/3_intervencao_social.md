@@ -116,4 +116,4 @@ Assim, a intervenção social da solução não é apenas "digitalizar fichas de
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
-| 1.1 | 10/09/2026 | Ajustando de acordo com os feedback da issue: Unidade 1 - Intervenção social #15 | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.1 | 10/09/2026 | Ajustando de acordo com os feedback da issue: [Unidade 1 - Intervenção social #15](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/15) | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
