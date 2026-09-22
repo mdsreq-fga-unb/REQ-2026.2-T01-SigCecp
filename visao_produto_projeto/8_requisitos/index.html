@@ -670,6 +670,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#acesso-e-controle-de-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acesso e controle de usuários
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cp1-gestao-e-acompanhamento-de-turmas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -817,17 +828,6 @@
     <span class="md-ellipsis">
       
         8.3 Matriz-síntese de rastreabilidade - CECP
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nota-rnfs-transversais-aplicaveis-a-todas-as-cps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nota - RNFs transversais (aplicáveis a todas as CPs)
       
     </span>
   </a>
@@ -1155,6 +1155,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#acesso-e-controle-de-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acesso e controle de usuários
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cp1-gestao-e-acompanhamento-de-turmas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1308,17 +1319,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#nota-rnfs-transversais-aplicaveis-a-todas-as-cps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nota - RNFs transversais (aplicáveis a todas as CPs)
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1339,30 +1339,37 @@
 <h1 id="8-requisitos-funcionais-rf-e-nao-funcionais-rnf-cecp">8. Requisitos Funcionais (RF) e Não Funcionais (RNF) - CECP</h1>
 <p>Derivados das Características de Produto (CP1 a CP6) da seção 2.3 do documento de Visão do Produto e Projeto.</p>
 <h2 id="81-requisitos-funcionais-rfs">8.1 Requisitos Funcionais - RFs</h2>
+<h3 id="acesso-e-controle-de-usuarios">Acesso e controle de usuários</h3>
+<p><strong>RF01 - Autenticar usuário:</strong> deve ser possível aos coordenadores acessar o sistema mediante identificação e credenciais válidas.</p>
+<p><strong>RF02 - Controlar acesso por perfil:</strong> o sistema deve disponibilizar as funcionalidades administrativas exclusivamente para usuários autenticados com perfil de coordenador.</p>
 <h3 id="cp1-gestao-e-acompanhamento-de-turmas">CP1 - Gestão e acompanhamento de turmas</h3>
-<p><strong>RF01 - Cadastrar turma:</strong> deve ser possível à coordenação cadastrar uma nova turma, informando modalidade, horário e capacidade máxima de alunos.</p>
-<p><strong>RF02 - Editar turma:</strong> deve ser possível à coordenação editar os dados de uma turma já cadastrada.</p>
-<p><strong>RF03 - Inativar turma:</strong> deve ser possível à coordenação inativar uma turma, preservando o histórico de alunos e frequências vinculados a ela, sem excluir os registros do sistema.</p>
-<p><strong>RF04 - Associar aluno à turma:</strong> deve ser possível à coordenação associar ou remover um aluno de uma turma.</p>
+<p><strong>RF03 - Cadastrar turma:</strong> deve ser possível à coordenação cadastrar uma nova turma, informando modalidade, horário e capacidade máxima de alunos.</p>
+<p><strong>RF04 - Editar turma:</strong> deve ser possível à coordenação editar os dados de uma turma já cadastrada.</p>
+<p><strong>RF05 - Inativar turma:</strong> deve ser possível à coordenação inativar uma turma, preservando o histórico de alunos e frequências vinculados a ela, sem excluir os registros do sistema.</p>
+<p><strong>RF06 - Associar aluno à turma:</strong> deve ser possível à coordenação associar um aluno a uma turma ou remover sua associação, sem excluir seus registros históricos.</p>
 <h3 id="cp2-registro-de-doacoes-e-prestacao-de-contas">CP2 - Registro de doações e prestação de contas</h3>
-<p><strong>RF05 - Registrar doação recebida:</strong> deve ser possível à coordenação registrar uma doação recebida (bem, ofício ou repasse de parceria), identificando o doador/parceiro e o recurso recebido.</p>
-<p><strong>RF06 - Registrar documentos de prestação de contas:</strong> deve ser possível à coordenação registrar os documentos utilizados na prestação de contas (orçamento, nota fiscal, fotos/vídeos de comprovação), vinculados a uma solicitação.</p>
-<p><strong>RF07 - Consultar doações e prestações de contas:</strong> deve ser possível à coordenação consultar o histórico consolidado de doações e prestações de contas registradas em um determinado período.</p>
+<p><strong>RF07 - Registrar doação recebida:</strong> deve ser possível à coordenação registrar uma doação ou recurso recebido, identificando o doador ou parceiro, o tipo de recurso e as informações correspondentes.</p>
+<p><strong>RF08 - Registrar documentos de prestação de contas:</strong> deve ser possível à coordenação registrar documentos utilizados na prestação de contas, como orçamentos, notas fiscais e registros fotográficos ou audiovisuais, vinculando-os à respectiva doação ou recurso recebido.</p>
+<p><strong>RF09 - Consultar doações e prestações de contas:</strong> deve ser possível à coordenação consultar o histórico consolidado de doações e prestações de contas registradas em um determinado período.</p>
 <h3 id="cp3-gestao-de-conteudo-institucional">CP3 - Gestão de conteúdo institucional</h3>
-<p><strong>RF08 - Publicar conteúdo institucional:</strong> deve ser possível à coordenação publicar e editar conteúdos institucionais (informações da ONG, fotos e vídeos) no módulo público.</p>
-<p><strong>RF09 - Publicar evento:</strong> deve ser possível à coordenação publicar um evento ou campeonato, informando data e descrição.</p>
-<p><strong>RF10 - Consultar conteúdo institucional:</strong> deve ser possível a qualquer visitante consultar as informações institucionais publicadas, sem necessidade de login.</p>
+<p><strong>RF10 - Publicar conteúdo institucional:</strong> deve ser possível à coordenação publicar e editar conteúdos institucionais, como informações da organização, fotos e vídeos, no módulo público.</p>
+<p><strong>RF11 - Publicar evento:</strong> deve ser possível à coordenação publicar um evento ou campeonato, informando, no mínimo, sua data e descrição.</p>
+<p><strong>RF12 - Consultar conteúdo institucional:</strong> deve ser possível a qualquer visitante consultar as informações institucionais publicadas, sem necessidade de autenticação.</p>
 <h3 id="cp4-cadastro-e-historico-de-alunos">CP4 - Cadastro e histórico de alunos</h3>
-<p><strong>RF11 - Cadastrar aluno:</strong> deve ser possível à coordenação cadastrar um novo aluno, registrando seus dados pessoais, como: -------------------------------------------------------------------- e a documentação exigida.</p>
-<p><strong>RF12 - Consultar ficha do aluno:</strong> deve ser possível à coordenação consultar a ficha de um aluno, incluindo seu histórico de participação em turmas.</p>
-<p><strong>RF13 - Inativar aluno:</strong> deve ser possível à coordenação marcar um aluno como inativo/ex-aluno, preservando seu histórico no sistema.</p>
+<p><strong>RF13 - Cadastrar aluno:</strong> deve ser possível à coordenação cadastrar um novo aluno, registrando seus dados cadastrais e a documentação exigida pelo CECP.</p>
+<p><strong>RF14 - Editar aluno:</strong> deve ser possível à coordenação atualizar os dados cadastrais de um aluno já registrado, sem excluir seu histórico no sistema.</p>
+<p><strong>RF15 - Consultar ficha do aluno:</strong> deve ser possível à coordenação consultar a ficha de um aluno, incluindo seus dados cadastrais e histórico de participação em turmas.</p>
+<p><strong>RF16 - Inativar aluno:</strong> deve ser possível à coordenação marcar um aluno como inativo ou ex-aluno, preservando seu histórico no sistema.</p>
 <h3 id="cp5-acompanhamento-pedagogico-e-disciplinar-do-aluno">CP5 - Acompanhamento pedagógico e disciplinar do aluno</h3>
-<p><strong>RF14 - Registrar frequência:</strong> deve ser possível ao professor/coordenação registrar a frequência dos alunos em cada aula de uma turma.</p>
-<p><strong>RF15 - Consultar frequência:</strong> deve ser possível à coordenação consultar o histórico de frequência de um aluno.</p>
-<p><strong>RF16 - Emitir alerta de faltas críticas:</strong> o sistema deve gerar um notificação no sistema para a coordenação quando um aluno atingir um número crítico de faltas recorrentes (parâmetro configurável).</p>
-<p><strong>RF17 - Registrar medida disciplinar:</strong> deve ser possível à coordenação registrar uma medida disciplinar aplicada a um aluno (advertência, suspensão ou desligamento), vinculada ao seu histórico.</p>
+<p><strong>RF17 - Registrar frequência:</strong> deve ser possível ao professor ou à coordenação registrar a frequência dos alunos em cada aula de uma turma.</p>
+<p><strong>RF18 - Consultar frequência:</strong> deve ser possível à coordenação consultar o histórico de frequência de um aluno.</p>
+<p><strong>RF19 - Emitir alerta de faltas críticas:</strong> o sistema deve gerar uma notificação para a coordenação quando um aluno atingir o número crítico de faltas definido pelo parâmetro configurado.</p>
+<p><strong>RF20 - Registrar medida disciplinar:</strong> deve ser possível à coordenação registrar uma medida disciplinar aplicada a um aluno, como advertência, suspensão ou desligamento, vinculada ao seu histórico.</p>
 <h3 id="cp6-comunicacao-com-voluntarios-e-familias">CP6 - Comunicação com voluntários e famílias</h3>
-<p><strong>RF18 - Publicar aviso:</strong> deve ser possível à coordenação publicar um aviso geral na parte publíca do sistema direcionado para os voluntários e/ou familiares.x</p>
+<p><strong>RF21 - Publicar aviso:</strong> deve ser possível à coordenação ou à gestão publicar avisos destinados aos voluntários e/ou familiares.</p>
+<p><strong>RF22 - Consultar avisos:</strong> deve ser possível aos voluntários e familiares consultar os avisos destinados a eles no sistema.</p>
+<p><strong>RF23 - Direcionar aviso:</strong> deve ser possível à coordenação ou à gestão direcionar um aviso para voluntários, familiares ou ambos.</p>
+<p><strong>RF24 - Consultar histórico de avisos:</strong> deve ser possível à coordenação ou à gestão consultar os avisos publicados anteriormente, incluindo seus destinatários e data de publicação.</p>
 <h2 id="82-requisitos-nao-funcionais-rnfs">8.2 Requisitos Não Funcionais - RNFs</h2>
 <p>Os requisitos não funcionais foram classificados segundo o modelo URPS+ (Usabilidade, Confiabilidade, Desempenho, Suportabilidade e Segurança), permitindo rastreabilidade e avaliação objetiva de qualidade.</p>
 <blockquote>
@@ -1494,70 +1501,60 @@
 </tbody>
 </table>
 <h2 id="83-matriz-sintese-de-rastreabilidade-cecp">8.3 Matriz-síntese de rastreabilidade - CECP</h2>
-<p>A matriz a seguir apresenta a rastreabilidade entre OE (Objetivos Específicos), CP (Características do Produto), RF (Requisitos Funcionais) e RNF (Requisitos Não Funcionais).</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Contribuição principal</th>
-<th style="text-align: left;">Contribuição secundária</th>
-<th style="text-align: left;"><strong>CP</strong> (Características do Produto)</th>
-<th style="text-align: left;"><strong>RFs</strong> relacionados (Requisitos Funcionais)</th>
-<th style="text-align: left;"><strong>RNFs</strong> relacionados (Requisitos Não Funcionais)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>OE2</strong> (Acompanhar frequência e situação pedagógica)</td>
-<td style="text-align: left;"><strong>OE1</strong>, <strong>OE3</strong> (Centralizar dados / Registrar medidas disciplinares)</td>
-<td style="text-align: left;"><strong>CP1</strong> (Gestão e acompanhamento de turmas)</td>
-<td style="text-align: left;"><strong>RF01</strong> (Cadastrar turma), <strong>RF02</strong> (Editar turma), <strong>RF03</strong> (Inativar turma), <strong>RF04</strong> (Associar aluno à turma)</td>
-<td style="text-align: left;"><strong>RNF01</strong> (Interface intuitiva), <strong>RNF03</strong> (Feedback em ações críticas), <strong>RNF04</strong> (Preservação de histórico ao inativar), <strong>RNF05</strong> (Confirmação em ações críticas), <strong>RNF06</strong> (Resposta das consultas internas em até 3s), <strong>RNF11</strong> (Controle de acesso por perfil)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>OE5</strong> (Transparência e prestação de contas)</td>
-<td style="text-align: left;"><strong>OE1</strong> (Centralizar dados dos alunos)</td>
-<td style="text-align: left;"><strong>CP2</strong> (Registro de doações e prestação de contas)</td>
-<td style="text-align: left;"><strong>RF05</strong> (Registrar doação recebida), <strong>RF06</strong> (Registrar documentos de prestação de contas), <strong>RF07</strong> (Consultar doações e prestações de contas)</td>
-<td style="text-align: left;"><strong>RNF01</strong> (Interface intuitiva), <strong>RNF02</strong> (Responsividade do módulo público), <strong>RNF03</strong> (Feedback em ações críticas), <strong>RNF07</strong> (Carregamento da página pública em até 5s), <strong>RNF11</strong> (Controle de acesso por perfil)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>OE4</strong> (Melhorar comunicação com voluntários e famílias)</td>
-<td style="text-align: left;"><strong>OE5</strong> (Transparência e prestação de contas)</td>
-<td style="text-align: left;"><strong>CP3</strong> (Gestão de conteúdo institucional)</td>
-<td style="text-align: left;"><strong>RF08</strong> (Publicar conteúdo institucional), <strong>RF09</strong> (Publicar evento), <strong>RF10</strong> (Consultar conteúdo institucional)</td>
-<td style="text-align: left;"><strong>RNF02</strong> (Responsividade do módulo público), <strong>RNF07</strong> (Carregamento da página pública em até 5s)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>OE1</strong> (Centralizar dados dos alunos)</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;"><strong>CP4</strong> (Cadastro e histórico de alunos)</td>
-<td style="text-align: left;"><strong>RF11</strong> (Cadastrar aluno), <strong>RF12</strong> (Consultar ficha do aluno), <strong>RF13</strong> (Inativar aluno)</td>
-<td style="text-align: left;"><strong>RNF01</strong> (Interface intuitiva), <strong>RNF04</strong> (Preservação de histórico ao inativar), <strong>RNF05</strong> (Confirmação em ações críticas), <strong>RNF06</strong> (Resposta das consultas internas em até 3s), <strong>RNF11</strong> (Controle de acesso por perfil), <strong>RNF13</strong> (Conformidade com a LGPD)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>OE2</strong> (Acompanhar frequência e situação pedagógica)</td>
-<td style="text-align: left;"><strong>OE3</strong> (Registrar medidas disciplinares)</td>
-<td style="text-align: left;"><strong>CP5</strong> (Acompanhamento pedagógico e disciplinar do aluno)</td>
-<td style="text-align: left;"><strong>RF14</strong> (Registrar frequência), <strong>RF15</strong> (Consultar frequência), <strong>RF16</strong> (Emitir alerta de faltas críticas), <strong>RF17</strong> (Registrar medida disciplinar)</td>
-<td style="text-align: left;"><strong>RNF01</strong> (Interface intuitiva), <strong>RNF03</strong> (Feedback em ações críticas), <strong>RNF05</strong> (Confirmação em ações críticas), <strong>RNF06</strong> (Resposta das consultas internas em até 3s), <strong>RNF11</strong> (Controle de acesso por perfil)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>OE4</strong> (Melhorar comunicação com voluntários e famílias)</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;"><strong>CP6</strong> (Comunicação com voluntários e famílias)</td>
-<td style="text-align: left;"><strong>RF18</strong> (Publicar aviso)</td>
-<td style="text-align: left;">- <em>(apenas RNFs transversais - ver nota abaixo)</em></td>
-</tr>
-</tbody>
-</table>
-<h2 id="nota-rnfs-transversais-aplicaveis-a-todas-as-cps">Nota - RNFs transversais (aplicáveis a todas as CPs)</h2>
-<p>Os RNFs a seguir não constam nas linhas acima por serem exigências de qualidade do sistema como um todo, e não de uma CP específica:</p>
-<ul>
-<li><strong>RNF08</strong> - Suportar acesso concorrente</li>
-<li><strong>RNF09</strong> - Logs de operações críticas</li>
-<li><strong>RNF10</strong> - Padrões web modernos (compatibilidade de navegador)</li>
-<li><strong>RNF12</strong> - Senhas com hash e dados sensíveis criptografados</li>
-</ul>
+<p>A matriz apresenta a rastreabilidade entre os Objetivos Específicos (OE), as Características do Produto (CP), os Requisitos Funcionais (RF) e os Requisitos Não Funcionais (RNF).</p>
+<div class="highlight"><pre><span></span><code>OE1
+ ├- CP4
+ │    ├- RF13 - RNF01, RNF03, RNF11, RNF13
+ │    ├- RF14 - RNF03, RNF06, RNF09, RNF11, RNF13
+ │    ├- RF15 - RNF01, RNF06, RNF11, RNF13
+ │    └- RF16 - RNF03, RNF04, RNF05, RNF09, RNF11, RNF13
+ │
+ └- CP1
+      └- RF06 - RNF03, RNF04, RNF06, RNF11
+
+
+OE2
+ ├- CP1
+ │    ├- RF03 - RNF01, RNF03, RNF06, RNF11
+ │    ├- RF04 - RNF03, RNF06, RNF09, RNF11
+ │    └- RF05 - RNF03, RNF04, RNF05, RNF09, RNF11
+ │
+ └- CP5
+      ├- RF17 - RNF01, RNF03, RNF06, RNF11, RNF13
+      ├- RF18 - RNF01, RNF06, RNF11, RNF13
+      └- RF19 - RNF03, RNF06, RNF11, RNF13
+
+
+OE3
+ └- CP5
+      └- RF20 - RNF03, RNF05, RNF09, RNF11, RNF13
+
+
+OE4
+ ├- CP3
+ │    ├- RF10 - RNF01, RNF02, RNF07, RNF10
+ │    ├- RF11 - RNF01, RNF02, RNF07, RNF10
+ │    └- RF12 - RNF02, RNF07, RNF10
+ │
+ └- CP6
+      ├- RF21 - RNF01, RNF03, RNF11, RNF13
+      ├- RF22 - RNF01, RNF06, RNF11, RNF13
+      ├- RF23 - RNF03, RNF11, RNF13
+      └- RF24 - RNF01, RNF06, RNF09, RNF11, RNF13
+
+
+OE5
+ └- CP2
+      ├- RF07 - RNF03, RNF09, RNF11, RNF13
+      ├- RF08 - RNF03, RNF09, RNF11, RNF13
+      └- RF09 - RNF06, RNF11, RNF13
+
+
+Transversal
+ └- Acesso
+      ├- RF01 - RNF11, RNF12, RNF13
+      └- RF02 - RNF11, RNF13
+</code></pre></div>
 
 
 
