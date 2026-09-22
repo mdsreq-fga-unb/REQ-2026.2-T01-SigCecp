@@ -36,6 +36,15 @@ Essa disponibilidade cobre três janelas semanais, o que permite alinhar pelo me
 
 Para os casos em que uma iteração seja curta demais para uma reunião síncrona (ex.: ajustes pontuais em protótipos já validados), a equipe adota **validações assíncronas** por meio do grupo de WhatsApp com o cliente, permitindo que ele avalie entregas, wireframes ou pequenas mudanças sem a necessidade de uma videoconferência formal. Essas validações assíncronas são registradas como decisões no GitHub Issues, mantendo o mesmo rastreamento das reuniões formais.
 
+### Disponibilidade de Outros Stakeholders
+
+Além do representante Pedro, os demais stakeholders relevantes confirmaram disponibilidade para reuniões:
+
+- **Ivan** — professor de jiu-jitsu do CECP, também envolvido na administração do projeto. Disponível **em qualquer dia da semana, a partir das 20:30**, com preferência por encontros **presenciais**.
+- **Sandra** — dona do projeto / responsável administrativa. Mesma disponibilidade: **qualquer dia da semana, a partir das 20:30**, com preferência por encontros **presenciais**.
+
+Essa disponibilidade permite à equipe planejar momentos específicos de elicitação e validação junto a esses stakeholders, respeitando o formato presencial que preferem, dentro do cronograma de iterações do projeto.
+
 ### Métodos e Frequência de Reuniões
 
 - **Reunião de Equipe (semanal):** a equipe se reúne semanalmente para alinhamento interno de progresso, obstáculos e prioridades.
@@ -47,7 +56,7 @@ Para os casos em que uma iteração seja curta demais para uma reunião síncron
 Além do representante Pedro, a interação incluirá, conforme a fase do projeto:
 
 - **Professores do CECP:** consultados durante elicitação e validação de funcionalidades ligadas à gestão de turmas e acompanhamento pedagógico;
-- **Responsáveis (famílias):** envolvidos em momentos de validação da experiência de matrícula online (ex.: teste de protótipo do formulário); <!-- Talvez ocorra alteração -->
+- **Responsáveis (famílias):** envolvidos em momentos de validação da experiência de matrícula online (ex.: teste de protótipo do formulário);
 - **Usuários administrativos (equipe de gestão do CECP):** consultados na validação de fluxos de doações e relatórios.
 
 ### Registro de Decisões, Aprovações e Mudanças
@@ -72,4 +81,4 @@ O processo de validação segue a lógica do processo RAD, ocorrendo em múltipl
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
-| 1.1 | 12/09/2026 | [Unidade 1 - Interação Entre Equipe e Cliente #22](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/22) | [Maria Eduarda](https://github.com/Mariaeduardara) | [Rafael Melatti](https://github.com/Romm-0) |
+| 1.1 | 12/09/2026 | Correções da issue #22: composição da equipe, disponibilidade do cliente, definições de iteração/unidade, registro de decisões, ampliação de stakeholders e processo de validação | Maria Eduarda | — |
