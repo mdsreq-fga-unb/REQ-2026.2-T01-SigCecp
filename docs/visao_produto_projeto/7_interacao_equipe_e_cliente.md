@@ -47,7 +47,7 @@ Para os casos em que uma iteração seja curta demais para uma reunião síncron
 Além do representante Pedro, a interação incluirá, conforme a fase do projeto:
 
 - **Professores do CECP:** consultados durante elicitação e validação de funcionalidades ligadas à gestão de turmas e acompanhamento pedagógico;
-- **Responsáveis (famílias):** envolvidos em momentos de validação da experiência de matrícula online (ex.: teste de protótipo do formulário);
+- **Responsáveis (famílias):** envolvidos em momentos de validação da experiência de matrícula online (ex.: teste de protótipo do formulário); <!-- Talvez ocorra alteração -->
 - **Usuários administrativos (equipe de gestão do CECP):** consultados na validação de fluxos de doações e relatórios.
 
 ### Registro de Decisões, Aprovações e Mudanças
@@ -72,4 +72,4 @@ O processo de validação segue a lógica do processo RAD, ocorrendo em múltipl
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
-| 1.1 | 12/09/2026 | Correções da issue #22: composição da equipe, disponibilidade do cliente, definições de iteração/unidade, registro de decisões, ampliação de stakeholders e processo de validação | Maria Eduarda | — |
+| 1.1 | 12/09/2026 | [Unidade 1 - Interação Entre Equipe e Cliente #22](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/22) | [Maria Eduarda](https://github.com/Mariaeduardara) | [Rafael Melatti](https://github.com/Romm-0) |
