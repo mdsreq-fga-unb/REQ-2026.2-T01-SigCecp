@@ -1029,12 +1029,11 @@
 </ul>
 <p><strong>Análise e Consenso:</strong></p>
 <ul>
-<li><strong>Definição de MVP:</strong> Técnica utilizada para chegar a um consenso entre a equipe e o cliente sobre quais funcionalidades compõem o núcleo essencial do sistema, reduzindo escopo e resolvendo conflitos sobre o que é prioritário para entrega.</li>
-<li><strong>Workshop de Requisitos:</strong> Sessão colaborativa realizada entre a equipe e os stakeholders para analisar os requisitos identificados, esclarecer ambiguidades, discutir divergências de interpretação e estabelecer um entendimento compartilhado sobre o comportamento esperado do sistema.</li>
+<li><strong>Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio):</strong> Técnica utilizada entre equipe e cliente para classificar as funcionalidades levantadas cruzando dois eixos — complexidade/esforço técnico de implementação e valor gerado para o negócio — permitindo identificar quais funcionalidades entregam mais valor com menor esforço, chegando a um consenso sobre o núcleo essencial do sistema (a definição do MVP), reduzindo escopo e resolvendo conflitos sobre o que é prioritário para entrega.</li>
 </ul>
 <p><strong>Declaração de Requisitos:</strong></p>
 <ul>
-<li><strong>Requisitos Funcionais e Não Funcionais:</strong> Os requisitos descobertos serão documentados de forma padronizada, identificados como Requisitos Funcionais (RF) ou Requisitos Não Funcionais (RNF), numerados sequencialmente, a fim de facilitar a rastreabilidade e a comunicação entre a equipe e o cliente.</li>
+<li><strong>Declaração Estruturada de Requisitos:</strong> Técnica de declaração utilizada para especificar os requisitos descobertos em formato tabular estruturado, contendo identificador único, descrição, classificação como Requisito Funcional (RF) ou Requisito Não Funcional (RNF), e critério de aceitação, a fim de garantir rastreabilidade, testabilidade e comunicação clara entre equipe e cliente.</li>
 </ul>
 <p><strong>Representação de Requisitos:</strong></p>
 <ul>
@@ -1042,12 +1041,13 @@
 </ul>
 <p><strong>Verificação e Validação de Requisitos:</strong></p>
 <ul>
-<li><strong>Revisão por pares:</strong> Os requisitos descobertos serão revisados internamente entre os desenvolvedores antes da apresentação ao cliente, examinando consistência, completude e testabilidade.</li>
-<li><strong>Feedback do Cliente:</strong> A validação dos requisitos ocorrerá por meio da apresentação dos protótipos; o cliente poderá aprovar, rejeitar ou sugerir ajustes para que os requisitos alcancem o resultado esperado.</li>
+<li><strong>Revisão por pares (Verificação):</strong> Os requisitos descobertos serão revisados internamente entre os desenvolvedores antes da apresentação ao cliente, examinando consistência, completude e testabilidade.</li>
+<li><strong>Revisão de Requisitos com Stakeholders (Validação):</strong> Os requisitos especificados serão apresentados ao representante e à equipe do CECP para confirmar se refletem corretamente as necessidades identificadas, podendo ser aprovados, rejeitados ou ajustados conforme o entendimento dos stakeholders. Essa técnica pode ser aplicada sempre que houver necessidade de revisar requisitos, especialmente antes da existência de protótipos que permitam uma validação mais visual.</li>
+<li><strong>Sessão de Validação com Protótipo (Validação):</strong> A validação dos requisitos ocorrerá por meio da apresentação dos protótipos ao representante e à equipe do CECP, que poderão aprovar, rejeitar ou sugerir ajustes para que os requisitos alcancem o resultado esperado.</li>
 </ul>
 <p><strong>Organização e Atualização de Requisitos:</strong></p>
 <ul>
-<li><strong>GitHub Projects:</strong> Ferramenta utilizada para organizar e visualizar as issues, permitindo acompanhar o progresso de cada requisito ao longo do desenvolvimento e garantir que nada fique pendente e sem rastreio.</li>
+<li><strong>Gestão de Backlog de Requisitos:</strong> Técnica utilizada para registrar, categorizar e acompanhar o progresso de cada requisito ao longo do desenvolvimento, garantindo rastreabilidade e visibilidade do que está pendente, em andamento ou concluído. Essa técnica é operacionalizada por meio do GitHub Projects, ferramenta escolhida pela equipe para visualizar e gerenciar as issues correspondentes.</li>
 </ul>
 <h2 id="52-engenharia-de-requisitos-e-o-rad">5.2 Engenharia de Requisitos e o RAD</h2>
 <table>
@@ -1064,30 +1064,30 @@
 <td><strong>Planejamento de Requisitos</strong></td>
 <td>Elicitação e Descoberta — Identificação de necessidades e contexto</td>
 <td>Entrevista com stakeholders e brainstorming dos desenvolvedores</td>
-<td>Necessidades, dificuldades e requisitos de alto nível identificados</td>
+<td>Necessidades, dificuldades e requisitos de alto nível* identificados</td>
 </tr>
 <tr>
 <td></td>
 <td>Análise e Consenso — Definição de prioridades e escopo acordado</td>
-<td>Definição de MVP</td>
+<td>Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio)</td>
 <td>Funcionalidades essenciais priorizadas e acordadas</td>
 </tr>
 <tr>
 <td></td>
 <td>Declaração — Comunicação estruturada dos requisitos</td>
-<td>Requisitos Funcionais e Não Funcionais</td>
+<td>Declaração Estruturada de Requisitos</td>
 <td>Requisitos identificados, classificados e numerados</td>
 </tr>
 <tr>
 <td></td>
-<td>Verificação e Validação — Verificação e validação contínua e iterativa</td>
-<td>Feedback do Cliente e Revisão por Pares</td>
-<td>Requisitos consistentes, completos e verificáveis</td>
+<td>Verificação e Validação — Verificação de qualidade interna e validação com stakeholders</td>
+<td>Revisão por Pares (Verificação) e Revisão de Requisitos com Stakeholders (Validação)</td>
+<td>Requisitos verificados quanto à consistência interna e confirmados como representativos das necessidades reais do CECP</td>
 </tr>
 <tr>
 <td></td>
 <td>Organização e Atualização — Estruturação inicial dos requisitos</td>
-<td>GitHub Projects</td>
+<td>Gestão de Backlog de Requisitos (via GitHub Projects)</td>
 <td>Requisitos organizados e acompanhados por meio de issues</td>
 </tr>
 <tr>
@@ -1098,8 +1098,8 @@
 </tr>
 <tr>
 <td></td>
-<td>Verificação e Validação — Validação dos requisitos</td>
-<td>Revisão por pares e feedback do cliente</td>
+<td>Verificação e Validação — Verificação de qualidade interna e validação com stakeholders</td>
+<td>Revisão por Pares (Verificação) e Sessão de Validação com Protótipo (Validação)</td>
 <td>Protótipos com os requisitos e com os fluxos de uso esperados</td>
 </tr>
 <tr>
@@ -1110,48 +1110,57 @@
 </tr>
 <tr>
 <td></td>
-<td>Análise e Consenso — Alinhamento do entendimento</td>
-<td>Workshop de requisitos apoiado em protótipos</td>
-<td>Requisitos representados e compreendidos de forma consistente pela equipe e pelos stakeholders</td>
+<td>Análise e Consenso — Revisão de prioridades a partir do protótipo</td>
+<td>Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio)</td>
+<td>Prioridades revisadas e reacordadas conforme aprendizado obtido com os protótipos</td>
 </tr>
 <tr>
 <td></td>
 <td>Declaração — Consolidação dos esclarecimentos</td>
-<td>Declaração estruturada dos requisitos</td>
+<td>Declaração Estruturada de Requisitos</td>
 <td>Detalhes acordados incorporados às declarações dos requisitos correspondentes</td>
 </tr>
 <tr>
 <td></td>
 <td>Organização e Atualização — Registro das avaliações</td>
-<td>Acompanhamento de issues no GitHub Projects</td>
+<td>Gestão de Backlog de Requisitos (via GitHub Projects)</td>
 <td>Avaliações do cliente e protótipos vinculados às issues dos requisitos já definidos</td>
 </tr>
 <tr>
 <td><strong>Construção</strong></td>
 <td>Organização e Atualização — Manutenção dos requisitos</td>
-<td>GitHub Projects</td>
+<td>Gestão de Backlog de Requisitos (via GitHub Projects)</td>
 <td>Requisitos e mudanças mantidos em estado atual</td>
 </tr>
 <tr>
 <td></td>
 <td>Verificação e Validação — Verificação dos requisitos alterados</td>
-<td>Revisão por pares</td>
+<td>Revisão por Pares (Verificação)</td>
 <td>Requisitos modificados verificados quanto à qualidade interna</td>
+</tr>
+<tr>
+<td></td>
+<td>Elicitação, Análise, Declaração e Representação — Ajuste de requisitos emergentes</td>
+<td>Entrevista com stakeholders, Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio), Declaração Estruturada de Requisitos e Protótipos e Wireframes</td>
+<td>Novos requisitos ou ajustes identificados durante a construção devidamente elicitados, analisados, declarados e representados</td>
 </tr>
 <tr>
 <td><strong>Transição</strong></td>
 <td>Verificação e Validação — Validação final dos requisitos</td>
-<td>Feedback do cliente</td>
+<td>Sessão de Validação com Protótipo (Validação)</td>
 <td>Confirmação de que os requisitos atendidos correspondem às necessidades do CECP</td>
 </tr>
 <tr>
 <td></td>
 <td>Organização e Atualização — Consolidação dos requisitos</td>
-<td>GitHub Projects</td>
+<td>Gestão de Backlog de Requisitos (via GitHub Projects)</td>
 <td>Estado final dos requisitos e itens futuros devidamente registrados</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>*Requisitos de alto nível referem-se a requisitos amplos e ainda pouco detalhados, identificados na fase inicial de elicitação, antes do refinamento realizado nas etapas de Análise e Declaração.</p>
+</blockquote>
 <h2 id="versionamento">Versionamento</h2>
 <table>
 <thead>
@@ -1170,6 +1179,13 @@
 <td style="text-align: left;">Transcrição do documento para markdown</td>
 <td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
 <td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">19/09/2026</td>
+<td style="text-align: left;">Revisão das técnicas de Engenharia de Requisitos com base em feedback recebido durante o desenvolvimento do projeto</td>
+<td style="text-align: left;">Ana Paula Jardim</td>
+<td style="text-align: left;">Marcos Monteiro</td>
 </tr>
 </tbody>
 </table>
