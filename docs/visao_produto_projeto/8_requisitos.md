@@ -63,15 +63,15 @@ Os requisitos não funcionais foram classificados segundo o modelo URPS+ (Usabil
 | ID | Descrição | Critério de Aceitação |
 |---|---|---|
 | RNF01 | Interface que permite ao usuário realizar tarefas sem precisar de muito tempo de aprendizado ou treinamento para voluntários sem experiência técnica (CP1, CP3, CP4, CP5) | Usuários novatos no sistema deverão conseguir realizar as tarefas após de se familiarizarem com o sistema por no máximo 8 minutos. 80% dos usuários devem cumprir as tarefas para ser aceito. |
-| RNF02 | Responsividade do módulo público (CP2, CP3) | Divulgação institucional exibidas corretamente em resoluções ≥ 360px |
+| RNF02 | O módulo público deve adaptar sua interface ao tamanho da tela, mantendo a legibilidade e a organização dos conteúdos em diferentes resoluções.| Conteúdos de divulgação institucional devem ser exibidos sem sobreposição ou corte em resoluções ≥ 360px. |
 | RNF03 | Feedback ao usuário em ações críticas, como registrar frequência, aplicar medida disciplinar e inativar aluno ou turma. | Mensagem de sucesso/erro exibida em até 2s após a ação (ex.: registrar frequência, aplicar medida disciplinar) |
 
 ### Confiabilidade (R - Reliability)
 
 | ID | Descrição | Critério de Aceitação |
 |---|---|---|
-| RNF04 | Confirmação antes da execução de ações críticas que alterem ou inativem registros relevantes | Registros preservados no banco após a inativação, permanecendo consultáveis na ficha/histórico |
-| RNF05 | Confirmação em ações críticas | Caixa de confirmação exibida antes de inativar turma, inativar aluno ou registrar medida disciplinar |
+| RNF04 | Preservação de histórico ao inativar turma (CP1) ou aluno (CP5) | Registros preservados no banco após a inativação, permanecendo consultáveis na ficha/histórico |
+| RNF05 | O sistema deve solicitar confirmação antes da execução de ações críticas que possam alterar ou inativar registros relevantes. | Caixa de confirmação exibida antes de inativar turma, inativar aluno ou registrar medida disciplinar |
 
 ### Desempenho (P - Performance)
 
@@ -79,14 +79,14 @@ Os requisitos não funcionais foram classificados segundo o modelo URPS+ (Usabil
 |---|---|---|
 | RNF06 | Resposta das consultas internas em até 3s (ficha do aluno, frequência, turmas) | P95 das requisições autenticadas ≤ 3s sob carga normal |
 | RNF07 | Carregamento da página pública em até 5s (CP2, CP3) | LCP ≤ 5s em conexão 3G, medido pelo Lighthouse |
-| RNF08 | Suportar acesso concorrente | Sistema operacional sem degradação com 10 sessões autenticadas simultâneas (coordenação, voluntários, professores) |
+| RNF08 | O sistema deve suportar o acesso simultâneo de usuários autenticados sem ultrapassar os limites de desempenho definidos para as operações internas. | Com 10 sessões autenticadas simultâneas, o P95 das requisições deve permanecer ≤ 3s sob carga normal. |
 
 ### Suportabilidade (S)
 
 | ID | Descrição | Critério de Aceitação |
 |---|---|---|
 | RNF09 | Logs de operações críticas | Toda criação, edição e inativação (turma, aluno, doação, medida disciplinar) registrada com timestamp e usuário responsável |
-| RNF10 |O sistema deve utilizar padrões e tecnologias web atuais e amplamente adotados, garantindo compatibilidade com navegadores modernos e boas práticas de desenvolvimento web. | Compatível com Chrome, Firefox e Safari nas últimas 2 versões |
+| RNF10 |O sistema deve utilizar padrões e tecnologias web atuais e amplamente adotados, garantindo compatibilidade com navegadores modernos. | Compatível com Chrome, Firefox e Safari nas últimas 2 versões |
 
 ### + Segurança
  
@@ -94,7 +94,7 @@ Os requisitos não funcionais foram classificados segundo o modelo URPS+ (Usabil
 |---|---|---|
 | RNF11 | Controle de acesso por perfil (coordenação, professor/voluntário, família) | Rotas administrativas retornam 401/403 para requisições sem perfil autorizado |
 | RNF12 | Senhas com hash e dados sensíveis criptografados | Nenhuma senha armazenada em texto claro; auditoria por inspeção de banco |
-| RNF13 | Conformidade com a Lei nº 13.709/2018 (LGPD) | Titular/responsável legal pode solicitar a eliminação de seus dados pessoais, conforme o direito previsto no **art. 18, inciso VI, da LGPD**; dados de saúde do aluno (ex.: atestado, restrições de saúde) são tratados como **dado pessoal sensível** (**art. 5º, inciso II**), exigindo consentimento específico e destacado do titular ou responsável legal (**art. 11, inciso I**) |
+| RNF13 | O sistema deve tratar os dados pessoais de acordo com os princípios, direitos dos titulares e requisitos de segurança e tratamento estabelecidos pela Lei nº 13.709/2018 (LGPD). | O sistema deve permitir o atendimento às solicitações aplicáveis dos titulares ou responsáveis legais relacionadas aos seus dados pessoais, incluindo solicitação de eliminação quando cabível, além de classificar e proteger dados pessoais sensíveis conforme a LGPD|
 
 
 ## 8.3 Matriz-síntese de rastreabilidade - CECP
