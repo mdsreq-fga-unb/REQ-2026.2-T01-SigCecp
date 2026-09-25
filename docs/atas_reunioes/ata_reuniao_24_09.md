@@ -1,6 +1,6 @@
 # Ata de Reunião - Entrevista com Professor e Priorização de Requisitos (CECP)
 
-**Data:** 23 de setembro de 2026  
+**Data:** 24 de setembro de 2026  
 **Modalidade:** Presencial  
 **Participantes pela equipe do projeto:** Marcos Vinicius Monteiro  
 **Participantes representando o CECP:** Pedro Augusto Cajado Coutinho e o professor Marcos Xavier Santana, conhecido como **"Marcão"** (professor de Judô e Jiu-Jitsu)  
