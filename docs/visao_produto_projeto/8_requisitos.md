@@ -50,7 +50,7 @@ Derivados das Características de Produto (CP1 a CP6) da seção 2.3 do document
 
 **RF19 - Remover evento:** deve ser possível à coordenação remover um evento ou campeonato.
 
-**RF20 - Consultar eventos:** deve ser possível à coordenação consultar os evento ou campeonato já publicados.
+**RF20 - Consultar eventos:** deve ser possível à coordenação consultar os eventos ou campeonatos já publicados.
 
 
 ### CP4 - Cadastro e histórico de alunos
