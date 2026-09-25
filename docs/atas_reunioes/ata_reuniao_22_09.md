@@ -1,6 +1,6 @@
 # Ata de Reunião  Apresentação e Validação de Requisitos (CECP)
 
-**Data:** Quarta-feira, 23 de setembro de 2026
+**Data:** Terça-feira, 22 de setembro de 2026
 **Modalidade:** Presencial
 **Participantes pela equipe do projeto:** Marcos
 **Participantes representando o cliente (CECP):** Ivan (presidente) e Sandra (Tesoureira)
@@ -217,3 +217,5 @@ Ao final da reunião, Ivan e Sandra confirmaram não ter dúvidas adicionais sob
 
 
 *Ata elaborada a partir da transcrição de reunião presencial entre Marcos, Ivan e Sandra (representantes do CECP), realizada em 23/09/2026 e registrada em dois áudios devido à descarga da bateria do celular durante a gravação, para conhecimento e alinhamento do restante da equipe do projeto.*
+
+*Os audios completos estão disponível no link: https://drive.google.com/drive/folders/1RiaA4gz3h7QuemGTX4gGLs_4oQRTVMH1?usp=sharing*

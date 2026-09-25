@@ -30,7 +30,9 @@ Derivados das Características de Produto (CP1 a CP6) da seção 2.3 do document
 
 ### CP3 - Gestão de conteúdo institucional
 
-**RF10 - Publicar conteúdo institucional:** deve ser possível à coordenação publicar e editar conteúdos institucionais, como informações da organização, fotos e vídeos, no módulo público.
+**RF10 - Publicar conteúdo institucional:** deve ser possível à coordenação publicar conteúdos institucionais, como informações da organização, fotos e vídeos, no módulo público.
+
+----------------------**RF10 - Edição conteúdo institucional:** deve ser possível à coordenação editar conteúdos institucionais, como informações da organização, fotos e vídeos, no módulo público.
 
 **RF11 - Publicar evento:** deve ser possível à coordenação publicar um evento ou campeonato, informando, no mínimo, sua data e descrição.
 
@@ -44,11 +46,16 @@ Derivados das Características de Produto (CP1 a CP6) da seção 2.3 do document
 
 **RF15 - Consultar ficha do aluno:** deve ser possível à coordenação consultar a ficha de um aluno, incluindo seus dados cadastrais e histórico de participação em turmas.
 
-**RF16 - Inativar aluno:** deve ser possível à coordenação marcar um aluno como inativo ou ex-aluno, preservando seu histórico no sistema.
+**RF16 - Inativar aluno:** deve ser possível à coordenação marcar um aluno como inativo, preservando seu histórico no sistema.
+
+**RF16 - Remover dados do aluno:** Deve ser possível à coordenação remover do sistema os dados críticos de um aluno, mediante pedido do responsável legal ou do próprio aluno, caso ele tenha 18 anos ou mais, sem manter esses dados críticos no histórico do sistema.
+
+>> Dados críticos são: ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- .
+
 
 ### CP5 - Acompanhamento pedagógico e disciplinar do aluno
 
-**RF17 - Registrar frequência:** deve ser possível ao professor ou à coordenação registrar a frequência dos alunos em cada aula de uma turma.
+**RF17 - Registrar frequência:** deve ser possível à coordenação registrar a frequência dos alunos em cada aula de uma turma.
 
 **RF18 - Consultar frequência:** deve ser possível à coordenação consultar o histórico de frequência de um aluno.
 
@@ -58,13 +65,31 @@ Derivados das Características de Produto (CP1 a CP6) da seção 2.3 do document
 
 ### CP6 - Comunicação com voluntários e famílias
 
-**RF21 - Publicar aviso:** deve ser possível à coordenação ou à gestão publicar avisos destinados aos voluntários e/ou familiares.
+**RF21 - Publicar aviso:** deve ser possível à coordenação publicar avisos no módulo público.
 
-**RF22 - Consultar avisos:** deve ser possível aos voluntários e familiares consultar os avisos destinados a eles no sistema.
+**RF22 - Consultar avisos:** deve ser possível aos voluntários e familiares consultar os avisos no módulo público.
 
-**RF23 - Direcionar aviso:** deve ser possível à coordenação ou à gestão direcionar um aviso para voluntários, familiares ou ambos.
+**RF23 - Direcionar aviso:** deve ser possível à coordenação direcionar um aviso para voluntários, familiares ou ambos no módulo público.
 
-**RF24 - Consultar histórico de avisos:** deve ser possível à coordenação ou à gestão consultar os avisos publicados anteriormente, incluindo seus destinatários e data de publicação.
+**RF24 - Consultar histórico de avisos:** deve ser possível à coordenação consultar os avisos publicados anteriormente, incluindo seus destinatários e data de publicação.
+
+### CP7 -  Matrícula online 
+
+**RF25 - Acessar formulário de matrícula online:** deve ser possível a qualquer interessado acessar o formulário de matrícula por link público, sem necessidade de login.
+
+**RF26 - Preencher dados do aluno:** deve ser possível o interesado inserir, no formulário, os dados do aluno (nome, data de nascimento, contato e modalidade ou turma de interesse), com validação dos campos obrigatórios antes do envio.
+
+**RF27 - Informar dados do responsável legal:** deve ser obrigatório informar os dados do responsável legal (nome, contato e vínculo) quando o aluno tiver menos de 18 anos, com base na data de nascimento informada.
+
+**RF28 - Registrar consentimento de dados pessoais:** deve ser possível ao aluno, ou ao responsável legal no caso de menores, aceitar o termo de tratamento de dados pessoais, sendo o aceite condição para o envio e registrado com data, hora, versão do termo e identificação de quem aceitou.
+
+**RF29 - Registrar termo de uso de imagem:** deve ser possível ao aluno ou ao responsável legal aceitar, separadamente do consentimento de dados, o termo de uso de imagem, com finalidade e prazo descritos, que a recusa impeça a matrícula.
+
+**RF30 - Informar pessoas autorizadas a retirar o aluno:** deve ser obrigatório informar ao menos uma pessoa autorizada a retirar o aluno quando ele for menor de idade, com nome e contato.
+
+**RF31 - Emitir comprovante de solicitação:** deve ser possível ao solicitante receber, após o envio, um número de protocolo.
+
+**RF32 - Analisar solicitações de matrícula:** deve ser possível à coordenação consultar as solicitações recebidas e defini-las como aprovada, recusada ou em lista de espera, sendo o cadastro do aluno criado a partir dos dados do formulário quando aprovada.
 
 ## 8.2 Requisitos Não Funcionais - RNFs
 
@@ -84,7 +109,7 @@ Os requisitos não funcionais foram classificados segundo o modelo URPS+ (Usabil
 
 | ID | Descrição | Critério de Aceitação |
 |---|---|---|
-| RNF04 | Preservação de histórico ao inativar turma (CP1) ou aluno (CP5) | Registros preservados no banco após a inativação, permanecendo consultáveis na ficha/histórico |
+|--------------- RNF04 | Preservação de histórico ao inativar turma ou aluno | Registros preservados no banco após a inativação, permanecendo consultáveis na ficha/histórico |
 | RNF05 | O sistema deve solicitar confirmação antes da execução de ações críticas que possam alterar ou inativar registros relevantes. | Caixa de confirmação exibida antes de inativar turma, inativar aluno ou registrar medida disciplinar |
 
 ### Desempenho (P - Performance)
@@ -99,7 +124,7 @@ Os requisitos não funcionais foram classificados segundo o modelo URPS+ (Usabil
 
 | ID | Descrição | Critério de Aceitação |
 |---|---|---|
-| RNF09 | Logs de operações críticas | Toda criação, edição e inativação (turma, aluno, doação, medida disciplinar) registrada com timestamp e usuário responsável |
++++++++| RNF09 | Logs de operações críticas | Toda criação, edição e inativação (turma, aluno, doação, medida disciplinar) registrada com timestamp e usuário responsável |
 | RNF10 |O sistema deve utilizar padrões e tecnologias web atuais e amplamente adotados, garantindo compatibilidade com navegadores modernos. | Compatível com Chrome, Firefox e Safari nas últimas 2 versões |
 
 ### + Segurança
@@ -167,6 +192,6 @@ OE5
 Transversal
  └- Acesso
       ├- RF01 - RNF11, RNF12, RNF13
-      └- RF02 - RNF11, RNF13
+      └- RF02 - RNF11, RNF13, RNF08
 
 ```

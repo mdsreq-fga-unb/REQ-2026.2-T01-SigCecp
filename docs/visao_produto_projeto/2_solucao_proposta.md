@@ -32,6 +32,7 @@ A solução proposta para o CECP deverá contemplar, de forma preliminar, as seg
 | OE1 | — | CP4 | Cadastro e histórico de alunos | Capacidade de manter o cadastro e o histórico dos alunos vinculados à instituição. | Centralização da informação e suporte a comprovações históricas. |
 | OE2, OE3 | — | CP5 | Acompanhamento pedagógico e disciplinar do aluno | Capacidade de acompanhar a frequência e a situação pedagógica dos alunos e de registrar medidas disciplinares aplicadas. | Redução da evasão, apoio à tomada de decisão e rastreabilidade. |
 | OE4 | — | CP6 | Comunicação com voluntários e famílias | Capacidade de comunicação entre a coordenação, os voluntários e as famílias dos alunos. | Comunicação mais organizada e rastreável. |
+| OE1 | OE2 | CP7 | Matrícula online | A solução deverá oferecer um novo meio de matrículas para novos alunos no formato digital que não exija o comparecimento presencial do aluno, diminuindo as barreiras para a realização das matrículas. | Aumento da conversão de matrícula e diversificação de meios de matrícula. |
 
 ## 2.4 Tecnologias a Serem Utilizadas
 
