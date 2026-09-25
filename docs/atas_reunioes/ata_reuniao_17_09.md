@@ -6,7 +6,7 @@
 **Participante representando o cliente (CECP):** Pedro Augusto Cajado Coutinho  
 **Pauta:** Retomada do projeto, alinhamento do cenário construído pela equipe e levantamento inicial de necessidades e requisitos do sistema de gestão da ONG.
 
----
+
 
 ## 1. Retomada do que foi tratado anteriormente
 
@@ -22,7 +22,7 @@ Marcos explicou que, desde a primeira reunião, a equipe vem trabalhando na iden
 
 Também foi ressaltado que a equipe não deve presumir necessidades ou funcionalidades sem validação com os responsáveis e usuários envolvidos.
 
----
+
 
 ## 2. Necessidade de múltiplas fontes de informação
 
@@ -40,7 +40,7 @@ Pedro concordou com a necessidade de obter essas diferentes perspectivas.
 
 Pedro ficou de conversar com Sandra e Ivan após o fim de semana do campeonato de judô, período em que ambos estão envolvidos com a organização do evento. A participação deles deverá contribuir especialmente para o levantamento relacionado à gestão institucional da ONG.
 
----
+
 
 ## 3. Objetivo do sistema
 
@@ -64,7 +64,7 @@ Foram discutidos os seguintes objetivos:
 
 A necessidade de acompanhamento da situação escolar dos alunos também foi mencionada durante a conversa, mas ainda não foram definidos quais dados deverão ser registrados nem como esse acompanhamento será realizado no sistema.
 
----
+
 
 ## 4. Benefícios esperados
 
@@ -82,7 +82,7 @@ Entre eles:
 
 Também foi discutida a possibilidade de adequar a interface e os recursos do sistema às necessidades apresentadas em editais dos quais a ONG participe. Essa possibilidade ainda depende do levantamento das exigências específicas.
 
----
+
 
 ## 5. Processo de construção e validação
 
@@ -107,7 +107,7 @@ Esses campos foram utilizados como exemplo durante a discussão e ainda deverão
 
 Marcos reforçou que a equipe não deve definir sozinha o que o sistema precisa fazer. A participação contínua da ONG é necessária para que as funcionalidades desenvolvidas correspondam às necessidades reais da instituição.
 
----
+
 
 ## 6. Reuniões e comunicação
 
@@ -128,7 +128,7 @@ Também foi discutida a realização de reuniões específicas com Sandra e Ivan
 
 O projeto faz parte da disciplina de Requisitos de Software da UnB e deverá continuar ao longo do semestre, com necessidade de interação frequente entre a equipe e o CECP.
 
----
+
 
 ## 7. Situação atual da gestão de alunos
 
@@ -146,7 +146,7 @@ Atualmente, o processo é predominantemente manual:
 
 Segundo o relato apresentado na reunião, atualmente não existe um sistema digital integrado aos dados dos alunos que centralize todo esse processo.
 
----
+
 
 ## 8. Documentos digitais existentes
 
@@ -158,7 +158,7 @@ Apesar da existência desses arquivos digitais, ainda existe dependência do pap
 
 A situação apresentada reforça a necessidade de discutir uma estratégia de centralização e organização dos documentos no novo sistema.
 
----
+
 
 ## 9. Alunos ativos e ex-alunos
 
@@ -172,7 +172,7 @@ Na ocasião, a ONG possuía a ficha de inscrição, mas não tinha um controle e
 
 O caso foi utilizado para demonstrar a necessidade de avaliar a existência de um mecanismo formal de controle de presença e geração de registros de frequência.
 
----
+
 
 ## 10. Dados e documentos necessários para inscrição
 
@@ -201,7 +201,7 @@ Para alunos menores de idade, foram mencionados:
 
 Foi observado que o responsável pode não residir com o aluno, mas ainda assim ser a pessoa responsável por levá-lo às atividades.
 
----
+
 
 ## 11. Controle de autorização para retirada de menores
 
@@ -213,7 +213,7 @@ O caso foi apresentado como exemplo das dificuldades existentes para manter as a
 
 A situação reforçou a necessidade de avaliar uma forma mais ágil de atualização dessas informações no sistema.
 
----
+
 
 ## 12. Assinatura digital e modelo híbrido
 
@@ -231,7 +231,7 @@ Entretanto, também foi reconhecido que alguns processos podem continuar exigind
 
 A solução definitiva ainda deverá ser analisada e validada pela equipe e pela ONG.
 
----
+
 
 ## 13. Gestão institucional da ONG
 
@@ -256,7 +256,7 @@ Foi discutida a possibilidade de reformulação do site para funcionar como uma 
 
 Pedro também relatou que representantes de órgãos públicos ainda solicitam informações sobre o site da instituição, indicando que a presença institucional na web continua sendo relevante para determinados públicos.
 
----
+
 
 ## 14. Doações e apoio financeiro
 
@@ -272,7 +272,7 @@ Segundo o relato:
 
 Essas informações foram apresentadas como parte do levantamento inicial da gestão institucional. O funcionamento detalhado desse processo ainda deverá ser validado com Sandra e Ivan.
 
----
+
 
 ## 15. Prestação de contas
 
@@ -291,7 +291,7 @@ O exemplo utilizado durante a reunião envolveu a aquisição de kimonos para al
 
 O processo deverá ser posteriormente detalhado e validado com os responsáveis pela gestão institucional.
 
----
+
 
 ## 16. Etapa atual do projeto
 
@@ -306,7 +306,7 @@ Segundo o alinhamento realizado na reunião:
 
 Dessa forma, a reunião foi considerada parte do processo de levantamento e refinamento das necessidades do sistema.
 
----
+
 
 # 17. Levantamento preliminar de necessidades e possíveis requisitos
 
@@ -371,7 +371,7 @@ Os itens abaixo representam **necessidades, possibilidades e indícios de requis
 40. Deverá ser avaliado o armazenamento de fotos e vídeos utilizados como comprovação.
 41. Deverá ser levantada a necessidade de diferentes perfis de acesso para os responsáveis pela gestão institucional.
 
----
+
 
 ## 18. Regras e procedimentos de negócio relatados
 
@@ -409,7 +409,7 @@ A ONG recebe recursos por diferentes meios, incluindo doações, bens recebidos 
 
 No processo apresentado como exemplo, a prestação de contas envolve orçamentos prévios, aprovação, nota fiscal e registros por meio de fotos ou vídeos.
 
----
+
 
 # 19. Pendências e próximos passos
 
@@ -436,7 +436,7 @@ Foi mencionada a possibilidade de realização de uma nova reunião em **18/09/2
 
 A realização e o horário da reunião ainda dependem de confirmação.
 
----
+
 
 # 20. Pontos em aberto
 
@@ -458,7 +458,7 @@ Permaneceram como pontos a serem aprofundados:
 - Necessidades específicas relacionadas ao site institucional;
 - Requisitos relacionados a editais específicos, caso aplicáveis.
 
----
+
 
 # 21. Encerramento
 
@@ -468,6 +468,8 @@ A reunião contribuiu para o alinhamento inicial entre a equipe do projeto e o C
 
 Ficou reforçada a necessidade de continuidade da participação dos representantes da ONG, especialmente de diferentes pessoas envolvidas nas atividades e na gestão institucional, para que as necessidades identificadas possam ser posteriormente transformadas em requisitos analisados e validados.
 
----
+
 
 *Ata elaborada com base na reunião presencial realizada em 17/09/2026 entre Marcos Vinicius Monteiro, integrante da equipe do projeto, e Pedro Augusto Cajado Coutinho, representante do CECP. Os itens classificados como necessidades, possibilidades ou requisitos preliminares dependem de análise e validação nas etapas seguintes do projeto.*
+
+*Os audios completos estão disponível no link: https://drive.google.com/drive/folders/1RiaA4gz3h7QuemGTX4gGLs_4oQRTVMH1?usp=sharing*
