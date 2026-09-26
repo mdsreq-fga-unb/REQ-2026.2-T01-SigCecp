@@ -17,4 +17,3 @@ Ajuste e validação dos requisitos baseado nos feedbacks oferecidos pela equipe
 | RF (ausente) | Aceito | Foi adicionada uma CP que engloba a solução do problema apontado (CP7).
 | RF (ausente) | Não Aceito | Não cobre a realidade do produto.
 | RF (ausente) | Não Aceito | Não cobre a realidade do produto.
-| RNF (ausente) | Parcialmente Aceito | A ideia foi acatada, mas de outro modo: na criação de uma RF que atende à necessidade.
