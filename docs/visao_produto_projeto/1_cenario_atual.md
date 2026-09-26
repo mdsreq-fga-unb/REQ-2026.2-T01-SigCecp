@@ -22,7 +22,7 @@ A organização opera de forma presencial, em Planaltina-DF, onde são realizada
 
 A missão do CECP é comprometer jovens líderes com o desenvolvimento da comunidade, formando uma consciência social verdadeira por meio de ações positivas em favor da infância mais necessitada, tendo como valores centrais a amizade, o respeito, a sinceridade e a solidariedade.
 
-O público-alvo principal são crianças e adolescentes, bem como suas famílias, em situação de vulnerabilidade social, sobretudo de baixa renda, em regiões próximas de Planaltina. A comprovação de bom desempenho escolar é exigida para a progressão de faixa, mas não existe sistema digital nem verificação sistemática desse requisito; o controle depende, em grande parte, da boa-fé do aluno. Também há ausência de controle estruturado de frequência, o que dificulta comprovações de participação.
+O público-alvo principal são crianças e adolescentes, bem como suas famílias, em situação de vulnerabilidade social, sobretudo de baixa renda, em regiões próximas de Planaltina. O acompanhamento escolar e disciplinar ainda ocorre de maneira predominantemente informal, sem sistema digital, verificação sistemática ou controle estruturado de frequência. O funcionamento atual desse acompanhamento é detalhado na seção 1.3.
 
 ### 1.3 Rich Picture
 
@@ -37,7 +37,17 @@ O cenário atual envolve o público geral, que toma conhecimento do projeto prin
 
 A divulgação do projeto ocorre principalmente pelo Instagram. Embora o domínio e o site institucional permaneçam ativos, o site está desatualizado e não é mais utilizado. No fluxo de alunos, o cadastro é predominantemente manual e realizado por ficha física. O possível aluno participa de uma aula experimental e, depois dela, a equipe pode fazer contato pelo WhatsApp. Na aula seguinte, são apresentados os documentos físicos necessários, que são assinados presencialmente. Houve tentativa anterior de uso de formulário do Google, mas o papel continua presente em grande parte do processo. Alguns documentos são digitalizados e armazenados em pastas no computador. Essa digitalização ocorre de forma pontual, sem critérios ou regras definidos para determinar quais documentos devem ser digitalizados.
 
-Professores e coordenação acompanham as modalidades esportivas, as turmas inclusivas e o acompanhamento escolar dos participantes. A comprovação de bom desempenho escolar é exigida para a progressão de faixa, mas não há sistema digital nem verificação sistemática desse requisito; o controle depende, em grande parte, da boa-fé do aluno. Diante de comportamento inadequado, a primeira ação do professor é conversar para entender a situação antes de qualquer sanção. Não existe escala padronizada de sanções: as medidas são definidas subjetivamente pelo professor, conforme o caso. Há tentativa de discussão coletiva entre professores, como um comitê, mas ela não é formalizada nem seguida sempre. Também não existe histórico estruturado de conversas ou sanções aplicadas aos alunos. A instituição precisa manter informações de alunos ativos e ex-alunos e não dispõe de controle estruturado de frequência, o que dificulta a emissão de comprovações de participação quando solicitadas.
+#### Acompanhamento pedagógico e disciplinar atual
+
+Professores e coordenação acompanham as modalidades esportivas e as turmas inclusivas. A instituição precisa manter informações de alunos ativos e ex-alunos.
+
+A comprovação de bom desempenho escolar é exigida para a progressão de faixa dos alunos. Entretanto, a ONG não possui sistema digital nem verificação sistemática dessa condição; o acompanhamento depende, em grande parte, da boa-fé do aluno.
+
+Quando ocorre um comportamento considerado inadequado, o professor que acompanha o caso conversa primeiro com o aluno para compreender a situação antes de aplicar qualquer sanção. Não existe escala padronizada de sanções nem critérios objetivos formalizados: a decisão sobre eventual medida é tomada por cada professor, de forma subjetiva e conforme as particularidades do caso.
+
+Em algumas situações, o professor busca discutir o caso com os demais professores, como um comitê informal. Essa discussão coletiva não é um procedimento formalizado e não é seguida de maneira consistente. Atualmente, também não existe histórico estruturado das conversas realizadas ou das medidas disciplinares aplicadas; assim, outro professor que assuma a turma não consegue consultar ocorrências anteriores do aluno.
+
+Além disso, a organização ainda não possui controle estruturado de frequência, o que dificulta acompanhar a presença e emitir comprovações de participação quando necessário.
 
 O fluxo de apoio e doações segue caminhos distintos. Doadores financeiros realizam contribuições diretas para sustentar o projeto; doadores de objetos contribuem com bens que podem passar por reforma e revenda para geração de recursos. Editais públicos, órgãos públicos e entidades de apoio social constituem fontes de apoio ou financiamento dos recursos do projeto, sem conexão operacional direta com a coordenação. Todos esses fluxos demandam administração e organização institucional.
 
@@ -105,7 +115,7 @@ Os principais stakeholders do projeto incluem Pedro Augusto Cajado Coutinho, com
 
 A CECP se relaciona com diferentes públicos, sem tratar crianças e adolescentes participantes como clientes:
 
-- **Crianças e adolescentes candidatos ou participantes:** Buscam ingressar ou permanecer nas atividades oferecidas pelo CECP no contraturno escolar, ocupando esse tempo com práticas esportivas. Participam de modalidades esportivas e, quando aplicável, de turmas inclusivas. A comprovação de bom desempenho escolar é exigida para a progressão de faixa, mas sua verificação não é sistemática; também não há controle estruturado de frequência.
+- **Crianças e adolescentes candidatos ou participantes:** Buscam ingressar ou permanecer nas atividades oferecidas pelo CECP no contraturno escolar, ocupando esse tempo com práticas esportivas. Participam de modalidades esportivas e, quando aplicável, de turmas inclusivas.
 
 - **Pais ou responsáveis:** Acompanham a participação e o desenvolvimento das crianças e adolescentes, apresentam e assinam presencialmente a documentação necessária e podem ser contatados após a aula experimental.
 
@@ -130,3 +140,4 @@ A CECP se relaciona com diferentes públicos, sem tratar crianças e adolescente
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
 | 1.1 | 19/09/2026 | Alinhamento do cenário atual com a ata de reunião de 17/09/2026 | Renato Gameiro | - |
 | 1.2 | 26/09/2026 | Detalhamento do acompanhamento pedagógico e disciplinar e inclusão da ANPD no mapa de stakeholders | Renato Gameiro | - |
+| 1.3 | 26/09/2026 | Detalhamento do processo atual de acompanhamento pedagógico e disciplinar. | Renato Gameiro | - |
