@@ -18,11 +18,11 @@
 
 O Centro Esportivo Cultural de Planaltina DF (CECP) é uma organização social brasileira que atua no Distrito Federal desde 2014. Qualificada como Organização da Sociedade Civil de Interesse Público (OSCIP) junto ao Ministério da Justiça, a instituição utiliza as Artes Marciais como ferramenta de prevenção à criminalidade e de promoção do desenvolvimento sociocultural e esportivo da comunidade.
 
-A organização opera de forma presencial, em Planaltina-DF, onde são realizadas as atividades em regime de contraturno escolar. O trabalho é sustentado por um grupo de jovens voluntários, lutadores e profissionais de diversas áreas. Sua presença digital é limitada e fragmentada: o Instagram é o principal canal de divulgação, enquanto o domínio e o site institucional permanecem ativos, porém desatualizados e pouco utilizados. Não há, atualmente, uma estrutura digital integrada para a gestão de alunos, documentos, doações e informações institucionais.
+A organização opera de forma presencial, em Planaltina-DF, onde são realizadas as atividades em regime de contraturno escolar. O trabalho é sustentado por um grupo de jovens voluntários, lutadores e profissionais de diversas áreas. Sua presença digital é limitada e fragmentada: o Instagram é o principal canal de divulgação. Embora o domínio e o site institucional permaneçam ativos, o site está desatualizado e não é mais utilizado. Não há, atualmente, uma estrutura digital integrada para a gestão de alunos, documentos, doações e informações institucionais.
 
 A missão do CECP é comprometer jovens líderes com o desenvolvimento da comunidade, formando uma consciência social verdadeira por meio de ações positivas em favor da infância mais necessitada, tendo como valores centrais a amizade, o respeito, a sinceridade e a solidariedade.
 
-O público-alvo principal são crianças e adolescentes, bem como suas famílias, em situação de vulnerabilidade social, sobretudo de baixa renda, em regiões próximas de Planaltina. O acompanhamento escolar dos participantes considera frequência, desempenho e comportamento. Os critérios aplicáveis, a periodicidade, os responsáveis pelas decisões e eventuais medidas decorrentes desse acompanhamento ainda dependem de validação futura com o cliente.
+O público-alvo principal são crianças e adolescentes, bem como suas famílias, em situação de vulnerabilidade social, sobretudo de baixa renda, em regiões próximas de Planaltina. A comprovação de bom desempenho escolar é exigida para a progressão de faixa, mas não existe sistema digital nem verificação sistemática desse requisito; o controle depende, em grande parte, da boa-fé do aluno. Também há ausência de controle estruturado de frequência, o que dificulta comprovações de participação.
 
 ### 1.3 Rich Picture
 
@@ -37,13 +37,13 @@ O cenário atual envolve o público geral, que toma conhecimento do projeto prin
 
 A divulgação do projeto ocorre principalmente pelo Instagram. Embora o domínio e o site institucional permaneçam ativos, o site está desatualizado e não é mais utilizado. No fluxo de alunos, o cadastro é predominantemente manual e realizado por ficha física. O possível aluno participa de uma aula experimental e, depois dela, a equipe pode fazer contato pelo WhatsApp. Na aula seguinte, são apresentados os documentos físicos necessários, que são assinados presencialmente. Houve tentativa anterior de uso de formulário do Google, mas o papel continua presente em grande parte do processo. Alguns documentos são digitalizados e armazenados em pastas no computador. Essa digitalização ocorre de forma pontual, sem critérios ou regras definidos para determinar quais documentos devem ser digitalizados.
 
-Professores e coordenação acompanham as modalidades esportivas, as turmas inclusivas e o acompanhamento escolar dos participantes. A instituição precisa manter informações de alunos ativos e ex-alunos, mas não dispõe de controle estruturado de frequência, o que dificulta a emissão de comprovações de participação quando solicitadas.
+Professores e coordenação acompanham as modalidades esportivas, as turmas inclusivas e o acompanhamento escolar dos participantes. A comprovação de bom desempenho escolar é exigida para a progressão de faixa, mas não há sistema digital nem verificação sistemática desse requisito; o controle depende, em grande parte, da boa-fé do aluno. Diante de comportamento inadequado, a primeira ação do professor é conversar para entender a situação antes de qualquer sanção. Não existe escala padronizada de sanções: as medidas são definidas subjetivamente pelo professor, conforme o caso. Há tentativa de discussão coletiva entre professores, como um comitê, mas ela não é formalizada nem seguida sempre. Também não existe histórico estruturado de conversas ou sanções aplicadas aos alunos. A instituição precisa manter informações de alunos ativos e ex-alunos e não dispõe de controle estruturado de frequência, o que dificulta a emissão de comprovações de participação quando solicitadas.
 
 O fluxo de apoio e doações segue caminhos distintos. Doadores financeiros realizam contribuições diretas para sustentar o projeto; doadores de objetos contribuem com bens que podem passar por reforma e revenda para geração de recursos. Editais públicos, órgãos públicos e entidades de apoio social constituem fontes de apoio ou financiamento dos recursos do projeto, sem conexão operacional direta com a coordenação. Todos esses fluxos demandam administração e organização institucional.
 
 Atualmente, não há sistema digital integrado de apoio à gestão. As informações estão descentralizadas entre fichas e outros documentos físicos, pastas de arquivos digitalizados no computador, contatos por WhatsApp e canais de divulgação. A dependência de papel, a necessidade ocasional de imprimir documentos já digitalizados, os processos demorados e a dificuldade de administração tornam a consulta, a atualização, a preservação do histórico e a organização das informações mais trabalhosas.
 
-O diagrama aponta como pontos críticos a dependência do Instagram como principal canal de divulgação; o site existente, porém desatualizado e pouco utilizado; a inscrição predominantemente manual; os documentos físicos e as informações descentralizadas; a ausência de controle estruturado de frequência; e a concentração de processos administrativos, que pode gerar sobrecarga e retrabalho.
+O diagrama aponta como pontos críticos a dependência do Instagram como principal canal de divulgação; o site existente, porém desatualizado e não mais utilizado; a inscrição predominantemente manual; os documentos físicos e as informações descentralizadas; a ausência de controle estruturado de frequência; a ausência de acompanhamento pedagógico e disciplinar com registro estruturado; e a concentração de processos administrativos, que pode gerar sobrecarga e retrabalho.
 
 A organização também apresenta algumas restrições relevantes para o projeto, como a atuação de uma equipe voluntária, a ausência de uma estrutura própria de tecnologia da informação, a limitação de recursos financeiros para aquisição e manutenção de sistemas comerciais e a necessidade de uma solução compatível com a realidade operacional da instituição.
 
@@ -80,7 +80,7 @@ Assim, o projeto deverá enfrentar o desafio de transformar processos atualmente
 
 ### 1.6 Mapa de Stakeholders
 
-Os principais stakeholders do projeto incluem Pedro Augusto Cajado Coutinho, como representante do cliente e responsável pela validação de prioridades e entregas; crianças e adolescentes participantes ou candidatos e seus pais ou responsáveis; professores e coordenação; administradores e funcionários; doadores financeiros; doadores de objetos; público geral; editais públicos, órgãos públicos e entidades de apoio social; e a equipe de desenvolvimento. Esses grupos possuem interesses distintos na participação nas atividades, na gestão institucional, na divulgação e no apoio à organização.
+Os principais stakeholders do projeto incluem Pedro Augusto Cajado Coutinho, como representante do cliente e responsável pela validação de prioridades e entregas; crianças e adolescentes participantes ou candidatos e seus pais ou responsáveis; professores e coordenação; administradores e funcionários; doadores financeiros; doadores de objetos; público geral; editais públicos, órgãos públicos e entidades de apoio social; a Autoridade Nacional de Proteção de Dados (ANPD) e outros órgãos de proteção de dados; e a equipe de desenvolvimento. Esses grupos possuem interesses distintos na participação nas atividades, na gestão institucional, na divulgação, no apoio à organização e na proteção de dados pessoais.
 
 ![Mapa de Stakeholders do Projeto](img/Mapa%20de%20Stakeholders%20do%20Projeto.png)
 
@@ -98,13 +98,14 @@ Os principais stakeholders do projeto incluem Pedro Augusto Cajado Coutinho, com
 | Doadores de objetos | Apoio por bens materiais | Doar objetos que podem apoiar as atividades ou gerar recursos por reforma e revenda | Média |
 | Público geral | Divulgação e conhecimento institucional | Conhecer as ações, os resultados e as formas de apoiar a organização | Baixa |
 | Editais públicos, órgãos públicos e entidades de apoio social | Fontes de apoio e financiamento | Acessar informações institucionais e apoiar ou financiar recursos para o projeto | Média |
+| Autoridade Nacional de Proteção de Dados (ANPD) | Órgão regulador e fiscalizador do tratamento de dados pessoais | Assegurar a conformidade com a LGPD e a proteção dos dados pessoais dos participantes | Alta |
 | Equipe de desenvolvimento | Responsável pela construção do produto | Entregar uma solução viável e de qualidade | Alta |
 
 ### 1.7 Segmentação de Públicos
 
 A CECP se relaciona com diferentes públicos, sem tratar crianças e adolescentes participantes como clientes:
 
-- **Crianças e adolescentes candidatos ou participantes:** Buscam ingressar ou permanecer nas atividades oferecidas pelo CECP no contraturno escolar, ocupando esse tempo com práticas esportivas. Participam de modalidades esportivas e, quando aplicável, de turmas inclusivas, com acompanhamento escolar de frequência, desempenho e comportamento. Os detalhes desse acompanhamento ainda dependem de validação futura com o cliente.
+- **Crianças e adolescentes candidatos ou participantes:** Buscam ingressar ou permanecer nas atividades oferecidas pelo CECP no contraturno escolar, ocupando esse tempo com práticas esportivas. Participam de modalidades esportivas e, quando aplicável, de turmas inclusivas. A comprovação de bom desempenho escolar é exigida para a progressão de faixa, mas sua verificação não é sistemática; também não há controle estruturado de frequência.
 
 - **Pais ou responsáveis:** Acompanham a participação e o desenvolvimento das crianças e adolescentes, apresentam e assinam presencialmente a documentação necessária e podem ser contatados após a aula experimental.
 
@@ -120,9 +121,12 @@ A CECP se relaciona com diferentes públicos, sem tratar crianças e adolescente
 
 - **Editais públicos, órgãos públicos e entidades de apoio social:** Podem apoiar ou financiar recursos para o projeto e demandam acesso a informações institucionais da organização.
 
+- **Autoridade Nacional de Proteção de Dados (ANPD) e órgãos de proteção de dados:** Exercem função regulatória e fiscalizatória sobre o tratamento de dados pessoais, sem serem clientes ou usuários do sistema.
+
 ## Versionamento
 
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
-| 1.1 | 19/09/2026 | Alinhamento do cenário atual com a ata de reunião de 17/09/2026 | Equipe do projeto | - |
+| 1.1 | 19/09/2026 | Alinhamento do cenário atual com a ata de reunião de 17/09/2026 | Renato Gameiro | - |
+| 1.2 | 26/09/2026 | Detalhamento do acompanhamento pedagógico e disciplinar e inclusão da ANPD no mapa de stakeholders | Renato Gameiro | - |
