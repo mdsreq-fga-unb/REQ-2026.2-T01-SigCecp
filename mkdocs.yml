@@ -11,15 +11,16 @@ nav:
     - Engenharia de Requisitos: visao_produto_projeto/5_engenharia_req.md
     - Cronograma e entrega: visao_produto_projeto/6_cronograma.md
     - Interação entre a equipe e o cliente: visao_produto_projeto/7_interacao_equipe_e_cliente.md
-    - Requisitos: visao_produto_projeto/8_requisitos.md
+    - Requisitos: visao_produto_projeto/8_0_requisitos.md
     - Lições Aprendidas: visao_produto_projeto/11_licoes_aprendidas.md
-  - Gravações:
-    - Apresentações:
-      - Apresentação Unidade 1: gravacoes/apresentacoes/apresentacao_unidade_1.md
-  - Atas de Reuniões:
-    - Reunião dia 17/09/26: atas_reunioes/ata_reuniao_17_09.md
-    - Reunião dia 22/09/26: atas_reunioes/ata_reuniao_22_09.md
-    - Reunião dia 24/09/26: atas_reunioes/ata_reuniao_24_09.md
+  - Apresentações:
+    - Unidade 1: apresentacoes/apresentacao_unidade_1.md
+  - Organizacao e Planejamento:
+    - Atas de Reuniões:
+      - Reunião dia 17/09/26: organizacao_e_planejamento/atas_reunioes/ata_reuniao_17_09.md
+      - Reunião dia 22/09/26: organizacao_e_planejamento/atas_reunioes/ata_reuniao_22_09.md
+      - Reunião dia 24/09/26: organizacao_e_planejamento/atas_reunioes/ata_reuniao_24_09.md
+    - Ajustes e validações: organizacao_e_planejamento/ajuste_e_validacao.md
 
 theme:
   name: material
