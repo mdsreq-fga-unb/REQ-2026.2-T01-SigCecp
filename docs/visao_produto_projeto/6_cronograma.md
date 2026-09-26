@@ -18,3 +18,10 @@
 **Critério de transição entre fases:** as macrofases de Design, Construção e Transição do RAD só entram em foco a partir da Iteração 5, após a validação formal dos requisitos, priorização via matriz 4×4, definição do MVP e formalização do backlog/DoR/DoD na Entrega da Unidade 2 (13/10). Até lá, o esforço da equipe está inteiramente concentrado em Planejamento de Requisitos.
 
 > O cronograma é uma previsão e que pode sofrer mudanças no decorrer do desenvolvimento para melhor adequação do projeto.
+
+## Versionamento
+
+| Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.1 | 20/09/2026 | Correção do cronograma segundo issue 21| [Alexandre Henrique](https://github.com/El-flipante) | Rafael Melatti/Ana Paula Jardim   |
