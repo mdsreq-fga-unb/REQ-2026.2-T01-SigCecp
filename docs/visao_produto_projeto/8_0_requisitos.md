@@ -6,6 +6,8 @@ Derivados das Características de Produto (CP1 a CP6) da seção 2.3 do document
 
 ### Acesso e controle de usuários
 
+**RF00 - Encerrar sessão:** deve ser possível ao usuário autenticado encerrar sua sessão ativa no sistema, invalidando suas credenciais de acesso e redirecionando-o para a tela de login.
+
 **RF01 - Autenticar usuário:** deve ser possível aos coordenadores acessar o sistema mediante identificação e credenciais válidas.
 
 **RF02 - Controlar acesso:** o sistema deve disponibilizar as funcionalidades administrativas exclusivamente para usuários autenticados com perfil de coordenador.
@@ -103,19 +105,19 @@ Derivados das Características de Produto (CP1 a CP6) da seção 2.3 do document
 
 **RF35 - Acessar formulário de matrícula online:** deve ser possível a qualquer interessado acessar o formulário de matrícula por link público, sem necessidade de login.
 
-**RF36 - Preencher dados do aluno:** deve ser possível o interesado inserir, no formulário, os dados do aluno (nome, data de nascimento, contato e modalidade ou turma de interesse), com validação dos campos obrigatórios antes do envio.
+**RF36 - Preencher dados do aluno:** deve ser possível o interesado inserir, no formulário, os dados do aluno (nome, data de nascimento, contato e modalidade ou turma de interesse).
 
-**RF37 - Informar dados do responsável legal:** deve ser obrigatório informar os dados do responsável legal (nome, contato e vínculo) quando o aluno tiver menos de 18 anos, com base na data de nascimento informada.
+**RF37 - Informar dados do responsável legal:** deve ser possível inserir os dados do responsável legal (nome, contato e vínculo) quando o aluno tiver menos de 18 anos.
 
 **RF38 - Registrar consentimento de dados pessoais:** deve ser possível ao aluno, ou ao responsável legal no caso de menores, aceitar o termo de tratamento de dados pessoais, sendo o aceite condição para o envio e registrado com data, hora, versão do termo e identificação de quem aceitou.
 
-**RF39 - Registrar termo de uso de imagem:** deve ser possível ao aluno ou ao responsável legal aceitar, separadamente do consentimento de dados, o termo de uso de imagem, com finalidade e prazo descritos, que a recusa impeça a matrícula.
+**RF39 - Registrar termo de uso de imagem:** deve ser possível ao aluno ou ao responsável legal aceitar, separadamente do consentimento de dados, o termo de uso de imagem.
 
-**RF40 - Informar pessoas autorizadas a retirar o aluno:** deve ser obrigatório informar ao menos uma pessoa autorizada a retirar o aluno quando ele for menor de idade, com nome e contato.
+**RF40 - Informar pessoas autorizadas a retirar o aluno:** deve ser possível inserir ao menos uma pessoa autorizada a retirar o aluno quando ele for menor de idade, com nome e contato, ou se o menor pode ir embora só.
 
 **RF41 - Emitir comprovante de solicitação:** deve ser possível ao solicitante receber, após o envio, um número de protocolo.
 
-**RF42 - Analisar solicitações de matrícula:** deve ser possível à coordenação consultar as solicitações recebidas e defini-las como aprovada, recusada ou em lista de espera, sendo o cadastro do aluno criado a partir dos dados do formulário quando aprovada.
+**RF42 - Analisar solicitações de matrícula:** deve ser possível à coordenação consultar as solicitações recebidas e defini-las como aprovada, recusada ou em lista de espera.
 
 ## 8.2 Requisitos Não Funcionais - RNFs
 
@@ -240,8 +242,8 @@ OE4
 Transversal
  └- Acesso
       ├- RF01 - RNF11, RNF12, RNF13
-      └- RF02 - RNF11, RNF13, RNF08
-
+      ├- RF02 - RNF11, RNF13, RNF08
+      └- RF00 - RNF11, RNF13
 ```
 
 ## Rastreabilidade Visual do Projeto
@@ -253,7 +255,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     <button id="tz-in" style="width:28px;height:28px;border:1px solid rgba(128,128,128,0.35);border-radius:4px;background:transparent;cursor:pointer;font-size:16px;line-height:1;">+</button>
     <button id="tz-out" style="width:28px;height:28px;border:1px solid rgba(128,128,128,0.35);border-radius:4px;background:transparent;cursor:pointer;font-size:16px;line-height:1;">−</button>
     <button id="tz-reset" style="height:28px;padding:0 10px;border:1px solid rgba(128,128,128,0.35);border-radius:4px;background:transparent;cursor:pointer;font-size:12px;">↺ Reset</button>
-    <span style="font-size:11px;opacity:0.5;margin-left:4px;">Scroll para zoom · Arraste para mover · Passe o mouse nos nós para detalhes · Clique no texto para abrir documentação</span>
+    <span style="font-size:11px;opacity:0.5;margin-left:4px;">Scroll para zoom · Arraste para mover · Passe o mouse nos nós para detalhes ·</span>
   </div>
   <div id="tz-wrap" style="width:100%;height:640px;overflow:hidden;border:1px solid rgba(128,128,128,0.2);border-radius:0 0 8px 8px;cursor:grab;box-sizing:border-box;">
     <svg id="tz-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:100%;"></svg>
@@ -274,7 +276,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     CP5:['RF26','RF27','RF28','RF29'],
     CP6:['RF30','RF31','RF32','RF33', 'RF34'],
     CP7:['RF35','RF36','RF37','RF38','RF39','RF40','RF41','RF42'],
-    ACESSO:['RF01','RF02']
+    ACESSO:['RF01','RF02','RF00']
   };
   var OE_CP={
     OE1:['CP1','CP2','CP4','CP7'],
@@ -302,7 +304,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     ['CP5','RF26'],['CP5','RF27'],['CP5','RF28'],['CP5','RF29'],
     ['CP6','RF30'],['CP6','RF31'],['CP6','RF32'],['CP6','RF33'],['CP6','RF34'],
     ['CP7','RF35'],['CP7','RF36'],['CP7','RF37'],['CP7','RF38'],['CP7','RF39'],['CP7','RF40'],['CP7','RF41'],['CP7','RF42'],
-    ['ACESSO','RF01'],['ACESSO','RF02']
+    ['ACESSO','RF01'],['ACESSO','RF02'],['ACESSO','RF00']
   ];
 
   var ST={
@@ -314,7 +316,8 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     RF15:'vm',RF16:'vm',RF17:'vm',RF18:'vm',RF19:'vm',RF20:'vm',RF21:'vm',
     RF22:'vm',RF23:'vm',RF24:'vm',RF25:'vm',RF26:'vm',RF27:'vm',RF28:'vm',
     RF29:'vm',RF30:'vm',RF31:'vm',RF32:'vm',RF33:'vm',RF34:'vm',RF35:'vm',
-    RF36:'vm',RF37:'vm',RF38:'vm',RF39:'vm',RF40:'vm',RF41:'vm',RF42:'vm'
+    RF36:'vm',RF37:'vm',RF38:'vm',RF39:'vm',RF40:'vm',RF41:'vm',RF42:'vm',
+    RF00:'vm'
   };
   var CL={
     vd:{f:'#4CAF50',s:'#388E3C',t:'#fff'},
@@ -337,7 +340,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     CP6:'CP6 — Comunicação com voluntários e famílias',
     CP7:'CP7 — Matrícula online',
     ACESSO:'Acesso e controle de usuários (transversal)',
-    RF01:'RF01 — Autenticar usuário',RF02:'RF02 — Controlar acesso',
+    RF01:'RF01 — Autenticar usuário',RF02:'RF02 — Controlar acesso',RF00:'RF00 — Encerrar sessão',
     RF03:'RF03 — Cadastrar turma',RF04:'RF04 — Editar turma',RF05:'RF05 — Inativar turma',
     RF06:'RF06 — Associar aluno à turma',RF07:'RF07 — Consultar alunos de uma turma',
     RF08:'RF08 — Registrar doação recebida',RF09:'RF09 — Editar doação recebida',
@@ -356,36 +359,6 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     RF37:'RF37 — Informar dados do responsável legal',RF38:'RF38 — Registrar consentimento de dados pessoais',
     RF39:'RF39 — Registrar termo de uso de imagem',RF40:'RF40 — Informar pessoas autorizadas a retirar o aluno',
     RF41:'RF41 — Emitir comprovante de solicitação',RF42:'RF42 — Analisar solicitações de matrícula'
-  };
-
-  var LINKS={
-    PROB:'../../visao_produto/1-cenario/',
-    OE1:'../../visao_produto/2-solucao/#oe1',OE2:'../../visao_produto/2-solucao/#oe2',OE3:'../../visao_produto/2-solucao/#oe3',
-    OE4:'../../visao_produto/2-solucao/#oe4',OE5:'../../visao_produto/2-solucao/#oe5',TRANSV:'../../visao_produto/8-requisitos/#acesso',
-    CP1:'../../visao_produto/2-solucao/#cp1',CP2:'../../visao_produto/2-solucao/#cp2',CP3:'../../visao_produto/2-solucao/#cp3',
-    CP4:'../../visao_produto/2-solucao/#cp4',CP5:'../../visao_produto/2-solucao/#cp5',CP6:'../../visao_produto/2-solucao/#cp6',
-    CP7:'../../visao_produto/2-solucao/#cp7',ACESSO:'../../visao_produto/8-requisitos/#acesso',
-    RF01:'../../visao_produto/8-requisitos/#rf01',RF02:'../../visao_produto/8-requisitos/#rf02',
-    RF03:'../../visao_produto/8-requisitos/#rf03',RF04:'../../visao_produto/8-requisitos/#rf04',
-    RF05:'../../visao_produto/8-requisitos/#rf05',RF06:'../../visao_produto/8-requisitos/#rf06',
-    RF07:'../../visao_produto/8-requisitos/#rf07',RF08:'../../visao_produto/8-requisitos/#rf08',
-    RF09:'../../visao_produto/8-requisitos/#rf09',RF10:'../../visao_produto/8-requisitos/#rf10',
-    RF11:'../../visao_produto/8-requisitos/#rf11',RF12:'../../visao_produto/8-requisitos/#rf12',
-    RF13:'../../visao_produto/8-requisitos/#rf13',RF14:'../../visao_produto/8-requisitos/#rf14',
-    RF15:'../../visao_produto/8-requisitos/#rf15',RF16:'../../visao_produto/8-requisitos/#rf16',
-    RF17:'../../visao_produto/8-requisitos/#rf17',RF18:'../../visao_produto/8-requisitos/#rf18',
-    RF19:'../../visao_produto/8-requisitos/#rf19',RF20:'../../visao_produto/8-requisitos/#rf20',
-    RF21:'../../visao_produto/8-requisitos/#rf21',RF22:'../../visao_produto/8-requisitos/#rf22',
-    RF23:'../../visao_produto/8-requisitos/#rf23',RF24:'../../visao_produto/8-requisitos/#rf24',
-    RF25:'../../visao_produto/8-requisitos/#rf25',RF26:'../../visao_produto/8-requisitos/#rf26',
-    RF27:'../../visao_produto/8-requisitos/#rf27',RF28:'../../visao_produto/8-requisitos/#rf28',
-    RF29:'../../visao_produto/8-requisitos/#rf29',RF30:'../../visao_produto/8-requisitos/#rf30',
-    RF31:'../../visao_produto/8-requisitos/#rf31',RF32:'../../visao_produto/8-requisitos/#rf32',
-    RF33:'../../visao_produto/8-requisitos/#rf33',RF34:'../../visao_produto/8-requisitos/#rf34',
-    RF35:'../../visao_produto/8-requisitos/#rf35',RF36:'../../visao_produto/8-requisitos/#rf36',
-    RF37:'../../visao_produto/8-requisitos/#rf37',RF38:'../../visao_produto/8-requisitos/#rf38',
-    RF39:'../../visao_produto/8-requisitos/#rf39',RF40:'../../visao_produto/8-requisitos/#rf40',
-    RF41:'../../visao_produto/8-requisitos/#rf41',RF42:'../../visao_produto/8-requisitos/#rf41'
   };
 
   /* ── LAYOUT (bottom-up): RF grouped by CP ── */
@@ -466,7 +439,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     grp.addEventListener('mouseenter',function(){
       ci.setAttribute('r',R+3); ci.setAttribute('stroke-width','3');
       tx.setAttribute('text-decoration','underline');
-      tip.innerHTML=DESC[id]+'<br><span style="font-size:11px;opacity:0.6;font-style:italic;">Clique no texto para abrir documentação</span>';
+      tip.innerHTML=DESC[id]+'<br><span style="font-size:11px;opacity:0.6;font-style:italic;"></span>';
       tip.style.display='block';
     });
     grp.addEventListener('mousemove',function(ev){
@@ -479,11 +452,6 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
       ci.setAttribute('r',R); ci.setAttribute('stroke-width','2.2');
       tx.setAttribute('text-decoration','none');
       tip.style.display='none';
-    });
-
-    tx.addEventListener('click',function(e){
-      if(didDrag) return;
-      window.open(LINKS[id],'_blank','noopener');
     });
 
     grp.appendChild(ci);
