@@ -3,7 +3,7 @@
 **Data:** Terça-feira, 22 de setembro de 2026
 **Modalidade:** Presencial
 **Participantes pela equipe do projeto:** Marcos
-**Participantes representando o cliente (CECP):** Ivan (presidente) e Sandra (Tesoureira)
+**Participantes representando o cliente (CECP):** José Ivan do Nascimento (presidente) e Sandra Barbosa Lopes (Tesoureira)
 **Pauta:** Apresentação, pela equipe, do levantamento de requisitos consolidado até aqui (funcionais e não funcionais), para validação ponto a ponto com o cliente
 
 > Nota: esta ata cobre uma reunião única, registrada em dois áudios porque o celular usado para gravar descarregou no meio da conversa. O conteúdo é contínuo (a segunda gravação retoma exatamente de onde a primeira parou, na "gestão de conteúdo institucional").
@@ -11,9 +11,9 @@
 
 ## 1. Abertura e dinâmica da reunião
 
-Marcos apresentou novamente o contexto do projeto a todos os presentes (inclusive à Sandra, que não participava da reunião anterior), para que todos ficassem "inteirados do assunto": trata-se de um projeto de uma disciplina da faculdade, feito para a ONG, com o objetivo de reduzir a dependência de papel.
+Marcos apresentou novamente o contexto do projeto a todos os presentes (inclusive à Sandra Barbosa Lopes, que não participava da reunião anterior), para que todos ficassem "inteirados do assunto": trata-se de um projeto de uma disciplina da faculdade, feito para a ONG, com o objetivo de reduzir a dependência de papel.
 
-Foi explicado que a reunião seria conduzida passando funcionalidade por funcionalidade já levantada, pedindo a aprovação (feedback) do Ivan e da Sandra em cada uma. Marcos reforçou, mais de uma vez ao longo da reunião, que **o projeto não é da equipe, é da ONG**  ou seja, qualquer parte não aprovada seria refeita quantas vezes fosse necessário até refletir o que o cliente precisa, e que o documento de requisitos é "vivo" (pode mudar).
+Foi explicado que a reunião seria conduzida passando funcionalidade por funcionalidade já levantada, pedindo a aprovação (feedback) do José Ivan do Nascimento e da Sandra Barbosa Lopes em cada uma. Marcos reforçou, mais de uma vez ao longo da reunião, que **o projeto não é da equipe, é da ONG**  ou seja, qualquer parte não aprovada seria refeita quantas vezes fosse necessário até refletir o que o cliente precisa, e que o documento de requisitos é "vivo" (pode mudar).
 
 ## 2. Visão geral da arquitetura do sistema
 
@@ -24,7 +24,7 @@ Foi apresentada a estrutura geral do sistema, dividida em dois módulos:
 
 ## 3. Gestão e acompanhamento de turmas
 
-Funcionalidade apresentada e **validada** pelo Ivan e pela Sandra:
+Funcionalidade apresentada e **validada** pelo José Ivan do Nascimento e pela Sandra Barbosa Lopes:
 - Cadastrar turma;
 - Editar turma;
 - Inativar turma;
@@ -35,7 +35,7 @@ Foi destacado pelos os stakeholders que essa listagem facilita, por exemplo, res
 
 ### Situação atual do vôlei (levantamento de contexto)
 - Diferente do judô/jiu-jitsu, o vôlei tem hoje pouca documentação organizada;
-- Ivan afirmou não conhecer bem a operação do vôlei  quem tem mais conhecimento é a Sandra;
+- José Ivan do Nascimento afirmou não conhecer bem a operação do vôlei  quem tem mais conhecimento é a Sandra Barbosa Lopes;
 - Os responsáveis pela modalidade são dois professores: **Genevaldo** (educação física) e **Ricardo** (não confirmado se é formado em educação física, mas é quem está à frente do vôlei hoje, com mais experiência na modalidade);
 - Existe ficha de inscrição em papel apenas para os alunos mais antigos; alunos novos que entraram não têm ficha preenchida;
 - Ficou combinado que esses dados serão lançados no sistema assim que possível, incluindo foto do aluno, para ter o registro correto.
@@ -46,7 +46,7 @@ Requisitos apresentados e validados:
 - Cadastrar aluno;
 - Editar informações do aluno;
 - Consultar a ficha do aluno (ex.: caso um pai peça um documento que comprove a participação da filha);
-- **Inativar** aluno  Marcos destacou explicitamente que **não pode haver exclusão** de aluno do sistema, apenas inativação, para preservar o histórico. Ivan confirmou que hoje já funciona assim no papel (guarda as fichas antigas em uma caixa de arquivo) e que pretende manter esse histórico **para sempre**, sem prazo de descarte.
+- **Inativar** aluno  Marcos destacou explicitamente que **não pode haver exclusão** de aluno do sistema, apenas inativação, para preservar o histórico. José Ivan do Nascimento confirmou que hoje já funciona assim no papel (guarda as fichas antigas em uma caixa de arquivo) e que pretende manter esse histórico **para sempre**, sem prazo de descarte.
 - O sistema deve permitir consultar quantos alunos estão ativos e quantos estão inativos.
 
 ### Documentos hoje exigidos na inscrição (contexto levantado)
@@ -63,20 +63,20 @@ Ficou em aberto se os documentos anexados ao sistema serão sempre escaneados ou
 
 ## 5. Direito de imagem e uso de dados dos alunos
 
-Ivan relatou um caso concreto (sem citar nomes) em que foi questionado sobre o direito de imagem de uma criança  um responsável alegou que a ONG não poderia divulgar a imagem do filho, mesmo ele tendo autorizado a participação no projeto e em competições.
+José Ivan do Nascimento relatou um caso concreto (sem citar nomes) em que foi questionado sobre o direito de imagem de uma criança  um responsável alegou que a ONG não poderia divulgar a imagem do filho, mesmo ele tendo autorizado a participação no projeto e em competições.
 
 A partir desse relato, foi levantado como requisito:
 - O sistema deve armazenar/vincular à ficha do aluno o **termo/contrato assinado pelos pais** autorizando o uso da imagem;
 - Esse termo deve deixar claro, de forma explícita para o responsável no momento da assinatura, que a imagem poderá ser usada durante a participação do aluno no projeto e por um período determinado após a saída dele (o prazo exato  "x dias" ou "tempo determinado"  **ainda não foi definido**, ficou como ponto em aberto);
 - O sistema deve permitir **consultar rapidamente** esse termo assinado, para que a equipe consiga responder de forma objetiva caso um responsável questione o uso da imagem;
 - Foi reforçado que essa autorização é importante também porque órgãos públicos que fazem doações (ex.: Ministério Público) frequentemente pedem fotos dos beneficiados como parte da prestação de contas, e a ONG precisa estar respaldada para poder tirar e usar essas fotos.
-- A ficha de inscrição atual já contém uma cláusula de autorização de uso de imagem, mas Ivan e Sandra concordaram que ela deve ficar mais explícita/clara para o responsável no momento da assinatura, para evitar dúvidas futuras.
+- A ficha de inscrição atual já contém uma cláusula de autorização de uso de imagem, mas José Ivan do Nascimento e Sandra Barbosa Lopes concordaram que ela deve ficar mais explícita/clara para o responsável no momento da assinatura, para evitar dúvidas futuras.
 
 ## 6. Pré-cadastro / matrícula online (ideia proposta durante a reunião)
 
-Sandra sugeriu, durante a apresentação, que o sistema permitisse que o interessado iniciasse a inscrição remotamente pelo próprio site, preenchendo previamente os dados possíveis (ex.: CPF), de forma que, ao comparecer presencialmente, faltasse apenas completar informações pendentes e assinar o termo.
+Sandra Barbosa Lopes sugeriu, durante a apresentação, que o sistema permitisse que o interessado iniciasse a inscrição remotamente pelo próprio site, preenchendo previamente os dados possíveis (ex.: CPF), de forma que, ao comparecer presencialmente, faltasse apenas completar informações pendentes e assinar o termo.
 
-Marcos confirmou que a equipe já havia cogitado algo parecido ("matrícula online"), mas ainda não tinha sido apresentado  a equipe estava esperando essa reunião para decidir o melhor formato. Ficou definido como ideia validada em princípio (Ivan e Sandra gostaram), mas o **formato exato ainda precisa ser desenhado** pela equipe: um pré-cadastro online que, ao ser confirmado presencialmente (com assinatura do termo), vira cadastro definitivo.
+Marcos confirmou que a equipe já havia cogitado algo parecido ("matrícula online"), mas ainda não tinha sido apresentado  a equipe estava esperando essa reunião para decidir o melhor formato. Ficou definido como ideia validada em princípio (José Ivan do Nascimento e Sandra Barbosa Lopes gostaram), mas o **formato exato ainda precisa ser desenhado** pela equipe: um pré-cadastro online que, ao ser confirmado presencialmente (com assinatura do termo), vira cadastro definitivo.
 
 ## 7. Gestão de conteúdo institucional (módulo público)
 
@@ -111,7 +111,7 @@ Esse ponto se conecta diretamente à questão de direito de imagem (seção 5): 
 
 ## 10. Gestão institucional e financeira da ONG (levantamento de contexto)
 
-Marcos relatou que, na reunião anterior, havia perguntado ao Ivan como funciona a gestão da ONG (além da gestão dos alunos), mas o Ivan não tinha conseguido detalhar esse ponto sozinho  por isso essa parte foi aprofundada agora, com a Sandra, que cuida da parte financeira.
+Marcos relatou que, na reunião anterior, havia perguntado ao José Ivan do Nascimento como funciona a gestão da ONG (além da gestão dos alunos), mas o José Ivan do Nascimento não tinha conseguido detalhar esse ponto sozinho  por isso essa parte foi aprofundada agora, com a Sandra Barbosa Lopes, que cuida da parte financeira.
 
 ### Captação de recursos via editais e ofícios
 - A ONG envia ofícios a órgãos públicos federais (de Brasília e de outros estados) sempre que sai um edital de doação (ex.: doação de imóveis ou equipamentos de informática);
@@ -122,18 +122,18 @@ Marcos relatou que, na reunião anterior, havia perguntado ao Ivan como funciona
   - CNPJ;
   - Certidão da Secretaria da Fazenda do DF (citada como "CEPAS").
 - Foi dado um exemplo concreto de risco: se a ONG estiver com o IPVA de algum veículo em atraso, a certidão correspondente não sai atualizada, e isso pode inviabilizar a participação em um edital.
-- Estrutura de diretoria da ONG, conforme relatado: Ivan é o presidente; Sandra é a vice-presidente e tesoureira; William (filho do Ivan) também foi mencionado, mas não como parte da diretoria formal.
+- Estrutura de diretoria da ONG, conforme relatado: José Ivan do Nascimento é o presidente; Sandra Barbosa Lopes é a vice-presidente e tesoureira; William (filho do José Ivan do Nascimento) também foi mencionado, mas não como parte da diretoria formal.
 
 ### Controle de bens recebidos por doação
 - A ONG recebe doações de bens (ex.: veículos, móveis, computadores), que depois são reformados e revendidos para gerar capital para o projeto (pagar contas, comprar materiais, custear viagens a competições, etc.);
-- **Hoje não existe nenhum controle formal desse processo**  segundo a própria Sandra, esse controle "está tudo na cabeça"/"no chute": não há registro de quanto foi gasto (frete, conserto, transferência do veículo) nem de quanto foi obtido na venda, então não dá para saber com precisão o lucro de cada bem;
+- **Hoje não existe nenhum controle formal desse processo**  segundo a própria Sandra Barbosa Lopes, esse controle "está tudo na cabeça"/"no chute": não há registro de quanto foi gasto (frete, conserto, transferência do veículo) nem de quanto foi obtido na venda, então não dá para saber com precisão o lucro de cada bem;
 - Foi dado como exemplo detalhado o caso de doação de um veículo: custos envolvidos incluem frete (pode variar de ~R$1.500 a R$4.000, dependendo da distância  doações de fora de Brasília, como Pernambuco, Pará, Santa Catarina ou Porto Alegre, custam mais), conserto mecânico, transferência de propriedade (documentação, placa, IPVA);
 - A ONG relatou que **não recusa doações**, mesmo sabendo que pode ter prejuízo em alguns casos (ex.: doação de móveis de um ministério que renderam prejuízo no frete), porque recusar uma doação pode fazer com que aquele órgão pare de oferecer futuras doações;
 - Ficou explícito, como necessidade levantada, ter uma **planilha/controle de entrada e saída de bens**, permitindo registrar valor estimado, custos associados e status (reformado, vendido, disponível).
 
 ### Informações institucionais no site público
-- O site atual está desatualizado ("tudo bagunçado"), inclusive com fotos antigas do próprio Ivan (usadas como exemplo de desatualização);
-- Foi levantada a necessidade de reunir e publicar, no módulo público, os dados institucionais da ONG: CNPJ, diretoria (presidente, vice-presidente, tesoureiro), dados bancários (conta corrente) e possivelmente uma chave Pix (a ser confirmada  Sandra não tinha certeza se a ONG já usa Pix);
+- O site atual está desatualizado ("tudo bagunçado"), inclusive com fotos antigas do próprio José Ivan do Nascimento (usadas como exemplo de desatualização);
+- Foi levantada a necessidade de reunir e publicar, no módulo público, os dados institucionais da ONG: CNPJ, diretoria (presidente, vice-presidente, tesoureiro), dados bancários (conta corrente) e possivelmente uma chave Pix (a ser confirmada  Sandra Barbosa Lopes não tinha certeza se a ONG já usa Pix);
 - Foi levantada a necessidade de uma área pública de **"Como ajudar"** (doações), similar a exemplos de outros sites mostrados durante a reunião.
 
 ## 11. Objetivo geral e objetivos específicos do projeto (reapresentados)
@@ -162,7 +162,7 @@ Sobre esse limite, houve uma pequena negociação ao vivo: o judô já usa infor
 
 ## 13. Requisitos não funcionais e critérios de aceite
 
-Esta parte da reunião foi conduzida de forma diferente das demais: cada requisito não funcional foi apresentado já com um **critério de aceite** proposto pela equipe, e Ivan/Sandra validaram (ou ajustaram) cada número ao vivo.
+Esta parte da reunião foi conduzida de forma diferente das demais: cada requisito não funcional foi apresentado já com um **critério de aceite** proposto pela equipe, e José Ivan do Nascimento/Sandra Barbosa Lopes validaram (ou ajustaram) cada número ao vivo.
 
 | Categoria | Requisito | Critério de aceite validado |
 |---|---|---|
@@ -181,21 +181,21 @@ Esta parte da reunião foi conduzida de forma diferente das demais: cada requisi
 | Segurança de dados | Senhas e dados sensíveis devem ser protegidos | Senhas armazenadas com hash (nunca em texto puro); dados sensíveis criptografados |
 | Conformidade legal | Tratamento de dados pessoais deve seguir a legislação brasileira | Sistema deve estar em conformidade com a **LGPD** (Lei Geral de Proteção de Dados) |
 
-Ao final dessa parte, Ivan e Sandra confirmaram não ter dúvidas sobre os critérios apresentados.
+Ao final dessa parte, José Ivan do Nascimento e Sandra Barbosa Lopes confirmaram não ter dúvidas sobre os critérios apresentados.
 
 ## 14. Metodologia e cronograma do projeto
 
 Marcos explicou que o projeto está dividido em quatro unidades/etapas:
-1. **Levantamento inicial** (já concluído  reuniões anteriores com o Ivan);
-2. **Análise e consenso**  etapa atual, em que todos (equipe, Ivan, Sandra) precisam estar alinhados sobre o que será construído;
+1. **Levantamento inicial** (já concluído  reuniões anteriores com o José Ivan do Nascimento);
+2. **Análise e consenso**  etapa atual, em que todos (equipe, José Ivan do Nascimento, Sandra Barbosa Lopes) precisam estar alinhados sobre o que será construído;
 3. **Construção**  início previsto para o mês seguinte (codificação e design do sistema);
 4. **Entrega final**  integração e finalização do projeto, com previsão para **dezembro de 2026**.
 
-Foi reforçado, mais uma vez, que ao longo de toda a construção (design, funcionalidades) a equipe vai continuar validando cada entrega com a ONG antes de seguir adiante  inclusive o design visual do sistema, que também será submetido à aprovação de Ivan e Sandra.
+Foi reforçado, mais uma vez, que ao longo de toda a construção (design, funcionalidades) a equipe vai continuar validando cada entrega com a ONG antes de seguir adiante  inclusive o design visual do sistema, que também será submetido à aprovação de José Ivan do Nascimento e Sandra Barbosa Lopes.
 
 ## 15. Implantação do sistema
 
-Ivan confirmou que a ONG já possui servidor(es) próprios, e que o sistema será implantado localmente, na própria sede. A implementação/instalação ficará a cargo da equipe de Marcos  ele mencionou que os colegas de equipe estão à disposição para ir até a sede se for necessário, mas que, caso não seja preciso, ele mesmo fará a implantação junto com o Ivan.
+José Ivan do Nascimento confirmou que a ONG já possui servidor(es) próprios, e que o sistema será implantado localmente, na própria sede. A implementação/instalação ficará a cargo da equipe de Marcos  ele mencionou que os colegas de equipe estão à disposição para ir até a sede se for necessário, mas que, caso não seja preciso, ele mesmo fará a implantação junto com o José Ivan do Nascimento.
 
 ## 16. Regras de negócio identificadas
 
@@ -209,13 +209,13 @@ Ivan confirmou que a ONG já possui servidor(es) próprios, e que o sistema ser�
 ## 17. Pendências e próximos passos
 
 - **Equipe:** detalhar o formato exato do pré-cadastro/matrícula online (seção 6);
-- **Ivan/Sandra:** levantar e organizar a documentação dos alunos de vôlei que ainda não têm ficha preenchida (seção 3);
+- **José Ivan do Nascimento/Sandra Barbosa Lopes:** levantar e organizar a documentação dos alunos de vôlei que ainda não têm ficha preenchida (seção 3);
 
 ## 18. Pontos em aberto / dúvidas
 
-Ao final da reunião, Ivan e Sandra confirmaram não ter dúvidas adicionais sobre o que foi apresentado.
+Ao final da reunião, José Ivan do Nascimento e Sandra Barbosa Lopes confirmaram não ter dúvidas adicionais sobre o que foi apresentado.
 
 
-*Ata elaborada a partir da transcrição de reunião presencial entre Marcos, Ivan e Sandra (representantes do CECP), realizada em 23/09/2026 e registrada em dois áudios devido à descarga da bateria do celular durante a gravação, para conhecimento e alinhamento do restante da equipe do projeto.*
+*Ata elaborada a partir da transcrição de reunião presencial entre Marcos, José Ivan do Nascimento e Sandra Barbosa Lopes (representantes do CECP), realizada em 23/09/2026 e registrada em dois áudios devido à descarga da bateria do celular durante a gravação, para conhecimento e alinhamento do restante da equipe do projeto.*
 
 *Os audios completos estão disponível no link: https://drive.google.com/drive/folders/1RiaA4gz3h7QuemGTX4gGLs_4oQRTVMH1?usp=sharing*

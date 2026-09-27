@@ -71,13 +71,7 @@ Derivados das Características de Produto (CP1 a CP6) da seção 2.3 do document
 
 **RF24 - Inativar aluno:** deve ser possível à coordenação marcar um aluno como inativo, preservando seu histórico no sistema.
 
-**RF25 - Remover dados do aluno:** Deve ser possível à coordenação remover do sistema os dados críticos de um aluno, mediante pedido do responsável legal ou do próprio aluno, caso ele tenha 18 anos ou mais, sem manter esses dados críticos no histórico do sistema.
-
-> Dados críticos são:
->- Identidade;
->- CPF;
->- Comprovante de residência;
-
+**RF25 - Remover dados do aluno:** Deve ser possível à coordenação remover do sistema os dados de um aluno, mediante pedido do responsável legal ou do próprio aluno, caso ele tenha 18 anos ou mais.
 
 ### CP5 - Acompanhamento pedagógico e disciplinar do aluno
 
@@ -137,7 +131,7 @@ Os requisitos não funcionais foram classificados segundo o modelo URPS+ (Usabil
 
 | ID | Descrição | Critério de Aceitação |
 |---|---|---|
-|--------------- RNF04 | Preservação de histórico ao inativar turma ou aluno | Registros preservados no banco após a inativação, permanecendo consultáveis na ficha/histórico |
+ RNF04 | Preservação de histórico ao inativar turma ou aluno | Registros preservados no banco após a inativação, permanecendo consultáveis na ficha/histórico |
 | RNF05 | O sistema deve solicitar confirmação antes da execução de ações críticas que possam alterar ou inativar registros relevantes. | Caixa de confirmação exibida antes de inativar turma, inativar aluno ou registrar medida disciplinar |
 
 ### Desempenho (P - Performance)
