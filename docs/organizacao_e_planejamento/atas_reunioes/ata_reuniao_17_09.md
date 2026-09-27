@@ -32,13 +32,13 @@ Foram citados como possíveis fontes de informação:
 
 - Alunos;
 - Professores;
-- Sandra;
-- Ivan;
+- Sandra Barbosa Lopes;
+- José Ivan do Nascimento;
 - Outros participantes envolvidos nas atividades da instituição.
 
 Pedro concordou com a necessidade de obter essas diferentes perspectivas.
 
-Pedro ficou de conversar com Sandra e Ivan após o fim de semana do campeonato de judô, período em que ambos estão envolvidos com a organização do evento. A participação deles deverá contribuir especialmente para o levantamento relacionado à gestão institucional da ONG.
+Pedro ficou de conversar com Sandra Barbosa Lopes e José Ivan do Nascimento após o fim de semana do campeonato de judô, período em que ambos estão envolvidos com a organização do evento. A participação deles deverá contribuir especialmente para o levantamento relacionado à gestão institucional da ONG.
 
 
 
@@ -117,11 +117,11 @@ Pedro informou que possui disponibilidade às sextas-feiras, tendo mencionado o 
 
 Entretanto, o horário fixo semanal ainda depende de confirmação junto aos demais envolvidos.
 
-Também foi discutida a realização de reuniões específicas com Sandra e Ivan, que poderão ocorrer em outros horários e, se necessário, de forma presencial.
+Também foi discutida a realização de reuniões específicas com Sandra Barbosa Lopes e José Ivan do Nascimento, que poderão ocorrer em outros horários e, se necessário, de forma presencial.
 
 ### Encaminhamentos relacionados à comunicação
 
-- Pedro deverá verificar a disponibilidade de Sandra e Ivan;
+- Pedro deverá verificar a disponibilidade de Sandra Barbosa Lopes e José Ivan do Nascimento;
 - A equipe deverá manter contato frequente com o CECP durante o desenvolvimento do projeto;
 - As reuniões deverão ser utilizadas para apresentação, discussão e validação das propostas;
 - A possibilidade de uma reunião no dia **18/09/2026** foi mencionada, mas não ficou registrada como reunião definitivamente confirmada.
@@ -237,7 +237,7 @@ A solução definitiva ainda deverá ser analisada e validada pela equipe e pela
 
 Além da gestão dos alunos, Pedro apresentou informações preliminares sobre o funcionamento institucional da ONG.
 
-Ele destacou que Sandra e Ivan possuem maior conhecimento sobre essa parte da organização e deverão participar de futuras etapas do levantamento.
+Ele destacou que Sandra Barbosa Lopes e José Ivan do Nascimento possuem maior conhecimento sobre essa parte da organização e deverão participar de futuras etapas do levantamento.
 
 ### 13.1. Divulgação e presença institucional
 
@@ -270,7 +270,7 @@ Segundo o relato:
 - Alguns bens recebidos podem ser vendidos para gerar recursos para a instituição;
 - Foram mencionadas parcerias que realizam repasses periódicos destinados a despesas da ONG.
 
-Essas informações foram apresentadas como parte do levantamento inicial da gestão institucional. O funcionamento detalhado desse processo ainda deverá ser validado com Sandra e Ivan.
+Essas informações foram apresentadas como parte do levantamento inicial da gestão institucional. O funcionamento detalhado desse processo ainda deverá ser validado com Sandra Barbosa Lopes e José Ivan do Nascimento.
 
 
 
@@ -415,9 +415,9 @@ No processo apresentado como exemplo, a prestação de contas envolve orçamento
 
 ### Pedro
 
-- Conversar com Sandra e Ivan sobre o projeto;
+- Conversar com Sandra Barbosa Lopes e José Ivan do Nascimento sobre o projeto;
 - Explicar a importância da participação deles no levantamento;
-- Verificar a disponibilidade de Sandra e Ivan para reuniões;
+- Verificar a disponibilidade de Sandra Barbosa Lopes e José Ivan do Nascimento para reuniões;
 - Buscar informações adicionais sobre a gestão institucional da ONG;
 - Encaminhar à equipe os horários disponíveis para futuras reuniões.
 
@@ -443,7 +443,7 @@ A realização e o horário da reunião ainda dependem de confirmação.
 Permaneceram como pontos a serem aprofundados:
 
 - Funcionamento detalhado da gestão institucional;
-- Participação de Sandra e Ivan no levantamento;
+- Participação de Sandra Barbosa Lopes e José Ivan do Nascimento no levantamento;
 - Definição dos perfis de usuários;
 - Campos definitivos do cadastro de alunos;
 - Forma de armazenamento e organização dos documentos;
