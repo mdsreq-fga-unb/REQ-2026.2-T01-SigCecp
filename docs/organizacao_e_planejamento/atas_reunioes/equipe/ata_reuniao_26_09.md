@@ -2,11 +2,10 @@
 
 ## 1. Identificação da reunião
 
-**Projeto:** Sistema de Gestão do Centro Esportivo Cultural de Planaltina (SigCECP)  
+**Projeto:** Sistema de Gestão do Centro Esportivo Cultural de Planaltina (SigCECP)
 **Data:** 26/09/2026
-**Local:** Meet  
+**Modalidade:** Meet  
 **Participantes:** Ana, Enzo, Maria, Marcos, Rafael, Renato  
-**Responsável pelo registro:** Marcos Vinicius Monteiro  
 **Pauta:** Definição do esforço técnico, estabeleceu-se a escala de horas para a implementação com base em critérios técnicos, avaliação dos requisitos funcionais, discussão sobre a remoção de dados de alunos e conformidade legal vigente, mudança para votação assíncrona e criação de formulário online para continuidade da avaliação após falha na ferramenta.
 
 ## 2. Contexto e metodologia da reunião

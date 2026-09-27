@@ -4,7 +4,7 @@
 
 **Projeto:** Sistema de Gestão do Centro Esportivo Cultural de Planaltina (SigCECP)  
 **Data:** 26/09/2026
-**Local:** Whatsapp  
+**Modalidade:** Whatsapp  
 **Participantes:** Marcos Vinicius Monteiro, Pedro Augusto Cajado Coutinho  
 **Responsável pelo registro:** Marcos Vinicius Monteiro  
 **Pauta:** Priorização dos requisitos do sistema restantes utilizando a técnica MoSCoW.
