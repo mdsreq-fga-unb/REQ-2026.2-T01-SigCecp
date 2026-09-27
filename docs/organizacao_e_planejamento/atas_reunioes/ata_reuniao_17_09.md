@@ -6,8 +6,6 @@
 **Participante representando o cliente (CECP):** Pedro Augusto Cajado Coutinho  
 **Pauta:** Retomada do projeto, alinhamento do cenário construído pela equipe e levantamento inicial de necessidades e requisitos do sistema de gestão da ONG.
 
-
-
 ## 1. Retomada do que foi tratado anteriormente
 
 Pedro relembrou seu entendimento sobre o que havia sido discutido na primeira reunião com a equipe. Segundo ele, o projeto envolveria a reformulação e atualização da presença digital da instituição, incluindo informações institucionais e uma estrutura para armazenamento de dados relacionados às inscrições e aos documentos exigidos pela ONG.
