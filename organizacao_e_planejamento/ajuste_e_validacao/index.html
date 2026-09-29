@@ -1809,114 +1809,70 @@
 
 <h1 id="ajuste-e-validacao-de-requisitos">Ajuste e Validação de Requisitos</h1>
 <p>Ajuste e validação dos requisitos baseado nos feedbacks oferecidos pela equipe Squad Guerreiros</p>
+<p> Tabela completa com rastreabilidade e justificativas no link: <a href="https://drive.google.com/drive/folders/1lUiIk_1BshtLcrhujb4I0Khsf7If4XXD?usp=sharing">Tabela Completa</a></p>
 <table>
 <thead>
 <tr>
 <th>Código</th>
-<th>Problema identificado</th>
-<th>Ajuste proposto</th>
 <th>Decisão da Equipe</th>
-<th>Ajuste Realizado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>RF01/RF02/RF17/RF21/RF22</td>
-<td>RF01 e RF02 restringem o acesso à coordenação, mas RF17, RF21 e RF22 exigem outros perfis.</td>
-<td>Definir a lista oficial de perfis e alinhar RF01, RF02, RF17, RF21, RF22 e RNF11 a ela.</td>
 <td>Parcialmente Aceito</td>
-<td>No RF17 foi ajustado para que somente a coordenação registre a frequência dos alunos; RF21 e RF22 foram corrigidos quanto à escrita. RF01 e RF02 foram mantidos.</td>
 </tr>
 <tr>
 <td>RF22</td>
-<td>Não descreve como o sistema identifica o destinatário de um aviso restrito.</td>
-<td>Definir se avisos são públicos ou restritos e, se restritos, como o destinatário é identificado.</td>
 <td>Aceito</td>
-<td>RF22 corrigido quanto à escrita.</td>
 </tr>
 <tr>
 <td>RF10</td>
-<td>Reúne publicar e editar conteúdo institucional no mesmo requisito.</td>
-<td>Separar em requisitos de publicar e editar.</td>
 <td>Aceito</td>
-<td>RF10 foi dividido em dois requisitos (RF13 e RF14).</td>
 </tr>
 <tr>
 <td>RF06</td>
-<td>Reúne associar e remover associação de aluno a turma no mesmo requisito.</td>
-<td>Separar em "Associar aluno à turma" e "Remover aluno da turma".</td>
 <td>Não Aceito</td>
-<td>A funcionalidade descrita não necessita de outro requisito.</td>
 </tr>
 <tr>
 <td>RF16/RF20</td>
-<td>"Inativar aluno" (RF16) e "desligamento" (RF20) podem descrever o mesmo evento.</td>
-<td>Explicar a relação entre os dois e referenciar um requisito no outro.</td>
 <td>Não Aceito</td>
-<td>Não há duplicidade, os termos referenciados são sinônimos.</td>
 </tr>
 <tr>
 <td>RF (ausente)</td>
-<td>A seção 2.1 prevê manifestação de interesse online, mas não há RF correspondente.</td>
-<td>Confirmar se permanece no escopo e incluir o RF correspondente.</td>
 <td>Não Aceito</td>
-<td>Não cobre a realidade do produto.</td>
 </tr>
 <tr>
 <td>RF (ausente)</td>
-<td>A solução prevê acompanhar desempenho escolar (CP5/OE2), mas RF17-RF20 só cobrem frequência e medida disciplinar.</td>
-<td>Confirmar com o cliente quais dados escolares serão acompanhados e especificar os RFs necessários.</td>
 <td>Aceito</td>
-<td>Foi adicionada uma CP que engloba a solução do problema apontado (CP7).</td>
 </tr>
 <tr>
 <td>RF (ausente)</td>
-<td>Não há RF para cadastrar voluntários e famílias, nem para vincular família a aluno.</td>
-<td>Incluir RFs de cadastro de voluntários/famílias e de vínculo família-aluno.</td>
 <td>Não Aceito</td>
-<td>Não cobre a realidade do produto.</td>
 </tr>
 <tr>
 <td>RNF04</td>
-<td>Preservação de histórico repete o comportamento já descrito em RF05 e RF16.</td>
-<td>Manter a regra em um só lugar (RF ou RNF) e referenciar o outro.</td>
 <td>Não Aceito</td>
-<td>Feedback não está claro.</td>
 </tr>
 <tr>
 <td>RNF09</td>
-<td>Logs de operações críticas está classificado como Suportabilidade.</td>
-<td>Reclassificar como Segurança ou justificar a classificação atual.</td>
 <td>Aceito</td>
-<td>O requisito agora está na seção de Segurança.</td>
 </tr>
 <tr>
 <td>RNF08</td>
-<td>Não está vinculado a nenhum RF/OE na matriz 8.3.</td>
-<td>Vincular o RNF08 a um RF/OE na matriz.</td>
 <td>Aceito</td>
-<td>Vinculado à Matriz de Rastreabilidade.</td>
 </tr>
 <tr>
 <td>RNF04</td>
-<td>Cita "aluno (CP5)", mas RF16 (inativar aluno) pertence ao CP4.</td>
-<td>Corrigir a CP associada e conferir a matriz.</td>
 <td>Aceito</td>
-<td>CP associada corrigida.</td>
 </tr>
 <tr>
 <td>RNF13/RNF04/RF05/RF16</td>
-<td>RNF13 exige atender pedidos de eliminação de dados, mas RF05, RF14, RF16 e RNF04 exigem preservar histórico.</td>
-<td>Definir quando a eliminação se aplica e quando o histórico deve ser mantido, validando com o cliente.</td>
 <td>Parcialmente Aceito</td>
-<td>Foi criado um novo requisito para resolver o conflito (RF25).</td>
 </tr>
 <tr>
 <td>RNF (ausente)</td>
-<td>Nada sobre backup e recuperação de dados, nem sobre comunicação segura (HTTPS, expiração de sessão).</td>
-<td>Incluir RNF de backup e RNF de comunicação segura/gestão de sessão.</td>
 <td>Não Aceito</td>
-<td>Os requisitos de segurança já cobrem a proteção dos dados pessoais.</td>
 </tr>
 </tbody>
 </table>
