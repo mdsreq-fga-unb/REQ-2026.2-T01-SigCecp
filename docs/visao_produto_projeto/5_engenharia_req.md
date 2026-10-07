@@ -9,7 +9,8 @@
 
 **Análise e Consenso:**
 
-- **Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio):** Técnica utilizada entre equipe e cliente para classificar as funcionalidades levantadas cruzando dois eixos — complexidade/esforço técnico de implementação e valor gerado para o negócio — permitindo identificar quais funcionalidades entregam mais valor com menor esforço, chegando a um consenso sobre o núcleo essencial do sistema (a definição do MVP), reduzindo escopo e resolvendo conflitos sobre o que é prioritário para entrega.
+- **Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio):** Técnica utilizada entre equipe e cliente para classificar as funcionalidades levantadas cruzando dois eixos complexidade/esforço técnico de implementação e valor gerado para o negócio, permitindo identificar quais funcionalidades entregam mais valor com menor esforço, chegando a um consenso sobre o núcleo essencial do sistema (a definição do MVP), reduzindo escopo e resolvendo conflitos sobre o que é prioritário para entrega.
+- **MoSCoW** Técnica de priorização utilizada para classificar os requisitos de acordo com seu grau de importância para o sistema. Os requisitos são divididos em quatro categorias: **Must have, Should have, Could have e Won’t have.** A técnica auxilia a equipe e o cliente a estabelecer prioridades claras, controlar o escopo e garantir que os recursos disponíveis sejam direcionados inicialmente às funcionalidades mais essenciais.
 
 **Declaração de Requisitos:**
 
