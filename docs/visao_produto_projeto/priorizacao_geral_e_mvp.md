@@ -29,10 +29,10 @@
 | RF00 | Encerrar sessão | 4 | 1 | 1 | 2 | 1,3 |
 | RF01 | Autenticar usuário | 4 | 2 | 2 | 2 | 2,0 |
 | RF02 | Controlar acesso | 4 | 1 | 1 | 1 | 1,0 |
-| RF03 | Cadastrar turma | 4 | 1 | 1 | 1 | 1,0 |
-| RF04 | Editar turma | 4 | 1 | 1 | 1 | 1,0 |
+| RF03 | Cadastrar turma | 3 | 1 | 1 | 1 | 1,0 |
+| RF04 | Editar turma | 2 | 1 | 1 | 1 | 1,0 |
 | RF05 | Inativar turma | 2 | 1 | 1 | 1 | 1,0 |
-| RF06 | Associar aluno à turma | 4 | 2 | 2 | 1 | 1,7 |
+| RF06 | Associar aluno à turma | 3 | 2 | 2 | 1 | 1,7 |
 | RF07 | Consultar alunos de uma turma | 4 | 1 | 1 | 1 | 1,0 |
 | RF08 | Registrar doação recebida | 1 | 2 | 2 | 2 | 2,0 |
 | RF09 | Editar doação recebida | 1 | 2 | 2 | 2 | 2,0 |
@@ -40,73 +40,47 @@
 | RF11 | Editar documentos de prestação de contas | 1 | 2 | 2 | 2 | 2,0 |
 | RF12 | Consultar doações e prestações de contas | 1 | 2 | 2 | 1 | 1,7 |
 | RF13 | Publicar conteúdo institucional | 4 | 3 | 2 | 2 | 2,3 |
-| RF14 | Editar conteúdo institucional | 4 | 2 | 1 | 1 | 1,3 |
+| RF14 | Editar conteúdo institucional | 3 | 2 | 1 | 1 | 1,3 |
 | RF15 | Consultar conteúdo institucional | 4 | 1 | 1 | 1 | 1,0 |
-| RF16 | Remover conteúdo institucional | 3 | 1 | 1 | 1 | 1,0 |
+| RF16 | Remover conteúdo institucional | 4 | 1 | 1 | 1 | 1,0 |
 | RF17 | Publicar evento | 3 | 1 | 1 | 1 | 1,0 |
 | RF18 | Editar evento | 3 | 1 | 1 | 1 | 1,0 |
 | RF19 | Remover evento | 3 | 1 | 1 | 1 | 1,0 |
 | RF20 | Consultar eventos | 3 | 1 | 1 | 1 | 1,0 |
 | RF21 | Cadastrar aluno | 4 | 2 | 2 | 2 | 2,0 |
 | RF22 | Editar aluno | 4 | 1 | 1 | 1 | 1,0 |
-| RF23 | Consultar ficha do aluno | 3 | 2 | 2 | 1 | 1,7 |
+| RF23 | Consultar ficha do aluno | 4 | 2 | 2 | 1 | 1,7 |
 | RF24 | Inativar aluno | 3 | 2 | 1 | 2 | 1,7 |
-| RF25 | Remover dados do aluno | 3 | 1 | 1 | 1 | 1,0 |
-| RF26 | Registrar frequência | 3 | 2 | 2 | 2 | 2,0 |
-| RF27 | Consultar frequência | 3 | 1 | 1 | 1 | 1,0 |
-| RF28 | Emitir alerta de faltas críticas | 3 | 2 | 2 | 2 | 2,0 |
+| RF25 | Remover dados do aluno | 1 | 1 | 1 | 1 | 1,0 |
+| RF26 | Registrar frequência | 2 | 2 | 2 | 2 | 2,0 |
+| RF27 | Consultar frequência | 2 | 1 | 1 | 1 | 1,0 |
+| RF28 | Emitir alerta de faltas críticas | 2 | 2 | 2 | 2 | 2,0 |
 | RF29 | Registrar medida disciplinar | 3 | 1 | 1 | 1 | 1,0 |
 | RF30 | Publicar aviso | 2 | 1 | 1 | 1 | 1,0 |
 | RF31 | Consultar avisos | 2 | 1 | 1 | 1 | 1,0 |
 | RF32 | Editar aviso | 2 | 1 | 1 | 1 | 1,0 |
 | RF33 | Remover aviso | 2 | 1 | 1 | 1 | 1,0 |
-| RF34 | Consultar histórico de avisos | 2 | 2 | 2 | 1 | 1,7 |
-| RF35 | Acessar formulário de matrícula online | 2 | 1 | 1 | 1 | 1,0 |
-| RF36 | Preencher dados do aluno | 2 | 1 | 1 | 1 | 1,0 |
-| RF37 | Informar dados do responsável legal | 2 | 1 | 1 | 1 | 1,0 |
-| RF38 | Registrar consentimento de dados pessoais | 2 | 2 | 2 | 2 | 2,0 |
-| RF39 | Registrar termo de uso de imagem | 2 | 2 | 2 | 1 | 1,7 |
+| RF34 | Consultar histórico de avisos | 1 | 2 | 2 | 1 | 1,7 |
+| RF35 | Acessar formulário de matrícula online | 4 | 1 | 1 | 1 | 1,0 |
+| RF36 | Preencher dados do aluno | 4 | 1 | 1 | 1 | 1,0 |
+| RF37 | Informar dados do responsável legal | 3 | 1 | 1 | 1 | 1,0 |
+| RF38 | Registrar consentimento de dados pessoais | 4 | 2 | 2 | 2 | 2,0 |
+| RF39 | Registrar termo de uso de imagem | 4 | 2 | 2 | 1 | 1,7 |
 | RF40 | Informar pessoas autorizadas a retirar o aluno | 2 | 1 | 1 | 1 | 1,0 |
-| RF41 | Emitir comprovante de solicitação | 2 | 2 | 2 | 2 | 2,0 |
-| RF42 | Analisar solicitações de matrícula | 2 | 2 | 2 | 1 | 1,7 |
- 
-As justificativas do cliente para cada valor de negócio estão registradas nas atas das reuniões de 22/09/2026 e 24/09/2026 e nas validações complementares por WhatsApp e áudio.
+| RF41 | Emitir comprovante de solicitação | 3 | 2 | 2 | 2 | 2,0 |
+| RF42 | Analisar solicitações de matrícula | 3 | 2 | 2 | 1 | 1,7 |
 
 ## 3. Matriz 4 × 4
 
-![Matriz 4x4](img/matriz.png)
-
-- **Prioridade máxima** (valor 4, esforço baixo): 21 RFs.
-- **Forte candidato ao MVP** (valor 4, esforço moderado): 13 RFs.
-- **Avaliar oportunidade** (valor 2, esforço baixo): RF05, RF16, RF25 e RF33.
-- **Adiar** (valor 2, esforço moderado): RF08 a RF12.
-- Nenhum RF ficou com esforço alto ou muito alto, então não foi necessário decompor requisitos nem planejar entrega parcial.
+![Matriz 4x4](img/matriz4x4.jpeg)
 
 ## 4. Definição do MVP
  
-O MVP reúne **37 dos 43 RFs**. A seleção considerou a posição na matriz, a necessidade de um fluxo de uso minimamente completo e as dependências entre requisitos.
+O MVP reúne **26 dos 43 RFs**. A seleção seguiu uma regra, aplicada a todos os requisitos:
  
-| Módulo | RFs |
-|---|---|
-| Acesso e controle de usuários (base de todo o fluxo) | RF00 a RF02 |
-| Gestão e acompanhamento de turmas (CP1) | RF03, RF04, RF06, RF07 |
-| Gestão de conteúdo institucional (CP3) | RF13 a RF20 |
-| Cadastro e histórico de alunos (CP4) | RF21 a RF25 |
-| Acompanhamento pedagógico e disciplinar (CP5) | RF26 a RF29 |
-| Comunicação com voluntários e famílias (CP6) | RF30 a RF34 |
-| Matrícula online (CP7) | RF35 a RF42 |
+1. **Posição na matriz:** entra no MVP o primeiro quadrante da matriz (seção 3), composto por: Prioridade máxima, Forte candidato ao MVP e Candidato ao MVP, o que resulta em 26 RFs.
+
  
-O conjunto cobre todas as posições de "Prioridade máxima" e "Forte candidato ao MVP" e forma um fluxo completo: autenticação, gestão de turmas, cadastro e acompanhamento de alunos, medidas disciplinares, conteúdo institucional, avisos e pré-matrículas pelo módulo público.
- 
-**RF16, RF25 e RF33** ficaram em "Avaliar oportunidade" (valor 2, esforço 1,0), mas entraram no MVP porque cada um completa um par funcional já presente (RF16 com RF13 a RF15; RF33 com RF30 a RF32) e RF25 tem peso legal via RNF13 (LGPD). Sem eles, esses módulos ficariam sem a remoção correspondente.
-
-### RFs não incluídos no MVP (6 de 43)
-
-| RF | Motivo |
-|---|---|
-| RF05 | Valor 2 ("poderia ter"); a inativação de turma pode ser adiada sem comprometer o fluxo mínimo |
-| RF08 a RF12 | Valor 2 ("poderia ter") e esforço moderado; RF09 e RF11 decorrem de RF08 e RF10, e RF10 tem o maior esforço do conjunto (2,3) |
-
 ## 5. Tratamento dos RNFs
 
 | ID | Descrição | Classificação | Justificativa |
@@ -154,9 +128,3 @@ A lista final do MVP foi validada com o cliente (CECP) em quatro momentos, regis
  
 - **RF28:** limite do alerta de faltas críticas alterado de 10 para 8 faltas (22/09).
 - **Módulo público:** resolução mínima de 360px para exibição sem sobreposição ou corte (RNF02, 22/09).
-### Decisões e divergências registradas
- 
-- **RF24 e RF25:** ações independentes. A inativação ocorre ao aluno sair do CECP; a remoção de dados só ocorre mediante pedido formal do titular ou responsável legal, sem conflito com RNF04 e RNF13.
-- **RF08 a RF12:** inconsistência entre as classificações resolvida com a unificação em "poderia ter" (RF10 foi rebaixado de "tem que ter").
-- **RNF12:** classificado como "poderia ter" no MoSCoW ao vivo, mas mantido como obrigatório por ser segurança mínima; divergência registrada nas lições aprendidas da equipe.
-O detalhamento das discussões de cada reunião, incluindo a regra de retenção de dados, está nas atas.
