@@ -42,7 +42,7 @@ nav:
         - Reunião dia 26/09/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_26_09.md
 
     - Ajustes e validações: organizacao_e_planejamento/ajuste_e_validacao.md
-
+    - Declaração de requisitos: organizacao_e_planejamento/declaracao_de_requisitos.md
 theme:
   name: material
   palette:
