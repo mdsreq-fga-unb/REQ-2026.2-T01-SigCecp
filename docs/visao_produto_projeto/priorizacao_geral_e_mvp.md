@@ -34,41 +34,41 @@
 | RF05 | Inativar turma | 2 | 1 | 1 | 1 | 1,0 |
 | RF06 | Associar aluno à turma | 4 | 2 | 2 | 1 | 1,7 |
 | RF07 | Consultar alunos de uma turma | 4 | 1 | 1 | 1 | 1,0 |
-| RF08 | Registrar doação recebida | 2 | 2 | 2 | 2 | 2,0 |
-| RF09 | Editar doação recebida | 2 | 2 | 2 | 2 | 2,0 |
-| RF10 | Registrar documentos de prestação de contas | 2 | 3 | 2 | 2 | 2,3 |
-| RF11 | Editar documentos de prestação de contas | 2 | 2 | 2 | 2 | 2,0 |
-| RF12 | Consultar doações e prestações de contas | 2 | 2 | 2 | 1 | 1,7 |
+| RF08 | Registrar doação recebida | 1 | 2 | 2 | 2 | 2,0 |
+| RF09 | Editar doação recebida | 1 | 2 | 2 | 2 | 2,0 |
+| RF10 | Registrar documentos de prestação de contas | 1 | 3 | 2 | 2 | 2,3 |
+| RF11 | Editar documentos de prestação de contas | 1 | 2 | 2 | 2 | 2,0 |
+| RF12 | Consultar doações e prestações de contas | 1 | 2 | 2 | 1 | 1,7 |
 | RF13 | Publicar conteúdo institucional | 4 | 3 | 2 | 2 | 2,3 |
 | RF14 | Editar conteúdo institucional | 4 | 2 | 1 | 1 | 1,3 |
 | RF15 | Consultar conteúdo institucional | 4 | 1 | 1 | 1 | 1,0 |
-| RF16 | Remover conteúdo institucional | 2 | 1 | 1 | 1 | 1,0 |
-| RF17 | Publicar evento | 4 | 1 | 1 | 1 | 1,0 |
-| RF18 | Editar evento | 4 | 1 | 1 | 1 | 1,0 |
-| RF19 | Remover evento | 4 | 1 | 1 | 1 | 1,0 |
-| RF20 | Consultar eventos | 4 | 1 | 1 | 1 | 1,0 |
+| RF16 | Remover conteúdo institucional | 3 | 1 | 1 | 1 | 1,0 |
+| RF17 | Publicar evento | 3 | 1 | 1 | 1 | 1,0 |
+| RF18 | Editar evento | 3 | 1 | 1 | 1 | 1,0 |
+| RF19 | Remover evento | 3 | 1 | 1 | 1 | 1,0 |
+| RF20 | Consultar eventos | 3 | 1 | 1 | 1 | 1,0 |
 | RF21 | Cadastrar aluno | 4 | 2 | 2 | 2 | 2,0 |
 | RF22 | Editar aluno | 4 | 1 | 1 | 1 | 1,0 |
-| RF23 | Consultar ficha do aluno | 4 | 2 | 2 | 1 | 1,7 |
-| RF24 | Inativar aluno | 4 | 2 | 1 | 2 | 1,7 |
-| RF25 | Remover dados do aluno | 2 | 1 | 1 | 1 | 1,0 |
-| RF26 | Registrar frequência | 4 | 2 | 2 | 2 | 2,0 |
-| RF27 | Consultar frequência | 4 | 1 | 1 | 1 | 1,0 |
-| RF28 | Emitir alerta de faltas críticas | 4 | 2 | 2 | 2 | 2,0 |
-| RF29 | Registrar medida disciplinar | 4 | 1 | 1 | 1 | 1,0 |
-| RF30 | Publicar aviso | 4 | 1 | 1 | 1 | 1,0 |
-| RF31 | Consultar avisos | 4 | 1 | 1 | 1 | 1,0 |
-| RF32 | Editar aviso | 4 | 1 | 1 | 1 | 1,0 |
+| RF23 | Consultar ficha do aluno | 3 | 2 | 2 | 1 | 1,7 |
+| RF24 | Inativar aluno | 3 | 2 | 1 | 2 | 1,7 |
+| RF25 | Remover dados do aluno | 3 | 1 | 1 | 1 | 1,0 |
+| RF26 | Registrar frequência | 3 | 2 | 2 | 2 | 2,0 |
+| RF27 | Consultar frequência | 3 | 1 | 1 | 1 | 1,0 |
+| RF28 | Emitir alerta de faltas críticas | 3 | 2 | 2 | 2 | 2,0 |
+| RF29 | Registrar medida disciplinar | 3 | 1 | 1 | 1 | 1,0 |
+| RF30 | Publicar aviso | 2 | 1 | 1 | 1 | 1,0 |
+| RF31 | Consultar avisos | 2 | 1 | 1 | 1 | 1,0 |
+| RF32 | Editar aviso | 2 | 1 | 1 | 1 | 1,0 |
 | RF33 | Remover aviso | 2 | 1 | 1 | 1 | 1,0 |
-| RF34 | Consultar histórico de avisos | 4 | 2 | 2 | 1 | 1,7 |
-| RF35 | Acessar formulário de matrícula online | 4 | 1 | 1 | 1 | 1,0 |
-| RF36 | Preencher dados do aluno | 4 | 1 | 1 | 1 | 1,0 |
-| RF37 | Informar dados do responsável legal | 4 | 1 | 1 | 1 | 1,0 |
-| RF38 | Registrar consentimento de dados pessoais | 4 | 2 | 2 | 2 | 2,0 |
-| RF39 | Registrar termo de uso de imagem | 4 | 2 | 2 | 1 | 1,7 |
-| RF40 | Informar pessoas autorizadas a retirar o aluno | 4 | 1 | 1 | 1 | 1,0 |
-| RF41 | Emitir comprovante de solicitação | 4 | 2 | 2 | 2 | 2,0 |
-| RF42 | Analisar solicitações de matrícula | 4 | 2 | 2 | 1 | 1,7 |
+| RF34 | Consultar histórico de avisos | 2 | 2 | 2 | 1 | 1,7 |
+| RF35 | Acessar formulário de matrícula online | 2 | 1 | 1 | 1 | 1,0 |
+| RF36 | Preencher dados do aluno | 2 | 1 | 1 | 1 | 1,0 |
+| RF37 | Informar dados do responsável legal | 2 | 1 | 1 | 1 | 1,0 |
+| RF38 | Registrar consentimento de dados pessoais | 2 | 2 | 2 | 2 | 2,0 |
+| RF39 | Registrar termo de uso de imagem | 2 | 2 | 2 | 1 | 1,7 |
+| RF40 | Informar pessoas autorizadas a retirar o aluno | 2 | 1 | 1 | 1 | 1,0 |
+| RF41 | Emitir comprovante de solicitação | 2 | 2 | 2 | 2 | 2,0 |
+| RF42 | Analisar solicitações de matrícula | 2 | 2 | 2 | 1 | 1,7 |
  
 As justificativas do cliente para cada valor de negócio estão registradas nas atas das reuniões de 22/09/2026 e 24/09/2026 e nas validações complementares por WhatsApp e áudio.
 
