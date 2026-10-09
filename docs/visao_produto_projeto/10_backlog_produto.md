@@ -137,3 +137,9 @@ A partir dessas informações, foi gerada a seguinte tabela:
 | [RF09](8_0_requisitos.md) | Baixo | 3 | — |
 | [RF11](8_0_requisitos.md) | Baixo | 3 | — |
 | [RF10](8_0_requisitos.md) | Baixo | 3 | — |
+
+## Versionamento
+
+| Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1.0 | 05/09/2026 | Documento incial do item 10 | [Marcos Monteiro](https://github.com/montmarcos) |  |
