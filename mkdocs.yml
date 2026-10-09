@@ -42,8 +42,7 @@ nav:
         - Reunião dia 24/09/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_24_09.md
         - Reunião dia 26/09/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_26_09.md
         - Reunião dia 09/10/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_09_10.md
-
-
+    - Evidência da Priorização: organizacao_e_planejamento/priorizacao_geral_e_mvp.md
     - Ajustes e validações: organizacao_e_planejamento/ajuste_e_validacao.md
     - Declaração de requisitos: organizacao_e_planejamento/declaracao_de_requisitos.md
 theme:
