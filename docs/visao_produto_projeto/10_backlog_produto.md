@@ -138,8 +138,7 @@ A partir dessas informações, foi gerada a seguinte tabela:
 | [RF11](8_0_requisitos.md) | Baixo | 3 | — |
 | [RF10](8_0_requisitos.md) | Baixo | 3 | — |
 
-[Comprovação de Evidência](../organizacao_e_planejamento/priorizacao_geral_e_mvp.md)
- 
+As notas do cliente e da equipe, os votos individuais e o cálculo que levaram aos resultados acima estão registrados em [Comprovação de Evidência](../organizacao_e_planejamento/priorizacao_geral_e_mvp.md). 
 ## Versionamento
 
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
