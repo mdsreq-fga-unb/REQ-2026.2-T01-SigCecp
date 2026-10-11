@@ -9,7 +9,7 @@ O **Definition of Ready (DoR)** é o conjunto de critérios que um requisito dev
 | 1 | O requisito deve estar no nível de maturidade de produto | O requisito atende às características de um requisito de produto (ISO/IEC/IEEE 29148). Ele deve ser necessário, inequívoco, completo, singular, viável, verificável, rastreável, conforme |
 | 2 | O protótipo deve ser validado pelo cliente | Registro formal da validação do cliente e reunião gravada |
 | 3 | O requisito está dimensionado para uma única sprint | Estimativa de esforço definido pela equipe deve ser menor que ou igual a quantidade de horas da sprint |
-| 4 | O requisito não possui dependência blocante com outro requisito | Quando houver dependências, o requisito bloquenate deve estar como concluído |
+| 4 | O requisito não possui dependência blocante com outro requisito | Quando houver dependências, o requisito blocante deve estar como concluído |
 
  
 ## 9.2 Definition of Done (DoD)
