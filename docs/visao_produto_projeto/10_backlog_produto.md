@@ -2,7 +2,7 @@
 
 ## 10.1 Backlog Geral
 
-O backlog geral contém os 43 requisitos funcionais (RF00 a RF42) com o critério de aceitação de cada um. A descrição completa dos requisitos e a rastreabilidade com os RNFs estão na seção de [Requisitos](8_0_requisitos.md); o código de cada item leva a essa descrição.
+O backlog geral contém os 43 requisitos funcionais em forma de texto estruturado/tabular, com o critério de aceitação de cada um. A descrição completa dos requisitos e a rastreabilidade com os RNFs estão na seção de [Requisitos](8_0_requisitos.md); o código de cada item leva a essa descrição.
 
 
 | Código | Requisito                                      | Critério de Aceitação |
