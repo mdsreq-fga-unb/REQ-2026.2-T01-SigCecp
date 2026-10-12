@@ -91,6 +91,8 @@ Alguns requisitos de usuário apresentaram trechos que comumente são associados
 
 É possível melhorar o tipo de declaração dos requisitos para evitar ambiguidade. Os RFs, por exemplo, não trazem critério de aceitação nem prioridade, enquanto os RNFs sim, tornando-os mais completos, portanto menos ambíguos. Ainda assim, até o momento os dois tipos utilizados cobrem de modo suficiente os níveis de abstração predominantes.
 
+> Após a definição e a montagem do backlog, os requisitos funcionais passaram a ser declarados em formato de texto estruturado, organizados de maneira tabular. Essa organização padroniza a forma como cada requisito é apresentado, facilita a leitura e a consulta, e permite relacionar cada item às informações do backlog. O nível de abstração predominante dos Requisitos Funcionais do projeto encaixam-se muito bem em diversos tipos de declaração, e o texo estruturado organizado de maneira tabular foi uma ótima solução encontrada.
+
 ---
 
 ## 3. Momentos do produto e necessidade de uso
@@ -122,3 +124,4 @@ Portanto, o projeto cobre os três momentos, em partes diferentes da documentaç
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | ------ | ---- | --------- | ------------ | -------------- |
 | 1.0 | 07/10/2026 | Anotações da atividade para o dia 08/10 | Ana Paula Jardim | - |
+| 1.1 | 12/10/2026 | Atualização sobre tipo de declaração usado | Ana Paula Jardim | - |
