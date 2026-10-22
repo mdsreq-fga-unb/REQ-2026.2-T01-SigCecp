@@ -50,6 +50,8 @@ nav:
   - Escopo:
       - Escopo do Projeto: escopo/ficha_individual.md
       - Identidade Visual: escopo/identidade_visual.md
+      #- Regra de Negócio: escopo/regras_de_negocio.md
+
 theme:
   name: material
   palette:
