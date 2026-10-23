@@ -13,7 +13,7 @@ nav:
     - Interação entre a equipe e o cliente: visao_produto_projeto/7_interacao_equipe_e_cliente.md
     - Requisitos: visao_produto_projeto/8_0_requisitos.md
     - Critérios do DoR e DoD: visao_produto_projeto/9_dor_e_dod.md
-    - BackLog de Produto: visao_produto_projeto/10_backlog_produto.md
+    - Escopo de Produto: visao_produto_projeto/10_backlog_produto.md
     - Lições Aprendidas: visao_produto_projeto/11_licoes_aprendidas.md
   - Gravações:
     - Apresentações das Unidades:
@@ -47,6 +47,11 @@ nav:
     - Comprovação de Evidência: organizacao_e_planejamento/priorizacao_geral_e_mvp.md
     - Ajustes e validações: organizacao_e_planejamento/ajuste_e_validacao.md
     - Declaração de requisitos: organizacao_e_planejamento/declaracao_de_requisitos.md
+  - Escopo:
+      - Escopo do Projeto: escopo/ficha_individual.md
+      - Identidade Visual: escopo/identidade_visual.md
+      #- Regra de Negócio: escopo/regras_de_negocio.md
+
 theme:
   name: material
   palette:

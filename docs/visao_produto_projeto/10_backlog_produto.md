@@ -1,8 +1,8 @@
-# 10 Backlog de Produto
+# 10 Escopo de Produto
 
-## 10.1 Backlog Geral
+## 10.1 Escopo Geral
 
-O backlog geral contém os 43 requisitos funcionais em forma de texto estruturado/tabular, com o critério de aceitação de cada um. A descrição completa dos requisitos e a rastreabilidade com os RNFs estão na seção de [Requisitos](8_0_requisitos.md); o código de cada item leva a essa descrição.
+O Escopo geral contém os 43 requisitos funcionais em forma de texto estruturado/tabular, com o critério de aceitação de cada um. A descrição completa dos requisitos e a rastreabilidade com os RNFs estão na seção de [Requisitos](8_0_requisitos.md); o código de cada item leva a essa descrição.
 
 
 | Código | Requisito                                      | Critério de Aceitação |
@@ -51,7 +51,7 @@ O backlog geral contém os 43 requisitos funcionais em forma de texto estruturad
 | RF41   | Emitir comprovante de solicitação              | Após o envio bem-sucedido do formulário, o sistema exibe ao solicitante um número de protocolo. Cada solicitação recebe um número de protocolo distinto. |
 | RF42   | Analisar solicitações de matrícula             | A coordenação consulta as solicitações recebidas e define cada uma como aprovada, recusada ou em lista de espera. O status definido é exibido atualizado na consulta. |
 
-## 10.2 Priorização do Backlog Geral e MVP
+## 10.2 Priorização do Escopo Geral e MVP
 
 A priorização combinou dois modelos: o MoSCoW (Must, Should, Could e Won't have), usado para o valor de negócio e avaliado com o cliente, e a pontuação de esforço técnico atribuída pela equipe (esforço, complexidade e lacuna de capacidade). Os dois critérios orientam o desenvolvimento de acordo com os objetivos do projeto e formam a matriz 4 × 4 da seção 10.2.2.
  
