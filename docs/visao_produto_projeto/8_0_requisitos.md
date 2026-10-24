@@ -139,7 +139,7 @@ Os requisitos não funcionais foram classificados segundo o modelo URPS+ (Usabil
 | ID | Descrição | Critério de Aceitação |
 |---|---|---|
 | RNF06 | Resposta das consultas internas em até 3s (ficha do aluno, frequência, turmas) | P95 das requisições autenticadas ≤ 3s sob carga normal |
-| RNF07 | Carregamento da página pública em até 5s (CP2, CP3) | LCP ≤ 5s em conexão 3G, medido pelo Lighthouse |
+| RNF07 | Carregamento da página pública em até 5s (CP3, CP7) | LCP ≤ 5s em conexão 3G, medido pelo Lighthouse |
 | RNF08 | O sistema deve suportar o acesso simultâneo de usuários autenticados sem ultrapassar os limites de desempenho definidos para as operações internas. | Com 10 sessões autenticadas simultâneas, o P95 das requisições deve permanecer ≤ 3s sob carga normal. |
 
 ### Suportabilidade (S)
@@ -242,7 +242,7 @@ Transversal
 
 ## Rastreabilidade Visual do Projeto
 
-O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema central até cada Requisito Funcional — com indicação visual do status de execução por cor.
+O grafo abaixo representa a cadeia de rastreabilidade do CECP, do problema central ao objetivo do produto, aos objetivos específicos, às características do produto e aos requisitos funcionais. As cores indicam o status de execução registrado para cada elemento. A matrícula continua presencial; o módulo público permite manifestação de interesse online.
 
 <div style="position:relative;width:100%;font-family:sans-serif;user-select:none;">
   <div style="display:flex;align-items:center;gap:6px;padding:8px 10px;background:rgba(128,128,128,0.08);border:1px solid rgba(128,128,128,0.2);border-bottom:none;border-radius:8px 8px 0 0;">
@@ -259,9 +259,10 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
 
 <script>
 (function(){
-  var R=23, PAD=42, SP=52, GRP_GAP=78, OE_MIN=54, H=600;
-  var LY=[55,175,300,430];
+  var R=23, PAD=42, SP=52, GRP_GAP=78, OE_MIN=54;
+  var LY=[45,135,225,330,435];
 
+  var OBJ='OBJ';
   var CP_RF={
     CP1:['RF03','RF04','RF05','RF06','RF07'],
     CP2:['RF08','RF09','RF10','RF11','RF12'],
@@ -273,7 +274,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     ACESSO:['RF01','RF02','RF00']
   };
   var OE_CP={
-    OE1:['CP1','CP2','CP4','CP7'],
+    OE1:['CP1','CP4','CP7'],
     OE2:['CP1','CP5','CP7'],
     OE3:['CP1','CP5'],
     OE4:['CP3','CP6'],
@@ -284,11 +285,12 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
   var OE_ORDER=['OE1','OE2','OE3','OE4','OE5','TRANSV'];
 
   var EDGES=[
-    ['PROB','OE1'],['PROB','OE2'],['PROB','OE3'],['PROB','OE4'],['PROB','OE5'],['PROB','TRANSV'],
-    ['OE1','CP1'],['OE1','CP2'],['OE1','CP4'],
-    ['OE2','CP1'],['OE2','CP5'],
+    ['PROB','OBJ'],
+    ['OBJ','OE1'],['OBJ','OE2'],['OBJ','OE3'],['OBJ','OE4'],['OBJ','OE5'],['OBJ','TRANSV'],
+    ['OE1','CP1'],['OE1','CP4'],['OE1','CP7'],
+    ['OE2','CP1'],['OE2','CP5'],['OE2','CP7'],
     ['OE3','CP1'],['OE3','CP5'],
-    ['OE4','CP3'],['OE4','CP6'],['OE4','CP7'], 
+    ['OE4','CP3'],['OE4','CP6'], 
     ['OE5','CP2'],['OE5','CP3'],
     ['TRANSV','ACESSO'],
     ['CP1','RF03'],['CP1','RF04'],['CP1','RF05'],['CP1','RF06'],['CP1','RF07'],
@@ -302,7 +304,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
   ];
 
   var ST={
-    PROB:'vm',
+    PROB:'vm', OBJ:'vm',
     OE1:'vm',OE2:'vm',OE3:'vm',OE4:'vm',OE5:'vm',TRANSV:'vm',
     CP1:'vm',CP2:'vm',CP3:'vm',CP4:'vm',CP5:'vm',CP6:'vm',CP7:'vm',ACESSO:'vm',
     RF01:'vm',RF02:'vm',RF03:'vm',RF04:'vm',RF05:'vm',RF06:'vm',RF07:'vm',
@@ -320,6 +322,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
   };
   var DESC={
     PROB:'Problema central do CECP — gestão manual e descentralizada, dificultando o controle interno e a prestação de contas',
+    OBJ:'Objetivo do produto — fortalecer a gestão do CECP com um sistema integrado de gestão de alunos e da instituição, substituindo o controle manual e descentralizado; dar autonomia à coordenação, ampliar o alcance comunitário e garantir transparência na prestação de contas. A plataforma possui módulo público de divulgação e manifestação de interesse (a matrícula permanece presencial) e módulo administrativo de gestão.',
     OE1:'OE1 — Centralizar os dados dos alunos em uma base tecnológica única',
     OE2:'OE2 — Garantir o acompanhamento pontual da assiduidade e das condicionalidades pedagógicas',
     OE3:'OE3 — Apoiar a aplicação e o histórico de medidas disciplinares',
@@ -332,7 +335,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     CP4:'CP4 — Cadastro e histórico de alunos',
     CP5:'CP5 — Acompanhamento pedagógico e disciplinar do aluno',
     CP6:'CP6 — Comunicação com voluntários e famílias',
-    CP7:'CP7 — Matrícula online',
+    CP7:'CP7 — Manifestação de interesse online, etapa anterior à matrícula presencial',
     ACESSO:'Acesso e controle de usuários (transversal)',
     RF01:'RF01 — Autenticar usuário',RF02:'RF02 — Controlar acesso',RF00:'RF00 — Encerrar sessão',
     RF03:'RF03 — Cadastrar turma',RF04:'RF04 — Editar turma',RF05:'RF05 — Inativar turma',
@@ -348,8 +351,8 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     RF26:'RF26 — Registrar frequência',RF27:'RF27 — Consultar frequência',
     RF28:'RF28 — Emitir alerta de faltas críticas',RF29:'RF29 — Registrar medida disciplinar',
     RF30:'RF30 — Publicar aviso',RF31:'RF31 — Consultar avisos',RF32:'RF32 — Editar aviso',
-    RF33:'RF31 — Remover avisos',RF34:'Consultar hostórico de avisos',
-    RF35:'RF35 — Acessar formulário de matrícula online',RF36:'RF36 — Preencher dados do aluno',
+    RF33:'RF33 — Remover aviso',RF34:'RF34 — Consultar histórico de avisos',
+    RF35:'RF35 — Acessar formulário público de manifestação de interesse (pré-matrícula)',RF36:'RF36 — Preencher dados do aluno',
     RF37:'RF37 — Informar dados do responsável legal',RF38:'RF38 — Registrar consentimento de dados pessoais',
     RF39:'RF39 — Registrar termo de uso de imagem',RF40:'RF40 — Informar pessoas autorizadas a retirar o aluno',
     RF41:'RF41 — Emitir comprovante de solicitação',RF42:'RF42 — Analisar solicitações de matrícula'
@@ -385,10 +388,11 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
 
   var pos={};
   pos['PROB']={x:W/2,y:LY[0]};
-  OE_ORDER.forEach(function(oe){pos[oe]={x:oeX[oe],y:LY[1]};});
-  CP_ORDER.forEach(function(cp){pos[cp]={x:cpX[cp],y:LY[2]};});
+  pos[OBJ]={x:W/2,y:LY[1]};
+  OE_ORDER.forEach(function(oe){pos[oe]={x:oeX[oe],y:LY[2]};});
+  CP_ORDER.forEach(function(cp){pos[cp]={x:cpX[cp],y:LY[3]};});
   CP_ORDER.forEach(function(cp){
-    CP_RF[cp].forEach(function(rf){pos[rf]={x:rfX[rf],y:LY[3]};});
+    CP_RF[cp].forEach(function(rf){pos[rf]={x:rfX[rf],y:LY[4]};});
   });
 
   /* ── BUILD SVG ── */

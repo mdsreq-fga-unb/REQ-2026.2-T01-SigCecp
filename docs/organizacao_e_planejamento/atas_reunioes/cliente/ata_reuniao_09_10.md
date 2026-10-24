@@ -62,6 +62,6 @@ Marcos estimou, ainda de forma aproximada, que com a nova classificação o núm
 - Nova classificação MoSCoW dos requisitos definida conforme a seção 4;
 - Todos os requisitos de doações ficam como futuro, fora do MVP;
 - A matrícula online será mantida como pré-matrícula, com aprovação presencial pela ONG;
-- Marcos refará a matriz e o escopo do MVP com base na nova classificação e validará com o cliente.
+- Marcos refará a matriz e o escopo do MVP com base na nova classificação.
 
 *Ata elaborada a partir da transcrição da reunião presencial de 08/10/2026 entre Marcos e representante do CECP, para conhecimento e alinhamento da equipe do projeto.*
