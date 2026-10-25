@@ -1,0 +1,241 @@
+/* ---------- Cabeçalho ---------- */
+.topo {
+  background: var(--preto);
+  color: var(--branco);
+}
+
+.topo__linha {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  min-height: 64px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.marca__logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.marca__nome {
+  padding-left: 14px;
+  border-left: 1px solid rgba(255, 255, 255, .25);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.topo__direita {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+}
+
+.topo__link {
+  color: rgba(255, 255, 255, .8);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.topo__link:hover {
+  color: var(--branco);
+  text-decoration: underline;
+}
+
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.usuario__foto {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #3a3a3a;
+}
+
+/* ---------- Navegação ---------- */
+.trilha ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--cinza-claro);
+}
+
+.trilha li + li::before {
+  content: "/";
+  margin-right: 6px;
+}
+
+.trilha a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.trilha a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Avisos ---------- */
+.aviso {
+  display: flex;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #ececea;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--cinza-texto);
+}
+
+.aviso p {
+  margin: 0;
+}
+
+.aviso__titulo {
+  margin-bottom: 2px !important;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--preto);
+}
+
+.aviso .icone {
+  margin-top: 2px;
+}
+
+/* ---------- Formulários ---------- */
+.campo {
+  margin-bottom: 20px;
+}
+
+.campo:last-child {
+  margin-bottom: 0;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.obrigatorio {
+  color: var(--vermelho);
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--preto);
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+}
+
+input[type="text"]:hover,
+textarea:hover {
+  border-color: #c9c9c6;
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.6;
+  min-height: 140px;
+}
+
+input[aria-invalid="true"] {
+  border-color: var(--vermelho);
+}
+
+/* ---------- Mensagens de erro ---------- */
+.erro {
+  margin: 8px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vermelho);
+}
+
+/* ---------- Botões ---------- */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 20px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.botao--claro {
+  color: var(--preto);
+  background: var(--branco);
+  border-color: var(--borda);
+}
+
+.botao--claro:hover {
+  border-color: #b9b9b6;
+}
+
+.botao--vermelho {
+  color: var(--branco);
+  background: var(--vermelho);
+}
+
+.botao--vermelho:hover {
+  background: var(--vermelho-escuro);
+}
+
+.botao[disabled] {
+  opacity: .6;
+  cursor: progress;
+}
+
+/* ---------- Mensagem de status ---------- */
+.status {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  max-width: 320px;
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--branco);
+  background: var(--preto);
+  border-radius: 6px;
+}
+
+.status:empty {
+  display: none;
+}
+
+/* ---------- Responsividade compartilhada ---------- */
+@media (max-width: 640px) {
+  .marca__nome,
+  .topo__link {
+    display: none;
+  }
+}
