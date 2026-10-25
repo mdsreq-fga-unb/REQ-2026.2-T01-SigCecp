@@ -1,0 +1,427 @@
+.agenda {
+
+    --ev-preto: var(--preto, #111111);
+    --ev-branco: var(--branco, #ffffff);
+    --ev-vermelho: var(--vermelho, #d71920);
+    --ev-amarelo: var(--amarelo, #ffd400);
+    --ev-cinza-claro: var(--borda, #e5e5e5);
+    --ev-cinza-escuro: var(--cinza-texto, #444444);
+    --ev-cinza-texto: var(--cinza-claro, #666666);
+    --ev-fundo-etiqueta: #f2f2f2;
+    --ev-fundo-andamento: #fff4c2;
+    --ev-raio: 12px;
+
+    padding-top: 56px;
+    padding-bottom: 72px;
+    color: var(--ev-preto);
+}
+
+/* Texto lido só por leitores de tela */
+.agenda .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ---------- Abertura ---------- */
+
+.agenda__abertura {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+    gap: 48px;
+    align-items: end;
+}
+
+.agenda__rotulo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 22px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.agenda__traco {
+    width: 24px;
+    height: 3px;
+    background: var(--ev-vermelho);
+}
+
+.agenda__titulo {
+    margin: 0;
+    max-width: 760px;
+    font-size: clamp(2.5rem, 4.1vw, 3.75rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+}
+
+.agenda__resumo {
+    margin: 0 0 10px;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--ev-cinza-escuro);
+}
+
+/* ---------- Filtros ---------- */
+
+.agenda__barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px 24px;
+    flex-wrap: wrap;
+    margin: 36px 0 32px;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filtros__botao {
+    font: inherit;
+    font-size: 0.9375rem;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--ev-cinza-claro);
+    background: var(--ev-branco);
+    color: var(--ev-preto);
+    cursor: pointer;
+}
+
+.filtros__botao:hover {
+    border-color: var(--ev-cinza-escuro);
+}
+
+.filtros__botao[aria-pressed="true"] {
+    background: var(--ev-preto);
+    border-color: var(--ev-preto);
+    color: var(--ev-branco);
+}
+
+
+.filtros__botao:focus-visible,
+.cartao-evento__link:focus-visible {
+    outline: 3px solid var(--ev-amarelo);
+    outline-offset: 3px;
+}
+
+.agenda__referencia {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--ev-cinza-texto);
+}
+
+/* ---------- Cartões de evento ---------- */
+
+.lista-eventos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 20px;
+}
+
+.cartao-evento {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr) auto;
+    grid-template-areas: "data corpo cartaz";
+    column-gap: 28px;
+    align-items: center;
+    padding: 24px;
+    border: 1px solid var(--ev-cinza-claro);
+    border-radius: var(--ev-raio);
+    background: var(--ev-branco);
+}
+
+.cartao-evento__data {
+    grid-area: data;
+    width: 100px;
+    height: 136px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--ev-preto);
+    color: var(--ev-branco);
+}
+
+.cartao-evento__dia {
+    font-size: 2.75rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.cartao-evento__mes {
+    margin-top: 14px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Amarelo só no mês do próximo evento, como destaque pontual */
+.cartao-evento--em-breve .cartao-evento__mes {
+    color: var(--ev-amarelo);
+}
+
+.cartao-evento__ano {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.cartao-evento__corpo {
+    grid-area: corpo;
+    min-width: 0;
+}
+
+.etiqueta-estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    background: var(--ev-fundo-etiqueta);
+    color: var(--ev-preto);
+}
+
+.etiqueta-estado::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #7a7a7a;
+}
+
+.etiqueta-estado--em-breve::before {
+    background: var(--ev-vermelho);
+}
+
+.etiqueta-estado--em-andamento {
+    background: var(--ev-fundo-andamento);
+}
+
+.etiqueta-estado--em-andamento::before {
+    background: var(--ev-preto);
+}
+
+.cartao-evento__titulo {
+    margin: 14px 0 10px;
+    font-size: 1.625rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.cartao-evento__subtitulo {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    color: var(--ev-cinza-escuro);
+}
+
+.cartao-evento__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    font-size: 0.875rem;
+    color: var(--ev-cinza-escuro);
+}
+
+.cartao-evento__info li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cartao-evento__icone {
+    width: 16px;
+    height: 16px;
+    flex: none;
+}
+
+.cartao-evento__link {
+    display: inline-flex;
+    gap: 6px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--ev-vermelho);
+    text-decoration: none;
+}
+
+.cartao-evento__link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.cartao-evento__cartaz {
+    grid-area: cartaz;
+    display: block;
+    width: 272px;
+    max-width: 100%;
+    aspect-ratio: 272 / 207;
+    object-fit: cover;
+    background: var(--ev-preto);
+}
+
+/* ---------- Lista vazia e contagem ---------- */
+
+.lista-eventos__vazio {
+    padding: 56px 24px;
+    border: 1px dashed var(--ev-cinza-claro);
+    border-radius: var(--ev-raio);
+    text-align: center;
+}
+
+.lista-eventos__vazio-titulo {
+    margin: 0 0 8px;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.lista-eventos__vazio-texto {
+    margin: 0;
+    color: var(--ev-cinza-escuro);
+}
+
+.agenda__contagem {
+    margin: 40px 0 0;
+    font-size: 0.875rem;
+    color: var(--ev-cinza-texto);
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1024px) {
+    .agenda__abertura {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .agenda__titulo {
+        max-width: 640px;
+    }
+
+    .cartao-evento {
+        grid-template-columns: 100px minmax(0, 1fr);
+        grid-template-areas:
+            "data corpo"
+            "cartaz cartaz";
+        row-gap: 20px;
+    }
+
+    .cartao-evento__cartaz {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+
+
+@media (max-width: 720px) {
+    .agenda {
+        padding-top: 28px;
+    }
+
+    .agenda__titulo {
+        font-size: 2.375rem;
+    }
+
+    .agenda__resumo {
+        font-size: 1rem;
+    }
+
+    .agenda__barra {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 24px 0;
+    }
+
+    .filtros__botao {
+        font-size: 0.875rem;
+        padding: 9px 14px;
+    }
+
+    .cartao-evento {
+        grid-template-columns: 64px minmax(0, 1fr);
+        grid-template-areas:
+            "data estado"
+            "texto texto"
+            "cartaz cartaz"
+            "link link";
+        column-gap: 14px;
+        row-gap: 0;
+        padding: 16px;
+    }
+
+    .cartao-evento__data {
+        width: 64px;
+        height: 86px;
+    }
+
+    .cartao-evento__dia {
+        font-size: 1.75rem;
+    }
+
+    .cartao-evento__mes {
+        margin-top: 6px;
+        font-size: 0.75rem;
+    }
+
+    .cartao-evento__ano {
+        font-size: 0.6875rem;
+    }
+
+    /* No celular a etiqueta de estado sobe para o lado da data */
+    .cartao-evento__corpo {
+        display: contents;
+    }
+
+    .cartao-evento__corpo > .etiqueta-estado {
+        grid-area: estado;
+        justify-self: start;
+    }
+
+    .cartao-evento__texto {
+        grid-area: texto;
+    }
+
+    .cartao-evento__link {
+        grid-area: link;
+        margin-top: 20px;
+    }
+
+    .cartao-evento__titulo {
+        font-size: 1.375rem;
+        margin-top: 18px;
+    }
+
+    .cartao-evento__info {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    .cartao-evento__cartaz {
+        width: 100%;
+        max-width: 420px;
+        margin-top: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .filtros__botao,
+    .cartao-evento__link {
+        transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+    }
+}

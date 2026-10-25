@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Editar conteúdo | SigCECP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../../assets/style/base.css">
+  <link rel="stylesheet" href="../../assets/style/componentes.css">
+  <link rel="stylesheet" href="../../assets/style/editar-conteudo.css">
+</head>
+
+<body>
+  <!-- Ícones reaproveitados via <use> -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-imagem" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4z"/></symbol>
+    <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+    <symbol id="i-globo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></symbol>
+  </svg>
+
+  <header class="topo">
+    <div class="container topo__linha">
+      <a class="marca" href="editar-conteudo.html" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+        <img class="marca__logo" src="../../assets/img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png" alt="" width="44" height="44">
+        <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+      </a>
+
+      <div class="topo__direita">
+        <a class="topo__link" href="../../publico/modulo-conteudo.html" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+        <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="pagina container">
+    <nav class="trilha" aria-label="Você está em">
+      <ol>
+        <li><a href="#">Coordenação</a></li>
+        <li><a href="lista-conteudo.html">Conteúdos</a></li>
+        <li aria-current="page">Editar</li>
+      </ol>
+    </nav>
+
+    <h1 class="pagina__titulo">Editar conteúdo</h1>
+    <p class="pagina__sub">Revise as informações e gerencie as mídias da publicação.</p>
+
+    <form id="form" class="layout" novalidate>
+      <div class="coluna">
+
+        <section class="bloco" aria-labelledby="bloco-info">
+          <h2 id="bloco-info" class="bloco__titulo"><span class="bloco__num">01</span>Informações da publicação</h2>
+
+          <div class="campo">
+            <label for="titulo">Título <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input id="titulo" name="titulo" type="text" maxlength="120" required autocomplete="off" aria-describedby="erro-titulo">
+            <p id="erro-titulo" class="erro" hidden>Preencha o título para salvar as alterações.</p>
+          </div>
+
+          <div class="campo">
+            <label for="texto">Texto (opcional)</label>
+            <textarea id="texto" name="texto" rows="7"></textarea>
+          </div>
+        </section>
+
+        <section class="midias-card">
+           <header class="midias-cabecalho">
+                <span class="midias-numero">02</span>
+
+                <div class="midias-titulo">
+                    <h2>Imagens e vídeo</h2>
+                    <p>
+                        Mídias opcionais. O conteúdo também pode ser publicado sem anexos.
+                    </p>
+                </div>
+            </header>
+
+            <div class="midias-conteudo">
+                <!-- Área de imagens -->
+                <div class="grupo-midias">
+                    <h3>Imagens</h3>
+
+                    
+
+                    <label class="area-upload" for="adicionar-imagens">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <rect x="3" y="3" width="13" height="13" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="m16 13-4-4-6 7"/>
+                            <path d="M19 3v6"/>
+                            <path d="M16 6h6"/>
+                        </svg>
+
+                        <div class="upload-informacoes">
+                            <span>Adicionar imagens</span>
+                            <small>
+                                Selecione ou arraste arquivos de imagem • opcional
+                            </small>
+                        </div>
+
+                        <span class="upload-mais" aria-hidden="true">+</span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="adicionar-imagens"
+                        name="imagens"
+                        accept="image/*"
+                        multiple
+                        hidden
+                    >
+                </div>
+
+                <!-- Área de vídeo -->
+                <div class="grupo-midias">
+                    <h3>Vídeo</h3>
+
+                    <label class="area-upload" for="adicionar-video">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <rect x="3" y="6" width="13" height="12" rx="2"/>
+                            <path d="m16 10 5-3v10l-5-3"/>
+                        </svg>
+
+                        <div class="upload-informacoes">
+                            <span>Adicionar vídeo</span>
+                            <small>
+                                Selecione um arquivo de vídeo • opcional
+                            </small>
+                        </div>
+
+                        <span class="upload-mais" aria-hidden="true">+</span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="adicionar-video"
+                        name="video"
+                        accept="video/*"
+                        hidden
+                    >
+                </div>
+            </div>
+        </section>
+
+        <div class="acoes">
+          <div class="acoes__botoes">
+            <a class="botao botao--claro" href="conteudos.html" id="cancelar">Cancelar</a>
+            <button class="botao botao--vermelho" type="submit" id="salvar">Salvar alterações</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="lateral" aria-label="Situação da publicação">
+        <div class="lateral__cartao">
+          <svg class="icone icone--grande" aria-hidden="true"><use href="#i-globo"/></svg>
+          <h2>Conteúdo já publicado</h2>
+          <p>As alterações substituem a versão pública assim que forem salvas.</p>
+          <p class="lateral__data">Publicado em: --/--/---- <time id="data-publicacao"></time></p>
+        </div>
+      </aside>
+    </form>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </main>
+
+</body>
+</html>
