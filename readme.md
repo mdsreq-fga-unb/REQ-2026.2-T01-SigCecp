@@ -161,7 +161,23 @@ textos. Continuam pendentes as regras de virada de dia, relação entre
 início e término, prazo de pagamento, valores permitidos e tratamento
 de dados de pagamento em eventos gratuitos. Dados de pagamento válidos
 informados em eventos gratuitos são mantidos. RF17 e RF20 seguem parciais;
-não há integração dos serviços com rotas ou formulários nesta entrega.
+o formulário de cadastro ainda não está integrado ao serviço de criação.
+
+## 7. Consulta pública de eventos
+
+Com as migrações aplicadas, `/eventos` lista os registros e
+`/eventos/{id}` mostra os detalhes, sem login. Um ID inexistente retorna
+404. O estado é calculado em cada consulta, sem coluna no banco.
+
+O fuso `America/Sao_Paulo` segue a indicação de horário de Brasília dos
+formulários; `tzdata` fornece as regras de fuso em ambientes sem base
+do sistema, como Windows. A documentação de RF20 não define fuso nem
+eventos que atravessam a meia-noite. Provisoriamente, início e término
+são interpretados na data cadastrada; o instante exato do início é
+"Em andamento" e o instante exato do término ainda é "Em andamento".
+Após o término, o estado é "Encerrado". Se o término for anterior ao
+início, a duração noturna não pode ser representada corretamente sem
+uma regra ou data final definida pelo grupo.
 
 
 
