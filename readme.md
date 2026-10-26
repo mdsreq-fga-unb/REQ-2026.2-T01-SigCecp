@@ -65,6 +65,38 @@ Execute esse comando com o ambiente virtual ativado.
 
 ## 4. Execute a aplicação
 
+Antes de iniciar, prepare o banco pelas migrações. A aplicação não cria
+tabelas nem executa migrações automaticamente.
+
+Na raiz do projeto, com o ambiente virtual ativo, para um banco vazio:
+
+``` powershell
+# Opcional: selecione a conexão; sem isso, vale a configuração de backend/database.py.
+$env:DATABASE_URL = "sqlite:///sigcecp.db"
+python -m alembic upgrade head
+```
+
+O Alembic reutiliza `DATABASE_URL` (ambiente ou `.env`) e a conexão
+definida em `backend/database.py`. Não salve credenciais no `alembic.ini`.
+A revisão `0001_baseline_publicacoes` contém somente as tabelas
+preexistentes `publicacoes` e `publicacao_midias`.
+
+Para um banco existente criado por `create_all`, não execute a baseline
+diretamente: compare antes tabelas, colunas, tipos, nulabilidade,
+índices e chaves com essa revisão. Só depois de confirmar equivalência
+e preparar um backup, marque manualmente a baseline e aplique as
+migrações posteriores:
+
+``` powershell
+python -m alembic stamp 0001_baseline_publicacoes
+python -m alembic upgrade head
+```
+
+O `stamp` apenas registra a revisão; não corrige diferenças de estrutura.
+Se houver diferenças, reconcilie-as antes de marcar a baseline.
+Use sempre a conexão pretendida; para verificações, escolha um SQLite
+descartável. Nenhum desses comandos roda automaticamente no startup.
+
 Inicie o servidor de desenvolvimento com:
 
 ``` bash
