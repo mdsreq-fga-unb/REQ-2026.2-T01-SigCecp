@@ -15,6 +15,17 @@
   gap: 20px;
 }
 
+.container {
+  width: 100%;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding-inline: 32px;
+}
+
+.pagina {
+  padding-block: 28px 64px;
+}
+
 /* Cartão do formulário */
 
 .formulario-card {
@@ -280,39 +291,13 @@
   line-height: 1.5;
 }
 
-.acoes-publicacao {
+.acoes {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borda);
 }
 
-.acoes-publicacao button {
-  min-height: 49px;
-  padding: 0 20px;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  font-family: inherit;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
-}
 
-.botao-cancelar {
-  background: var(--branco);
-  color: var(--preto);
-  border-color: #e0e0e0 !important;
-}
-
-.botao-cancelar:hover {
-  background: #f0f0f0;
-  border-color: #ccc !important;
-}
-
-.botao-publicar {
-  background: #d71920;
-  color: var(--branco);
-}
-
-.botao-publicar:hover {
-  background: #b9151b;
-}
