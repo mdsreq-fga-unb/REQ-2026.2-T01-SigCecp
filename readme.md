@@ -123,5 +123,45 @@ terminal.
 Na próxima vez que abrir um terminal para trabalhar no projeto, entre na
 pasta e ative o ambiente virtual novamente.
 
+## 6. Persistência e serviços de eventos
+
+A revisão `0002_cria_eventos`, posterior à baseline, adiciona somente
+a tabela `eventos`. As migrações devem estar aplicadas antes de usar
+os serviços em `backend/eventos/services.py`.
+
+`criar_evento(db, dados)` recebe uma `Session` dedicada, sem alterações
+pendentes de outras operações, e um `EventoCreate` validado. O serviço
+confirma a transação, faz rollback em falhas anteriores à confirmação
+e não fecha a sessão recebida. O chamador (incluindo o router futuro)
+não deve repetir o commit. Se a leitura de atualização após o commit
+falhar, o evento já estará gravado e não será desfeito por rollback.
+
+`listar_eventos(db)` retorna uma lista ordenada por `data`, `inicio`
+e `id`, crescentes. `buscar_evento_por_id(db, evento_id)` retorna o
+registro ou `None`. As consultas não fazem commit.
+
+Escolhas técnicas de armazenamento, ainda não regras aprovadas pelo cliente:
+
+- `titulo`, `subtitulo` e `nome`: `String(120)`, acompanhando os formulários.
+- `local` e `meio_pagamento`: `String(255)`.
+- `descricao`: `Text`, com limite de 16.000 caracteres no schema para
+  caber no `TEXT` do MySQL mesmo com caracteres UTF-8 de quatro bytes.
+- `valor`: `Numeric(12, 2)`, retornado como `Decimal`. O schema rejeita
+  valores fora da precisão (dez dígitos inteiros e dois decimais) para
+  evitar arredondamento silencioso. Não foram definidos mínimo positivo
+  ou proibição de zero/negativos.
+- `pesagem`: `String(13)` com restrição `CHECK`, aceitando `sim`, `nao`
+  e `nao_se_aplica`, sem tipo ENUM específico de um banco. Em MySQL,
+  a aplicação da restrição depende de uma versão que execute `CHECK`.
+- Horários locais, sem fuso nem frações de segundo, para não perder
+  informação no `TIME` padrão do MySQL; o schema rejeita esses formatos.
+
+O schema valida os limites textuais antes da persistência e não corta
+textos. Continuam pendentes as regras de virada de dia, relação entre
+início e término, prazo de pagamento, valores permitidos e tratamento
+de dados de pagamento em eventos gratuitos. Dados de pagamento válidos
+informados em eventos gratuitos são mantidos. RF17 e RF20 seguem parciais;
+não há integração dos serviços com rotas ou formulários nesta entrega.
+
 
 
