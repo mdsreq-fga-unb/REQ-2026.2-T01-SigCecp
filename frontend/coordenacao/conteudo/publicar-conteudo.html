@@ -1,44 +1,33 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publicar Conteúdo | SigCECP</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="../../assets/style/base.css">
-  <link rel="stylesheet" href="../../assets/style/componentes.css">
-  <link rel="stylesheet" href="../../assets/style/publicar-conteudo.css">
-  <link rel="shortcut icon" href="../assets/img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png" type="image/x-icon">
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block titulo %}Publicar conteúdo | SigCECP{% endblock %}
 
+{% block cabecalho %}
   <header class="topo">
     <div class="container topo__linha">
-      <a class="marca" href="publicar-conteudo.html" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
-        <img class="marca__logo" src="../../assets/img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png" alt="" width="44" height="44">
+      <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+        <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
         <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
       </a>
 
       <div class="topo__direita">
-        <a class="topo__link" href="../../publico/modulo-conteudo.html" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+        <a class="topo__link" href="{{ url_for('modulo_conteudo_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
         <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
       </div>
     </div>
   </header>
+{% endblock %}
 
-
-
-  <main class="pagina container">
+{% block corpo %}
+<main class="pagina container">
     <div class="layout">
 
     <section class="publicar-conteudo">
     <header class="pagina-cabecalho">
        <nav class="trilha" aria-label="Você está em">
       <ol>
-        <li><a href="#">Coordenação</a></li>
-        <li><a href="lista-conteudo.html">Conteúdos</a></li>
+        <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+        <li><a href="{{ url_for('lista_conteudo') }}">Conteúdos</a></li>
         <li aria-current="page">Nova Publicação</li>
       </ol>
     </nav>
@@ -52,13 +41,14 @@
 
     
 
+    <form class="formulario-publicacao" method="post" enctype="multipart/form-data" action="{{ url_for('salvar_conteudo') }}">
     <section class="formulario-card">
         <div class="secao-cabecalho">
             <span class="secao-numero">01</span>
             <h2>Informações da publicação</h2>
         </div>
 
-        <form class="formulario-publicacao">
+
             <div class="campo-formulario">
                 <label for="titulo">Título <span>*</span></label>
 
@@ -80,7 +70,6 @@
                     placeholder="Conte a história, compartilhe uma notícia ou deixe este campo em branco."
                 ></textarea>
             </div>
-        </form>
     </section>
 
 
@@ -188,14 +177,13 @@
 
     <div class="acoes">
           <div class="acoes__botoes">
-            <a class="botao botao--claro" href="conteudos.html" id="cancelar">Cancelar</a>
+            <a class="botao botao--claro" href="{{ url_for('lista_conteudo') }}" id="cancelar">Cancelar</a>
             <button class="botao botao--vermelho" type="submit" id="salvar">Publicar conteúdo</button>
           </div>
         </div>
 
 
+    </form>
   </div>
   </main>
-
-</body>
-</html>
+{% endblock %}
