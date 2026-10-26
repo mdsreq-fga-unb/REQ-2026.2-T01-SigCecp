@@ -1,8 +1,29 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from backend.eventos.models import Evento
 from backend.eventos.schemas import EventoCreate
+
+
+FUSO_BRASILIA = ZoneInfo("America/Sao_Paulo")
+
+
+def calcular_estado(evento: Evento, agora: datetime) -> str:
+    if agora.tzinfo is None or agora.utcoffset() is None:
+        raise ValueError("O instante atual deve incluir o fuso horário.")
+
+    instante_local = agora.astimezone(FUSO_BRASILIA)
+    inicio = datetime.combine(evento.data, evento.inicio, tzinfo=FUSO_BRASILIA)
+    termino = datetime.combine(evento.data, evento.termino, tzinfo=FUSO_BRASILIA)
+
+    if instante_local < inicio:
+        return "Em breve"
+    if instante_local <= termino:
+        return "Em andamento"
+    return "Encerrado"
 
 
 def criar_evento(db: Session, dados: EventoCreate) -> Evento:

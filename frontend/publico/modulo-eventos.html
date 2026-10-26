@@ -18,14 +18,14 @@
     <div>
         <header class="topo">
             <div class="container topo__linha">
-            <a class="marca" href="eventos" aria-label="Centro Esportivo Cultural de Planaltina-DF, página inicial">
+            <a class="marca" href="/" aria-label="Centro Esportivo Cultural de Planaltina-DF, página inicial">
                 <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="52" height="52">
                 <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
             </a>
 
             <nav class="menu" aria-label="Principal">
-                <a class="menu__item" href="/" aria-current="page">Institucional</a>
-                <a class="menu__item menu__item--ativo" href="eventos" aria-current="page">Eventos</a>
+                <a class="menu__item" href="/">Institucional</a>
+                <a class="menu__item menu__item--ativo" href="/eventos" aria-current="page">Eventos</a>
             </nav>
 
             <a class="acesso" href="/coordenacao/conteudo">Acesso da coordenação <span aria-hidden="true">↗</span></a>
@@ -43,16 +43,38 @@
             <p class="agenda__resumo">Acompanhe os eventos esportivos e culturais de Planaltina. Veja a programação e todos os detalhes, sem login.</p>
         </section>
 
-        <div class="agenda__barra">
-            <div class="filtros" id="filtros" role="group" aria-label="Filtrar eventos por estado">
-            </div>
-            <p class="agenda__referencia" id="referencia"></p>
-        </div>
-
-        <ul class="lista-eventos" id="lista-eventos" aria-live="polite">
+        {% if eventos %}
+        <p class="agenda__referencia">Datas e horários de Brasília.</p>
+        <ul class="lista-eventos" aria-label="Eventos publicados">
+            {% for evento, estado in eventos %}
+            <li class="cartao-evento{% if estado == 'Em breve' %} cartao-evento--em-breve{% endif %}">
+                <div class="cartao-evento__data" aria-label="{{ evento.data.strftime('%d/%m/%Y') }}">
+                    <span class="cartao-evento__dia">{{ evento.data.strftime('%d') }}</span>
+                    <span class="cartao-evento__mes">{{ evento.data.strftime('%m') }}</span>
+                    <span class="cartao-evento__ano">{{ evento.data.strftime('%Y') }}</span>
+                </div>
+                <div class="cartao-evento__corpo">
+                    <span class="etiqueta-estado{% if estado == 'Em breve' %} etiqueta-estado--em-breve{% elif estado == 'Em andamento' %} etiqueta-estado--em-andamento{% endif %}">{{ estado }}</span>
+                    <div class="cartao-evento__texto">
+                        <h2 class="cartao-evento__titulo">{{ evento.titulo }}</h2>
+                        <p class="cartao-evento__subtitulo">{{ evento.subtitulo }}</p>
+                        <ul class="cartao-evento__info">
+                            <li>Horário: {{ evento.inicio.strftime('%H:%M') }}–{{ evento.termino.strftime('%H:%M') }}</li>
+                            <li>Local: {{ evento.local }}</li>
+                        </ul>
+                    </div>
+                    <a class="cartao-evento__link" href="{{ url_for('detalhe_evento_publico', evento_id=evento.id) }}">Ver detalhes</a>
+                </div>
+            </li>
+            {% endfor %}
         </ul>
-
-        <p class="agenda__contagem" id="contagem"></p>
+        <p class="agenda__contagem">{{ eventos|length }} evento{% if eventos|length != 1 %}s{% endif %} publicado{% if eventos|length != 1 %}s{% endif %}.</p>
+        {% else %}
+        <div class="lista-eventos__vazio">
+            <h2 class="lista-eventos__vazio-titulo">Nenhum evento publicado.</h2>
+            <p class="lista-eventos__vazio-texto">Volte em breve para conferir a programação.</p>
+        </div>
+        {% endif %}
     </main>
 
     <footer class="rodape">

@@ -130,12 +130,13 @@
     padding: 0;
     display: grid;
     gap: 20px;
+    margin-top: 24px;
 }
 
 .cartao-evento {
     display: grid;
-    grid-template-columns: 100px minmax(0, 1fr) auto;
-    grid-template-areas: "data corpo cartaz";
+    grid-template-columns: 100px minmax(0, 1fr);
+    grid-template-areas: "data corpo";
     column-gap: 28px;
     align-items: center;
     padding: 24px;
@@ -301,6 +302,38 @@
     color: var(--ev-cinza-texto);
 }
 
+.detalhe-evento {
+    max-width: 800px;
+    margin-top: 28px;
+}
+
+.detalhe-evento .agenda__titulo {
+    margin: 18px 0;
+}
+
+.detalhe-evento__dados {
+    display: grid;
+    gap: 18px;
+    margin: 36px 0;
+}
+
+.detalhe-evento__dados div {
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--ev-cinza-claro);
+}
+
+.detalhe-evento__dados dt {
+    font-weight: 700;
+}
+
+.detalhe-evento__dados dd {
+    margin: 4px 0 0;
+}
+
+.detalhe-evento__descricao {
+    white-space: pre-line;
+}
+
 /* ---------- Tablet ---------- */
 
 @media (max-width: 1024px) {
@@ -315,9 +348,7 @@
 
     .cartao-evento {
         grid-template-columns: 100px minmax(0, 1fr);
-        grid-template-areas:
-            "data corpo"
-            "cartaz cartaz";
+        grid-template-areas: "data corpo";
         row-gap: 20px;
     }
 
@@ -358,7 +389,6 @@
         grid-template-areas:
             "data estado"
             "texto texto"
-            "cartaz cartaz"
             "link link";
         column-gap: 14px;
         row-gap: 0;

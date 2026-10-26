@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ evento.titulo }} | SigCECP</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style/modulo-conteudo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/modulo-eventos.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/x-icon">
+</head>
+<body>
+    <header class="topo">
+        <div class="container topo__linha">
+            <a class="marca" href="/" aria-label="Centro Esportivo Cultural de Planaltina-DF, página inicial">
+                <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="52" height="52">
+                <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+            </a>
+            <nav class="menu" aria-label="Principal">
+                <a class="menu__item" href="/">Institucional</a>
+                <a class="menu__item menu__item--ativo" href="/eventos" aria-current="page">Eventos</a>
+            </nav>
+            <a class="acesso" href="/coordenacao/conteudo">Acesso da coordenação <span aria-hidden="true">↗</span></a>
+        </div>
+    </header>
+
+    <main class="container agenda">
+        <a class="cartao-evento__link" href="/eventos">← Voltar aos eventos</a>
+        <article class="detalhe-evento" aria-labelledby="evento-titulo">
+            <p class="agenda__rotulo"><span class="agenda__traco" aria-hidden="true"></span>Agenda CECP</p>
+            <span class="etiqueta-estado{% if estado == 'Em breve' %} etiqueta-estado--em-breve{% elif estado == 'Em andamento' %} etiqueta-estado--em-andamento{% endif %}">{{ estado }}</span>
+            <h1 id="evento-titulo" class="agenda__titulo">{{ evento.titulo }}</h1>
+            <p class="agenda__resumo">{{ evento.subtitulo }}</p>
+
+            <dl class="detalhe-evento__dados">
+                <div><dt>Nome do evento ou competição</dt><dd>{{ evento.nome }}</dd></div>
+                <div><dt>Data</dt><dd>{{ evento.data.strftime('%d/%m/%Y') }}</dd></div>
+                <div><dt>Horário de Brasília</dt><dd>{{ evento.inicio.strftime('%H:%M') }}–{{ evento.termino.strftime('%H:%M') }}</dd></div>
+                <div><dt>Local</dt><dd>{{ evento.local }}</dd></div>
+                <div><dt>Alimentação</dt><dd>{{ 'Haverá' if evento.alimentacao else 'Não haverá' }}</dd></div>
+                <div><dt>Pesagem</dt><dd>{% if evento.pesagem == 'sim' %}Haverá{% elif evento.pesagem == 'nao' %}Não haverá{% else %}Não se aplica{% endif %}</dd></div>
+                <div><dt>Cobrança</dt><dd>{{ 'Evento cobrado' if evento.cobrado else 'Gratuito' }}</dd></div>
+                {% if evento.cobrado %}
+                <div><dt>Valor</dt><dd>{% if evento.valor is not none %}R$ {{ evento.valor }}{% else %}Não informado{% endif %}</dd></div>
+                <div><dt>Data limite para pagamento</dt><dd>{{ evento.data_limite_pagamento.strftime('%d/%m/%Y') if evento.data_limite_pagamento else 'Não informada' }}</dd></div>
+                <div><dt>Meio de pagamento</dt><dd>{{ evento.meio_pagamento or 'Não informado' }}</dd></div>
+                {% endif %}
+            </dl>
+
+            <section aria-labelledby="descricao-titulo">
+                <h2 id="descricao-titulo">Descrição</h2>
+                <p class="detalhe-evento__descricao">{{ evento.descricao }}</p>
+            </section>
+        </article>
+    </main>
+
+    <footer class="rodape">
+        <div class="container rodape__linha">
+            <div class="rodape__marca">
+                <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="52" height="52">
+                <div>
+                    <p class="rodape__nome">Centro Esportivo Cultural de Planaltina-DF</p>
+                    <p class="rodape__lema">Esporte e cultura que conectam pessoas.</p>
+                </div>
+            </div>
+            <nav class="rodape__nav" aria-label="Rodapé">
+                <a href="/">Institucional</a>
+                <a href="/eventos">Eventos</a>
+                <a href="/coordenacao/conteudo">Acesso da coordenação</a>
+            </nav>
+        </div>
+        <div class="container rodape__base">
+            <p>&copy; 2026 Centro Esportivo Cultural de Planaltina-DF. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
