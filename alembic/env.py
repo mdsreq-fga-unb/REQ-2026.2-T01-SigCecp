@@ -1,6 +1,7 @@
 from alembic import context
 
 from backend.database import Base, DATABASE_URL, engine
+from backend.eventos import models as eventos_models
 from backend.publicacoes import models as publicacoes_models
 
 target_metadata = Base.metadata

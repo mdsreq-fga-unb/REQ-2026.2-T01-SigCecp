@@ -6,20 +6,22 @@ from pydantic import BaseModel, Field, ValidationInfo, field_validator, model_va
 
 
 class EventoCreate(BaseModel):
-    titulo: str
-    subtitulo: str
-    nome: str
+    titulo: str = Field(max_length=120)
+    subtitulo: str = Field(max_length=120)
+    nome: str = Field(max_length=120)
     data: date
     inicio: time
     termino: time
-    local: str
-    descricao: str
+    local: str = Field(max_length=255)
+    descricao: str = Field(max_length=16000)
     alimentacao: bool
     pesagem: Literal["sim", "nao", "nao_se_aplica"]
     cobrado: bool
-    valor: Decimal | None = Field(default=None, allow_inf_nan=False)
+    valor: Decimal | None = Field(
+        default=None, allow_inf_nan=False, max_digits=12, decimal_places=2,
+    )
     data_limite_pagamento: date | None = None
-    meio_pagamento: str | None = None
+    meio_pagamento: str | None = Field(default=None, max_length=255)
 
     @field_validator("*", mode="before")
     @classmethod
@@ -39,6 +41,15 @@ class EventoCreate(BaseModel):
     @classmethod
     def normalizar_meio_pagamento(cls, valor: str | None) -> str | None:
         return valor or None
+
+    @field_validator("inicio", "termino")
+    @classmethod
+    def validar_horario_local(cls, valor: time) -> time:
+        if valor.tzinfo is not None:
+            raise ValueError("Informe o horário local sem informação de fuso.")
+        if valor.microsecond:
+            raise ValueError("Informe o horário com precisão de segundos, sem frações.")
+        return valor
 
     @model_validator(mode="after")
     def validar_pagamento(self) -> Self:
