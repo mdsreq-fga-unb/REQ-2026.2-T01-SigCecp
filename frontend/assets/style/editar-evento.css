@@ -1,0 +1,416 @@
+/* Estrutura da página */
+
+.pagina {
+  padding-block: 28px 64px;
+}
+
+.pagina__titulo {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.pagina__sub {
+  margin: 0 0 32px;
+  font-size: 14px;
+  color: var(--cinza-texto);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 24px 32px;
+  align-items: start;
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Blocos de conteúdo */
+
+.bloco {
+  padding: 28px 32px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+}
+
+.bloco__titulo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 20px;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.bloco__num {
+  font-size: 11px;
+  color: var(--cinza-claro);
+}
+
+.bloco__sub {
+  margin: -12px 0 24px;
+  font-size: 12px;
+  color: var(--cinza-claro);
+}
+
+.ajuda {
+  margin: -8px 0 24px;
+  font-size: 12px;
+  color: var(--cinza-claro);
+}
+
+.linha-tres {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.linha-dois {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+
+.campo-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.campo-opcoes > label {
+  font-size: 13px;
+  color: var(--preto);
+}
+
+
+.opcoes-radio {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+
+.opcao-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--preto);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+
+.opcao-radio input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--preto);
+  cursor: pointer;
+}
+
+
+.opcao-radio:has(input[type="radio"]:checked) {
+  font-weight: 600;
+}
+
+/* Cartão de mídias */
+
+.midias-card {
+  padding: 28px 32px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+}
+
+.midias-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.midias-numero {
+  flex: none;
+  padding-top: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cinza-claro);
+}
+
+.midias-titulo {
+  min-width: 0;
+}
+
+.midias-titulo h2 {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.midias-titulo p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--cinza-claro);
+}
+
+.midias-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.grupo-midias {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.grupo-midias h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--preto);
+}
+
+/* Área de upload */
+
+.area-upload {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 76px;
+  padding: 16px;
+  color: var(--preto);
+  background: var(--branco);
+  border: 1px dashed #b9b9b6;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.area-upload:hover {
+  background: #fafaf9;
+  border-color: var(--preto);
+}
+
+.area-upload:focus-within {
+  outline: 3px solid #f2c200;
+  outline-offset: 3px;
+}
+
+.area-upload > svg {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--cinza-texto);
+}
+
+.upload-informacoes {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.upload-informacoes small {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--cinza-claro);
+}
+
+.upload-mais {
+  display: grid;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--cinza-claro);
+  transition:
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.area-upload:hover .upload-mais {
+  color: var(--preto);
+  transform: scale(1.08);
+}
+
+/* Coluna lateral */
+
+.lateral {
+  position: sticky;
+  top: 24px;
+}
+
+.lateral__cartao {
+  padding: 24px;
+  background: var(--branco);
+  border-radius: 8px;
+  border: 1px solid var(--borda);
+}
+
+.lateral__cartao h2 {
+  margin: 16px 0 12px;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.lateral__cartao p {
+  margin: 0 0 16px;
+  font-size: 11px;
+  color: var(--cinza-texto);
+}
+
+.lateral__data {
+  margin: 0 !important;
+  color: var(--cinza-claro) !important;
+}
+
+.lateral__aviso {
+  margin-top: 20px;
+  padding: 16px;
+  font-size: 12px;
+  background: #f0f0ee;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.lateral__aviso .icone {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.lateral__aviso h2 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--preto);
+}
+
+.lateral__aviso .ajuda {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--cinza-texto);
+}
+
+/* Ações do formulário */
+
+.acoes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borda);
+}
+
+.acoes__nota {
+  margin: 0;
+  font-size: 11px;
+  color: var(--cinza-claro);
+}
+
+.acoes__botoes {
+  display: flex;
+  gap: 12px;
+}
+
+.infos {
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borda);
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lateral {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .bloco {
+    padding: 20px 16px;
+  }
+
+  .acoes {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .acoes__botoes {
+    justify-content: flex-end;
+  }
+
+  .midias-card {
+    padding: 20px 16px;
+  }
+
+  .midias-cabecalho {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .midias-titulo h2 {
+    font-size: 1rem;
+  }
+
+  .midias-conteudo {
+    gap: 20px;
+  }
+
+  .area-upload {
+    gap: 12px;
+    min-height: 72px;
+    padding: 12px;
+  }
+
+  .upload-informacoes {
+    font-size: 12px;
+  }
+
+  .upload-informacoes small {
+    font-size: 10px;
+  }
+}
