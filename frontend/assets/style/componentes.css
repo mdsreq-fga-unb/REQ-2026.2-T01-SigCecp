@@ -157,6 +157,21 @@ textarea:hover {
   border-color: #c9c9c6;
 }
 
+
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--preto);
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+
 textarea {
   resize: vertical;
   line-height: 1.6;

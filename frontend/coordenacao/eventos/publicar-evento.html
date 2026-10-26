@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Publicar evento | SigCECP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../../assets/style/base.css">
+  <link rel="stylesheet" href="../../assets/style/componentes.css">
+  <link rel="stylesheet" href="../../assets/style/publicar-evento.css">
+</head>
+
+<body>
+  <!-- Ícones reaproveitados via <use> -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-imagem" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4z"/></symbol>
+    <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+    <symbol id="i-globo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></symbol>
+    <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 3v4M8 3v4M3 10h18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 14h2M12 14h2M7 17h2M12 17h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+</symbol>
+  </svg>
+
+  <header class="topo">
+    <div class="container topo__linha">
+      <a class="marca" href="editar-conteudo.html" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+        <img class="marca__logo" src="../../assets/img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png" alt="" width="44" height="44">
+        <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+      </a>
+
+      <div class="topo__direita">
+        <a class="topo__link" href="../../publico/modulo-conteudo.html" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+        <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="pagina container">
+    <nav class="trilha" aria-label="Você está em">
+      <ol>
+        <li><a href="#">Coordenação</a></li>
+        <li><a href="lista-conteudo.html">Eventos</a></li>
+        <li aria-current="page">Novo Evento</li>
+      </ol>
+    </nav>
+
+    <h1 class="pagina__titulo">Publicar evento</h1>
+    <p class="pagina__sub">Apresente o evento com todas as informações que a comunidade precisa.</p>
+
+    <form id="form" class="layout" novalidate>
+      <div class="coluna">
+
+        <section class="bloco" aria-labelledby="bloco-info">
+          <h2 id="bloco-info" class="bloco__titulo"><span class="bloco__num">01</span>Informações da publicação</h2>
+             <p class="ajuda" id="ajuda-horario">Título, subtítulo e nome da competição são informações distintas.</p>
+        
+          <div class="campo">
+            <label for="titulo">Título da publicação <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input id="titulo" name="titulo" type="text" maxlength="120" required autocomplete="off" aria-describedby="erro-titulo">
+            <p id="erro-titulo" class="erro" hidden>Preencha o título para salvar as alterações.</p>
+          </div>
+
+          <div class="campo">
+            <label for="subtitulo">Subtítulo <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input id="subtitulo" name="subtitulo" type="text" maxlength="120" required autocomplete="off" aria-describedby="erro-subtitulo">
+            <p id="erro-subtitulo" class="erro" hidden>Preencha o subtítulo para salvar as alterações.</p>
+          </div>
+
+          <div class="campo">
+            <label for="nome">Nome do evento / competição <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input id="nome" name="nome" type="text" maxlength="120" required autocomplete="off" aria-describedby="erro-nome">
+            <p id="erro-nome" class="erro" hidden>Preencha o nome do evento / competição para salvar as alterações.</p>
+          </div>
+        </section>
+
+        <section class="bloco" aria-labelledby="bloco-data">
+            <h2 id="bloco-data" class="bloco__titulo"><span class="bloco__num">02</span>Data, horário e local</h2>
+
+            <div class="linha-tres">
+                <div class="campo">
+                <label for="data">Data <span class="obrigatorio" aria-hidden="true">*</span></label>
+                <input id="data" name="data" type="date" required>
+                </div>
+
+                <div class="campo">
+                <label for="inicio">Horário de início <span class="obrigatorio" aria-hidden="true">*</span></label>
+                <input id="inicio" name="inicio" type="time" required>
+                </div>
+
+                <div class="campo">
+                <label for="termino">Horário de término <span class="obrigatorio" aria-hidden="true">*</span></label>
+                <input id="termino" name="termino" type="time" required>
+                </div>
+            </div>
+
+            <p class="ajuda" id="ajuda-horario">Horário de Brasília. O término deve ser posterior ao início.</p>
+
+            <div class="campo">
+                <label for="local">Local <span class="obrigatorio" aria-hidden="true">*</span></label>
+                <input id="local" name="local" type="text" required>
+            </div>
+        </section>
+
+
+         <section class="bloco" aria-labelledby="bloco-info">
+          <h2 id="bloco-info" class="bloco__titulo"><span class="bloco__num">03</span>Informações da publicação</h2>
+
+          <div class="campo">
+            <label for="descricao">Descrição <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <textarea id="descricao" name="descricao" rows="5" required autocomplete="off" aria-describedby="erro-descricao"></textarea>
+            <p id="erro-descricao" class="erro" hidden>Preencha a descricao para salvar as alterações.</p>
+          </div>
+
+          
+        <div class="linha-dois">
+
+        <div class="campo-opcoes">
+            <label>Alimentação <span class="obrigatorio">*</span></label>
+
+            <div class="opcoes-radio">
+            <label class="opcao-radio">
+                <input type="radio" name="alimentacao" value="sim" required>
+                Haverá
+            </label>
+
+            <label class="opcao-radio">
+                <input type="radio" name="alimentacao" value="nao">
+                Não haverá
+            </label>
+            </div>
+        </div>
+
+        <div class="campo-opcoes">
+            <label>Pesagem <span class="obrigatorio">*</span></label>
+
+            <div class="opcoes-radio">
+            <label class="opcao-radio">
+                <input type="radio" name="pesagem" value="sim" required>
+                Haverá
+            </label>
+
+            <label class="opcao-radio">
+                <input type="radio" name="pesagem" value="nao">
+                Não haverá
+            </label>
+
+            <label class="opcao-radio">
+                <input type="radio" name="pesagem" value="nao_se_aplica">
+                Não se aplica
+            </label>
+            </div>
+
+            <p class="ajuda">
+            Quando não for aplicável à modalidade, selecione Não se aplica.
+            </p>
+        </div>
+
+        </div>
+
+        </section>
+
+        <section class="bloco" aria-labelledby="bloco-info">
+          <h2 id="bloco-info" class="bloco__titulo"><span class="bloco__num">04</span>Informações da publicação</h2>
+
+          <div class="campo-opcoes">
+            <label>O evento é cobrado? <span class="obrigatorio">*</span></label>
+
+            <div class="opcoes-radio">
+            <label class="opcao-radio">
+                <input type="radio" name="alimentacao" value="sim" required>
+                Sim, é cobrado
+            </label>
+
+            <label class="opcao-radio">
+                <input type="radio" name="alimentacao" value="nao">
+                Não, é gratuito
+            </label>
+            </div>
+        </div>
+
+
+        </section>
+
+        <section class="midias-card">
+           <header class="midias-cabecalho">
+                <span class="midias-numero">05</span>
+
+                <div class="midias-titulo">
+                    <h2>Imagens e vídeo</h2>
+                    <p>
+                        Anexe materiais de divulgação, se desejar. Nenhuma mídia é obrigatória.
+                    </p>
+                </div>
+            </header>
+
+            <div class="midias-conteudo">
+                <!-- Área de imagens -->
+                <div class="grupo-midias">
+                    <h3>Imagens</h3>
+
+                    
+
+                    <label class="area-upload" for="adicionar-imagens">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <rect x="3" y="3" width="13" height="13" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="m16 13-4-4-6 7"/>
+                            <path d="M19 3v6"/>
+                            <path d="M16 6h6"/>
+                        </svg>
+
+                        <div class="upload-informacoes">
+                            <span>Adicionar imagens</span>
+                            <small>
+                                Selecione ou arraste arquivos de imagem • opcional
+                            </small>
+                        </div>
+
+                        <span class="upload-mais" aria-hidden="true">+</span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="adicionar-imagens"
+                        name="imagens"
+                        accept="image/*"
+                        multiple
+                        hidden
+                    >
+                </div>
+
+                <!-- Área de vídeo -->
+                <div class="grupo-midias">
+                    <h3>Vídeo</h3>
+
+                    <label class="area-upload" for="adicionar-video">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <rect x="3" y="6" width="13" height="12" rx="2"/>
+                            <path d="m16 10 5-3v10l-5-3"/>
+                        </svg>
+
+                        <div class="upload-informacoes">
+                            <span>Adicionar vídeo</span>
+                            <small>
+                                Selecione um arquivo de vídeo • opcional
+                            </small>
+                        </div>
+
+                        <span class="upload-mais" aria-hidden="true">+</span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="adicionar-video"
+                        name="video"
+                        accept="video/*"
+                        hidden
+                    >
+                </div>
+            </div>
+        </section>
+
+        <div class="acoes">
+          <div class="acoes__botoes">
+            <a class="botao botao--claro" href="conteudos.html" id="cancelar">Cancelar</a>
+            <button class="botao botao--vermelho" type="submit" id="salvar">Publicar evento</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="lateral" aria-label="Situação da publicação">
+        <div class="lateral__cartao">
+          <svg class="icone icone--grande" aria-hidden="true"><use href="#i-calendario"/></svg>
+          <h2>Antes de publicar</h2>
+          <p>Confira as informações para que o público saiba o que, quando e onde acontece.</p>
+        <div class ="infos">
+          <p>Identificação</p>
+          <p>Data, horário e local</p>
+          <p>Descrição e estrutura</p>
+          <p>Cobrança e pagamento</p>
+          <p>Mídias opcionais</p>
+          
+        </div>
+        <div class ="infos">
+          <p>A consulta é pública, sem cadastro ou login.</p>
+          
+        </div>
+        </div>
+
+        <p class="ajuda" id="ajuda-horario">A publicação só será liberada com todos os campos obrigatórios válidos.</p>
+      </aside>
+
+      
+    </form>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </main>
+
+</body>
+</html>
