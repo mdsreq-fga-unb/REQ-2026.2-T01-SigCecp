@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}SigCECP{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style/base.css') }}">
+    {% block estilos %}{% endblock %}
+</head>
+<body>
+    {% block cabecalho %}{% endblock %}
+    {% block corpo %}{% endblock %}
+    {% block rodape %}
+    <footer class="rodape">
+        <div class="container rodape__base">
+            <p>&copy; 2026 Centro Esportivo Cultural de Planaltina-DF. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    {% endblock %}
+    {% block scripts %}{% endblock %}
+</body>
+</html>

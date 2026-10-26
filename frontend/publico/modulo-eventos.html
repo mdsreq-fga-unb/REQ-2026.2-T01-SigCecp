@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SigCECP</title>
-    <link rel="stylesheet" href="../assets/style/modulo-conteudo.css">
-    <link rel="stylesheet" href="../assets/style/modulo-eventos.css">
-    <link rel="shortcut icon" href="../assets/img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png" type="image/x-icon">
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', path='style/modulo-conteudo.css') }}"
+    >
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', path='style/modulo-eventos.css') }}"
+    >
+    <link rel="shortcut icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/x-icon">
 </head>
 <body>
     <div>
         <header class="topo">
             <div class="container topo__linha">
-            <a class="marca" href="modulo-eventos.html" aria-label="Centro Esportivo Cultural de Planaltina-DF, página inicial">
-                <img class="marca__logo" src="../assets/img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png" alt="" width="52" height="52">
+            <a class="marca" href="eventos" aria-label="Centro Esportivo Cultural de Planaltina-DF, página inicial">
+                <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="52" height="52">
                 <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
             </a>
 
             <nav class="menu" aria-label="Principal">
-                <a class="menu__item" href="modulo-conteudo.html">Institucional</a>
-                <a class="menu__item menu__item--ativo" href="..modulo-eventos.html" aria-current="page">Eventos</a>
+                <a class="menu__item" href="/" aria-current="page">Institucional</a>
+                <a class="menu__item menu__item--ativo" href="eventos" aria-current="page">Eventos</a>
             </nav>
 
-            <a class="acesso" href="/coordenacao">Acesso da coordenação <span aria-hidden="true">↗</span></a>
+            <a class="acesso" href="/coordenacao/conteudo">Acesso da coordenação <span aria-hidden="true">↗</span></a>
             </div>
         </header>
     </div>
@@ -52,17 +58,17 @@
     <footer class="rodape">
         <div class="container rodape__linha">
         <div class="rodape__marca">
-            <img class="marca__logo" src="../assets/img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png" alt="" width="52" height="52" loading="lazy">
-            <div>
+        <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="52" height="52">
+        <div>
             <p class="rodape__nome">Centro Esportivo Cultural de Planaltina-DF</p>
             <p class="rodape__lema">Esporte e cultura que conectam pessoas.</p>
-            </div>
+        </div>
         </div>
     
         <nav class="rodape__nav" aria-label="Rodapé">
-            <a href="modulo-conteudo.html">Institucional</a>
-            <a href="modulo-eventos.html">Eventos</a>
-            <a href="/coordenacao">Acesso da coordenação</a>
+            <a href="/">Institucional</a>
+            <a href="/eventos">Eventos</a>
+            <a href="/coordenacao/conteudo">Acesso da coordenação</a>
         </nav>
         </div>
     
