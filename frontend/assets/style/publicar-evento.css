@@ -263,6 +263,9 @@
   transform: scale(1.08);
 }
 
+.painel-pagamento[hidden] { display: none; }
+
+
 /* Coluna lateral */
 
 .lateral {
@@ -384,4 +387,17 @@
   .upload-informacoes small {
     font-size: 10px;
   }
+}
+
+@media (max-width: 760px) {
+    .painel-pagamento .linha-tres {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .painel-pagamento {
+        padding: 15px;
+    }
 }

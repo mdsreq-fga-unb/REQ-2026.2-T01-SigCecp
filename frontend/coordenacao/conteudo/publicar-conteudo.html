@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
-{% block titulo %}Publicar conteúdo | SigCECP{% endblock %}
+<head> {% block titulo %}Publicar conteúdo | SigCECP{% endblock %}
+
+    {% block estilos %}
+        {{ super() }}
+        <link rel="stylesheet" href="{{ url_for('static', path='style/publicar-conteudo.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    {% endblock %}
+</head>
+
+
+
 
 {% block cabecalho %}
   <header class="topo">
