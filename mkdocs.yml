@@ -1,60 +1,118 @@
-site_name: SigCecp
+site_name: SigCECP
 site_url: https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp
 
-nav: 
+nav:
   - Home: index.md
+
   - Visão de produto e projeto:
-    - Cenario atual: visao_produto_projeto/1_cenario_atual.md
-    - Solução Proposta: visao_produto_projeto/2_solucao_proposta.md
-    - Intervenção social: visao_produto_projeto/3_intervencao_social.md
-    - Estrategias de ESW: visao_produto_projeto/4_estrategias_esw.md
-    - Engenharia de Requisitos: visao_produto_projeto/5_engenharia_req.md
-    - Cronograma e entrega: visao_produto_projeto/6_cronograma.md
-    - Interação entre a equipe e o cliente: visao_produto_projeto/7_interacao_equipe_e_cliente.md
-    - Requisitos: visao_produto_projeto/8_0_requisitos.md
-    - Critérios do DoR e DoD: visao_produto_projeto/9_dor_e_dod.md
-    - Escopo de Produto: visao_produto_projeto/10_backlog_produto.md
-    - Lições Aprendidas: visao_produto_projeto/11_licoes_aprendidas.md
-  - Gravações:
-    - Apresentações das Unidades:
-      - Unidade 1: gravacoes/apresentacoes_unidades/apresentacao_unidade_1.md
-      - Unidade 2: gravacoes/apresentacoes_unidades/apresentacao_unidade_2.md
-    - Reuniões:
-      - Cliente:
-        - Reunião 17/09/2026: gravacoes/reunioes_cliente/reuniao_audio_17_09.md
-        - Reunião 22/09/2026: gravacoes/reunioes_cliente/reuniao_audio_22_09.md
-        - Reunião 24/09/2026: gravacoes/reunioes_cliente/reuniao_audio_24_09.md
-        - Reunião 26/09/2026: gravacoes/reunioes_cliente/reuniao_audio_26_09.md
-        - Reunião 09/10/2026: gravacoes/reunioes_cliente/reuniao_audio_09_10.md
-      - Equipe:
-        - Reunião 28/08/2026: gravacoes/reunioes_equipe/reuniao_video_28_08.md
-        - Reunião 04/09/2026: gravacoes/reunioes_equipe/reuniao_video_04_09.md
-        - Reunião 24/09/2026: gravacoes/reunioes_equipe/reuniao_video_24_09.md
-        - Reunião MoSCoW 26/09/2026: gravacoes/reunioes_equipe/reuniao_video_26_09.md
-        - Reunião 23/10/2026: gravacoes/reunioes_equipe/reuniao_video_23_10.md
-        - Reunião 24/10/2026: gravacoes/reunioes_equipe/reuniao_video_24_10.md
-  - Organizacao e Planejamento:
-    - Atas de Reuniões:
-      - Cliente:
-        - Reunião dia 17/09/2026: organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_17_09.md
-        - Reunião dia 22/09/2026: organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_22_09.md
-        - Reunião dia 24/09/2026: organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09.md
-        - Reunião dia 26/09/2026: organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_26_09.md
-      - Equipe:
-        - Reunião dia 28/08/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_28_08.md
-        - Reunião dia 04/09/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_04_09.md
-        - Reunião dia 24/09/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_24_09.md
-        - Reunião dia 26/09/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_26_09.md
-        - Reunião dia 09/10/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_09_10.md
-        - Reunião dia 23/10/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_23_10.md
-        - Reunião dia 24/10/2026: organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_24_10.md
-    - Comprovação de Evidência: organizacao_e_planejamento/priorizacao_geral_e_mvp.md
-    - Ajustes e validações: organizacao_e_planejamento/ajuste_e_validacao.md
-    - Declaração de requisitos: organizacao_e_planejamento/declaracao_de_requisitos.md
+    - Cenário atual: visao/contexto/1_cenario_atual.md
+    - Solução proposta: visao/contexto/2_solucao_proposta.md
+    - Intervenção social: visao/contexto/3_intervencao_social.md
+    - Estratégias de ESW: visao/contexto/4_estrategias_esw.md
+    - Engenharia de requisitos: visao/contexto/5_engenharia_req.md
+    - Interação da equipe e do cliente: visao/contexto/7_interacao_equipe_e_cliente.md
+    - Dor e DoD: visao/contexto/9_dor_e_dod.md
+    - Lições aprendidas: visao/licoes/11_licoes_aprendidas.md
+  
   - Escopo:
-      - Escopo do Projeto: escopo/ficha_individual.md
-      - Identidade Visual: escopo/identidade_visual.md
-      #- Regra de Negócio: escopo/regras_de_negocio.md
+    - Catálogo de requisitos: visao/escopo/catalogo_rf.md
+    - Regras de negócio: visao/escopo/regras_de_negocio.md
+    - Decisões e pendências: visao/escopo/decisoes.md
+    - Fichas por CP:
+      - 'Acesso e controle de usuários':
+        - 'RF00: Encerrar sessão': visao/escopo/requisitos/RF00.md
+        - 'RF01: Autenticar usuário': visao/escopo/requisitos/RF01.md
+        - 'RF02: Controlar acesso': visao/escopo/requisitos/RF02.md
+      - 'CP1: Gestão e acompanhamento de turmas':
+        - 'RF03: Cadastrar turma': visao/escopo/requisitos/RF03.md
+        - 'RF04: Editar turma': visao/escopo/requisitos/RF04.md
+        - 'RF05: Inativar turma': visao/escopo/requisitos/RF05.md
+        - 'RF06: Associar aluno à turma': visao/escopo/requisitos/RF06.md
+        - 'RF07: Consultar alunos de uma turma': visao/escopo/requisitos/RF07.md
+      - 'CP2: Registro de doações e prestação de contas':
+        - 'RF08: Registrar doação recebida': visao/escopo/requisitos/RF08.md
+        - 'RF09: Editar doação recebida': visao/escopo/requisitos/RF09.md
+        - 'RF10: Registrar documentos de prestação de contas': visao/escopo/requisitos/RF10.md
+        - 'RF11: Editar documentos de prestação de contas': visao/escopo/requisitos/RF11.md
+        - 'RF12: Consultar doações e prestações de contas': visao/escopo/requisitos/RF12.md
+      - 'CP3: Gestão de conteúdo institucional':
+        - 'RF13: Publicar conteúdo institucional': visao/escopo/requisitos/RF13.md
+        - 'RF14: Editar conteúdo institucional': visao/escopo/requisitos/RF14.md
+        - 'RF15: Consultar conteúdo institucional': visao/escopo/requisitos/RF15.md
+        - 'RF16: Remover conteúdo institucional': visao/escopo/requisitos/RF16.md
+        - 'RF17: Publicar evento': visao/escopo/requisitos/RF17.md
+        - 'RF18: Editar evento': visao/escopo/requisitos/RF18.md
+        - 'RF19: Remover evento': visao/escopo/requisitos/RF19.md
+        - 'RF20: Consultar eventos': visao/escopo/requisitos/RF20.md
+      - 'CP4: Cadastro e histórico de alunos':
+        - 'RF21: Cadastrar aluno': visao/escopo/requisitos/RF21.md
+        - 'RF22: Editar aluno': visao/escopo/requisitos/RF22.md
+        - 'RF23: Consultar ficha do aluno': visao/escopo/requisitos/RF23.md
+        - 'RF24: Inativar aluno': visao/escopo/requisitos/RF24.md
+        - 'RF25: Remover dados do aluno': visao/escopo/requisitos/RF25.md
+      - 'CP5: Acompanhamento pedagógico e disciplinar do aluno':
+        - 'RF26: Registrar frequência': visao/escopo/requisitos/RF26.md
+        - 'RF27: Consultar frequência': visao/escopo/requisitos/RF27.md
+        - 'RF28: Emitir alerta de faltas críticas': visao/escopo/requisitos/RF28.md
+        - 'RF29: Registrar medida disciplinar': visao/escopo/requisitos/RF29.md
+      - 'CP6: Comunicação com voluntários e famílias':
+        - 'RF30: Publicar aviso': visao/escopo/requisitos/RF30.md
+        - 'RF31: Consultar avisos': visao/escopo/requisitos/RF31.md
+        - 'RF32: Editar aviso': visao/escopo/requisitos/RF32.md
+        - 'RF33: Remover aviso': visao/escopo/requisitos/RF33.md
+        - 'RF34: Consultar histórico de avisos': visao/escopo/requisitos/RF34.md
+      - 'CP7: Matrícula online':
+        - 'RF35: Acessar formulário de matrícula online': visao/escopo/requisitos/RF35.md
+        - 'RF36: Preencher dados do aluno': visao/escopo/requisitos/RF36.md
+        - 'RF37: Informar dados do responsável legal': visao/escopo/requisitos/RF37.md
+        - 'RF38: Registrar consentimento de dados pessoais': visao/escopo/requisitos/RF38.md
+        - 'RF39: Registrar termo de uso de imagem': visao/escopo/requisitos/RF39.md
+        - 'RF40: Informar pessoas autorizadas a retirar o aluno': visao/escopo/requisitos/RF40.md
+        - 'RF41: Emitir comprovante de solicitação': visao/escopo/requisitos/RF41.md
+        - 'RF42: Analisar solicitações de matrícula': visao/escopo/requisitos/RF42.md
+  - Cronograma: cronograma/6_cronograma.md
+
+  - Apresentações das unidades:
+    - Unidade 1: apresentacoes_unidades/apresentacao_unidade_1.md
+    - Unidade 2: apresentacoes_unidades/apresentacao_unidade_2.md
+  - Histórico:
+      - Lista de Requisitos: historico/8_0_requisitos.md
+      - Backlog e MVP: historico/10_backlog_produto.md
+      - Evidências da priorização: historico/priorizacao_geral_e_mvp.md
+      - Evidências da Iteração 5:
+          - Detalhamento: historico/detalhamento_iteracao5.md
+          - Design do usuário: historico/designUser_iteracao5.md
+      - Ajustes e validações: historico/ajuste_e_validacao.md
+      - Declaração de requisitos: historico/declaracao_de_requisitos.md
+      - Gravações:
+          - Reuniões com o cliente:
+              - 17/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_17_09.md
+              - 22/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_22_09.md
+              - 24/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_24_09.md
+              - 26/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_26_09.md
+              - 09/10/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_09_10.md
+              - 21/10/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_21_10.md
+          - Reuniões da equipe:
+              - 28/08/2026: historico/gravacoes/reunioes_equipe/reuniao_video_28_08.md
+              - 04/09/2026: historico/gravacoes/reunioes_equipe/reuniao_video_04_09.md
+              - 24/09/2026: historico/gravacoes/reunioes_equipe/reuniao_video_24_09.md
+              - 26/09/2026: historico/gravacoes/reunioes_equipe/reuniao_video_26_09.md
+
+      - Organização e planejamento:
+          - Atas de reuniões:
+              - Cliente:
+                  - 17/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_17_09.md
+                  - 22/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_22_09.md
+                  - 24/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09.md
+                  - 26/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_26_09.md
+                  - 09/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10.md
+                  - 21/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10.md
+                  - 30/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10.md
+              - Equipe:
+                  - 28/08/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_28_08.md
+                  - 04/09/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_04_09.md
+                  - 24/09/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_24_09.md
+                  - 26/09/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_26_09.md
 
 theme:
   name: material
@@ -71,7 +129,12 @@ theme:
     - content.code.copy
     - content.code.annotate
 
+plugins:
+  - search
+  - mkdocs-pdf
+
 markdown_extensions:
+  - attr_list
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.details
@@ -83,9 +146,9 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - toc:
-      toc_depth: "2-4"
+      toc_depth: 2-4
   - pymdownx.snippets:
-      base_path: ["docs"]
+      base_path: [docs]
 
 extra_css:
   - stylesheets/extra.css

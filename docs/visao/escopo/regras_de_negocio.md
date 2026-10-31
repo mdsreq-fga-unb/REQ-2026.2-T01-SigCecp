@@ -1,0 +1,51 @@
+## Regras de Negócio do Centro Esportivo Cultural de Planaltina
+
+| ID | Descrição | Requisito Funcional Relacionado |
+|---|---|---|
+| <a id="rn01"></a>**RN01** | Preservação de Histórico de Alunos: O aluno nunca pode ser excluído do sistema. A única ação permitida é a inativação, preservando todo o histórico de participação e frequência. | — |
+| <a id="rn02"></a>**RN02** | Assinatura Presencial Obrigatória: Toda inscrição, mesmo que iniciada remotamente via pré-cadastro / formulário online, exige a presença física do responsável legal para a assinatura presencial dos termos. | — |
+| <a id="rn03"></a>**RN03** | Autorização e Validade do Uso de Imagem: O uso da imagem do aluno depende de autorização assinada pelo responsável legal, com validade vinculada à sua permanência no projeto e por um período adicional após a saída. | — |
+| <a id="rn04"></a>**RN04** | Manutenção de Documentação Institucional: A documentação institucional da ONG (certidões OSCIP, FGTS, CND, CNPJ, Fazenda) precisa estar sempre atualizada para viabilizar a participação em editais de doação e recursos (pendências fiscais ou veiculares impedem a emissão de certidões). | — |
+| <a id="rn05"></a>**RN05** | Política de Aceite de Doações: A ONG evita recusar doações (mesmo quando o custo de frete ou conserto supera o benefício imediato) para preservar o relacionamento com os órgãos e parceiros doadores. | — |
+| <a id="rn06"></a>**RN06** | Comprovação Fotográfica em Prestação de Contas: Órgãos públicos doadores (ex.: Ministério Público) exigem registros fotográficos ou audiovisuais dos beneficiados como parte obrigatória da prestação de contas. | — |
+| <a id="rn07"></a>**RN07** | Documentação de Maior de Idade: Para alunos maiores de 18 anos, não é necessária a documentação nem a autorização de um responsável legal, visto que o próprio aluno responde legalmente por si. | — |
+| <a id="rn08"></a>**RN08** | Tolerância para Atestado Médico: Existe uma tolerância de aproximadamente 30 a 35 dias para a entrega do atestado médico para prática de esportes, em razão do tempo necessário para consulta médica. | — |
+| <a id="rn09"></a>**RN09** | Autorização para Retirada de Menores: A retirada de alunos menores de idade deve seguir estritamente as autorizações e registros formais cadastrados na instituição. | — |
+| <a id="rn10"></a>**RN10** | Indicação Obrigatória de Pessoas Autorizadas a Retirar Menores: No cadastro de alunos menores de idade, é obrigatório informar o nome e contato de pelo menos uma pessoa autorizada a retirar o menor. | [RF40](requisitos/RF40.md) |
+| <a id="rn11"></a>**RN11** | Atualização de Autorização de Retirada: Alterações nas pessoas autorizadas a retirar um menor de idade precisam ser formalmente comunicadas e atualizadas no registro da instituição. | — |
+| <a id="rn12"></a>**RN12** | Manutenção de Domínio: O domínio do site institucional da ONG permanece ativo. | — |
+| <a id="rn13"></a>**RN13** | Diversidade de Recursos: O recebimento de recursos ocorre por múltiplos canais (doações diretas, bens físicos e parcerias/ofícios). | — |
+| <a id="rn14"></a>**RN14** | Fluxo de Prestação de Contas: A prestação de contas de recursos envolve orçamentos prévios, aprovação, nota fiscal e registros fotográficos/audiovisuais. | — |
+| <a id="rn15"></a>**RN15** | Vínculo Socioeducacional e Permanência: A regra de negócio central do CECP condiciona a permanência e a evolução do aluno no projeto social esportivo ao acompanhamento direto de sua frequência nas aulas do CECP e de seu desempenho/assiduidade na escola formal de origem. | — |
+| <a id="rn17"></a>**RN17** | O encerramento é total; para voltar à área de coordenação é preciso informar usuário e senha novamente. | [RF00](requisitos/RF00.md) |
+| <a id="rn18"></a>**RN18** | Na reunião o cliente admitiu redirecionar também para um modo público; a tela de login é o comportamento adotado. | [RF00](requisitos/RF00.md) |
+| <a id="rn19"></a>**RN19** | Não há autocadastro; a tela de login não oferece opção de cadastro. | [RF01](requisitos/RF01.md) |
+| <a id="rn20"></a>**RN20** | Existe um único nível de acesso (coordenador). | [RF01](requisitos/RF01.md), [RF02](requisitos/RF02.md) |
+| <a id="rn21"></a>**RN21** | O acesso inicial é feito por um usuário administrador padrão, entregue ao responsável do projeto, que repassa aos demais. | [RF01](requisitos/RF01.md) |
+| <a id="rn22"></a>**RN22** | O sistema inicia vazio, então cadastrar turma é a primeira ação necessária. | [RF03](requisitos/RF03.md) |
+| <a id="rn23"></a>**RN23** | Modalidade, dias e horários fazem parte da ficha do aluno. | [RF06](requisitos/RF06.md) |
+| <a id="rn24"></a>**RN24** | A listagem de alunos segue o padrão mostrado na reunião (foto e nome completo). | [RF07](requisitos/RF07.md) |
+| <a id="rn25"></a>**RN25** | Todo conteúdo institucional deve ter título. | [RF13](requisitos/RF13.md), [RF14](requisitos/RF14.md) |
+| <a id="rn26"></a>**RN26** | Apenas a coordenação pode publicar, editar e remover conteúdos institucionais e eventos; professores solicitam à coordenação. | [RF13](requisitos/RF13.md), [RF14](requisitos/RF14.md), [RF16](requisitos/RF16.md), [RF17](requisitos/RF17.md), [RF18](requisitos/RF18.md), [RF19](requisitos/RF19.md) |
+| <a id="rn27"></a>**RN27** | Não há conjunto fixo de campos além do título (exemplo a publicação pode ser só uma imagem que já contém todas as informações). | [RF13](requisitos/RF13.md) |
+| <a id="rn28"></a>**RN28** | O sistema não precisa sinalizar ao visitante que o conteúdo foi editado; a coordenação é responsável por comunicar mudanças relevantes (por exemplo, publicando um novo aviso institucional). | [RF14](requisitos/RF14.md) |
+| <a id="rn29"></a>**RN29** | A consulta é pública e não exige login nem cadastro. | [RF15](requisitos/RF15.md) |
+| <a id="rn30"></a>**RN30** | A remoção é total e definitiva; o conteúdo deixa de ser visível para todos. | [RF16](requisitos/RF16.md), [RF19](requisitos/RF19.md) |
+| <a id="rn31"></a>**RN31** | O evento só pode ser publicado com todos os campos obrigatórios preenchidos; não se publica evento vago. | [RF17](requisitos/RF17.md), [RF18](requisitos/RF18.md) |
+| <a id="rn32"></a>**RN32** | O vídeo é opcional. | [RF17](requisitos/RF17.md) |
+| <a id="rn33"></a>**RN33** | O estado do evento é Em breve, Em andamento ou Encerrado. | [RF17](requisitos/RF17.md), [RF20](requisitos/RF20.md) |
+| <a id="rn34"></a>**RN34** | A coordenação é responsável por avisar os interessados sobre alterações (por exemplo, publicando um aviso institucional); o sistema não precisa sinalizar a edição ao visitante. | [RF18](requisitos/RF18.md) |
+| <a id="rn35"></a>**RN35** | Sem o questionário respondido, o cadastro não é liberado. | [RF21](requisitos/RF21.md) |
+| <a id="rn36"></a>**RN36** | A graduação é obrigatória, mas o certificado não é exigido no ato; o aluno é cadastrado com a graduação declarada e o certificado é anexado depois. A coordenação cobra o certificado de qualquer faixa acima da branca; sem ele, o aluno não é graduado. | [RF21](requisitos/RF21.md) |
+| <a id="rn37"></a>**RN37** | O aluno com problema de saúde ou necessidade especial deve ter isso declarado no cadastro. O laudo pode ser entregue depois, em prazo definido pela coordenação (ex.: duas semanas), sob pena de suspensão da matrícula. O prazo é controle manual da coordenação. | [RF21](requisitos/RF21.md) |
+| <a id="rn38"></a>**RN38** | Ao marcar "sim" para problema de saúde, o sistema exibe campos para descrição e anexo de laudos; ao marcar "não", segue o fluxo normal. | [RF21](requisitos/RF21.md) |
+| <a id="rn39"></a>**RN39** | O cadastro pode ser concluído com documentos faltantes, desde que os campos obrigatórios estejam preenchidos. | [RF21](requisitos/RF21.md) |
+| <a id="rn40"></a>**RN40** | O uso de imagem deve aparecer com destaque, conforme a LGPD, e o cliente quer o termo de responsabilidade, de imagem e de dados juntos em um único termo. O cliente enviará o modelo ou pedirá a remodelagem ao time. | [RF21](requisitos/RF21.md) |
+| <a id="rn41"></a>**RN41** | A edição serve principalmente para completar documentos pendentes (laudo, certificado, atestado, foto 3x4, comprovante). | [RF22](requisitos/RF22.md) |
+| <a id="rn42"></a>**RN42** | Os documentos podem ser anexados como imagem digitalizada ou pdf. | [RF22](requisitos/RF22.md) |
+| <a id="rn43"></a>**RN43** | A edição preserva as regras de obrigatoriedade do cadastro (RF21). | [RF22](requisitos/RF22.md) |
+| <a id="rn44"></a>**RN44** | A consulta serve, por exemplo, para checar a documentação na época da graduação. | [RF23](requisitos/RF23.md) |
+| <a id="rn45"></a>**RN45** | A ficha pode ser impressa; o sistema não bloqueia a impressão. | [RF23](requisitos/RF23.md) |
+| <a id="rn46"></a>**RN46** | O sistema exibe a contagem de ativos e inativos. | [RF23](requisitos/RF23.md) |
+| <a id="rn47"></a>**RN47** | A inativação é manual, feita pela coordenação (ex.: aluno muito faltoso); o sistema não inativa sozinho. | [RF24](requisitos/RF24.md) |
+| <a id="rn48"></a>**RN48** | A confirmação é exibida antes da inativação (cliente aprovou a tela de confirmação, pedida para evitar ações acidentais). | [RF24](requisitos/RF24.md) |
