@@ -15,6 +15,10 @@ from backend.eventos.services import (
 )
 from backend.publicacoes.router import router as publicacoes_router
 
+from backend.eventos.router import router as eventos_router
+   
+
+
 
 app = FastAPI(
     title="SigCECP",
@@ -70,3 +74,4 @@ def detalhe_evento_publico(
 
 
 app.include_router(publicacoes_router)
+app.include_router(eventos_router)

@@ -4,6 +4,7 @@
 
 {% block estilos %}
 <meta name="robots" content="noindex, nofollow">
+{{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', path='style/conteudos.css') }}">
 {% endblock %}

@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Publicar evento | SigCECP</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="../../assets/style/base.css">
-  <link rel="stylesheet" href="../../assets/style/componentes.css">
-  <link rel="stylesheet" href="../../assets/style/publicar-evento.css">
+{% extends "base.html" %}
+
+<head> {% block titulo %}Publicar evento | SigCECP{% endblock %}
+
+    {% block estilos %}
+        {{ super() }}
+        <link rel="stylesheet" href="{{ url_for('static', path='style/publicar-evento.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    {% endblock %}
 </head>
 
-<body>
+
   <!-- Ícones reaproveitados via <use> -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
     <symbol id="i-imagem" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
@@ -24,20 +21,23 @@
 </symbol>
   </svg>
 
+
+  {% block cabecalho %}
   <header class="topo">
     <div class="container topo__linha">
-      <a class="marca" href="editar-conteudo.html" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
-        <img class="marca__logo" src="../../assets/img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png" alt="" width="44" height="44">
+      <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+        <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
         <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
       </a>
-
       <div class="topo__direita">
-        <a class="topo__link" href="../../publico/modulo-conteudo.html" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+        <a class="topo__link" href="{{ url_for('modulo_conteudo_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
         <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
       </div>
     </div>
   </header>
+  {% endblock %}
 
+  {% block corpo %}
   <main class="pagina container">
     <nav class="trilha" aria-label="Você está em">
       <ol>
@@ -50,7 +50,7 @@
     <h1 class="pagina__titulo">Publicar evento</h1>
     <p class="pagina__sub">Apresente o evento com todas as informações que a comunidade precisa.</p>
 
-    <form id="form" class="layout" novalidate>
+    <form class="layout" method="post" enctype="multipart/form-data" action="{{ url_for('salvar_evento') }}">
       <div class="coluna">
 
         <section class="bloco" aria-labelledby="bloco-info">
@@ -122,12 +122,12 @@
 
             <div class="opcoes-radio">
             <label class="opcao-radio">
-                <input type="radio" name="alimentacao" value="sim" required>
+                <input type="radio" name="alimentacao" value="true" required>
                 Haverá
             </label>
 
             <label class="opcao-radio">
-                <input type="radio" name="alimentacao" value="nao">
+                <input type="radio" name="alimentacao" value="false">
                 Não haverá
             </label>
             </div>
@@ -170,14 +170,37 @@
 
             <div class="opcoes-radio">
             <label class="opcao-radio">
-                <input type="radio" name="alimentacao" value="sim" required>
+                <input type="radio" name="cobrado" value="true" required>
                 Sim, é cobrado
             </label>
 
             <label class="opcao-radio">
-                <input type="radio" name="alimentacao" value="nao">
+                <input type="radio" name="cobrado" value="false">
                 Não, é gratuito
             </label>
+
+          <div class="painel-pagamento" id="painel-pagamento" hidden>
+            <p class="ajuda">Obrigatórios porque o evento é cobrado</p>
+            <div class="linha-tres">
+              <div class="campo">
+                <label for="valor">Valor <span class="obrigatorio">*</span></label>
+                <input id="valor" name="valor" type="number" step="0.01" min="0">
+              </div>
+              <div class="campo">
+                <label for="data_limite_pagamento">Data limite de pagamento <span class="obrigatorio">*</span></label>
+                <input id="data_limite_pagamento" name="data_limite_pagamento" type="date">
+              </div>
+              <div class="campo">
+                <label for="meio_pagamento">Meio de pagamento <span class="obrigatorio">*</span></label>
+                <select id="meio_pagamento" name="meio_pagamento">
+                  <option value="">Selecione</option>
+                  <option value="PIX">PIX</option>
+                  <option value="Dinheiro">Dinheiro</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
             </div>
         </div>
 
@@ -320,6 +343,27 @@
 
     <p id="status" class="status" role="status" aria-live="polite"></p>
   </main>
+{% endblock %}
 
-</body>
-</html>
+
+{% block scripts %}
+<script>
+  const painel = document.getElementById("painel-pagamento");
+  const radios = document.querySelectorAll('input[name="cobrado"]');
+  const camposPagamento = painel.querySelectorAll("input, select");
+
+  function atualizarPainel() {
+    const escolhido = document.querySelector('input[name="cobrado"]:checked');
+    const cobrado = escolhido !== null && escolhido.value === "true";
+
+    painel.hidden = !cobrado;
+    camposPagamento.forEach(campo => {
+      campo.disabled = !cobrado;
+      campo.required = cobrado;
+    });
+  }
+
+  radios.forEach(radio => radio.addEventListener("change", atualizarPainel));
+  atualizarPainel();
+</script>
+{% endblock %}
