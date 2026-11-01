@@ -1,0 +1,32 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Remover evento | SigCECP</title>
+</head>
+<body>
+    <main>
+        <h1>Remover evento</h1>
+
+        <p>Tem certeza de que deseja remover este evento?</p>
+
+        <h2>{{ evento.titulo }}</h2>
+        <p>{{ evento.subtitulo }}</p>
+        <p>{{ evento.nome }}</p>
+
+        <form
+            method="post"
+            action="{{ request.url_for('excluir_evento', evento_id=evento.id) }}"
+        >
+            <button type="submit">Confirmar remoção</button>
+        </form>
+
+        <a href="{{ request.url_for('modulo_eventos_publico') }}">
+            Cancelar
+        </a>
+    </main>
+</body>
+</html>
+```
