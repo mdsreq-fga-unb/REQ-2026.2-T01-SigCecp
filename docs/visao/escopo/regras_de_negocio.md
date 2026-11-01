@@ -43,7 +43,7 @@
 | <a id="rn40"></a>**RN40** | O uso de imagem deve aparecer com destaque, conforme a LGPD, e o cliente quer o termo de responsabilidade, de imagem e de dados juntos em um único termo. O cliente enviará o modelo ou pedirá a remodelagem ao time. | [RF21](requisitos/RF21.md) |
 | <a id="rn41"></a>**RN41** | A edição serve principalmente para completar documentos pendentes (laudo, certificado, atestado, foto 3x4, comprovante). | [RF22](requisitos/RF22.md) |
 | <a id="rn42"></a>**RN42** | Os documentos podem ser anexados como imagem digitalizada ou pdf. | [RF22](requisitos/RF22.md) |
-| <a id="rn43"></a>**RN43** | A edição preserva as regras de obrigatoriedade do cadastro (RF21). | [RF22](requisitos/RF22.md) |
+| <a id="rn43"></a>**RN43** | A edição preserva as regras de obrigatoriedade do cadastro ([RF21](requisitos/RF21.md)). | [RF22](requisitos/RF22.md) |
 | <a id="rn44"></a>**RN44** | A consulta serve, por exemplo, para checar a documentação na época da graduação. | [RF23](requisitos/RF23.md) |
 | <a id="rn45"></a>**RN45** | A ficha pode ser impressa; o sistema não bloqueia a impressão. | [RF23](requisitos/RF23.md) |
 | <a id="rn46"></a>**RN46** | O sistema exibe a contagem de ativos e inativos. | [RF23](requisitos/RF23.md) |
