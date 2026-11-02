@@ -43,8 +43,6 @@
 }
 
 
-
-
 .botao-novo {
   display: inline-flex;
   align-items: center;
@@ -62,7 +60,7 @@
 
   font: inherit;
   font-size: 12px;
-
+  text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
   transition: background 0.2s ease;

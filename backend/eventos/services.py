@@ -14,7 +14,11 @@ from backend.eventos.schemas import EventoCreate
 logger = logging.getLogger(__name__)
 
 FUSO_BRASILIA = ZoneInfo("America/Sao_Paulo")
-
+ESTADO_CLASSE = {
+    "Em breve": "breve",
+    "Em andamento": "andamento",
+    "Encerrado": "encerrado",
+}
 
 def calcular_estado(evento: Evento, agora: datetime) -> str:
     if agora.tzinfo is None or agora.utcoffset() is None:
@@ -111,3 +115,5 @@ def remover_evento(db: Session, evento_id: int) -> None:
         raise
 
     logger.info("Evento %s removido", evento_id)
+
+

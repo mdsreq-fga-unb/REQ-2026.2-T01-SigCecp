@@ -1,28 +1,51 @@
-
+from datetime import datetime
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Form, Request
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse, HTMLResponse
 from sqlalchemy.orm import Session
-
+from backend.eventos.models import Evento
 from backend.config import templates
 from backend.database import get_db
 from backend.eventos.schemas import EventoCreate
 from backend.eventos.services import (
+    FUSO_BRASILIA,
+    ESTADO_CLASSE,
     atualizar_evento,
     buscar_evento,
     criar_evento,
     remover_evento,
+    calcular_estado
 )
 
-router = APIRouter(tags=["Eventos"])
+
+
+
+router = APIRouter(tags=["Eventos"], prefix="/coordenacao/eventos")
+
+
+
+
+@router.get("", name="lista_evento")
+async def lista_eventos_pagina(request: Request, db: Session = Depends(get_db)):
+    agora = datetime.now(FUSO_BRASILIA)
+
+    eventos = db.query(Evento).order_by(Evento.data.desc(), Evento.inicio.desc()).all()
+    for evento in eventos:
+        evento.estado = ESTADO_CLASSE[calcular_estado(evento, agora)]
+
+    return templates.TemplateResponse(
+        request=request,
+        name="coordenacao/eventos/lista-evento.html",
+        context={"eventos": eventos, "agora": agora},
+    )
 
 
 # ============================================================
 # PUBLICAR EVENTO
 # ============================================================
 
-@router.get("/coordenacao/eventos/novo", name="publicar_evento")
+@router.get("/novo", name="publicar_evento")
 def publicar_evento(request: Request):
     return templates.TemplateResponse(
         request=request,
@@ -31,7 +54,7 @@ def publicar_evento(request: Request):
     )
 
 
-@router.post("/coordenacao/eventos/novo", name="salvar_evento")
+@router.post("/novo", name="salvar_evento")
 def salvar_evento(
     request: Request,
     dados: Annotated[EventoCreate, Form()],
@@ -49,10 +72,7 @@ def salvar_evento(
 # EDITAR EVENTO
 # ============================================================
 
-@router.get(
-    "/coordenacao/eventos/{evento_id}/editar",
-    name="editar_evento",
-)
+@router.get("/{evento_id}/editar", name="editar_evento")
 def editar_evento_form(
     evento_id: int,
     request: Request,
@@ -67,10 +87,7 @@ def editar_evento_form(
     )
 
 
-@router.post(
-    "/coordenacao/eventos/{evento_id}/editar",
-    name="salvar_edicao_evento",
-)
+@router.post("/{evento_id}/editar", name="salvar_edicao_evento")
 def salvar_edicao_evento(
     evento_id: int,
     request: Request,
@@ -89,10 +106,7 @@ def salvar_edicao_evento(
 # REMOVER EVENTO
 # ============================================================
 
-@router.get(
-    "/coordenacao/eventos/{evento_id}/remover",
-    name="confirmar_remocao_evento",
-)
+@router.get("/{evento_id}/remover", name="confirmar_remocao_evento")
 def confirmar_remocao_evento(
     evento_id: int,
     request: Request,
@@ -109,10 +123,7 @@ def confirmar_remocao_evento(
     )
 
 
-@router.post(
-    "/coordenacao/eventos/{evento_id}/remover",
-    name="excluir_evento",
-)
+@router.post("/{evento_id}/remover", name="excluir_evento")
 def excluir_evento(
     evento_id: int,
     request: Request,
