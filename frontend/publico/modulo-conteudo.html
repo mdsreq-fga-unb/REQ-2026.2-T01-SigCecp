@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SigCECP</title>
-  <link
-    rel="stylesheet"
-    href="{{ url_for('static', path='style/modulo-conteudo.css') }}"
-  >
+  <title>Institucional | SigCECP</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style/modulo-conteudo.css') }}">
   <link rel="shortcut icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/x-icon">
 </head>
 <body>
@@ -35,26 +32,53 @@
         <p class="hero__descricao">Conheça as histórias, os valores e as iniciativas do Centro Esportivo Cultural de Planaltina-DF.</p>
         <p class="hero__rodape">Esporte e cultura que conectam pessoas</p>
       </div>
-      
-      <!-- Caixa para a notícia mais recente -->
+
+      {% if publicacoes %}
       <div class="banner">
-        <p class="selo selo--amarelo">Subtítulo do conteúdo mais recente</p>
-        <p class="banner__frase">Título do conteúdo mais recente</p>
-        <p class="banner__assinatura">Centro Esportivo Cultural de Planaltina</p>
+          <p class="selo selo--amarelo">Esporte • Cultura • Comunidade</p>
+          <p class="banner__frase">{{ publicacoes[0].titulo }}</p>
+          <p class="banner__assinatura">Centro Esportivo Cultural de Planaltina</p>
       </div>
+      {% endif %}
     </section>
 
-    <section id="secao-publicacoes" class="publicacoes container" aria-labelledby="publicacoes-titulo" hidden>
+    <section id="secao-publicacoes" class="publicacoes container" aria-labelledby="publicacoes-titulo">
       <div class="publicacoes__cabecalho">
         <h2 id="publicacoes-titulo">Por dentro do CECP</h2>
-        <p id="contador" class="publicacoes__contador" aria-live="polite"></p>
+        <p class="publicacoes__contador" aria-live="polite">
+          {{ publicacoes|length }} publicaç{{ 'ões' if publicacoes|length != 1 else 'ão' }}
+        </p>
       </div>
 
-      <div id="lista" class="grade"></div>
+      <div id="lista" class="grade">
+        {% for publicacao in publicacoes %}
+        <article class="cartao">
+          {% if loop.first %}
+          <div class="cartao__capa" aria-hidden="true">
+            <p class="selo selo--amarelo">Esporte • Cultura • Comunidade</p>
+            <p class="banner__frase">{{ publicacao.titulo }}</p>
+            <p class="banner__assinatura">Centro Esportivo Cultural de Planaltina</p>
+          </div>
+          {% endif %}
+
+          <div class="cartao__corpo">
+            <p class="cartao__meta">
+              {% if publicacao.criado_em %}{{ publicacao.criado_em.strftime('%d/%m/%Y') }} • {% endif %}Institucional
+            </p>
+            <h3 class="cartao__titulo">{{ publicacao.titulo }}</h3>
+            {% if publicacao.texto %}
+            <p class="cartao__resumo">{{ publicacao.texto|truncate(140) }}</p>
+            {% endif %}
+            <a class="cartao__link" href="{{ url_for('detalhe_conteudo_publico', conteudo_id=publicacao.id) }}">Ler conteúdo <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        {% else %}
+        <p class="estado-vazio">Nenhuma publicação ainda.</p>
+        {% endfor %}
+      </div>
     </section>
   </main>
 
-  
   <footer class="rodape">
     <div class="container rodape__linha">
       <div class="rodape__marca">
@@ -64,18 +88,17 @@
           <p class="rodape__lema">Esporte e cultura que conectam pessoas.</p>
         </div>
       </div>
- 
+
       <nav class="rodape__nav" aria-label="Rodapé">
         <a href="/">Institucional</a>
         <a href="/eventos">Eventos</a>
         <a href="/coordenacao/conteudo">Acesso da coordenação</a>
       </nav>
     </div>
- 
+
     <div class="container rodape__base">
       <p>&copy; <span id="ano">2026</span> Centro Esportivo Cultural de Planaltina-DF. Todos os direitos reservados.</p>
     </div>
   </footer>
- 
 </body>
 </html>

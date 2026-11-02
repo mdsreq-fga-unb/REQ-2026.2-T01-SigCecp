@@ -5,9 +5,10 @@ from pathlib import Path
 from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
-
+from backend.publicacoes.models import Publicacao
 from backend.config import ASSETS_DIR, templates
 from backend.database import get_db
+from backend.publicacoes.services import buscar_conteudo_por_id
 from backend.eventos.services import (
     FUSO_BRASILIA,
     buscar_evento_por_id,
@@ -40,11 +41,13 @@ app.mount(
 )
 
 @app.get("/", name="modulo_conteudo_publico")
-async def modulo_conteudo_publico(request: Request):
+async def modulo_conteudo_publico(request: Request, db: Session = Depends(get_db)):
+    publicacoes = db.query(Publicacao).order_by(Publicacao.id.desc()).all()
+
     return templates.TemplateResponse(
         request=request,
-        name="publico/modulo-conteudo.html",
-        context={},
+        name="publico/modulo-conteudo.html",  
+        context={"publicacoes": publicacoes},
     )
 
 
@@ -79,6 +82,21 @@ def detalhe_evento_publico(
         },
     )
 
+@app.get("/conteudo/{conteudo_id}", name="detalhe_conteudo_publico")
+def detalhe_conteudo_publico(
+    request: Request, conteudo_id: int, db: Session = Depends(get_db),
+):
+    conteudo = buscar_conteudo_por_id(db, conteudo_id)
+    if conteudo is None:
+        raise HTTPException(status_code=404, detail="Publicação não encontrada.")
+
+    return templates.TemplateResponse(
+        request=request,
+        name="publico/detalhe-conteudo.html",
+        context={
+            "conteudo": conteudo,
+        },
+    )
 
 app.include_router(publicacoes_router)
 app.include_router(eventos_router)

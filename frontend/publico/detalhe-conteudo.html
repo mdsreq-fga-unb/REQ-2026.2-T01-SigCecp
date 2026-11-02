@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ conteudo.titulo }} | SigCECP</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style/modulo-conteudo.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='style/detalhe-conteudo.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/x-icon">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo__linha">
+      <a class="marca" href="/" aria-label="Centro Esportivo Cultural de Planaltina-DF, página inicial">
+        <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="52" height="52">
+        <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+      </a>
+
+      <nav class="menu" aria-label="Principal">
+        <a class="menu__item menu__item--ativo" href="/" aria-current="page">Institucional</a>
+        <a class="menu__item" href="/eventos">Eventos</a>
+      </nav>
+
+      <a class="acesso" href="/coordenacao/conteudo">Acesso da coordenação <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    {% set meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'] %}
+
+    <article class="detalhe container" aria-labelledby="conteudo-titulo">
+
+      <a class="detalhe__voltar" href="/"><span aria-hidden="true">←</span> Voltar para Institucional</a>
+
+      <p class="detalhe__meta">
+        Institucional
+        {% if conteudo.criado_em %}• {{ conteudo.criado_em.day }} de {{ meses[conteudo.criado_em.month - 1] }} de {{ conteudo.criado_em.year }}{% endif %}
+      </p>
+
+      <h1 id="conteudo-titulo" class="detalhe__titulo">{{ conteudo.titulo }}</h1>
+
+      <div class="detalhe__capa" aria-hidden="true">
+        <p class="selo selo--amarelo">Esporte • Cultura • Comunidade</p>
+        <p class="detalhe__capa-frase">{{ conteudo.titulo }}</p>
+        <p class="detalhe__capa-assinatura">Centro Esportivo Cultural de Planaltina</p>
+      </div>
+
+      <div class="detalhe__layout">
+        <div class="detalhe__principal">
+
+          {% if conteudo.texto %}
+          <div class="detalhe__texto">
+            {% for paragrafo in conteudo.texto.splitlines() if paragrafo.strip() %}
+            <p>{{ paragrafo }}</p>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {# Imagens: só aparecem se o modelo tiver "imagens" (cada uma com url e, opcionalmente, legenda) #}
+          {% if conteudo.imagens %}
+          <div class="detalhe__imagens">
+            {% for imagem in conteudo.imagens %}
+            <figure class="detalhe__figura">
+              <img src="{{ imagem.url }}" alt="{{ imagem.legenda or conteudo.titulo }}" loading="lazy">
+              {% if imagem.legenda %}<figcaption>{{ imagem.legenda }}</figcaption>{% endif %}
+            </figure>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {# Vídeo: só aparece se o modelo tiver "video_url" #}
+          {% if conteudo.video_url %}
+          <figure class="detalhe__figura detalhe__figura--video">
+            <video controls preload="metadata" src="{{ conteudo.video_url }}"></video>
+            <figcaption>Vídeo de apresentação</figcaption>
+          </figure>
+          {% endif %}
+
+          <a class="detalhe__todos" href="/"><span aria-hidden="true">←</span> Ver todos os conteúdos institucionais</a>
+        </div>
+
+        <aside class="detalhe__lateral" aria-label="Sobre o CECP">
+          <h2>Centro Esportivo Cultural de Planaltina-DF</h2>
+          <p>Um espaço para crescer, conviver e transformar por meio do esporte e da cultura.</p>
+        </aside>
+      </div>
+    </article>
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape__linha">
+      <div class="rodape__marca">
+        <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="52" height="52">
+        <div>
+          <p class="rodape__nome">Centro Esportivo Cultural de Planaltina-DF</p>
+          <p class="rodape__lema">Esporte e cultura que conectam pessoas.</p>
+        </div>
+      </div>
+
+      <nav class="rodape__nav" aria-label="Rodapé">
+        <a href="/">Institucional</a>
+        <a href="/eventos">Eventos</a>
+        <a href="/coordenacao/conteudo">Acesso da coordenação</a>
+      </nav>
+    </div>
+
+    <div class="container rodape__base">
+      <p>&copy; <span id="ano">2026</span> Centro Esportivo Cultural de Planaltina-DF. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
