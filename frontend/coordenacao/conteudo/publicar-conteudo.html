@@ -74,11 +74,12 @@
             <div class="campo-formulario">
                 <label for="texto">Texto (opcional)</label>
 
-                <textarea
-                    id="texto"
-                    name="texto"
-                    placeholder="Conte a história, compartilhe uma notícia ou deixe este campo em branco."
-                ></textarea>
+<textarea
+    id="texto"
+    name="texto"
+    placeholder="Digite o conteúdo da publicação..."
+    required
+></textarea>
             </div>
     </section>
 
@@ -136,11 +137,16 @@
             <input
                 type="file"
                 id="adicionar-imagens"
-                name="imagens"
-                accept="image/*"
+                name="imagem"
+                accept="image/png, image/jpeg, image/webp"
                 multiple
-                hidden
             >
+<div class="imagem-preview" hidden>
+    <img
+        id="preview-imagem"
+        alt="Pré-visualização da imagem"
+    >
+</div>  
         </div>
 
         <!-- Área de vídeo -->
@@ -174,13 +180,17 @@
                 <span class="upload-mais" aria-hidden="true">+</span>
             </label>
 
-            <input
-                type="file"
-                id="adicionar-video"
-                name="video"
-                accept="video/*"
-                hidden
-            >
+    <input
+        type="file"
+        id="adicionar-video"
+        name="video"
+        accept="video/mp4, video/webm, video/ogg"
+    >
+
+<div class="video-preview" hidden>
+    <video id="preview-video" controls></video>
+</div>
+</div>
         </div>
     </div>
   </section>
@@ -196,4 +206,8 @@
     </form>
   </div>
   </main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/publicar-conteudo.js') }}"></script>
 {% endblock %}

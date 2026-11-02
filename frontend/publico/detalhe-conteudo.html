@@ -57,24 +57,31 @@
           {% endif %}
 
           {# Imagens: só aparecem se o modelo tiver "imagens" (cada uma com url e, opcionalmente, legenda) #}
-          {% if conteudo.imagens %}
-          <div class="detalhe__imagens">
-            {% for imagem in conteudo.imagens %}
-            <figure class="detalhe__figura">
-              <img src="{{ imagem.url }}" alt="{{ imagem.legenda or conteudo.titulo }}" loading="lazy">
-              {% if imagem.legenda %}<figcaption>{{ imagem.legenda }}</figcaption>{% endif %}
-            </figure>
-            {% endfor %}
-          </div>
-          {% endif %}
+{% if conteudo.midias %}
+<div class="detalhe__midias">
+  {% for midia in conteudo.midias %}
 
-          {# Vídeo: só aparece se o modelo tiver "video_url" #}
-          {% if conteudo.video_url %}
-          <figure class="detalhe__figura detalhe__figura--video">
-            <video controls preload="metadata" src="{{ conteudo.video_url }}"></video>
-            <figcaption>Vídeo de apresentação</figcaption>
-          </figure>
-          {% endif %}
+    {% if midia.tipo == "imagem" %}
+    <figure class="detalhe__figura">
+      <img
+        src="{{ url_for('media', path=midia.caminho) }}"
+        alt="{{ midia.nome_original }}"
+        loading="lazy"
+      >
+    </figure>
+
+    {% elif midia.tipo == "video" %}
+    <figure class="detalhe__figura detalhe__figura--video">
+      <video controls preload="metadata">
+        <source src="{{ url_for('media', path=midia.caminho) }}">
+        Seu navegador não suporta vídeos.
+      </video>
+    </figure>
+    {% endif %}
+
+  {% endfor %}
+</div>
+{% endif %}
 
           <a class="detalhe__todos" href="/"><span aria-hidden="true">←</span> Ver todos os conteúdos institucionais</a>
         </div>

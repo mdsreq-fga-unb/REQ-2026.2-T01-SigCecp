@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block titulo %}Conteúdos institucionais | SigCECP{% endblock %}
@@ -16,13 +17,16 @@
         <circle cx="8.5" cy="8.5" r="1.5"/>
         <path d="m21 15-5-5L5 21"/>
     </symbol>
+
     <symbol id="i-mais" viewBox="0 0 24 24">
         <path d="M12 5v14M5 12h14"/>
     </symbol>
+
     <symbol id="i-lapis" viewBox="0 0 24 24">
         <path d="M12 20h9"/>
         <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>
     </symbol>
+
     <symbol id="i-lixeira" viewBox="0 0 24 24">
         <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/>
     </symbol>
@@ -30,18 +34,12 @@
 
 <header class="topo">
     <div class="container topo__linha">
-        <a
-            class="marca"
-            href="{{ url_for('lista_conteudo') }}"
-            aria-label="Início da coordenação"
-        >
-            <img
-                class="marca__logo"
-                src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}"
-                alt=""
-                width="44"
-                height="44"
-            >
+        <a class="marca" href="{{ url_for('lista_conteudo') }}"
+           aria-label="Início da coordenação">
+            <img class="marca__logo"
+                 src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}"
+                 alt="" width="44" height="44">
+
             <span class="marca__nome">
                 Centro Esportivo Cultural<br>
                 de Planaltina-DF
@@ -49,14 +47,12 @@
         </a>
 
         <div class="topo__direita">
-            <a
-                class="topo__link"
-                href="{{ url_for('modulo_conteudo_publico') }}"
-                target="_blank"
-                rel="noopener"
-            >
+            <a class="topo__link"
+               href="{{ url_for('modulo_conteudo_publico') }}"
+               target="_blank" rel="noopener">
                 Ver site público <span aria-hidden="true">↗</span>
             </a>
+
             <span class="usuario">
                 <span class="usuario__foto" aria-hidden="true"></span>
                 Coordenação
@@ -68,6 +64,7 @@
 
 {% block corpo %}
 <main class="pagina container">
+
     <nav class="trilha" aria-label="Você está em">
         <ol>
             <li>
@@ -80,15 +77,14 @@
     <div class="cabecalho">
         <div>
             <h1 class="pagina__titulo">Conteúdos institucionais</h1>
+
             <p class="pagina__sub">
                 Gerencie as publicações que apresentam o CECP à comunidade.
             </p>
         </div>
 
-        <a
-            class="botao botao--vermelho"
-            href="{{ url_for('publicar_conteudo') }}"
-        >
+        <a class="botao botao--vermelho"
+           href="{{ url_for('publicar_conteudo') }}">
             <svg class="icone" aria-hidden="true">
                 <use href="#i-mais"/>
             </svg>
@@ -96,26 +92,140 @@
         </a>
     </div>
 
+    <p class="lista__titulo">
+    Publicados ({{ publicacoes | length }})
+</p>
     <div class="tabela-cartao">
+
         {% if publicacoes %}
-            {# A listagem dos conteúdos será implementada aqui. #}
-            {% for publicacao in publicacoes %}
-                <article class="publicacao-item">
-                    <h2>{{ publicacao.titulo }}</h2>
-                    {% if publicacao.texto %}
-                        <p>{{ publicacao.texto }}</p>
-                    {% endif %}
-                </article>
-            {% endfor %}
+
+            <div class="lista-publicacoes">
+
+                <!-- Cabeçalho da listagem -->
+                <div class="publicacao-item publicacao-item--cabecalho">
+                    <span>Conteúdo</span>
+                    <span>Mídias</span>
+                    <span>Publicação</span>
+                    <span>Ações</span>
+                </div>
+
+                {% for publicacao in publicacoes %}
+
+                    {% set imagens = publicacao.midias | selectattr('tipo', 'equalto', 'imagem') | list %}
+                    {% set videos = publicacao.midias | selectattr('tipo', 'equalto', 'video') | list %}
+
+                    <article class="publicacao-item">
+
+                        <!-- Conteúdo principal -->
+                        <div class="publicacao-item__principal">
+
+                            <div class="publicacao-item__miniatura">
+                                <svg class="icone" aria-hidden="true">
+                                    <use href="#i-imagem"/>
+                                </svg>
+                            </div>
+
+                            <div class="publicacao-item__conteudo">
+
+                                <h2>{{ publicacao.titulo }}</h2>
+
+                                {% if publicacao.texto %}
+                                    <p class="publicacao-item__descricao">
+                                        {{ publicacao.texto }}
+                                    </p>
+                                {% else %}
+                                    <p class="publicacao-item__sem-texto">
+                                        Publicação sem descrição.
+                                    </p>
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                        <!-- Quantidade de mídias -->
+                        <div class="publicacao-item__midias">
+
+                            {% if imagens or videos %}
+
+                                {% if imagens %}
+                                    {{ imagens | length }}
+                                    {{ 'imagem' if imagens | length == 1 else 'imagens' }}
+                                {% endif %}
+
+                                {% if imagens and videos %}
+                                    e
+                                {% endif %}
+
+                                {% if videos %}
+                                    {{ videos | length }}
+                                    {{ 'vídeo' if videos | length == 1 else 'vídeos' }}
+                                {% endif %}
+
+                            {% else %}
+                                Nenhuma mídia
+                            {% endif %}
+
+                        </div>
+
+                        <!-- Data de publicação -->
+                        <div class="publicacao-item__data">
+                            {% if publicacao.criada_em %}
+                                {{ publicacao.criada_em.strftime('%d/%m/%Y') }}
+                            {% else %}
+                                —
+                            {% endif %}
+                        </div>
+
+                        <!-- Ações -->
+                        <div class="publicacao-item__acoes">
+
+                            <a class="botao botao--editar"
+                               href="{{ url_for('editar_conteudo', conteudo_id=publicacao.id) }}">
+                                <svg class="icone" aria-hidden="true">
+                                    <use href="#i-lapis"/>
+                                </svg>
+                                Editar
+                            </a>
+
+                            <a class="botao botao--remover"
+                               href="{{ url_for('confirmar_remocao_conteudo', conteudo_id=publicacao.id) }}">
+                                <svg class="icone" aria-hidden="true">
+                                    <use href="#i-lixeira"/>
+                                </svg>
+                                Remover
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- Rodapé -->
+            <p class="tabela__rodape">
+                {{ publicacoes | length }}
+                {{ 'conteúdo publicado' if publicacoes | length == 1 else 'conteúdos publicados' }}
+                • todos visíveis no site público
+            </p>
+
         {% else %}
+
+            <!-- Estado vazio -->
             <div class="vazio">
-                <p class="vazio__titulo">Nenhum conteúdo publicado</p>
+                <p class="vazio__titulo">
+                    Nenhum conteúdo publicado
+                </p>
+
                 <p>
                     Crie a primeira publicação para ela aparecer no site público.
                 </p>
             </div>
-        {% endif %}
-    </div>
-</main>
 
+        {% endif %}
+
+    </div>
+
+</main>
 {% endblock %}

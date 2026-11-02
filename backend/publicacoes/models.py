@@ -1,5 +1,6 @@
 
 from datetime import datetime
+
 from sqlalchemy import (
     DateTime,
     ForeignKey,
@@ -9,6 +10,7 @@ from sqlalchemy import (
     func,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from backend.database import Base
 
 
@@ -20,14 +22,17 @@ class Publicacao(Base):
         primary_key=True,
         index=True,
     )
+
     titulo: Mapped[str] = mapped_column(
         String(200),
         nullable=False,
     )
+
     texto: Mapped[str | None] = mapped_column(
         Text,
         nullable=True,
     )
+
     criada_em: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         server_default=func.now(),
@@ -48,18 +53,22 @@ class PublicacaoMidia(Base):
         primary_key=True,
         index=True,
     )
+
     publicacao_id: Mapped[int] = mapped_column(
         ForeignKey("publicacoes.id", ondelete="CASCADE"),
         nullable=False,
     )
+
     caminho: Mapped[str] = mapped_column(
         String(500),
         nullable=False,
     )
+
     tipo: Mapped[str] = mapped_column(
         String(20),
         nullable=False,
     )
+
     nome_original: Mapped[str] = mapped_column(
         String(255),
         nullable=False,
@@ -68,3 +77,4 @@ class PublicacaoMidia(Base):
     publicacao: Mapped["Publicacao"] = relationship(
         back_populates="midias",
     )
+    

@@ -1,17 +1,30 @@
-from fastapi import APIRouter, Depends, Form, Request
+
+from typing import Annotated
+
+from fastapi import (
+    APIRouter,
+    Depends,
+    File,
+    Form,
+    Request,
+    UploadFile,
+)
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
+
 from backend.database import get_db
-from backend.publicacoes.models import Publicacao
 from backend.config import templates
-from typing import Annotated
+
+from backend.publicacoes.models import Publicacao
+from backend.publicacoes.schemas import PublicacaoCreate
+
 from backend.publicacoes.services import (
-    PublicacaoCreate,
     atualizar_conteudo,
     buscar_conteudo,
-    criar_conteudo,
+    criar_conteudo_com_midias,
     remover_conteudo,
 )
+
 
 router = APIRouter(
     prefix="/coordenacao/conteudo",
@@ -20,15 +33,22 @@ router = APIRouter(
 
 
 @router.get("", name="lista_conteudo")
-async def lista_conteudo(request: Request, db: Session = Depends(get_db)):
-    publicacoes = db.query(Publicacao).order_by(Publicacao.id.desc()).all()
+async def lista_conteudo(
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    publicacoes = (
+        db.query(Publicacao)
+        .order_by(Publicacao.id.desc())
+        .all()
+    )
 
     return templates.TemplateResponse(
         request=request,
         name="coordenacao/conteudo/lista-conteudo.html",
         context={"publicacoes": publicacoes},
     )
-    
+
 
 @router.get("/novo", name="publicar_conteudo")
 async def publicar_conteudo(request: Request):
@@ -38,46 +58,34 @@ async def publicar_conteudo(request: Request):
         context={},
     )
 
-@router.post("/novo", name="salvar_conteudo")
-async def salvar_conteudo(
-    request: Request,
-    titulo: str = Form(...),
-    texto: str = Form(...),
-    db: Session = Depends(get_db)
-):
-    print("Título:", titulo)
-    print("Texto:", texto)
-
-    publicacao = Publicacao(titulo=titulo, texto=texto or None)
-    db.add(publicacao)
-    db.commit()
-
-    return RedirectResponse(
-        url=str(request.url_for("lista_conteudo")),
-        status_code=303,
-    )
-
-
 
 @router.post("/novo", name="salvar_conteudo")
 async def salvar_conteudo(
     request: Request,
-    titulo: str = Form(...),
-    texto: str = Form(""),
+    titulo: Annotated[str, Form(...)],
+    texto: Annotated[str, Form()] = "",
+    imagem: Annotated[list[UploadFile] | None, File()] = None,
+    video: Annotated[UploadFile | None, File()] = None,
     db: Session = Depends(get_db),
 ):
-    publicacao = Publicacao(
+
+    dados = PublicacaoCreate(
         titulo=titulo,
         texto=texto or None,
     )
 
-    db.add(publicacao)
-    db.commit()
+    criar_conteudo_com_midias(
+        db=db,
+        dados=dados,
+        imagens=imagem,
+        video=video,
+    )
 
     return RedirectResponse(
         url=str(request.url_for("lista_conteudo")),
         status_code=303,
     )
+
 
 @router.get("/{conteudo_id}/editar", name="editar_conteudo")
 def editar_conteudo_form(
@@ -93,7 +101,11 @@ def editar_conteudo_form(
         context={"conteudo": conteudo},
     )
 
-@router.post("/{conteudo_id}/editar", name="salvar_edicao_conteudo")
+
+@router.post(
+    "/{conteudo_id}/editar",
+    name="salvar_edicao_conteudo",
+)
 def salvar_edicao_conteudo(
     conteudo_id: int,
     request: Request,
@@ -107,13 +119,16 @@ def salvar_edicao_conteudo(
         status_code=303,
     )
 
-@router.get("/{conteudo_id}/remover", name="confirmar_remocao_conteudo")
+
+@router.get(
+    "/{conteudo_id}/remover",
+    name="confirmar_remocao_conteudo",
+)
 def confirmar_remocao_conteudo(
     conteudo_id: int,
     request: Request,
     db: Session = Depends(get_db),
 ):
-
     conteudo = buscar_conteudo(db, conteudo_id)
 
     return templates.TemplateResponse(
@@ -122,7 +137,11 @@ def confirmar_remocao_conteudo(
         context={"conteudo": conteudo},
     )
 
-@router.post("/{conteudo_id}/remover", name="excluir_conteudo")
+
+@router.post(
+    "/{conteudo_id}/remover",
+    name="excluir_conteudo",
+)
 def excluir_conteudo(
     conteudo_id: int,
     request: Request,
