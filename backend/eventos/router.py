@@ -1,7 +1,6 @@
 from datetime import datetime
 from typing import Annotated
-
-from fastapi import APIRouter, Depends, Form, Request
+from fastapi import APIRouter, Depends, Form, Request, UploadFile, File
 from fastapi.responses import RedirectResponse, HTMLResponse
 from sqlalchemy.orm import Session
 from backend.eventos.models import Evento
@@ -19,11 +18,7 @@ from backend.eventos.services import (
 )
 
 
-
-
 router = APIRouter(tags=["Eventos"], prefix="/coordenacao/eventos")
-
-
 
 
 @router.get("", name="lista_evento")
@@ -58,22 +53,23 @@ def publicar_evento(request: Request):
 def salvar_evento(
     request: Request,
     dados: Annotated[EventoCreate, Form()],
+    imagem: Annotated[UploadFile | None, File()] = None,
+    video: Annotated[UploadFile | None, File()] = None,
     db: Session = Depends(get_db),
 ):
-    criar_evento(db, dados)
+    criar_evento(db, dados, imagem=imagem, video=video)
 
     return RedirectResponse(
         request.url_for("modulo_eventos_publico"),
         status_code=303,
     )
 
-
 # ============================================================
 # EDITAR EVENTO
 # ============================================================
 
 @router.get("/{evento_id}/editar", name="editar_evento")
-def editar_evento_form(
+def editar_evento(
     evento_id: int,
     request: Request,
     db: Session = Depends(get_db),
@@ -86,15 +82,22 @@ def editar_evento_form(
         context={"evento": evento},
     )
 
-
 @router.post("/{evento_id}/editar", name="salvar_edicao_evento")
 def salvar_edicao_evento(
     evento_id: int,
     request: Request,
     dados: Annotated[EventoCreate, Form()],
+    imagem: Annotated[UploadFile | None, File()] = None,
+    video: Annotated[UploadFile | None, File()] = None,
     db: Session = Depends(get_db),
 ):
-    atualizar_evento(db, evento_id, dados)
+    atualizar_evento(
+        db,
+        evento_id,
+        dados,
+        imagem=imagem,
+        video=video,
+    )
 
     return RedirectResponse(
         request.url_for("modulo_eventos_publico"),

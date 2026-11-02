@@ -195,6 +195,16 @@
     color: var(--ev-preto);
 }
 
+.detalhe-evento__imagem {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 12px;
+}
+
 .etiqueta-estado::before {
     content: "";
     width: 7px;
@@ -448,6 +458,7 @@
         margin-top: 20px;
     }
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
     .filtros__botao,

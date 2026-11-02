@@ -259,10 +259,16 @@
                     <input
                         type="file"
                         id="adicionar-imagens"
-                        name="imagens"
-                        accept="image/*"
-                        multiple
+                        name="imagem"
+                        accept="image/jpeg,image/png,image/webp"
                         hidden
+                    >
+                </div>
+
+                <div class="imagem-preview" id="container-preview" hidden>
+                    <img
+                        id="preview-imagem"
+                        alt="Pré-visualização da imagem selecionada"
                     >
                 </div>
 
@@ -297,13 +303,23 @@
                         <span class="upload-mais" aria-hidden="true">+</span>
                     </label>
 
-                    <input
-                        type="file"
-                        id="adicionar-video"
-                        name="video"
-                        accept="video/*"
-                        hidden
-                    >
+                  <input
+                      type="file"
+                      id="adicionar-video"
+                      name="video"
+                      accept="video/mp4,video/webm,video/ogg"
+                      hidden
+                  >
+
+                  <div class="video-preview" id="container-preview-video" hidden>
+                      <video
+                          id="preview-video"
+                          controls
+                          preload="metadata"
+                      >
+                          Seu navegador não suporta a reprodução de vídeos.
+                      </video>
+                  </div>
                 </div>
             </div>
         </section>
@@ -347,23 +363,5 @@
 
 
 {% block scripts %}
-<script>
-  const painel = document.getElementById("painel-pagamento");
-  const radios = document.querySelectorAll('input[name="cobrado"]');
-  const camposPagamento = painel.querySelectorAll("input, select");
-
-  function atualizarPainel() {
-    const escolhido = document.querySelector('input[name="cobrado"]:checked');
-    const cobrado = escolhido !== null && escolhido.value === "true";
-
-    painel.hidden = !cobrado;
-    camposPagamento.forEach(campo => {
-      campo.disabled = !cobrado;
-      campo.required = cobrado;
-    });
-  }
-
-  radios.forEach(radio => radio.addEventListener("change", atualizarPainel));
-  atualizarPainel();
-</script>
+<script src="{{ url_for('static', path='js/publicar-evento.js') }}"></script>
 {% endblock %}

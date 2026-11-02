@@ -1,5 +1,6 @@
 
 from datetime import datetime
+from pathlib import Path
 
 from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
@@ -18,12 +19,12 @@ from backend.publicacoes.router import router as publicacoes_router
 from backend.eventos.router import router as eventos_router
    
 
-
-
 app = FastAPI(
     title="SigCECP",
 )
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_DIR = BASE_DIR / "backend" / "media"
 # Arquivos estáticos: CSS, JavaScript e imagens.
 app.mount(
     "/static",
@@ -31,6 +32,12 @@ app.mount(
     name="static",
 )
 
+# Arquivos enviados pelos usuários.
+app.mount(
+    "/media",
+    StaticFiles(directory=MEDIA_DIR),
+    name="media",
+)
 
 @app.get("/", name="modulo_conteudo_publico")
 async def modulo_conteudo_publico(request: Request):

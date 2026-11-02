@@ -3,13 +3,18 @@ import logging
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from fastapi import HTTPException, status
+from fastapi import HTTPException, status, UploadFile
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from backend.eventos.models import Evento
 from backend.eventos.schemas import EventoCreate
-
+from backend.eventos.media import (
+    salvar_midia,
+    remover_midia,
+    TIPOS_IMAGEM,
+    TIPOS_VIDEO,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -39,18 +44,45 @@ def calcular_estado(evento: Evento, agora: datetime) -> str:
     return "Encerrado"
 
 
-def criar_evento(db: Session, dados: EventoCreate) -> Evento:
-    """Cria um novo evento."""
+def criar_evento(
+    db: Session,
+    dados: EventoCreate,
+    imagem: UploadFile | None = None,
+    video: UploadFile | None = None,
+) -> Evento:
+    """Cria um novo evento e salva suas mídias."""
+
+    caminhos_salvos = []
+
     try:
-        evento = Evento(**dados.model_dump())
+        caminho_imagem = salvar_midia(imagem, TIPOS_IMAGEM)
+        caminho_video = salvar_midia(video, TIPOS_VIDEO)
+
+        if caminho_imagem:
+            caminhos_salvos.append(caminho_imagem)
+
+        if caminho_video:
+            caminhos_salvos.append(caminho_video)
+
+        evento = Evento(
+            **dados.model_dump(),
+            imagem=caminho_imagem,
+            video=caminho_video,
+        )
+
         db.add(evento)
         db.commit()
         db.refresh(evento)
+
         return evento
+
     except Exception:
         db.rollback()
-        raise
 
+        for caminho in caminhos_salvos:
+            remover_midia(caminho)
+
+        raise
 
 def listar_eventos(db: Session) -> list[Evento]:
     consulta = select(Evento).order_by(
@@ -80,22 +112,43 @@ def atualizar_evento(
     db: Session,
     evento_id: int,
     dados: EventoCreate,
+    imagem: UploadFile | None = None,
+    video: UploadFile | None = None,
 ) -> Evento:
-    """RF18: atualiza os dados de um evento existente."""
+    """Atualiza os dados e as mídias de um evento."""
     evento = buscar_evento(db, evento_id)
 
-    colunas = set(Evento.__table__.columns.keys()) - {"id"}
+    caminhos_salvos = []
 
     try:
         for campo, valor in dados.model_dump().items():
-            if campo in colunas:
-                setattr(evento, campo, valor)
+            setattr(evento, campo, valor)
+
+        if imagem and imagem.filename:
+            nova_imagem = salvar_midia(imagem, TIPOS_IMAGEM)
+
+            if nova_imagem:
+                caminhos_salvos.append(nova_imagem)
+                remover_midia(evento.imagem)
+                evento.imagem = nova_imagem
+
+        if video and video.filename:
+            novo_video = salvar_midia(video, TIPOS_VIDEO)
+
+            if novo_video:
+                caminhos_salvos.append(novo_video)
+                remover_midia(evento.video)
+                evento.video = novo_video
 
         db.commit()
         db.refresh(evento)
 
     except Exception:
         db.rollback()
+
+        for caminho in caminhos_salvos:
+            remover_midia(caminho)
+
         raise
 
     logger.info("Evento %s editado", evento_id)

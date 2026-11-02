@@ -31,3 +31,5 @@ class Evento(Base):
     valor: Mapped[Decimal | None] = mapped_column(Numeric(12, 2), nullable=True)
     data_limite_pagamento: Mapped[date | None] = mapped_column(Date, nullable=True)
     meio_pagamento: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    imagem: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    video: Mapped[str | None] = mapped_column(String(255), nullable=True)

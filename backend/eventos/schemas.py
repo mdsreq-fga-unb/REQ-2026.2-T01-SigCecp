@@ -4,7 +4,6 @@ from typing import Literal, Self
 
 from pydantic import BaseModel, Field, ValidationInfo, field_validator, model_validator
 
-
 class EventoCreate(BaseModel):
     titulo: str = Field(max_length=120)
     subtitulo: str = Field(max_length=120)
@@ -22,6 +21,8 @@ class EventoCreate(BaseModel):
     )
     data_limite_pagamento: date | None = None
     meio_pagamento: str | None = Field(default=None, max_length=255)
+
+    # Mantenha os validadores e o model_validator existentes.
 
     @field_validator("*", mode="before")
     @classmethod

@@ -44,6 +44,21 @@
                 <div><dt>Data limite para pagamento</dt><dd>{{ evento.data_limite_pagamento.strftime('%d/%m/%Y') if evento.data_limite_pagamento else 'Não informada' }}</dd></div>
                 <div><dt>Meio de pagamento</dt><dd>{{ evento.meio_pagamento or 'Não informado' }}</dd></div>
                 {% endif %}
+                <div>
+                    <dt>Imagem</dt>
+                    <dd>
+                        {% if evento.imagem %}
+                            <img
+                                class="detalhe-evento__imagem"
+                                src="{{ url_for('media', path=evento.imagem) }}"
+                                alt="Imagem do evento"
+                            >
+                        {% else %}
+                            Não disponível
+                        {% endif %}
+                    </dd>
+                </div>
+                <div><dt>Video</dt><dd>{% if evento.video %}<video controls><source src="{{ url_for('media', path=evento.video) }}" type="video/mp4">Seu navegador não suporta o elemento de vídeo.</video>{% else %}Não disponível{% endif %}</dd></div>
             </dl>
 
             <section aria-labelledby="descricao-titulo">
