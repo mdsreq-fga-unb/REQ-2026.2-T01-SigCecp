@@ -1,284 +1,249 @@
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Editar evento | SigCECP</title>
+{% block titulo %}Editar evento | SigCECP{% endblock %}
 
-    <link rel="stylesheet" href="../../assets/style/base.css">
-    <link rel="stylesheet" href="../../assets/style/componentes.css">
-    <link rel="stylesheet" href="../../assets/style/editar-evento.css">
-</head>
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/publicar-evento.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+{% endblock %}
 
-<body>
-    <header class="topo">
-        <div class="container topo__linha">
-            <a class="marca" href="{{ request.url_for('modulo_eventos_publico') }}">
-                <img class="marca__logo" src="../../assets/img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png" alt="" width="44" height="44">
-                <span class="marca__nome">
-                    Centro Esportivo Cultural<br>
-                    de Planaltina-DF
-                </span>
-            </a>
+{% block cabecalho %}
+<!-- Ícones reaproveitados via <use> -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 3v4M8 3v4M3 10h18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 14h2M12 14h2M7 17h2M12 17h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</svg>
 
-            <div class="topo__direita">
-                <span class="usuario">Coordenação</span>
-            </div>
+<header class="topo">
+  <div class="container topo__linha">
+    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
+      <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+    </a>
+    <div class="topo__direita">
+      <a class="topo__link" href="{{ url_for('modulo_conteudo_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block corpo %}
+<main class="pagina container">
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="#">Coordenação</a></li>
+      <li><a href="{{ url_for('lista_conteudo') }}">Eventos</a></li>
+      <li aria-current="page">Editar</li>
+    </ol>
+  </nav>
+
+  <h1 class="pagina__titulo">Editar evento</h1>
+  <p class="pagina__sub">Revise os dados antes de salvar as alterações.</p>
+
+  <form id="form" class="layout" method="post" action="{{ url_for('salvar_edicao_evento', evento_id=evento.id) }}">
+    <div class="coluna">
+
+      <!-- 01 - Informações da publicação -->
+      <section class="bloco" aria-labelledby="bloco-info">
+        <h2 id="bloco-info" class="bloco__titulo"><span class="bloco__num">01</span>Informações da publicação</h2>
+        <p class="ajuda">Título, subtítulo e nome da competição são informações distintas.</p>
+
+        <div class="campo">
+          <label for="titulo">Título da publicação <span class="obrigatorio" aria-hidden="true">*</span></label>
+          <input id="titulo" name="titulo" type="text" maxlength="120" required autocomplete="off" aria-describedby="erro-titulo" value="{{ evento.titulo }}">
+          <p id="erro-titulo" class="erro" hidden>Preencha o título para salvar as alterações.</p>
         </div>
-    </header>
 
-    <main class="pagina container">
+        <div class="campo">
+          <label for="subtitulo">Subtítulo <span class="obrigatorio" aria-hidden="true">*</span></label>
+          <input id="subtitulo" name="subtitulo" type="text" maxlength="120" required autocomplete="off" aria-describedby="erro-subtitulo" value="{{ evento.subtitulo }}">
+          <p id="erro-subtitulo" class="erro" hidden>Preencha o subtítulo para salvar as alterações.</p>
+        </div>
 
-        <nav class="trilha" aria-label="Você está em">
-            <ol>
-                <li>Coordenação</li>
-                <li>Eventos</li>
-                <li aria-current="page">Editar</li>
-            </ol>
-        </nav>
+        <div class="campo">
+          <label for="nome">Nome do evento / competição <span class="obrigatorio" aria-hidden="true">*</span></label>
+          <input id="nome" name="nome" type="text" maxlength="120" required autocomplete="off" aria-describedby="erro-nome" value="{{ evento.nome }}">
+          <p id="erro-nome" class="erro" hidden>Preencha o nome do evento / competição para salvar as alterações.</p>
+        </div>
+      </section>
 
-        <h1 class="pagina__titulo">Editar evento</h1>
-        <p class="pagina__sub">
-            Revise os dados antes de salvar as alterações.
-        </p>
+      <!-- 02 - Data, horário e local -->
+      <section class="bloco" aria-labelledby="bloco-data">
+        <h2 id="bloco-data" class="bloco__titulo"><span class="bloco__num">02</span>Data, horário e local</h2>
 
-        <form id="form" class="layout" method="post" action="{{ request.url_for('salvar_edicao_evento', evento_id=evento.id) }}">
-            <div class="coluna">
+        <div class="linha-tres">
+          <div class="campo">
+            <label for="data">Data <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input id="data" name="data" type="date" required value="{{ evento.data.isoformat() }}">
+          </div>
 
-                <!-- 01 - Identificação -->
-                <section class="bloco">
-                    <h2 class="bloco__titulo">
-                        <span class="bloco__num">01</span> Informações da publicação
-                    </h2>
+          <div class="campo">
+            <label for="inicio">Horário de início <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input id="inicio" name="inicio" type="time" required value="{{ evento.inicio.strftime('%H:%M') }}">
+          </div>
 
-                    <p class="ajuda">
-                        Título, subtítulo e nome da competição são informações distintas.
-                    </p>
+          <div class="campo">
+            <label for="termino">Horário de término <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input id="termino" name="termino" type="time" required value="{{ evento.termino.strftime('%H:%M') }}">
+          </div>
+        </div>
 
-                    <div class="campo">
-                        <label for="titulo">Título da publicação *</label>
-                        <input id="titulo" name="titulo" type="text" maxlength="120" required value="{{ evento.titulo }}">
-                    </div>
+        <p class="ajuda" id="ajuda-horario">Horário de Brasília. O término deve ser posterior ao início.</p>
 
-                    <div class="campo">
-                        <label for="subtitulo">Subtítulo *</label>
-                        <input id="subtitulo" name="subtitulo" type="text" maxlength="120" required value="{{ evento.subtitulo }}">
-                    </div>
+        <div class="campo">
+          <label for="local">Local <span class="obrigatorio" aria-hidden="true">*</span></label>
+          <input id="local" name="local" type="text" maxlength="255" required value="{{ evento.local }}">
+        </div>
+      </section>
 
-                    <div class="campo">
-                        <label for="nome">Nome do evento / competição *</label>
-                        <input id="nome" name="nome" type="text" maxlength="120" required value="{{ evento.nome }}">
-                    </div>
-                </section>
+      <!-- 03 - Descrição e estrutura -->
+      <section class="bloco" aria-labelledby="bloco-estrutura">
+        <h2 id="bloco-estrutura" class="bloco__titulo"><span class="bloco__num">03</span>Descrição e estrutura</h2>
 
-                <!-- 02 - Data, horário e local -->
-                <section class="bloco">
-                    <h2 class="bloco__titulo">
-                        <span class="bloco__num">02</span> Data, horário e local
-                    </h2>
+        <div class="campo">
+          <label for="descricao">Descrição <span class="obrigatorio" aria-hidden="true">*</span></label>
+          <textarea id="descricao" name="descricao" rows="5" maxlength="16000" required autocomplete="off" aria-describedby="erro-descricao">{{ evento.descricao }}</textarea>
+          <p id="erro-descricao" class="erro" hidden>Preencha a descrição para salvar as alterações.</p>
+        </div>
 
-                    <div class="linha-tres">
-                        <div class="campo">
-                            <label for="data">Data *</label>
-                            <input id="data" name="data" type="date" required value="{{ evento.data.isoformat() }}">
-                        </div>
+        <div class="linha-dois">
+          <div class="campo-opcoes">
+            <label>Alimentação <span class="obrigatorio">*</span></label>
 
-                        <div class="campo">
-                            <label for="inicio">Horário de início *</label>
-                            <input id="inicio" name="inicio" type="time" required value="{{ evento.inicio.strftime('%H:%M') }}">
-                        </div>
+            <div class="opcoes-radio">
+              <label class="opcao-radio">
+                <input type="radio" name="alimentacao" value="true" required {% if evento.alimentacao %}checked{% endif %}>
+                Haverá
+              </label>
 
-                        <div class="campo">
-                            <label for="termino">Horário de término *</label>
-                            <input id="termino" name="termino" type="time" required value="{{ evento.termino.strftime('%H:%M') }}">
-                        </div>
-                    </div>
+              <label class="opcao-radio">
+                <input type="radio" name="alimentacao" value="false" {% if not evento.alimentacao %}checked{% endif %}>
+                Não haverá
+              </label>
+            </div>
+          </div>
 
-                    <p class="ajuda">
-                        Horário de Brasília. O término deve ser posterior ao início.
-                    </p>
+          <div class="campo-opcoes">
+            <label>Pesagem <span class="obrigatorio">*</span></label>
 
-                    <div class="campo">
-                        <label for="local">Local *</label>
-                        <input id="local" name="local" type="text" maxlength="255" required value="{{ evento.local }}">
-                    </div>
-                </section>
+            <div class="opcoes-radio">
+              <label class="opcao-radio">
+                <input type="radio" name="pesagem" value="sim" required {% if evento.pesagem == 'sim' %}checked{% endif %}>
+                Haverá
+              </label>
 
-                <!-- 03 - Descrição e estrutura -->
-                <section class="bloco">
-                    <h2 class="bloco__titulo">
-                        <span class="bloco__num">03</span> Descrição e estrutura
-                    </h2>
+              <label class="opcao-radio">
+                <input type="radio" name="pesagem" value="nao" {% if evento.pesagem == 'nao' %}checked{% endif %}>
+                Não haverá
+              </label>
 
-                    <div class="campo">
-                        <label for="descricao">Descrição *</label>
-                        <textarea id="descricao" name="descricao" rows="5" maxlength="16000" required>{{ evento.descricao }}</textarea>
-                    </div>
-
-                    <div class="linha-dois">
-                        <div class="campo-opcoes">
-                            <label>Alimentação *</label>
-
-                            <div class="opcoes-radio">
-                                <label class="opcao-radio">
-                                    <input
-                                        type="radio"
-                                        name="alimentacao"
-                                        value="true"
-                                        {% if evento.alimentacao %}checked{% endif %}
-                                        required
-                                    >
-                                    Haverá
-                                </label>
-
-                                <label class="opcao-radio">
-                                    <input
-                                        type="radio"
-                                        name="alimentacao"
-                                        value="false"
-                                        {% if not evento.alimentacao %}checked{% endif %}
-                                    >
-                                    Não haverá
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="campo-opcoes">
-                            <label>Pesagem *</label>
-
-                            <div class="opcoes-radio">
-                                <label class="opcao-radio">
-                                    <input
-                                        type="radio"
-                                        name="pesagem"
-                                        value="sim"
-                                        {% if evento.pesagem == 'sim' %}checked{% endif %}
-                                        required
-                                    >
-                                    Haverá
-                                </label>
-
-                                <label class="opcao-radio">
-                                    <input
-                                        type="radio"
-                                        name="pesagem"
-                                        value="nao"
-                                        {% if evento.pesagem == 'nao' %}checked{% endif %}
-                                    >
-                                    Não haverá
-                                </label>
-
-                                <label class="opcao-radio">
-                                    <input
-                                        type="radio"
-                                        name="pesagem"
-                                        value="nao_se_aplica"
-                                        {% if evento.pesagem == 'nao_se_aplica' %}checked{% endif %}
-                                    >
-                                    Não se aplica
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 04 - Cobrança e pagamento -->
-                <section class="bloco">
-                    <h2 class="bloco__titulo">
-                        <span class="bloco__num">04</span> Cobrança e pagamento
-                    </h2>
-
-                    <div class="campo-opcoes">
-                        <label>O evento é cobrado? *</label>
-
-                        <div class="opcoes-radio">
-                            <label class="opcao-radio">
-                                <input
-                                    type="radio"
-                                    name="cobrado"
-                                    value="true"
-                                    {% if evento.cobrado %}checked{% endif %}
-                                    required
-                                >
-                                Sim, é cobrado
-                            </label>
-
-                            <label class="opcao-radio">
-                                <input
-                                    type="radio"
-                                    name="cobrado"
-                                    value="false"
-                                    {% if not evento.cobrado %}checked{% endif %}
-                                >
-                                Não, é gratuito
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="campo">
-                        <label for="valor">Valor da inscrição (R$)</label>
-                        <input id="valor" name="valor" type="number" min="0" step="0.01" value="{{ evento.valor if evento.valor is not none else '' }}">
-                    </div>
-
-                    <div class="campo">
-                        <label for="data_limite_pagamento">
-                            Data limite de pagamento
-                        </label>
-                        <input id="data_limite_pagamento" name="data_limite_pagamento" type="date" value="{{ evento.data_limite_pagamento.isoformat() if evento.data_limite_pagamento else '' }}">
-                    </div>
-
-                    <div class="campo">
-                        <label for="meio_pagamento">Meio de pagamento</label>
-                        <input id="meio_pagamento" name="meio_pagamento" type="text" maxlength="255" value="{{ evento.meio_pagamento or '' }}">
-                    </div>
-                </section>
-
-                <!-- Botões -->
-                <div class="acoes">
-                    <div class="acoes__botoes">
-                        <a class="botao botao--claro" href="{{ request.url_for('modulo_eventos_publico') }}">
-                            Cancelar
-                        </a>
-
-                        <button class="botao botao--vermelho" type="submit" id="salvar">
-                            Salvar alterações
-                        </button>
-                    </div>
-                </div>
-
+              <label class="opcao-radio">
+                <input type="radio" name="pesagem" value="nao_se_aplica" {% if evento.pesagem == 'nao_se_aplica' %}checked{% endif %}>
+                Não se aplica
+              </label>
             </div>
 
-            <aside class="lateral" aria-label="Situação da publicação">
-                <div class="lateral__cartao">
-                    <h2>Evento publicado</h2>
+            <p class="ajuda">Quando não for aplicável à modalidade, selecione Não se aplica.</p>
+          </div>
+        </div>
+      </section>
 
-                    <p>
-                        As informações salvas substituirão a versão disponível ao público.
-                    </p>
+      <!-- 04 - Cobrança e pagamento -->
+      <section class="bloco" aria-labelledby="bloco-cobranca">
+        <h2 id="bloco-cobranca" class="bloco__titulo"><span class="bloco__num">04</span>Cobrança e pagamento</h2>
 
-                    <div class="infos">
-                        <p>Identificação</p>
-                        <p>Data, horário e local</p>
-                        <p>Descrição e estrutura</p>
-                        <p>Cobrança e pagamento</p>
-                    </div>
-                </div>
+        <div class="campo-opcoes">
+          <label>O evento é cobrado? <span class="obrigatorio">*</span></label>
 
-                <div class="lateral__aviso">
-                    <h2>Orientação interna</h2>
-                    <p class="ajuda">
-                        A coordenação deve comunicar mudanças relevantes aos interessados.
-                    </p>
-                </div>
-            </aside>
+          <div class="opcoes-radio">
+            <label class="opcao-radio">
+              <input type="radio" name="cobrado" value="true" required {% if evento.cobrado %}checked{% endif %}>
+              Sim, é cobrado
+            </label>
 
-        </form>
+            <label class="opcao-radio">
+              <input type="radio" name="cobrado" value="false" {% if not evento.cobrado %}checked{% endif %}>
+              Não, é gratuito
+            </label>
+          </div>
 
-    </main>
-</body>
+          <div class="painel-pagamento" id="painel-pagamento" hidden>
+            <p class="ajuda">Obrigatórios porque o evento é cobrado</p>
+            <div class="linha-tres">
+              <div class="campo">
+                <label for="valor">Valor <span class="obrigatorio">*</span></label>
+                <input id="valor" name="valor" type="number" step="0.01" min="0" value="{{ evento.valor if evento.valor is not none else '' }}">
+              </div>
+              <div class="campo">
+                <label for="data_limite_pagamento">Data limite de pagamento <span class="obrigatorio">*</span></label>
+                <input id="data_limite_pagamento" name="data_limite_pagamento" type="date" value="{{ evento.data_limite_pagamento.isoformat() if evento.data_limite_pagamento else '' }}">
+              </div>
+              <div class="campo">
+                <label for="meio_pagamento">Meio de pagamento <span class="obrigatorio">*</span></label>
+                <select id="meio_pagamento" name="meio_pagamento">
+                  <option value="">Selecione</option>
+                  <option value="PIX" {% if evento.meio_pagamento == 'PIX' %}selected{% endif %}>PIX</option>
+                  <option value="Dinheiro" {% if evento.meio_pagamento == 'Dinheiro' %}selected{% endif %}>Dinheiro</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-</html>
-```
+      <!-- Botões -->
+      <div class="acoes">
+        <div class="acoes__botoes">
+          <a class="botao botao--claro" href="{{ url_for('lista_conteudo') }}" id="cancelar">Cancelar</a>
+          <button class="botao botao--vermelho" type="submit" id="salvar">Salvar alterações</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="lateral" aria-label="Situação da publicação">
+      <div class="lateral__cartao">
+        <svg class="icone icone--grande" aria-hidden="true"><use href="#i-calendario"/></svg>
+        <h2>Evento publicado</h2>
+        <p>As informações salvas substituirão a versão disponível ao público.</p>
+
+        <div class="infos">
+          <p>Identificação</p>
+          <p>Data, horário e local</p>
+          <p>Descrição e estrutura</p>
+          <p>Cobrança e pagamento</p>
+        </div>
+      </div>
+
+      <div class="lateral__aviso">
+        <h2>Orientação interna</h2>
+        <p class="ajuda">A coordenação deve comunicar mudanças relevantes aos interessados.</p>
+      </div>
+    </aside>
+  </form>
+
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const painel = document.getElementById("painel-pagamento");
+  const radios = document.querySelectorAll('input[name="cobrado"]');
+  const camposPagamento = painel.querySelectorAll("input, select");
+
+  function atualizarPainel() {
+    const escolhido = document.querySelector('input[name="cobrado"]:checked');
+    const cobrado = escolhido !== null && escolhido.value === "true";
+
+    painel.hidden = !cobrado;
+    camposPagamento.forEach(campo => {
+      campo.disabled = !cobrado;
+      campo.required = cobrado;
+    });
+  }
+
+  radios.forEach(radio => radio.addEventListener("change", atualizarPainel));
+  atualizarPainel();
+</script>
+{% endblock %}
