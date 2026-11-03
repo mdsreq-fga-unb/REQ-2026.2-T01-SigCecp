@@ -8,6 +8,7 @@
 {{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', path='style/conteudos.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='style/remover-evento.css') }}">
 {% endblock %}
 
 {% block cabecalho %}
@@ -177,24 +178,17 @@
                         </div>
 
                         <!-- Ações -->
-                        <div class="publicacao-item__acoes">
-
-                            <a class="botao botao--editar"
-                               href="{{ url_for('editar_conteudo', conteudo_id=publicacao.id) }}">
-                                <svg class="icone" aria-hidden="true">
-                                    <use href="#i-lapis"/>
-                                </svg>
-                                Editar
+                        <div class="conteudo__acoes">
+                            <a class="acao acao--editar" href="{{ url_for('editar_conteudo', conteudo_id=publicacao.id) }}">
+                            Editar
                             </a>
 
-                            <a class="botao botao--remover"
-                               href="{{ url_for('confirmar_remocao_conteudo', conteudo_id=publicacao.id) }}">
-                                <svg class="icone" aria-hidden="true">
-                                    <use href="#i-lixeira"/>
-                                </svg>
-                                Remover
-                            </a>
-
+                            <button type="button" class="acao acao--remover"
+                                    data-remover-conteudo
+                                    data-titulo="{{ publicacao.titulo }}"
+                                    data-action="{{ url_for('excluir_conteudo', conteudo_id=publicacao.id) }}">
+                            Remover
+                            </button>
                         </div>
 
                     </article>
@@ -228,4 +222,6 @@
     </div>
 
 </main>
+
+{% include "coordenacao/conteudo/remover-conteudo.html" %}
 {% endblock %}

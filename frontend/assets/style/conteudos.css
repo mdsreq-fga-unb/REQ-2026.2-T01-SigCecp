@@ -170,6 +170,47 @@
     color: var(--vermelho);
 }
 
+.conteudo__acoes {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.acao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 0;
+  background: transparent;
+  border: none;
+
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.acao span {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.acao--editar {
+  color: var(--preto);
+}
+
+.acao--remover {
+  color: var(--vermelho);
+}
+
+.acao:hover {
+  text-decoration: underline;
+}
+
 /* Rodapé */
 
 .tabela__rodape {

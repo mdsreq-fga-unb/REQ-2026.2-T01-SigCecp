@@ -14,6 +14,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from backend.database import Base
 
 
+
 class Publicacao(Base):
     __tablename__ = "publicacoes"
 
@@ -44,6 +45,7 @@ class Publicacao(Base):
         cascade="all, delete-orphan",
     )
 
+  
 
 class PublicacaoMidia(Base):
     __tablename__ = "publicacao_midias"
@@ -77,4 +79,5 @@ class PublicacaoMidia(Base):
     publicacao: Mapped["Publicacao"] = relationship(
         back_populates="midias",
     )
+
     

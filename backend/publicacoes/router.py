@@ -133,7 +133,7 @@ def confirmar_remocao_conteudo(
 
     return templates.TemplateResponse(
         request=request,
-        name="coordenacao/conteudo/remover-evento.html",
+        name="coordenacao/conteudo/remover-conteudo.html",
         context={"conteudo": conteudo},
     )
 
