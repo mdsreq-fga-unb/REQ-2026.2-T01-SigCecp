@@ -1,5 +1,8 @@
 ## Regras de Negócio do Centro Esportivo Cultural de Planaltina
 
+!!! info "Fonte do painel"
+    Esta página é a fonte de dados do [painel do escopo](../../painel.md). Edite aqui; o painel é atualizado a cada build.
+
 | ID | Descrição | Requisito Funcional Relacionado |
 |---|---|---|
 | <a id="rn01"></a>**RN01** | Preservação de Histórico de Alunos: O aluno nunca pode ser excluído do sistema. A única ação permitida é a inativação, preservando todo o histórico de participação e frequência. | — |
@@ -17,6 +20,7 @@
 | <a id="rn13"></a>**RN13** | Diversidade de Recursos: O recebimento de recursos ocorre por múltiplos canais (doações diretas, bens físicos e parcerias/ofícios). | — |
 | <a id="rn14"></a>**RN14** | Fluxo de Prestação de Contas: A prestação de contas de recursos envolve orçamentos prévios, aprovação, nota fiscal e registros fotográficos/audiovisuais. | — |
 | <a id="rn15"></a>**RN15** | Vínculo Socioeducacional e Permanência: A regra de negócio central do CECP condiciona a permanência e a evolução do aluno no projeto social esportivo ao acompanhamento direto de sua frequência nas aulas do CECP e de seu desempenho/assiduidade na escola formal de origem. | — |
+| <a id="rn16"></a>**RN16** | Separação de Consentimento de Dados e Termo de Imagem: O aceite do termo de tratamento de dados pessoais (LGPD) e do termo de uso de imagem são tratados de forma independente. A recusa do termo de imagem impede a realização da matrícula. | [RF38](requisitos/RF38.md), [RF39](requisitos/RF39.md) |
 | <a id="rn17"></a>**RN17** | O encerramento é total; para voltar à área de coordenação é preciso informar usuário e senha novamente. | [RF00](requisitos/RF00.md) |
 | <a id="rn18"></a>**RN18** | Na reunião o cliente admitiu redirecionar também para um modo público; a tela de login é o comportamento adotado. | [RF00](requisitos/RF00.md) |
 | <a id="rn19"></a>**RN19** | Não há autocadastro; a tela de login não oferece opção de cadastro. | [RF01](requisitos/RF01.md) |

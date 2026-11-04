@@ -2,6 +2,12 @@
 
 Github Pages da **Equipe One** dedicado ao desenvolvimento da documentação do projeto da disciplina **Requisitos de Software**. Essa página conterá todos os módulos propostos na disciplina que serão adicionados no decorrer do semestre. Além disso, atas de reunião, gravações da reuniões e outros documentos de rastreabilidade também podem ser encontrados aqui.
 
+## Estado atual
+
+<div id="painel-resumo"><p>Veja o <a href="painel/">painel do escopo</a>.</p></div>
+
+Requisitos, regras de negócio, decisões, pendências e cronograma estão reunidos no [painel do escopo](painel.md). Os registros anteriores ficam em [histórico](historico/8_0_requisitos.md).
+
 ## Equipe
 <div class="team-all-in-one">
     <a
@@ -103,3 +109,4 @@ Github Pages da **Equipe One** dedicado ao desenvolvimento da documentação do 
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 03/09/2026 | Escrita do [Projeto SigCecp](#projeto-sigcecp) e [Equipe](#equipe) | [Rafael Melatti](https://github.com/Romm-0) | - |
 | 1.1 | 04/09/2026 | Adição dos membros [Alexandre Enrique](https://github.com/El-flipante), [Ana Paula](https://github.com/beibeharry), [Enzo](https://github.com/enzocostaj), [Maria Eduarda](https://github.com/Mariaeduardara) e [Renato](https://github.com/renatoyx) | [Rafael Melatti](https://github.com/Romm-0) | - |
+| 1.2 | 03/11/2026 | Adição do estado atual do projeto e do painel do escopo | Equipe One | - |

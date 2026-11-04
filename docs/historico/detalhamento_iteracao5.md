@@ -20,7 +20,7 @@ Reunião remota com o cliente para detalhar os requisitos RF13 a RF20 (CP3: Gest
 | [RF19](../visao/escopo/requisitos/RF19.md) Remover evento | Remoção definitiva pela coordenação | RN26, RN30 |
 | [RF20](../visao/escopo/requisitos/RF20.md) Consultar eventos | Lista com estados em breve, em andamento e encerrado; consulta pública | RN33 |
 
-As decisões tomadas na reunião estão registradas em [decisões e pendências](../visao/escopo/decisoes.md) (DEC06 a DEC11).
+As decisões tomadas na reunião estão registradas em [decisões e pendências](../painel.md#dec) (DEC06 a DEC11).
 
 ## Versionamento
 

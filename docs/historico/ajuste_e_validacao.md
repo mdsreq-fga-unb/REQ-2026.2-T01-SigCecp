@@ -1,3 +1,6 @@
+!!! warning "Documento histórico"
+    Os códigos de requisito citados aqui seguem a numeração da época do feedback e podem não coincidir com a atual (por exemplo, hoje o RF22 é "Editar aluno"). Para o requisito vigente, consulte o [painel](../painel.md).
+
 # Ajuste e Validação de Requisitos
 
 Ajuste e validação dos requisitos baseado nos feedbacks oferecidos pela equipe Squad Guerreiros

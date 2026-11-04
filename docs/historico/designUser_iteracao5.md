@@ -25,7 +25,7 @@ Reunião remota com o cliente para apresentar o protótipo das telas de RF13 a R
 | RF19 Remover evento | [RF19](../visao/escopo/requisitos/RF19.md) | [PDF](../visao/escopo/pdf/RF19.pdf) |
 | RF20 Consultar eventos | [RF20](../visao/escopo/requisitos/RF20.md) | [PDF](../visao/escopo/pdf/RF20.pdf) |
 
-As decisões tomadas na reunião estão registradas em [decisões e pendências](../visao/escopo/decisoes.md) (DEC03, DEC12 a DEC14).
+As decisões tomadas na reunião estão registradas em [decisões e pendências](../painel.md#dec) (DEC03, DEC12 a DEC14).
 
 ## Versionamento
 

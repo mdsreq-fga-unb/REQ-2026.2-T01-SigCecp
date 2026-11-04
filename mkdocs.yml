@@ -11,74 +11,19 @@ nav:
     - Estratégias de ESW: visao/contexto/4_estrategias_esw.md
     - Engenharia de requisitos: visao/contexto/5_engenharia_req.md
     - Interação da equipe e do cliente: visao/contexto/7_interacao_equipe_e_cliente.md
-    - Dor e DoD: visao/contexto/9_dor_e_dod.md
+    - DoR e DoD: visao/contexto/9_dor_e_dod.md
     - Lições aprendidas: visao/licoes/11_licoes_aprendidas.md
   
-  - Escopo:
-    - Catálogo de requisitos: visao/escopo/catalogo_rf.md
-    - Regras de negócio: visao/escopo/regras_de_negocio.md
-    - Decisões e pendências: visao/escopo/decisoes.md
-    - Fichas por CP:
-      - 'Acesso e controle de usuários':
-        - 'RF00: Encerrar sessão': visao/escopo/requisitos/RF00.md
-        - 'RF01: Autenticar usuário': visao/escopo/requisitos/RF01.md
-        - 'RF02: Controlar acesso': visao/escopo/requisitos/RF02.md
-      - 'CP1: Gestão e acompanhamento de turmas':
-        - 'RF03: Cadastrar turma': visao/escopo/requisitos/RF03.md
-        - 'RF04: Editar turma': visao/escopo/requisitos/RF04.md
-        - 'RF05: Inativar turma': visao/escopo/requisitos/RF05.md
-        - 'RF06: Associar aluno à turma': visao/escopo/requisitos/RF06.md
-        - 'RF07: Consultar alunos de uma turma': visao/escopo/requisitos/RF07.md
-      - 'CP2: Registro de doações e prestação de contas':
-        - 'RF08: Registrar doação recebida': visao/escopo/requisitos/RF08.md
-        - 'RF09: Editar doação recebida': visao/escopo/requisitos/RF09.md
-        - 'RF10: Registrar documentos de prestação de contas': visao/escopo/requisitos/RF10.md
-        - 'RF11: Editar documentos de prestação de contas': visao/escopo/requisitos/RF11.md
-        - 'RF12: Consultar doações e prestações de contas': visao/escopo/requisitos/RF12.md
-      - 'CP3: Gestão de conteúdo institucional':
-        - 'RF13: Publicar conteúdo institucional': visao/escopo/requisitos/RF13.md
-        - 'RF14: Editar conteúdo institucional': visao/escopo/requisitos/RF14.md
-        - 'RF15: Consultar conteúdo institucional': visao/escopo/requisitos/RF15.md
-        - 'RF16: Remover conteúdo institucional': visao/escopo/requisitos/RF16.md
-        - 'RF17: Publicar evento': visao/escopo/requisitos/RF17.md
-        - 'RF18: Editar evento': visao/escopo/requisitos/RF18.md
-        - 'RF19: Remover evento': visao/escopo/requisitos/RF19.md
-        - 'RF20: Consultar eventos': visao/escopo/requisitos/RF20.md
-      - 'CP4: Cadastro e histórico de alunos':
-        - 'RF21: Cadastrar aluno': visao/escopo/requisitos/RF21.md
-        - 'RF22: Editar aluno': visao/escopo/requisitos/RF22.md
-        - 'RF23: Consultar ficha do aluno': visao/escopo/requisitos/RF23.md
-        - 'RF24: Inativar aluno': visao/escopo/requisitos/RF24.md
-        - 'RF25: Remover dados do aluno': visao/escopo/requisitos/RF25.md
-      - 'CP5: Acompanhamento pedagógico e disciplinar do aluno':
-        - 'RF26: Registrar frequência': visao/escopo/requisitos/RF26.md
-        - 'RF27: Consultar frequência': visao/escopo/requisitos/RF27.md
-        - 'RF28: Emitir alerta de faltas críticas': visao/escopo/requisitos/RF28.md
-        - 'RF29: Registrar medida disciplinar': visao/escopo/requisitos/RF29.md
-      - 'CP6: Comunicação com voluntários e famílias':
-        - 'RF30: Publicar aviso': visao/escopo/requisitos/RF30.md
-        - 'RF31: Consultar avisos': visao/escopo/requisitos/RF31.md
-        - 'RF32: Editar aviso': visao/escopo/requisitos/RF32.md
-        - 'RF33: Remover aviso': visao/escopo/requisitos/RF33.md
-        - 'RF34: Consultar histórico de avisos': visao/escopo/requisitos/RF34.md
-      - 'CP7: Matrícula online':
-        - 'RF35: Acessar formulário de matrícula online': visao/escopo/requisitos/RF35.md
-        - 'RF36: Preencher dados do aluno': visao/escopo/requisitos/RF36.md
-        - 'RF37: Informar dados do responsável legal': visao/escopo/requisitos/RF37.md
-        - 'RF38: Registrar consentimento de dados pessoais': visao/escopo/requisitos/RF38.md
-        - 'RF39: Registrar termo de uso de imagem': visao/escopo/requisitos/RF39.md
-        - 'RF40: Informar pessoas autorizadas a retirar o aluno': visao/escopo/requisitos/RF40.md
-        - 'RF41: Emitir comprovante de solicitação': visao/escopo/requisitos/RF41.md
-        - 'RF42: Analisar solicitações de matrícula': visao/escopo/requisitos/RF42.md
-  - Cronograma: cronograma/6_cronograma.md
+  - Painel do escopo: painel.md
+  - Priorização e MVP:
+    - Backlog e MVP: historico/10_backlog_produto.md
+    - Evidências da priorização: historico/priorizacao_geral_e_mvp.md
 
   - Apresentações das unidades:
     - Unidade 1: apresentacoes_unidades/apresentacao_unidade_1.md
     - Unidade 2: apresentacoes_unidades/apresentacao_unidade_2.md
   - Histórico:
-      - Lista de Requisitos: historico/8_0_requisitos.md
-      - Backlog e MVP: historico/10_backlog_produto.md
-      - Evidências da priorização: historico/priorizacao_geral_e_mvp.md
+      - Lista original de requisitos (arquivada): historico/8_0_requisitos.md
       - Evidências da Iteração 5:
           - Detalhamento: historico/detalhamento_iteracao5.md
           - Design do usuário: historico/designUser_iteracao5.md
@@ -105,7 +50,7 @@ nav:
                   - 22/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_22_09.md
                   - 24/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09.md
                   - 26/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_26_09.md
-                  - 09/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10.md
+                  - 08/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10.md
                   - 21/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10.md
                   - 30/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10.md
               - Equipe:
@@ -152,3 +97,11 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+  - assets/painel.css
+
+extra_javascript:
+  - assets/escopo.js
+  - assets/painel.js
+
+hooks:
+  - tools/mkdocs_hook.py

@@ -76,12 +76,12 @@ Durante a construção, haverá contato com o cliente cerca de **três vezes por
 
 ## 6. Decisões
 
-- Conteúdo institucional: título obrigatório e demais campos livres ([DEC06](../../../../visao/escopo/decisoes.md)).
-- Somente a coordenação publica, edita e remove; a consulta é pública e sem login ([DEC07](../../../../visao/escopo/decisoes.md)).
-- Remoção definitiva e responsabilidade da coordenação de avisar sobre alterações ([DEC08](../../../../visao/escopo/decisoes.md)).
-- Evento só é publicado com todos os campos obrigatórios; vídeo opcional ([DEC09](../../../../visao/escopo/decisoes.md)).
-- Estados do evento: em breve, em andamento e encerrado ([DEC10](../../../../visao/escopo/decisoes.md)).
-- Identidade visual: preto, branco e vermelho, com amarelo para destaque ([DEC11](../../../../visao/escopo/decisoes.md)).
+- Conteúdo institucional: título obrigatório e demais campos livres ([DEC06](../../../../painel.md#DEC06)).
+- Somente a coordenação publica, edita e remove; a consulta é pública e sem login ([DEC07](../../../../painel.md#DEC07)).
+- Remoção definitiva e responsabilidade da coordenação de avisar sobre alterações ([DEC08](../../../../painel.md#DEC08)).
+- Evento só é publicado com todos os campos obrigatórios; vídeo opcional ([DEC09](../../../../painel.md#DEC09)).
+- Estados do evento: em breve, em andamento e encerrado ([DEC10](../../../../painel.md#DEC10)).
+- Identidade visual: preto, branco e vermelho, com amarelo para destaque ([DEC11](../../../../painel.md#DEC11)).
 
 ## 7. Encaminhamentos
 
@@ -99,7 +99,7 @@ Depois da aprovação do protótipo, a equipe constrói e, no final, mostra ao c
 
 - A conexão do cliente caiu no meio da reunião e ele voltou por outro dispositivo (tablet). Não foi possível compartilhar a tela nem gravar a reunião pela plataforma, então a gravação foi feita pelo celular.
 - **Pendências:** confirmar a data da reunião (o arquivo de gravação indica 21/10, e o cronograma prevê reuniões em 22/10 e 23/10); confirmar o nome do site de referência.
-- Na recapitulação dos campos obrigatórios, o subtítulo foi tratado como "se houver" e o cliente concordou. Esse ponto diverge da ficha do [RF17](../../../../visao/escopo/requisitos/RF17.md), que o lista como obrigatório (ver [decisões e pendências](../../../../visao/escopo/decisoes.md)).
+- Na recapitulação dos campos obrigatórios, o subtítulo foi tratado como "se houver" e o cliente concordou. Esse ponto diverge da ficha do [RF17](../../../../visao/escopo/requisitos/RF17.md), que o lista como obrigatório (ver [decisões e pendências](../../../../painel.md#dec)).
 
 *Ata elaborada a partir da transcrição da reunião remota entre Marcos Vinicius Monteiro e Pedro Augusto Cajado Coutinho, representante do CECP, para conhecimento e alinhamento da equipe do projeto.*
 

@@ -66,11 +66,11 @@ Os demais requisitos **continuam existindo**, mas não são prioridade agora. O 
 
 ## 6. Decisões
 
-- Protótipo das telas de RF13 a RF20 aprovado pelo cliente ([DEC12](../../../../visao/escopo/decisoes.md)).
-- Telas da coordenação somente para computador; celular apenas com as quatro telas públicas ([DEC13](../../../../visao/escopo/decisoes.md)).
-- Evento gratuito não exibe dados de pagamento, e o botão de publicar fica desabilitado até todos os campos obrigatórios serem preenchidos ([DEC14](../../../../visao/escopo/decisoes.md)).
-- Confirmação antes de remover, já prevista, foi prototipada para conteúdo e eventos ([DEC02](../../../../visao/escopo/decisoes.md)).
-- Escopo do MVP, com 18 RFs, validado pelo cliente ([DEC03](../../../../visao/escopo/decisoes.md)).
+- Protótipo das telas de RF13 a RF20 aprovado pelo cliente ([DEC12](../../../../painel.md#DEC12)).
+- Telas da coordenação somente para computador; celular apenas com as quatro telas públicas ([DEC13](../../../../painel.md#DEC13)).
+- Evento gratuito não exibe dados de pagamento, e o botão de publicar fica desabilitado até todos os campos obrigatórios serem preenchidos ([DEC14](../../../../painel.md#DEC14)).
+- Confirmação antes de remover, já prevista, foi prototipada para conteúdo e eventos ([DEC02](../../../../painel.md#DEC02)).
+- Escopo do MVP, com 18 RFs, validado pelo cliente ([DEC03](../../../../painel.md#DEC03)).
 
 ## 7. Encaminhamentos
 

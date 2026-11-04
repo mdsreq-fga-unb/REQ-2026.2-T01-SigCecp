@@ -2,7 +2,7 @@
 
 ## 1. Critérios e escalas
  
-Os critérios e as escalas de pontuação estão na seção 10.2.1 do Backlog de Produto: **o valor de negócio (MoSCoW) vai de 1 a 4**, e **o esforço técnico é avaliado em três dimensões (esforço, complexidade e lacuna de capacidade da equipe), também de 1 a 4**. Neste documento, cada dimensão da equipe foi consolidada pela moda das respostas individuais, e o esforço técnico (ET) é a média simples das três dimensões, com uma casa decimal. Para posicionar o RF na matriz, o ET é arredondado para o inteiro mais próximo. **Atenção:** na matriz final de 30/10/2026, a posição de esforço de 30 RFs não coincide com esse arredondamento; a coluna "Esforço na matriz" da seção 5 mostra a diferença, e a reconciliação das notas está listada em [decisões e pendências](../visao/escopo/decisoes.md).
+Os critérios e as escalas de pontuação estão na seção 10.2.1 do Backlog de Produto: **o valor de negócio (MoSCoW) vai de 1 a 4**, e **o esforço técnico é avaliado em três dimensões (esforço, complexidade e lacuna de capacidade da equipe), também de 1 a 4**. Neste documento, cada dimensão da equipe foi consolidada pela moda das respostas individuais, e o esforço técnico (ET) é a média simples das três dimensões, com uma casa decimal. Para posicionar o RF na matriz, o ET é arredondado para o inteiro mais próximo. **Atenção:** na matriz final de 30/10/2026, a posição de esforço de 30 RFs não coincide com esse arredondamento; a coluna "Esforço na matriz" da seção 5 mostra a diferença, e a reconciliação das notas está listada em [decisões e pendências](../painel.md#dec).
 
 ## 2. Origem das notas do cliente
 

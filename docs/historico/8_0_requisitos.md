@@ -1,3 +1,6 @@
+!!! warning "Documento histórico"
+    Esta é a lista original de requisitos e não é mais atualizada. A declaração vigente de cada requisito está na ficha (veja o [painel do escopo](../painel.md)). Nenhuma ficha depende dele: as definições dos RNFs estão nas fichas de RNF e a descrição dos CPs está na seção 2.3 da [solução proposta](../visao/contexto/2_solucao_proposta.md).
+
 # 8. Requisitos Funcionais (RF) e Não Funcionais (RNF) - CECP
 
 Derivados das Características de Produto (CP1 a CP6) da seção 2.3 do documento de Visão do Produto e Projeto.
