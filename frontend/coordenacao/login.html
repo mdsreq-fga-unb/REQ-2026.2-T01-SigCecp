@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entrar na Coordenação | CECP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style/coordenacao.css">
+</head>
+<body>
+<div id="topo"></div>
+<main class="estreito">
+  <div class="crumb">Coordenação / Acesso</div>
+  <h1>Entrar na Coordenação</h1>
+  <p class="sub">Informe seu usuário e sua senha para acessar a área administrativa do CECP.</p>
+  <form id="form" class="card" novalidate>
+    <div id="alerta"></div>
+    <div class="f"><label for="usuario">Usuário</label>
+      <input id="usuario" name="usuario" autocomplete="username" autocapitalize="characters" placeholder="Ex.: CECP0001">
+      <div class="hint" id="dica" hidden>Use CECP seguido da sequência numérica.</div></div>
+    <div class="f"><label for="senha">Senha</label>
+      <input id="senha" name="senha" type="password" autocomplete="current-password" placeholder="Informe sua senha"></div>
+    <button class="btn red w" id="enviar">Entrar</button>
+  </form>
+  <p class="rodape">Utilize as credenciais fornecidas ao responsável pelo projeto.</p>
+</main>
+<script src="/assets/js/comum.js"></script>
+<script src="/assets/js/login.js"></script>
+</body></html>
