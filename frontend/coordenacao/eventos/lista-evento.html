@@ -134,8 +134,8 @@
                 <button type="button" class="acao acao--remover"
                         data-remover-evento
                         data-titulo="{{ evento.titulo }}"
-                        data-action="{{ url_for('excluir_evento', evento_id=evento.id) }}">
-                  Remover
+                        data-action="{{ url_for('salvar_remocao_evento', evento_id=evento.id) }}">
+                        Remover
                 </button>
               </div>
             </td>

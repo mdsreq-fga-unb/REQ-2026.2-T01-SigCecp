@@ -63,11 +63,43 @@
           <label for="texto">Texto (opcional)</label>
           <textarea id="texto" name="texto" rows="7">{{ conteudo.texto or '' }}</textarea>
         </div>
+
+{% set imagens = conteudo.midias | selectattr('tipo', 'equalto', 'imagem') | list %}
+{% set video_atual = conteudo.midias | selectattr('tipo', 'equalto', 'video') | first %}
+
+<div class="campo">
+  <label for="imagem">Imagens (opcional)</label>
+
+  {% if imagens %}
+  <ul class="midias-atuais">
+    {% for m in imagens %}
+    <li>
+      <img src="{{ url_for('media', path=m.caminho) }}" alt="{{ m.nome_original }}">
+      <label class="check">
+        <input type="checkbox" name="remover_midias" value="{{ m.id }}"> Remover
+      </label>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <input id="imagem" name="imagem" type="file" accept="image/*" multiple>
+</div>
+
+<div class="campo">
+  <label for="video">Vídeo (opcional)</label>
+
+  {% if video_atual %}
+  <video src="{{ url_for('media', path=video_atual.caminho) }}" controls preload="metadata" class="midia-atual"></video>
+  <label class="check">
+    <input type="checkbox" name="remover_video" value="true"> Remover vídeo atual
+  </label>
+  {% endif %}
+
+  <input id="video" name="video" type="file" accept="video/*">
+  <small>Enviar um novo vídeo substitui o atual.</small>
+</div>
       </section>
-
-
-      
-
       <!-- Botões -->
       <div class="acoes">
         <div class="acoes__botoes">
@@ -96,4 +128,8 @@
 
   <p id="status" class="status" role="status" aria-live="polite"></p>
 </main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/editar-conteudo.js') }}"></script>
 {% endblock %}

@@ -89,6 +89,8 @@ def salvar_edicao_evento(
     dados: Annotated[EventoCreate, Form()],
     imagem: Annotated[UploadFile | None, File()] = None,
     video: Annotated[UploadFile | None, File()] = None,
+    remover_imagem: Annotated[bool, Form()] = False,
+    remover_video: Annotated[bool, Form()] = False,
     db: Session = Depends(get_db),
 ):
     atualizar_evento(
@@ -97,13 +99,14 @@ def salvar_edicao_evento(
         dados,
         imagem=imagem,
         video=video,
+        remover_imagem=remover_imagem,
+        remover_video=remover_video,
     )
 
     return RedirectResponse(
         request.url_for("modulo_eventos_publico"),
         status_code=303,
     )
-
 
 # ============================================================
 # REMOVER EVENTO
@@ -125,9 +128,8 @@ def confirmar_remocao_evento(
         context={"evento": evento},
     )
 
-
-@router.post("/{evento_id}/remover", name="excluir_evento")
-def excluir_evento(
+@router.post("/{evento_id}/remover", name="salvar_remocao_evento")
+def salvar_remocao_evento(
     evento_id: int,
     request: Request,
     db: Session = Depends(get_db),
@@ -135,6 +137,6 @@ def excluir_evento(
     remover_evento(db, evento_id)
 
     return RedirectResponse(
-        request.url_for("modulo_eventos_publico"),
+        request.url_for("lista_evento"),
         status_code=303,
     )

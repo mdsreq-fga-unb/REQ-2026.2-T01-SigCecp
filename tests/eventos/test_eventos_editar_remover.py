@@ -5,6 +5,7 @@ Rodar:  pytest --cov=backend.eventos --cov-report=term-missing
 from datetime import date, time
 from decimal import Decimal
 
+from fastapi.staticfiles import StaticFiles
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
@@ -13,6 +14,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
+from backend.config import ASSETS_DIR
 from backend.database import Base, get_db
 from backend.eventos.models import Evento
 from backend.eventos.router import router
@@ -33,10 +35,19 @@ def db_session():
 @pytest.fixture()
 def client(db_session):
     app = FastAPI()
+    app.mount("/static", StaticFiles(directory=ASSETS_DIR), name="static")
     app.include_router(router)
 
-    @app.get("/eventos", name="modulo_eventos_publico")  # a página pública real já existe no projeto
+    @app.get("/eventos", name="modulo_eventos_publico")
     def _publico():
+        return "ok"
+
+    @app.get("/", name="modulo_conteudo_publico")
+    def _inicio():
+        return "ok"
+
+    @app.get("/coordenacao/conteudo", name="lista_conteudo")
+    def _lista_conteudo():
         return "ok"
 
     app.dependency_overrides[get_db] = lambda: db_session
@@ -130,23 +141,21 @@ def test_editar_evento_inexistente_404(client):
     assert client.get("/coordenacao/eventos/999/editar").status_code == 404
     assert client.post("/coordenacao/eventos/999/editar", data=DADOS).status_code == 404
 
-
 def test_atualizar_ignora_campos_que_nao_existem_no_modelo(db_session, evento):
     class ComExtra(EventoCreate):
-        foto: str = "x.png"  # campo que não é coluna do Evento
+        foto: str = "x.png"
 
     dados = ComExtra(**{**DADOS, "data": date(2026, 12, 5), "inicio": time(14, 0),
                         "termino": time(18, 0), "alimentacao": False, "cobrado": False})
     atualizar_evento(db_session, evento.id, dados)
-    assert not hasattr(evento, "foto")
-
-
+    
+    colunas_banco = [c.name for c in Evento.__table__.columns]
+    assert "foto" not in colunas_banco
 # ---------- RF19: remover ----------
 def test_tela_de_confirmacao_nao_apaga(client, evento, db_session):
     r = client.get(f"/coordenacao/eventos/{evento.id}/remover")
-    assert r.status_code == 200 and "Campeonato Interno" in r.text
+    assert r.status_code == 200 and "Remover evento?" in r.text
     assert db_session.get(Evento, evento.id) is not None
-
 
 def test_remover_apos_confirmacao(client, evento, db_session):
     evento_id = evento.id

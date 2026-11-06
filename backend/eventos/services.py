@@ -114,46 +114,63 @@ def atualizar_evento(
     dados: EventoCreate,
     imagem: UploadFile | None = None,
     video: UploadFile | None = None,
+    remover_imagem: bool = False,
+    remover_video: bool = False,
 ) -> Evento:
     """Atualiza os dados e as mídias de um evento."""
     evento = buscar_evento(db, evento_id)
 
-    caminhos_salvos = []
+    caminhos_novos: list[str] = []     # desfazer se der erro
+    caminhos_antigos: list[str] = []   # apagar só após o commit
 
     try:
         for campo, valor in dados.model_dump().items():
             setattr(evento, campo, valor)
 
-        if imagem and imagem.filename:
-            nova_imagem = salvar_midia(imagem, TIPOS_IMAGEM)
+        # Imagem: nova substitui; senão checkbox remove; senão mantém
+        nova_imagem = (
+            salvar_midia(imagem, TIPOS_IMAGEM)
+            if imagem and imagem.filename
+            else None
+        )
+        if nova_imagem:
+            caminhos_novos.append(nova_imagem)
+            if evento.imagem:
+                caminhos_antigos.append(evento.imagem)
+            evento.imagem = nova_imagem
+        elif remover_imagem and evento.imagem:
+            caminhos_antigos.append(evento.imagem)
+            evento.imagem = None
 
-            if nova_imagem:
-                caminhos_salvos.append(nova_imagem)
-                remover_midia(evento.imagem)
-                evento.imagem = nova_imagem
-
-        if video and video.filename:
-            novo_video = salvar_midia(video, TIPOS_VIDEO)
-
-            if novo_video:
-                caminhos_salvos.append(novo_video)
-                remover_midia(evento.video)
-                evento.video = novo_video
+        # Vídeo: mesma regra
+        novo_video = (
+            salvar_midia(video, TIPOS_VIDEO)
+            if video and video.filename
+            else None
+        )
+        if novo_video:
+            caminhos_novos.append(novo_video)
+            if evento.video:
+                caminhos_antigos.append(evento.video)
+            evento.video = novo_video
+        elif remover_video and evento.video:
+            caminhos_antigos.append(evento.video)
+            evento.video = None
 
         db.commit()
         db.refresh(evento)
 
     except Exception:
         db.rollback()
-
-        for caminho in caminhos_salvos:
+        for caminho in caminhos_novos:
             remover_midia(caminho)
-
         raise
+
+    for caminho in caminhos_antigos:
+        remover_midia(caminho)
 
     logger.info("Evento %s editado", evento_id)
     return evento
-
 
 def remover_evento(db: Session, evento_id: int) -> None:
     """RF19: remove um evento existente."""
@@ -168,5 +185,4 @@ def remover_evento(db: Session, evento_id: int) -> None:
         raise
 
     logger.info("Evento %s removido", evento_id)
-
 

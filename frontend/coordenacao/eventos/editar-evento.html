@@ -192,6 +192,35 @@
         </div>
       </section>
 
+<div class="campo">
+  <label for="imagem">Imagem (opcional)</label>
+
+  {% if evento.imagem %}
+  <img src="{{ url_for('media', path=evento.imagem) }}" alt="Imagem atual do evento" class="midia-atual">
+  <label class="btn-remover">
+    <input type="checkbox" name="remover_imagem" value="true">
+    <span>Remover imagem atual</span>
+  </label>
+  {% endif %}
+
+  <input id="imagem" name="imagem" type="file" accept="image/*">
+  <small>Enviar uma nova imagem substitui a atual.</small>
+</div>
+
+<div class="campo">
+  <label for="video">Vídeo (opcional)</label>
+
+  {% if evento.video %}
+  <video src="{{ url_for('media', path=evento.video) }}" controls preload="metadata" class="midia-atual"></video>
+  <label class="btn-remover">
+    <input type="checkbox" name="remover_video" value="true">
+    <span>Remover vídeo atual</span>
+  </label>
+  {% endif %}
+
+  <input id="video" name="video" type="file" accept="video/*">
+  <small>Enviar um novo vídeo substitui o atual.</small>
+</div>  
       <!-- Botões -->
       <div class="acoes">
         <div class="acoes__botoes">

@@ -20,6 +20,7 @@ from backend.publicacoes.schemas import PublicacaoCreate
 
 from backend.publicacoes.services import (
     atualizar_conteudo,
+    atualizar_conteudo_com_midias,
     buscar_conteudo,
     criar_conteudo_com_midias,
     remover_conteudo,
@@ -102,20 +103,32 @@ def editar_conteudo_form(
     )
 
 
-@router.post(
-    "/{conteudo_id}/editar",
-    name="salvar_edicao_conteudo",
-)
+@router.post("/{conteudo_id}/editar", name="salvar_edicao_conteudo")
 def salvar_edicao_conteudo(
     conteudo_id: int,
     request: Request,
-    dados: Annotated[PublicacaoCreate, Form()],
+    titulo: Annotated[str, Form()],
+    texto: Annotated[str, Form()] = "",
+    imagem: Annotated[list[UploadFile] | None, File()] = None,
+    video: Annotated[UploadFile | None, File()] = None,
+    remover_midias: Annotated[list[int] | None, Form()] = None,
+    remover_video: Annotated[bool, Form()] = False,
     db: Session = Depends(get_db),
 ):
-    atualizar_conteudo(db, conteudo_id, dados)
+    dados = PublicacaoCreate(titulo=titulo, texto=texto or None)
+
+    atualizar_conteudo_com_midias(
+        db=db,
+        conteudo_id=conteudo_id,
+        dados=dados,
+        novas_imagens=[i for i in (imagem or []) if i.filename],
+        novo_video=video if (video and video.filename) else None,
+        ids_midias_remover=remover_midias,
+        remover_video=remover_video,
+    )
 
     return RedirectResponse(
-        request.url_for("modulo_conteudo_publico"),
+        request.url_for("lista_conteudo"),
         status_code=303,
     )
 

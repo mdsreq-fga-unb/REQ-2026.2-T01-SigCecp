@@ -185,3 +185,94 @@ def remover_conteudo(
         raise
 
     logger.info("Publicação %s removida", conteudo_id)
+
+def atualizar_conteudo_com_midias(
+    db: Session,
+    conteudo_id: int,
+    dados: PublicacaoCreate,
+    novas_imagens: list[UploadFile] | None = None,
+    novo_video: UploadFile | None = None,
+    ids_midias_remover: list[int] | None = None,
+    remover_video: bool = False,
+) -> Publicacao:
+
+    conteudo = buscar_conteudo(db, conteudo_id)
+    ids_midias_remover = set(ids_midias_remover or [])
+
+    caminhos_novos: list[str] = []       # para desfazer se der erro
+    caminhos_antigos: list[str] = []     # só apagar do disco após o commit
+
+    try:
+        conteudo.titulo = dados.titulo
+        conteudo.texto = dados.texto
+
+        # Imagens marcadas para remoção
+        for midia in list(conteudo.midias):
+            if midia.tipo == "imagem" and midia.id in ids_midias_remover:
+                caminhos_antigos.append(midia.caminho)
+                conteudo.midias.remove(midia)
+                db.delete(midia)
+
+        # Novas imagens
+        for imagem in novas_imagens or []:
+            caminho = salvar_midia(imagem, TIPOS_IMAGEM)
+            if caminho:
+                caminhos_novos.append(caminho)
+                conteudo.midias.append(
+                    PublicacaoMidia(
+                        caminho=caminho,
+                        tipo="imagem",
+                        nome_original=imagem.filename or "imagem",
+                    )
+                )
+
+        # Vídeo: novo substitui; senão, checkbox remove; senão, mantém
+        video_atual = next(
+            (m for m in conteudo.midias if m.tipo == "video"), None
+        )
+
+        caminho_video = salvar_midia(novo_video, TIPOS_VIDEO) if novo_video else None
+
+        if caminho_video:
+            caminhos_novos.append(caminho_video)
+            if video_atual:
+                caminhos_antigos.append(video_atual.caminho)
+                conteudo.midias.remove(video_atual)
+                db.delete(video_atual)
+            conteudo.midias.append(
+                PublicacaoMidia(
+                    caminho=caminho_video,
+                    tipo="video",
+                    nome_original=novo_video.filename or "video",
+                )
+            )
+        elif remover_video and video_atual:
+            caminhos_antigos.append(video_atual.caminho)
+            conteudo.midias.remove(video_atual)
+            db.delete(video_atual)
+
+        db.commit()
+        db.refresh(conteudo)
+
+    except ValueError as erro:
+        db.rollback()
+        for caminho in caminhos_novos:
+            remover_midia(caminho)
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(erro),
+        )
+
+    except Exception:
+        db.rollback()
+        for caminho in caminhos_novos:
+            remover_midia(caminho)
+        logger.exception("Erro ao editar publicação %s", conteudo_id)
+        raise
+
+    # Só depois do commit é seguro apagar os arquivos antigos
+    for caminho in caminhos_antigos:
+        remover_midia(caminho)
+
+    logger.info("Publicação %s editada", conteudo_id)
+    return conteudo

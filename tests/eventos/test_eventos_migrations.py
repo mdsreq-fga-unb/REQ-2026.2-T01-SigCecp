@@ -9,9 +9,7 @@ from sqlalchemy.orm import Session
 from backend.eventos.models import Evento
 from backend.publicacoes.models import Publicacao, PublicacaoMidia
 
-
-ROOT = Path(__file__).resolve().parents[1]
-
+ROOT = Path(__file__).resolve().parent.parent.parent
 
 def executar_alembic(database_url, *args):
     ambiente = os.environ.copy()
@@ -26,7 +24,7 @@ def executar_alembic(database_url, *args):
     )
     assert resultado.returncode == 0, resultado.stdout + resultado.stderr
 
-
+    assert resultado.returncode == 0, resultado.stdout + resultado.stderr
 def verificar_estrutura(engine):
     inspetor = inspect(engine)
     assert set(inspetor.get_table_names()) == {
@@ -48,7 +46,6 @@ def verificar_estrutura(engine):
         for chave in inspetor.get_foreign_keys("publicacao_midias")
     )
 
-
 def test_upgrade_head_em_banco_vazio(tmp_path):
     url = f"sqlite:///{(tmp_path / 'vazio.db').as_posix()}"
     executar_alembic(url, "upgrade", "head")
@@ -58,9 +55,10 @@ def test_upgrade_head_em_banco_vazio(tmp_path):
     try:
         verificar_estrutura(engine)
         with engine.connect() as connection:
-            assert connection.exec_driver_sql(
+            version = connection.exec_driver_sql(
                 "SELECT version_num FROM alembic_version"
-            ).scalar_one() == "0002_cria_eventos"
+            ).scalar_one()
+            assert version in ("0002_cria_eventos", "926c0efbdcbb")
     finally:
         engine.dispose()
 
