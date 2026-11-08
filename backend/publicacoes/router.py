@@ -12,6 +12,7 @@ from fastapi import (
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
+from backend.auth.dependencies import PROTECAO_ADMIN
 from backend.database import get_db
 from backend.config import templates
 
@@ -27,9 +28,11 @@ from backend.publicacoes.services import (
 )
 
 
+# Todas as rotas deste router são administrativas e exigem login.
 router = APIRouter(
     prefix="/coordenacao/conteudo",
     tags=["Publicações"],
+    dependencies=PROTECAO_ADMIN,
 )
 
 

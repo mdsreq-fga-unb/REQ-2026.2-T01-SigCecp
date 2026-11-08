@@ -359,3 +359,35 @@ O diretório `frontend` contém os templates Jinja2, arquivos CSS, JavaScript e 
 O diretório `backend/media` armazena os arquivos enviados pelos usuários.
 
 O diretório `alembic` contém as configurações e revisões utilizadas para controlar a evolução do banco de dados.
+
+## 11. Autenticação da área administrativa
+
+Somente `/coordenacao/*` exige login; todo o restante do site é público. O administrador é um registro da tabela `administradores` (senha apenas como hash bcrypt).
+
+### 11.1. Configuração
+
+1. Copie `.env.example` para `.env` e defina `AUTH_SECRET_KEY` (obrigatória em produção; `python -c "import secrets; print(secrets.token_urlsafe(48))"`). Em produção use `APP_ENV=production` e sirva por HTTPS.
+2. Aplique as migrações (`python -m alembic upgrade head`); a revisão `0003_cria_administradores` cria as tabelas de administrador e de refresh tokens.
+3. Crie o administrador (a senha é pedida no terminal, mínimo de 12 caracteres e no máximo 72 bytes):
+
+```bash
+python -m backend.auth.criar_admin --usuario CECP0001
+python -m backend.auth.criar_admin --usuario CECP0001 --redefinir-senha   # troca a senha e encerra as sessões
+```
+
+### 11.2. Rotas
+
+| Método | Rota | Finalidade |
+|---|---|---|
+| GET/POST | `/coordenacao/auth/login` | Página e envio do login. |
+| POST | `/coordenacao/auth/refresh` | Renovação explícita (exige CSRF); rotaciona o refresh token. |
+| POST | `/coordenacao/auth/logout` | Encerra a sessão no servidor e apaga os cookies (exige CSRF). |
+
+Sessão: access token (JWT, 15 min) e refresh token (opaco, 7 dias de inatividade, teto de 30 dias) em cookies `HttpOnly` distintos. Com o access expirado, a renovação é transparente (`backend/auth/middleware.py`).
+
+### 11.3. Ao criar novas rotas ou formulários administrativos
+
+- Rotas sob `/coordenacao` devem estar em um router com `dependencies=PROTECAO_ADMIN` (`backend.auth.dependencies`). Um teste (`test_todas_as_rotas_administrativas_exigem_admin`) falha se alguma ficar sem proteção.
+- Todo `<form method="post">` administrativo deve conter `{{ csrf_input }}`.
+- Nos testes de rotas administrativas a autenticação é substituída automaticamente; para testá-la de verdade use `pytestmark = pytest.mark.auth_real`.
+

@@ -3,28 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Entrar na Coordenação | CECP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style/coordenacao.css">
+<link rel="stylesheet" href="{{ url_for('static', path='style/coordenacao.css') }}">
 </head>
 <body>
-<div id="topo"></div>
 <main class="estreito">
   <div class="crumb">Coordenação / Acesso</div>
   <h1>Entrar na Coordenação</h1>
   <p class="sub">Informe seu usuário e sua senha para acessar a área administrativa do CECP.</p>
-  <form id="form" class="card" novalidate>
-    <div id="alerta"></div>
+  <form id="form" class="card" method="post" action="{{ url_for('login') }}">
+    <div id="alerta">
+      {% if erro %}
+      <div class="alerta erro" role="alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        <div><b>Não foi possível entrar</b>{{ erro }}</div>
+      </div>
+      {% endif %}
+    </div>
     <div class="f"><label for="usuario">Usuário</label>
-      <input id="usuario" name="usuario" autocomplete="username" autocapitalize="characters" placeholder="Ex.: CECP0001">
-      <div class="hint" id="dica" hidden>Use CECP seguido da sequência numérica.</div></div>
+      <input id="usuario" name="usuario" autocomplete="username" autocapitalize="characters" placeholder="Ex.: CECP0001" maxlength="50" required value="{{ usuario or '' }}">
+      <div class="hint" id="dica"{% if not erro %} hidden{% endif %}>Use CECP seguido da sequência numérica.</div></div>
     <div class="f"><label for="senha">Senha</label>
-      <input id="senha" name="senha" type="password" autocomplete="current-password" placeholder="Informe sua senha"></div>
-    <button class="btn red w" id="enviar">Entrar</button>
+      <input id="senha" name="senha" type="password" autocomplete="current-password" placeholder="Informe sua senha" maxlength="256" required></div>
+    <button class="btn red w" id="enviar" type="submit">Entrar</button>
   </form>
   <p class="rodape">Utilize as credenciais fornecidas ao responsável pelo projeto.</p>
 </main>
-<script src="/assets/js/comum.js"></script>
-<script src="/assets/js/login.js"></script>
 </body></html>
