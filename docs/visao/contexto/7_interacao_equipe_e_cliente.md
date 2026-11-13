@@ -9,16 +9,7 @@
 | Analista de QA | Garante a qualidade do produto, executando testes de funcionalidade e usabilidade | Renato | Rafael, Marcos, Maria, Renato |
 | Analista de Requisitos | Facilita e registra o processo de descoberta, análise, negociação e validação dos requisitos junto às fontes relevantes | Ana | Alexandre, Enzo, Marcos, Renato, Maria, Rafael, Ana |
 
-> **Nota:** A participação nas atividades de Engenharia de Requisitos é mandatória para todos os membros da equipe. O papel do Analista de Requisitos na prática está detalhado na seção "Atuação do Analista de Requisitos", abaixo.
-
-### Atuação do Analista de Requisitos na Prática
-
-Na prática, a facilitação conduzida por Ana ocorre da seguinte forma:
-
-1. **Antes da reunião com o cliente:** Ana organiza a pauta com base nas dúvidas e pendências levantadas pela equipe durante a semana (registradas no grupo interno de WhatsApp e nas Issues do GitHub), definindo quais funcionalidades ou dúvidas precisam de validação com Pedro, Ivan ou Sandra.
-2. **Durante a reunião:** Ana conduz a conversa fazendo perguntas abertas para captar necessidades reais (não apenas pedidos superficiais), registra as respostas em tempo real e, quando identifica ambiguidade (ex.: "o sistema deve avisar rápido sobre falta de frequência"), pergunta imediatamente por critérios concretos (quanto tempo, em que situação) antes de encerrar o ponto.
-3. **Em caso de divergência entre a equipe técnica e o cliente:** Ana atua como intermediária, "traduzindo" a limitação técnica em linguagem acessível ao cliente e, na direção oposta, traduzindo a necessidade do cliente em termos que a equipe de desenvolvimento consiga implementar — sem tomar a decisão final sozinha, mas conduzindo a negociação até que as duas partes cheguem a um acordo viável.
-4. **Depois da reunião:** Ana registra as decisões tomadas como uma Issue no GitHub (com a label `decision`) e atualiza a Ata resumida no site do projeto, garantindo que toda a equipe (mesmo quem não participou da reunião) tenha acesso ao que foi definido.
+> **Nota:** A participação nas atividades de Engenharia de Requisitos é mandatória para todos os membros da equipe.
 
 ## 7.2 Comunicação
 
