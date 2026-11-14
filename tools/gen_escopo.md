@@ -53,10 +53,14 @@ Se mudar o nome de um campo ou de uma seção, é preciso mudar o `tools/gen_esc
 
 ```bash
 pip install mkdocs-material   # mais os plugins já usados no mkdocs.yml
-mkdocs serve                  # abre em http://127.0.0.1:8000/painel/
+mkdocs serve --livereload     # abre em http://127.0.0.1:8000/painel/
 ```
 
 Antes de cada `mkdocs serve`, `build` ou `gh-deploy`, o hook `tools/mkdocs_hook.py` roda o gerador sozinho. Para rodar só o gerador: `python tools/gen_escopo.py`.
+
+**Use `--livereload`.** Com o MkDocs 1.6.1 e o click 8.2 ou mais novo, o `mkdocs serve` sem essa opção inicia sem monitorar os arquivos: editar uma ficha não reconstrói o site e o painel fica com os dados antigos. Para conferir, a saída do serve deve mostrar a linha `Watching paths for changes: 'docs', 'mkdocs.yml'`. Outra saída é instalar `click<8.2`.
+
+O hook também acrescenta `?v=<hash>` à URL do `escopo.js`, do `painel.js` e do `painel.css`, para o navegador não usar uma cópia antiga em cache.
 
 ## Se algo der errado
 

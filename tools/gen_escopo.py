@@ -34,7 +34,8 @@ its = []
 for r in rows((ROOT/"docs/cronograma/6_cronograma.md").read_text()):
     if r[0].startswith("**Itera"):
         nome, _, per = clean(r[0]).partition("\n")
-        its.append({"nome": nome, "periodo": per, "foco": clean(r[1]), "entregas": clean(r[2]), "rfs": ids(r[4], "RF")})
+        its.append({"nome": nome, "periodo": per, "foco": clean(r[1]), "entregas": clean(r[2]), "rfs": ids(r[4], "RF"),
+                    "situacao": clean(r[6]) if len(r) > 6 else ""})
 
 cron_nota = " ".join(clean(l).lstrip("> ").strip() for l in (ROOT/"docs/cronograma/6_cronograma.md").read_text().splitlines() if l.startswith("**Critério de transição") or l.startswith("> O cronograma"))
 

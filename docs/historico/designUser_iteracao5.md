@@ -2,7 +2,7 @@
 
 Reunião remota com o cliente para apresentar o protótipo das telas de RF13 a RF20 (CP3: Gestão de conteúdo institucional) e validar o escopo do MVP.
 
-- **Data:** 30/10/2026 (confirmar)
+- **Data:** 30/10/2026
 - **Participantes:** Marcos Vinicius Monteiro (equipe) e Pedro Augusto Cajado Coutinho (CECP)
 - **Ata:** [Ata reunião 30/10/2026](organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10.md)
 - **Protótipo:** [Figma](https://www.figma.com/proto/7CtbGEyLbEpIpD0nCLVOLu/Sem-t%C3%ADtulo?node-id=26-92&t=aYHzBAmVutgMVEvI-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)

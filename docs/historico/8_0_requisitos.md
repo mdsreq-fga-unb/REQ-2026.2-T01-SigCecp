@@ -174,9 +174,19 @@ OE1
  │    ├- RF24 - RNF03, RNF04, RNF05, RNF10, RNF11, RNF13
  │    └- RF25 - RNF03, RNF05, RNF10, RNF11, RNF13
  │
- └- CP1
-      ├- RF06 - RNF03, RNF04, RNF06, RNF11
-      └- RF07 - RNF01, RNF06, RNF11
+ ├- CP1
+ │    ├- RF06 - RNF03, RNF04, RNF06, RNF11
+ │    └- RF07 - RNF01, RNF06, RNF11
+ │
+ └- CP7  ← OE principal conforme tabela 2.3; contribuição secundária a OE2
+      ├- RF35 - RNF01, RNF02, RNF09
+      ├- RF36 - RNF01, RNF03, RNF13
+      ├- RF37 - RNF01, RNF03, RNF13
+      ├- RF38 - RNF03, RNF10, RNF13
+      ├- RF39 - RNF03, RNF10, RNF13
+      ├- RF40 - RNF01, RNF03, RNF13
+      ├- RF41 - RNF03, RNF06
+      └- RF42 - RNF03, RNF05, RNF10, RNF11, RNF13
 
 
 OE2
@@ -211,7 +221,7 @@ OE4
       ├- RF30 - RNF01, RNF03, RNF11, RNF13
       ├- RF31 - RNF01, RNF06, RNF11, RNF13
       ├- RF32 - RNF03, RNF11, RNF13
-      ├- RF33
+      ├- RF33 - RNF03, RNF05, RNF11, RNF13
       └- RF34 - RNF01, RNF06, RNF10, RNF11, RNF13
 
 
@@ -222,18 +232,6 @@ OE5
       ├- RF10 - RNF03, RNF10, RNF11, RNF13
       ├- RF11 - RNF03, RNF06, RNF10, RNF11, RNF13
       └- RF12 - RNF06, RNF11, RNF13
-
-
-OE4
- └- CP7
-      ├- RF35 - RNF01, RNF02, RNF09
-      ├- RF36 - RNF01, RNF03, RNF13
-      ├- RF37 - RNF01, RNF03, RNF13
-      ├- RF38 - RNF03, RNF10, RNF13
-      ├- RF39 - RNF03, RNF10, RNF13
-      ├- RF40 - RNF01, RNF03, RNF13
-      ├- RF41 - RNF03, RNF06
-      └- RF42 - RNF03, RNF05, RNF10, RNF11, RNF13
 
 
 Transversal
@@ -276,8 +274,8 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     ACESSO:['RF01','RF02','RF00']
   };
   var OE_CP={
-    OE1:['CP1','CP2','CP4','CP7'],
-    OE2:['CP1','CP5','CP7'],
+    OE1:['CP1','CP4','CP7'],
+    OE2:['CP1','CP5'],
     OE3:['CP1','CP5'],
     OE4:['CP3','CP6'],
     OE5:['CP2','CP3'],
@@ -287,11 +285,12 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
   var OE_ORDER=['OE1','OE2','OE3','OE4','OE5','TRANSV'];
 
   var EDGES=[
-    ['PROB','OE1'],['PROB','OE2'],['PROB','OE3'],['PROB','OE4'],['PROB','OE5'],['PROB','TRANSV'],
-    ['OE1','CP1'],['OE1','CP2'],['OE1','CP4'],
+    ['PROB','OG'],
+    ['OG','OE1'],['OG','OE2'],['OG','OE3'],['OG','OE4'],['OG','OE5'],['OG','TRANSV'],
+    ['OE1','CP1'],['OE1','CP4'],['OE1','CP7'],
     ['OE2','CP1'],['OE2','CP5'],
     ['OE3','CP1'],['OE3','CP5'],
-    ['OE4','CP3'],['OE4','CP6'],['OE4','CP7'], 
+    ['OE4','CP3'],['OE4','CP6'],
     ['OE5','CP2'],['OE5','CP3'],
     ['TRANSV','ACESSO'],
     ['CP1','RF03'],['CP1','RF04'],['CP1','RF05'],['CP1','RF06'],['CP1','RF07'],
@@ -305,7 +304,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
   ];
 
   var ST={
-    PROB:'vm',
+    PROB:'vm',OG:'vm',
     OE1:'vm',OE2:'vm',OE3:'vm',OE4:'vm',OE5:'vm',TRANSV:'vm',
     CP1:'vm',CP2:'vm',CP3:'vm',CP4:'vm',CP5:'vm',CP6:'vm',CP7:'vm',ACESSO:'vm',
     RF01:'vm',RF02:'vm',RF03:'vm',RF04:'vm',RF05:'vm',RF06:'vm',RF07:'vm',
@@ -323,6 +322,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
   };
   var DESC={
     PROB:'Problema central do CECP — gestão manual e descentralizada, dificultando o controle interno e a prestação de contas',
+    OG:'Objetivo Geral — Fortalecer a gestão do CECP por meio de um sistema de gestão de alunos e da instituição, substituindo o controle manual e descentralizado',
     OE1:'OE1 — Centralizar os dados dos alunos em uma base tecnológica única',
     OE2:'OE2 — Garantir o acompanhamento pontual da assiduidade e das condicionalidades pedagógicas',
     OE3:'OE3 — Apoiar a aplicação e o histórico de medidas disciplinares',
@@ -351,7 +351,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
     RF26:'RF26 — Registrar frequência',RF27:'RF27 — Consultar frequência',
     RF28:'RF28 — Emitir alerta de faltas críticas',RF29:'RF29 — Registrar medida disciplinar',
     RF30:'RF30 — Publicar aviso',RF31:'RF31 — Consultar avisos',RF32:'RF32 — Editar aviso',
-    RF33:'RF31 — Remover avisos',RF34:'Consultar hostórico de avisos',
+    RF33:'RF33 — Remover aviso',RF34:'RF34 — Consultar histórico de avisos',
     RF35:'RF35 — Acessar formulário de matrícula online',RF36:'RF36 — Preencher dados do aluno',
     RF37:'RF37 — Informar dados do responsável legal',RF38:'RF38 — Registrar consentimento de dados pessoais',
     RF39:'RF39 — Registrar termo de uso de imagem',RF40:'RF40 — Informar pessoas autorizadas a retirar o aluno',
@@ -388,6 +388,7 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
 
   var pos={};
   pos['PROB']={x:W/2,y:LY[0]};
+  pos['OG']={x:W/2,y:(LY[0]+LY[1])/2};
   OE_ORDER.forEach(function(oe){pos[oe]={x:oeX[oe],y:LY[1]};});
   CP_ORDER.forEach(function(cp){pos[cp]={x:cpX[cp],y:LY[2]};});
   CP_ORDER.forEach(function(cp){
@@ -497,3 +498,13 @@ O grafo abaixo representa a cadeia de rastreabilidade do CECP — do problema ce
 | 🟢 Verde | **Totalmente concluído** — entregue e validado com o cliente |
 | 🟡 Amarelo | **Parcialmente concluído** — entregue com débito técnico ou dependente de itens incompletos |
 | 🔴 Vermelho | **Não iniciado** — previsto em sprint futura ou em andamento sem entrega confirmada |
+
+## Versionamento
+
+| Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1.0 | 05/09/2026 | Criação da lista original de RFs (RF00–RF34) e RNFs (RNF01–RNF13), com a matriz-síntese 8.3 e os primeiros OEs e CPs | Equipe One | — |
+| 1.1 | 22/09/2026 | Adição de CP7 (Matrícula online) e dos RFs RF35–RF42 correspondentes, após identificação de lacuna no escopo (acompanhamento pedagógico sem RF de matrícula online); CP7 associada a OE1 como OE principal | Equipe One | — |
+| 1.2 | 26/09/2026 | Ajuste da classificação URPS+ dos RNFs: RNF09 (Logs) movido de Suportabilidade para Segurança; RNF08 vinculado à matriz 8.3 | Equipe One | — |
+| 1.3 | 30/10/2026 | Grafo interativo de rastreabilidade adicionado à seção 8.3 | [Marcos Monteiro](https://github.com/montmarcos) | — |
+| 1.4 | 14/11/2026 | Correções de rastreabilidade: (1) CP7 movido de OE4 para OE1 na matriz 8.3 e no grafo, conforme tabela 2.3 da solução proposta; (2) RF33 recebeu RNFs ausentes (RNF03, RNF05, RNF11, RNF13) — linha estava em branco por erro de preenchimento; (3) grafo corrigido: OE_CP, EDGES, tooltip RF33 (estava copiado do RF31) e tooltip RF34 (typo e código faltante); (4) nó Objetivo Geral (OG) adicionado entre PROB e os OEs no grafo | — | — |

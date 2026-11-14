@@ -1,5 +1,7 @@
 # Ata de Reunião - Priorização de Requisitos
 
+> **Numeração antiga:** esta ata usa os códigos de RF do documento anterior à versão atual. Veja a [correspondência com a numeração atual](../../../arquivo.md#correspondencia-da-numeracao-antiga-dos-rfs).
+
 ## 1. Identificação da reunião
 
 **Projeto:** Sistema de Gestão do Centro Esportivo Cultural de Planaltina (SigCECP)

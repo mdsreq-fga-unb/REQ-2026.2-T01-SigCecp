@@ -2,7 +2,7 @@
 
 Reunião remota com o cliente para detalhar os requisitos RF13 a RF20 (CP3: Gestão de conteúdo institucional), levantando as regras de negócio do módulo público.
 
-- **Data:** 21/10/2026 (confirmar)
+- **Data:** 21/10/2026
 - **Participantes:** Marcos Vinicius Monteiro (equipe) e Pedro Augusto Cajado Coutinho (CECP)
 - **Ata:** [Ata reunião 21/10/2026](organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10.md)
 - **Gravação:** [Reunião 21/10/2026](gravacoes/reunioes_cliente/reuniao_audio_21_10.md)

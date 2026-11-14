@@ -45,30 +45,29 @@ Todas as decisões, aprovações, pendências e solicitações de mudança são 
 
 ## 7.3 Processo de Validação
 
-O processo de validação segue a lógica do processo RAD, ocorrendo em múltiplos momentos ao longo do desenvolvimento. Para tornar isso concreto, usamos como exemplo a funcionalidade de **matrícula online (CP2)**:
+Esta seção explica **quando** cada acordo é aplicado e quem participa. Os critérios do DoR e do DoD estão definidos uma única vez, na [seção 9](9_dor_e_dod.md); aqui eles apenas são referenciados.
 
-1. **Elicitação e Análise:** durante a reunião semanal com Pedro, Ana levanta os campos obrigatórios da ficha de matrícula (hoje em papel) e as regras de validação (ex.: idade mínima), registrando tudo como rascunho de requisito na Issue correspondente.
+### Fluxo por incremento
 
-2. **Definition of Ready (DoR) — aplicação prática:** antes de Marcos começar a implementar a tela de matrícula, a equipe confere, na própria Issue, uma checklist:
-   - [ ] Campos da ficha confirmados com o cliente (nome, responsável, modalidade, turma)
-   - [ ] Regra de idade mínima documentada e validada
-   - [ ] Protótipo/wireframe da tela aprovado por Pedro
-   
-   Só quando os três itens estão marcados a tarefa entra em desenvolvimento.
+| # | Etapa | Responsável planejado (7.1) | Participação registrada até agora | Resultado |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | Detalhamento com o cliente | Analista de Requisitos (Ana) | Marcos conduziu todas as reuniões com o cliente registradas em ata (17/09 a 10/11) | Ficha do requisito em estado *Detalhado*, regras de negócio e decisões registradas |
+| 2 | Protótipo | Desenvolvedores | Marcos (protótipos de CP3 e das demais telas do MVP) | Telas por requisito |
+| 3 | Avaliação do protótipo com o cliente | Analista de Requisitos | Marcos e Pedro (30/10 e 10/11) | Protótipo aprovado ou ajustado; decisões registradas |
+| 4 | Verificação do [DoR](9_dor_e_dod.md#91-definition-of-ready-dor) | Equipe, na reunião de planejamento | — | Requisito liberado para construção |
+| 5 | Construção | Desenvolvedores | — | Incremento implementado |
+| 6 | Verificação do [DoD](9_dor_e_dod.md#92-definition-of-done-dod) | Analista de QA (Renato) e um revisor | — | Critérios de aceitação executados, com resultado registrado |
+| 7 | Validação com o cliente | Analista de Requisitos | Marcos e Pedro (10/11) | Cliente confirma (ou não) que o comportamento implementado atende à necessidade |
 
-3. **Avaliação de Protótipos:** o wireframe da tela de matrícula é mostrado a Pedro (e, se envolver dados de turma, a Ivan) antes da implementação final, permitindo ajustes de campos ou fluxo sem custo de retrabalho de código.
+O DoR é verificado **depois** da avaliação do protótipo, porque um de seus critérios é o protótipo aprovado pelo cliente.
 
-4. **Definition of Done (DoD) — aplicação prática:** ao terminar a implementação, Renato confere:
-   - [ ] Cadastro salva corretamente todos os campos no banco
-   - [ ] Validações de idade mínima funcionam (testadas com casos limite)
-   - [ ] Sem erros no console/logs
-   - [ ] Aprovação visual da equipe (a tela corresponde ao protótipo aprovado)
-   
-   Só depois disso a funcionalidade é considerada "pronta" tecnicamente — mas isso não substitui a validação com o cliente.
+A coluna "Participação registrada" mostra quem de fato aparece nas atas. A divisão de papéis da seção 7.1 é o planejamento, e não a prova de que cada pessoa executou a etapa.
 
-5. **Validação Final com Usuários:** a funcionalidade pronta é apresentada a Pedro na reunião semanal seguinte, onde ele testa o fluxo real de matrícula e confirma (ou não) que atende à necessidade real do CECP, não apenas à especificação técnica escrita.
+### Aplicação ao primeiro incremento (CP3)
 
-Esse mesmo fluxo (Elicitação → DoR → Protótipo → Desenvolvimento → DoD → Validação com cliente) se repete para as demais características do produto (CP1, CP3, CP4, CP5), ajustando quais stakeholders participam de cada etapa conforme o tema (Ivan para turmas, Sandra para doações e relatórios).
+Para RF13 a RF20 (conteúdo institucional e eventos), as etapas 1, 2, 3, 5 e 7 têm evidência em [4.4](4_estrategias_esw.md#44-ciclo-do-rad-aplicado-a-um-incremento): o cliente testou e aceitou o incremento em 10/11. A verificação do DoR e do DoD está na [seção 9.3](9_dor_e_dod.md#93-aplicacao-registrada).
+
+O mesmo fluxo se repete para as demais características do MVP (CP1 e CP4, além do acesso), ajustando quais stakeholders participam: Ivan para turmas e Sandra para decisões administrativas.
 
 ## Versionamento
 
@@ -78,3 +77,6 @@ Esse mesmo fluxo (Elicitação → DoR → Protótipo → Desenvolvimento → Do
 | 1.1 | 12/09/2026 | Correções da issue #22: composição da equipe, disponibilidade do cliente, definições de iteração/unidade, registro de decisões, ampliação de stakeholders e processo de validação | Maria Eduarda | — |
 | 1.2 | 21/09/2026 | Adição da disponibilidade de Ivan e Sandra e detalhamento dos papéis na ampliação de stakeholders | Maria Eduarda | — |
 | 1.3 | 22/09/2026 | Revisão para tornar o documento prático: remoção das definições de iteração/unidade, aplicação concreta de DoR/DoD com exemplo real (matrícula online), e detalhamento da atuação prática do Analista de Requisitos | Maria Eduarda | — |
+| 1.4 | 14/11/2026 | Corrigida referência da seção 7.3: "matrícula online (CP2)" passou a "matrícula online (CP7)" — CP2 é Registro de doações e prestação de contas, não matrícula | — | — |
+| 1.5 | 14/11/2026 | Issues #26, #30, #31 e #35: 7.3 reescrita como fluxo por incremento que referencia o DoR e o DoD da seção 9 (sem checklists paralelos); DoR passa a vir depois da avaliação do protótipo; responsabilidade planejada separada da participação registrada nas atas; exemplo hipotético da matrícula substituído pelo incremento real de CP3 | — | — |
+| 1.6 | 14/11/2026 | Participação registrada e aplicação a CP3 atualizadas com a reunião de 10/11/2026 | — | — |

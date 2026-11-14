@@ -3,7 +3,7 @@
 ## 1. Identificação da reunião
 
 **Projeto:** Sistema de Gestão do Centro Esportivo Cultural de Planaltina (SigCECP)  
-**Data:** 21/10/2026 (confirmar, ver seção 8)  
+**Data:** 21/10/2026 (confirmada pela equipe em 14/11/2026)  
 **Modalidade:** Remota (videochamada)  
 **Participantes pela equipe do projeto:** Marcos Vinicius Monteiro  
 **Participante representando o CECP:** Pedro Augusto Cajado Coutinho (coordenação)  
@@ -98,7 +98,7 @@ Depois da aprovação do protótipo, a equipe constrói e, no final, mostra ao c
 ## 8. Ocorrências e pendências
 
 - A conexão do cliente caiu no meio da reunião e ele voltou por outro dispositivo (tablet). Não foi possível compartilhar a tela nem gravar a reunião pela plataforma, então a gravação foi feita pelo celular.
-- **Pendências:** confirmar a data da reunião (o arquivo de gravação indica 21/10, e o cronograma prevê reuniões em 22/10 e 23/10); confirmar o nome do site de referência.
+- **Pendências:** confirmar o nome do site de referência. A data da reunião (21/10) foi confirmada pela equipe em 14/11/2026.
 - Na recapitulação dos campos obrigatórios, o subtítulo foi tratado como "se houver" e o cliente concordou. Esse ponto diverge da ficha do [RF17](../../../../visao/escopo/requisitos/RF17.md), que o lista como obrigatório (ver [decisões e pendências](../../../../painel.md#dec)).
 
 *Ata elaborada a partir da transcrição da reunião remota entre Marcos Vinicius Monteiro e Pedro Augusto Cajado Coutinho, representante do CECP, para conhecimento e alinhamento da equipe do projeto.*

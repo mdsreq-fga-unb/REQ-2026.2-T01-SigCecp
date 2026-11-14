@@ -23,20 +23,16 @@ nav:
     - Unidade 1: apresentacoes_unidades/apresentacao_unidade_1.md
     - Unidade 2: apresentacoes_unidades/apresentacao_unidade_2.md
   - Histórico:
-      - Lista original de requisitos (arquivada): historico/8_0_requisitos.md
-      - Evidências da Iteração 5:
-          - Detalhamento: historico/detalhamento_iteracao5.md
-          - Design do usuário: historico/designUser_iteracao5.md
-      - Ajustes e validações: historico/ajuste_e_validacao.md
-      - Declaração de requisitos: historico/declaracao_de_requisitos.md
+      - Documentos arquivados: historico/arquivo.md
       - Gravações:
           - Reuniões com o cliente:
               - 17/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_17_09.md
               - 22/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_22_09.md
               - 24/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_24_09.md
               - 26/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_26_09.md
-              - 09/10/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_09_10.md
+              - 08/10/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_09_10.md
               - 21/10/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_21_10.md
+              - 30/10/2026: historico/gravacoes/reunioes_cliente/reuniao_video_30_10.md
           - Reuniões da equipe:
               - 28/08/2026: historico/gravacoes/reunioes_equipe/reuniao_video_28_08.md
               - 04/09/2026: historico/gravacoes/reunioes_equipe/reuniao_video_04_09.md
@@ -53,11 +49,22 @@ nav:
                   - 08/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10.md
                   - 21/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10.md
                   - 30/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10.md
+                  - 10/11/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md
               - Equipe:
                   - 28/08/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_28_08.md
                   - 04/09/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_04_09.md
                   - 24/09/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_24_09.md
                   - 26/09/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_26_09.md
+
+# Páginas acessadas pelo painel do escopo e pelos documentos arquivados
+not_in_nav: |
+  /visao/escopo/
+  /cronograma/
+  /historico/8_0_requisitos.md
+  /historico/ajuste_e_validacao.md
+  /historico/declaracao_de_requisitos.md
+  /historico/designUser_iteracao5.md
+  /historico/detalhamento_iteracao5.md
 
 theme:
   name: material

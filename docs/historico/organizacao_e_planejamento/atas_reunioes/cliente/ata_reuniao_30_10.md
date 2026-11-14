@@ -3,7 +3,7 @@
 ## 1. Identificação da reunião
 
 **Projeto:** Sistema de Gestão do Centro Esportivo Cultural de Planaltina (SigCECP)  
-**Data:** 30/10/2026 (confirmar, ver seção 8)  
+**Data:** 30/10/2026 (confirmada pela equipe em 14/11/2026)  
 **Modalidade:** Remota (videochamada, com compartilhamento de tela)  
 **Participantes pela equipe do projeto:** Marcos Vinicius Monteiro  
 **Participante representando o CECP:** Pedro Augusto Cajado Coutinho (coordenação)  
@@ -85,8 +85,8 @@ Os demais requisitos **continuam existindo**, mas não são prioridade agora. O 
 ## 8. Ocorrências e pendências
 
 - Houve troca de plataforma de chamada no início, com o link enviado por WhatsApp, para permitir o compartilhamento de tela.
-- **Pendências:** confirmar a data da reunião (o vídeo foi publicado em 30/10/2026); confirmar o retorno do cliente depois de mostrar o protótipo à Sandra.
+- **Pendências:** confirmar o retorno do cliente depois de mostrar o protótipo à Sandra (recebido depois, ver a ata de 10/11). A data da reunião (30/10) foi confirmada pela equipe em 14/11/2026.
 
 *Ata elaborada a partir da transcrição da reunião remota entre Marcos Vinicius Monteiro e Pedro Augusto Cajado Coutinho, representante do CECP, para conhecimento e alinhamento da equipe do projeto.*
 
-*Gravação: [Design do usuário, Iteração 5](../../../designUser_iteracao5.md).*
+*Gravação: [Reunião 30/10/2026](../../../gravacoes/reunioes_cliente/reuniao_video_30_10.md); evidência: [Design do usuário, Iteração 5](../../../designUser_iteracao5.md).*

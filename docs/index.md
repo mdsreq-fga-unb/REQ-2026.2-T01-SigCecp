@@ -6,7 +6,7 @@ Github Pages da **Equipe One** dedicado ao desenvolvimento da documentação do 
 
 <div id="painel-resumo"><p>Veja o <a href="painel/">painel do escopo</a>.</p></div>
 
-Requisitos, regras de negócio, decisões, pendências e cronograma estão reunidos no [painel do escopo](painel.md). Os registros anteriores ficam em [histórico](historico/8_0_requisitos.md).
+Requisitos, regras de negócio, decisões, pendências e cronograma estão reunidos no [painel do escopo](painel.md). Os registros anteriores ficam em [documentos arquivados](historico/arquivo.md).
 
 ## Equipe
 <div class="team-all-in-one">

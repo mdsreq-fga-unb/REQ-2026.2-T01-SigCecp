@@ -18,11 +18,11 @@
 
 O Centro Esportivo Cultural de Planaltina DF (CECP) é uma organização social brasileira que atua no Distrito Federal desde 2014. Qualificada como Organização da Sociedade Civil de Interesse Público (OSCIP) junto ao Ministério da Justiça, a instituição utiliza as Artes Marciais como ferramenta de prevenção à criminalidade e de promoção do desenvolvimento sociocultural e esportivo da comunidade.
 
-A organização opera de forma presencial, em Planaltina-DF, onde são realizadas as atividades em regime de contraturno escolar. O trabalho é sustentado por um grupo de jovens voluntários, lutadores e profissionais de diversas áreas. Sua presença digital é limitada e fragmentada: o Instagram é o principal canal de divulgação. Embora o domínio e o site institucional permaneçam ativos, o site está desatualizado e não é mais utilizado. Não há, atualmente, uma estrutura digital integrada para a gestão de alunos, documentos, doações e informações institucionais.
+A organização opera de forma presencial, em Planaltina-DF, onde são realizadas as atividades em regime de contraturno escolar. O trabalho é sustentado por um grupo de jovens voluntários, lutadores e profissionais de diversas áreas. A forma como a organização divulga suas atividades e trata inscrições, documentos, turmas e doações está descrita uma única vez, na seção 1.3.
 
 A missão do CECP é comprometer jovens líderes com o desenvolvimento da comunidade, formando uma consciência social verdadeira por meio de ações positivas em favor da infância mais necessitada, tendo como valores centrais a amizade, o respeito, a sinceridade e a solidariedade.
 
-O público-alvo principal são crianças e adolescentes, bem como suas famílias, em situação de vulnerabilidade social, sobretudo de baixa renda, em regiões próximas de Planaltina. O acompanhamento escolar e disciplinar ainda ocorre de maneira predominantemente informal, sem sistema digital, verificação sistemática ou controle estruturado de frequência. O funcionamento atual desse acompanhamento é detalhado na seção 1.3.
+O público-alvo principal são crianças e adolescentes, bem como suas famílias, em situação de vulnerabilidade social, sobretudo de baixa renda, em regiões próximas de Planaltina.
 
 ### 1.3 Rich Picture
 
@@ -66,27 +66,38 @@ Diante desse cenário, identificam-se oportunidades de melhoria, especialmente n
 *Figura 2 – Diagrama de Ishikawa*
 *Produzido pelos autores – 2026*
 
-A Figura 2 apresenta o diagrama de Ishikawa, um mapa que mostra os principais agentes responsáveis pelo problema enfrentado pela organização, elaborado a partir do levantamento realizado junto à organização, contemplando as principais dificuldades enfrentadas pelos organizadores e colaboradores da organização.
+A Figura 2 apresenta o diagrama de Ishikawa elaborado a partir do levantamento com a organização. O problema central é a **gestão manual e descentralizada das informações do CECP**, descrita na seção 1.3. Esta seção não repete esse diagnóstico: ela organiza suas causas e as consequências que justificam o projeto.
 
-O projeto é necessário para solucionar problemas relacionados à gestão, organização e ao armazenamento de dados da organização. Atualmente, as informações referentes aos alunos, inscrições, turmas e doações estão distribuídas entre documentos físicos, arquivos digitalizados em pastas no computador e outros canais de comunicação. A permanência da dependência de papel e a descentralização das informações dificultam o armazenamento, a localização e a atualização dos dados, além de tornar o acompanhamento das turmas e dos documentos dos alunos mais trabalhoso e suscetível a perdas ou desorganização.
+**Causas principais (por categoria do diagrama):**
 
-Outro problema identificado está relacionado à gestão das doações recebidas pela organização. A ausência de uma estrutura digital específica dificulta o registro, o acompanhamento e a organização das informações referentes aos doadores e às contribuições realizadas. Como consequência, existe uma oportunidade de melhorar os processos internos por meio da digitalização e centralização das informações, facilitando o acesso aos dados e tornando a gestão das atividades mais organizada e eficiente.
+- **Método:** inscrição manual em fichas de papel; controle de turmas e boletins sem padrão.
+- **Materiais:** dependência de documentos físicos, com risco de perda.
+- **Máquina:** nenhum histórico digital ou backup; site institucional desatualizado.
+- **Mão de obra:** equipe voluntária sem perfil técnico de TI e gestão administrativa sobrecarregada.
+- **Meio ambiente:** sem parceiros ou apoio técnico de TI e com recursos financeiros limitados.
+- **Medida:** sem relatórios de alunos e frequência; dificuldade de prestar contas como OSCIP.
 
-Além disso, a organização enfrenta dificuldades relacionadas à divulgação de suas atividades e à participação em editais públicos. A ausência de um site atualizado, com informações organizadas e de fácil acesso, pode limitar o atendimento aos requisitos de determinados editais e reduzir a capacidade da organização de apresentar adequadamente seus projetos e resultados.
+**Consequências para a organização:**
 
-Dessa forma, o projeto apresenta uma oportunidade de modernizar a gestão e a comunicação da organização, centralizando informações que atualmente se encontram dispersas em documentos físicos e canais distintos. A plataforma digital proposta poderá contribuir tanto para a organização dos processos internos quanto para a divulgação institucional, criando melhores condições para o acompanhamento das atividades e para a busca de novas oportunidades de financiamento e parcerias.
+| Área | Consequência | Característica que responde (seção 2.3) |
+| :--- | :--- | :--- |
+| Alunos e turmas | Localizar uma ficha, comprovar a participação ou consultar ocorrências anteriores exige procurar em papéis e pastas, com retrabalho e risco de perda | CP1, CP4, CP5 |
+| Doações e prestação de contas | Sem registro dos recursos recebidos, a ONG tem dificuldade de comprovar seu uso aos doadores públicos ([RN06](../../painel.md#RN06), [RN14](../../painel.md#RN14)) | CP2 |
+| Divulgação e editais | Sem site atualizado, a ONG pode deixar de atender editais que exigem presença institucional na web | CP3 |
+| Ingresso de alunos | O primeiro contato depende de ir à aula experimental e preencher papéis | CP7 |
+
+A oportunidade, portanto, é centralizar esses registros em uma plataforma única, que atenda tanto à gestão interna quanto à divulgação externa (seção 2).
 
 ### 1.5 Desafios do Projeto
 
 O projeto enfrenta três desafios principais:
 
-**Desafio 1 - Modernização da presença digital institucional:** Embora o cliente utilize o Instagram para divulgar suas atividades, alguns editais públicos exigem que a organização possua um site para apresentar informações sobre seus projetos, atividades e resultados. Atualmente, existe um site institucional, porém ele está desatualizado e apresenta as informações de maneira pouco organizada e de difícil visualização. Dessa forma, será necessário estruturar uma nova apresentação das informações, tornando o conteúdo mais acessível, organizado e adequado às necessidades da organização e aos requisitos de possíveis editais.
+**Desafio 1 - Conteúdo institucional que a própria coordenação mantenha:** não basta publicar um site novo, pois o atual ficou desatualizado justamente por depender de quem sabia mantê-lo. O desafio é que a coordenação consiga publicar e atualizar conteúdos e eventos sozinha, sem apoio técnico, em um formato que também atenda aos editais.
 
-**Desafio 2 - Digitalização da gestão administrativa:** Atualmente, as inscrições, informações das turmas, documentações dos alunos e registros de doações combinam documentos físicos, arquivos digitalizados em pastas no computador e registros não integrados. Mesmo com a existência de alguns documentos digitais, permanece a dependência de papel. Com o crescimento do volume de informações, esse modelo torna o armazenamento mais complexo e dificulta a localização, atualização e acompanhamento dos dados. Além disso, a utilização de registros descentralizados aumenta o esforço necessário para realizar atividades administrativas e pode favorecer a ocorrência de erros ou perda de informações.
+**Desafio 2 - Migrar sem interromper a rotina:** os registros existentes estão em papel e em pastas sem padrão, e não podem ser importados automaticamente. O desafio é levar esses dados para o sistema por carga manual (seção 2.2.1) sem parar a operação do CECP, tratando com cuidado dados pessoais de menores de idade.
 
 **Desafio 3 - Adoção da solução por uma equipe voluntária:** Como a operação do CECP depende de voluntários com disponibilidade e perfis técnicos variados, a solução precisa ser simples e intuitiva o suficiente para não gerar resistência ou sobrecarga adicional à equipe. Esse desafio orienta diretamente as decisões de escopo e tecnologia do projeto, priorizando uma ferramenta enxuta em vez de um sistema robusto e complexo.
 
-Assim, o projeto deverá enfrentar o desafio de transformar processos atualmente realizados de forma predominantemente analógica em processos digitais, organizados e de fácil acesso, sem comprometer a simplicidade de utilização pela equipe responsável. A solução também deverá conciliar as necessidades de gestão interna com a necessidade de disponibilizar informações institucionais de forma clara e atualizada para o público externo e para processos de participação em editais.
 
 ### 1.6 Mapa de Stakeholders
 
@@ -141,3 +152,4 @@ A CECP se relaciona com diferentes públicos, sem tratar crianças e adolescente
 | 1.1 | 19/09/2026 | Alinhamento do cenário atual com a ata de reunião de 17/09/2026 | Renato Gameiro | - |
 | 1.2 | 26/09/2026 | Detalhamento do acompanhamento pedagógico e disciplinar e inclusão da ANPD no mapa de stakeholders | Renato Gameiro | - |
 | 1.3 | 26/09/2026 | Detalhamento do processo atual de acompanhamento pedagógico e disciplinar. | Renato Gameiro | - |
+| 1.4 | 14/11/2026 | Issue #35: diagnóstico concentrado na seção 1.3; 1.2 sem repetição do cenário; 1.4 reescrita como causas (Ishikawa) e consequências; 1.5 com desafios específicos em vez de repetir o diagnóstico | — | - |

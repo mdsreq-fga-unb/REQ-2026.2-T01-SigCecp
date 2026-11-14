@@ -6,7 +6,7 @@
 | :--- | :--- |
 | **Classificação (URPS+)** | + Segurança |
 | **Descrição** | Senhas com hash e dados sensíveis criptografados. |
-| **Critério de aceitação** | Nenhuma senha armazenada em texto claro; auditoria por inspeção de banco. |
-| **RFs que aplicam** | [RF01](../requisitos/RF01.md): Autenticar usuário |
+| **Critério de aceitação** | Verificado por inspeção do banco e do armazenamento de anexos: (1) nenhuma senha está em texto claro, apenas o hash gerado por algoritmo próprio para senhas (por exemplo, bcrypt ou Argon2); (2) os dados de saúde do aluno (descrição do problema de saúde e laudos) e os documentos anexados (identidade, comprovante de residência) estão criptografados, e lê-los diretamente no banco ou no armazenamento não revela o conteúdo. |
+| **RFs que aplicam** | [RF01](../requisitos/RF01.md): Autenticar usuário<br>[RF21](../requisitos/RF21.md): Cadastrar aluno<br>[RF22](../requisitos/RF22.md): Editar aluno |
 
 Origem histórica em [8.2](../../../historico/8_0_requisitos.md). Voltar ao [painel do escopo](../../../painel.md).

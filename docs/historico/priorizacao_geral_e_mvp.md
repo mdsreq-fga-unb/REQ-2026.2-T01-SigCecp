@@ -2,7 +2,7 @@
 
 ## 1. Critérios e escalas
  
-Os critérios e as escalas de pontuação estão na seção 10.2.1 do Backlog de Produto: **o valor de negócio (MoSCoW) vai de 1 a 4**, e **o esforço técnico é avaliado em três dimensões (esforço, complexidade e lacuna de capacidade da equipe), também de 1 a 4**. Neste documento, cada dimensão da equipe foi consolidada pela moda das respostas individuais, e o esforço técnico (ET) é a média simples das três dimensões, com uma casa decimal. Para posicionar o RF na matriz, o ET é arredondado para o inteiro mais próximo. **Atenção:** na matriz final de 30/10/2026, a posição de esforço de 30 RFs não coincide com esse arredondamento; a coluna "Esforço na matriz" da seção 5 mostra a diferença, e a reconciliação das notas está listada em [decisões e pendências](../painel.md#dec).
+Os critérios e as escalas de pontuação estão na seção 10.2.1 do Backlog de Produto: **o valor de negócio (MoSCoW) vai de 1 a 4**, e **o esforço técnico é avaliado em três dimensões (esforço, complexidade e lacuna de capacidade da equipe), também de 1 a 4**. Neste documento, cada dimensão da equipe foi consolidada pela moda das respostas individuais, e o esforço técnico (ET) é a média simples das três dimensões, com uma casa decimal. Para posicionar o RF na matriz, o ET é arredondado para o inteiro mais próximo. **Atenção:** na matriz final de 30/10/2026, a posição de esforço de 30 RFs não coincide com esse arredondamento; a coluna "Esforço na matriz" da seção 5 mostra a diferença. Essas posições foram reavaliadas pela equipe ao montar a matriz em 30/10/2026, e a coluna "Esforço na matriz" é a vigente ([DEC30](../painel.md#DEC30)). **Desempate da moda:** quando duas notas empatam como mais votadas, vale a maior, a estimativa mais conservadora.
 
 ## 2. Origem das notas do cliente
 
@@ -12,11 +12,11 @@ As notas de valor de negócio foram atribuídas pelo cliente em reuniões de pri
 |---|---|---|---|
 | 24/09/2026 | Marcos; Pedro Augusto Cajado Coutinho e Marco Xavier Santana (CECP) | Primeira priorização MoSCoW dos RFs e RNFs | Refeita, por ter deixado quase todo o sistema dentro do MVP |
 | 08/10/2026 | Marcos; Pedro (CECP) | Nova priorização MoSCoW, após explicação do conceito de MVP ao cliente | Valores de negócio vigentes; o conjunto do MVP foi substituído pela matriz de 30/10/2026 |
-| 30/10/2026 | Equipe | Matriz 4 × 4 final (backlog, seção 10.2.2): MVP fixado em 18 RFs, com valor de negócio 3 ou 4 e esforço técnico 1 ou 2 | Vigente |
+| 30/10/2026 | Marcos; Pedro (CECP) | Matriz 4 × 4 final (backlog, seção 10.2.2): MVP fixado em 18 RFs, com valor de negócio 3 ou 4 e esforço técnico 1 ou 2 | Vigente; validada pelo cliente ([ata de 30/10](organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10.md), [DEC03](../painel.md#DEC03)) |
 
 [Gravação completo do dia 24/09](gravacoes/reunioes_cliente/reuniao_audio_24_09.md) e [Ata de reunião do dia 24/09](organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09.md)
 
-[Gravação completo do dia 08/10](gravacoes/reunioes_cliente/reuniao_audio_09_10.md) e [Ata de reunião do dia 09/10](organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10.md)
+[Gravação completo do dia 08/10](gravacoes/reunioes_cliente/reuniao_audio_09_10.md) e [Ata de reunião do dia 08/10](organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10.md)
 
 ## 3. Origem das notas da equipe
 

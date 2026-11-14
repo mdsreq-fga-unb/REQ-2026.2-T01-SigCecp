@@ -2,54 +2,53 @@
 
 ## 10.1 Escopo Geral
 
-O Escopo geral contém os 43 requisitos funcionais em forma de texto estruturado/tabular, com o critério de aceitação de cada um. A descrição completa dos requisitos e a rastreabilidade com os RNFs estão na seção de [Requisitos](8_0_requisitos.md); o código de cada item leva a essa descrição.
+O escopo geral tem 43 códigos de requisito funcional; RF36, RF37 e RF40 foram incorporados ao RF35 e não são reutilizados. A especificação de cada requisito, com declaração, regras de negócio e critérios de aceitação, está **somente na sua ficha** (o código leva a ela). Este backlog não repete critérios, para que não exista uma segunda especificação.
 
-
-| Código | Requisito                                      | Critério de Aceitação |
-| ------ | ---------------------------------------------- | --------------------- |
-| RF00   | Encerrar sessão                                | Ao encerrar a sessão, as credenciais do usuário são invalidadas e ele é redirecionado para a tela de login. Após o encerramento, o acesso a qualquer funcionalidade administrativa exige novo login. |
-| RF01   | Autenticar usuário                             | Com identificação e credenciais válidas, o coordenador acessa o sistema. Com credenciais inválidas, o acesso é negado e uma mensagem de erro é exibida. |
-| RF02   | Controlar acesso                               | Usuário autenticado com perfil de coordenador acessa as funcionalidades administrativas. Requisição sem autenticação ou sem o perfil de coordenador a essas funcionalidades é negada. |
-| RF03   | Cadastrar turma                                | A turma só é salva com modalidade, horário e capacidade máxima de alunos preenchidos. Após salva, a turma aparece na lista de turmas. Campo obrigatório vazio impede o salvamento e indica qual campo precisa ser preenchido. |
-| RF04   | Editar turma                                   | Os dados alterados da turma são salvos e exibidos atualizados na consulta. Os alunos já associados à turma são mantidos. |
-| RF05   | Inativar turma                                 | Após a confirmação, a turma passa a constar como inativa. Os alunos e as frequências vinculados a ela continuam consultáveis, sem exclusão de registros. |
-| RF06   | Associar aluno à turma                         | Um aluno cadastrado pode ser associado a uma turma, e a associação aparece na lista da turma e na ficha do aluno. Ao remover a associação, o aluno sai da lista da turma e o histórico de participação é mantido. |
-| RF07   | Consultar alunos de uma turma                  | Ao selecionar uma turma, o sistema lista todos os alunos associados a ela e somente eles. Turma sem alunos exibe a lista vazia com mensagem informativa. |
-| RF08   | Registrar doação recebida                      | A doação é salva com o doador ou parceiro, o tipo de recurso e as demais informações obrigatórias, e passa a constar no histórico de doações. Campo obrigatório vazio impede o registro. |
-| RF09   | Editar doação recebida                         | Os dados alterados da doação são salvos e exibidos atualizados no histórico. A edição é registrada em log com data e usuário responsável. |
-| RF10   | Registrar documentos de prestação de contas    | Cada documento (orçamento, nota fiscal, registro fotográfico ou audiovisual) só é salvo vinculado a uma doação ou recurso recebido. Após salvo, o documento pode ser aberto na consulta da doação. |
-| RF11   | Editar documentos de prestação de contas       | O documento já registrado pode ser substituído ou ter seus dados alterados, mantendo o vínculo com a doação ou recurso. A versão atualizada é exibida na consulta. |
-| RF12   | Consultar doações e prestações de contas       | Ao informar um período, o sistema lista as doações registradas nele com os documentos de prestação de contas vinculados. Período sem registros exibe mensagem informativa. |
-| RF13   | Publicar conteúdo institucional                | O conteúdo publicado (informações, fotos ou vídeos) passa a ser exibido no módulo público para qualquer visitante, sem necessidade de login. |
-| RF14   | Editar conteúdo institucional                  | As alterações salvas no conteúdo são exibidas atualizadas no módulo público. |
-| RF15   | Consultar conteúdo institucional               | Qualquer visitante, sem autenticação, visualiza os conteúdos institucionais publicados. Conteúdo removido não é exibido. |
-| RF16   | Remover conteúdo institucional                 | Após a confirmação, o conteúdo deixa de ser exibido no módulo público. |
-| RF17   | Publicar evento                                | O evento só é publicado com nome, data, local, horário e descrição preenchidos, e passa a constar na lista de eventos do módulo público. |
-| RF18   | Editar evento                                  | Os dados alterados do evento ou campeonato são salvos e exibidos atualizados na lista de eventos. |
-| RF19   | Remover evento                                 | Após a confirmação, o evento ou campeonato deixa de constar na lista de eventos. |
-| RF20   | Consultar eventos                              | O sistema lista os eventos e campeonatos publicados com nome, data, local, horário e descrição. Evento removido não aparece na lista. |
-| RF21   | Cadastrar aluno                                | O aluno é salvo com seus dados cadastrais e com a documentação exigida pelo CECP (identidade, CPF, comprovante de residência, foto 3x4, atestado para prática de esporte e as duas fichas assinadas). Após salvo, o aluno pode ser localizado na consulta. Campo obrigatório vazio impede o salvamento e indica qual campo precisa ser preenchido. |
-| RF22   | Editar aluno                                   | Os dados cadastrais alterados são salvos e exibidos atualizados na ficha do aluno. O histórico do aluno é mantido. |
-| RF23   | Consultar ficha do aluno                       | A ficha exibe os dados cadastrais do aluno e seu histórico de participação em turmas. |
-| RF24   | Inativar aluno                                 | Após a confirmação, o aluno passa a constar como inativo. O histórico do aluno é preservado e continua consultável na ficha. |
-| RF25   | Remover dados do aluno                         | A remoção só é executada após confirmação e mediante pedido do responsável legal ou do próprio aluno, se ele tiver 18 anos ou mais. São removidos a identidade, o CPF e o comprovante de residência, e os demais registros são mantidos. A remoção é registrada em log. |
-| RF26   | Registrar frequência                           | Para cada aula de uma turma, a presença ou falta de cada aluno associado é registrada com a data da aula e passa a constar no histórico de frequência do aluno. |
-| RF27   | Consultar frequência                           | O histórico de frequência de um aluno lista as aulas com a data e a situação (presença ou falta) de cada uma. |
-| RF28   | Emitir alerta de faltas críticas               | Quando o número de faltas de um aluno atinge o limite configurado (inicialmente 8 faltas), o sistema gera uma notificação para a coordenação. Abaixo do limite, nenhuma notificação é gerada. |
-| RF29   | Registrar medida disciplinar                   | A medida (advertência, suspensão ou desligamento) só é salva após confirmação e passa a constar no histórico do aluno. |
-| RF30   | Publicar aviso                                 | O aviso publicado, com destinatário voluntários, familiares ou ambos, passa a ser exibido no módulo público. |
-| RF31   | Consultar avisos                               | Voluntários e familiares visualizam no módulo público os avisos publicados. Aviso removido não é exibido. |
-| RF32   | Editar aviso                                   | As alterações salvas no aviso são exibidas atualizadas no módulo público. |
-| RF33   | Remover aviso                                  | Após a confirmação, o aviso deixa de ser exibido no módulo público. |
-| RF34   | Consultar histórico de avisos                  | O sistema lista os avisos publicados anteriormente com seus destinatários e a data de publicação. |
-| RF35   | Acessar formulário de matrícula online         | O formulário de matrícula abre pelo link público, sem necessidade de login. |
-| RF36   | Preencher dados do aluno                       | O formulário aceita nome, data de nascimento, contato e modalidade ou turma de interesse do aluno. O envio é bloqueado enquanto algum desses campos estiver vazio. |
-| RF37   | Informar dados do responsável legal            | Quando a data de nascimento indica aluno menor de 18 anos, o formulário exige nome, contato e vínculo do responsável legal. Para aluno com 18 anos ou mais, esses dados não são exigidos. |
-| RF38   | Registrar consentimento de dados pessoais      | O envio do formulário só é permitido após o aceite do termo de tratamento de dados pessoais. O aceite é registrado com data, hora, versão do termo e identificação de quem aceitou (aluno ou responsável legal). |
-| RF39   | Registrar termo de uso de imagem               | O termo de uso de imagem é apresentado em item separado do consentimento de dados pessoais, e a resposta do aluno ou do responsável legal é registrada. |
-| RF40   | Informar pessoas autorizadas a retirar o aluno | Para aluno menor de idade, o formulário exige ao menos uma pessoa autorizada, com nome e contato, ou a indicação de que o menor pode ir embora sozinho. Para aluno maior de idade, essa informação não é exigida. |
-| RF41   | Emitir comprovante de solicitação              | Após o envio bem-sucedido do formulário, o sistema exibe ao solicitante um número de protocolo. Cada solicitação recebe um número de protocolo distinto. |
-| RF42   | Analisar solicitações de matrícula             | A coordenação consulta as solicitações recebidas e define cada uma como aprovada, recusada ou em lista de espera. O status definido é exibido atualizado na consulta. |
+| Código | Requisito | Entrega |
+| :--- | :--- | :--- |
+| [RF00](../visao/escopo/requisitos/RF00.md) | Encerrar sessão | MVP |
+| [RF01](../visao/escopo/requisitos/RF01.md) | Autenticar usuário | MVP |
+| [RF02](../visao/escopo/requisitos/RF02.md) | Controlar acesso | MVP |
+| [RF03](../visao/escopo/requisitos/RF03.md) | Cadastrar turma | MVP |
+| [RF04](../visao/escopo/requisitos/RF04.md) | Editar turma | Pós-MVP |
+| [RF05](../visao/escopo/requisitos/RF05.md) | Inativar turma | Pós-MVP |
+| [RF06](../visao/escopo/requisitos/RF06.md) | Associar aluno à turma | MVP |
+| [RF07](../visao/escopo/requisitos/RF07.md) | Consultar alunos de uma turma | MVP |
+| [RF08](../visao/escopo/requisitos/RF08.md) | Registrar doação recebida | Pós-MVP |
+| [RF09](../visao/escopo/requisitos/RF09.md) | Editar doação recebida | Pós-MVP |
+| [RF10](../visao/escopo/requisitos/RF10.md) | Registrar documentos de prestação de contas | Pós-MVP |
+| [RF11](../visao/escopo/requisitos/RF11.md) | Editar documentos de prestação de contas | Pós-MVP |
+| [RF12](../visao/escopo/requisitos/RF12.md) | Consultar doações e prestações de contas | Pós-MVP |
+| [RF13](../visao/escopo/requisitos/RF13.md) | Publicar conteúdo institucional | MVP |
+| [RF14](../visao/escopo/requisitos/RF14.md) | Editar conteúdo institucional | MVP |
+| [RF15](../visao/escopo/requisitos/RF15.md) | Consultar conteúdo institucional | MVP |
+| [RF16](../visao/escopo/requisitos/RF16.md) | Remover conteúdo institucional | MVP |
+| [RF17](../visao/escopo/requisitos/RF17.md) | Publicar evento | MVP |
+| [RF18](../visao/escopo/requisitos/RF18.md) | Editar evento | MVP |
+| [RF19](../visao/escopo/requisitos/RF19.md) | Remover evento | MVP |
+| [RF20](../visao/escopo/requisitos/RF20.md) | Consultar eventos | MVP |
+| [RF21](../visao/escopo/requisitos/RF21.md) | Cadastrar aluno | MVP |
+| [RF22](../visao/escopo/requisitos/RF22.md) | Editar aluno | MVP |
+| [RF23](../visao/escopo/requisitos/RF23.md) | Consultar ficha do aluno | MVP |
+| [RF24](../visao/escopo/requisitos/RF24.md) | Inativar aluno | MVP |
+| [RF25](../visao/escopo/requisitos/RF25.md) | Remover dados do aluno | Pós-MVP |
+| [RF26](../visao/escopo/requisitos/RF26.md) | Registrar frequência | Pós-MVP |
+| [RF27](../visao/escopo/requisitos/RF27.md) | Consultar frequência | Pós-MVP |
+| [RF28](../visao/escopo/requisitos/RF28.md) | Emitir alerta de faltas críticas | Pós-MVP |
+| [RF29](../visao/escopo/requisitos/RF29.md) | Registrar medida disciplinar | Pós-MVP |
+| [RF30](../visao/escopo/requisitos/RF30.md) | Publicar aviso | Pós-MVP |
+| [RF31](../visao/escopo/requisitos/RF31.md) | Consultar avisos | Pós-MVP |
+| [RF32](../visao/escopo/requisitos/RF32.md) | Editar aviso | Pós-MVP |
+| [RF33](../visao/escopo/requisitos/RF33.md) | Remover aviso | Pós-MVP |
+| [RF34](../visao/escopo/requisitos/RF34.md) | Consultar histórico de avisos | Pós-MVP |
+| [RF35](../visao/escopo/requisitos/RF35.md) | Solicitar matrícula online | Pós-MVP |
+| [RF36](../visao/escopo/requisitos/RF36.md) | Preencher dados do aluno | Incorporado ao RF35 |
+| [RF37](../visao/escopo/requisitos/RF37.md) | Informar dados do responsável legal | Incorporado ao RF35 |
+| [RF38](../visao/escopo/requisitos/RF38.md) | Registrar consentimento de dados pessoais | Pós-MVP |
+| [RF39](../visao/escopo/requisitos/RF39.md) | Registrar termo de uso de imagem | Pós-MVP |
+| [RF40](../visao/escopo/requisitos/RF40.md) | Informar pessoas autorizadas a retirar o aluno | Incorporado ao RF35 |
+| [RF41](../visao/escopo/requisitos/RF41.md) | Emitir comprovante de solicitação | Pós-MVP |
+| [RF42](../visao/escopo/requisitos/RF42.md) | Analisar solicitações de matrícula | Pós-MVP |
 
 ## 10.2 Priorização do Escopo Geral e MVP
 
@@ -87,64 +86,120 @@ O MVP é o conjunto mínimo de funcionalidades que permite lançar o produto e c
 **Índice de prioridade**
 
 - **Alto (MVP):** valor de negócio 3 ou 4 e esforço técnico 1 ou 2. São 18 dos 43 RFs.
-- **Valor alto, esforço alto:** valor 3 ou 4 e esforço 3 ou 4. Ficam fora do MVP e pedem avaliar a viabilidade ou o contexto (RF29, RF35 a RF39, RF41 e RF42).
+- **Valor alto, esforço alto:** valor 3 ou 4 e esforço 3 ou 4. Ficam fora do MVP e pedem avaliar a viabilidade ou o contexto (RF29, RF35, RF38, RF39, RF41 e RF42; RF36 e RF37 foram incorporados ao RF35).
 - **Médio:** valor de negócio 2 (moderado), com qualquer esforço.
 - **Baixo:** valor de negócio 1.
 
-A coluna "Prior." ordena os índices: 1 (Alto), 2 (valor alto, esforço alto), 3 (Médio) e 4 (Baixo).
+A coluna "Prior." ordena os índices: 1 (Alto), 2 (valor alto, esforço alto), 3 (Médio) e 4 (Baixo). Ela define grupos, não a ordem de construção dentro de cada grupo; essa ordem está na seção 10.3.
 
 A partir dessas informações, foi gerada a seguinte tabela:
 
 | Código | Índice | Prior. | MVP |
 |---|:---:|:---:|:---:|
-| [RF02](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF07](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF15](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF16](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF22](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF00](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF03](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF17](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF18](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF19](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF20](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF23](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF14](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF01](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF21](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF06](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF24](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF13](8_0_requisitos.md) | Alto | 1 | ✔ |
-| [RF35](8_0_requisitos.md) | Valor alto, esforço alto | 2 | — |
-| [RF36](8_0_requisitos.md) | Valor alto, esforço alto | 2 | — |
-| [RF29](8_0_requisitos.md) | Valor alto, esforço alto | 2 | — |
-| [RF37](8_0_requisitos.md) | Valor alto, esforço alto | 2 | — |
-| [RF39](8_0_requisitos.md) | Valor alto, esforço alto | 2 | — |
-| [RF38](8_0_requisitos.md) | Valor alto, esforço alto | 2 | — |
-| [RF42](8_0_requisitos.md) | Valor alto, esforço alto | 2 | — |
-| [RF41](8_0_requisitos.md) | Valor alto, esforço alto | 2 | — |
-| [RF04](8_0_requisitos.md) | Médio | 3 | — |
-| [RF05](8_0_requisitos.md) | Médio | 3 | — |
-| [RF27](8_0_requisitos.md) | Médio | 3 | — |
-| [RF30](8_0_requisitos.md) | Médio | 3 | — |
-| [RF31](8_0_requisitos.md) | Médio | 3 | — |
-| [RF32](8_0_requisitos.md) | Médio | 3 | — |
-| [RF33](8_0_requisitos.md) | Médio | 3 | — |
-| [RF40](8_0_requisitos.md) | Médio | 3 | — |
-| [RF26](8_0_requisitos.md) | Médio | 3 | — |
-| [RF28](8_0_requisitos.md) | Médio | 3 | — |
-| [RF25](8_0_requisitos.md) | Baixo | 4 | — |
-| [RF12](8_0_requisitos.md) | Baixo | 4 | — |
-| [RF34](8_0_requisitos.md) | Baixo | 4 | — |
-| [RF08](8_0_requisitos.md) | Baixo | 4 | — |
-| [RF09](8_0_requisitos.md) | Baixo | 4 | — |
-| [RF11](8_0_requisitos.md) | Baixo | 4 | — |
-| [RF10](8_0_requisitos.md) | Baixo | 4 | — |
+| [RF02](../visao/escopo/requisitos/RF02.md) | Alto | 1 | ✔ |
+| [RF07](../visao/escopo/requisitos/RF07.md) | Alto | 1 | ✔ |
+| [RF15](../visao/escopo/requisitos/RF15.md) | Alto | 1 | ✔ |
+| [RF16](../visao/escopo/requisitos/RF16.md) | Alto | 1 | ✔ |
+| [RF22](../visao/escopo/requisitos/RF22.md) | Alto | 1 | ✔ |
+| [RF00](../visao/escopo/requisitos/RF00.md) | Alto | 1 | ✔ |
+| [RF03](../visao/escopo/requisitos/RF03.md) | Alto | 1 | ✔ |
+| [RF17](../visao/escopo/requisitos/RF17.md) | Alto | 1 | ✔ |
+| [RF18](../visao/escopo/requisitos/RF18.md) | Alto | 1 | ✔ |
+| [RF19](../visao/escopo/requisitos/RF19.md) | Alto | 1 | ✔ |
+| [RF20](../visao/escopo/requisitos/RF20.md) | Alto | 1 | ✔ |
+| [RF23](../visao/escopo/requisitos/RF23.md) | Alto | 1 | ✔ |
+| [RF14](../visao/escopo/requisitos/RF14.md) | Alto | 1 | ✔ |
+| [RF01](../visao/escopo/requisitos/RF01.md) | Alto | 1 | ✔ |
+| [RF21](../visao/escopo/requisitos/RF21.md) | Alto | 1 | ✔ |
+| [RF06](../visao/escopo/requisitos/RF06.md) | Alto | 1 | ✔ |
+| [RF24](../visao/escopo/requisitos/RF24.md) | Alto | 1 | ✔ |
+| [RF13](../visao/escopo/requisitos/RF13.md) | Alto | 1 | ✔ |
+| [RF35](../visao/escopo/requisitos/RF35.md) | Valor alto, esforço alto | 2 | — |
+| [RF36](../visao/escopo/requisitos/RF36.md) | Valor alto, esforço alto | 2 | — |
+| [RF29](../visao/escopo/requisitos/RF29.md) | Valor alto, esforço alto | 2 | — |
+| [RF37](../visao/escopo/requisitos/RF37.md) | Valor alto, esforço alto | 2 | — |
+| [RF39](../visao/escopo/requisitos/RF39.md) | Valor alto, esforço alto | 2 | — |
+| [RF38](../visao/escopo/requisitos/RF38.md) | Valor alto, esforço alto | 2 | — |
+| [RF42](../visao/escopo/requisitos/RF42.md) | Valor alto, esforço alto | 2 | — |
+| [RF41](../visao/escopo/requisitos/RF41.md) | Valor alto, esforço alto | 2 | — |
+| [RF04](../visao/escopo/requisitos/RF04.md) | Médio | 3 | — |
+| [RF05](../visao/escopo/requisitos/RF05.md) | Médio | 3 | — |
+| [RF27](../visao/escopo/requisitos/RF27.md) | Médio | 3 | — |
+| [RF30](../visao/escopo/requisitos/RF30.md) | Médio | 3 | — |
+| [RF31](../visao/escopo/requisitos/RF31.md) | Médio | 3 | — |
+| [RF32](../visao/escopo/requisitos/RF32.md) | Médio | 3 | — |
+| [RF33](../visao/escopo/requisitos/RF33.md) | Médio | 3 | — |
+| [RF40](../visao/escopo/requisitos/RF40.md) | Médio | 3 | — |
+| [RF26](../visao/escopo/requisitos/RF26.md) | Médio | 3 | — |
+| [RF28](../visao/escopo/requisitos/RF28.md) | Médio | 3 | — |
+| [RF25](../visao/escopo/requisitos/RF25.md) | Baixo | 4 | — |
+| [RF12](../visao/escopo/requisitos/RF12.md) | Baixo | 4 | — |
+| [RF34](../visao/escopo/requisitos/RF34.md) | Baixo | 4 | — |
+| [RF08](../visao/escopo/requisitos/RF08.md) | Baixo | 4 | — |
+| [RF09](../visao/escopo/requisitos/RF09.md) | Baixo | 4 | — |
+| [RF11](../visao/escopo/requisitos/RF11.md) | Baixo | 4 | — |
+| [RF10](../visao/escopo/requisitos/RF10.md) | Baixo | 4 | — |
 
 As notas do cliente e da equipe, os votos individuais e o cálculo que levaram aos resultados acima estão registrados em [Comprovação de Evidência](priorizacao_geral_e_mvp.md). 
+
+## 10.3 Backlog do MVP: ordem de construção e acompanhamento
+
+A ordem segue as dependências: nenhuma ação da coordenação funciona sem autenticação, e as consultas dependem de existir o que consultar. O estado vem da seção *Andamento* de cada ficha, atualizada em 14/11/2026 com a [reunião de 10/11](organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md). As issues de construção estão no GitHub, e nenhuma tem responsável atribuído até esta data.
+
+| Ordem | RF | Depende de | Iteração prevista | Issue | Responsável | Estado | Pendência ou bloqueio |
+| :---: | :--- | :--- | :---: | :---: | :--- | :--- | :--- |
+| 1 | [RF01](../visao/escopo/requisitos/RF01.md) Autenticar usuário | — | 7 | [#48](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/48) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 2 | [RF02](../visao/escopo/requisitos/RF02.md) Controlar acesso | RF01 | 7 | [#49](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/49) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 3 | [RF00](../visao/escopo/requisitos/RF00.md) Encerrar sessão | RF01 | 7 | [#47](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/47) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 4 | [RF13](../visao/escopo/requisitos/RF13.md) Publicar conteúdo institucional | RF02 | 5 e 6 | [#39](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/39) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 5 | [RF15](../visao/escopo/requisitos/RF15.md) Consultar conteúdo institucional | RF13 | 5 e 6 | [#41](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/41) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 6 | [RF14](../visao/escopo/requisitos/RF14.md) Editar conteúdo institucional | RF13 | 5 e 6 | [#40](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/40) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 7 | [RF16](../visao/escopo/requisitos/RF16.md) Remover conteúdo institucional | RF13 | 5 e 6 | [#42](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/42) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 8 | [RF17](../visao/escopo/requisitos/RF17.md) Publicar evento | RF02 | 5 e 6 | [#43](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/43) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 9 | [RF20](../visao/escopo/requisitos/RF20.md) Consultar eventos | RF17 | 5 e 6 | [#46](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/46) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 10 | [RF18](../visao/escopo/requisitos/RF18.md) Editar evento | RF17 | 5 e 6 | [#44](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/44) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 11 | [RF19](../visao/escopo/requisitos/RF19.md) Remover evento | RF17 | 5 e 6 | [#45](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/45) | não atribuído | Aceito pelo cliente em 10/11 | — |
+| 12 | [RF03](../visao/escopo/requisitos/RF03.md) Cadastrar turma | RF02 | 8 | [#50](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/50) | não atribuído | Protótipo aprovado; construção pendente | — |
+| 13 | [RF21](../visao/escopo/requisitos/RF21.md) Cadastrar aluno | RF02, RF03 | 10 | [#53](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/53) | não atribuído | Protótipo aprovado; construção pendente | — |
+| 14 | [RF06](../visao/escopo/requisitos/RF06.md) Associar aluno à turma | RF03, RF21 | 8 | [#51](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/51) | não atribuído | Protótipo aprovado; construção pendente | Construído junto com RF21 ([DEC26](../painel.md#DEC26))|
+| 15 | [RF07](../visao/escopo/requisitos/RF07.md) Consultar alunos de uma turma | RF06 | 8 | [#52](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/52) | não atribuído | Protótipo aprovado; construção pendente | — |
+| 16 | [RF23](../visao/escopo/requisitos/RF23.md) Consultar ficha do aluno | RF21 | 10 | [#55](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/55) | não atribuído | Protótipo aprovado; construção pendente | — |
+| 17 | [RF22](../visao/escopo/requisitos/RF22.md) Editar aluno | RF21 | 10 | [#54](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/54) | não atribuído | Protótipo aprovado; construção pendente | — |
+| 18 | [RF24](../visao/escopo/requisitos/RF24.md) Inativar aluno | RF21 | 10 | [#56](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/56) | não atribuído | Protótipo aprovado; construção pendente | — |
+
+**Ordem de turmas e alunos:** RF06 e RF07 dependem de aluno cadastrado (RF21). Por isso turmas e alunos serão construídos juntos e entregues funcionando no mesmo incremento; a iteração seguinte fica para ajustes ([DEC26](../painel.md#DEC26)). O conflito entre CP3 e a autenticação deixou de bloquear: as duas partes foram construídas e aceitas juntas em 10/11.
+
+## 10.4 Dependências dos itens pós-MVP
+
+| RF | Depende de | O que ainda precisa ser definido |
+| :--- | :--- | :--- |
+| [RF29](../visao/escopo/requisitos/RF29.md) Registrar medida disciplinar | RF21 (identificação do aluno) | Quem registra, data e efeitos de cada medida sobre a matrícula ([PEN13](../painel.md#PEN13)) |
+| [RF38](../visao/escopo/requisitos/RF38.md) e [RF39](../visao/escopo/requisitos/RF39.md) Termos | Texto e controle de versão dos termos | Como as versões dos termos são definidas e guardadas ([PEN14](../painel.md#PEN14)); os aceites são separados na matrícula online ([DEC25](../painel.md#DEC25)) |
+| [RF41](../visao/escopo/requisitos/RF41.md) Emitir comprovante | RF35 (solicitação enviada e gravada) | — |
+| [RF42](../visao/escopo/requisitos/RF42.md) Analisar solicitações | RF35 e RF41 (solicitações gravadas e consultáveis); RF21 (cadastro definitivo após a confirmação presencial) | O que a aprovação gera em turma e documentos pendentes ([PEN12](../painel.md#PEN12)) |
+
+## 10.5 RNFs que são condição da primeira versão
+
+São os RNFs que se aplicam a pelo menos um RF do MVP. Cada um é verificado pelo critério de aceitação da sua ficha, como parte do DoD do RF a que se aplica.
+
+| RNF | Aplica-se a (MVP) | Como é verificado |
+| :--- | :--- | :--- |
+| [RNF01](../visao/escopo/rnf/RNF01.md) Facilidade de aprendizado | RF03, RF07, RF13, RF14, RF17, RF18, RF21, RF23 | Teste com usuários novos: 80% concluem a tarefa em até 8 minutos, sem treinamento |
+| [RNF02](../visao/escopo/rnf/RNF02.md) Interface responsiva | RF13 a RF20 | Telas públicas em larguras ≥ 360px, sem corte ou sobreposição |
+| [RNF03](../visao/escopo/rnf/RNF03.md) Feedback em ações críticas | RF03, RF06, RF21, RF22, RF24 | Mensagem de sucesso ou erro em até 2s |
+| [RNF06](../visao/escopo/rnf/RNF06.md) Tempo de resposta interno | RF03, RF06, RF07, RF22, RF23 | P95 ≤ 3s no teste de carga definido na ficha |
+| [RNF07](../visao/escopo/rnf/RNF07.md) Carregamento da página pública | RF13 a RF20 | LCP ≤ 5s no Lighthouse com rede 2G simulada |
+| [RNF08](../visao/escopo/rnf/RNF08.md) Acesso simultâneo | RF02 | P95 ≤ 3s no teste de carga definido na ficha |
+| [RNF09](../visao/escopo/rnf/RNF09.md) Logs de operações críticas | RF13 a RF20 | Inspeção do log após criar, editar e remover |
+| [RNF10](../visao/escopo/rnf/RNF10.md) Navegadores modernos | RF14, RF16, RF18, RF19, RF22, RF24 | Execução dos critérios de aceitação em Chrome, Firefox e Safari |
+| [RNF11](../visao/escopo/rnf/RNF11.md) Controle de acesso | RF00 a RF03, RF06, RF07, RF21 a RF24 | Rotas administrativas retornam 401/403 sem perfil de coordenação |
+| [RNF12](../visao/escopo/rnf/RNF12.md) Proteção de senhas e dados sensíveis | RF01, RF21, RF22 | Inspeção do banco e do armazenamento de anexos |
+| [RNF13](../visao/escopo/rnf/RNF13.md) LGPD | RF00 a RF02, RF21 a RF24 | Lista de verificação da ficha |
+
 ## Versionamento
 
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
-| 1.0 | 05/09/2026 | Documento incial do item 10 | [Marcos Monteiro](https://github.com/montmarcos) |  |
-| 1.1 | 30/10/2026 | Matriz 4 × 4 final: MVP redefinido para 18 RFs e índice "valor alto, esforço alto" incluído | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.0 | 05/09/2026 | Documento inicial do item 10 | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.1 | 30/10/2026 | Matriz 4×4 final: MVP redefinido para 18 RFs (valor de negócio 3 ou 4 e esforço técnico 1 ou 2) e índice "valor alto, esforço alto" incluído para os 8 RFs com alta prioridade mas esforço elevado. A primeira priorização (24/09) havia colocado ~36 dos 42 RFs no MVP, tornando-o inviável no prazo; após nova sessão com o cliente em 08/10 com explicação do conceito de MVP (DEC01), o MoSCoW foi reclassificado; a matriz final foi definida internamente em 30/10 e validada com o cliente na mesma reunião (DEC03) | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.2 | 14/11/2026 | Issues #32, #33 e #35: critérios de aceitação retirados do backlog (a fonte única é a ficha); nova seção 10.3 com ordem de construção, dependências, issue, responsável, estado e bloqueios dos itens do MVP; 10.4 com dependências dos itens pós-MVP; 10.5 com os RNFs exigidos na primeira versão e sua verificação; links passam a apontar para as fichas; RF36, RF37 e RF40 incorporados ao RF35 | — |  |

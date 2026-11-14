@@ -5,28 +5,28 @@
 
 | ID | Descrição | Requisito Funcional Relacionado |
 |---|---|---|
-| <a id="rn01"></a>**RN01** | Preservação de Histórico de Alunos: O aluno nunca pode ser excluído do sistema. A única ação permitida é a inativação, preservando todo o histórico de participação e frequência. | — |
-| <a id="rn02"></a>**RN02** | Assinatura Presencial Obrigatória: Toda inscrição, mesmo que iniciada remotamente via pré-cadastro / formulário online, exige a presença física do responsável legal para a assinatura presencial dos termos. | — |
+| <a id="rn01"></a>**RN01** | Preservação de Histórico de Alunos: O aluno nunca pode ser excluído do sistema. A única ação permitida é a inativação, preservando todo o histórico de participação e frequência. | [RF24](requisitos/RF24.md), [RF25](requisitos/RF25.md) |
+| <a id="rn02"></a>**RN02** | Assinatura Presencial Obrigatória: Toda inscrição, mesmo que iniciada remotamente via pré-cadastro / formulário online, exige a presença física do responsável legal para a assinatura presencial dos termos. | [RF35](requisitos/RF35.md), [RF42](requisitos/RF42.md) |
 | <a id="rn03"></a>**RN03** | Autorização e Validade do Uso de Imagem: O uso da imagem do aluno depende de autorização assinada pelo responsável legal, com validade vinculada à sua permanência no projeto e por um período adicional após a saída. | — |
 | <a id="rn04"></a>**RN04** | Manutenção de Documentação Institucional: A documentação institucional da ONG (certidões OSCIP, FGTS, CND, CNPJ, Fazenda) precisa estar sempre atualizada para viabilizar a participação em editais de doação e recursos (pendências fiscais ou veiculares impedem a emissão de certidões). | — |
 | <a id="rn05"></a>**RN05** | Política de Aceite de Doações: A ONG evita recusar doações (mesmo quando o custo de frete ou conserto supera o benefício imediato) para preservar o relacionamento com os órgãos e parceiros doadores. | — |
 | <a id="rn06"></a>**RN06** | Comprovação Fotográfica em Prestação de Contas: Órgãos públicos doadores (ex.: Ministério Público) exigem registros fotográficos ou audiovisuais dos beneficiados como parte obrigatória da prestação de contas. | — |
-| <a id="rn07"></a>**RN07** | Documentação de Maior de Idade: Para alunos maiores de 18 anos, não é necessária a documentação nem a autorização de um responsável legal, visto que o próprio aluno responde legalmente por si. | — |
-| <a id="rn08"></a>**RN08** | Tolerância para Atestado Médico: Existe uma tolerância de aproximadamente 30 a 35 dias para a entrega do atestado médico para prática de esportes, em razão do tempo necessário para consulta médica. | — |
+| <a id="rn07"></a>**RN07** | Documentação de Maior de Idade: Para alunos maiores de 18 anos, não é necessária a documentação nem a autorização de um responsável legal, visto que o próprio aluno responde legalmente por si. | [RF35](requisitos/RF35.md) |
+| <a id="rn08"></a>**RN08** | Tolerância para Atestado Médico: Existe uma tolerância de aproximadamente 30 a 35 dias para a entrega do atestado médico para prática de esportes, em razão do tempo necessário para consulta médica. | [RF21](requisitos/RF21.md) |
 | <a id="rn09"></a>**RN09** | Autorização para Retirada de Menores: A retirada de alunos menores de idade deve seguir estritamente as autorizações e registros formais cadastrados na instituição. | — |
-| <a id="rn10"></a>**RN10** | Indicação Obrigatória de Pessoas Autorizadas a Retirar Menores: No cadastro de alunos menores de idade, é obrigatório informar o nome e contato de pelo menos uma pessoa autorizada a retirar o menor. | [RF40](requisitos/RF40.md) |
+| <a id="rn10"></a>**RN10** | Indicação Obrigatória de Pessoas Autorizadas a Retirar Menores: No cadastro de alunos menores de idade, é obrigatório informar o nome e contato de pelo menos uma pessoa autorizada a retirar o menor. | [RF35](requisitos/RF35.md) |
 | <a id="rn11"></a>**RN11** | Atualização de Autorização de Retirada: Alterações nas pessoas autorizadas a retirar um menor de idade precisam ser formalmente comunicadas e atualizadas no registro da instituição. | — |
 | <a id="rn12"></a>**RN12** | Manutenção de Domínio: O domínio do site institucional da ONG permanece ativo. | — |
 | <a id="rn13"></a>**RN13** | Diversidade de Recursos: O recebimento de recursos ocorre por múltiplos canais (doações diretas, bens físicos e parcerias/ofícios). | — |
 | <a id="rn14"></a>**RN14** | Fluxo de Prestação de Contas: A prestação de contas de recursos envolve orçamentos prévios, aprovação, nota fiscal e registros fotográficos/audiovisuais. | — |
 | <a id="rn15"></a>**RN15** | Vínculo Socioeducacional e Permanência: A regra de negócio central do CECP condiciona a permanência e a evolução do aluno no projeto social esportivo ao acompanhamento direto de sua frequência nas aulas do CECP e de seu desempenho/assiduidade na escola formal de origem. | — |
-| <a id="rn16"></a>**RN16** | Separação de Consentimento de Dados e Termo de Imagem: O aceite do termo de tratamento de dados pessoais (LGPD) e do termo de uso de imagem são tratados de forma independente. A recusa do termo de imagem impede a realização da matrícula. | [RF38](requisitos/RF38.md), [RF39](requisitos/RF39.md) |
+| <a id="rn16"></a>**RN16** | Separação de Consentimento de Dados e Termo de Imagem: O aceite do termo de tratamento de dados pessoais (LGPD) e do termo de uso de imagem são tratados de forma independente. A recusa do termo de imagem impede a realização da matrícula. Vale para a matrícula online; no cadastro presencial, o termo é único ([DEC25](../../painel.md#DEC25)). | [RF38](requisitos/RF38.md), [RF39](requisitos/RF39.md) |
 | <a id="rn17"></a>**RN17** | O encerramento é total; para voltar à área de coordenação é preciso informar usuário e senha novamente. | [RF00](requisitos/RF00.md) |
 | <a id="rn18"></a>**RN18** | Na reunião o cliente admitiu redirecionar também para um modo público; a tela de login é o comportamento adotado. | [RF00](requisitos/RF00.md) |
 | <a id="rn19"></a>**RN19** | Não há autocadastro; a tela de login não oferece opção de cadastro. | [RF01](requisitos/RF01.md) |
 | <a id="rn20"></a>**RN20** | Existe um único nível de acesso (coordenador). | [RF01](requisitos/RF01.md), [RF02](requisitos/RF02.md) |
 | <a id="rn21"></a>**RN21** | O acesso inicial é feito por um usuário administrador padrão, entregue ao responsável do projeto, que repassa aos demais. | [RF01](requisitos/RF01.md) |
-| <a id="rn22"></a>**RN22** | O sistema inicia vazio, então cadastrar turma é a primeira ação necessária. | [RF03](requisitos/RF03.md) |
+| <a id="rn22"></a>**RN22** | O sistema inicia vazio, então cadastrar turma é a primeira ação necessária. | [RF03](requisitos/RF03.md), [RF06](requisitos/RF06.md), [RF21](requisitos/RF21.md) |
 | <a id="rn23"></a>**RN23** | Modalidade, dias e horários fazem parte da ficha do aluno. | [RF06](requisitos/RF06.md) |
 | <a id="rn24"></a>**RN24** | A listagem de alunos segue o padrão mostrado na reunião (foto e nome completo). | [RF07](requisitos/RF07.md) |
 | <a id="rn25"></a>**RN25** | Todo conteúdo institucional deve ter título. | [RF13](requisitos/RF13.md), [RF14](requisitos/RF14.md) |
