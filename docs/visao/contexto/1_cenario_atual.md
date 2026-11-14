@@ -35,7 +35,7 @@ A Figura 1 apresenta o mapeamento do fluxo atual de operação do CECP, elaborad
 
 O cenário atual envolve o público geral, que toma conhecimento do projeto principalmente pelo Instagram; crianças e adolescentes candidatos ou participantes, seus pais ou responsáveis; professores e coordenação; administradores e funcionários; doadores financeiros; doadores de objetos; e fontes de apoio e financiamento, como editais públicos, órgãos públicos e entidades de apoio social. Esses atores se relacionam com a instituição em processos de divulgação, participação nas atividades, gestão administrativa, doações e busca de recursos.
 
-A divulgação do projeto ocorre principalmente pelo Instagram. Embora o domínio e o site institucional permaneçam ativos, o site está desatualizado e não é mais utilizado. No fluxo de alunos, o cadastro é predominantemente manual e realizado por ficha física. O possível aluno participa de uma aula experimental e, depois dela, a equipe pode fazer contato pelo WhatsApp. Na aula seguinte, são apresentados os documentos físicos necessários, que são assinados presencialmente. Houve tentativa anterior de uso de formulário do Google, mas o papel continua presente em grande parte do processo. Alguns documentos são digitalizados e armazenados em pastas no computador. Essa digitalização ocorre de forma pontual, sem critérios ou regras definidos para determinar quais documentos devem ser digitalizados.
+No fluxo de alunos representado na Figura 1, o cadastro é predominantemente manual e realizado por ficha física. O possível aluno participa de uma aula experimental e, depois dela, a equipe pode fazer contato pelo WhatsApp. Na aula seguinte, são apresentados os documentos físicos necessários, que são assinados presencialmente. Houve tentativa anterior de uso de formulário do Google, mas o papel continua presente em grande parte do processo. Alguns documentos são digitalizados e armazenados em pastas no computador. Essa digitalização ocorre de forma pontual, sem critérios ou regras definidos para determinar quais documentos devem ser digitalizados. Em certas situações, documentos já digitalizados precisam ser impressos novamente.
 
 #### Acompanhamento pedagógico e disciplinar atual
 
@@ -51,13 +51,9 @@ Além disso, a organização ainda não possui controle estruturado de frequênc
 
 O fluxo de apoio e doações segue caminhos distintos. Doadores financeiros realizam contribuições diretas para sustentar o projeto; doadores de objetos contribuem com bens que podem passar por reforma e revenda para geração de recursos. Editais públicos, órgãos públicos e entidades de apoio social constituem fontes de apoio ou financiamento dos recursos do projeto, sem conexão operacional direta com a coordenação. Todos esses fluxos demandam administração e organização institucional.
 
-Atualmente, não há sistema digital integrado de apoio à gestão. As informações estão descentralizadas entre fichas e outros documentos físicos, pastas de arquivos digitalizados no computador, contatos por WhatsApp e canais de divulgação. A dependência de papel, a necessidade ocasional de imprimir documentos já digitalizados, os processos demorados e a dificuldade de administração tornam a consulta, a atualização, a preservação do histórico e a organização das informações mais trabalhosas.
-
-O diagrama aponta como pontos críticos a dependência do Instagram como principal canal de divulgação; o site existente, porém desatualizado e não mais utilizado; a inscrição predominantemente manual; os documentos físicos e as informações descentralizadas; a ausência de controle estruturado de frequência; a ausência de acompanhamento pedagógico e disciplinar com registro estruturado; e a concentração de processos administrativos, que pode gerar sobrecarga e retrabalho.
+Os efeitos da descentralização representada no diagrama são analisados na seção 1.4; os desafios de implantação, na seção 1.5.
 
 A organização também apresenta algumas restrições relevantes para o projeto, como a atuação de uma equipe voluntária, a ausência de uma estrutura própria de tecnologia da informação, a limitação de recursos financeiros para aquisição e manutenção de sistemas comerciais e a necessidade de uma solução compatível com a realidade operacional da instituição.
-
-Diante desse cenário, identificam-se oportunidades de melhoria, especialmente na organização e digitalização das informações. A digitalização das fichas de inscrição, do controle de turmas e da frequência pode reduzir a dependência de documentos físicos e facilitar o acompanhamento dos alunos. Da mesma forma, a centralização dos documentos e das informações hoje descentralizadas pode facilitar o acesso e a organização do histórico dos participantes. Também existe oportunidade de melhorar o registro e o acompanhamento das informações relacionadas aos doadores e às fontes de apoio, tornando esses processos mais organizados e menos dependentes de contatos e registros informais.
 
 ### 1.4 Identificação da Oportunidade ou Problema
 
@@ -68,25 +64,21 @@ Diante desse cenário, identificam-se oportunidades de melhoria, especialmente n
 
 A Figura 2 apresenta o diagrama de Ishikawa, um mapa que mostra os principais agentes responsáveis pelo problema enfrentado pela organização, elaborado a partir do levantamento realizado junto à organização, contemplando as principais dificuldades enfrentadas pelos organizadores e colaboradores da organização.
 
-O projeto é necessário para solucionar problemas relacionados à gestão, organização e ao armazenamento de dados da organização. Atualmente, as informações referentes aos alunos, inscrições, turmas e doações estão distribuídas entre documentos físicos, arquivos digitalizados em pastas no computador e outros canais de comunicação. A permanência da dependência de papel e a descentralização das informações dificultam o armazenamento, a localização e a atualização dos dados, além de tornar o acompanhamento das turmas e dos documentos dos alunos mais trabalhoso e suscetível a perdas ou desorganização.
+A partir do cenário e dos fluxos descritos em 1.2 e 1.3, a Figura 2 organiza as causas das dificuldades de gestão. A falta de integração entre os registros aumenta o trabalho necessário para localizar, atualizar e preservar informações, com risco de perdas e desorganização. O crescimento do volume de dados amplia esse esforço administrativo.
 
-Outro problema identificado está relacionado à gestão das doações recebidas pela organização. A ausência de uma estrutura digital específica dificulta o registro, o acompanhamento e a organização das informações referentes aos doadores e às contribuições realizadas. Como consequência, existe uma oportunidade de melhorar os processos internos por meio da digitalização e centralização das informações, facilitando o acesso aos dados e tornando a gestão das atividades mais organizada e eficiente.
+Nas doações, a ausência de controle estruturado dificulta acompanhar contribuições e doadores. Na divulgação, a desatualização e a organização insuficiente das informações institucionais dificultam apresentar os projetos e resultados e podem limitar a participação em determinados editais.
 
-Além disso, a organização enfrenta dificuldades relacionadas à divulgação de suas atividades e à participação em editais públicos. A ausência de um site atualizado, com informações organizadas e de fácil acesso, pode limitar o atendimento aos requisitos de determinados editais e reduzir a capacidade da organização de apresentar adequadamente seus projetos e resultados.
-
-Dessa forma, o projeto apresenta uma oportunidade de modernizar a gestão e a comunicação da organização, centralizando informações que atualmente se encontram dispersas em documentos físicos e canais distintos. A plataforma digital proposta poderá contribuir tanto para a organização dos processos internos quanto para a divulgação institucional, criando melhores condições para o acompanhamento das atividades e para a busca de novas oportunidades de financiamento e parcerias.
+A oportunidade é centralizar a consulta e a organização dos registros e melhorar a apresentação pública das informações. A solução proposta e os limites de sua entrega inicial estão na [seção 2](2_solucao_proposta.md).
 
 ### 1.5 Desafios do Projeto
 
 O projeto enfrenta três desafios principais:
 
-**Desafio 1 - Modernização da presença digital institucional:** Embora o cliente utilize o Instagram para divulgar suas atividades, alguns editais públicos exigem que a organização possua um site para apresentar informações sobre seus projetos, atividades e resultados. Atualmente, existe um site institucional, porém ele está desatualizado e apresenta as informações de maneira pouco organizada e de difícil visualização. Dessa forma, será necessário estruturar uma nova apresentação das informações, tornando o conteúdo mais acessível, organizado e adequado às necessidades da organização e aos requisitos de possíveis editais.
+**Desafio 1 - Modernização da presença digital institucional:** Estruturar uma apresentação acessível e organizada das atividades e dos resultados, adequada às necessidades da comunidade e às informações exigidas em possíveis editais. O diagnóstico dos canais existentes está em 1.2.
 
-**Desafio 2 - Digitalização da gestão administrativa:** Atualmente, as inscrições, informações das turmas, documentações dos alunos e registros de doações combinam documentos físicos, arquivos digitalizados em pastas no computador e registros não integrados. Mesmo com a existência de alguns documentos digitais, permanece a dependência de papel. Com o crescimento do volume de informações, esse modelo torna o armazenamento mais complexo e dificulta a localização, atualização e acompanhamento dos dados. Além disso, a utilização de registros descentralizados aumenta o esforço necessário para realizar atividades administrativas e pode favorecer a ocorrência de erros ou perda de informações.
+**Desafio 2 - Digitalização da gestão administrativa:** Organizar a transição dos registros existentes para uma consulta integrada, preservando a localização, a atualização e o histórico dos dados. A migração manual e seu apoio à implantação são descritos em [2.2.1](2_solucao_proposta.md#221-estrategia-de-migracao-dos-dados-atuais).
 
 **Desafio 3 - Adoção da solução por uma equipe voluntária:** Como a operação do CECP depende de voluntários com disponibilidade e perfis técnicos variados, a solução precisa ser simples e intuitiva o suficiente para não gerar resistência ou sobrecarga adicional à equipe. Esse desafio orienta diretamente as decisões de escopo e tecnologia do projeto, priorizando uma ferramenta enxuta em vez de um sistema robusto e complexo.
-
-Assim, o projeto deverá enfrentar o desafio de transformar processos atualmente realizados de forma predominantemente analógica em processos digitais, organizados e de fácil acesso, sem comprometer a simplicidade de utilização pela equipe responsável. A solução também deverá conciliar as necessidades de gestão interna com a necessidade de disponibilizar informações institucionais de forma clara e atualizada para o público externo e para processos de participação em editais.
 
 ### 1.6 Mapa de Stakeholders
 
@@ -141,3 +133,4 @@ A CECP se relaciona com diferentes públicos, sem tratar crianças e adolescente
 | 1.1 | 19/09/2026 | Alinhamento do cenário atual com a ata de reunião de 17/09/2026 | Renato Gameiro | - |
 | 1.2 | 26/09/2026 | Detalhamento do acompanhamento pedagógico e disciplinar e inclusão da ANPD no mapa de stakeholders | Renato Gameiro | - |
 | 1.3 | 26/09/2026 | Detalhamento do processo atual de acompanhamento pedagógico e disciplinar. | Renato Gameiro | - |
+| 1.4 | 14/11/2026 | Issue #35: redução das repetições entre diagnóstico, fluxo, consequências e desafios, preservando o relato operacional e disciplinar | Renato Gameiro | Pendente |

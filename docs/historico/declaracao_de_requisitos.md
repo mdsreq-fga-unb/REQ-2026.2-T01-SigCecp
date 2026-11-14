@@ -1,12 +1,15 @@
 # Declaração de Requisitos no SigCecp
 
+!!! warning "Análise histórica — versão de 12/10/2026"
+    Esta atividade didática retrata as declarações analisadas na versão 1.1 deste documento (12/10/2026). As classificações e contagens abaixo não descrevem o amadurecimento atual dos requisitos e não são outra fonte da especificação vigente. Consulte as fichas no [painel do escopo](../painel.md) para estado, declaração e critérios atuais.
+
 > Análise da Equipe One sobre os tipos de declaração, os níveis de abstração e os momentos do processo.
 
 ---
 
 ## 1. Níveis de abstração
 
-A seguir, todos os requisitos do projeto foram classificados entre os seguintes níveis de abstração:
+Na versão analisada, os requisitos do projeto foram classificados entre os seguintes níveis de abstração:
 
 - Requisitos de Negócio;
 - Requisitos de Usuário;
@@ -111,7 +114,7 @@ Foram considerados três momentos:
 | Orientar desenvolvimento | 28 | 1 |
 | Sustentar avaliação | 4 | 12 |
 
-A maioria dos RFs encontra-se no momento de orientar o desenvolvimento, pois além de dizer o que o requisito faz, já traz informações que ajudam a implementá-lo (por exemplo, o RF03 informa que a turma é cadastrada com modalidade, horário e capacidade máxima). Alguns RFs, como o RF07 e o RF20, estão mais próximos do momento exploratório, por serem frases curtas que ainda não detalham o comportamento esperado.
+Na versão analisada, a maioria dos RFs encontrava-se no momento de orientar o desenvolvimento, pois além de dizer o que o requisito faz, já traz informações que ajudam a implementá-lo (por exemplo, o RF03 informa que a turma é cadastrada com modalidade, horário e capacidade máxima). Alguns RFs, como o RF07 e o RF20, estão mais próximos do momento exploratório, por serem frases curtas que ainda não detalham o comportamento esperado.
 
 Os RNFs, em sua maioria, estão no momento de sustentar avaliação, pois possuem critérios de aceitação mensuráveis (por exemplo, P95 ≤ 3s no RNF06).
 
@@ -125,3 +128,4 @@ Portanto, o projeto cobre os três momentos, em partes diferentes da documentaç
 | ------ | ---- | --------- | ------------ | -------------- |
 | 1.0 | 07/10/2026 | Anotações da atividade para o dia 08/10 | Ana Paula Jardim | - |
 | 1.1 | 12/10/2026 | Atualização sobre tipo de declaração usado | Ana Paula Jardim | - |
+| 1.2 | 14/11/2026 | Issue #35: delimitação da análise e das contagens como retrato histórico de 12/10/2026 | Renato Gameiro | Pendente |

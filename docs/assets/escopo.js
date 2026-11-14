@@ -53,13 +53,15 @@ window.ESCOPO = {
         "DEC04"
       ],
       "pens": [
-        "PEN04"
+        "PEN04",
+        "PEN12"
       ],
       "its": [
         "Iteração 7"
       ],
       "lacunas": [
-        "PEN04: Completar a data e a fonte das decisões DEC04 e DEC05"
+        "PEN04: Completar a data e a fonte das decisões DEC04 e DEC05",
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
       ]
     },
     "RF01": {
@@ -116,11 +118,15 @@ window.ESCOPO = {
       "decs": [
         "DEC03"
       ],
-      "pens": [],
+      "pens": [
+        "PEN12"
+      ],
       "its": [
         "Iteração 7"
       ],
-      "lacunas": []
+      "lacunas": [
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
+      ]
     },
     "RF02": {
       "nome": "Controlar acesso",
@@ -173,11 +179,15 @@ window.ESCOPO = {
       "decs": [
         "DEC03"
       ],
-      "pens": [],
+      "pens": [
+        "PEN12"
+      ],
       "its": [
         "Iteração 7"
       ],
-      "lacunas": []
+      "lacunas": [
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
+      ]
     },
     "RF03": {
       "nome": "Cadastrar turma",
@@ -788,14 +798,16 @@ window.ESCOPO = {
         "DEC13"
       ],
       "pens": [
-        "PEN08"
+        "PEN08",
+        "PEN12"
       ],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
       "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
+        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno",
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
       ]
     },
     "RF14": {
@@ -861,14 +873,16 @@ window.ESCOPO = {
         "DEC13"
       ],
       "pens": [
-        "PEN08"
+        "PEN08",
+        "PEN12"
       ],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
       "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
+        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno",
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
       ]
     },
     "RF15": {
@@ -927,14 +941,16 @@ window.ESCOPO = {
         "DEC13"
       ],
       "pens": [
-        "PEN08"
+        "PEN08",
+        "PEN12"
       ],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
       "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
+        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno",
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
       ]
     },
     "RF16": {
@@ -998,14 +1014,16 @@ window.ESCOPO = {
         "DEC13"
       ],
       "pens": [
-        "PEN08"
+        "PEN08",
+        "PEN12"
       ],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
       "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
+        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno",
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
       ]
     },
     "RF17": {
@@ -1073,7 +1091,8 @@ window.ESCOPO = {
       ],
       "pens": [
         "PEN01",
-        "PEN08"
+        "PEN08",
+        "PEN12"
       ],
       "its": [
         "Iteração 5",
@@ -1081,7 +1100,8 @@ window.ESCOPO = {
       ],
       "lacunas": [
         "PEN01: O subtítulo do evento é opcional (\"se houver\") nas reuniões de 21/10 e 30/10, mas a ficha do RF17 o lista entre as entradas obrigatórias",
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
+        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno",
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
       ]
     },
     "RF18": {
@@ -1148,7 +1168,8 @@ window.ESCOPO = {
       ],
       "pens": [
         "PEN01",
-        "PEN08"
+        "PEN08",
+        "PEN12"
       ],
       "its": [
         "Iteração 5",
@@ -1156,7 +1177,8 @@ window.ESCOPO = {
       ],
       "lacunas": [
         "PEN01: O subtítulo do evento é opcional (\"se houver\") nas reuniões de 21/10 e 30/10, mas a ficha do RF17 o lista entre as entradas obrigatórias",
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
+        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno",
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
       ]
     },
     "RF19": {
@@ -1220,14 +1242,16 @@ window.ESCOPO = {
         "DEC13"
       ],
       "pens": [
-        "PEN08"
+        "PEN08",
+        "PEN12"
       ],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
       "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
+        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno",
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
       ]
     },
     "RF20": {
@@ -1288,14 +1312,16 @@ window.ESCOPO = {
         "DEC13"
       ],
       "pens": [
-        "PEN08"
+        "PEN08",
+        "PEN12"
       ],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
       "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
+        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno",
+        "PEN12: Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão"
       ]
     },
     "RF21": {
@@ -1361,14 +1387,18 @@ window.ESCOPO = {
       ],
       "pens": [
         "PEN03",
-        "PEN04"
+        "PEN04",
+        "PEN10",
+        "PEN11"
       ],
       "its": [
         "Iteração 10"
       ],
       "lacunas": [
         "PEN03: Conciliar o termo único do cadastro presencial (RN40, RF21) com a regra de que dados e imagem são aceites independentes na matrícula online (RN16, RF38 e RF39)",
-        "PEN04: Completar a data e a fonte das decisões DEC04 e DEC05"
+        "PEN04: Completar a data e a fonte das decisões DEC04 e DEC05",
+        "PEN10: Detalhar a passagem da pré-matrícula para o cadastro definitivo, conciliando “aprovada” no RF42 com a confirmação e assinatura presencial da RN02",
+        "PEN11: Definir a cobertura funcional do acompanhamento escolar previsto como necessidade em OE2, CP5 e RN15"
       ]
     },
     "RF22": {
@@ -1562,7 +1592,7 @@ window.ESCOPO = {
       "estado": "Rascunho",
       "cp": "CP4: Cadastro e histórico de alunos",
       "ator": "(a detalhar)",
-      "declaracao": "Deve ser possível à coordenação remover do sistema os dados de um aluno, mediante pedido do responsável legal ou do próprio aluno, caso ele tenha 18 anos ou mais.",
+      "declaracao": "Deve ser possível à coordenação remover exclusivamente a identidade, o CPF e o comprovante de residência de um aluno, mediante pedido do responsável legal ou do próprio aluno, caso ele tenha 18 anos ou mais, e após confirmação. Os demais registros, incluindo o cadastro e o histórico de participação e frequência, permanecem preservados; a remoção é registrada em log.",
       "entradas": "(a detalhar)",
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
@@ -1572,7 +1602,7 @@ window.ESCOPO = {
       "moscow": "1, Não precisa ter",
       "entrega": "Pós-MVP",
       "criterios": [
-        "Do backlog (10.1), a reescrever em Dado/Quando/Então: A remoção só é executada após confirmação e mediante pedido do responsável legal ou do próprio aluno, se ele tiver 18 anos ou mais. São removidos a identidade, o CPF e o comprovante de residência, e os demais registros são mantidos. A remoção é registrada em log."
+        "Critérios preservados da versão 0.1, a reescrever em Dado/Quando/Então: A remoção só é executada após confirmação e mediante pedido do responsável legal ou do próprio aluno, se ele tiver 18 anos ou mais. São removidos a identidade, o CPF e o comprovante de residência, e os demais registros são mantidos. A remoção é registrada em log."
       ],
       "rns": [],
       "rnfs": [
@@ -1659,9 +1689,13 @@ window.ESCOPO = {
         ]
       ],
       "decs": [],
-      "pens": [],
+      "pens": [
+        "PEN11"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN11: Definir a cobertura funcional do acompanhamento escolar previsto como necessidade em OE2, CP5 e RN15"
+      ]
     },
     "RF27": {
       "nome": "Consultar frequência",
@@ -1710,9 +1744,13 @@ window.ESCOPO = {
         ]
       ],
       "decs": [],
-      "pens": [],
+      "pens": [
+        "PEN11"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN11: Definir a cobertura funcional do acompanhamento escolar previsto como necessidade em OE2, CP5 e RN15"
+      ]
     },
     "RF28": {
       "nome": "Emitir alerta de faltas críticas",
@@ -1761,9 +1799,13 @@ window.ESCOPO = {
         ]
       ],
       "decs": [],
-      "pens": [],
+      "pens": [
+        "PEN11"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN11: Definir a cobertura funcional do acompanhamento escolar previsto como necessidade em OE2, CP5 e RN15"
+      ]
     },
     "RF29": {
       "nome": "Registrar medida disciplinar",
@@ -1816,9 +1858,13 @@ window.ESCOPO = {
         "DEC02",
         "DEC03"
       ],
-      "pens": [],
+      "pens": [
+        "PEN11"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN11: Definir a cobertura funcional do acompanhamento escolar previsto como necessidade em OE2, CP5 e RN15"
+      ]
     },
     "RF30": {
       "nome": "Publicar aviso",
@@ -2118,9 +2164,13 @@ window.ESCOPO = {
       "decs": [
         "DEC03"
       ],
-      "pens": [],
+      "pens": [
+        "PEN10"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN10: Detalhar a passagem da pré-matrícula para o cadastro definitivo, conciliando “aprovada” no RF42 com a confirmação e assinatura presencial da RN02"
+      ]
     },
     "RF36": {
       "nome": "Preencher dados do aluno",
@@ -2439,28 +2489,37 @@ window.ESCOPO = {
       "decs": [
         "DEC03"
       ],
-      "pens": [],
+      "pens": [
+        "PEN10"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN10: Detalhar a passagem da pré-matrícula para o cadastro definitivo, conciliando “aprovada” no RF42 com a confirmação e assinatura presencial da RN02"
+      ]
     },
     "RF42": {
       "nome": "Analisar solicitações de matrícula",
       "estado": "Rascunho",
       "cp": "CP7: Matrícula online",
-      "ator": "(a detalhar)",
-      "declaracao": "Deve ser possível à coordenação consultar as solicitações recebidas e defini-las como aprovada, recusada ou em lista de espera.",
-      "entradas": "(a detalhar)",
-      "pre": "(a detalhar)",
-      "proc": "(a detalhar)",
-      "saidas": "(a detalhar)",
+      "ator": "Coordenação",
+      "declaracao": "Deve ser possível à coordenação consultar as solicitações de pré-matrícula recebidas e defini-las como aprovada, recusada ou em lista de espera. O envio online não conclui a matrícula; a confirmação e a assinatura presencial continuam exigidas pela RN02. O significado operacional de “aprovada” e a ligação com o cadastro definitivo permanecem pendentes de detalhamento (PEN10).",
+      "entradas": "Solicitação recebida e classificação definida pela coordenação. [PENDENTE] Dados e comprovações necessários para a confirmação presencial.",
+      "pre": "Coordenação autenticada e solicitação recebida. [PENDENTE] Momento da assinatura presencial em relação à classificação como aprovada.",
+      "proc": "Consulta e atualização da classificação da solicitação. [PENDENTE] Definir como registrar a confirmação presencial e criar ou vincular o cadastro do RF21, sem conversão automática pelo simples envio do formulário.",
+      "saidas": "Classificação atualizada na consulta. [PENDENTE] Resultado da confirmação presencial e vínculo com o cadastro definitivo.",
       "pdf": false,
-      "pendente": 0,
+      "pendente": 5,
       "moscow": "3, Deveria ter",
       "entrega": "Pós-MVP",
       "criterios": [
-        "Do backlog (10.1), a reescrever em Dado/Quando/Então: A coordenação consulta as solicitações recebidas e define cada uma como aprovada, recusada ou em lista de espera. O status definido é exibido atualizado na consulta."
+        "1. Dada uma solicitação recebida, quando a coordenação define sua classificação como aprovada, recusada ou em lista de espera, então a consulta exibe a classificação atualizada.",
+        "2. Dado apenas o envio do formulário online, quando a solicitação é recebida, então isso não representa matrícula concluída nem dispensa a etapa presencial.",
+        "[PENDENTE] Completar os cenários de aprovação, confirmação presencial e conversão para cadastro após a definição da PEN10."
       ],
-      "rns": [],
+      "rns": [
+        "RN02",
+        "RN07"
+      ],
       "rnfs": [
         "RNF03",
         "RNF05",
@@ -2494,9 +2553,14 @@ window.ESCOPO = {
         "DEC02",
         "DEC03"
       ],
-      "pens": [],
+      "pens": [
+        "PEN10"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "5 campo(s) marcado(s) como pendente na ficha",
+        "PEN10: Detalhar a passagem da pré-matrícula para o cadastro definitivo, conciliando “aprovada” no RF42 com a confirmação e assinatura presencial da RN02"
+      ]
     }
   },
   "rn": {
@@ -2880,6 +2944,47 @@ window.ESCOPO = {
         "RF06"
       ],
       "acao": "Validar no detalhamento de turmas"
+    },
+    {
+      "id": "PEN10",
+      "texto": "Detalhar a passagem da pré-matrícula para o cadastro definitivo, conciliando “aprovada” no RF42 com a confirmação e assinatura presencial da RN02",
+      "rfs": [
+        "RF35",
+        "RF41",
+        "RF42",
+        "RF21"
+      ],
+      "acao": "As atas de 22/09 (seção 6), 24/09 (CP7; RF32 na numeração da época) e 08/10 (seção 8) sustentam pré-matrícula, análise e confirmação presencial, mas não fecham o fluxo operacional. Definir com o cliente quando “aprovada” é atribuída, quem confere e registra a etapa presencial, quais comprovações são necessárias e como a solicitação cria ou se vincula ao RF21; esclarecer a aplicação da RN02 com a RN07 para maiores de idade. Preservar CP7 no pós-MVP. Ver seção 2.3.1 da solução proposta"
+    },
+    {
+      "id": "PEN11",
+      "texto": "Definir a cobertura funcional do acompanhamento escolar previsto como necessidade em OE2, CP5 e RN15",
+      "rfs": [
+        "RF21",
+        "RF26",
+        "RF27",
+        "RF28",
+        "RF29"
+      ],
+      "acao": "A ata de 17/09, seção 3, deixa dados e forma de acompanhamento em aberto; a de 24/09, seção 1, descreve a prática informal. Confirmar com o cliente quais dados escolares devem ser registrados/consultados, quem terá acesso e como ocorrerá o acompanhamento, decidindo sua inclusão ou adiamento. Tipo/nome da escola no RF21 e frequência no CECP não cobrem desempenho escolar. Não há requisito novo nem alteração de prioridade nesta revisão. Ver seção 2.3.2 da solução proposta"
+    },
+    {
+      "id": "PEN12",
+      "texto": "Localizar e conciliar as fontes citadas na seção 9.3 como DEC19, DEC27 e ata de 10/11, ausentes do catálogo e das atas publicadas nesta revisão",
+      "rfs": [
+        "RF00",
+        "RF01",
+        "RF02",
+        "RF13",
+        "RF14",
+        "RF15",
+        "RF16",
+        "RF17",
+        "RF18",
+        "RF19",
+        "RF20"
+      ],
+      "acao": "Preservar o relato anterior de execução sem tratá-lo como comprovação. Localizar e publicar as fontes, conferir identificação/data e então reconciliar catálogo, fichas e seção 9.3. PEN01 continua aberta; não há fonte suficiente para afirmar encerramento pela DEC27. A alegação de autenticação construída junto de CP3 e o aceite de 10/11 também precisam de evidência vinculada"
     }
   ],
   "pen_enc": [

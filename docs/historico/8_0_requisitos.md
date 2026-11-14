@@ -163,6 +163,9 @@ Os requisitos não funcionais foram classificados segundo o modelo URPS+ (Usabil
 
 ## 8.3 Matriz-síntese de rastreabilidade - CECP
 
+!!! warning "Matriz e grafo históricos"
+    A matriz e o grafo desta seção reproduzem a versão arquivada, inclusive vínculos antigos de CP7. Não representam a rastreabilidade vigente e não devem orientar novas alterações. A fonte atual dos vínculos OE–CP é a [seção 2.3 da solução proposta](../visao/contexto/2_solucao_proposta.md); os vínculos CP–RF e RF–RNF estão nas fichas, exibidas no [painel](../painel.md).
+
 A matriz apresenta a rastreabilidade entre os Objetivos Específicos (OE), as Características do Produto (CP), os Requisitos Funcionais (RF) e os Requisitos Não Funcionais (RNF).
 
 ```

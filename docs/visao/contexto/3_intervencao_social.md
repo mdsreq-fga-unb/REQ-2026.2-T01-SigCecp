@@ -2,6 +2,8 @@
 
 A plataforma web de gestão do CECP tende a produzir uma intervenção social voltada à digitalização do acompanhamento socioeducacional de crianças, jovens e adultos, à reorganização do trabalho e ao fortalecimento da capacidade institucional de uma OSCIP que hoje opera de forma manual e descentralizada.
 
+Os impactos abaixo pertencem à visão de evolução do produto, com a distinção entre MVP e pós-MVP da [seção 2.7](2_solucao_proposta.md#27-beneficios-esperados). O acompanhamento de desempenho escolar e seus eventuais alertas dependem da definição funcional indicada em [2.3.2](2_solucao_proposta.md#232-limite-do-acompanhamento-escolar), sem automação especificada nos RFs atuais.
+
 Entre os __impactos pretendidos__, destacam-se:
 
 - Tornar mais ágil e confiável o acompanhamento da condicionalidade pedagógica que sustenta a permanência do aluno no projeto (frequência e desempenho escolar);
@@ -34,82 +36,18 @@ Com a identificação desses efeitos emergentes, faz-se necessário identificar 
 
 Assim, a intervenção social da solução não é apenas "digitalizar fichas de papel". Ela consiste em alterar a forma como a coordenação identifica e acompanha situações de risco escolar e social, como as decisões disciplinares são registradas e justificadas, como a instituição se comunica com as famílias e como ela se apresenta a financiadores e ao poder público exigindo que os requisitos do sistema considerem tanto os benefícios esperados para o acompanhamento socioeducacional quanto os riscos de exclusão digital.
 
-> **Art. 6º** As atividades de tratamento de dados pessoais deverão observar a boa-fé e os seguintes princípios:
->
-> **I - finalidade:** realização do tratamento para propósitos legítimos, específicos, explícitos e informados ao titular, sem possibilidade de tratamento posterior de forma incompatível com essas finalidades;
->
-> **II - adequação:** compatibilidade do tratamento com as finalidades informadas ao titular, de acordo com o contexto do tratamento;
->
-> **III - necessidade:** limitação do tratamento ao mínimo necessário para a realização de suas finalidades, com abrangência dos dados pertinentes, proporcionais e não excessivos em relação às finalidades do tratamento de dados;
->
-> **IV - livre acesso:** garantia, aos titulares, de consulta facilitada e gratuita sobre a forma e a duração do tratamento, bem como sobre a integralidade de seus dados pessoais;
->
-> **V - qualidade dos dados:** garantia, aos titulares, de exatidão, clareza, relevância e atualização dos dados, de acordo com a necessidade e para o cumprimento da finalidade de seu tratamento;
->
-> **VI - transparência:** garantia, aos titulares, de informações claras, precisas e facilmente acessíveis sobre a realização do tratamento e os respectivos agentes de tratamento, observados os segredos comercial e industrial;
->
-> **VII - segurança:** utilização de medidas técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados e de situações acidentais ou ilícitas de destruição, perda, alteração, comunicação ou difusão;
->
-> **VIII - prevenção:** adoção de medidas para prevenir a ocorrência de danos em virtude do tratamento de dados pessoais;
->
-> **IX - não discriminação:** impossibilidade de realização do tratamento para fins discriminatórios ilícitos ou abusivos;
->
-> **X - responsabilização e prestação de contas:** demonstração, pelo agente, da adoção de medidas eficazes e capazes de comprovar a observância e o cumprimento das normas de proteção de dados pessoais e, inclusive, da eficácia dessas medidas.
+## Referências legais e aplicação no projeto
 
-> **Art. 11.** O tratamento de dados pessoais sensíveis somente poderá ocorrer nas seguintes hipóteses:
->
-> **I -** quando o titular ou seu responsável legal consentir, de forma específica e destacada, para finalidades específicas;
->
-> **II -** sem fornecimento de consentimento do titular, nas hipóteses em que for indispensável para:
->
-> **a)** cumprimento de obrigação legal ou regulatória pelo controlador;
->
-> **b)** tratamento compartilhado de dados necessários à execução, pela administração pública, de políticas públicas previstas em leis ou regulamentos;
->
-> **c)** realização de estudos por órgão de pesquisa, garantida, sempre que possível, a anonimização dos dados pessoais sensíveis;
->
-> **d)** exercício regular de direitos, inclusive em contrato e em processo judicial, administrativo e arbitral;
->
-> **e)** proteção da vida ou da incolumidade física do titular ou de terceiro;
->
-> **f)** tutela da saúde, exclusivamente, em procedimento realizado por profissionais de saúde, serviços de saúde ou autoridade sanitária; ou
->
-> **g)** garantia da prevenção à fraude e à segurança do titular, nos processos de identificação e autenticação de cadastro em sistemas eletrônicos, resguardados os direitos mencionados no art. 9º desta Lei e exceto no caso de prevalecerem direitos e liberdades fundamentais do titular que exijam a proteção dos dados pessoais.
->
-> **§ 1º** Aplica-se o disposto neste artigo a qualquer tratamento de dados pessoais que revele dados pessoais sensíveis e que possa causar dano ao titular, ressalvado o disposto em legislação específica.
->
-> **§ 2º** Nos casos de aplicação do disposto nas alíneas “a” e “b” do inciso II do *caput* deste artigo pelos órgãos e pelas entidades públicas, será dada publicidade à referida dispensa de consentimento, nos termos do inciso I do *caput* do art. 23 desta Lei.
->
-> **§ 3º** A comunicação ou o uso compartilhado de dados pessoais sensíveis entre controladores com objetivo de obter vantagem econômica poderá ser objeto de vedação ou de regulamentação por parte da autoridade nacional, ouvidos os órgãos setoriais do Poder Público, no âmbito de suas competências.
->
-> **§ 4º** É vedada a comunicação ou o uso compartilhado entre controladores de dados pessoais sensíveis referentes à saúde com objetivo de obter vantagem econômica, exceto nas hipóteses relativas à prestação de serviços de saúde, de assistência farmacêutica e de assistência à saúde, desde que observado o § 5º deste artigo, incluídos os serviços auxiliares de diagnose e terapia, em benefício dos interesses dos titulares de dados, e para permitir:
->
-> **I -** a portabilidade de dados quando solicitada pelo titular; ou
->
-> **II -** as transações financeiras e administrativas resultantes do uso e da prestação dos serviços de que trata este parágrafo.
->
-> **§ 5º** É vedado às operadoras de planos privados de assistência à saúde o tratamento de dados de saúde para a prática de seleção de riscos na contratação de qualquer modalidade, assim como na contratação e exclusão de beneficiários.
+A fundamentação legal das medidas acima é a [Lei nº 13.709/2018 (LGPD), texto oficial](https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html):
 
-> **Art. 14.** O tratamento de dados pessoais de crianças e de adolescentes deverá ser realizado em seu melhor interesse, nos termos deste artigo e da legislação pertinente.
->
-> **§ 1º** O tratamento de dados pessoais de crianças deverá ser realizado com o consentimento específico e em destaque dado por pelo menos um dos pais ou pelo responsável legal.
->
-> **§ 2º** No tratamento de dados de que trata o § 1º deste artigo, os controladores deverão manter pública a informação sobre os tipos de dados coletados, a forma de sua utilização e os procedimentos para o exercício dos direitos a que se refere o art. 18 desta Lei.
->
-> **§ 3º** Poderão ser coletados dados pessoais de crianças sem o consentimento a que se refere o § 1º deste artigo quando a coleta for necessária para contatar os pais ou o responsável legal, utilizados uma única vez e sem armazenamento, ou para sua proteção, e em nenhum caso poderão ser repassados a terceiro sem o consentimento de que trata o § 1º deste artigo.
->
-> **§ 4º** Os controladores não deverão condicionar a participação dos titulares de que trata o § 1º deste artigo em jogos, aplicações de internet ou outras atividades ao fornecimento de informações pessoais além das estritamente necessárias à atividade.
->
-> **§ 5º** O controlador deve realizar todos os esforços razoáveis para verificar que o consentimento a que se refere o § 1º deste artigo foi dado pelo responsável pela criança, consideradas as tecnologias disponíveis.
->
-> **§ 6º** As informações sobre o tratamento de dados referidas neste artigo deverão ser fornecidas de maneira simples, clara e acessível, consideradas as características físico-motoras, perceptivas, sensoriais, intelectuais e mentais do usuário, com uso de recursos audiovisuais quando adequado, de forma a proporcionar a informação necessária aos pais ou ao responsável legal e adequada ao entendimento da criança.
+| Referência | Implicação já considerada para a solução |
+|---|---|
+| Art. 6º, especialmente incisos I, II e III | Finalidade, adequação e necessidade orientam a limitação dos dados e da exposição de informações dos participantes. |
+| Art. 11 | As hipóteses aplicáveis ao tratamento de dados pessoais sensíveis devem ser observadas; esta página não define uma nova hipótese de tratamento. |
+| Art. 14 | O tratamento de dados de crianças e adolescentes exige atenção ao melhor interesse e às condições previstas no artigo. |
+| Art. 46, caput e § 2º | Medidas técnicas e administrativas de proteção devem ser consideradas desde a concepção até a execução da solução. |
 
-> **Art. 46.** Os agentes de tratamento devem adotar medidas de segurança, técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados e de situações acidentais ou ilícitas de destruição, perda, alteração, comunicação ou qualquer forma de tratamento inadequado ou ilícito.
->
-> **§ 1º** A autoridade nacional poderá dispor sobre padrões técnicos mínimos para tornar aplicável o disposto no *caput* deste artigo, considerados a natureza das informações tratadas, as características específicas do tratamento e o estado atual da tecnologia, especialmente no caso de dados pessoais sensíveis, assim como os princípios previstos no *caput* do art. 6º desta Lei.
->
-> **§ 2º** As medidas de que trata o *caput* deste artigo deverão ser observadas desde a fase de concepção do produto ou do serviço até a sua execução.
-
+As medidas de acesso e proteção são especificadas nos [RNFs](../../painel.md#RNF13), especialmente RNF11 e RNF13. As decisões sobre quais informações escolares registrar permanecem na [PEN11](../../painel.md#PEN11); a revisão desta página não autoriza novas coletas nem define critérios escolares.
 
 ## Versionamento
 
@@ -117,3 +55,4 @@ Assim, a intervenção social da solução não é apenas "digitalizar fichas de
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
 | 1.1 | 10/09/2026 | Ajustando de acordo com os feedback da issue: [Unidade 1 - Intervenção social #15](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/15) | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
+| 1.2 | 14/11/2026 | Issues #24 e #35: transcrições legais substituídas por referências e implicações existentes; impactos sujeitos aos limites de cobertura e entrega | Renato Gameiro | Pendente |

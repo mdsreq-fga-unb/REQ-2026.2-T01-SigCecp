@@ -5,13 +5,14 @@
 
 O objetivo do produto é fortalecer a gestão do Centro Esportivo Cultural de Planaltina DF (CECP) por meio de um sistema de gestão de alunos e da instituição, substituindo o controle manual e descentralizado hoje utilizado pela instituição. A solução visa dar autonomia à coordenação, ampliar o alcance da instituição junto à comunidade. Do ponto de vista técnico, a solução será composta por uma única plataforma integrada, organizada em dois módulos que compartilham a mesma base de dados:
 
-__Módulo público__: divulgação institucional e manifestação de interesse online (etapa que antecede a matrícula, a qual permanece presencial).
-__Módulo administrativo__: cadastro e matrícula de alunos, turmas, frequência e situação pedagógica, medidas disciplinares, comunicação com voluntários e famílias, registro de doações e captação de recursos, e documentos de prestação de contas.
+__Módulo público__: divulgação institucional e de eventos no MVP. A manifestação de interesse por pré-matrícula online (CP7) pertence ao pós-MVP e antecede a confirmação presencial da matrícula.
+
+__Módulo administrativo__: no MVP, acesso da coordenação, cadastro e histórico de alunos e as operações de turmas selecionadas na [priorização](../../historico/10_backlog_produto.md). Frequência, medidas disciplinares, comunicação dirigida a voluntários e famílias e registro de doações e prestação de contas dependem dos requisitos pós-MVP. O acompanhamento de desempenho escolar ainda precisa de definição funcional com o cliente, conforme a seção 2.3.2.
 
 ## 2.2 Objetivos Específicos (OE) do Produto
 
 - **OE1:** Centralizar os dados dos alunos em uma base tecnológica única, eliminando o uso de documentos físicos e registros manuais dispersos e viabilizando a gestão digital do CECP.
-- **OE2:** Garantir o acompanhamento pontual da assiduidade e das condicionalidades pedagógicas dos alunos, permitindo à coordenação identificar rapidamente casos críticos e intervir antes da perda da vaga.
+- **OE2:** Apoiar o acompanhamento da assiduidade dos alunos nas atividades do CECP. O acompanhamento das condicionalidades escolares permanece uma necessidade do negócio, cuja cobertura funcional ainda depende da definição registrada na seção 2.3.2.
 - **OE3:** Apoiar a aplicação e o histórico de medidas disciplinares (advertências, suspensões e desligamentos), garantindo rastreabilidade das decisões tomadas pela coordenação.
 - **OE4:** Facilitar a comunicação entre a coordenação do projeto, os voluntários e as famílias dos alunos, reduzindo a dependência de canais informais.
 - **OE5:** Assegurar transparência na prestação de contas a parceiros, apoiadores e órgãos de fiscalização, dada a natureza de OSCIP da entidade.
@@ -21,7 +22,9 @@ __Módulo administrativo__: cadastro e matrícula de alunos, turmas, frequência
 Dado que o cenário atual do CECP é predominantemente baseado em documentos físicos (ver seção 1), a migração dos registros existentes para o sistema não será automatizada: os dados hoje em fichas de papel e nos documentos já digitalizados serão inseridos/associados manualmente na plataforma pela equipe administrativa do CECP durante a fase de implantação, com apoio da equipe de desenvolvimento na definição do processo de carga inicial. Esses materiais existentes poderão ser usados como fonte de apoio para esse cadastro manual, mas não serão importados diretamente por não seguirem um formato padronizado.
 ## 2.3 Características de Produto (mapeadas com os Objetivos Específicos do Produto)
 
-A solução proposta para o CECP deverá contemplar, de forma preliminar, as seguintes características:
+A tabela abaixo é a fonte principal dos vínculos OE–CP. As fichas de requisitos definem os vínculos CP–RF e RF–RNF, exibidos no [painel do escopo](../../painel.md). A matriz e o grafo da antiga seção 8 são registros históricos, não representações da rastreabilidade vigente.
+
+As características abrangem a visão de evolução do produto; sua presença nesta tabela não implica inclusão integral no MVP. A entrega de cada requisito está indicada em sua ficha.
 
 
 | OE principal | Contribuição secundária | ID | Característica | Descrição resumida | Valor de negócio principal |
@@ -30,9 +33,28 @@ A solução proposta para o CECP deverá contemplar, de forma preliminar, as seg
 | OE5 | OE1 | CP2 | Registro de doações e prestação de contas | Capacidade de registrar as doações e os recursos recebidos pela instituição (bens, solicitações por ofício e repasses de parcerias), sem processamento de pagamento online nesta fase. | Maior controle e transparência sobre os recursos recebidos pela instituição. |
 | OE4 | OE5 | CP3 | Gestão de conteúdo institucional | Capacidade de a coordenação publicar e manter atualizadas as informações institucionais da organização (atividades, eventos e resultados), substituindo a dependência do Instagram e de um site desatualizado como únicos canais de divulgação. | Aumento da visibilidade e transparência da organização perante a comunidade, doadores e avaliadores de editais. |
 | OE1 | — | CP4 | Cadastro e histórico de alunos | Capacidade de manter o cadastro e o histórico dos alunos vinculados à instituição. | Centralização da informação e suporte a comprovações históricas. |
-| OE2, OE3 | — | CP5 | Acompanhamento pedagógico e disciplinar do aluno | Capacidade de acompanhar a frequência e a situação pedagógica dos alunos e de registrar medidas disciplinares aplicadas. | Redução da evasão, apoio à tomada de decisão e rastreabilidade. |
+| OE2, OE3 | — | CP5 | Acompanhamento pedagógico e disciplinar do aluno | Os RF26 a RF29 cobrem frequência nas aulas do CECP, alertas de faltas e registro de medidas disciplinares, no pós-MVP. O registro e a consulta de desempenho escolar ainda dependem de definição funcional (seção 2.3.2). | Apoio à tomada de decisão e rastreabilidade; a cobertura escolar ainda não está especificada. |
 | OE4 | — | CP6 | Comunicação com voluntários e famílias | Capacidade de comunicação entre a coordenação, os voluntários e as famílias dos alunos. | Comunicação mais organizada e rastreável. |
-| OE1 | OE2 | CP7 | Matrícula online | A solução deverá oferecer um novo meio de matrículas para novos alunos no formato digital que não exija o comparecimento presencial do aluno, diminuindo as barreiras para a realização das matrículas. | Aumento da conversão de matrícula e diversificação de meios de matrícula. |
+| OE1 | OE2 | CP7 | Matrícula online (pré-matrícula) | Início remoto da inscrição, com análise pela coordenação e confirmação presencial, respeitando a RN02. O envio do formulário não conclui a matrícula. Fluxo e lacunas na seção 2.3.1; requisitos pós-MVP. | Facilitar o primeiro contato e o preenchimento prévio, preservando a etapa presencial. |
+
+### 2.3.1 Pré-matrícula e conclusão presencial
+
+A [ata de 22/09, seção 6](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_22_09.md) registra o pré-cadastro online que, confirmado presencialmente com assinatura do termo, se torna cadastro definitivo, deixando o formato exato em aberto. A [ata de 24/09, seção 3, CP7](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09.md) exige análise da coordenação e afasta a conversão automática pelo simples envio do formulário. A [ata de 08/10, seção 8](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10.md) mantém a pré-matrícula com aprovação presencial.
+
+O fluxo documentado distingue:
+
+1. **Manifestação de interesse / pré-matrícula online:** o interessado preenche a solicitação e recebe um protocolo (RF35 a RF41). Essa etapa inicia o processo e não substitui a matrícula presencial.
+2. **Análise pela coordenação:** o RF42 permite consultar e classificar a solicitação como aprovada, recusada ou em lista de espera. A definição operacional do estado “aprovada” ainda precisa ser conciliada com a confirmação presencial.
+3. **Comparecimento e assinatura presencial:** a [RN02](../escopo/regras_de_negocio.md#rn02) permanece aplicável às inscrições iniciadas online; o aceite online não elimina essa exigência.
+4. **Conclusão do cadastro:** o RF21 cobre o cadastro pela coordenação. A ligação entre a solicitação analisada e esse cadastro, o momento da conversão e a forma de registrar a confirmação presencial ainda não estão detalhados.
+
+Essas lacunas estão registradas na [PEN10](../../painel.md#PEN10). Não se presume que mudar o estado para “aprovada” conclua a matrícula ou dispense a RN02. Os requisitos de CP7 permanecem pós-MVP.
+
+### 2.3.2 Limite do acompanhamento escolar
+
+A [RN15](../escopo/regras_de_negocio.md#rn15) registra a relação do negócio entre participação no CECP e desempenho/assiduidade na escola de origem. A [ata de 17/09, seção 3](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_17_09.md) reconhece a necessidade escolar, mas não define quais dados serão registrados nem como ocorrerá o acompanhamento; a [ata de 24/09, seção 1](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09.md) descreve a prática informal existente.
+
+Os RF26 a RF29 tratam da frequência nas aulas do CECP e de medidas disciplinares. O tipo e o nome da escola previstos no RF21 são dados cadastrais, não um histórico de desempenho escolar. Assim, a visão não considera o registro e a consulta de desempenho escolar cobertos pelos requisitos atuais nem os promete como entrega do MVP. A [PEN11](../../painel.md#PEN11) solicita a definição com o cliente sobre dados necessários, acesso, forma de acompanhamento e inclusão ou adiamento dessa capacidade; não há periodicidade, critério de rendimento ou automação definidos nesta revisão.
 
 ## 2.4 Tecnologias a Serem Utilizadas
 
@@ -48,7 +70,7 @@ O mercado de soluções de gestão voltadas a projetos sociais e esportivos no B
 - **Sistemas de gestão escolar** (como o SIGE ou plataformas similares usadas por escolas particulares), que possuem módulos robustos de boletim e frequência, mas são voltados à gestão pedagógica formal de uma instituição de ensino, não a um projeto social que apenas monitora o desempenho do aluno em sua escola de origem.
 - **Planilhas eletrônicas** (como Google Sheets ou Excel Online), amplamente utilizadas por organizações do porte do CECP por serem de fácil adoção, baixo custo e permitirem inclusive edição simultânea por múltiplos usuários, mas que não oferecem funcionalidades específicas do domínio da instituição, como alertas automáticos de frequência crítica, histórico estruturado de medidas disciplinares ou controle de acesso por perfil de usuário, dependendo de organização manual pela equipe.
 
-A proposta se diferencia por ser uma solução enxuta e de baixo custo, desenhada especificamente para o modelo de funcionamento de projetos sociais esportivos: sem módulos financeiros ou pedagógicos complexos, mas com foco direto no vínculo entre frequência, desempenho escolar e permanência do aluno no projeto que é a regra de negócio central do CECP e não é atendida por nenhuma das soluções de mercado existentes de forma nativa. Adicionalmente, por ser desenvolvida sob medida, a solução tem custo de aquisição e manutenção compatível com a realidade orçamentária de uma OSCIP mantida por voluntariado.
+A proposta se diferencia por ser uma solução enxuta e de baixo custo, desenhada especificamente para o modelo de funcionamento de projetos sociais esportivos, sem módulos financeiros ou pedagógicos complexos. A necessidade de relacionar frequência, desempenho escolar e permanência no projeto orienta a evolução do produto, com os limites de cobertura descritos na seção 2.3.2. Adicionalmente, por ser desenvolvida sob medida, a solução busca um custo de aquisição e manutenção compatível com a realidade orçamentária de uma OSCIP mantida por voluntariado.
 
 Dessa forma, a proposta se posiciona como uma solução sob medida, enxuta e alinhada à realidade orçamentária e operacional de uma organização esportiva, algo que nenhuma solução genérica de mercado atende de forma nativa.
 
@@ -66,14 +88,15 @@ Assim, a proposta é considerada viável, desde que:
 
 ## 2.7 Benefícios Esperados
 
-- **Para o Cliente:** Maior controle e facilidade de acesso às fichas, ao histórico e às doações dos alunos, com acompanhamento consolidado de frequência, situação pedagógica e medidas disciplinares, reduzindo a dependência de fichas de papel e facilitando o gerenciamento dos dados e das turmas.
-- **Para o candidato a aluno (Usuário):** Outra opção de manifestar interesse em participar do CECP de forma remota, removendo a necessidade de comparecer presencialmente para dar o primeiro passo (a matrícula em si permanece presencial).
-- **Para os voluntários e famílias (Usuário):** Um canal de comunicação mais direto com a coordenação, reduzindo a dependência de canais informais.
-- **Para os avaliadores do edital (Usuário):** Uma interface e disposição dos dados e documentos de prestação de contas necessários para a avaliação de acordo com as normas dos editais.
-- **Para a coordenação, em relação às doações:** Um novo meio de registrar e acompanhar os itens e recursos recebidos, permitindo maior controle e transparência.
+**Benefícios previstos no MVP:** maior controle das fichas e do histórico cadastral de alunos, apoio às operações selecionadas de turmas e divulgação pública de informações institucionais e eventos. Essa divulgação amplia o acesso da comunidade às informações do CECP e complementa os canais existentes; não equivale à comunicação dirigida com famílias e voluntários nem à disponibilização de documentos de prestação de contas.
+
+**Benefícios dependentes do pós-MVP:** acompanhamento de frequência e medidas disciplinares (CP5), avisos dirigidos a voluntários e famílias (CP6), registro de doações e documentos de prestação de contas (CP2) e início remoto da inscrição por pré-matrícula (CP7), mantendo a confirmação presencial. A classificação de entrega é consultada nas fichas pelo [painel](../../painel.md).
+
+**Benefício ainda dependente de definição funcional:** acompanhamento do desempenho escolar, conforme a seção 2.3.2. Ele não é apresentado como capacidade já coberta pela especificação vigente.
 ## Versionamento
 
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) |  |
 | 1.1 | 18/09/2026 | Ajustando conforme o feedback da issue: Unidade 1 - Solução proposta #14| [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.2 | 14/11/2026 | Issues #24 e #35: conciliação da pré-matrícula com as fontes; lacunas de confirmação presencial e acompanhamento escolar; benefícios por entrega e fonte dos vínculos OE–CP | Renato Gameiro | Pendente |
