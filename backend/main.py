@@ -19,7 +19,7 @@ from backend.publicacoes.router import router as publicacoes_router
 from backend.auth.errors import ErroAcessoAdmin
 from backend.auth.middleware import SessaoAdminMiddleware
 from backend.auth.router import router as auth_router, tratar_erro_acesso
-
+from backend.turmas.router import router as turmas_router
 from backend.eventos.router import router as eventos_router
    
 
@@ -108,3 +108,4 @@ def detalhe_conteudo_publico(
 app.include_router(auth_router)
 app.include_router(publicacoes_router)
 app.include_router(eventos_router)
+app.include_router(turmas_router)
