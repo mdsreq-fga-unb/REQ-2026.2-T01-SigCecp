@@ -2,7 +2,7 @@ window.ESCOPO = {
   "rfs": {
     "RF00": {
       "nome": "Encerrar sessão",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "Acesso e controle de usuários",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível ao usuário autenticado encerrar sua sessão ativa no sistema, invalidando suas credenciais de acesso e redirecionando-o para a tela de login.",
@@ -33,42 +33,40 @@ window.ESCOPO = {
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
         "DEC03",
-        "DEC04"
+        "DEC04",
+        "DEC19",
+        "DEC20"
       ],
-      "pens": [
-        "PEN04"
-      ],
+      "pens": [],
       "its": [
         "Iteração 7"
       ],
-      "lacunas": [
-        "PEN04: Completar a data e a fonte das decisões DEC04 e DEC05"
-      ]
+      "lacunas": []
     },
     "RF01": {
       "nome": "Autenticar usuário",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "Acesso e controle de usuários",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível ao coordenador acessar a área de coordenação informando usuário e senha.",
-      "entradas": "Usuário (formato CSCP + sequência numérica); senha",
+      "entradas": "Usuário (formato CECP + sequência numérica, por exemplo CECP0001); senha",
       "pre": "Usuário previamente cadastrado ou usuário administrador padrão",
       "proc": "Valida usuário e senha; se corretos, inicia a sessão e libera a área de coordenação",
       "saidas": "Acesso à área de coordenação; mensagem de erro quando as credenciais forem inválidas",
@@ -98,23 +96,26 @@ window.ESCOPO = {
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC19",
+        "DEC20",
+        "DEC28"
       ],
       "pens": [],
       "its": [
@@ -124,7 +125,7 @@ window.ESCOPO = {
     },
     "RF02": {
       "nome": "Controlar acesso",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "Acesso e controle de usuários",
       "ator": "Sistema (aplica o perfil de coordenador)",
       "declaracao": "O sistema deve disponibilizar as funcionalidades administrativas exclusivamente para usuários autenticados com perfil de coordenador.",
@@ -155,23 +156,27 @@ window.ESCOPO = {
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC19",
+        "DEC20",
+        "DEC28",
+        "DEC29"
       ],
       "pens": [],
       "its": [
@@ -181,21 +186,22 @@ window.ESCOPO = {
     },
     "RF03": {
       "nome": "Cadastrar turma",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "CP1: Gestão e acompanhamento de turmas",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível à coordenação cadastrar turmas.",
-      "entradas": "Modalidade; dias e horários. [PENDENTE] demais campos (nome da turma, instrutor, limite de vagas)",
+      "entradas": "Modalidade; dias da semana; horário de início; horário de término. Todos obrigatórios, como no protótipo apresentado em 10/11/2026. Nome da turma e instrutor não fazem parte do protótipo; não há limite de alunos por turma (DEC24)",
       "pre": "Coordenador autenticado",
       "proc": "Valida os campos obrigatórios e grava a turma",
-      "saidas": "Turma disponível para associação de alunos; mensagem de erro em caso de campo ausente",
+      "saidas": "Turma disponível para associação de alunos e exibida na lista de turmas (modalidade, dias, horário e quantidade de alunos); mensagem indicando o campo obrigatório ausente",
       "pdf": false,
-      "pendente": 1,
+      "pendente": 0,
       "moscow": "3, Deveria ter",
       "entrega": "MVP",
       "criterios": [
         "1. Dada uma turma com modalidade e horários, quando salva, então ela fica disponível para seleção no cadastro do aluno.",
-        "2. Dados campos obrigatórios ausentes, quando tenta salvar, então o sistema bloqueia e informa."
+        "2. Dados campos obrigatórios ausentes, quando tenta salvar, então o sistema bloqueia e informa qual campo falta.",
+        "3. Dada a lista de turmas, então cada turma mostra modalidade, dias, horário e quantidade de alunos."
       ],
       "rns": [
         "RN22"
@@ -213,7 +219,7 @@ window.ESCOPO = {
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: início",
@@ -229,18 +235,16 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC20",
+        "DEC24",
+        "DEC26"
       ],
-      "pens": [
-        "PEN09"
-      ],
+      "pens": [],
       "its": [
         "Iteração 8"
       ],
-      "lacunas": [
-        "1 campo(s) marcado(s) como pendente na ficha",
-        "PEN09: Regra citada em 30/10 para turmas com limite de 30 alunos e inscrição prévia da pessoa ficou pouco clara"
-      ]
+      "lacunas": []
     },
     "RF04": {
       "nome": "Editar turma",
@@ -313,8 +317,6 @@ window.ESCOPO = {
       "rns": [],
       "rnfs": [
         "RNF03",
-        "RNF04",
-        "RNF05",
         "RNF10",
         "RNF11"
       ],
@@ -341,7 +343,8 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC02"
+        "DEC02",
+        "DEC17"
       ],
       "pens": [],
       "its": [],
@@ -349,7 +352,7 @@ window.ESCOPO = {
     },
     "RF06": {
       "nome": "Associar aluno à turma",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "CP1: Gestão e acompanhamento de turmas",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível associar um aluno a uma turma (modalidade, dias e horários).",
@@ -363,14 +366,15 @@ window.ESCOPO = {
       "entrega": "MVP",
       "criterios": [
         "1. Dados um aluno e uma turma existentes, quando a coordenação os associa, então o aluno aparece vinculado à turma.",
-        "2. Dado o cadastro de um aluno, então é possível escolher a turma na própria ficha."
+        "2. Dado o cadastro de um aluno, então é possível escolher a turma na própria ficha.",
+        "3. Dada uma turma sem alunos, quando a coordenação seleciona um aluno já cadastrado, então ele passa a constar na turma."
       ],
       "rns": [
-        "RN23"
+        "RN23",
+        "RN22"
       ],
       "rnfs": [
         "RNF03",
-        "RNF04",
         "RNF06",
         "RNF11"
       ],
@@ -381,7 +385,7 @@ window.ESCOPO = {
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: início",
@@ -397,21 +401,21 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC17",
+        "DEC20",
+        "DEC24",
+        "DEC26"
       ],
-      "pens": [
-        "PEN09"
-      ],
+      "pens": [],
       "its": [
         "Iteração 8"
       ],
-      "lacunas": [
-        "PEN09: Regra citada em 30/10 para turmas com limite de 30 alunos e inscrição prévia da pessoa ficou pouco clara"
-      ]
+      "lacunas": []
     },
     "RF07": {
       "nome": "Consultar alunos de uma turma",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "CP1: Gestão e acompanhamento de turmas",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível à coordenação consultar os alunos que fazem parte de uma turma específica.",
@@ -420,7 +424,7 @@ window.ESCOPO = {
       "proc": "Busca os alunos associados à turma e exibe a listagem; ao selecionar um aluno, abre a ficha (RF23)",
       "saidas": "Lista de alunos da turma (foto e nome completo)",
       "pdf": false,
-      "pendente": 1,
+      "pendente": 0,
       "moscow": "4, Tem que ter",
       "entrega": "MVP",
       "criterios": [
@@ -442,7 +446,7 @@ window.ESCOPO = {
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: início",
@@ -458,18 +462,17 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC20",
+        "DEC23",
+        "DEC26",
+        "DEC29"
       ],
-      "pens": [
-        "PEN02"
-      ],
+      "pens": [],
       "its": [
         "Iteração 8"
       ],
-      "lacunas": [
-        "1 campo(s) marcado(s) como pendente na ficha",
-        "PEN02: Definir se alunos inativos aparecem na lista da turma"
-      ]
+      "lacunas": []
     },
     "RF08": {
       "nome": "Registrar doação recebida",
@@ -772,11 +775,11 @@ window.ESCOPO = {
         ],
         [
           "Construção: implementação",
-          "Em Andamento"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
@@ -785,18 +788,16 @@ window.ESCOPO = {
         "DEC07",
         "DEC11",
         "DEC12",
-        "DEC13"
+        "DEC13",
+        "DEC19",
+        "DEC22"
       ],
-      "pens": [
-        "PEN08"
-      ],
+      "pens": [],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
-      ]
+      "lacunas": []
     },
     "RF14": {
       "nome": "Editar conteúdo institucional",
@@ -840,15 +841,15 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
@@ -858,18 +859,16 @@ window.ESCOPO = {
         "DEC08",
         "DEC11",
         "DEC12",
-        "DEC13"
+        "DEC13",
+        "DEC19",
+        "DEC22"
       ],
-      "pens": [
-        "PEN08"
-      ],
+      "pens": [],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
-      ]
+      "lacunas": []
     },
     "RF15": {
       "nome": "Consultar conteúdo institucional",
@@ -887,7 +886,8 @@ window.ESCOPO = {
       "entrega": "MVP",
       "criterios": [
         "1. Dado um visitante não autenticado, quando acessa o módulo público, então visualiza os conteúdos institucionais publicados.",
-        "2. Dado um conteúdo removido pela coordenação, quando o visitante consulta, então ele não aparece."
+        "2. Dado um conteúdo removido pela coordenação, quando o visitante consulta, então ele não aparece.",
+        "3. Dada uma imagem exibida, quando o visitante clica nela, então ela é mostrada ampliada (pedido do cliente em 10/11, ainda a construir)."
       ],
       "rns": [
         "RN29"
@@ -908,15 +908,15 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
@@ -924,18 +924,17 @@ window.ESCOPO = {
         "DEC07",
         "DEC11",
         "DEC12",
-        "DEC13"
+        "DEC13",
+        "DEC19",
+        "DEC21",
+        "DEC22"
       ],
-      "pens": [
-        "PEN08"
-      ],
+      "pens": [],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
-      ]
+      "lacunas": []
     },
     "RF16": {
       "nome": "Remover conteúdo institucional",
@@ -961,7 +960,6 @@ window.ESCOPO = {
       ],
       "rnfs": [
         "RNF02",
-        "RNF05",
         "RNF07",
         "RNF09",
         "RNF10"
@@ -977,15 +975,15 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
@@ -995,18 +993,17 @@ window.ESCOPO = {
         "DEC08",
         "DEC11",
         "DEC12",
-        "DEC13"
+        "DEC13",
+        "DEC17",
+        "DEC19",
+        "DEC22"
       ],
-      "pens": [
-        "PEN08"
-      ],
+      "pens": [],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
-      ]
+      "lacunas": []
     },
     "RF17": {
       "nome": "Publicar evento",
@@ -1014,7 +1011,7 @@ window.ESCOPO = {
       "cp": "CP3: Gestão de conteúdo institucional",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível à coordenação publicar um evento ou campeonato, informando: nome do evento ou competição, data, local, horário e descrição.",
-      "entradas": "Obrigatórias: título, subtítulo, nome do evento/competição, data, horário (início e término), local, descrição, informação sobre alimentação (haverá ou não), informação sobre pesagem (haverá ou não, quando aplicável), informações de pagamento (se é cobrado, valor, data limite e meio de pagamento, como PIX). Opcionais: vídeo e imagens",
+      "entradas": "Obrigatórias: título, nome do evento/competição, data, horário (início e término), local, descrição, informação sobre alimentação (haverá ou não), informação sobre pesagem (haverá ou não, quando aplicável), informações de pagamento (se é cobrado, valor, data limite e meio de pagamento, como PIX). Opcionais: subtítulo, vídeo e imagens",
       "pre": "Coordenador autenticado",
       "proc": "Valida todos os campos obrigatórios, grava o evento, define seu estado conforme a data e o torna visível no módulo público",
       "saidas": "Evento exibido no módulo público; mensagem indicando os campos pendentes quando a validação falhar",
@@ -1050,15 +1047,15 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
@@ -1069,20 +1066,17 @@ window.ESCOPO = {
         "DEC11",
         "DEC12",
         "DEC13",
-        "DEC14"
+        "DEC14",
+        "DEC19",
+        "DEC22",
+        "DEC27"
       ],
-      "pens": [
-        "PEN01",
-        "PEN08"
-      ],
+      "pens": [],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": [
-        "PEN01: O subtítulo do evento é opcional (\"se houver\") nas reuniões de 21/10 e 30/10, mas a ficha do RF17 o lista entre as entradas obrigatórias",
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
-      ]
+      "lacunas": []
     },
     "RF18": {
       "nome": "Editar evento",
@@ -1100,7 +1094,8 @@ window.ESCOPO = {
       "entrega": "MVP",
       "criterios": [
         "1. Dado um evento com data incorreta, quando a coordenação corrige e salva, então a nova data é exibida no módulo público.",
-        "2. Dado que a coordenação esvaziou um campo obrigatório, quando tenta salvar, então o sistema bloqueia a gravação."
+        "2. Dado que a coordenação esvaziou um campo obrigatório, quando tenta salvar, então o sistema bloqueia a gravação.",
+        "3. Dado um evento sem subtítulo, quando a coordenação salva, então a gravação é aceita, porque o subtítulo é opcional (DEC27)."
       ],
       "rns": [
         "RN26",
@@ -1125,15 +1120,15 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
@@ -1144,20 +1139,17 @@ window.ESCOPO = {
         "DEC11",
         "DEC12",
         "DEC13",
-        "DEC14"
+        "DEC14",
+        "DEC19",
+        "DEC22",
+        "DEC27"
       ],
-      "pens": [
-        "PEN01",
-        "PEN08"
-      ],
+      "pens": [],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": [
-        "PEN01: O subtítulo do evento é opcional (\"se houver\") nas reuniões de 21/10 e 30/10, mas a ficha do RF17 o lista entre as entradas obrigatórias",
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
-      ]
+      "lacunas": []
     },
     "RF19": {
       "nome": "Remover evento",
@@ -1183,7 +1175,6 @@ window.ESCOPO = {
       ],
       "rnfs": [
         "RNF02",
-        "RNF05",
         "RNF07",
         "RNF09",
         "RNF10"
@@ -1199,15 +1190,15 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
@@ -1217,24 +1208,23 @@ window.ESCOPO = {
         "DEC08",
         "DEC11",
         "DEC12",
-        "DEC13"
+        "DEC13",
+        "DEC17",
+        "DEC19",
+        "DEC22"
       ],
-      "pens": [
-        "PEN08"
-      ],
+      "pens": [],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
-      ]
+      "lacunas": []
     },
     "RF20": {
       "nome": "Consultar eventos",
       "estado": "Validado",
       "cp": "CP3: Gestão de conteúdo institucional",
-      "ator": "Coordenação",
+      "ator": "Visitante (consulta pública, sem login) e coordenação (acesso às ações de editar e remover)",
       "declaracao": "Deve ser possível consultar os eventos ou campeonatos já publicados, em uma listagem que indique o estado de cada um.",
       "entradas": "Acesso à listagem de eventos",
       "pre": "Existir ao menos um evento publicado. Não exige autenticação para visitantes",
@@ -1247,7 +1237,8 @@ window.ESCOPO = {
       "criterios": [
         "1. Dado um visitante, quando acessa a listagem, então vê eventos futuros, em andamento e encerrados, cada um com seu estado.",
         "2. Dado um evento cuja data já passou, quando listado, então aparece como Encerrado.",
-        "3. Dado um coordenador autenticado, quando consulta um evento, então tem acesso às ações de editar e remover."
+        "3. Dado um coordenador autenticado, quando consulta um evento, então tem acesso às ações de editar e remover.",
+        "4. Dada uma imagem exibida, quando o visitante clica nela, então ela é mostrada ampliada (pedido do cliente em 10/11, ainda a construir)."
       ],
       "rns": [
         "RN33"
@@ -1268,15 +1259,15 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Feito"
         ]
       ],
       "decs": [
@@ -1285,27 +1276,26 @@ window.ESCOPO = {
         "DEC10",
         "DEC11",
         "DEC12",
-        "DEC13"
+        "DEC13",
+        "DEC19",
+        "DEC21",
+        "DEC22"
       ],
-      "pens": [
-        "PEN08"
-      ],
+      "pens": [],
       "its": [
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": [
-        "PEN08: O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno"
-      ]
+      "lacunas": []
     },
     "RF21": {
       "nome": "Cadastrar aluno",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "CP4: Cadastro e histórico de alunos",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível à coordenação cadastrar um novo aluno, registrando seus dados cadastrais e a documentação exigida pelo CECP, por uma ficha de inscrição digital que substitui a ficha de papel.",
       "entradas": "Obrigatórios: nome completo; data de início; documento de identificação; nome da mãe; telefone da mãe; celular; tipo de escola; informação se há problema de saúde (sim/não); questionário de liberação respondido por completo; aceite do termo único (responsabilidade, uso de imagem e política de dados); graduação; modalidade, dias e horário.\nOpcionais: telefone do pai; telefone de emergência; nome da escola; foto do aluno; foto 3x4; atestado para prática de esporte; comprovante de residência; certificado de graduação; laudo.",
-      "pre": "Coordenador autenticado",
+      "pre": "Coordenador autenticado; turma cadastrada (RN22)",
       "proc": "Valida os campos obrigatórios, grava o aluno e seus anexos e o associa à turma",
       "saidas": "Aluno cadastrado; mensagem de erro indicando os campos obrigatórios ausentes",
       "pdf": false,
@@ -1325,12 +1315,14 @@ window.ESCOPO = {
         "RN37",
         "RN38",
         "RN39",
+        "RN08",
         "RN40"
       ],
       "rnfs": [
         "RNF01",
         "RNF03",
         "RNF11",
+        "RNF12",
         "RNF13"
       ],
       "andamento": [
@@ -1340,7 +1332,7 @@ window.ESCOPO = {
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: início",
@@ -1357,23 +1349,22 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC03",
-        "DEC05"
+        "DEC05",
+        "DEC18",
+        "DEC20",
+        "DEC25",
+        "DEC26",
+        "DEC32"
       ],
-      "pens": [
-        "PEN03",
-        "PEN04"
-      ],
+      "pens": [],
       "its": [
         "Iteração 10"
       ],
-      "lacunas": [
-        "PEN03: Conciliar o termo único do cadastro presencial (RN40, RF21) com a regra de que dados e imagem são aceites independentes na matrícula online (RN16, RF38 e RF39)",
-        "PEN04: Completar a data e a fonte das decisões DEC04 e DEC05"
-      ]
+      "lacunas": []
     },
     "RF22": {
       "nome": "Editar aluno",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "CP4: Cadastro e histórico de alunos",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível à coordenação editar os dados do aluno e acrescentar documentos posteriormente.",
@@ -1399,6 +1390,7 @@ window.ESCOPO = {
         "RNF06",
         "RNF10",
         "RNF11",
+        "RNF12",
         "RNF13"
       ],
       "andamento": [
@@ -1408,7 +1400,7 @@ window.ESCOPO = {
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: início",
@@ -1424,7 +1416,9 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC20",
+        "DEC26"
       ],
       "pens": [],
       "its": [
@@ -1434,7 +1428,7 @@ window.ESCOPO = {
     },
     "RF23": {
       "nome": "Consultar ficha do aluno",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "CP4: Cadastro e histórico de alunos",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível à coordenação consultar a ficha de um aluno, incluindo seus dados cadastrais e histórico de participação em turmas.",
@@ -1470,7 +1464,7 @@ window.ESCOPO = {
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: início",
@@ -1486,7 +1480,10 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC20",
+        "DEC26",
+        "DEC29"
       ],
       "pens": [],
       "its": [
@@ -1496,21 +1493,22 @@ window.ESCOPO = {
     },
     "RF24": {
       "nome": "Inativar aluno",
-      "estado": "Detalhado",
+      "estado": "Validado",
       "cp": "CP4: Cadastro e histórico de alunos",
       "ator": "Coordenação",
       "declaracao": "Deve ser possível à coordenação marcar um aluno como inativo, preservando seu histórico no sistema.",
       "entradas": "Aluno; confirmação",
       "pre": "Aluno ativo; coordenador autenticado",
       "proc": "Exibe confirmação (\"Deseja inativar [nome]?\") e, ao confirmar, altera o status para inativo mantendo todos os dados",
-      "saidas": "Aluno exibido como inativo; contagem de ativos/inativos atualizada",
+      "saidas": "Aluno exibido como inativo, com a data da inativação; aviso de que a inativação foi feita; contagem de ativos/inativos atualizada",
       "pdf": false,
       "pendente": 0,
       "moscow": "3, Deveria ter",
       "entrega": "MVP",
       "criterios": [
         "1. Dado um aluno ativo, quando a coordenação confirma a inativação, então ele passa a inativo com histórico preservado.",
-        "2. Dada a ação cancelada na confirmação, então o status não muda."
+        "2. Dada a ação cancelada na confirmação, então o status não muda.",
+        "3. Dado um aluno inativado, então a ficha mostra a data em que ele foi inativado."
       ],
       "rns": [
         "RN47",
@@ -1519,8 +1517,6 @@ window.ESCOPO = {
       ],
       "rnfs": [
         "RNF03",
-        "RNF04",
-        "RNF05",
         "RNF10",
         "RNF11",
         "RNF13"
@@ -1529,6 +1525,69 @@ window.ESCOPO = {
         [
           "Detalhamento",
           "Feito"
+        ],
+        [
+          "Design do usuário (protótipo)",
+          "Feito"
+        ],
+        [
+          "Construção: início",
+          "Pendente"
+        ],
+        [
+          "Construção: implementação",
+          "Pendente"
+        ],
+        [
+          "Teste de aceite",
+          "Pendente"
+        ]
+      ],
+      "decs": [
+        "DEC02",
+        "DEC03",
+        "DEC17",
+        "DEC20",
+        "DEC26"
+      ],
+      "pens": [
+        "PEN23"
+      ],
+      "its": [
+        "Iteração 10"
+      ],
+      "lacunas": [
+        "PEN23: Não há regra nem RF para reativar um aluno inativo (por exemplo, um aluno que volta ao projeto). A lacuna apareceu ao representar o ciclo de vida do aluno (seção 5.3)"
+      ]
+    },
+    "RF25": {
+      "nome": "Remover dados do aluno",
+      "estado": "Rascunho",
+      "cp": "CP4: Cadastro e histórico de alunos",
+      "ator": "Coordenação",
+      "declaracao": "Deve ser possível à coordenação remover do sistema os documentos de identificação de um aluno (identidade, CPF e comprovante de residência), mediante pedido do responsável legal ou do próprio aluno, caso ele tenha 18 anos ou mais. Os demais registros (histórico de participação e frequência) são mantidos, porque o aluno não é excluído (RN01).",
+      "entradas": "(a detalhar)",
+      "pre": "(a detalhar)",
+      "proc": "(a detalhar)",
+      "saidas": "(a detalhar)",
+      "pdf": false,
+      "pendente": 0,
+      "moscow": "1, Não precisa ter",
+      "entrega": "Pós-MVP",
+      "criterios": [
+        "Do backlog (10.1), a reescrever em Dado/Quando/Então: A remoção só é executada após confirmação e mediante pedido do responsável legal ou do próprio aluno, se ele tiver 18 anos ou mais. São removidos a identidade, o CPF e o comprovante de residência, e os demais registros são mantidos. A remoção é registrada em log."
+      ],
+      "rns": [],
+      "rnfs": [
+        "RNF03",
+        "RNF10",
+        "RNF11",
+        "RNF13"
+      ],
+      "andamento": [
+        [
+          "Detalhamento",
+          "Pendente"
         ],
         [
           "Design do usuário (protótipo)",
@@ -1549,63 +1608,7 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC02",
-        "DEC03"
-      ],
-      "pens": [],
-      "its": [
-        "Iteração 10"
-      ],
-      "lacunas": []
-    },
-    "RF25": {
-      "nome": "Remover dados do aluno",
-      "estado": "Rascunho",
-      "cp": "CP4: Cadastro e histórico de alunos",
-      "ator": "(a detalhar)",
-      "declaracao": "Deve ser possível à coordenação remover do sistema os dados de um aluno, mediante pedido do responsável legal ou do próprio aluno, caso ele tenha 18 anos ou mais.",
-      "entradas": "(a detalhar)",
-      "pre": "(a detalhar)",
-      "proc": "(a detalhar)",
-      "saidas": "(a detalhar)",
-      "pdf": false,
-      "pendente": 0,
-      "moscow": "1, Não precisa ter",
-      "entrega": "Pós-MVP",
-      "criterios": [
-        "Do backlog (10.1), a reescrever em Dado/Quando/Então: A remoção só é executada após confirmação e mediante pedido do responsável legal ou do próprio aluno, se ele tiver 18 anos ou mais. São removidos a identidade, o CPF e o comprovante de residência, e os demais registros são mantidos. A remoção é registrada em log."
-      ],
-      "rns": [],
-      "rnfs": [
-        "RNF03",
-        "RNF05",
-        "RNF10",
-        "RNF11",
-        "RNF13"
-      ],
-      "andamento": [
-        [
-          "Detalhamento",
-          "Pendente"
-        ],
-        [
-          "Design do usuário (protótipo)",
-          "Pendente"
-        ],
-        [
-          "Construção: início",
-          "Pendente"
-        ],
-        [
-          "Construção: implementação",
-          "Pendente"
-        ],
-        [
-          "Teste de aceite",
-          "Pendente"
-        ]
-      ],
-      "decs": [
-        "DEC02"
+        "DEC17"
       ],
       "pens": [],
       "its": [],
@@ -1614,7 +1617,7 @@ window.ESCOPO = {
     "RF26": {
       "nome": "Registrar frequência",
       "estado": "Rascunho",
-      "cp": "CP5: Acompanhamento pedagógico e disciplinar do aluno",
+      "cp": "CP5: Acompanhamento de frequência e disciplinar do aluno",
       "ator": "(a detalhar)",
       "declaracao": "Deve ser possível à coordenação registrar a frequência dos alunos em cada aula de uma turma.",
       "entradas": "(a detalhar)",
@@ -1658,7 +1661,9 @@ window.ESCOPO = {
           "Pendente"
         ]
       ],
-      "decs": [],
+      "decs": [
+        "DEC15"
+      ],
       "pens": [],
       "its": [],
       "lacunas": []
@@ -1666,7 +1671,7 @@ window.ESCOPO = {
     "RF27": {
       "nome": "Consultar frequência",
       "estado": "Rascunho",
-      "cp": "CP5: Acompanhamento pedagógico e disciplinar do aluno",
+      "cp": "CP5: Acompanhamento de frequência e disciplinar do aluno",
       "ator": "(a detalhar)",
       "declaracao": "Deve ser possível à coordenação consultar o histórico de frequência de um aluno.",
       "entradas": "(a detalhar)",
@@ -1709,7 +1714,9 @@ window.ESCOPO = {
           "Pendente"
         ]
       ],
-      "decs": [],
+      "decs": [
+        "DEC15"
+      ],
       "pens": [],
       "its": [],
       "lacunas": []
@@ -1717,7 +1724,7 @@ window.ESCOPO = {
     "RF28": {
       "nome": "Emitir alerta de faltas críticas",
       "estado": "Rascunho",
-      "cp": "CP5: Acompanhamento pedagógico e disciplinar do aluno",
+      "cp": "CP5: Acompanhamento de frequência e disciplinar do aluno",
       "ator": "(a detalhar)",
       "declaracao": "O sistema deve gerar uma notificação para a coordenação quando um aluno atingir o número crítico de faltas definido pelo parâmetro configurado.",
       "entradas": "(a detalhar)",
@@ -1760,15 +1767,21 @@ window.ESCOPO = {
           "Pendente"
         ]
       ],
-      "decs": [],
-      "pens": [],
+      "decs": [
+        "DEC15"
+      ],
+      "pens": [
+        "PEN15"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN15: Definir a regra de contagem de faltas do alerta: período (mês, semestre), reinício da contagem e tratamento de faltas justificadas"
+      ]
     },
     "RF29": {
       "nome": "Registrar medida disciplinar",
       "estado": "Rascunho",
-      "cp": "CP5: Acompanhamento pedagógico e disciplinar do aluno",
+      "cp": "CP5: Acompanhamento de frequência e disciplinar do aluno",
       "ator": "(a detalhar)",
       "declaracao": "Deve ser possível à coordenação registrar uma medida disciplinar aplicada a um aluno, como advertência, suspensão ou desligamento, vinculada ao seu histórico.",
       "entradas": "(a detalhar)",
@@ -1785,7 +1798,6 @@ window.ESCOPO = {
       "rns": [],
       "rnfs": [
         "RNF03",
-        "RNF05",
         "RNF10",
         "RNF11",
         "RNF13"
@@ -1814,11 +1826,17 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC02",
-        "DEC03"
+        "DEC03",
+        "DEC15",
+        "DEC17"
       ],
-      "pens": [],
+      "pens": [
+        "PEN13"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN13: Definir quem registra uma medida disciplinar, se a data é a da ocorrência ou a do registro, e o efeito de suspensão e desligamento sobre a matrícula e a turma"
+      ]
     },
     "RF30": {
       "nome": "Publicar aviso",
@@ -1990,7 +2008,11 @@ window.ESCOPO = {
         "Do backlog (10.1), a reescrever em Dado/Quando/Então: Após a confirmação, o aviso deixa de ser exibido no módulo público."
       ],
       "rns": [],
-      "rnfs": [],
+      "rnfs": [
+        "RNF03",
+        "RNF11",
+        "RNF13"
+      ],
       "andamento": [
         [
           "Detalhamento",
@@ -2013,7 +2035,9 @@ window.ESCOPO = {
           "Pendente"
         ]
       ],
-      "decs": [],
+      "decs": [
+        "DEC17"
+      ],
       "pens": [],
       "its": [],
       "lacunas": []
@@ -2071,27 +2095,37 @@ window.ESCOPO = {
       "lacunas": []
     },
     "RF35": {
-      "nome": "Acessar formulário de matrícula online",
+      "nome": "Solicitar matrícula online",
       "estado": "Rascunho",
       "cp": "CP7: Matrícula online",
-      "ator": "(a detalhar)",
-      "declaracao": "Deve ser possível a qualquer interessado acessar o formulário de matrícula por link público, sem necessidade de login.",
-      "entradas": "(a detalhar)",
-      "pre": "(a detalhar)",
+      "ator": "Interessado (aluno maior de idade ou responsável legal)",
+      "declaracao": "Deve ser possível a qualquer interessado enviar, por um formulário público e sem login, a solicitação de matrícula de um aluno, com os dados do aluno, do responsável legal (se menor de idade) e das pessoas autorizadas a retirá-lo. A solicitação fica registrada para análise da coordenação (RF42); a matrícula só é efetivada presencialmente (RN02).",
+      "entradas": "Aluno: nome, data de nascimento, contato e modalidade ou turma de interesse (antigo RF36).\nResponsável legal, se o aluno tiver menos de 18 anos: nome, contato e vínculo (antigo RF37).\nPessoas autorizadas a retirar o aluno, se menor de idade: ao menos uma, com nome e contato, ou a indicação de que pode ir embora sozinho (antigo RF40).\nTermos: aceite de dados (RF38) e resposta ao termo de imagem (RF39).",
+      "pre": "Nenhuma: o formulário é público",
       "proc": "(a detalhar)",
-      "saidas": "(a detalhar)",
+      "saidas": "Solicitação registrada e número de protocolo (RF41); ou indicação dos campos que faltam",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
       "entrega": "Pós-MVP",
       "criterios": [
-        "Do backlog (10.1), a reescrever em Dado/Quando/Então: O formulário de matrícula abre pelo link público, sem necessidade de login."
+        "1. Dado um visitante sem login, quando abre o link público, então vê o formulário.",
+        "2. Dado um campo do aluno vazio, quando tenta enviar, então o envio é bloqueado e o campo é indicado.",
+        "3. Dada uma data de nascimento de menor de 18 anos, então o formulário exige nome, contato e vínculo do responsável legal e ao menos uma pessoa autorizada (ou a indicação de que o menor pode ir embora sozinho).",
+        "4. Dado um aluno com 18 anos ou mais, então os dados do responsável e das pessoas autorizadas não são exigidos.",
+        "5. Dado o formulário completo e o termo de dados aceito, quando envia, então a solicitação é registrada e o protocolo é exibido."
       ],
-      "rns": [],
+      "rns": [
+        "RN02",
+        "RN07",
+        "RN10"
+      ],
       "rnfs": [
         "RNF01",
         "RNF02",
-        "RNF09"
+        "RNF03",
+        "RNF09",
+        "RNF13"
       ],
       "andamento": [
         [
@@ -2116,18 +2150,20 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC16",
+        "DEC18"
       ],
       "pens": [],
       "its": [],
       "lacunas": []
     },
     "RF36": {
-      "nome": "Preencher dados do aluno",
-      "estado": "Rascunho",
+      "nome": "Preencher dados do aluno (incorporado ao RF35)",
+      "estado": "Retirado",
       "cp": "CP7: Matrícula online",
       "ator": "(a detalhar)",
-      "declaracao": "Deve ser possível o interesado inserir, no formulário, os dados do aluno (nome, data de nascimento, contato e modalidade ou turma de interesse).",
+      "declaracao": "Incorporado ao RF35 em 14/11/2026: era uma etapa do formulário de matrícula, e não uma operação completa. O código não é reutilizado. Texto original: Deve ser possível o interesado inserir, no formulário, os dados do aluno (nome, data de nascimento, contato e modalidade ou turma de interesse).",
       "entradas": "(a detalhar)",
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
@@ -2140,11 +2176,7 @@ window.ESCOPO = {
         "Do backlog (10.1), a reescrever em Dado/Quando/Então: O formulário aceita nome, data de nascimento, contato e modalidade ou turma de interesse do aluno. O envio é bloqueado enquanto algum desses campos estiver vazio."
       ],
       "rns": [],
-      "rnfs": [
-        "RNF01",
-        "RNF03",
-        "RNF13"
-      ],
+      "rnfs": [],
       "andamento": [
         [
           "Detalhamento",
@@ -2168,18 +2200,19 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC16"
       ],
       "pens": [],
       "its": [],
       "lacunas": []
     },
     "RF37": {
-      "nome": "Informar dados do responsável legal",
-      "estado": "Rascunho",
+      "nome": "Informar dados do responsável legal (incorporado ao RF35)",
+      "estado": "Retirado",
       "cp": "CP7: Matrícula online",
       "ator": "(a detalhar)",
-      "declaracao": "Deve ser possível inserir os dados do responsável legal (nome, contato e vínculo) quando o aluno tiver menos de 18 anos.",
+      "declaracao": "Incorporado ao RF35 em 14/11/2026: era uma etapa do formulário de matrícula, e não uma operação completa. O código não é reutilizado. Texto original: Deve ser possível inserir os dados do responsável legal (nome, contato e vínculo) quando o aluno tiver menos de 18 anos.",
       "entradas": "(a detalhar)",
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
@@ -2192,11 +2225,7 @@ window.ESCOPO = {
         "Do backlog (10.1), a reescrever em Dado/Quando/Então: Quando a data de nascimento indica aluno menor de 18 anos, o formulário exige nome, contato e vínculo do responsável legal. Para aluno com 18 anos ou mais, esses dados não são exigidos."
       ],
       "rns": [],
-      "rnfs": [
-        "RNF01",
-        "RNF03",
-        "RNF13"
-      ],
+      "rnfs": [],
       "andamento": [
         [
           "Detalhamento",
@@ -2220,7 +2249,8 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC16"
       ],
       "pens": [],
       "its": [],
@@ -2274,14 +2304,15 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC25"
       ],
       "pens": [
-        "PEN03"
+        "PEN14"
       ],
       "its": [],
       "lacunas": [
-        "PEN03: Conciliar o termo único do cadastro presencial (RN40, RF21) com a regra de que dados e imagem são aceites independentes na matrícula online (RN16, RF38 e RF39)"
+        "PEN14: Definir como as versões dos termos (dados e imagem) são criadas e guardadas, para que o aceite registre a versão vigente"
       ]
     },
     "RF39": {
@@ -2332,22 +2363,23 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC25"
       ],
       "pens": [
-        "PEN03"
+        "PEN14"
       ],
       "its": [],
       "lacunas": [
-        "PEN03: Conciliar o termo único do cadastro presencial (RN40, RF21) com a regra de que dados e imagem são aceites independentes na matrícula online (RN16, RF38 e RF39)"
+        "PEN14: Definir como as versões dos termos (dados e imagem) são criadas e guardadas, para que o aceite registre a versão vigente"
       ]
     },
     "RF40": {
-      "nome": "Informar pessoas autorizadas a retirar o aluno",
-      "estado": "Rascunho",
+      "nome": "Informar pessoas autorizadas a retirar o aluno (incorporado ao RF35)",
+      "estado": "Retirado",
       "cp": "CP7: Matrícula online",
       "ator": "(a detalhar)",
-      "declaracao": "Deve ser possível inserir ao menos uma pessoa autorizada a retirar o aluno quando ele for menor de idade, com nome e contato, ou se o menor pode ir embora só.",
+      "declaracao": "Incorporado ao RF35 em 14/11/2026: era uma etapa do formulário de matrícula, e não uma operação completa. O código não é reutilizado. Texto original: Deve ser possível inserir ao menos uma pessoa autorizada a retirar o aluno quando ele for menor de idade, com nome e contato, ou se o menor pode ir embora só.",
       "entradas": "(a detalhar)",
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
@@ -2360,11 +2392,7 @@ window.ESCOPO = {
         "Do backlog (10.1), a reescrever em Dado/Quando/Então: Para aluno menor de idade, o formulário exige ao menos uma pessoa autorizada, com nome e contato, ou a indicação de que o menor pode ir embora sozinho. Para aluno maior de idade, essa informação não é exigida."
       ],
       "rns": [],
-      "rnfs": [
-        "RNF01",
-        "RNF03",
-        "RNF13"
-      ],
+      "rnfs": [],
       "andamento": [
         [
           "Detalhamento",
@@ -2387,7 +2415,9 @@ window.ESCOPO = {
           "Pendente"
         ]
       ],
-      "decs": [],
+      "decs": [
+        "DEC16"
+      ],
       "pens": [],
       "its": [],
       "lacunas": []
@@ -2447,8 +2477,8 @@ window.ESCOPO = {
       "nome": "Analisar solicitações de matrícula",
       "estado": "Rascunho",
       "cp": "CP7: Matrícula online",
-      "ator": "(a detalhar)",
-      "declaracao": "Deve ser possível à coordenação consultar as solicitações recebidas e defini-las como aprovada, recusada ou em lista de espera.",
+      "ator": "Coordenação",
+      "declaracao": "Deve ser possível à coordenação consultar as solicitações recebidas (RF35) e defini-las como aprovada, recusada ou em lista de espera. A aprovação não cria o cadastro definitivo: o aluno aprovado é convocado para a confirmação presencial, com assinatura dos termos (RN02), e só então é cadastrado (RF21), aproveitando os dados da solicitação.",
       "entradas": "(a detalhar)",
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
@@ -2460,10 +2490,11 @@ window.ESCOPO = {
       "criterios": [
         "Do backlog (10.1), a reescrever em Dado/Quando/Então: A coordenação consulta as solicitações recebidas e define cada uma como aprovada, recusada ou em lista de espera. O status definido é exibido atualizado na consulta."
       ],
-      "rns": [],
+      "rns": [
+        "RN02"
+      ],
       "rnfs": [
         "RNF03",
-        "RNF05",
         "RNF10",
         "RNF11",
         "RNF13"
@@ -2492,11 +2523,17 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC02",
-        "DEC03"
+        "DEC03",
+        "DEC17",
+        "DEC18"
       ],
-      "pens": [],
+      "pens": [
+        "PEN12"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN12: Definir o que a aprovação de uma solicitação de matrícula gera: reserva de vaga na turma, prazo para a confirmação presencial e documentos que ficam pendentes. Afeta só a matrícula online (pós-MVP); o cadastro definitivo continua sendo feito pelo RF21"
+      ]
     }
   },
   "rn": {
@@ -2515,7 +2552,7 @@ window.ESCOPO = {
     "RN13": "Diversidade de Recursos: O recebimento de recursos ocorre por múltiplos canais (doações diretas, bens físicos e parcerias/ofícios).",
     "RN14": "Fluxo de Prestação de Contas: A prestação de contas de recursos envolve orçamentos prévios, aprovação, nota fiscal e registros fotográficos/audiovisuais.",
     "RN15": "Vínculo Socioeducacional e Permanência: A regra de negócio central do CECP condiciona a permanência e a evolução do aluno no projeto social esportivo ao acompanhamento direto de sua frequência nas aulas do CECP e de seu desempenho/assiduidade na escola formal de origem.",
-    "RN16": "Separação de Consentimento de Dados e Termo de Imagem: O aceite do termo de tratamento de dados pessoais (LGPD) e do termo de uso de imagem são tratados de forma independente. A recusa do termo de imagem impede a realização da matrícula.",
+    "RN16": "Separação de Consentimento de Dados e Termo de Imagem: O aceite do termo de tratamento de dados pessoais (LGPD) e do termo de uso de imagem são tratados de forma independente. A recusa do termo de imagem impede a realização da matrícula. Vale para a matrícula online; no cadastro presencial, o termo é único (DEC25).",
     "RN17": "O encerramento é total; para voltar à área de coordenação é preciso informar usuário e senha novamente.",
     "RN18": "Na reunião o cliente admitiu redirecionar também para um modo público; a tela de login é o comportamento adotado.",
     "RN19": "Não há autocadastro; a tela de login não oferece opção de cadastro.",
@@ -2552,8 +2589,8 @@ window.ESCOPO = {
   "rnf": {
     "RNF01": {
       "nome": "Facilidade de aprendizado",
-      "desc": "Interface que permite ao usuário realizar tarefas sem precisar de muito tempo de aprendizado ou treinamento para voluntários sem experiência técnica (CP1, CP3, CP4, CP5).",
-      "crit": "Usuários novatos no sistema deverão conseguir realizar as tarefas após de se familiarizarem com o sistema por no máximo 8 minutos. 80% dos usuários devem cumprir as tarefas para ser aceito."
+      "desc": "Um voluntário sem experiência técnica deve conseguir concluir as tarefas do sistema sem treinamento prévio (CP1, CP3, CP4, CP5).",
+      "crit": "Em teste com usuários que nunca usaram o sistema e não receberam treinamento, pelo menos 80% concluem a tarefa proposta em até 8 minutos, contados do início da tarefa."
     },
     "RNF02": {
       "nome": "Interface responsiva do módulo público",
@@ -2566,14 +2603,14 @@ window.ESCOPO = {
       "crit": "Mensagem de sucesso/erro exibida em até 2s após a ação (ex.: registrar frequência, aplicar medida disciplinar)."
     },
     "RNF04": {
-      "nome": "Preservação de histórico",
-      "desc": "Preservação de histórico ao inativar turma ou aluno.",
-      "crit": "Registros preservados no banco após a inativação, permanecendo consultáveis na ficha/histórico."
+      "nome": "Preservação de histórico (retirado)",
+      "desc": "Retirado: descrevia um comportamento funcional já especificado em RN01 (o aluno nunca é excluído, só inativado) e nos critérios de RF05 e RF24. Não é um atributo de qualidade.",
+      "crit": "— (verificado pelos critérios de aceitação dos RFs)"
     },
     "RNF05": {
-      "nome": "Confirmação antes de ações críticas",
-      "desc": "O sistema deve solicitar confirmação antes da execução de ações críticas que possam alterar ou inativar registros relevantes.",
-      "crit": "Caixa de confirmação exibida antes de inativar turma, inativar aluno ou registrar medida disciplinar."
+      "nome": "Confirmação antes de ações críticas (retirado)",
+      "desc": "Retirado: descrevia um comportamento funcional de interação, já registrado na DEC02 e nos critérios dos RFs afetados (por exemplo, RN48 no RF24). Não é um atributo de qualidade.",
+      "crit": "— (verificado pelos critérios de aceitação dos RFs)"
     },
     "RNF06": {
       "nome": "Tempo de resposta das consultas internas",
@@ -2582,8 +2619,8 @@ window.ESCOPO = {
     },
     "RNF07": {
       "nome": "Carregamento da página pública",
-      "desc": "Carregamento da página pública em até 5s (CP2, CP3).",
-      "crit": "LCP ≤ 5s em conexão 3G, medido pelo Lighthouse."
+      "desc": "Carregamento da página pública em até 5s (CP3, CP7).",
+      "crit": "LCP ≤ 5s em conexão 2G simulada (limitação de rede do Chrome DevTools/Lighthouse), medido pelo Lighthouse."
     },
     "RNF08": {
       "nome": "Acesso simultâneo de usuários autenticados",
@@ -2602,32 +2639,32 @@ window.ESCOPO = {
     },
     "RNF11": {
       "nome": "Controle de acesso por perfil",
-      "desc": "Controle de acesso por perfil (coordenação, professor/voluntário, família).",
-      "crit": "Rotas administrativas retornam 401/403 para requisições sem perfil autorizado."
+      "desc": "As funcionalidades administrativas são restritas ao perfil de coordenação, o único perfil com login (RN20). Professores, voluntários e famílias não têm login: acessam apenas o módulo público.",
+      "crit": "Rotas administrativas retornam 401 para requisições sem autenticação e 403 para requisições autenticadas sem o perfil de coordenação. Rotas do módulo público respondem sem autenticação."
     },
     "RNF12": {
       "nome": "Proteção de senhas e dados sensíveis",
       "desc": "Senhas com hash e dados sensíveis criptografados.",
-      "crit": "Nenhuma senha armazenada em texto claro; auditoria por inspeção de banco."
+      "crit": "Verificado por inspeção do banco e do armazenamento de anexos: (1) nenhuma senha está em texto claro, apenas o hash gerado por algoritmo próprio para senhas (por exemplo, bcrypt ou Argon2); (2) os dados de saúde do aluno (descrição do problema de saúde e laudos) e os documentos anexados (identidade, comprovante de residência) estão criptografados, e lê-los diretamente no banco ou no armazenamento não revela o conteúdo."
     },
     "RNF13": {
       "nome": "Conformidade com a LGPD",
       "desc": "O sistema deve tratar os dados pessoais de acordo com os princípios, direitos dos titulares e requisitos de segurança e tratamento estabelecidos pela Lei nº 13.709/2018 (LGPD).",
-      "crit": "O sistema deve permitir o atendimento às solicitações aplicáveis dos titulares ou responsáveis legais relacionadas aos seus dados pessoais, incluindo solicitação de eliminação quando cabível, além de classificar e proteger dados pessoais sensíveis conforme a LGPD."
+      "crit": "Aceito quando todos os itens abaixo são verificados:\n1. O cadastro só é concluído com o aceite do termo de dados registrado, com data (RN40; RF38 na matrícula online).\n2. A ficha do aluno não pede dado que não esteja na ficha de papel do CECP ou em uma regra de negócio (necessidade, art. 6º, III).\n3. Os dados de saúde ficam visíveis só na ficha do aluno, para a coordenação autenticada (RNF11).\n4. Os dados de saúde e os documentos estão protegidos conforme RNF12.\n5. A coordenação consegue atender a um pedido de eliminação (RF25) e a operação fica registrada em log (RNF09).\n6. O módulo público informa quais dados são coletados e para quê (art. 14, §2º)."
     }
   },
   "dec": [
     {
       "id": "DEC01",
       "data": "08/10/2026 (data registrada na própria ata; o arquivo está nomeado como 09/10)",
-      "texto": "O MVP foi refeito: após explicar o conceito de MVP ao cliente, o MoSCoW foi reclassificado, porque a primeira priorização (24/09) deixou cerca de 36 dos 42 requisitos no MVP. Os valores de negócio seguem vigentes; o conjunto do MVP foi substituído pela DEC03",
+      "texto": "O MVP foi refeito: após explicar o conceito de MVP ao cliente, o MoSCoW foi reclassificado, porque a primeira priorização (24/09) deixou cerca de 36 dos 42 requisitos no MVP. Os valores de negócio seguem vigentes; o conjunto do MVP foi substituído pela DEC03. Nota: a ata de 09/10 encerrou com o encaminhamento de que a matriz seria refeita e validada com o cliente; esse passo foi concluído em 30/10/2026 e registrado na DEC03",
       "rfs": [],
       "fonte": "Priorização, ata 09/10"
     },
     {
       "id": "DEC02",
       "data": "22/09/2026, reforçada em 24/09/2026 e prototipada em 30/10/2026",
-      "texto": "Ações críticas (inativar aluno ou turma, aplicar medida disciplinar, remover) exigem confirmação antes de serem executadas (RNF05). Para conteúdo institucional e eventos, a tela de confirmação de remoção foi apresentada no protótipo",
+      "texto": "Ações críticas (inativar aluno ou turma, aplicar medida disciplinar, remover) exigem confirmação antes de serem executadas. Era o RNF05, retirado em 14/11/2026 por ser comportamento funcional; a regra vale por esta decisão e pelos critérios de cada RF. Para conteúdo institucional e eventos, a tela de confirmação de remoção foi apresentada no protótipo",
       "rfs": [
         "RF05",
         "RF16",
@@ -2675,21 +2712,21 @@ window.ESCOPO = {
     },
     {
       "id": "DEC04",
-      "data": "A confirmar",
-      "texto": "Após encerrar a sessão, o sistema redireciona para a tela de login (o cliente admitiu também o modo público)",
+      "data": "10/11/2026 (a reunião em que o comportamento foi discutido pela primeira vez continua sem data)",
+      "texto": "Após encerrar a sessão, o sistema redireciona para a tela de login (o cliente admitiu também o modo público). O protótipo aprovado em 10/11 mostra esse comportamento",
       "rfs": [
         "RF00"
       ],
-      "fonte": "A confirmar (falta a data da reunião)"
+      "fonte": "Ata 10/11 (protótipo aprovado, DEC20)"
     },
     {
       "id": "DEC05",
-      "data": "A confirmar",
-      "texto": "Termo único (responsabilidade, imagem e dados) no cadastro de aluno",
+      "data": "Sem data registrada",
+      "texto": "Termo único (responsabilidade, imagem e dados) no cadastro de aluno. A base é o termo de responsabilidade da ficha de inscrição em papel do CECP, que não tem cláusulas de uso de imagem nem de dados; a equipe já acrescentou essas cláusulas ao termo do sistema, remodelando-o como a RN40 previa",
       "rfs": [
         "RF21"
       ],
-      "fonte": "A confirmar (falta a data da reunião e o modelo de termo do cliente)"
+      "fonte": "ficha de inscrição do CECP; confirmado pela equipe em 14/11/2026"
     },
     {
       "id": "DEC06",
@@ -2806,17 +2843,290 @@ window.ESCOPO = {
         "RF18"
       ],
       "fonte": "Ata 30/10"
-    }
-  ],
-  "pen": [
+    },
     {
-      "id": "PEN01",
-      "texto": "O subtítulo do evento é opcional (\"se houver\") nas reuniões de 21/10 e 30/10, mas a ficha do RF17 o lista entre as entradas obrigatórias",
+      "id": "DEC15",
+      "data": "14/11/2026",
+      "texto": "OE2 e CP5 tratam apenas de frequência nas aulas do CECP e de medidas disciplinares. O desempenho na escola de origem (RN15) continua sendo conferido pela coordenação fora do sistema; o produto não registra notas nem situação escolar. Encerra a PEN10",
+      "rfs": [
+        "RF26",
+        "RF27",
+        "RF28",
+        "RF29"
+      ],
+      "fonte": "Decisão da equipe sobre as issues #24 e #27; solução proposta"
+    },
+    {
+      "id": "DEC16",
+      "data": "14/11/2026",
+      "texto": "RF36, RF37 e RF40 foram incorporados ao RF35, que passa a ser \"Solicitar matrícula online\": eram etapas do formulário, e não operações completas. Os códigos retirados não são reutilizados",
+      "rfs": [
+        "RF35",
+        "RF36",
+        "RF37",
+        "RF40"
+      ],
+      "fonte": "Decisão da equipe sobre a issue #28"
+    },
+    {
+      "id": "DEC17",
+      "data": "14/11/2026",
+      "texto": "RNF04 (preservar histórico) e RNF05 (pedir confirmação) foram retirados: descreviam comportamento funcional já coberto por RN01, DEC02 e pelos critérios dos RFs. Os códigos não são reutilizados",
+      "rfs": [
+        "RF05",
+        "RF06",
+        "RF16",
+        "RF19",
+        "RF24",
+        "RF25",
+        "RF29",
+        "RF33",
+        "RF42"
+      ],
+      "fonte": "Decisão da equipe sobre a issue #29"
+    },
+    {
+      "id": "DEC18",
+      "data": "14/11/2026",
+      "texto": "A matrícula online é uma pré-matrícula: o interessado envia a solicitação, a coordenação a analisa e a aprovada é efetivada presencialmente, com assinatura dos termos (RN02); só então o aluno é cadastrado pelo RF21",
+      "rfs": [
+        "RF35",
+        "RF42",
+        "RF21"
+      ],
+      "fonte": "Ata 08/10 (pré-matrícula com aprovação presencial); consolidação pedida na issue #24"
+    },
+    {
+      "id": "DEC19",
+      "data": "10/11/2026",
+      "texto": "O cliente testou o sistema construído e aceitou o acesso (RF00 a RF02) e o conteúdo institucional e eventos (RF13 a RF20). O teste do encerramento de sessão (RF00) foi confirmado pela equipe em 14/11, pois não aparece na transcrição. O sistema rodava no computador da equipe, sem ambiente publicado",
+      "rfs": [
+        "RF00",
+        "RF01",
+        "RF02",
+        "RF13",
+        "RF14",
+        "RF15",
+        "RF16",
+        "RF17",
+        "RF18",
+        "RF19",
+        "RF20"
+      ],
+      "fonte": "Ata 10/11"
+    },
+    {
+      "id": "DEC20",
+      "data": "10/11/2026",
+      "texto": "O representante do cliente aprovou o protótipo das telas de acesso, turmas, alunos e coordenadores. O retorno das demais pessoas do CECP, recebido depois da reunião, também foi positivo, sem ajustes pedidos (confirmado pela equipe em 14/11/2026)",
+      "rfs": [
+        "RF00",
+        "RF01",
+        "RF02",
+        "RF03",
+        "RF06",
+        "RF07",
+        "RF21",
+        "RF22",
+        "RF23",
+        "RF24"
+      ],
+      "fonte": "Ata 10/11"
+    },
+    {
+      "id": "DEC21",
+      "data": "10/11/2026",
+      "texto": "Ao clicar em uma imagem de uma publicação, ela se expande. Pedido do cliente durante o teste",
+      "rfs": [
+        "RF15",
+        "RF20"
+      ],
+      "fonte": "Ata 10/11"
+    },
+    {
+      "id": "DEC22",
+      "data": "10/11/2026",
+      "texto": "O tamanho da letra do sistema é mantido, apesar do pedido do José Ivan por letras maiores, porque os demais que viram as telas o acharam adequado. Uma letra maior pode ser avaliada para a página institucional \"Quem somos\", depois do MVP",
+      "rfs": [
+        "RF13",
+        "RF14",
+        "RF15",
+        "RF16",
+        "RF17",
+        "RF18",
+        "RF19",
+        "RF20"
+      ],
+      "fonte": "Ata 10/11"
+    },
+    {
+      "id": "DEC23",
+      "data": "14/11/2026",
+      "texto": "Alunos inativos aparecem na lista de alunos da turma. Encerra a PEN02",
+      "rfs": [
+        "RF07"
+      ],
+      "fonte": "Confirmado pela equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC24",
+      "data": "14/11/2026",
+      "texto": "Não existe limite de alunos por turma nem regra de inscrição prévia. Encerra a PEN09",
+      "rfs": [
+        "RF03",
+        "RF06"
+      ],
+      "fonte": "Confirmado pela equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC25",
+      "data": "14/11/2026",
+      "texto": "Cadastro presencial e matrícula online são fluxos distintos. No cadastro presencial, a coordenação registra um termo único (responsabilidade, uso de imagem e dados, DEC05). Na matrícula online, os aceites de dados e de imagem continuam separados (RN16). Encerra a PEN03",
+      "rfs": [
+        "RF21",
+        "RF38",
+        "RF39"
+      ],
+      "fonte": "Confirmado pela equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC26",
+      "data": "14/11/2026",
+      "texto": "Turmas (RF03, RF06 e RF07) e alunos (RF21 a RF24) serão construídos juntos e entregues funcionando no mesmo incremento, o que resolve a dependência entre associar aluno à turma e cadastrar aluno. A iteração seguinte fica para iterar sobre esse incremento, com os ajustes do retorno do cliente. Encerra a PEN11",
+      "rfs": [
+        "RF03",
+        "RF06",
+        "RF07",
+        "RF21",
+        "RF22",
+        "RF23",
+        "RF24"
+      ],
+      "fonte": "Decisão da equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC27",
+      "data": "21/10/2026, reforçada em 30/10/2026",
+      "texto": "O subtítulo do evento é opcional (\"se houver\"). O cliente concordou nas duas reuniões; a ficha do RF17, que o listava como obrigatório, foi corrigida. Encerra a PEN01",
       "rfs": [
         "RF17",
         "RF18"
       ],
-      "acao": "Ajustar a ficha e o protótipo, ou confirmar com o cliente"
+      "fonte": "Ata 21/10, ata 30/10"
+    },
+    {
+      "id": "DEC28",
+      "data": "14/11/2026",
+      "texto": "Os usuários da coordenação continuam sendo criados pelo terminal (RN21). A tela de gestão de coordenadores, aprovada no protótipo de 10/11, fica fora do MVP e não vira RF agora. Encerra a PEN20",
+      "rfs": [
+        "RF01",
+        "RF02"
+      ],
+      "fonte": "Decisão da equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC29",
+      "data": "14/11/2026",
+      "texto": "A \"carga normal\" dos RNF06 e RNF08 é de até 10 sessões de coordenação autenticadas e simultâneas, o mesmo número já usado no critério do RNF08. O volume de alunos, turmas e anexos usado no teste é registrado como premissa junto com o resultado. Encerra a PEN16",
+      "rfs": [
+        "RF02",
+        "RF07",
+        "RF23"
+      ],
+      "fonte": "Decisão da equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC30",
+      "data": "30/10/2026",
+      "texto": "Na matriz final, a equipe reavaliou a posição de esforço dos RFs, e a coluna \"Esforço na matriz\" da priorização é a vigente, mesmo quando difere do arredondamento da média dos votos. No empate da moda, vale o maior valor (estimativa mais conservadora). Encerra a PEN06",
+      "rfs": [],
+      "fonte": "Priorização; confirmado pela equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC31",
+      "data": "14/11/2026",
+      "texto": "Não serão criados agora RNFs de backup e recuperação de dados nem de comunicação segura (HTTPS). Encerra a PEN17",
+      "rfs": [],
+      "fonte": "Decisão da equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC32",
+      "data": "14/11/2026",
+      "texto": "Não haverá migração em lote dos dados existentes. Depois da entrega, a coordenação cadastra aos poucos os alunos ativos pelo próprio sistema (RF21), usando as fichas em papel, com apoio da equipe na primeira semana. Encerra a PEN19",
+      "rfs": [
+        "RF21"
+      ],
+      "fonte": "Decisão da equipe em 14/11/2026"
+    }
+  ],
+  "pen": [
+    {
+      "id": "PEN12",
+      "texto": "Definir o que a aprovação de uma solicitação de matrícula gera: reserva de vaga na turma, prazo para a confirmação presencial e documentos que ficam pendentes. Afeta só a matrícula online (pós-MVP); o cadastro definitivo continua sendo feito pelo RF21",
+      "rfs": [
+        "RF42"
+      ],
+      "acao": "Confirmar com o cliente no detalhamento da matrícula online"
+    },
+    {
+      "id": "PEN13",
+      "texto": "Definir quem registra uma medida disciplinar, se a data é a da ocorrência ou a do registro, e o efeito de suspensão e desligamento sobre a matrícula e a turma",
+      "rfs": [
+        "RF29"
+      ],
+      "acao": "Confirmar com o cliente no detalhamento de CP5"
+    },
+    {
+      "id": "PEN14",
+      "texto": "Definir como as versões dos termos (dados e imagem) são criadas e guardadas, para que o aceite registre a versão vigente",
+      "rfs": [
+        "RF38",
+        "RF39"
+      ],
+      "acao": "Definir com o cliente junto do modelo de termo (DEC05)"
+    },
+    {
+      "id": "PEN15",
+      "texto": "Definir a regra de contagem de faltas do alerta: período (mês, semestre), reinício da contagem e tratamento de faltas justificadas",
+      "rfs": [
+        "RF28"
+      ],
+      "acao": "Confirmar com o cliente no detalhamento de CP5"
+    },
+    {
+      "id": "PEN23",
+      "texto": "Não há regra nem RF para reativar um aluno inativo (por exemplo, um aluno que volta ao projeto). A lacuna apareceu ao representar o ciclo de vida do aluno (seção 5.3)",
+      "rfs": [
+        "RF24"
+      ],
+      "acao": "Perguntar ao cliente se o aluno que volta é reativado ou cadastrado de novo"
+    }
+  ],
+  "pen_enc": [
+    {
+      "id": "PEN05",
+      "texto": "Data da reunião de priorização (08/10 no texto, 09/10 nos arquivos)",
+      "rfs": [],
+      "acao": "Encerrada em 03/11/2026: a própria ata registra 08/10/2026; 09/10 é só o nome do arquivo. A DEC01 foi atualizada."
+    },
+    {
+      "id": "PEN10",
+      "texto": "OE2 menciona \"condicionalidades pedagógicas\" e CP5 promete \"acompanhamento pedagógico do aluno\", mas não existe RF para registrar ou consultar informações escolares (notas, situação escolar de origem). Confirmar se essa é uma limitação de escopo deliberada e, se for, registrar na descrição de OE2 e CP5 que o acompanhamento pedagógico se restringe a frequência e medidas disciplinares",
+      "rfs": [
+        "RF26",
+        "RF27",
+        "RF28",
+        "RF29"
+      ],
+      "acao": "Encerrada em 14/11/2026 pela DEC15: OE2 e CP5 foram restritos a frequência e disciplina na solução proposta"
+    },
+    {
+      "id": "PEN21",
+      "texto": "RF00 (encerrar sessão) foi construído, mas o teste com o cliente não aparece na transcrição da reunião de 10/11",
+      "rfs": [
+        "RF00"
+      ],
+      "acao": "Encerrada em 14/11/2026: a equipe confirmou que o cliente saiu do sistema e voltou à tela de login na reunião de 10/11 (DEC19)"
     },
     {
       "id": "PEN02",
@@ -2824,7 +3134,7 @@ window.ESCOPO = {
       "rfs": [
         "RF07"
       ],
-      "acao": "Marcada como [PENDENTE] na ficha"
+      "acao": "Encerrada em 14/11/2026 pela DEC23: alunos inativos aparecem na lista da turma"
     },
     {
       "id": "PEN03",
@@ -2834,43 +3144,15 @@ window.ESCOPO = {
         "RF38",
         "RF39"
       ],
-      "acao": "Confirmar com o cliente se são fluxos distintos"
+      "acao": "Encerrada em 14/11/2026 pela DEC25: são fluxos distintos; termo único no presencial e aceites separados na matrícula online"
     },
     {
       "id": "PEN04",
-      "texto": "Completar a data e a fonte das decisões DEC04 e DEC05",
+      "texto": "Completar a data e a fonte da decisão DEC05. A DEC04 passou a ter fonte: o protótipo aprovado em 10/11",
       "rfs": [
-        "RF00",
         "RF21"
       ],
-      "acao": "Localizar a ata ou o áudio da reunião e o modelo de termo do cliente"
-    },
-    {
-      "id": "PEN06",
-      "texto": "Reconciliar as notas de esforço da seção 5 da priorização com a posição de esforço da matriz final (30 RFs divergem do arredondamento do ET)",
-      "rfs": [],
-      "acao": "Atualizar os votos ou documentar o critério usado na matriz"
-    },
-    {
-      "id": "PEN07",
-      "texto": "Confirmar as datas das reuniões de 21/10 (detalhamento) e 30/10 (design do usuário), deduzidas dos nomes de arquivo e da data de publicação do vídeo",
-      "rfs": [],
-      "acao": "Conferir com o vídeo e o calendário e corrigir as atas, se preciso"
-    },
-    {
-      "id": "PEN08",
-      "texto": "O cliente deve enviar a logo atualizada e mostrar o protótipo à Sandra, trazendo o retorno",
-      "rfs": [
-        "RF13",
-        "RF14",
-        "RF15",
-        "RF16",
-        "RF17",
-        "RF18",
-        "RF19",
-        "RF20"
-      ],
-      "acao": "Aguardar o cliente; cobrar na conversa de segunda-feira (02/11/2026)"
+      "acao": "Encerrada em 14/11/2026: a DEC04 tem fonte no protótipo de 10/11 e a DEC05 tem como fonte a ficha de inscrição do CECP (o modelo do termo)"
     },
     {
       "id": "PEN09",
@@ -2879,15 +3161,110 @@ window.ESCOPO = {
         "RF03",
         "RF06"
       ],
-      "acao": "Validar no detalhamento de turmas"
-    }
-  ],
-  "pen_enc": [
+      "acao": "Encerrada em 14/11/2026 pela DEC24: a regra não existe"
+    },
     {
-      "id": "PEN05",
-      "texto": "Data da reunião de priorização (08/10 no texto, 09/10 nos arquivos)",
+      "id": "PEN11",
+      "texto": "O cronograma prevê RF06 e RF07 (Iteração 8) antes do cadastro de aluno RF21 (Iteração 10), mas associar aluno à turma depende de aluno cadastrado. O conflito entre CP3 e a autenticação já não bloqueia: as duas partes foram aceitas juntas em 10/11 (DEC19)",
+      "rfs": [
+        "RF01",
+        "RF02",
+        "RF06",
+        "RF07",
+        "RF13",
+        "RF21"
+      ],
+      "acao": "Encerrada em 14/11/2026 pela DEC26: turmas e alunos serão construídos juntos"
+    },
+    {
+      "id": "PEN01",
+      "texto": "O subtítulo do evento é opcional (\"se houver\") nas reuniões de 21/10 e 30/10, mas a ficha do RF17 o lista entre as entradas obrigatórias",
+      "rfs": [
+        "RF17",
+        "RF18"
+      ],
+      "acao": "Encerrada em 14/11/2026 pela DEC27: subtítulo opcional no RF17 e no RF18"
+    },
+    {
+      "id": "PEN08",
+      "texto": "O cliente deve enviar a logo atualizada. O retorno da Sandra sobre as telas de CP3 foi positivo, conforme relatado em 10/11 (ata); falta o retorno das demais pessoas sobre as telas de acesso, turmas, alunos e coordenadores (DEC20)",
+      "rfs": [
+        "RF13",
+        "RF14",
+        "RF15",
+        "RF16",
+        "RF17",
+        "RF18",
+        "RF19",
+        "RF20"
+      ],
+      "acao": "Encerrada em 14/11/2026: o cliente enviou a logo atualizada e o retorno das demais pessoas sobre as telas, sem ajustes pedidos (confirmado pela equipe)"
+    },
+    {
+      "id": "PEN16",
+      "texto": "Definir a \"carga normal\" dos RNF06 e RNF08: número de usuários simultâneos, volume de alunos e anexos e operações mais frequentes",
+      "rfs": [
+        "RF02",
+        "RF07",
+        "RF23"
+      ],
+      "acao": "Encerrada em 14/11/2026 pela DEC29: até 10 sessões de coordenação simultâneas"
+    },
+    {
+      "id": "PEN20",
+      "texto": "A tela de gestão de coordenadores (criar coordenador com nome, usuário, perfil, situação e senha inicial) foi prototipada e aprovada, mas não tem RF. Hoje o usuário é criado pelo terminal, e a RN21 fala só de um usuário administrador padrão",
+      "rfs": [
+        "RF01",
+        "RF02"
+      ],
+      "acao": "Encerrada em 14/11/2026 pela DEC28: a criação de coordenadores continua pelo terminal"
+    },
+    {
+      "id": "PEN22",
+      "texto": "Não há ata nem gravação publicada da reunião em que acesso, turmas e alunos (RF00 a RF07 e RF21 a RF24) foram detalhados, embora as fichas e as regras RN17 a RN24 e RN35 a RN48 citem \"a reunião\"",
+      "rfs": [
+        "RF00",
+        "RF01",
+        "RF02",
+        "RF03",
+        "RF06",
+        "RF07",
+        "RF21",
+        "RF22",
+        "RF23",
+        "RF24"
+      ],
+      "acao": "Encerrada em 14/11/2026: não houve gravação nem ata do detalhamento; o resultado foi validado pelo cliente no protótipo aprovado em 10/11 (DEC20) (confirmado pela equipe)"
+    },
+    {
+      "id": "PEN18",
+      "texto": "Atas anteriores à renumeração citam códigos de RF que hoje têm outro significado. Falta uma tabela de correspondência entre a numeração antiga e a atual",
       "rfs": [],
-      "acao": "Encerrada em 03/11/2026: a própria ata registra 08/10/2026; 09/10 é só o nome do arquivo. A DEC01 foi atualizada."
+      "acao": "Encerrada em 14/11/2026: a tabela de correspondência está em Documentos arquivados, e as atas que usam a numeração antiga (cliente 24/09 e equipe 26/09) têm um aviso apontando para ela"
+    },
+    {
+      "id": "PEN06",
+      "texto": "Reconciliar as notas de esforço da seção 5 da priorização com a posição de esforço da matriz final (30 RFs divergem do arredondamento do ET) e documentar a regra de desempate quando a moda dos votos empata",
+      "rfs": [],
+      "acao": "Encerrada em 14/11/2026 pela DEC30: a posição da matriz é a vigente; desempate pelo maior valor"
+    },
+    {
+      "id": "PEN07",
+      "texto": "Confirmar as datas das reuniões de 21/10 (detalhamento) e 30/10 (design do usuário), deduzidas dos nomes de arquivo e da data de publicação do vídeo",
+      "rfs": [],
+      "acao": "Encerrada em 14/11/2026: a equipe confirmou as datas de 21/10 e 30/10; as atas e as evidências foram corrigidas"
+    },
+    {
+      "id": "PEN17",
+      "texto": "Backup, recuperação de dados e comunicação segura (HTTPS) foram recusados na página de ajustes por \"já haver proteção de dados\", mas proteção de senha não garante recuperar dados perdidos",
+      "rfs": [],
+      "acao": "Encerrada em 14/11/2026 pela DEC31: a equipe decidiu não incluir esses RNFs agora"
+    },
+    {
+      "id": "PEN19",
+      "texto": "Planejar a carga inicial dos dados existentes: volume de fichas a migrar, quem da coordenação faz a digitação, quem da equipe apoia e como os dados são conferidos",
+      "rfs": [],
+      "acao": "Encerrada em 14/11/2026 pela DEC32: a coordenação cadastra os alunos ativos aos poucos, pelo sistema"
     }
   ],
   "its": [
@@ -2896,41 +3273,46 @@ window.ESCOPO = {
       "periodo": "",
       "foco": "Entrega unidade 1 (08/09)",
       "entregas": "Documento de visão versão 1.1 e git pages",
-      "rfs": []
+      "rfs": [],
+      "situacao": "Concluída. Unidade 1 entregue. Reunião realizada em 17/09 (ata)"
     },
     {
       "nome": "Iteração 1",
       "periodo": "20/09/2026 - 27/09/2026",
       "foco": "Planejamento de Requisitos: Elicitação e ajuste da lista de RFs e RNFs, preparação para validação",
       "entregas": "Atualização da documentação do git pages com a prévia dos principais requisitos",
-      "rfs": []
+      "rfs": [],
+      "situacao": "Concluída. Reuniões realizadas em 22/09, 24/09 (primeira priorização MoSCoW) e 26/09 (atas)"
     },
     {
       "nome": "Iteração 2",
       "periodo": "28/09/2026 - 04/10/2026",
       "foco": "Planejamento de Requisitos: Validação final da lista de RFs e RNFs (29/09); avaliação de valor de negócio com o cliente e de esforço técnico pela equipe; construção da matriz 4×4; definição do MVP",
       "entregas": "Lista validada de RFs/RNFs; matriz 4×4 de priorização; lista de RFs selecionados para o MVP",
-      "rfs": []
+      "rfs": [],
+      "situacao": "Concluída. A votação de esforço da equipe ocorreu em 26/09; a matriz e o MVP foram refeitos depois (DEC01, DEC03)"
     },
     {
       "nome": "Iteração 3",
       "periodo": "05/10/2026 - 11/10/2026",
       "foco": "Planejamento de Requisitos: definição do backlog, DoR e DoD com base no MVP validado; preparação da documentação para a entrega da Unidade 2",
       "entregas": "Backlog, DoR e DoD definidos",
-      "rfs": []
+      "rfs": [],
+      "situacao": "Concluída. Nova priorização com o cliente em 08/10 (ata, DEC01); DoR e DoD escritos em 10/10"
     },
     {
       "nome": "Iteração 4",
       "periodo": "12/10/2026 - 18/10/2026",
       "foco": "Entrega da Unidade 2 (13/10)",
       "entregas": "Documento de visão versão 1.2; requisitos detalhados de turmas e conteúdo institucional/eventos",
-      "rfs": []
+      "rfs": [],
+      "situacao": "Concluída. Unidade 2 entregue. Nenhuma reunião com o cliente registrada"
     },
     {
       "nome": "Iteração 5",
       "periodo": "19/10/2026 - 25/10/2026",
-      "foco": "Planejamento: detalhamento dos requisitos do módulo público (publicações e eventos)\n\nDesign do Usuário: Protótipo da tela de publicação, edição e consulta de conteúdo institucional e eventos; protótipo inicial do dashboard de gestão de turmas\n\nConstrução: início da implementação do módulo de conteúdo institucional/eventos",
-      "entregas": "Protótipos de conteúdo institucional/eventos e de dashboard de turmas; requisitos detalhados de alunos e acompanhamento disciplinar",
+      "foco": "Planejamento: detalhamento dos requisitos do módulo público (publicações e eventos)\n\nDesign do Usuário: Protótipo da tela de publicação, edição e consulta de conteúdo institucional e eventos; protótipo inicial das telas de turmas (cadastro de turma, RF03, e lista de alunos da turma, RF07)\n\nConstrução: início da implementação do módulo de conteúdo institucional/eventos",
+      "entregas": "Detalhamento de RF13 a RF20 com o cliente; protótipo de RF13 a RF20 pronto para avaliação",
       "rfs": [
         "RF13",
         "RF14",
@@ -2940,13 +3322,14 @@ window.ESCOPO = {
         "RF18",
         "RF19",
         "RF20"
-      ]
+      ],
+      "situacao": "Concluída. Detalhamento de RF13 a RF20 com o cliente em 21/10 (ata)"
     },
     {
       "nome": "Iteração 6",
       "periodo": "26/10/2026 - 01/11/2026",
-      "foco": "Planejamento: detalhamento de todos os requisitos restantes do MVP\n\nConstrução: continuação da implementação do módulo de conteúdo institucional/eventos\n\nTransição: teste de aceite dos requisitos implementados nesta construção",
-      "entregas": "Módulo de conteúdo institucional/eventos e dashboard de turmas funcionais; protótipo da ficha do aluno",
+      "foco": "Planejamento: detalhamento de todos os requisitos restantes do MVP\n\nDesign do Usuário: avaliação do protótipo de RF13 a RF20 com o cliente e ajustes\n\nConstrução: implementação de RF13 a RF20 após a aprovação do protótipo",
+      "entregas": "Protótipo de RF13 a RF20 aprovado pelo cliente; RF13 a RF20 em construção",
       "rfs": [
         "RF13",
         "RF14",
@@ -2956,66 +3339,63 @@ window.ESCOPO = {
         "RF18",
         "RF19",
         "RF20"
-      ]
+      ],
+      "situacao": "Concluída. Protótipo de CP3 aprovado e MVP validado em 30/10 (ata, DEC03, DEC12)"
     },
     {
       "nome": "Iteração 7",
       "periodo": "02/11/2026 - 08/11/2026",
-      "foco": "Design do Usuário: Prototipação das telas de autenticação.\n\nConstrução: implementação dos RF00, RF01 e RF02\n\nTransição: teste de aceite dos requisitos implementados nesta construção",
+      "foco": "Design do Usuário: prototipação das telas de autenticação, avaliação com o cliente na reunião da iteração e ajustes\n\nConstrução: implementação dos RF00, RF01 e RF02, pré-requisito das ações da coordenação em RF13 a RF24\n\nTransição: teste de aceite dos requisitos implementados nesta construção",
       "entregas": "RF00, RF01 e RF02 implementados e testados",
       "rfs": [
         "RF00",
         "RF01",
         "RF02"
-      ]
+      ],
+      "situacao": "Concluída. RF00 a RF02 e RF13 a RF20 construídos; o cliente testou e aceitou RF00 a RF02 e RF13 a RF20 em 10/11 (ata, DEC19)"
     },
     {
       "nome": "Iteração 8",
       "periodo": "09/11/2026 - 15/11/2026",
-      "foco": "Design do Usuário: Prototipação das telas de gestão de turmas.\n\nConstrução: implementação dos RF03, RF06 e RF07\n\nTransição: teste de aceite dos requisitos implementados nesta construção; treinamento inicial e capacitação da ONG",
+      "foco": "Design do Usuário: prototipação das telas de gestão de turmas, avaliação com o cliente e ajustes\n\nConstrução: implementação dos RF03, RF06 e RF07\n\nTransição: teste de aceite dos requisitos implementados nesta construção; treinamento inicial e capacitação da ONG",
       "entregas": "RF03, RF06 e RF07 implementados e testados",
       "rfs": [
         "RF03",
         "RF06",
         "RF07"
-      ]
+      ],
+      "situacao": "Em andamento. Design do Usuário concluído: o protótipo de turmas (RF03, RF06 e RF07) e de alunos (RF21 a RF24) foi aprovado pelo cliente em 10/11 (ata, DEC20). Construção ainda não iniciada. Turmas e alunos (RF21 a RF24) serão construídos juntos e entregues funcionando; a iteração seguinte fica para iterar sobre o incremento (DEC26)"
     },
     {
       "nome": "Iteração 9",
       "periodo": "16/11/2026 - 22/11/2026",
-      "foco": "Entrega da unidade 3 (17/11)\n\nConstrução: sem requisitos novos do MVP; o formulário de matrícula online (RF35 a RF39) é incremento pós-MVP e só entra se houver capacidade e validação do cliente (DEC03)",
+      "foco": "Entrega da unidade 3 (17/11)\n\nConstrução: sem requisitos novos do MVP; a matrícula online (RF35, RF38 e RF39) é incremento pós-MVP e só entra se houver capacidade e validação do cliente (DEC03)",
       "entregas": "Nova versão do documento de visão 1.3; issues anteriores fechadas",
-      "rfs": []
+      "rfs": [],
+      "situacao": "Planejada"
     },
     {
       "nome": "Iteração 10",
       "periodo": "23/11/2026 - 29/11/2026",
-      "foco": "Construção: cadastro, edição, inativação e remoção de dados do aluno (ficha do aluno)\n\nTransição: testes de segurança; validação com a coordenação; testes de aceite do MVP completo; treinamento final",
-      "entregas": "MVP concluído e validado; ficha de aluno funcional, com cadastro, histórico e tratamento de dados críticos",
+      "foco": "Design do Usuário: protótipo da ficha do aluno, avaliação com o cliente e ajustes\n\nConstrução: cadastro, edição, consulta e inativação do aluno (ficha do aluno). A remoção de dados (RF25) é pós-MVP\n\nTransição: início do cadastro dos alunos ativos pela própria coordenação, pelo sistema, com apoio da equipe (DEC32); testes de segurança; testes de aceite do MVP completo; validação com a coordenação em 26/11 ou 27/11; treinamento final",
+      "entregas": "MVP concluído e validado; ficha de aluno funcional, com cadastro e histórico; coordenação pronta para cadastrar os alunos ativos pelo sistema",
       "rfs": [
         "RF21",
         "RF22",
         "RF23",
         "RF24"
-      ]
+      ],
+      "situacao": "Planejada"
     },
     {
       "nome": "Iteração 11",
       "periodo": "30/11/2026 - 01/12/2026",
-      "foco": "Entrega da unidade 4 (01/12)\n\nTransição: correções finais a partir da validação, último deploy, finalização do projeto",
+      "foco": "Entrega da unidade 4 (01/12)\n\nTransição: correções a partir da validação de 26/11 ou 27/11, nova execução dos testes afetados e confirmação dos ajustes com o cliente por WhatsApp ou reunião curta; último deploy; finalização do projeto. A janela é curta (28/11 a 01/12): só entram correções, sem funcionalidade nova",
       "entregas": "Última versão do documento de visão 1.4; projeto entregue",
-      "rfs": []
+      "rfs": [],
+      "situacao": "Planejada"
     }
   ],
   "cron_nota": "Critério de transição entre fases: as macrofases de Design, Construção e Transição do RAD só entram em foco a partir da Iteração 5, após a validação formal dos requisitos, priorização via matriz 4×4, definição do MVP e formalização do backlog/DoR/DoD na Entrega da Unidade 2 (13/10). Até lá, o esforço da equipe está inteiramente concentrado em Planejamento de Requisitos. O cronograma é uma previsão e que pode sofrer mudanças no decorrer do desenvolvimento para melhor adequação do projeto.",
-  "alertas": [
-    {
-      "tipo": "Decisão sem fonte ou data",
-      "texto": "DEC04 ainda precisa de data ou fonte"
-    },
-    {
-      "tipo": "Decisão sem fonte ou data",
-      "texto": "DEC05 ainda precisa de data ou fonte"
-    }
-  ]
+  "alertas": []
 };

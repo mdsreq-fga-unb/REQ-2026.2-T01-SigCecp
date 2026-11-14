@@ -16,11 +16,13 @@
 .pn-b{display:inline-block;border:1px solid var(--ln);border-radius:3px;padding:0 .4rem;font-size:.7rem;color:var(--mut);white-space:nowrap}
 .pn-b.mvp{background:var(--ac);border-color:var(--ac);color:#fff}
 .pn-b.Detalhado{border-color:var(--wip);color:var(--wip)}.pn-b.Validado{border-color:var(--ok);color:var(--ok)}
+.pn-b.Retirado{opacity:.55;text-decoration:line-through}
 .pn-card{border-left:3px solid var(--ln);padding:.2rem 0 .2rem .9rem;margin:0 0 1.1rem}
 .pn-card.hoje{border-color:var(--ac)}.pn-card h4{margin:0 0 .2rem}.pn-card p{margin:.3rem 0;white-space:pre-line}
 .pn-chip{background:none;border:1px solid var(--ln);border-radius:999px;padding:0 .55rem;margin:.1rem .15rem .1rem 0;font-size:.72rem}
 .pn-chip:hover{border-color:var(--ac)}
 .pn-chip.Detalhado{border-color:var(--wip)}.pn-chip.Validado{border-color:var(--ok)}
+.pn-chip.Retirado{opacity:.55;text-decoration:line-through}
 .pn-vazio{color:var(--mut)}
 .pn-ov{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:30}
 .pn-dr{position:fixed;top:0;right:0;bottom:0;width:min(30rem,100vw);background:var(--bg);color:var(--fg);box-shadow:-4px 0 18px rgba(0,0,0,.25);z-index:31;overflow:auto;padding:1rem 1.2rem 2rem;font-size:.8rem;animation:pn-in .18s ease-out}
