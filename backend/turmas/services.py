@@ -100,3 +100,7 @@ def deletar_turma(db: Session, turma_id: int) -> None:
         db.rollback()
         logger.exception("Erro ao deletar turma")
         raise
+
+def listar_alunos(db: Session, turma_id: int) -> list[str]:
+    turma = buscar_turma(db, turma_id)
+    return turma.alunos

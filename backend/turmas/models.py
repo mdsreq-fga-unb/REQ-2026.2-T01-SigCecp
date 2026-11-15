@@ -14,3 +14,4 @@ class Turma(Base):
     dias: Mapped[list[str]] = mapped_column(JSON, nullable=False)
     inicio: Mapped[time] = mapped_column(Time, nullable=False)
     termino: Mapped[time] = mapped_column(Time, nullable=False)
+    alunos: Mapped[list[str]] = mapped_column(JSON, nullable=False)

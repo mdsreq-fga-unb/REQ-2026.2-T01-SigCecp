@@ -13,8 +13,7 @@ class TurmaCreate(BaseModel):
     dias: list[DiaSemana] = Field(min_length=1)
     inicio: time
     termino: time
-   
-
+    alunos: list[str] = Field(default_factory=list)
     # Mantenha os validadores e o model_validator existentes.
 
     @field_validator("modalidade")
@@ -32,4 +31,3 @@ class TurmaCreate(BaseModel):
         if valor.microsecond:
             raise ValueError("Informe o horário com precisão de segundos, sem frações.")
         return valor
-
