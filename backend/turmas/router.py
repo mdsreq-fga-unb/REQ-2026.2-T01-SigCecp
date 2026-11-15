@@ -14,6 +14,7 @@ from backend.turmas.services import (
     criar_turma,
     deletar_turma,
     listar_turmas,
+    alunos_mock,
 )
 
 # Todas as rotas deste router são administrativas e exigem login.
@@ -143,7 +144,7 @@ def ver_alunos_associados(
     return templates.TemplateResponse(
         request=request,
         name="coordenacao/turmas/ver-alunos.html",
-        context={"turma": turma},
+        context={"turma": turma, "alunos": alunos_mock},
     )
 
 @router.post("/{turma_id}/alunos")
