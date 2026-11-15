@@ -50,9 +50,7 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC03",
-        "DEC04",
-        "DEC19",
-        "DEC20"
+        "DEC04"
       ],
       "pens": [],
       "its": [
@@ -113,8 +111,6 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC03",
-        "DEC19",
-        "DEC20",
         "DEC28"
       ],
       "pens": [],
@@ -173,8 +169,6 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC03",
-        "DEC19",
-        "DEC20",
         "DEC28",
         "DEC29"
       ],
@@ -236,9 +230,9 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC03",
-        "DEC20",
         "DEC24",
-        "DEC26"
+        "DEC33",
+        "DEC34"
       ],
       "pens": [],
       "its": [
@@ -292,7 +286,9 @@ window.ESCOPO = {
           "Pendente"
         ]
       ],
-      "decs": [],
+      "decs": [
+        "DEC34"
+      ],
       "pens": [],
       "its": [],
       "lacunas": []
@@ -344,7 +340,8 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC02",
-        "DEC17"
+        "DEC17",
+        "DEC34"
       ],
       "pens": [],
       "its": [],
@@ -403,9 +400,8 @@ window.ESCOPO = {
       "decs": [
         "DEC03",
         "DEC17",
-        "DEC20",
         "DEC24",
-        "DEC26"
+        "DEC33"
       ],
       "pens": [],
       "its": [
@@ -463,10 +459,9 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC03",
-        "DEC20",
         "DEC23",
-        "DEC26",
-        "DEC29"
+        "DEC29",
+        "DEC33"
       ],
       "pens": [],
       "its": [
@@ -786,10 +781,7 @@ window.ESCOPO = {
         "DEC03",
         "DEC06",
         "DEC07",
-        "DEC11",
-        "DEC12",
         "DEC13",
-        "DEC19",
         "DEC22"
       ],
       "pens": [],
@@ -857,10 +849,7 @@ window.ESCOPO = {
         "DEC06",
         "DEC07",
         "DEC08",
-        "DEC11",
-        "DEC12",
         "DEC13",
-        "DEC19",
         "DEC22"
       ],
       "pens": [],
@@ -922,11 +911,7 @@ window.ESCOPO = {
       "decs": [
         "DEC03",
         "DEC07",
-        "DEC11",
-        "DEC12",
         "DEC13",
-        "DEC19",
-        "DEC21",
         "DEC22"
       ],
       "pens": [],
@@ -991,11 +976,8 @@ window.ESCOPO = {
         "DEC03",
         "DEC07",
         "DEC08",
-        "DEC11",
-        "DEC12",
         "DEC13",
         "DEC17",
-        "DEC19",
         "DEC22"
       ],
       "pens": [],
@@ -1022,7 +1004,9 @@ window.ESCOPO = {
       "criterios": [
         "1. Dado um evento com todos os campos obrigatórios, quando a coordenação publica, então ele aparece no módulo público.",
         "2. Dado um evento com qualquer campo obrigatório vazio, quando a coordenação tenta publicar, então o sistema bloqueia a publicação e indica o que falta.",
-        "3. Dado um evento sem vídeo, quando publicado, então o sistema o aceita normalmente."
+        "3. Dado um evento sem vídeo, quando publicado, então o sistema o aceita normalmente.",
+        "4. Dado o formulário com algum campo obrigatório vazio, então o botão de publicar fica desabilitado.",
+        "5. Dado um evento gratuito, então as informações de pagamento não são exibidas."
       ],
       "rns": [
         "RN26",
@@ -1061,13 +1045,7 @@ window.ESCOPO = {
       "decs": [
         "DEC03",
         "DEC07",
-        "DEC09",
-        "DEC10",
-        "DEC11",
-        "DEC12",
         "DEC13",
-        "DEC14",
-        "DEC19",
         "DEC22",
         "DEC27"
       ],
@@ -1095,7 +1073,8 @@ window.ESCOPO = {
       "criterios": [
         "1. Dado um evento com data incorreta, quando a coordenação corrige e salva, então a nova data é exibida no módulo público.",
         "2. Dado que a coordenação esvaziou um campo obrigatório, quando tenta salvar, então o sistema bloqueia a gravação.",
-        "3. Dado um evento sem subtítulo, quando a coordenação salva, então a gravação é aceita, porque o subtítulo é opcional (DEC27)."
+        "3. Dado um evento sem subtítulo, quando a coordenação salva, então a gravação é aceita, porque o subtítulo é opcional (DEC27).",
+        "4. Dado o formulário com algum campo obrigatório vazio, então o botão de salvar fica desabilitado."
       ],
       "rns": [
         "RN26",
@@ -1135,12 +1114,7 @@ window.ESCOPO = {
         "DEC03",
         "DEC07",
         "DEC08",
-        "DEC09",
-        "DEC11",
-        "DEC12",
         "DEC13",
-        "DEC14",
-        "DEC19",
         "DEC22",
         "DEC27"
       ],
@@ -1206,11 +1180,8 @@ window.ESCOPO = {
         "DEC03",
         "DEC07",
         "DEC08",
-        "DEC11",
-        "DEC12",
         "DEC13",
         "DEC17",
-        "DEC19",
         "DEC22"
       ],
       "pens": [],
@@ -1273,12 +1244,7 @@ window.ESCOPO = {
       "decs": [
         "DEC03",
         "DEC07",
-        "DEC10",
-        "DEC11",
-        "DEC12",
         "DEC13",
-        "DEC19",
-        "DEC21",
         "DEC22"
       ],
       "pens": [],
@@ -1349,12 +1315,10 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC03",
-        "DEC05",
         "DEC18",
-        "DEC20",
         "DEC25",
-        "DEC26",
-        "DEC32"
+        "DEC32",
+        "DEC33"
       ],
       "pens": [],
       "its": [
@@ -1416,9 +1380,7 @@ window.ESCOPO = {
         ]
       ],
       "decs": [
-        "DEC03",
-        "DEC20",
-        "DEC26"
+        "DEC03"
       ],
       "pens": [],
       "its": [
@@ -1481,8 +1443,6 @@ window.ESCOPO = {
       ],
       "decs": [
         "DEC03",
-        "DEC20",
-        "DEC26",
         "DEC29"
       ],
       "pens": [],
@@ -1546,9 +1506,7 @@ window.ESCOPO = {
       "decs": [
         "DEC02",
         "DEC03",
-        "DEC17",
-        "DEC20",
-        "DEC26"
+        "DEC17"
       ],
       "pens": [
         "PEN23"
@@ -2655,13 +2613,6 @@ window.ESCOPO = {
   },
   "dec": [
     {
-      "id": "DEC01",
-      "data": "08/10/2026 (data registrada na própria ata; o arquivo está nomeado como 09/10)",
-      "texto": "O MVP foi refeito: após explicar o conceito de MVP ao cliente, o MoSCoW foi reclassificado, porque a primeira priorização (24/09) deixou cerca de 36 dos 42 requisitos no MVP. Os valores de negócio seguem vigentes; o conjunto do MVP foi substituído pela DEC03. Nota: a ata de 09/10 encerrou com o encaminhamento de que a matriz seria refeita e validada com o cliente; esse passo foi concluído em 30/10/2026 e registrado na DEC03",
-      "rfs": [],
-      "fonte": "Priorização, ata 09/10"
-    },
-    {
       "id": "DEC02",
       "data": "22/09/2026, reforçada em 24/09/2026 e prototipada em 30/10/2026",
       "texto": "Ações críticas (inativar aluno ou turma, aplicar medida disciplinar, remover) exigem confirmação antes de serem executadas. Era o RNF05, retirado em 14/11/2026 por ser comportamento funcional; a regra vale por esta decisão e pelos critérios de cada RF. Para conteúdo institucional e eventos, a tela de confirmação de remoção foi apresentada no protótipo",
@@ -2679,7 +2630,7 @@ window.ESCOPO = {
     {
       "id": "DEC03",
       "data": "30/10/2026",
-      "texto": "O MVP foi redefinido pela matriz 4 × 4 final: entram os RFs com valor de negócio 3 ou 4 e esforço técnico 1 ou 2 (18 de 43). Saem do MVP e viram pós-MVP os RFs com valor alto e esforço alto. O cliente validou esse escopo na reunião de 30/10",
+      "texto": "O MVP foi redefinido pela matriz 4 × 4 final: entram os RFs com valor de negócio 3 ou 4 e esforço técnico 1 ou 2 (18 de 43). Saem do MVP e viram pós-MVP os RFs com valor alto e esforço alto. O cliente validou esse escopo na reunião de 30/10. Esta matriz conclui a nova priorização começada em 08/10, quando o MoSCoW foi reclassificado com o cliente depois de explicar o conceito de MVP, porque a primeira priorização (24/09) deixava cerca de 36 dos 42 requisitos no MVP; os valores de negócio daquela reclassificação seguem vigentes",
       "rfs": [
         "RF00",
         "RF01",
@@ -2708,7 +2659,7 @@ window.ESCOPO = {
         "RF41",
         "RF42"
       ],
-      "fonte": "Backlog 10.2.2, priorização, ata 30/10"
+      "fonte": "Backlog 10.2.2, priorização, ata 08/10, ata 30/10"
     },
     {
       "id": "DEC04",
@@ -2717,16 +2668,7 @@ window.ESCOPO = {
       "rfs": [
         "RF00"
       ],
-      "fonte": "Ata 10/11 (protótipo aprovado, DEC20)"
-    },
-    {
-      "id": "DEC05",
-      "data": "Sem data registrada",
-      "texto": "Termo único (responsabilidade, imagem e dados) no cadastro de aluno. A base é o termo de responsabilidade da ficha de inscrição em papel do CECP, que não tem cláusulas de uso de imagem nem de dados; a equipe já acrescentou essas cláusulas ao termo do sistema, remodelando-o como a RN40 previa",
-      "rfs": [
-        "RF21"
-      ],
-      "fonte": "ficha de inscrição do CECP; confirmado pela equipe em 14/11/2026"
+      "fonte": "Ata 10/11 (protótipo aprovado)"
     },
     {
       "id": "DEC06",
@@ -2767,58 +2709,6 @@ window.ESCOPO = {
       "fonte": "Ata 21/10, RN28, RN30, RN34"
     },
     {
-      "id": "DEC09",
-      "data": "21/10/2026",
-      "texto": "Um evento só é publicado com todos os campos obrigatórios preenchidos, para não divulgar eventos vagos. O vídeo é opcional. Quando o evento é cobrado, valor, data limite e meio de pagamento (como Pix) são obrigatórios",
-      "rfs": [
-        "RF17",
-        "RF18"
-      ],
-      "fonte": "Ata 21/10, RN31, RN32"
-    },
-    {
-      "id": "DEC10",
-      "data": "21/10/2026",
-      "texto": "Os estados de um evento são em breve, em andamento e encerrado, sem outros. A coordenação tem uma lista com todos os eventos, para consultar e editar",
-      "rfs": [
-        "RF17",
-        "RF20"
-      ],
-      "fonte": "Ata 21/10, RN33"
-    },
-    {
-      "id": "DEC11",
-      "data": "21/10/2026",
-      "texto": "Identidade visual do módulo público: cores predominantes preto, branco e vermelho, com amarelo para destaque. O cliente enviará a logo atualizada",
-      "rfs": [
-        "RF13",
-        "RF14",
-        "RF15",
-        "RF16",
-        "RF17",
-        "RF18",
-        "RF19",
-        "RF20"
-      ],
-      "fonte": "Ata 21/10, ata 09/10"
-    },
-    {
-      "id": "DEC12",
-      "data": "30/10/2026",
-      "texto": "O protótipo das telas de conteúdo institucional e eventos (18 telas) foi aprovado pelo cliente, e a construção pode começar a partir de 02/11/2026, com previsão de 3 a 4 semanas para o MVP",
-      "rfs": [
-        "RF13",
-        "RF14",
-        "RF15",
-        "RF16",
-        "RF17",
-        "RF18",
-        "RF19",
-        "RF20"
-      ],
-      "fonte": "Ata 30/10, evidência do design do usuário"
-    },
-    {
       "id": "DEC13",
       "data": "30/10/2026",
       "texto": "As telas da coordenação (publicar, editar, listar e remover) serão feitas somente para computador. Para celular, há quatro telas públicas: página institucional, publicação, lista de eventos e evento",
@@ -2831,16 +2721,6 @@ window.ESCOPO = {
         "RF18",
         "RF19",
         "RF20"
-      ],
-      "fonte": "Ata 30/10"
-    },
-    {
-      "id": "DEC14",
-      "data": "30/10/2026",
-      "texto": "No formulário de evento, o botão de publicar fica desabilitado enquanto faltar campo obrigatório. Evento gratuito não exibe as informações de pagamento",
-      "rfs": [
-        "RF17",
-        "RF18"
       ],
       "fonte": "Ata 30/10"
     },
@@ -2897,53 +2777,6 @@ window.ESCOPO = {
       "fonte": "Ata 08/10 (pré-matrícula com aprovação presencial); consolidação pedida na issue #24"
     },
     {
-      "id": "DEC19",
-      "data": "10/11/2026",
-      "texto": "O cliente testou o sistema construído e aceitou o acesso (RF00 a RF02) e o conteúdo institucional e eventos (RF13 a RF20). O teste do encerramento de sessão (RF00) foi confirmado pela equipe em 14/11, pois não aparece na transcrição. O sistema rodava no computador da equipe, sem ambiente publicado",
-      "rfs": [
-        "RF00",
-        "RF01",
-        "RF02",
-        "RF13",
-        "RF14",
-        "RF15",
-        "RF16",
-        "RF17",
-        "RF18",
-        "RF19",
-        "RF20"
-      ],
-      "fonte": "Ata 10/11"
-    },
-    {
-      "id": "DEC20",
-      "data": "10/11/2026",
-      "texto": "O representante do cliente aprovou o protótipo das telas de acesso, turmas, alunos e coordenadores. O retorno das demais pessoas do CECP, recebido depois da reunião, também foi positivo, sem ajustes pedidos (confirmado pela equipe em 14/11/2026)",
-      "rfs": [
-        "RF00",
-        "RF01",
-        "RF02",
-        "RF03",
-        "RF06",
-        "RF07",
-        "RF21",
-        "RF22",
-        "RF23",
-        "RF24"
-      ],
-      "fonte": "Ata 10/11"
-    },
-    {
-      "id": "DEC21",
-      "data": "10/11/2026",
-      "texto": "Ao clicar em uma imagem de uma publicação, ela se expande. Pedido do cliente durante o teste",
-      "rfs": [
-        "RF15",
-        "RF20"
-      ],
-      "fonte": "Ata 10/11"
-    },
-    {
       "id": "DEC22",
       "data": "10/11/2026",
       "texto": "O tamanho da letra do sistema é mantido, apesar do pedido do José Ivan por letras maiores, porque os demais que viram as telas o acharam adequado. Uma letra maior pode ser avaliada para a página institucional \"Quem somos\", depois do MVP",
@@ -2981,28 +2814,13 @@ window.ESCOPO = {
     {
       "id": "DEC25",
       "data": "14/11/2026",
-      "texto": "Cadastro presencial e matrícula online são fluxos distintos. No cadastro presencial, a coordenação registra um termo único (responsabilidade, uso de imagem e dados, DEC05). Na matrícula online, os aceites de dados e de imagem continuam separados (RN16). Encerra a PEN03",
+      "texto": "Cadastro presencial e matrícula online são fluxos distintos. No cadastro presencial, a coordenação registra um termo único (responsabilidade, uso de imagem e dados). A base é o termo de responsabilidade da ficha de inscrição em papel do CECP, que não tinha cláusulas de imagem nem de dados; a equipe acrescentou essas cláusulas ao termo do sistema, como a RN40 previa. Na matrícula online, os aceites de dados e de imagem continuam separados (RN16). Encerra a PEN03",
       "rfs": [
         "RF21",
         "RF38",
         "RF39"
       ],
-      "fonte": "Confirmado pela equipe em 14/11/2026"
-    },
-    {
-      "id": "DEC26",
-      "data": "14/11/2026",
-      "texto": "Turmas (RF03, RF06 e RF07) e alunos (RF21 a RF24) serão construídos juntos e entregues funcionando no mesmo incremento, o que resolve a dependência entre associar aluno à turma e cadastrar aluno. A iteração seguinte fica para iterar sobre esse incremento, com os ajustes do retorno do cliente. Encerra a PEN11",
-      "rfs": [
-        "RF03",
-        "RF06",
-        "RF07",
-        "RF21",
-        "RF22",
-        "RF23",
-        "RF24"
-      ],
-      "fonte": "Decisão da equipe em 14/11/2026"
+      "fonte": "Confirmado pela equipe em 14/11/2026; ficha de inscrição do CECP"
     },
     {
       "id": "DEC27",
@@ -3036,13 +2854,6 @@ window.ESCOPO = {
       "fonte": "Decisão da equipe em 14/11/2026"
     },
     {
-      "id": "DEC30",
-      "data": "30/10/2026",
-      "texto": "Na matriz final, a equipe reavaliou a posição de esforço dos RFs, e a coluna \"Esforço na matriz\" da priorização é a vigente, mesmo quando difere do arredondamento da média dos votos. No empate da moda, vale o maior valor (estimativa mais conservadora). Encerra a PEN06",
-      "rfs": [],
-      "fonte": "Priorização; confirmado pela equipe em 14/11/2026"
-    },
-    {
       "id": "DEC31",
       "data": "14/11/2026",
       "texto": "Não serão criados agora RNFs de backup e recuperação de dados nem de comunicação segura (HTTPS). Encerra a PEN17",
@@ -3055,6 +2866,29 @@ window.ESCOPO = {
       "texto": "Não haverá migração em lote dos dados existentes. Depois da entrega, a coordenação cadastra aos poucos os alunos ativos pelo próprio sistema (RF21), usando as fichas em papel, com apoio da equipe na primeira semana. Encerra a PEN19",
       "rfs": [
         "RF21"
+      ],
+      "fonte": "Decisão da equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC33",
+      "data": "14/11/2026",
+      "texto": "Turmas (RF03, RF06 e RF07) foram construídas na Iteração 8, e alunos (RF21 a RF24) ficam para a Iteração 10. RF03 e RF07 estão prontos; RF06 tem a tela e o serviço prontos, mas só termina com o RF21, porque a associação precisa de aluno cadastrado. Até lá, as turmas usam alunos de exemplo. O teste de aceite de RF03, RF06 e RF07 com o cliente passa para a Iteração 10. A equipe chegou a decidir construir turmas e alunos juntos, no mesmo incremento, mas construiu turmas primeiro. Encerra a PEN11",
+      "rfs": [
+        "RF03",
+        "RF06",
+        "RF07",
+        "RF21"
+      ],
+      "fonte": "Decisão da equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC34",
+      "data": "14/11/2026",
+      "texto": "Editar e remover turma, que já existem no código da Iteração 8, ficam fora do MVP e sem acesso pela tela (os links estão desativados na lista de turmas). Editar turma é o RF04, que continua pós-MVP. Remover turma não é requisito: apagar o registro contraria o RF05, que pede inativar a turma preservando o histórico. Antes de liberar essas ações, o RF04 e o RF05 precisam ser detalhados e validados",
+      "rfs": [
+        "RF03",
+        "RF04",
+        "RF05"
       ],
       "fonte": "Decisão da equipe em 14/11/2026"
     }
@@ -3083,7 +2917,7 @@ window.ESCOPO = {
         "RF38",
         "RF39"
       ],
-      "acao": "Definir com o cliente junto do modelo de termo (DEC05)"
+      "acao": "Definir com o cliente junto do modelo de termo (DEC25)"
     },
     {
       "id": "PEN15",
@@ -3174,7 +3008,7 @@ window.ESCOPO = {
         "RF13",
         "RF21"
       ],
-      "acao": "Encerrada em 14/11/2026 pela DEC26: turmas e alunos serão construídos juntos"
+      "acao": "Encerrada em 14/11/2026 pela DEC33: turmas na Iteração 8; RF06 termina junto com o RF21"
     },
     {
       "id": "PEN01",
@@ -3234,7 +3068,7 @@ window.ESCOPO = {
         "RF23",
         "RF24"
       ],
-      "acao": "Encerrada em 14/11/2026: não houve gravação nem ata do detalhamento; o resultado foi validado pelo cliente no protótipo aprovado em 10/11 (DEC20) (confirmado pela equipe)"
+      "acao": "Encerrada em 14/11/2026: não houve gravação nem ata do detalhamento; o resultado foi validado pelo cliente no protótipo aprovado em 10/11 (confirmado pela equipe)"
     },
     {
       "id": "PEN18",
@@ -3246,7 +3080,7 @@ window.ESCOPO = {
       "id": "PEN06",
       "texto": "Reconciliar as notas de esforço da seção 5 da priorização com a posição de esforço da matriz final (30 RFs divergem do arredondamento do ET) e documentar a regra de desempate quando a moda dos votos empata",
       "rfs": [],
-      "acao": "Encerrada em 14/11/2026 pela DEC30: a posição da matriz é a vigente; desempate pelo maior valor"
+      "acao": "Encerrada em 14/11/2026 com a regra registrada na priorização: a posição da matriz é a vigente; desempate pelo maior valor"
     },
     {
       "id": "PEN07",
@@ -3290,7 +3124,7 @@ window.ESCOPO = {
       "foco": "Planejamento de Requisitos: Validação final da lista de RFs e RNFs (29/09); avaliação de valor de negócio com o cliente e de esforço técnico pela equipe; construção da matriz 4×4; definição do MVP",
       "entregas": "Lista validada de RFs/RNFs; matriz 4×4 de priorização; lista de RFs selecionados para o MVP",
       "rfs": [],
-      "situacao": "Concluída. A votação de esforço da equipe ocorreu em 26/09; a matriz e o MVP foram refeitos depois (DEC01, DEC03)"
+      "situacao": "Concluída. A votação de esforço da equipe ocorreu em 26/09; a matriz e o MVP foram refeitos depois (DEC03)"
     },
     {
       "nome": "Iteração 3",
@@ -3298,7 +3132,7 @@ window.ESCOPO = {
       "foco": "Planejamento de Requisitos: definição do backlog, DoR e DoD com base no MVP validado; preparação da documentação para a entrega da Unidade 2",
       "entregas": "Backlog, DoR e DoD definidos",
       "rfs": [],
-      "situacao": "Concluída. Nova priorização com o cliente em 08/10 (ata, DEC01); DoR e DoD escritos em 10/10"
+      "situacao": "Concluída. Nova priorização com o cliente em 08/10 (ata, DEC03); DoR e DoD escritos em 10/10"
     },
     {
       "nome": "Iteração 4",
@@ -3340,7 +3174,7 @@ window.ESCOPO = {
         "RF19",
         "RF20"
       ],
-      "situacao": "Concluída. Protótipo de CP3 aprovado e MVP validado em 30/10 (ata, DEC03, DEC12)"
+      "situacao": "Concluída. Protótipo de CP3 aprovado e MVP validado em 30/10 (ata, DEC03)"
     },
     {
       "nome": "Iteração 7",
@@ -3352,7 +3186,7 @@ window.ESCOPO = {
         "RF01",
         "RF02"
       ],
-      "situacao": "Concluída. RF00 a RF02 e RF13 a RF20 construídos; o cliente testou e aceitou RF00 a RF02 e RF13 a RF20 em 10/11 (ata, DEC19)"
+      "situacao": "Concluída. RF00 a RF02 e RF13 a RF20 construídos; o cliente testou e aceitou RF00 a RF02 e RF13 a RF20 em 10/11 (ata)"
     },
     {
       "nome": "Iteração 8",
@@ -3364,7 +3198,7 @@ window.ESCOPO = {
         "RF06",
         "RF07"
       ],
-      "situacao": "Concluída. Design do Usuário: o protótipo de turmas (RF03, RF06 e RF07) e de alunos (RF21 a RF24) foi aprovado pelo cliente em 10/11 (ata, DEC20). Construção: RF03 e RF07 implementados, com testes automatizados; RF06 implementado em parte, pois a gravação do aluno depende do cadastro de alunos (RF21), construído junto na Iteração 10 (DEC26). Pendentes: teste de aceite com o cliente e capacitação inicial da ONG, que passam para a Iteração 10"
+      "situacao": "Concluída. Design do Usuário: o protótipo de turmas (RF03, RF06 e RF07) e de alunos (RF21 a RF24) foi aprovado pelo cliente em 10/11 (ata). Construção: RF03 e RF07 implementados, com testes automatizados; RF06 implementado em parte, pois a gravação do aluno depende do cadastro de alunos (RF21), que fica para a Iteração 10 (DEC33). Não há registro de reunião com o cliente em 12/11 ou 13/11. Pendentes: teste de aceite com o cliente e capacitação inicial da ONG, que passam para a Iteração 10"
     },
     {
       "nome": "Iteração 9",

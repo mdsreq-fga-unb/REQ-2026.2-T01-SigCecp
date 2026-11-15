@@ -2443,24 +2443,25 @@
 <li><strong>Google Meet ou Teams:</strong> utilizado para as reuniões semanais da equipe e para as reuniões com o cliente.</li>
 <li><strong>Discord:</strong> utilizado eventualmente pela equipe para comunicação interna, com uso reduzido no momento por limitações na transmissão de tela.</li>
 <li><strong>GitHub Projects:</strong> ferramenta de gerenciamento do backlog, controle de tarefas e acompanhamento do progresso do projeto.</li>
-<li><strong>GitHub Issues:</strong> utilizado para o registro formal de decisões, aprovações, pendências e solicitações de mudança ao longo do projeto, com labels específicas para categorização (ex.: <code>decision</code>, <code>pending</code>, <code>change-request</code>).</li>
+<li><strong>GitHub Issues:</strong> utilizado para as tarefas de construção de cada RF do MVP.</li>
 </ul>
 <h3 id="disponibilidade-do-cliente-e-stakeholders">Disponibilidade do Cliente e Stakeholders</h3>
 <p>O representante do cliente, Pedro Augusto Cajado Coutinho, confirmou disponibilidade para reuniões via videoconferência nas <strong>segundas, quartas e sextas-feiras, a partir das 17h</strong>, com possibilidade de encontros adicionais aos finais de semana em caso de necessidade.</p>
 <p>Ivan (professor de jiu-jitsu do CECP, também envolvido na administração do projeto) e Sandra (dona do projeto/responsável administrativa) confirmaram disponibilidade em <strong>qualquer dia da semana, a partir das 20:30</strong>, com preferência por encontros <strong>presenciais</strong>.</p>
-<p>Com base nessa disponibilidade, a equipe adota a seguinte rotina real de reuniões:</p>
+<p>Com base nessa disponibilidade, a equipe planejou a seguinte rotina de reuniões:</p>
 <ul>
-<li><strong>Reunião de equipe (semanal):</strong> toda semana, para alinhamento interno de progresso e prioridades.</li>
-<li><strong>Reunião com Pedro (semanal):</strong> uma reunião por semana de desenvolvimento, dentro da janela seg/qua/sex 17h, para apresentar avanços e validar entregas em andamento.</li>
+<li><strong>Reunião de equipe (planejada como semanal):</strong> para alinhamento interno de progresso e prioridades.</li>
+<li><strong>Reunião com Pedro (planejada como semanal):</strong> dentro da janela seg/qua/sex 17h, para apresentar avanços e validar entregas em andamento.</li>
 <li><strong>Reunião presencial com Ivan e/ou Sandra (quando necessário):</strong> agendada conforme a demanda de validação de funcionalidades ligadas à gestão de turmas (Ivan) ou às decisões administrativas/financeiras (Sandra), aproveitando a disponibilidade noturna presencial de ambos.</li>
 <li><strong>Validações assíncronas por WhatsApp:</strong> usadas quando um ajuste é pequeno o suficiente para não exigir uma reunião completa (ex.: aprovação de um texto de tela, confirmação de uma regra pontual), evitando sobrecarregar a agenda do cliente com reuniões desnecessárias.</li>
 </ul>
-<p>Essa rotina foi desenhada para caber dentro do ritmo real de trabalho da equipe (reuniões internas semanais) sem exigir mais disponibilidade do cliente do que ele já confirmou.</p>
+<p>Na prática, a frequência semanal não se manteve. As reuniões com o cliente registradas em ata são as de 17/09, 22/09, 24/09, 26/09, 08/10, 21/10, 30/10 e 10/11/2026, concentradas nos marcos de elicitação, priorização, detalhamento, avaliação de protótipo e teste de aceite; na Iteração 4 não houve reunião com o cliente. As reuniões de equipe têm ata até 26/09/2026. As datas previstas para as próximas reuniões com o cliente estão na coluna de reuniões do <a href="../../../cronograma/6_cronograma/">cronograma</a>.</p>
 <h3 id="registro-de-decisoes-aprovacoes-e-mudancas">Registro de Decisões, Aprovações e Mudanças</h3>
-<p>Todas as decisões, aprovações, pendências e solicitações de mudança são registradas em:</p>
+<p>Cada tipo de registro tem um lugar só:</p>
 <ul>
-<li><strong>Issues do GitHub</strong>, categorizadas por labels específicas;</li>
-<li><strong>Ata resumida das reuniões</strong> com o cliente, publicada no site do projeto (GitHub Pages), contendo decisões tomadas e pendências em aberto.</li>
+<li><strong>Decisões e pendências</strong> (DEC e PEN): na página de <a href="../../escopo/decisoes/">decisões e pendências</a>, que alimenta o <a href="../../../painel/">painel do escopo</a>. Uma mudança no escopo pedida pelo cliente também é registrada ali, como decisão;</li>
+<li><strong>Aprovações e testes do cliente</strong>: na <strong>ata</strong> da reunião, publicada no site do projeto, e na seção <em>Andamento</em> da ficha de cada requisito, que aponta para essa ata;</li>
+<li><strong>Tarefas de construção</strong>: nas <strong>Issues do GitHub</strong>.</li>
 </ul>
 <h2 id="73-processo-de-validacao">7.3 Processo de Validação</h2>
 <p>Esta seção explica <strong>quando</strong> cada acordo é aplicado e quem participa. Os critérios do DoR e do DoD estão definidos uma única vez, na <a href="../9_dor_e_dod/">seção 9</a>; aqui eles apenas são referenciados.</p>
@@ -2593,6 +2594,20 @@
 <td style="text-align: left;">—</td>
 <td style="text-align: left;">—</td>
 </tr>
+<tr>
+<td style="text-align: left;">1.7</td>
+<td style="text-align: left;">14/11/2026</td>
+<td style="text-align: left;">Rotina de reuniões: a frequência semanal passa a ser a planejada, e o texto registra as reuniões que de fato ocorreram</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.8</td>
+<td style="text-align: left;">14/11/2026</td>
+<td style="text-align: left;">Registro de decisões: decisões e pendências ficam na página de decisões e no painel, aprovações nas atas e nas fichas, e as Issues do GitHub ficam para as tarefas de construção</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+</tr>
 </tbody>
 </table></div>
 
@@ -2655,7 +2670,7 @@
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/escopo.js?v=55585c31"></script>
+        <script src="../../../assets/escopo.js?v=cccad77d"></script>
       
         <script src="../../../assets/painel.js?v=50cb2daf"></script>
       
