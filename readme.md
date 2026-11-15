@@ -101,6 +101,46 @@ Se houver diferenças, reconcilie-as antes de marcar a baseline. Utilize sempre 
 
 Nenhum desses comandos é executado automaticamente durante a inicialização da aplicação.
 
+#### Banco com tabelas, mas com a versão do Alembic desatualizada
+
+Se `python -m alembic upgrade head` falhar dizendo que uma tabela já existe, o banco pode ter as tabelas de revisões posteriores enquanto a tabela `alembic_version` ainda registra uma revisão antiga. Confira a versão registrada com:
+
+```bash
+python -m alembic current
+```
+
+Compare as tabelas e colunas existentes com as revisões em `alembic/versions/`. Depois de fazer um backup do arquivo do banco, marque a última revisão que o banco já contém e aplique as seguintes. Por exemplo, para um banco que já tem as tabelas de administradores:
+
+```bash
+python -m alembic stamp 0003_cria_administradores
+python -m alembic upgrade head
+python -m alembic check
+```
+
+O `alembic check` deve responder `No new upgrade operations detected.`, indicando que o banco corresponde aos modelos.
+
+### 4.3. Ao criar ou alterar um modelo
+
+A aplicação não cria tabelas sozinha. Todo modelo novo ou alterado precisa de uma migração; sem ela, as rotas falham com `no such table`.
+
+1. Importe o módulo de modelos em `alembic/env.py`, junto dos outros (`from backend.<modulo> import models as <modulo>_models`).
+2. Gere a revisão e revise o arquivo criado em `alembic/versions/`:
+
+```bash
+python -m alembic revision --autogenerate -m "cria <tabela>"
+```
+
+3. Aplique a migração e confira se o banco corresponde aos modelos:
+
+```bash
+python -m alembic upgrade head
+python -m alembic check
+```
+
+4. Inclua o arquivo da revisão no mesmo commit do modelo.
+
+O teste `tests/eventos/test_eventos_migrations.py` aplica todas as migrações em um banco vazio e confere a lista de tabelas; ao criar uma tabela, inclua-a nesse teste.
+
 ## 5. Executar a aplicação
 
 Com o ambiente virtual ativado e as migrações aplicadas, inicie o servidor de desenvolvimento:
@@ -302,7 +342,41 @@ A documentação de RF20 não define o fuso nem eventos que atravessam a meia-no
 
 Se o término for anterior ao início, a duração noturna não pode ser representada corretamente sem uma regra ou data final definida pelo grupo.
 
-## 9. Como sair do ambiente virtual
+## 9. Gestão de turmas
+
+O módulo de turmas (`backend/turmas/`) atende ao RF03 e às operações de edição e remoção de turmas. A migração `0004_cria_turmas` cria a tabela `turmas`, com modalidade, dias da semana (lista em JSON), horário de início e horário de término.
+
+### 9.1. Rotas
+
+| Método | Rota | Finalidade |
+|---|---|---|
+| GET | `/coordenacao/turmas` | Lista as turmas cadastradas. |
+| GET | `/coordenacao/turmas/novo` | Apresenta o formulário de cadastro. |
+| POST | `/coordenacao/turmas/novo` | Cadastra uma turma. |
+| GET | `/coordenacao/turmas/{turma_id}/editar` | Apresenta o formulário de edição. |
+| POST | `/coordenacao/turmas/{turma_id}/editar` | Atualiza a turma. |
+| GET | `/coordenacao/turmas/{turma_id}/remover` | Apresenta a confirmação de remoção. |
+| POST | `/coordenacao/turmas/{turma_id}/remover` | Remove a turma. |
+
+Todas exigem login de administrador.
+
+### 9.2. Regras
+
+- Todos os campos são obrigatórios, e é preciso escolher ao menos um dia da semana.
+- Não é permitido cadastrar duas turmas com a mesma modalidade, os mesmos dias e os mesmos horários: o serviço retorna erro 409.
+- Os horários são locais, sem fuso nem frações de segundo.
+
+### 9.3. Páginas
+
+Os templates ficam em `frontend/coordenacao/turmas/`:
+
+- `lista-turma.html`: tabela com modalidade, dias e horário, e as ações de editar e remover;
+- `cadastrar-turma.html` e `editar-turma.html`: formulários com os mesmos campos;
+- `remover-turma.html`: confirmação antes da remoção definitiva.
+
+A quantidade de alunos por turma, prevista no protótipo, entra quando houver o cadastro de alunos e a associação à turma (RF06 e RF07).
+
+## 10. Como sair do ambiente virtual
 
 Quando terminar de trabalhar, você pode desativar o ambiente virtual com:
 
@@ -314,7 +388,7 @@ Isso não apaga o ambiente virtual; apenas encerra a ativação naquele terminal
 
 Na próxima vez que abrir um terminal para trabalhar no projeto, entre na pasta do projeto e ative o ambiente virtual novamente.
 
-## 10. Estrutura principal do projeto
+## 11. Estrutura principal do projeto
 
 A organização principal dos diretórios é:
 
@@ -323,8 +397,14 @@ SigCECP/
 ├── alembic/
 │   └── versions/
 ├── backend/
+│   ├── auth/
 │   ├── eventos/
 │   │   ├── media.py
+│   │   ├── models.py
+│   │   ├── router.py
+│   │   ├── schemas.py
+│   │   └── services.py
+│   ├── turmas/
 │   │   ├── models.py
 │   │   ├── router.py
 │   │   ├── schemas.py
@@ -344,12 +424,14 @@ SigCECP/
 │   │   └── style/
 │   ├── coordenacao/
 │   │   ├── conteudo/
-│   │   └── eventos/
+│   │   ├── eventos/
+│   │   └── turmas/
 │   ├── publico/
 │   └── base.html
+├── tests/
 ├── requirements.txt
 ├── alembic.ini
-└── README.md
+└── readme.md
 ```
 
 O diretório `backend` concentra a lógica da aplicação, incluindo rotas, modelos, schemas, serviços e persistência.
@@ -360,11 +442,11 @@ O diretório `backend/media` armazena os arquivos enviados pelos usuários.
 
 O diretório `alembic` contém as configurações e revisões utilizadas para controlar a evolução do banco de dados.
 
-## 11. Autenticação da área administrativa
+## 12. Autenticação da área administrativa
 
 Somente `/coordenacao/*` exige login; todo o restante do site é público. O administrador é um registro da tabela `administradores` (senha apenas como hash bcrypt).
 
-### 11.1. Configuração
+### 12.1. Configuração
 
 1. Copie `.env.example` para `.env` e defina `AUTH_SECRET_KEY` (obrigatória em produção; `python -c "import secrets; print(secrets.token_urlsafe(48))"`). Em produção use `APP_ENV=production` e sirva por HTTPS.
 2. Aplique as migrações (`python -m alembic upgrade head`); a revisão `0003_cria_administradores` cria as tabelas de administrador e de refresh tokens.
@@ -375,7 +457,7 @@ python -m backend.auth.criar_admin --usuario CECP0001
 python -m backend.auth.criar_admin --usuario CECP0001 --redefinir-senha   # troca a senha e encerra as sessões
 ```
 
-### 11.2. Rotas
+### 12.2. Rotas
 
 | Método | Rota | Finalidade |
 |---|---|---|
@@ -385,7 +467,7 @@ python -m backend.auth.criar_admin --usuario CECP0001 --redefinir-senha   # troc
 
 Sessão: access token (JWT, 15 min) e refresh token (opaco, 7 dias de inatividade, teto de 30 dias) em cookies `HttpOnly` distintos. Com o access expirado, a renovação é transparente (`backend/auth/middleware.py`).
 
-### 11.3. Ao criar novas rotas ou formulários administrativos
+### 12.3. Ao criar novas rotas ou formulários administrativos
 
 - Rotas sob `/coordenacao` devem estar em um router com `dependencies=PROTECAO_ADMIN` (`backend.auth.dependencies`). Um teste (`test_todas_as_rotas_administrativas_exigem_admin`) falha se alguma ficar sem proteção.
 - Todo `<form method="post">` administrativo deve conter `{{ csrf_input }}`.

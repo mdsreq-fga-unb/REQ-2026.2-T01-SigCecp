@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block titulo %}Turmas | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/lista-evento.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+{% endblock %}
+
+{% block cabecalho %}
+<header class="topo">
+  <div class="container topo__linha">
+    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
+      <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+    </a>
+
+    <div class="topo__direita">
+      <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_sair.html" %}
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block corpo %}
+{% set ordem = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'] %}
+{% set nomes = {'segunda': 'Segunda', 'terca': 'Terça', 'quarta': 'Quarta', 'quinta': 'Quinta',
+                'sexta': 'Sexta', 'sabado': 'Sábado', 'domingo': 'Domingo'} %}
+{% set total = turmas|length %}
+
+<main class="pagina container">
+
+  <header class="eventos__cabecalho">
+    <div class="eventos__introducao">
+      <nav class="trilha" aria-label="Você está em">
+        <ol>
+          <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+          <li aria-current="page">Turmas</li>
+        </ol>
+      </nav>
+
+      <h1>Turmas do CECP</h1>
+
+      <p class="eventos__descricao">
+        Cadastre as turmas com modalidade, dias e horários.
+      </p>
+    </div>
+
+    <a class="botao-novo" href="{{ url_for('cadastrar_turma') }}">
+        Nova turma
+    </a>
+  </header>
+
+  <section class="eventos__lista">
+
+    <div class="eventos__lista-cabecalho">
+      <h2>Todas as turmas</h2>
+      <p>Horário de Brasília</p>
+    </div>
+
+    <div class="tabela__container">
+
+      <table class="tabela-eventos">
+        <thead>
+          <tr>
+            <th scope="col">Modalidade</th>
+            <th scope="col">Dias</th>
+            <th scope="col">Horário</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for turma in turmas %}
+          <tr>
+            <td>
+              <div class="evento__informacao">
+                <strong>{{ turma.modalidade }}</strong>
+              </div>
+            </td>
+
+            <td>
+              <div class="evento__informacao">
+                <span>{% for dia in ordem if dia in turma.dias %}{{ nomes[dia] }}{{ ', ' if not loop.last }}{% endfor %}</span>
+              </div>
+            </td>
+
+            <td>
+              <div class="evento__informacao">
+                <span>{{ turma.inicio.strftime('%H:%M') }} às {{ turma.termino.strftime('%H:%M') }}</span>
+              </div>
+            </td>
+
+            <td>
+              <div class="evento__acoes">
+                <!-- <a class="acao acao--editar" href="{{ url_for('editar_turma', turma_id=turma.id) }}">
+                  Editar
+                </a>
+                <a class="acao acao--remover" href="{{ url_for('confirmar_remocao_turma', turma_id=turma.id) }}">
+                  Remover
+                </a> -->
+                <a class="acao acao--ver-alunos" href="{{ url_for('ver_alunos_associados', turma_id=turma.id) }}">
+                  Ver Alunos
+                </a> 
+              </div>
+            </td>
+          </tr>
+          {% else %}
+          <tr>
+            <td class="tabela__vazio" colspan="4">Nenhuma turma cadastrada ainda.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="tabela__rodape">
+        {{ total }} turma{{ 's' if total != 1 }} cadastrada{{ 's' if total != 1 }}
+      </div>
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}

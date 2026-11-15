@@ -128,3 +128,33 @@ def salvar_remocao_turma(
         request.url_for("lista_turma"),
         status_code=303,
     )
+    
+#------------------------------------
+# Ver Alunos Associados
+#------------------------------------
+
+@router.get("/{turma_id}/alunos", name="ver_alunos_associados")
+def ver_alunos_associados(
+    turma_id: int,
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    turma = buscar_turma(db, turma_id)
+    return templates.TemplateResponse(
+        request=request,
+        name="coordenacao/turmas/ver-alunos.html",
+        context={"turma": turma},
+    )
+
+@router.post("/{turma_id}/alunos")
+def salvar_alunos_associados(
+    turma_id: int,
+    request: Request,
+    dados: Annotated[TurmaCreate, Form()],
+    db: Session = Depends(get_db),
+):
+    atualizar_turma(db, turma_id, dados)
+    return RedirectResponse(
+        request.url_for("ver_alunos_associados", turma_id=turma_id),
+        status_code=303,
+    )

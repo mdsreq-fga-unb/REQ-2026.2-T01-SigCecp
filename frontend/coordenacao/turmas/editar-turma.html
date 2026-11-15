@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block titulo %}Editar Turma | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/cadastrar-turma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+{% endblock %}
+
+{% block cabecalho %}
+<header class="topo">
+  <div class="container topo__linha">
+    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
+      <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+    </a>
+
+    <div class="topo__direita">
+      <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_sair.html" %}
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block corpo %}
+
+<main class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+      <li><a href="{{ url_for('lista_turma') }}">Turmas</a></li>
+      <li aria-current="page">Editar turma</li>
+    </ol>
+  </nav>
+
+  <h1 class="pagina__titulo">Editar turma</h1>
+  <p class="pagina__subtitulo">Altere a modalidade ou a programação da turma.</p>
+
+  <div class="aviso">
+    <svg class="icone" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+    </svg>
+    <div>
+      <p class="aviso__titulo">Informações necessárias para salvar</p>
+      <p>Os campos com <span class="obrigatorio">*</span> são obrigatórios. A turma será identificada pela modalidade, pelos dias e pelos horários.</p>
+    </div>
+  </div>
+
+  <form class="formulario" method="post" action="{{ url_for('salvar_edicao_turma', turma_id=turma.id) }}" novalidate>
+    {{ csrf_input }}
+    <section class="cartao" aria-labelledby="titulo-dados">
+      <h2 class="cartao__titulo" id="titulo-dados">
+        <span class="cartao__numero">01</span> Dados da turma
+      </h2>
+
+      <div class="campo">
+        <label for="modalidade">Modalidade <span class="obrigatorio">*</span></label>
+        <input type="text" id="modalidade" name="modalidade" value="{{ turma.modalidade }}" required>
+      </div>
+
+      <fieldset class="grupo">
+        <legend>Dias <span class="obrigatorio">*</span></legend>
+        <div class="dias">
+          {% for valor, rotulo in [
+            ('segunda', 'Segunda'), ('terca', 'Terça'), ('quarta', 'Quarta'),
+            ('quinta', 'Quinta'), ('sexta', 'Sexta'), ('sabado', 'Sábado'),
+            ('domingo', 'Domingo')] %}
+          <label class="dia">
+            <input class="dia__input" type="checkbox" name="dias" value="{{ valor }}" {{ 'checked' if valor in turma.dias }}>
+            <span class="dia__rotulo">{{ rotulo }}</span>
+          </label>
+          {% endfor %}
+        </div>
+        <p class="ajuda" id="resumo-dias" aria-live="polite">Nenhum dia selecionado.</p>
+      </fieldset>
+
+      <div class="horarios">
+        <div class="campo">
+          <label for="inicio">Horário de início <span class="obrigatorio">*</span></label>
+          <input type="time" id="inicio" name="inicio" value="{{ turma.inicio.strftime('%H:%M') }}" required>
+        </div>
+        <div class="campo">
+          <label for="termino">Horário de término <span class="obrigatorio">*</span></label>
+          <input type="time" id="termino" name="termino" value="{{ turma.termino.strftime('%H:%M') }}" required>
+        </div>
+      </div>
+      <p class="ajuda">Os horários informados se aplicam a todos os dias selecionados. Horário de Brasília.</p>
+    </section>
+
+    <div class="rodape">
+      <p class="rodape__texto">As alterações passam a valer assim que forem salvas.</p>
+      <div class="rodape__acoes">
+        <a class="botao botao--claro" href="{{ url_for('lista_turma') }}">Cancelar</a>
+        <button class="botao botao--vermelho" type="submit">Salvar alterações</button>
+      </div>
+    </div>
+  </form>
+
+  <p class="status" role="status"></p>
+</main>
+
+<script>
+  const nomes = { segunda: 'segunda', terca: 'terça', quarta: 'quarta', quinta: 'quinta',
+                  sexta: 'sexta', sabado: 'sábado', domingo: 'domingo' };
+  const resumo = document.getElementById('resumo-dias');
+  const caixas = document.querySelectorAll('.dia__input');
+
+  function atualizarResumo() {
+    const sel = [...caixas].filter(c => c.checked).map(c => c.value);
+    if (!sel.length) { resumo.textContent = 'Nenhum dia selecionado.'; return; }
+    const textos = sel.map(v => nomes[v]);
+    const ultimo = sel[sel.length - 1];
+    if (!['sabado', 'domingo'].includes(ultimo)) textos[textos.length - 1] += '-feira';
+    const lista = textos.length > 1
+      ? textos.slice(0, -1).join(', ') + ' e ' + textos.at(-1)
+      : textos[0];
+    resumo.textContent = 'Selecionados: ' + lista + '.';
+  }
+  caixas.forEach(c => c.addEventListener('change', atualizarResumo));
+  atualizarResumo();
+</script>
+
+{% endblock %}

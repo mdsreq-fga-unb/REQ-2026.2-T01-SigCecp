@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %}Ver Alunos | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/ver-alunos.css') }}">
+{% endblock %}
+
+{% block cabecalho %}
+    {{ super() }}
+{% endblock %}
+
+{% block corpo %}
+    <main class="pagina container">
+        <header class="eventos__cabecalho">
+            <div class="eventos__introducao">
+                <nav class="trilha" aria-label="Você está em">
+                    <ol>
+                        <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+                        <li><a href="{{ url_for('lista_turmas') }}">Turmas</a></li>
+                        <li aria-current="page">Ver Alunos</li>
+                    </ol>
+                </nav>
+
+                <h1>Alunos da Turma</h1>
+
+                <p class="eventos__descricao">
+                    Lista de alunos associados à turma.
+                </p>
+            </div>
+        </header>
+
+        <section class="eventos__lista">
+            <!-- Conteúdo da página de ver alunos -->
+        </section>
+    </main>
+{% endblock %}

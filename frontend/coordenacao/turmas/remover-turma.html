@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block titulo %}Remover Turma | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/cadastrar-turma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+{% endblock %}
+
+{% block cabecalho %}
+<header class="topo">
+  <div class="container topo__linha">
+    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
+      <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+    </a>
+
+    <div class="topo__direita">
+      <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_sair.html" %}
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block corpo %}
+{% set ordem = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'] %}
+{% set nomes = {'segunda': 'Segunda', 'terca': 'Terça', 'quarta': 'Quarta', 'quinta': 'Quinta',
+                'sexta': 'Sexta', 'sabado': 'Sábado', 'domingo': 'Domingo'} %}
+
+<main class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+      <li><a href="{{ url_for('lista_turma') }}">Turmas</a></li>
+      <li aria-current="page">Remover turma</li>
+    </ol>
+  </nav>
+
+  <h1 class="pagina__titulo">Remover turma?</h1>
+  <p class="pagina__subtitulo">Confirme antes de remover. Esta ação não pode ser desfeita.</p>
+
+  <form class="formulario" method="post" action="{{ url_for('salvar_remocao_turma', turma_id=turma.id) }}">
+    {{ csrf_input }}
+    <section class="cartao" aria-labelledby="titulo-turma">
+      <h2 class="cartao__titulo" id="titulo-turma">{{ turma.modalidade }}</h2>
+      <p>{% for dia in ordem if dia in turma.dias %}{{ nomes[dia] }}{{ ', ' if not loop.last }}{% endfor %}
+        · {{ turma.inicio.strftime('%H:%M') }} às {{ turma.termino.strftime('%H:%M') }}</p>
+      <p class="ajuda">A turma será excluída definitivamente e deixará de aparecer na lista de turmas.</p>
+    </section>
+
+    <div class="rodape">
+      <p class="rodape__texto">Esta ação não pode ser desfeita.</p>
+      <div class="rodape__acoes">
+        <a class="botao botao--claro" href="{{ url_for('lista_turma') }}">Cancelar</a>
+        <button class="botao botao--vermelho" type="submit">Remover definitivamente</button>
+      </div>
+    </div>
+  </form>
+</main>
+{% endblock %}

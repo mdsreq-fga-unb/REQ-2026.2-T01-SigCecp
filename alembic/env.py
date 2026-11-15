@@ -4,6 +4,7 @@ from backend.database import Base, DATABASE_URL, engine
 from backend.auth import models as auth_models
 from backend.eventos import models as eventos_models
 from backend.publicacoes import models as publicacoes_models
+from backend.turmas import models as turmas_models
 
 target_metadata = Base.metadata
 

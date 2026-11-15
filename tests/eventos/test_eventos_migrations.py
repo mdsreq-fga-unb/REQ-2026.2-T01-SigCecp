@@ -3,6 +3,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from alembic.config import Config
+from alembic.script import ScriptDirectory
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import Session
 
@@ -29,6 +31,7 @@ def verificar_estrutura(engine):
     inspetor = inspect(engine)
     assert set(inspetor.get_table_names()) == {
         "alembic_version", "publicacoes", "publicacao_midias", "eventos",
+        "administradores", "refresh_tokens_admin", "turmas",
     }
     for modelo in (Publicacao, PublicacaoMidia, Evento):
         colunas = {coluna["name"]: coluna for coluna in inspetor.get_columns(modelo.__tablename__)}
@@ -58,7 +61,8 @@ def test_upgrade_head_em_banco_vazio(tmp_path):
             version = connection.exec_driver_sql(
                 "SELECT version_num FROM alembic_version"
             ).scalar_one()
-            assert version in ("0002_cria_eventos", "926c0efbdcbb")
+            head = ScriptDirectory.from_config(Config(str(ROOT / "alembic.ini"))).get_current_head()
+            assert version == head
     finally:
         engine.dispose()
 
