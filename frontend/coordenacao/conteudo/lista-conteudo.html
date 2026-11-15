@@ -47,6 +47,8 @@
             </span>
         </a>
 
+        {% with area = 'conteudos' %}{% include "coordenacao/_menu.html" %}{% endwith %}
+
         <div class="topo__direita">
             <a class="topo__link"
                href="{{ url_for('modulo_conteudo_publico') }}"

@@ -1,0 +1,103 @@
+/* ---------- Imagem em tela cheia (detalhe de conteúdo e de evento) ---------- */
+.tela-cheia__gatilho {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.tela-cheia__gatilho:focus-visible {
+  outline: 3px solid var(--vermelho);
+  outline-offset: 3px;
+}
+
+.tela-cheia {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(0, 0, 0, .92);
+}
+
+.tela-cheia[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tela-cheia::backdrop {
+  background: rgba(0, 0, 0, .5);
+}
+
+.tela-cheia__imagem {
+  max-width: calc(100vw - 160px);
+  max-height: calc(100vh - 96px);
+  object-fit: contain;
+}
+
+.tela-cheia__fechar,
+.tela-cheia__seta {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--branco);
+  background: rgba(255, 255, 255, .12);
+  cursor: pointer;
+}
+
+.tela-cheia__fechar:hover,
+.tela-cheia__seta:hover {
+  background: rgba(255, 255, 255, .25);
+}
+
+.tela-cheia__fechar {
+  top: 20px;
+  right: 20px;
+}
+
+.tela-cheia__seta--anterior {
+  left: 20px;
+}
+
+.tela-cheia__seta--proxima {
+  right: 20px;
+}
+
+.tela-cheia__seta[hidden],
+.tela-cheia__contador[hidden] {
+  display: none;
+}
+
+.tela-cheia__contador {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  font-size: 13px;
+  text-align: center;
+  color: rgba(255, 255, 255, .8);
+}
+
+@media (max-width: 640px) {
+  .tela-cheia__imagem {
+    max-width: 100vw;
+    max-height: calc(100vh - 140px);
+  }
+
+  .tela-cheia__seta {
+    top: auto;
+    bottom: 48px;
+  }
+}

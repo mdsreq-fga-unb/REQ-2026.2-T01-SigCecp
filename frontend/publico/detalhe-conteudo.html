@@ -6,7 +6,8 @@
   <title>{{ conteudo.titulo }} | SigCECP</title>
   <link rel="stylesheet" href="{{ url_for('static', path='style/modulo-conteudo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', path='style/detalhe-conteudo.css') }}">
-  <link rel="shortcut icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ url_for('static', path='style/imagem-tela-cheia.css') }}">
+  <link rel="icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/png">
 </head>
 <body>
   <header class="topo">
@@ -63,11 +64,13 @@
 
     {% if midia.tipo == "imagem" %}
     <figure class="detalhe__figura">
-      <img
-        src="{{ url_for('media', path=midia.caminho) }}"
-        alt="{{ midia.nome_original }}"
-        loading="lazy"
-      >
+      <button type="button" class="tela-cheia__gatilho" data-tela-cheia aria-label="Ver imagem em tela cheia">
+        <img
+          src="{{ url_for('media', path=midia.caminho) }}"
+          alt="{{ midia.nome_original }}"
+          loading="lazy"
+        >
+      </button>
     </figure>
 
     {% elif midia.tipo == "video" %}
@@ -115,5 +118,6 @@
       <p>&copy; <span id="ano">2026</span> Centro Esportivo Cultural de Planaltina-DF. Todos os direitos reservados.</p>
     </div>
   </footer>
+<script src="{{ url_for('static', path='js/imagem-tela-cheia.js') }}"></script>
 </body>
 </html>

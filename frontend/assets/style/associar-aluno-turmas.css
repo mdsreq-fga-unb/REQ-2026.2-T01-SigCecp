@@ -364,48 +364,6 @@
    As regras acima continuam valendo; estas só completam ou ajustam.
    ============================================================ */
 
-/* ---------- Menu do topo ---------- */
-/* Três colunas no topo: marca, menu e ações (o componentes.css prevê só duas) */
-.topo__linha {
-  grid-template-columns: 1fr auto 1fr;
-  gap: 32px;
-  min-height: 92px;
-}
-
-.topo__menu {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
-.topo__menu a {
-  position: relative;
-  padding: 8px 0;
-  font-size: 14px;
-  color: var(--branco);
-  text-decoration: none;
-  opacity: 0.85;
-}
-
-.topo__menu a:hover {
-  opacity: 1;
-}
-
-.topo__menu a[aria-current="page"] {
-  font-weight: 700;
-  opacity: 1;
-}
-
-.topo__menu a[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -10px;
-  left: 0;
-  height: 3px;
-  background: var(--vermelho);
-}
-
 /* ---------- Cabeçalho da página ---------- */
 .trilha {
   margin-bottom: 16px;
@@ -589,14 +547,6 @@
 
 /* ---------- Responsividade ---------- */
 @media (max-width: 900px) {
-  .topo__linha {
-    grid-template-columns: 1fr auto;
-  }
-
-  .topo__menu {
-    display: none;
-  }
-
   .associacao__conteudo {
     grid-template-columns: 1fr;
   }

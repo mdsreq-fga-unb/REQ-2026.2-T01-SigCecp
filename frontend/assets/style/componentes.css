@@ -51,6 +51,47 @@
   text-decoration: underline;
 }
 
+/* Menu das áreas da coordenação: com ele o topo passa a ter três colunas */
+.topo__linha:has(> .topo__menu) {
+  grid-template-columns: 1fr auto 1fr;
+  gap: 32px;
+  min-height: 92px;
+}
+
+.topo__menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.topo__menu a {
+  position: relative;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--branco);
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.topo__menu a:hover {
+  opacity: 1;
+}
+
+.topo__menu a[aria-current="page"] {
+  font-weight: 700;
+  opacity: 1;
+}
+
+.topo__menu a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  left: 0;
+  height: 3px;
+  background: var(--vermelho);
+}
+
 .usuario {
   display: flex;
   align-items: center;
@@ -268,6 +309,16 @@ input[aria-invalid="true"] {
 }
 
 /* ---------- Responsividade compartilhada ---------- */
+@media (max-width: 900px) {
+  .topo__linha:has(> .topo__menu) {
+    grid-template-columns: 1fr auto;
+  }
+
+  .topo__menu {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .marca__nome,
   .topo__link {

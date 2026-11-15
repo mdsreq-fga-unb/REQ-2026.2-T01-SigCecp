@@ -52,6 +52,10 @@ def client(db_session):
     def _lista_conteudo():
         return "ok"
 
+    @app.get("/coordenacao/turmas", name="lista_turma")
+    def _lista_turma():
+        return "ok"
+
     @app.post("/coordenacao/sair", name="logout")
     def _sair():
         return "ok"
@@ -92,10 +96,16 @@ def test_form_editar_vem_preenchido(client, evento):
     assert "Copa CECP" in r.text and "Campeonato Interno" in r.text
 
 
+def test_form_editar_envia_arquivos(client, evento):
+    # Sem multipart o navegador manda só o nome do arquivo e a rota responde 422
+    r = client.get(f"/coordenacao/eventos/{evento.id}/editar")
+    assert 'enctype="multipart/form-data"' in r.text
+
+
 def test_editar_salva_todos_os_campos_e_redireciona(client, evento, db_session):
     r = client.post(f"/coordenacao/eventos/{evento.id}/editar", data=DADOS)
     assert r.status_code == 303
-    assert r.headers["location"].endswith("/eventos")
+    assert r.headers["location"].endswith("/coordenacao/eventos")
     db_session.refresh(evento)
     assert evento.titulo == "Copa CECP 2026" and evento.nome == "Campeonato Regional"
     assert evento.data == date(2026, 12, 5)
@@ -169,7 +179,7 @@ def test_tela_de_confirmacao_nao_apaga(client, evento, db_session):
 def test_remover_apos_confirmacao(client, evento, db_session):
     evento_id = evento.id
     r = client.post(f"/coordenacao/eventos/{evento_id}/remover")
-    assert r.status_code == 303 and r.headers["location"].endswith("/eventos")
+    assert r.status_code == 303 and r.headers["location"].endswith("/coordenacao/eventos")
     db_session.expire_all()
     assert db_session.get(Evento, evento_id) is None
     assert client.get(f"/coordenacao/eventos/{evento_id}/editar").status_code == 404

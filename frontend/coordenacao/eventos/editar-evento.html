@@ -20,8 +20,11 @@
       <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
       <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
     </a>
+
+    {% with area = 'eventos' %}{% include "coordenacao/_menu.html" %}{% endwith %}
+
     <div class="topo__direita">
-      <a class="topo__link" href="{{ url_for('modulo_conteudo_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+      <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
       <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
       {% include "coordenacao/_sair.html" %}
     </div>
@@ -42,7 +45,7 @@
   <h1 class="pagina__titulo">Editar evento</h1>
   <p class="pagina__sub">Revise os dados antes de salvar as alterações.</p>
 
-  <form id="form" class="layout" method="post" action="{{ url_for('salvar_edicao_evento', evento_id=evento.id) }}">
+  <form id="form" class="layout" method="post" enctype="multipart/form-data" action="{{ url_for('salvar_edicao_evento', evento_id=evento.id) }}">
     {{ csrf_input }}
     <div class="coluna">
 

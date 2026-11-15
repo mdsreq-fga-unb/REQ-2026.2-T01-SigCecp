@@ -6,7 +6,8 @@
     <title>{{ evento.titulo }} | SigCECP</title>
     <link rel="stylesheet" href="{{ url_for('static', path='style/modulo-conteudo.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='style/modulo-eventos.css') }}">
-    <link rel="shortcut icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/imagem-tela-cheia.css') }}">
+    <link rel="icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/png">
 </head>
 <body>
     <header class="topo">
@@ -48,11 +49,13 @@
                     <dt>Imagem</dt>
                     <dd>
                         {% if evento.imagem %}
-                            <img
-                                class="detalhe-evento__imagem"
-                                src="{{ url_for('media', path=evento.imagem) }}"
-                                alt="Imagem do evento"
-                            >
+                            <button type="button" class="tela-cheia__gatilho" data-tela-cheia aria-label="Ver imagem em tela cheia">
+                                <img
+                                    class="detalhe-evento__imagem"
+                                    src="{{ url_for('media', path=evento.imagem) }}"
+                                    alt="Imagem do evento"
+                                >
+                            </button>
                         {% else %}
                             Não disponível
                         {% endif %}
@@ -87,5 +90,6 @@
             <p>&copy; 2026 Centro Esportivo Cultural de Planaltina-DF. Todos os direitos reservados.</p>
         </div>
     </footer>
+<script src="{{ url_for('static', path='js/imagem-tela-cheia.js') }}"></script>
 </body>
 </html>

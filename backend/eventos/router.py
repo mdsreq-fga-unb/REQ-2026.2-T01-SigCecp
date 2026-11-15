@@ -66,7 +66,7 @@ def salvar_evento(
     criar_evento(db, dados, imagem=imagem, video=video)
 
     return RedirectResponse(
-        request.url_for("modulo_eventos_publico"),
+        request.url_for("lista_evento"),
         status_code=303,
     )
 
@@ -110,7 +110,7 @@ def salvar_edicao_evento(
     )
 
     return RedirectResponse(
-        request.url_for("modulo_eventos_publico"),
+        request.url_for("lista_evento"),
         status_code=303,
     )
 

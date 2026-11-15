@@ -45,11 +45,7 @@
       <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
     </a>
 
-    <nav class="topo__menu" aria-label="Áreas da coordenação">
-      <a href="{{ url_for('lista_conteudo') }}">Conteúdos</a>
-      <a href="{{ url_for('lista_evento') }}">Eventos</a>
-      <a href="{{ url_for('lista_turma') }}" aria-current="page">Alunos / Turmas</a>
-    </nav>
+    {% with area = 'turmas' %}{% include "coordenacao/_menu.html" %}{% endwith %}
 
     <div class="topo__direita">
       <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>

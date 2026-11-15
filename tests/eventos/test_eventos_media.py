@@ -324,13 +324,13 @@ def test_formulario_de_publicacao(ambiente):
     assert cliente.get(f"{BASE}/novo").status_code == 200
 
 
-def test_publicar_evento_redireciona_para_a_pagina_publica(ambiente, dados_evento):
+def test_publicar_evento_redireciona_para_a_lista_da_coordenacao(ambiente, dados_evento):
     cliente, sessoes = ambiente
 
     resposta = cliente.post(f"{BASE}/novo", data=dados_evento)
 
     assert resposta.status_code == 303
-    assert resposta.headers["location"].endswith("/eventos")
+    assert resposta.headers["location"].endswith("/coordenacao/eventos")
     assert unico_evento(sessoes)["titulo"] == "Festival CECP"
 
 

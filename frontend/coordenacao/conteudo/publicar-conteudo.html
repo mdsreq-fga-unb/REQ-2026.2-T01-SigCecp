@@ -20,6 +20,8 @@
         <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
       </a>
 
+      {% with area = 'conteudos' %}{% include "coordenacao/_menu.html" %}{% endwith %}
+
       <div class="topo__direita">
         <a class="topo__link" href="{{ url_for('modulo_conteudo_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
         <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
