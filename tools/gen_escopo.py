@@ -43,19 +43,27 @@ rfs = {}
 for f in sorted((E/"requisitos").glob("RF*.md")):
     t = f.read_text(); d = {clean(r[0]): r[1] for r in rows(t.split("#### Andamento")[0]) if len(r) == 2}
     and_ = t.split("#### Andamento")[1].split("####")[0] if "#### Andamento" in t else ""
+    # Linhas "Ajuste (nome): pedido | refeito | reaprovado" do andamento formam o ciclo de cada ajuste pedido pelo cliente
+    etapas = [[clean(r[0]), clean(r[1]), clean(r[2]) if len(r) > 2 else ""] for r in rows(and_) if r[0] != "Etapa"]
+    ajustes = {}
+    for e in etapas:
+        m = re.match(r"Ajuste \((.+)\): (\w+)$", e[0])
+        if m: ajustes.setdefault(m[1], []).append([m[2].capitalize(), e[1], e[2]])
     mo = d.get("Valor de negócio (MoSCoW)", "")
     rfs[f.stem] = {"nome": re.match(r"### RF\d+: (.*)", t)[1], "estado": d["Estado e versão"].split(",")[0],
         "cp": re.split(r" \(ver", clean(d["CP de origem"]))[0], "ator": clean(d.get("Ator principal", "")),
         "declaracao": clean(d.get("Declaração", "")), "entradas": clean(d.get("Entradas", "")), "pre": clean(d.get("Pré-condições", "")), "proc": clean(d.get("Processamento", "")), "saidas": clean(d.get("Saídas", "")), "pdf": (E/"pdf"/f"{f.stem}.pdf").exists(), "pendente": t.count("[PENDENTE]"), "moscow": mo.split("·")[0].strip(),
         "entrega": "Pós-MVP" if "Pós-MVP" in mo else "MVP", "criterios": clean(d.get("Critérios de aceitação", "")).split("\n"),
         "rns": ids(d.get("Regras de negócio", ""), "RN"), "rnfs": ids(d.get("RNFs aplicáveis", ""), "RNF"),
-        "andamento": [[clean(r[0]), clean(r[1])] for r in rows(and_) if r[0] != "Etapa"],
+        "andamento": [e for e in etapas if not e[0].startswith("Ajuste (")],
+        "ajustes": [{"ajuste": nome, "etapas": et} for nome, et in ajustes.items()],
         "decs": [x["id"] for x in dec if f.stem in x["rfs"]], "pens": [x["id"] for x in pen if f.stem in x["rfs"]],
         "its": [i["nome"] for i in its if f.stem in i["rfs"]]}
 
 for k, r in rfs.items():
     r["lacunas"] = ([f"{r['pendente']} campo(s) marcado(s) como pendente na ficha"] if r["pendente"] else []) \
         + [p + ": " + next(x["texto"] for x in pen if x["id"] == p) for p in r["pens"]] \
+        + [f"Ajuste pedido pelo cliente aguarda reaprovação ({a['ajuste']})" for a in r["ajustes"] if not all(e[1].startswith("Feito") for e in a["etapas"])] \
         + (["Ficha ainda em rascunho"] if r["estado"] == "Rascunho" and r["entrega"] == "MVP" else [])
 
 alertas = []

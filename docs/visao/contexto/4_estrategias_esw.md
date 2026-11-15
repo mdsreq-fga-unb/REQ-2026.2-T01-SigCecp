@@ -87,7 +87,7 @@ O ciclo prototipar → avaliar → ajustar → construir → verificar e validar
 | Construir | RF13 a RF20 construídos, junto com a autenticação (RF00 a RF02) | 02/11 a 10/11/2026 | Issues IT05 e IT07 no GitHub; sistema demonstrado rodando na [reunião de 10/11](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md). Ainda sem ambiente publicado |
 | Verificar e validar | O cliente usou o sistema, executou as operações de RF13 a RF20 e de acesso e aceitou o incremento | 10/11/2026 | [Ata 10/11](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md). A verificação pelo [DoD](9_dor_e_dod.md) está na seção 9.3 |
 
-O teste com o cliente gerou um novo ajuste, a expansão da imagem ao clicar, que reinicia o ciclo para esse ponto. O mesmo ciclo já começou para o incremento seguinte: o protótipo de acesso, turmas, alunos e coordenadores foi aprovado em 10/11.
+O teste com o cliente gerou um novo ajuste, a expansão da imagem ao clicar, que reiniciou o ciclo para esse ponto: o ajuste foi construído em 15/11/2026 (RF15 e RF20) e aguarda a validação do cliente. O mesmo ciclo já começou para o incremento seguinte: o protótipo de acesso, turmas, alunos e coordenadores foi aprovado em 10/11.
 
 O andamento de cada requisito também aparece na seção *Andamento* da sua ficha, acessível pelo [painel do escopo](../../painel.md).
 
@@ -100,3 +100,4 @@ O andamento de cada requisito também aparece na seção *Andamento* da sua fich
 | 1.2 | 15/09/2026 | Adequação ao feedback do professor: inclusão do Kanban como framework de gestão, justificativa da abordagem híbrida, revisão da criticidade do sistema e inclusão do quadro de adaptações do processo. | [Enzo Costa](https://github.com/enzocostaj) |
 | 1.3 | 14/11/2026 | Issue #25: justificativa da abordagem híbrida corrigida (a documentação não caracteriza a abordagem); nova seção 4.4 com o ciclo do RAD aplicado ao incremento de CP3 e suas evidências | — |
 | 1.4 | 14/11/2026 | Seção 4.4: construção e validação de CP3 com evidência da reunião de 10/11/2026 | — |
+| 1.5 | 15/11/2026 | Seção 4.4: expansão da imagem ao clicar construída, aguardando a validação do cliente | — |

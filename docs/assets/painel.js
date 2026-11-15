@@ -368,9 +368,16 @@
       '<dl>' + campos.map(([nome, texto]) => '<dt>' + nome + '</dt><dd>' + marcarPendente(texto) + '</dd>').join('') + '</dl>');
   }
 
-  const htmlAndamento = (r) => secao('Andamento',
-    '<ol class="pn-st">' + r.andamento.map(([etapa, status]) =>
-      '<li class="' + status.split(' ')[0] + '"><b>' + esc(etapa) + '</b><br>' + esc(status) + '</li>').join('') + '</ol>');
+  // Etapa do andamento com a observação da ficha, quando houver
+  const htmlEtapa = ([etapa, status, obs]) =>
+    '<li class="' + status.split(' ')[0] + '"><b>' + esc(etapa) + '</b><br>' + esc(status) +
+    (obs ? '<br><small>' + esc(obs) + '</small>' : '') + '</li>';
+
+  const htmlAndamento = (r) => secao('Andamento', '<ol class="pn-st">' + r.andamento.map(htmlEtapa).join('') + '</ol>');
+
+  // Cada ajuste pedido pelo cliente vem do andamento da ficha: pedido, refeito e reaprovado
+  const htmlAjustes = (r) => !r.ajustes.length ? '' : secao('Ajustes pedidos pelo cliente',
+    r.ajustes.map((a) => '<p><b>' + esc(a.ajuste) + '</b></p><ol class="pn-st">' + a.etapas.map(htmlEtapa).join('') + '</ol>').join(''));
 
   const htmlCriterios = (r) => secao('Critérios de aceitação',
     '<ol>' + r.criterios.map((c) => '<li>' + esc(c.replace(/^\d+\.\s*/, '')) + '</li>').join('') + '</ol>');
@@ -430,7 +437,7 @@
     const gaveta = el('aside', 'pn-dr');
     gaveta.setAttribute('role', 'dialog');
     gaveta.setAttribute('aria-label', cod + ' ' + r.nome);
-    gaveta.innerHTML = htmlCabecalho(cod, r) + htmlFalta(r) + htmlParaImplementar(r) + htmlAndamento(r) +
+    gaveta.innerHTML = htmlCabecalho(cod, r) + htmlFalta(r) + htmlParaImplementar(r) + htmlAndamento(r) + htmlAjustes(r) +
       htmlCriterios(r) + htmlRegras(r) + htmlRnfs(r);
     gaveta.append(blocoRelacionados(r), linksDaFicha(cod, r));
 
