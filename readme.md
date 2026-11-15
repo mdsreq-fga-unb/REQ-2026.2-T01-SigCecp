@@ -344,7 +344,13 @@ Se o término for anterior ao início, a duração noturna não pode ser represe
 
 ## 9. Gestão de turmas
 
-O módulo de turmas (`backend/turmas/`) atende ao RF03 e às operações de edição e remoção de turmas. A migração `0004_cria_turmas` cria a tabela `turmas`, com modalidade, dias da semana (lista em JSON), horário de início e horário de término.
+O módulo de turmas (`backend/turmas/`) atende ao RF03, à edição e à remoção de turmas e, em parte, à associação de alunos (RF06 e RF07).
+
+As migrações relacionadas são:
+
+- `0004_cria_turmas`: cria a tabela `turmas`, com modalidade, dias da semana (lista em JSON), horário de início e horário de término.
+- `aee2e4d6d5df_adiciona_coluna_alunos_em_turmas`: adiciona a coluna `alunos` (lista em JSON).
+- `a875dcabae5a_adiciona_alunos_as_turmas`: revisão vazia, sem alterações no banco.
 
 ### 9.1. Rotas
 
@@ -357,6 +363,9 @@ O módulo de turmas (`backend/turmas/`) atende ao RF03 e às operações de edi�
 | POST | `/coordenacao/turmas/{turma_id}/editar` | Atualiza a turma. |
 | GET | `/coordenacao/turmas/{turma_id}/remover` | Apresenta a confirmação de remoção. |
 | POST | `/coordenacao/turmas/{turma_id}/remover` | Remove a turma. |
+| GET | `/coordenacao/turmas/{turma_id}/alunos` | Apresenta os alunos da turma. |
+| GET | `/coordenacao/turmas/{turma_id}/alunos/associar` | Apresenta a tela de associar aluno à turma. |
+| POST | `/coordenacao/turmas/{turma_id}/alunos` | Recebe a confirmação da associação. |
 
 Todas exigem login de administrador.
 
@@ -366,15 +375,39 @@ Todas exigem login de administrador.
 - Não é permitido cadastrar duas turmas com a mesma modalidade, os mesmos dias e os mesmos horários: o serviço retorna erro 409.
 - Os horários são locais, sem fuso nem frações de segundo.
 
-### 9.3. Páginas
+### 9.3. Alunos da turma (mock)
+
+O cadastro de alunos (RF21) ainda não existe. Até lá, os alunos são nomes da lista `alunos_mock`, em `backend/turmas/services.py`:
+
+- toda turma nova é criada com a lista `alunos_mock` na coluna `alunos`;
+- a página de alunos da turma exibe a lista `alunos_mock`.
+
+### 9.4. Páginas
 
 Os templates ficam em `frontend/coordenacao/turmas/`:
 
-- `lista-turma.html`: tabela com modalidade, dias e horário, e as ações de editar e remover;
-- `cadastrar-turma.html` e `editar-turma.html`: formulários com os mesmos campos;
-- `remover-turma.html`: confirmação antes da remoção definitiva.
+| Template | Estilo | Conteúdo |
+|---|---|---|
+| `lista-turma.html` | `lista-evento.css` | Tabela com modalidade, dias e horário, e o acesso aos alunos da turma. As ações de editar e remover estão comentadas no template. |
+| `cadastrar-turma.html` e `editar-turma.html` | `cadastrar-turma.css` | Formulários com os mesmos campos. |
+| `remover-turma.html` | `cadastrar-turma.css` | Confirmação antes da remoção definitiva. |
+| `ver-alunos.html` | `ver-alunos.css` | Dados da turma e lista dos alunos associados. |
+| `associar-alunos.html` | `associar-aluno-turmas.css` | Tela de associar aluno à turma, conforme o protótipo. |
 
-A quantidade de alunos por turma, prevista no protótipo, entra quando houver o cadastro de alunos e a associação à turma (RF06 e RF07).
+A tela de associação segue o protótipo aprovado em 10/11/2026:
+
+- menu do topo com Conteúdos, Eventos e Alunos / Turmas;
+- cartão do aluno;
+- seletor com as turmas cadastradas, no formato "Judô • Segunda e quarta-feira • 14h às 15h", já com a turma da URL selecionada;
+- resumo com modalidade, dias e horários, atualizado no navegador ao trocar de turma;
+- orientações "Antes de confirmar" e os botões Cancelar e Confirmar associação.
+
+### 9.5. Pendências
+
+- **Associação ainda não grava.** O cartão do aluno mostra "Nenhum aluno selecionado", porque não há cadastro de alunos. O botão Confirmar associação envia para `POST /coordenacao/turmas/{turma_id}/alunos`, que hoje só reapresenta a tela, sem gravar. A função `associar_alunos` do serviço já existe para quando houver alunos.
+- **Rota POST duplicada.** Há duas funções `salvar_alunos_associados` registradas para `POST /coordenacao/turmas/{turma_id}/alunos`. Vale a primeira, que reapresenta a tela de associação.
+- **Edição apaga os alunos.** `atualizar_turma` grava todos os campos do formulário, inclusive `alunos`, que chega vazio. Editar uma turma substitui a lista de alunos por uma lista vazia.
+- A quantidade de alunos por turma e o acesso à ficha do aluno dependem do cadastro de alunos (RF21 a RF24).
 
 ## 10. Como sair do ambiente virtual
 
