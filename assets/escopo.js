@@ -223,11 +223,11 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
@@ -389,11 +389,11 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Parcial"
         ],
         [
           "Teste de aceite",
@@ -450,11 +450,11 @@ window.ESCOPO = {
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Feito"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Feito"
         ],
         [
           "Teste de aceite",
@@ -3364,7 +3364,7 @@ window.ESCOPO = {
         "RF06",
         "RF07"
       ],
-      "situacao": "Em andamento. Design do Usuário concluído: o protótipo de turmas (RF03, RF06 e RF07) e de alunos (RF21 a RF24) foi aprovado pelo cliente em 10/11 (ata, DEC20). Construção ainda não iniciada. Turmas e alunos (RF21 a RF24) serão construídos juntos e entregues funcionando; a iteração seguinte fica para iterar sobre o incremento (DEC26)"
+      "situacao": "Concluída. Design do Usuário: o protótipo de turmas (RF03, RF06 e RF07) e de alunos (RF21 a RF24) foi aprovado pelo cliente em 10/11 (ata, DEC20). Construção: RF03 e RF07 implementados, com testes automatizados; RF06 implementado em parte, pois a gravação do aluno depende do cadastro de alunos (RF21), construído junto na Iteração 10 (DEC26). Pendentes: teste de aceite com o cliente e capacitação inicial da ONG, que passam para a Iteração 10"
     },
     {
       "nome": "Iteração 9",
@@ -3377,7 +3377,7 @@ window.ESCOPO = {
     {
       "nome": "Iteração 10",
       "periodo": "23/11/2026 - 29/11/2026",
-      "foco": "Design do Usuário: protótipo da ficha do aluno, avaliação com o cliente e ajustes\n\nConstrução: cadastro, edição, consulta e inativação do aluno (ficha do aluno). A remoção de dados (RF25) é pós-MVP\n\nTransição: início do cadastro dos alunos ativos pela própria coordenação, pelo sistema, com apoio da equipe (DEC32); testes de segurança; testes de aceite do MVP completo; validação com a coordenação em 26/11 ou 27/11; treinamento final",
+      "foco": "Design do Usuário: protótipo da ficha do aluno, avaliação com o cliente e ajustes\n\nConstrução: cadastro, edição, consulta e inativação do aluno (ficha do aluno), e conclusão de RF06 com a gravação da associação aluno–turma. A remoção de dados (RF25) é pós-MVP\n\nTransição: teste de aceite de RF03, RF06 e RF07, vindos da Iteração 8; capacitação inicial da ONG; início do cadastro dos alunos ativos pela própria coordenação, pelo sistema, com apoio da equipe (DEC32); testes de segurança; testes de aceite do MVP completo; validação com a coordenação em 26/11 ou 27/11; treinamento final",
       "entregas": "MVP concluído e validado; ficha de aluno funcional, com cadastro e histórico; coordenação pronta para cadastrar os alunos ativos pelo sistema",
       "rfs": [
         "RF21",

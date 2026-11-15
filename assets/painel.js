@@ -314,8 +314,9 @@
     const caixa = el('div');
     if (D.cron_nota) caixa.append(el('p', 'pn-vazio', esc(D.cron_nota)));
     D.its.forEach((it) => {
-      const atual = emAndamento(it);
       const concluida = /^Concluída/.test(it.situacao || '');
+      // Uma iteração concluída antes do fim do período deixa de aparecer como em andamento
+      const atual = emAndamento(it) && !concluida;
       const c = cartao(idIteracao(it.nome),
         '<h4>' + esc(it.nome) + (atual ? ' <span class="pn-b mvp">em andamento</span>' : '') +
         (concluida ? ' <span class="pn-b Validado">concluída</span>' : '') + '</h4>' +
