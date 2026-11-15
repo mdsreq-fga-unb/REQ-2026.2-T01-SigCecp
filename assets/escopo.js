@@ -3159,10 +3159,10 @@ window.ESCOPO = {
     },
     {
       "id": "DEC31",
-      "data": "14/11/2026",
-      "texto": "Não serão criados agora RNFs de backup e recuperação de dados nem de comunicação segura (HTTPS). Encerra a PEN17",
+      "data": "14/11/2026, prazo definido em 15/11/2026",
+      "texto": "Backup/recuperação e comunicação segura (HTTPS) foram adiados porque o ambiente de hospedagem e operação ainda não estava definido, impedindo especificar e verificar essas medidas. Na Iteração 10, a equipe detalhará e consolidará os requisitos, incluindo critérios verificáveis para backup e restauração (como frequência, retenção e prazo de recuperação) e para HTTPS. Os requisitos confirmados serão implementados na Iteração 11, antes da entrada em produção com dados reais. Os controles de autenticação e proteção de dados existentes não substituem essas medidas",
       "rfs": [],
-      "fonte": "Decisão da equipe em 14/11/2026"
+      "fonte": "Decisão da equipe em 14/11/2026; prazo definido para a issue #29 em 15/11/2026"
     },
     {
       "id": "DEC32",
