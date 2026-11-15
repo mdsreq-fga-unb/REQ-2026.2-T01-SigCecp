@@ -5,6 +5,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
+from backend.auth.csrf import verificar_csrf
+from backend.auth.dependencies import exigir_admin
 from backend.database import Base, get_db
 from backend.eventos.media import TIPOS_IMAGEM, TIPOS_VIDEO, remover_midia, salvar_midia
 from backend.eventos.models import Evento
@@ -273,6 +275,9 @@ def ambiente(tmp_path):
             yield sessao
 
     app.dependency_overrides[get_db] = sessao_temporaria
+    # As rotas da coordenação exigem login; aqui o administrador já está autenticado.
+    app.dependency_overrides[exigir_admin] = lambda: object()
+    app.dependency_overrides[verificar_csrf] = lambda: None
     try:
         with TestClient(app, follow_redirects=False) as cliente:
             yield cliente, sessoes

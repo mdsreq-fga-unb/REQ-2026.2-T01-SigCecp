@@ -6,6 +6,8 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from backend.auth.csrf import verificar_csrf
+from backend.auth.dependencies import exigir_admin
 from backend.database import Base, get_db
 from backend.main import app
 from backend.publicacoes.models import Publicacao, PublicacaoMidia
@@ -27,6 +29,9 @@ def ambiente(tmp_path, pasta_midias):
             yield db
 
     app.dependency_overrides[get_db] = sessao_temporaria
+    # As rotas da coordenação exigem login; aqui o administrador já está autenticado.
+    app.dependency_overrides[exigir_admin] = lambda: object()
+    app.dependency_overrides[verificar_csrf] = lambda: None
     try:
         with TestClient(app, follow_redirects=False) as cliente:
             yield cliente, sessoes, pasta_midias

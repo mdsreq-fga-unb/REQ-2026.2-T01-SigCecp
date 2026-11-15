@@ -15,6 +15,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from backend.config import ASSETS_DIR
+from backend.auth.csrf import verificar_csrf
+from backend.auth.dependencies import exigir_admin
 from backend.database import Base, get_db
 from backend.eventos.models import Evento
 from backend.eventos.router import router
@@ -50,7 +52,14 @@ def client(db_session):
     def _lista_conteudo():
         return "ok"
 
+    @app.post("/coordenacao/sair", name="logout")
+    def _sair():
+        return "ok"
+
     app.dependency_overrides[get_db] = lambda: db_session
+    # As rotas da coordenação exigem login; aqui o administrador já está autenticado.
+    app.dependency_overrides[exigir_admin] = lambda: object()
+    app.dependency_overrides[verificar_csrf] = lambda: None
     return TestClient(app, follow_redirects=False)
 
 
