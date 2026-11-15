@@ -29,25 +29,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #47"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          "Segundo a equipe, na ata de 10/11"
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11, conforme confirmado pela equipe: o trecho não aparece na transcrição da gravação; resultado por critério ainda não registrado"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC04"
@@ -90,25 +96,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #48"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          ""
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC28"
@@ -148,25 +160,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #49"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          ""
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC28",
@@ -209,25 +227,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #50"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          "Cadastro e lista de turmas, com testes automatizados em `tests/turmas` (branch `iteracao_oito`)"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          "Ainda não executado com o cliente"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC24",
@@ -267,25 +291,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC34"
       ],
@@ -319,25 +349,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC02",
         "DEC17",
@@ -378,25 +414,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #51"
         ],
         [
           "Construção: implementação",
-          "Parcial"
+          "Parcial",
+          "Tela de associação e serviço prontos; a gravação do aluno depende do cadastro de alunos (RF21, Iteração 10), e o RF06 termina junto com ele (DEC33). Até lá a turma usa alunos de exemplo"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          "Ainda não executado com o cliente"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC17",
@@ -438,25 +480,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #52"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          "Lista dos alunos da turma e aviso de turma sem alunos; até o cadastro de alunos (RF21) mostra alunos de exemplo"
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          "Ainda não executado com o cliente"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC23",
@@ -496,25 +544,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [],
       "pens": [],
       "its": [],
@@ -548,25 +602,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [],
       "pens": [],
       "its": [],
@@ -599,25 +659,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [],
       "pens": [],
       "its": [],
@@ -651,25 +717,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [],
       "pens": [],
       "its": [],
@@ -701,25 +773,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [],
       "pens": [],
       "its": [],
@@ -758,25 +836,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Evidência do detalhamento"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Evidência design user; aprovado na ata de 30/10"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #39"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          ""
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC06",
@@ -825,25 +909,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Evidência do detalhamento"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Evidência design user; aprovado na ata de 30/10"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #40"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          ""
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC06",
@@ -876,7 +966,7 @@ window.ESCOPO = {
       "criterios": [
         "1. Dado um visitante não autenticado, quando acessa o módulo público, então visualiza os conteúdos institucionais publicados.",
         "2. Dado um conteúdo removido pela coordenação, quando o visitante consulta, então ele não aparece.",
-        "3. Dada uma imagem exibida, quando o visitante clica nela, então ela é mostrada ampliada (pedido do cliente em 10/11, ainda a construir)."
+        "3. Dada uma imagem exibida, quando o visitante clica nela, então ela é mostrada ampliada (pedido do cliente em 10/11)."
       ],
       "rns": [
         "RN29"
@@ -889,24 +979,51 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Evidência do detalhamento"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Evidência design user; aprovado na ata de 30/10"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #41"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          ""
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
+      ],
+      "ajustes": [
+        {
+          "ajuste": "imagem ampliada ao clicar, critério 3",
+          "etapas": [
+            [
+              "Pedido",
+              "Feito",
+              "Pedido pelo cliente no teste de 10/11/2026 (ata de 10/11)"
+            ],
+            [
+              "Refeito",
+              "Feito",
+              "Construído em 15/11/2026: a imagem do detalhe do conteúdo abre em tela cheia"
+            ],
+            [
+              "Reaprovado",
+              "Pendente",
+              "No teste de aceite da Iteração 10"
+            ]
+          ]
+        }
       ],
       "decs": [
         "DEC03",
@@ -919,7 +1036,9 @@ window.ESCOPO = {
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": []
+      "lacunas": [
+        "Ajuste pedido pelo cliente aguarda reaprovação (imagem ampliada ao clicar, critério 3)"
+      ]
     },
     "RF16": {
       "nome": "Remover conteúdo institucional",
@@ -952,25 +1071,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Evidência do detalhamento"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Evidência design user; aprovado na ata de 30/10"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #42"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          ""
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC02",
         "DEC03",
@@ -1023,25 +1148,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Evidência do detalhamento"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Evidência design user; aprovado na ata de 30/10"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #43"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          "Ajuste em 15/11/2026: depois de publicar, a coordenação volta à lista de eventos da coordenação, em vez do módulo público"
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC07",
@@ -1091,25 +1222,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Evidência do detalhamento"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Evidência design user; aprovado na ata de 30/10"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #44"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          "Correção em 15/11/2026: a edição com nova imagem ou vídeo era recusada (o formulário não enviava os arquivos); depois de salvar, a coordenação volta à lista de eventos da coordenação"
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC07",
@@ -1156,25 +1293,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Evidência do detalhamento"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Evidência design user; aprovado na ata de 30/10"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #45"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          ""
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC02",
         "DEC03",
@@ -1209,7 +1352,7 @@ window.ESCOPO = {
         "1. Dado um visitante, quando acessa a listagem, então vê eventos futuros, em andamento e encerrados, cada um com seu estado.",
         "2. Dado um evento cuja data já passou, quando listado, então aparece como Encerrado.",
         "3. Dado um coordenador autenticado, quando consulta um evento, então tem acesso às ações de editar e remover.",
-        "4. Dada uma imagem exibida, quando o visitante clica nela, então ela é mostrada ampliada (pedido do cliente em 10/11, ainda a construir)."
+        "4. Dada uma imagem exibida, quando o visitante clica nela, então ela é mostrada ampliada (pedido do cliente em 10/11)."
       ],
       "rns": [
         "RN33"
@@ -1222,24 +1365,51 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Evidência do detalhamento"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Evidência design user; aprovado na ata de 30/10"
         ],
         [
           "Construção: início",
-          "Feito"
+          "Feito",
+          "Issue #46"
         ],
         [
           "Construção: implementação",
-          "Feito"
+          "Feito",
+          ""
         ],
         [
           "Teste de aceite",
-          "Feito"
+          "Feito",
+          "Executado com o cliente na ata de 10/11; resultado por critério ainda não registrado"
         ]
+      ],
+      "ajustes": [
+        {
+          "ajuste": "imagem ampliada ao clicar, critério 4",
+          "etapas": [
+            [
+              "Pedido",
+              "Feito",
+              "Pedido pelo cliente no teste de 10/11/2026 (ata de 10/11)"
+            ],
+            [
+              "Refeito",
+              "Feito",
+              "Construído em 15/11/2026: a imagem do detalhe do evento abre em tela cheia"
+            ],
+            [
+              "Reaprovado",
+              "Pendente",
+              "No teste de aceite da Iteração 10"
+            ]
+          ]
+        }
       ],
       "decs": [
         "DEC03",
@@ -1252,7 +1422,9 @@ window.ESCOPO = {
         "Iteração 5",
         "Iteração 6"
       ],
-      "lacunas": []
+      "lacunas": [
+        "Ajuste pedido pelo cliente aguarda reaprovação (imagem ampliada ao clicar, critério 4)"
+      ]
     },
     "RF21": {
       "nome": "Cadastrar aluno",
@@ -1294,25 +1466,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          "Issue #53"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC18",
@@ -1360,25 +1538,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          "Issue #54"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03"
       ],
@@ -1422,25 +1606,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          "Issue #55"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC29"
@@ -1484,25 +1674,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Feito"
+          "Feito",
+          "Feito sem gravação nem ata; o resultado foi validado pelo protótipo aprovado em 10/11"
         ],
         [
           "Design do usuário (protótipo)",
-          "Feito"
+          "Feito",
+          "Aprovado pelo representante do cliente na ata de 10/11"
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          "Issue #56"
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC02",
         "DEC03",
@@ -1545,25 +1741,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC02",
         "DEC17"
@@ -1600,25 +1802,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC15"
       ],
@@ -1653,25 +1861,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC15"
       ],
@@ -1706,25 +1920,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC15"
       ],
@@ -1763,25 +1983,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC02",
         "DEC03",
@@ -1823,25 +2049,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [],
       "pens": [],
       "its": [],
@@ -1874,25 +2106,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [],
       "pens": [],
       "its": [],
@@ -1924,25 +2162,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [],
       "pens": [],
       "its": [],
@@ -1974,25 +2218,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC17"
       ],
@@ -2028,25 +2278,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [],
       "pens": [],
       "its": [],
@@ -2088,25 +2344,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC16",
@@ -2138,25 +2400,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC16"
@@ -2187,25 +2455,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC16"
@@ -2242,25 +2516,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC25"
@@ -2301,25 +2581,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03",
         "DEC25"
@@ -2354,25 +2640,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC16"
       ],
@@ -2405,25 +2697,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC03"
       ],
@@ -2460,25 +2758,31 @@ window.ESCOPO = {
       "andamento": [
         [
           "Detalhamento",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Design do usuário (protótipo)",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: início",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Construção: implementação",
-          "Pendente"
+          "Pendente",
+          ""
         ],
         [
           "Teste de aceite",
-          "Pendente"
+          "Pendente",
+          ""
         ]
       ],
+      "ajustes": [],
       "decs": [
         "DEC02",
         "DEC03",
@@ -3198,7 +3502,7 @@ window.ESCOPO = {
         "RF06",
         "RF07"
       ],
-      "situacao": "Concluída. Design do Usuário: o protótipo de turmas (RF03, RF06 e RF07) e de alunos (RF21 a RF24) foi aprovado pelo cliente em 10/11 (ata). Construção: RF03 e RF07 implementados, com testes automatizados; RF06 implementado em parte, pois a gravação do aluno depende do cadastro de alunos (RF21), que fica para a Iteração 10 (DEC33). Não há registro de reunião com o cliente em 12/11 ou 13/11. Pendentes: teste de aceite com o cliente e capacitação inicial da ONG, que passam para a Iteração 10"
+      "situacao": "Concluída. Design do Usuário: o protótipo de turmas (RF03, RF06 e RF07) e de alunos (RF21 a RF24) foi aprovado pelo cliente em 10/11 (ata). Construção: RF03 e RF07 implementados, com testes automatizados; RF06 implementado em parte, pois a gravação do aluno depende do cadastro de alunos (RF21), que fica para a Iteração 10 (DEC33). Não há registro de reunião com o cliente em 12/11 ou 13/11. Ajustes de 15/11: imagem em tela cheia nos detalhes de conteúdo e de evento (RF15 e RF20, pedido do cliente em 10/11), menu de áreas em todas as telas da coordenação e correção do envio de mídias na edição de evento (RF18). Pendentes: teste de aceite com o cliente, inclusive dos ajustes de 15/11, e capacitação inicial da ONG, que passam para a Iteração 10"
     },
     {
       "nome": "Iteração 9",
