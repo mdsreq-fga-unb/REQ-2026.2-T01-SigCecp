@@ -19,7 +19,7 @@
 - **Google Meet ou Teams:** utilizado para as reuniões semanais da equipe e para as reuniões com o cliente.
 - **Discord:** utilizado eventualmente pela equipe para comunicação interna, com uso reduzido no momento por limitações na transmissão de tela.
 - **GitHub Projects:** ferramenta de gerenciamento do backlog, controle de tarefas e acompanhamento do progresso do projeto.
-- **GitHub Issues:** utilizado para o registro formal de decisões, aprovações, pendências e solicitações de mudança ao longo do projeto, com labels específicas para categorização (ex.: `decision`, `pending`, `change-request`).
+- **GitHub Issues:** utilizado para as tarefas de construção de cada RF do MVP.
 
 ### Disponibilidade do Cliente e Stakeholders
 
@@ -27,21 +27,22 @@ O representante do cliente, Pedro Augusto Cajado Coutinho, confirmou disponibili
 
 Ivan (professor de jiu-jitsu do CECP, também envolvido na administração do projeto) e Sandra (dona do projeto/responsável administrativa) confirmaram disponibilidade em **qualquer dia da semana, a partir das 20:30**, com preferência por encontros **presenciais**.
 
-Com base nessa disponibilidade, a equipe adota a seguinte rotina real de reuniões:
+Com base nessa disponibilidade, a equipe planejou a seguinte rotina de reuniões:
 
-- **Reunião de equipe (semanal):** toda semana, para alinhamento interno de progresso e prioridades.
-- **Reunião com Pedro (semanal):** uma reunião por semana de desenvolvimento, dentro da janela seg/qua/sex 17h, para apresentar avanços e validar entregas em andamento.
+- **Reunião de equipe (planejada como semanal):** para alinhamento interno de progresso e prioridades.
+- **Reunião com Pedro (planejada como semanal):** dentro da janela seg/qua/sex 17h, para apresentar avanços e validar entregas em andamento.
 - **Reunião presencial com Ivan e/ou Sandra (quando necessário):** agendada conforme a demanda de validação de funcionalidades ligadas à gestão de turmas (Ivan) ou às decisões administrativas/financeiras (Sandra), aproveitando a disponibilidade noturna presencial de ambos.
 - **Validações assíncronas por WhatsApp:** usadas quando um ajuste é pequeno o suficiente para não exigir uma reunião completa (ex.: aprovação de um texto de tela, confirmação de uma regra pontual), evitando sobrecarregar a agenda do cliente com reuniões desnecessárias.
 
-Essa rotina foi desenhada para caber dentro do ritmo real de trabalho da equipe (reuniões internas semanais) sem exigir mais disponibilidade do cliente do que ele já confirmou.
+Na prática, a frequência semanal não se manteve. As reuniões com o cliente registradas em ata são as de 17/09, 22/09, 24/09, 26/09, 08/10, 21/10, 30/10 e 10/11/2026, concentradas nos marcos de elicitação, priorização, detalhamento, avaliação de protótipo e teste de aceite; na Iteração 4 não houve reunião com o cliente. As reuniões de equipe têm ata até 26/09/2026. As datas previstas para as próximas reuniões com o cliente estão na coluna de reuniões do [cronograma](../../cronograma/6_cronograma.md).
 
 ### Registro de Decisões, Aprovações e Mudanças
 
-Todas as decisões, aprovações, pendências e solicitações de mudança são registradas em:
+Cada tipo de registro tem um lugar só:
 
-- **Issues do GitHub**, categorizadas por labels específicas;
-- **Ata resumida das reuniões** com o cliente, publicada no site do projeto (GitHub Pages), contendo decisões tomadas e pendências em aberto.
+- **Decisões e pendências** (DEC e PEN): na página de [decisões e pendências](../escopo/decisoes.md), que alimenta o [painel do escopo](../../painel.md). Uma mudança no escopo pedida pelo cliente também é registrada ali, como decisão;
+- **Aprovações e testes do cliente**: na **ata** da reunião, publicada no site do projeto, e na seção *Andamento* da ficha de cada requisito, que aponta para essa ata;
+- **Tarefas de construção**: nas **Issues do GitHub**.
 
 ## 7.3 Processo de Validação
 
@@ -80,3 +81,5 @@ O mesmo fluxo se repete para as demais características do MVP (CP1 e CP4, além
 | 1.4 | 14/11/2026 | Corrigida referência da seção 7.3: "matrícula online (CP2)" passou a "matrícula online (CP7)" — CP2 é Registro de doações e prestação de contas, não matrícula | — | — |
 | 1.5 | 14/11/2026 | Issues #26, #30, #31 e #35: 7.3 reescrita como fluxo por incremento que referencia o DoR e o DoD da seção 9 (sem checklists paralelos); DoR passa a vir depois da avaliação do protótipo; responsabilidade planejada separada da participação registrada nas atas; exemplo hipotético da matrícula substituído pelo incremento real de CP3 | — | — |
 | 1.6 | 14/11/2026 | Participação registrada e aplicação a CP3 atualizadas com a reunião de 10/11/2026 | — | — |
+| 1.7 | 14/11/2026 | Rotina de reuniões: a frequência semanal passa a ser a planejada, e o texto registra as reuniões que de fato ocorreram | — | — |
+| 1.8 | 14/11/2026 | Registro de decisões: decisões e pendências ficam na página de decisões e no painel, aprovações nas atas e nas fichas, e as Issues do GitHub ficam para as tarefas de construção | — | — |

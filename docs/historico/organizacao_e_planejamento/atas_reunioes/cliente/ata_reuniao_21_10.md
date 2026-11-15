@@ -79,9 +79,9 @@ Durante a construção, haverá contato com o cliente cerca de **três vezes por
 - Conteúdo institucional: título obrigatório e demais campos livres ([DEC06](../../../../painel.md#DEC06)).
 - Somente a coordenação publica, edita e remove; a consulta é pública e sem login ([DEC07](../../../../painel.md#DEC07)).
 - Remoção definitiva e responsabilidade da coordenação de avisar sobre alterações ([DEC08](../../../../painel.md#DEC08)).
-- Evento só é publicado com todos os campos obrigatórios; vídeo opcional ([DEC09](../../../../painel.md#DEC09)).
-- Estados do evento: em breve, em andamento e encerrado ([DEC10](../../../../painel.md#DEC10)).
-- Identidade visual: preto, branco e vermelho, com amarelo para destaque ([DEC11](../../../../painel.md#DEC11)).
+- Evento só é publicado com todos os campos obrigatórios; vídeo opcional ([RN31](../../../../painel.md#RN31), [RN32](../../../../painel.md#RN32)).
+- Estados do evento: em breve, em andamento e encerrado ([RN33](../../../../painel.md#RN33)).
+- Identidade visual: preto, branco e vermelho, com amarelo para destaque.
 
 ## 7. Encaminhamentos
 

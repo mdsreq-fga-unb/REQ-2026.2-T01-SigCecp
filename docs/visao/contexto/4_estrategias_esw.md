@@ -80,14 +80,14 @@ O ciclo prototipar → avaliar → ajustar → construir → verificar e validar
 
 | Etapa | O que foi feito | Data | Evidência |
 | :--- | :--- | :--- | :--- |
-| Detalhar | Regras de negócio levantadas com o cliente (RN25 a RN34) | 21/10/2026 | [Detalhamento](../../historico/detalhamento_iteracao5.md), [ata 21/10](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10.md), DEC06 a DEC11 |
+| Detalhar | Regras de negócio levantadas com o cliente (RN25 a RN34) | 21/10/2026 | [Detalhamento](../../historico/detalhamento_iteracao5.md), [ata 21/10](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10.md), DEC06 a DEC08 |
 | Prototipar | 18 telas no Figma, com PDF por requisito | até 30/10/2026 | [Design do usuário](../../historico/designUser_iteracao5.md) |
-| Avaliar | Protótipo apresentado e aprovado pelo cliente | 30/10/2026 | [Ata 30/10](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10.md), [DEC12](../../painel.md#DEC12) |
-| Ajustar | Ajustes pedidos na avaliação do protótipo: telas da coordenação só para computador e botão de publicar desabilitado enquanto faltar campo obrigatório | 30/10/2026 | [DEC13](../../painel.md#DEC13), [DEC14](../../painel.md#DEC14); pendência [PEN01](../../painel.md#PEN01) (subtítulo do evento), encerrada em 14/11/2026 pela [DEC27](../../painel.md#DEC27) |
+| Avaliar | Protótipo apresentado e aprovado pelo cliente | 30/10/2026 | [Ata 30/10](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10.md) |
+| Ajustar | Ajustes pedidos na avaliação do protótipo: telas da coordenação só para computador e botão de publicar desabilitado enquanto faltar campo obrigatório | 30/10/2026 | [DEC13](../../painel.md#DEC13); pendência [PEN01](../../painel.md#PEN01) (subtítulo do evento), encerrada em 14/11/2026 pela [DEC27](../../painel.md#DEC27) |
 | Construir | RF13 a RF20 construídos, junto com a autenticação (RF00 a RF02) | 02/11 a 10/11/2026 | Issues IT05 e IT07 no GitHub; sistema demonstrado rodando na [reunião de 10/11](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md). Ainda sem ambiente publicado |
-| Verificar e validar | O cliente usou o sistema, executou as operações de RF13 a RF20 e de acesso e aceitou o incremento | 10/11/2026 | [Ata 10/11](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md), [DEC19](../../painel.md#DEC19). A verificação pelo [DoD](9_dor_e_dod.md) está na seção 9.3 |
+| Verificar e validar | O cliente usou o sistema, executou as operações de RF13 a RF20 e de acesso e aceitou o incremento | 10/11/2026 | [Ata 10/11](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md). A verificação pelo [DoD](9_dor_e_dod.md) está na seção 9.3 |
 
-O teste com o cliente gerou um novo ajuste, a expansão da imagem ao clicar ([DEC21](../../painel.md#DEC21)), que reinicia o ciclo para esse ponto. O mesmo ciclo já começou para o incremento seguinte: o protótipo de acesso, turmas, alunos e coordenadores foi aprovado em 10/11 ([DEC20](../../painel.md#DEC20)).
+O teste com o cliente gerou um novo ajuste, a expansão da imagem ao clicar, que reinicia o ciclo para esse ponto. O mesmo ciclo já começou para o incremento seguinte: o protótipo de acesso, turmas, alunos e coordenadores foi aprovado em 10/11.
 
 O andamento de cada requisito também aparece na seção *Andamento* da sua ficha, acessível pelo [painel do escopo](../../painel.md).
 

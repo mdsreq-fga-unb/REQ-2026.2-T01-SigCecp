@@ -64,9 +64,9 @@ O sistema rodava no computador de Marcos, exposto por uma porta para o cliente a
 
 ## 5. Decisões
 
-- O cliente testou e aceitou o acesso (RF00 a RF02) e o conteúdo institucional e eventos (RF13 a RF20) ([DEC19](../../../../painel.md#DEC19)).
-- O protótipo das telas de turmas, alunos, acesso e coordenadores foi aprovado pelo representante do cliente; falta o retorno das demais pessoas do CECP ([DEC20](../../../../painel.md#DEC20)).
-- Imagens das publicações serão expansíveis ao clicar ([DEC21](../../../../painel.md#DEC21)).
+- O cliente testou e aceitou o acesso (RF00 a RF02) e o conteúdo institucional e eventos (RF13 a RF20).
+- O protótipo das telas de turmas, alunos, acesso e coordenadores foi aprovado pelo representante do cliente; falta o retorno das demais pessoas do CECP.
+- Imagens das publicações serão expansíveis ao clicar.
 - O tamanho da letra do sistema é mantido; uma letra maior pode ser avaliada para a página "Quem somos", depois do MVP ([DEC22](../../../../painel.md#DEC22)).
 
 ## 6. Encaminhamentos

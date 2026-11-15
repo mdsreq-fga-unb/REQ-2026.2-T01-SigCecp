@@ -30,7 +30,7 @@ Exercício analítico sobre níveis de abstração (negócio, usuário, produto)
 
 ## Evidências da Iteração 5
 
-Registros do processo de detalhamento e de design do usuário para RF13–RF20 (CP3: Gestão de conteúdo institucional), com decisões registradas em [DEC06 a DEC14](../painel.md#dec).
+Registros do processo de detalhamento e de design do usuário para RF13–RF20 (CP3: Gestão de conteúdo institucional), com decisões registradas em [decisões](../painel.md#dec).
 
 - [Detalhamento (21/10/2026) →](detalhamento_iteracao5.md)
 - [Design do usuário e aprovação do protótipo (30/10/2026) →](designUser_iteracao5.md)

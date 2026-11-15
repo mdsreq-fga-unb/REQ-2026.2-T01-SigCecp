@@ -17,11 +17,11 @@
 - **Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio):** Técnica utilizada entre equipe e cliente para classificar as funcionalidades levantadas cruzando dois eixos: complexidade/esforço técnico de implementação e valor gerado para o negócio. Permite identificar quais funcionalidades entregam mais valor com menor esforço, chegando a um consenso sobre o núcleo essencial do sistema (a definição do MVP), reduzindo escopo e resolvendo conflitos sobre o que é prioritário para entrega.
     - **Status:** realizada; matriz final validada com o cliente em 30/10/2026
     - **Evidências:** [Evidências da priorização](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/priorizacao_geral_e_mvp/), [Backlog e MVP](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/10_backlog_produto/), confirmação do MVP de 18 RFs na [ata de 30/10](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10/) ([DEC03](../../painel.md#DEC03))
-    - **Ressalva:** a posição de esforço de 30 RFs na matriz final não coincide com o arredondamento da média dos votos. A equipe reavaliou essas posições ao montar a matriz em 30/10, e a coluna "Esforço na matriz" da priorização é a vigente; no empate da moda, vale o maior valor ([DEC30](../../painel.md#DEC30))
+    - **Ressalva:** a posição de esforço de 30 RFs na matriz final não coincide com o arredondamento da média dos votos. A equipe reavaliou essas posições ao montar a matriz em 30/10, e a coluna "Esforço na matriz" da priorização é a vigente; no empate da moda, vale o maior valor ([priorização](../../historico/priorizacao_geral_e_mvp.md), seção 5)
 
 - **MoSCoW:** Técnica de priorização utilizada para classificar os requisitos de acordo com seu grau de importância para o sistema. Os requisitos são divididos em quatro categorias: **Must have, Should have, Could have e Won’t have.** A técnica auxilia a equipe e o cliente a estabelecer prioridades claras, controlar o escopo e garantir que os recursos disponíveis sejam direcionados inicialmente às funcionalidades mais essenciais.
     - **Status:** realizada em 24/09, refeita em 08/10 e confirmada em 30/10/2026
-    - **Evidências:** [ata de 24/09](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09/) (primeira classificação), [ata de 08/10](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10/) (reclassificação, [DEC01](../../painel.md#DEC01)) e [ata de 30/10](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10/) (validação do conjunto final, [DEC03](../../painel.md#DEC03))
+    - **Evidências:** [ata de 24/09](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09/) (primeira classificação), [ata de 08/10](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10/) (reclassificação) e [ata de 30/10](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10/) (validação do conjunto final, [DEC03](../../painel.md#DEC03))
 
 **Declaração de Requisitos:**
 
@@ -37,7 +37,7 @@ Representar não é só desenhar telas: é tornar visível qualquer estrutura, c
     - **Status:** realizada
     - **Evidências:** [seção 1.3](1_cenario_atual.md#13-rich-picture), [seção 1.4](1_cenario_atual.md#14-identificacao-da-oportunidade-ou-problema), [seção 1.6](1_cenario_atual.md#16-mapa-de-stakeholders)
 
-- **Protótipos (experienciais, informais):** telas navegáveis no Figma, usadas para validar com o cliente fluxos, campos e regras de cada requisito, e não apenas a aparência. A identidade visual (cores e logo, [DEC11](../../painel.md#DEC11)) é uma decisão de design e fica fora do núcleo da representação de requisitos.
+- **Protótipos (experienciais, informais):** telas navegáveis no Figma, usadas para validar com o cliente fluxos, campos e regras de cada requisito, e não apenas a aparência. A identidade visual (cores e logo) é uma decisão de design e fica fora do núcleo da representação de requisitos.
     - **Status:** realizada para todo o MVP: CP3 (RF13 a RF20) em 30/10 e acesso, turmas, alunos e coordenadores em 10/11/2026
     - **Evidências:** [Design do usuário](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/designUser_iteracao5/) (protótipo no Figma e PDF por requisito), [ata de 10/11](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11/)
 
@@ -69,7 +69,7 @@ Representar não é só desenhar telas: é tornar visível qualquer estrutura, c
 
 - **Sessão de Validação com Protótipo (Validação):** A validação dos requisitos ocorrerá por meio da apresentação dos protótipos ao representante e à equipe do CECP, que poderão aprovar, rejeitar ou sugerir ajustes para que os requisitos alcancem o resultado esperado.
     - **Status:** realizada para CP3 em 30/10/2026 e para as demais telas do MVP em 10/11/2026. O retorno das demais pessoas do CECP também foi positivo. Em 10/11 o cliente também usou o sistema construído de CP3 e de acesso e o aceitou
-    - **Evidências:** [Design do Usuário](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/designUser_iteracao5/), [DEC12](../../painel.md#DEC12), [ata de 10/11](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11/), [DEC19](../../painel.md#DEC19), [DEC20](../../painel.md#DEC20)
+    - **Evidências:** [Design do Usuário](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/designUser_iteracao5/), [ata de 10/11](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11/)
 
 **Organização e Atualização de Requisitos:**
 
@@ -111,7 +111,7 @@ Os diagramas abaixo representam comportamentos que as fichas descrevem em texto.
 
 ### Ciclo de vida do evento (RF17 a RF20)
 
-O estado é calculado pela data e pelo horário do evento ([RN33](../../painel.md#RN33), [DEC10](../../painel.md#DEC10)). Editar a data (RF18) recalcula o estado, como foi demonstrado na reunião de 10/11. A remoção é definitiva ([DEC08](../../painel.md#DEC08)).
+O estado é calculado pela data e pelo horário do evento ([RN33](../../painel.md#RN33)). Editar a data (RF18) recalcula o estado, como foi demonstrado na reunião de 10/11. A remoção é definitiva ([DEC08](../../painel.md#DEC08)).
 
 ```mermaid
 stateDiagram-v2
@@ -160,11 +160,11 @@ Dizer que um requisito "deve ser claro" não basta. Cada critério abaixo vira u
 
 | Critério | Pergunta de verificação | Como é verificado no SigCECP |
 | :--- | :--- | :--- |
-| Clareza | O cliente entende o requisito sem tradução? | Fichas e protótipos apresentados ao cliente e aprovados (DEC12, DEC20); dúvidas viram pendências no painel |
+| Clareza | O cliente entende o requisito sem tradução? | Fichas e protótipos apresentados ao cliente e aprovados (atas de 30/10 e 10/11); dúvidas viram pendências no painel |
 | Ausência de ambiguidade | Os termos têm leitura única? | Termos com valores observáveis, como os estados do evento (RN33), 8 minutos (RNF01), 2 segundos (RNF03) e até 10 sessões (DEC29) |
 | Completude suficiente | Faltam atores, regras ou exceções? | O painel conta campos "(a detalhar)" e marcas [PENDENTE]; o DoR exige ficha sem essas marcas; lacunas viram pendências |
 | Consistência | O requisito conflita com regras, decisões ou representações? | Alertas automáticos do painel, análise cruzada das fontes e confronto com os diagramas da seção 5.3 |
-| Verificabilidade | É possível demonstrar o atendimento? | Critérios de aceitação em Dado/Quando/Então, executados com o cliente (DEC19); RNFs com métrica e método de medição |
+| Verificabilidade | É possível demonstrar o atendimento? | Critérios de aceitação em Dado/Quando/Então, executados com o cliente (ata de 10/11); RNFs com métrica e método de medição |
 | Rastreabilidade e pertinência | Qual a origem e o valor do requisito? | Cada ficha liga o RF à característica e ao objetivo de origem, ao valor de negócio (MoSCoW), às decisões e às evidências de andamento |
 
 **Calibragem:** o rigor segue o risco. Os requisitos do MVP próximos da construção recebem V&V moderada (DoR, critérios de aceitação e teste com o cliente). Os requisitos pós-MVP, ainda em rascunho, recebem V&V leve, com as dúvidas registradas como pendências até o detalhamento.

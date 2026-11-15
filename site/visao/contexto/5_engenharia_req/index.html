@@ -1,0 +1,2800 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/visao/contexto/5_engenharia_req/">
+      
+      
+        <link rel="prev" href="../4_estrategias_esw/">
+      
+      
+        <link rel="next" href="../7_interacao_equipe_e_cliente/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Engenharia de requisitos - SigCECP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/painel.css?v=591a61fc">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#51-atividades-e-tecnicas-de-er" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="SigCECP" class="md-header__button md-logo" aria-label="SigCECP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SigCECP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Engenharia de requisitos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../1_cenario_atual/" class="md-tabs__link">
+          
+  
+  
+  Visão de produto e projeto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../painel/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Painel do escopo
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../historico/10_backlog_produto/" class="md-tabs__link">
+          
+  
+  
+  Priorização e MVP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../apresentacoes_unidades/apresentacao_unidade_1/" class="md-tabs__link">
+          
+  
+  
+  Apresentações das unidades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../historico/arquivo/" class="md-tabs__link">
+          
+  
+  
+  Histórico
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SigCECP" class="md-nav__button md-logo" aria-label="SigCECP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SigCECP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão de produto e projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visão de produto e projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_cenario_atual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cenário atual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_solucao_proposta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solução proposta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_intervencao_social/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intervenção social
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_estrategias_esw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estratégias de ESW
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engenharia de requisitos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engenharia de requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-atividades-e-tecnicas-de-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Atividades e Técnicas de ER
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-engenharia-de-requisitos-e-o-rad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Engenharia de Requisitos e o RAD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-representacoes-comportamentais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Representações comportamentais
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Representações comportamentais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ciclo-de-vida-do-evento-rf17-a-rf20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ciclo de vida do evento (RF17 a RF20)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciclo-de-vida-do-aluno-rf21-a-rf25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ciclo de vida do aluno (RF21 a RF25)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-da-matricula-online-rf35-rf41-rf42-pos-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fluxo da matrícula online (RF35, RF41, RF42; pós-MVP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-criterios-de-qualidade-usados-na-verificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Critérios de qualidade usados na verificação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versionamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_interacao_equipe_e_cliente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interação da equipe e do cliente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_dor_e_dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DoR e DoD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licoes/11_licoes_aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lições aprendidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../painel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Painel do escopo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Priorização e MVP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Priorização e MVP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/10_backlog_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backlog e MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/priorizacao_geral_e_mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidências da priorização
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apresentações das unidades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Apresentações das unidades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apresentacoes_unidades/apresentacao_unidade_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apresentacoes_unidades/apresentacao_unidade_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Histórico
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Histórico
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/arquivo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentos arquivados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravações
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gravações
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reuniões com o cliente
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reuniões com o cliente
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_17_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_22_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_24_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_26_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_09_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_21_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_video_30_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reuniões da equipe
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reuniões da equipe
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_equipe/reuniao_video_28_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_equipe/reuniao_video_04_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_equipe/reuniao_video_24_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_equipe/reuniao_video_26_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organização e planejamento
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Organização e planejamento
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atas de reuniões
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Atas de reuniões
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1_1" id="__nav_6_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cliente
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cliente
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_17_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_22_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_26_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1_2" id="__nav_6_3_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Equipe
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Equipe
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_28_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_04_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_24_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_26_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-atividades-e-tecnicas-de-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Atividades e Técnicas de ER
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-engenharia-de-requisitos-e-o-rad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Engenharia de Requisitos e o RAD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-representacoes-comportamentais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Representações comportamentais
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Representações comportamentais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ciclo-de-vida-do-evento-rf17-a-rf20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ciclo de vida do evento (RF17 a RF20)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciclo-de-vida-do-aluno-rf21-a-rf25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ciclo de vida do aluno (RF21 a RF25)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-da-matricula-online-rf35-rf41-rf42-pos-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fluxo da matrícula online (RF35, RF41, RF42; pós-MVP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-criterios-de-qualidade-usados-na-verificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Critérios de qualidade usados na verificação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versionamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div><h1 id="5-engenharia-de-requisitos">5 ENGENHARIA DE REQUISITOS</h1>
+<h2 id="51-atividades-e-tecnicas-de-er">5.1 Atividades e Técnicas de ER</h2>
+<p><strong>Elicitação e Descoberta:</strong></p>
+<ul>
+<li>
+<p><strong>Entrevista com Stakeholders:</strong> Reuniões com a equipe de coordenação do CECP para reconhecer e compreender os maiores desafios dentro do fluxo atual de operação, ouvir suas necessidades, desejos e expectativas e identificar o caráter do problema.</p>
+<ul>
+<li><strong>Status:</strong> realizada continuamente</li>
+<li><strong>Evidências:</strong> atas das reuniões com o cliente: <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_17_09/">17/09</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_22_09/">22/09</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09/">24/09</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_26_09/">26/09</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10/">08/10</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10/">21/10</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10/">30/10</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11/">10/11</a>. Gravações: <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/gravacoes/reunioes_cliente/reuniao_audio_17_09/">17/09</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/gravacoes/reunioes_cliente/reuniao_audio_22_09/">22/09</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/gravacoes/reunioes_cliente/reuniao_audio_24_09/">24/09</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/gravacoes/reunioes_cliente/reuniao_audio_26_09/">26/09</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/gravacoes/reunioes_cliente/reuniao_audio_09_10/">08/10</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/gravacoes/reunioes_cliente/reuniao_audio_21_10/">21/10</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/gravacoes/reunioes_cliente/reuniao_video_30_10/">30/10</a>. </li>
+</ul>
+</li>
+<li>
+<p><strong>Brainstorming dos desenvolvedores:</strong> Discussões entre os desenvolvedores serviram para elencar os desafios e sugerir soluções que transformassem o atual fluxo manual em um processo digital. A técnica foi aplicada de forma contínua e informal, sem sessões formais de brainstorming: as ideias eram acatadas ou descartadas ao longo do trabalho, servindo tanto à elicitação quanto ao refinamento dos requisitos.</p>
+<ul>
+<li><strong>Status:</strong> realizada continuamente, informalmente</li>
+<li><strong>Evidências:</strong> Sem registros formais, e houve uma Reunião não gravada entre os desenvolvedores em 24/10 em que foram tratados o Brainstorming dos Desenvolvedores e uma breve Revisão por Pares dos novos requisitos elicitados em tal reunião.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Análise e Consenso:</strong></p>
+<ul>
+<li>
+<p><strong>Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio):</strong> Técnica utilizada entre equipe e cliente para classificar as funcionalidades levantadas cruzando dois eixos: complexidade/esforço técnico de implementação e valor gerado para o negócio. Permite identificar quais funcionalidades entregam mais valor com menor esforço, chegando a um consenso sobre o núcleo essencial do sistema (a definição do MVP), reduzindo escopo e resolvendo conflitos sobre o que é prioritário para entrega.</p>
+<ul>
+<li><strong>Status:</strong> realizada; matriz final validada com o cliente em 30/10/2026</li>
+<li><strong>Evidências:</strong> <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/priorizacao_geral_e_mvp/">Evidências da priorização</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/10_backlog_produto/">Backlog e MVP</a>, confirmação do MVP de 18 RFs na <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10/">ata de 30/10</a> (<a href="../../../painel/#DEC03">DEC03</a>)</li>
+<li><strong>Ressalva:</strong> a posição de esforço de 30 RFs na matriz final não coincide com o arredondamento da média dos votos. A equipe reavaliou essas posições ao montar a matriz em 30/10, e a coluna "Esforço na matriz" da priorização é a vigente; no empate da moda, vale o maior valor (<a href="../../../painel/#DEC30">DEC30</a>)</li>
+</ul>
+</li>
+<li>
+<p><strong>MoSCoW:</strong> Técnica de priorização utilizada para classificar os requisitos de acordo com seu grau de importância para o sistema. Os requisitos são divididos em quatro categorias: <strong>Must have, Should have, Could have e Won’t have.</strong> A técnica auxilia a equipe e o cliente a estabelecer prioridades claras, controlar o escopo e garantir que os recursos disponíveis sejam direcionados inicialmente às funcionalidades mais essenciais.</p>
+<ul>
+<li><strong>Status:</strong> realizada em 24/09, refeita em 08/10 e confirmada em 30/10/2026</li>
+<li><strong>Evidências:</strong> <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09/">ata de 24/09</a> (primeira classificação), <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10/">ata de 08/10</a> (reclassificação, <a href="../../../painel/#DEC01">DEC01</a>) e <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10/">ata de 30/10</a> (validação do conjunto final, <a href="../../../painel/#DEC03">DEC03</a>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Declaração de Requisitos:</strong></p>
+<ul>
+<li><strong>Declaração Estruturada de Requisitos:</strong> Técnica de declaração utilizada para especificar os requisitos descobertos em fichas para cada requisito, contendo identificador único, descrição, classificação como Requisito Funcional (RF) ou Requisito Não Funcional (RNF), Regras de Negócio (RN), Característica de Produto (CP) de origem, ator, entradas, pré-condições, processamento, saídas, critério de aceitação e andamento, a fim de garantir rastreabilidade, testabilidade e comunicação clara entre equipe e cliente. Todos os requisitos podem ser facilmente acessados pelo Painel do Escopo.<ul>
+<li><strong>Status:</strong> realizada continuamente</li>
+<li><strong>Evidências:</strong> <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/painel/">Painel do Escopo</a> em modais com acesso às fichas, exemplo de ficha: <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/visao/escopo/requisitos/RF00/">RF00</a>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Representação de Requisitos:</strong></p>
+<p>Representar não é só desenhar telas: é tornar visível qualquer estrutura, comportamento ou relação que ajude a entender o sistema. O projeto usa representações informais e semiformais, escolhidas pelo foco que cada uma privilegia. Não há representação formal: nenhum requisito tem criticidade alta, lógica complexa ou ambiguidade persistente que justifique formalizar.</p>
+<ul>
+<li>
+<p><strong>Representações contextuais (informais):</strong> Rich Picture do fluxo atual, diagrama de Ishikawa das causas do problema e mapa de stakeholders. Definem o escopo e as interações com o ambiente.</p>
+<ul>
+<li><strong>Status:</strong> realizada</li>
+<li><strong>Evidências:</strong> <a href="../1_cenario_atual/#13-rich-picture">seção 1.3</a>, <a href="../1_cenario_atual/#14-identificacao-da-oportunidade-ou-problema">seção 1.4</a>, <a href="../1_cenario_atual/#16-mapa-de-stakeholders">seção 1.6</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Protótipos (experienciais, informais):</strong> telas navegáveis no Figma, usadas para validar com o cliente fluxos, campos e regras de cada requisito, e não apenas a aparência. A identidade visual (cores e logo, <a href="../../../painel/#DEC11">DEC11</a>) é uma decisão de design e fica fora do núcleo da representação de requisitos.</p>
+<ul>
+<li><strong>Status:</strong> realizada para todo o MVP: CP3 (RF13 a RF20) em 30/10 e acesso, turmas, alunos e coordenadores em 10/11/2026</li>
+<li><strong>Evidências:</strong> <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/designUser_iteracao5/">Design do usuário</a> (protótipo no Figma e PDF por requisito), <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11/">ata de 10/11</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Diagramas de estados e de fluxo (comportamentais, semiformais):</strong> representam o ciclo de vida do evento e do aluno e o fluxo da matrícula online, que o texto das fichas descreve de forma espalhada. Ao desenhar o ciclo do aluno, a equipe descobriu uma lacuna: não há regra para reativar um aluno inativo (<a href="../../../painel/#PEN23">PEN23</a>).</p>
+<ul>
+<li><strong>Status:</strong> realizada em 14/11/2026</li>
+<li><strong>Evidências:</strong> <a href="#53-representacoes-comportamentais">seção 5.3</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Rastreabilidade visual (semiformal):</strong> o grafo de rastreabilidade (problema → objetivos → características → RFs) e os vínculos navegáveis do painel do escopo (RF ↔ RN, RNF, decisões e pendências).</p>
+<ul>
+<li><strong>Status:</strong> realizada</li>
+<li><strong>Evidências:</strong> <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/8_0_requisitos/">grafo da seção 8.3 (arquivada)</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/painel/">Painel do Escopo</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Verificação e Validação de Requisitos:</strong></p>
+<ul>
+<li>
+<p><strong>Revisão por pares (Verificação):</strong> Os requisitos descobertos serão revisados internamente entre os desenvolvedores antes da apresentação ao cliente, examinando consistência, completude e testabilidade.</p>
+<ul>
+<li><strong>Status:</strong> realizada informalmente.</li>
+<li><strong>Evidências:</strong> Sem registros formais, e houve uma Reunião não gravada entre os desenvolvedores em 24/10 em que foram tratados o Brainstorming dos Desenvolvedores e uma breve Revisão por Pares dos novos requisitos elicitados em tal reunião.</li>
+</ul>
+</li>
+<li>
+<p><strong>Análise de consistência e de rastreabilidade (Verificação):</strong> confronta as fontes do escopo entre si (fichas, regras, RNFs, decisões, backlog e cronograma). Parte é automática: a cada build, o gerador do painel aponta regra de negócio inexistente, RF do MVP fora do cronograma, RF pós-MVP agendado e decisão sem data ou fonte (aba <em>Alertas</em>). Em 14/11/2026 foi feita uma análise cruzada completa, que corrigiu vínculos RF ↔ RNF e RF ↔ RN só de um lado, versões desencontradas e RFs retirados ainda listados.</p>
+<ul>
+<li><strong>Status:</strong> realizada continuamente (alertas) e em 14/11/2026 (análise completa)</li>
+<li><strong>Evidências:</strong> aba <em>Alertas</em> do <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/painel/">Painel do Escopo</a>; histórico de mudanças das fichas e dos RNFs</li>
+</ul>
+</li>
+<li>
+<p><strong>Checklists e critérios de qualidade (Verificação):</strong> o DoR funciona como checklist de prontidão de cada requisito, e os critérios de qualidade da <a href="#54-criterios-de-qualidade-usados-na-verificacao">seção 5.4</a> transformam adjetivos ("claro", "completo") em perguntas com evidência observável.</p>
+<ul>
+<li><strong>Status:</strong> realizada para RF13 a RF20 (DoR registrado)</li>
+<li><strong>Evidências:</strong> <a href="../9_dor_e_dod/#93-aplicacao-registrada">DoR e DoD, seção 9.3</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Revisão de Requisitos com Stakeholders (Validação):</strong> Os requisitos especificados serão apresentados ao representante e à equipe do CECP para confirmar se refletem corretamente as necessidades identificadas, podendo ser aprovados, rejeitados ou ajustados conforme o entendimento dos stakeholders. Essa técnica pode ser aplicada sempre que houver necessidade de revisar requisitos, especialmente antes da existência de protótipos que permitam uma validação mais visual.</p>
+<ul>
+<li><strong>Status:</strong> realizada</li>
+<li><strong>Evidências:</strong> <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10/">Detalhamento dos Requisitos</a> e atas das reuniões com o cliente (ver Entrevista com Stakeholders) </li>
+</ul>
+</li>
+<li>
+<p><strong>Sessão de Validação com Protótipo (Validação):</strong> A validação dos requisitos ocorrerá por meio da apresentação dos protótipos ao representante e à equipe do CECP, que poderão aprovar, rejeitar ou sugerir ajustes para que os requisitos alcancem o resultado esperado.</p>
+<ul>
+<li><strong>Status:</strong> realizada para CP3 em 30/10/2026 e para as demais telas do MVP em 10/11/2026. O retorno das demais pessoas do CECP também foi positivo. Em 10/11 o cliente também usou o sistema construído de CP3 e de acesso e o aceitou</li>
+<li><strong>Evidências:</strong> <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/designUser_iteracao5/">Design do Usuário</a>, <a href="../../../painel/#DEC12">DEC12</a>, <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11/">ata de 10/11</a>, <a href="../../../painel/#DEC19">DEC19</a>, <a href="../../../painel/#DEC20">DEC20</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Organização e Atualização de Requisitos:</strong></p>
+<ul>
+<li><strong>Gestão do escopo de requisitos:</strong> mantém o escopo estruturado e coerente com o entendimento vigente. Cada requisito tem identificador único e uma ficha que preserva suas relações: característica e objetivo de origem, regras de negócio, RNFs, critérios de aceitação, decisões, andamento com evidência e histórico de mudanças. O <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/painel/">Painel do Escopo</a> oferece visões diferentes do mesmo escopo (por característica, estado, entrega e pendência), e as issues do GitHub acompanham a construção.<ul>
+<li><strong>Escopos distintos:</strong> escopo do produto (<a href="../2_solucao_proposta/">seção 2</a>); escopo de requisitos (painel e fichas); escopo da entrega, o MVP de 18 RFs (<a href="../../../painel/#DEC03">DEC03</a>, com a ordem de construção no <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/10_backlog_produto/">backlog</a>); e escopo do projeto, o <a href="../../../cronograma/6_cronograma/">cronograma</a>, que inclui trabalho fora do escopo de requisitos, como capacitação e cadastro inicial dos dados (<a href="../../../painel/#DEC32">DEC32</a>).</li>
+<li><strong>Atualização:</strong> cada mudança é registrada como decisão e propagada a tudo o que ela afeta. Exemplo: a <a href="../../../painel/#DEC27">DEC27</a> (subtítulo opcional) alterou as fichas do RF17 e do RF18, o backlog e o registro do DoR. O que deixa de valer vai para o histórico das fichas ou para os <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/arquivo/">documentos arquivados</a>, sem apagar a memória.</li>
+<li><strong>Calibragem:</strong> estrutura intermediária (visões, versões, histórico seletivo e decisões registradas), proporcional a um projeto de baixa criticidade com uma única equipe. A rastreabilidade é a suficiente para responder de onde veio cada requisito, o que o condiciona e como é avaliado.</li>
+<li><strong>Status:</strong> realizada continuamente.</li>
+<li><strong>Evidências:</strong> <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/painel/">Painel do Escopo</a>, <a href="../../escopo/decisoes/">decisões e pendências</a>, <a href="https://github.com/orgs/mdsreq-fga-unb/projects/118/views/1">GitHub Projects</a> (o quadro precisa ser atualizado, issue #25), <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/10_backlog_produto/">Backlog e MVP</a> e o <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/painel/">Painel do Escopo</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="52-engenharia-de-requisitos-e-o-rad">5.2 Engenharia de Requisitos e o RAD</h2>
+<table>
+<thead>
+<tr>
+<th>Fases do RAD</th>
+<th>Atividades de ER</th>
+<th>Prática Técnica</th>
+<th>Resultado Esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Planejamento de Requisitos</strong></td>
+<td>Elicitação e Descoberta — Identificação de necessidades e contexto</td>
+<td>Entrevista com stakeholders e brainstorming dos desenvolvedores</td>
+<td>Necessidades, dificuldades e requisitos de alto nível* identificados</td>
+</tr>
+<tr>
+<td></td>
+<td>Análise e Consenso — Definição de prioridades e escopo acordado</td>
+<td>Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio)</td>
+<td>Funcionalidades essenciais priorizadas e acordadas</td>
+</tr>
+<tr>
+<td></td>
+<td>Declaração — Comunicação estruturada dos requisitos</td>
+<td>Declaração Estruturada de Requisitos</td>
+<td>Requisitos identificados, classificados e numerados</td>
+</tr>
+<tr>
+<td></td>
+<td>Verificação e Validação — Verificação de qualidade interna e validação com stakeholders</td>
+<td>Revisão por Pares (Verificação) e Revisão de Requisitos com Stakeholders (Validação)</td>
+<td>Requisitos verificados quanto à consistência interna e confirmados como representativos das necessidades reais do CECP</td>
+</tr>
+<tr>
+<td></td>
+<td>Organização e Atualização — Estruturação inicial dos requisitos</td>
+<td>Gestão de Backlog de Requisitos (via GitHub Projects e Painel do Escopo)</td>
+<td>Requisitos organizados e acompanhados por meio de issues e de fichas</td>
+</tr>
+<tr>
+<td><strong>Design do Usuário</strong></td>
+<td>Representação — Telas, fluxos e estados</td>
+<td>Protótipos e diagramas de estados e de fluxo</td>
+<td>Telas, fluxos e ciclos de vida representados para avaliação com os stakeholders</td>
+</tr>
+<tr>
+<td></td>
+<td>Verificação e Validação — Verificação de qualidade interna e validação com stakeholders</td>
+<td>Análise de consistência entre fichas e protótipos, Revisão por Pares (Verificação) e Sessão de Validação com Protótipo (Validação)</td>
+<td>Protótipos coerentes com as regras e com os fluxos de uso esperados</td>
+</tr>
+<tr>
+<td></td>
+<td>Elicitação e Descoberta — Refinamento dos requisitos</td>
+<td>Entrevista com stakeholders</td>
+<td>Novos requisitos ou ajustes detalhados a partir da interação visual do cliente com os protótipos</td>
+</tr>
+<tr>
+<td></td>
+<td>Análise e Consenso — Revisão de prioridades a partir do protótipo</td>
+<td>Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio)</td>
+<td>Prioridades revisadas e reacordadas conforme aprendizado obtido com os protótipos</td>
+</tr>
+<tr>
+<td></td>
+<td>Declaração — Consolidação dos esclarecimentos</td>
+<td>Declaração Estruturada de Requisitos</td>
+<td>Detalhes acordados incorporados às declarações dos requisitos correspondentes</td>
+</tr>
+<tr>
+<td></td>
+<td>Organização e Atualização — Registro das avaliações</td>
+<td>Gestão de Backlog de Requisitos (Painel do Escopo e GitHub Projects)</td>
+<td>Avaliações do cliente e protótipos vinculados às issues dos requisitos já definidos</td>
+</tr>
+<tr>
+<td><strong>Construção</strong></td>
+<td>Organização e Atualização — Manutenção dos requisitos</td>
+<td>Gestão de Backlog de Requisitos (Painel do Escopo e GitHub Projects)</td>
+<td>Requisitos e mudanças mantidos em estado atual</td>
+</tr>
+<tr>
+<td></td>
+<td>Verificação e Validação — Verificação dos requisitos alterados</td>
+<td>Revisão por Pares (Verificação)</td>
+<td>Requisitos modificados verificados quanto à qualidade interna</td>
+</tr>
+<tr>
+<td></td>
+<td>Elicitação, Análise, Declaração e Representação — Ajuste de requisitos emergentes</td>
+<td>Entrevista com stakeholders, Priorização de Requisitos (Matriz de Avaliação Técnica x Valor de Negócio), Declaração Estruturada de Requisitos e Protótipos e Wireframes</td>
+<td>Novos requisitos ou ajustes identificados durante a construção devidamente elicitados, analisados, declarados e representados</td>
+</tr>
+<tr>
+<td><strong>Transição</strong></td>
+<td>Verificação e Validação — Validação final dos requisitos</td>
+<td>Sessão de Validação com Protótipo (Validação)</td>
+<td>Confirmação de que os requisitos atendidos correspondem às necessidades do CECP</td>
+</tr>
+<tr>
+<td></td>
+<td>Organização e Atualização — Consolidação dos requisitos</td>
+<td>Gestão de Backlog de Requisitos (Painel do Escopo e GitHub Projects)</td>
+<td>Estado final dos requisitos e itens futuros devidamente registrados</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>*Requisitos de alto nível referem-se a requisitos amplos e ainda pouco detalhados, identificados na fase inicial de elicitação, antes do refinamento realizado nas etapas de Análise e Declaração.</p>
+</blockquote>
+<h2 id="53-representacoes-comportamentais">5.3 Representações comportamentais</h2>
+<p>Os diagramas abaixo representam comportamentos que as fichas descrevem em texto. Eles não criam regras novas: cada transição aponta para a regra ou decisão de origem.</p>
+<h3 id="ciclo-de-vida-do-evento-rf17-a-rf20">Ciclo de vida do evento (RF17 a RF20)</h3>
+<p>O estado é calculado pela data e pelo horário do evento (<a href="../../../painel/#RN33">RN33</a>, <a href="../../../painel/#DEC10">DEC10</a>). Editar a data (RF18) recalcula o estado, como foi demonstrado na reunião de 10/11. A remoção é definitiva (<a href="../../../painel/#DEC08">DEC08</a>).</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    state "Em breve" as EmBreve
+    state "Em andamento" as EmAndamento
+    state "Encerrado" as Encerrado
+    [*] --&gt; EmBreve: publicar com data futura (RF17)
+    EmBreve --&gt; EmAndamento: chega o horário de início
+    EmAndamento --&gt; Encerrado: passa o horário de término
+    EmBreve --&gt; [*]: remover, após confirmação (RF19)
+    EmAndamento --&gt; [*]: remover (RF19)
+    Encerrado --&gt; [*]: remover (RF19)</code></pre>
+<h3 id="ciclo-de-vida-do-aluno-rf21-a-rf25">Ciclo de vida do aluno (RF21 a RF25)</h3>
+<p>O aluno nunca é excluído, só inativado (<a href="../../../painel/#RN01">RN01</a>). A inativação é manual e pede confirmação (<a href="../../../painel/#RN47">RN47</a>, <a href="../../../painel/#RN48">RN48</a>). A remoção de dados (RF25, pós-MVP) apaga os documentos de identificação, mas mantém o aluno e seu histórico. Não há regra para voltar de inativo para ativo (<a href="../../../painel/#PEN23">PEN23</a>).</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    state "Ativo" as Ativo
+    state "Inativo" as Inativo
+    [*] --&gt; Ativo: cadastrar (RF21)
+    Ativo --&gt; Ativo: editar (RF22)
+    Ativo --&gt; Inativo: inativar, após confirmação (RF24)
+    Inativo --&gt; Ativo: reativar? (sem regra, PEN23)</code></pre>
+<h3 id="fluxo-da-matricula-online-rf35-rf41-rf42-pos-mvp">Fluxo da matrícula online (RF35, RF41, RF42; pós-MVP)</h3>
+<p>A solicitação online é uma pré-matrícula: a aprovada só vira cadastro depois da confirmação presencial (<a href="../../../painel/#DEC18">DEC18</a>, <a href="../../../painel/#RN02">RN02</a>). O que a aprovação reserva (vaga, prazo, documentos) ainda está em aberto (<a href="../../../painel/#PEN12">PEN12</a>).</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Interessado envia a solicitação&lt;br&gt;RF35] --&gt; B[Recebe o número de protocolo&lt;br&gt;RF41]
+    B --&gt; C{Coordenação analisa&lt;br&gt;RF42}
+    C --&gt;|recusada| F[Fim]
+    C --&gt;|lista de espera| C
+    C --&gt;|aprovada| D[Confirmação presencial com&lt;br&gt;assinatura dos termos, RN02]
+    D --&gt; E[Cadastro definitivo do aluno&lt;br&gt;RF21]</code></pre>
+<h2 id="54-criterios-de-qualidade-usados-na-verificacao">5.4 Critérios de qualidade usados na verificação</h2>
+<p>Dizer que um requisito "deve ser claro" não basta. Cada critério abaixo vira uma pergunta e uma evidência observável no projeto.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Critério</th>
+<th style="text-align: left;">Pergunta de verificação</th>
+<th style="text-align: left;">Como é verificado no SigCECP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Clareza</td>
+<td style="text-align: left;">O cliente entende o requisito sem tradução?</td>
+<td style="text-align: left;">Fichas e protótipos apresentados ao cliente e aprovados (DEC12, DEC20); dúvidas viram pendências no painel</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ausência de ambiguidade</td>
+<td style="text-align: left;">Os termos têm leitura única?</td>
+<td style="text-align: left;">Termos com valores observáveis, como os estados do evento (RN33), 8 minutos (RNF01), 2 segundos (RNF03) e até 10 sessões (DEC29)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Completude suficiente</td>
+<td style="text-align: left;">Faltam atores, regras ou exceções?</td>
+<td style="text-align: left;">O painel conta campos "(a detalhar)" e marcas [PENDENTE]; o DoR exige ficha sem essas marcas; lacunas viram pendências</td>
+</tr>
+<tr>
+<td style="text-align: left;">Consistência</td>
+<td style="text-align: left;">O requisito conflita com regras, decisões ou representações?</td>
+<td style="text-align: left;">Alertas automáticos do painel, análise cruzada das fontes e confronto com os diagramas da seção 5.3</td>
+</tr>
+<tr>
+<td style="text-align: left;">Verificabilidade</td>
+<td style="text-align: left;">É possível demonstrar o atendimento?</td>
+<td style="text-align: left;">Critérios de aceitação em Dado/Quando/Então, executados com o cliente (DEC19); RNFs com métrica e método de medição</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rastreabilidade e pertinência</td>
+<td style="text-align: left;">Qual a origem e o valor do requisito?</td>
+<td style="text-align: left;">Cada ficha liga o RF à característica e ao objetivo de origem, ao valor de negócio (MoSCoW), às decisões e às evidências de andamento</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Calibragem:</strong> o rigor segue o risco. Os requisitos do MVP próximos da construção recebem V&amp;V moderada (DoR, critérios de aceitação e teste com o cliente). Os requisitos pós-MVP, ainda em rascunho, recebem V&amp;V leve, com as dúvidas registradas como pendências até o detalhamento.</p>
+<h2 id="versionamento">Versionamento</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Versão</th>
+<th style="text-align: left;">Data</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Autor(es/as)</th>
+<th style="text-align: left;">Revisor(es/as)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1.0</td>
+<td style="text-align: left;">05/09/2026</td>
+<td style="text-align: left;">Transcrição do documento para markdown</td>
+<td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">19/09/2026</td>
+<td style="text-align: left;">Revisão das técnicas de Engenharia de Requisitos com base em feedback recebido durante o desenvolvimento do projeto</td>
+<td style="text-align: left;">Ana Paula Jardim</td>
+<td style="text-align: left;">Marcos Monteiro</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.2</td>
+<td style="text-align: left;">13/11/2026</td>
+<td style="text-align: left;">Inclusão de status e evidências por técnica de ER; atualização da descrição da Declaração Estruturada de Requisitos e Organização e Atualização</td>
+<td style="text-align: left;">Ana Paula Jardim</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.3</td>
+<td style="text-align: left;">14/11/2026</td>
+<td style="text-align: left;">Issue #26: MoSCoW e priorização com as três reuniões e a confirmação do MVP em 30/10 (DEC03); ressalva sobre a reconciliação do esforço (PEN06); status de prototipação e validação com protótipo atualizados para CP3</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.4</td>
+<td style="text-align: left;">14/11/2026</td>
+<td style="text-align: left;">Evidências da reunião de 10/11/2026 (protótipo das demais telas do MVP e aceite de CP3 e do acesso)</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">14/11/2026</td>
+<td style="text-align: left;">Alinhamento às aulas dos capítulos 10 a 12: representação além das telas (contextuais, protótipos, diagramas comportamentais e rastreabilidade), sem atribuir aos protótipos a identidade visual; novas técnicas de verificação (análise de consistência e rastreabilidade, checklists e critérios de qualidade); organização e atualização descritas por escopos, propagação de mudanças e calibragem; novas seções 5.3 (diagramas de estados e de fluxo) e 5.4 (critérios de qualidade)</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../assets/escopo.js?v=55585c31"></script>
+      
+        <script src="../../../assets/painel.js?v=50cb2daf"></script>
+      
+    
+  </body>
+</html>
