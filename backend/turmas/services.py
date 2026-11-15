@@ -113,3 +113,8 @@ alunos_mock = [
 def listar_alunos(db: Session, turma_id: int) -> list[str]:
     turma = buscar_turma(db, turma_id)
     return turma.alunos
+
+def associar_alunos(db: Session, turma_id: int, alunos: list[str]) -> None:
+    turma = buscar_turma(db, turma_id)
+    turma.alunos = alunos
+    db.commit()

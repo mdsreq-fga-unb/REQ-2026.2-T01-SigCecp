@@ -147,6 +147,35 @@ def ver_alunos_associados(
         context={"turma": turma, "alunos": alunos_mock},
     )
 
+#---------------------------
+# Associar Alunos
+#---------------------------
+@router.get("/{turma_id}/alunos/associar")
+def associar_alunos(
+    turma_id: int,
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    turma = buscar_turma(db, turma_id)
+    return templates.TemplateResponse(
+        request=request,
+        name="coordenacao/turmas/associar-alunos.html",
+        context={"turma": turma, "turmas": listar_turmas(db)},
+    )
+
+@router.post("/{turma_id}/alunos")
+def salvar_alunos_associados(
+    turma_id: int,
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    turma = buscar_turma(db, turma_id)
+    return templates.TemplateResponse(
+        request=request,
+        name="coordenacao/turmas/associar-alunos.html",
+        context={"turma": turma},
+    )
+
 @router.post("/{turma_id}/alunos")
 def salvar_alunos_associados(
     turma_id: int,
@@ -159,3 +188,4 @@ def salvar_alunos_associados(
         request.url_for("ver_alunos_associados", turma_id=turma_id),
         status_code=303,
     )
+    

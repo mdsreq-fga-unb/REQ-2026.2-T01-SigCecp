@@ -1,0 +1,622 @@
+/* ---------- Página ---------- */
+.pagina {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 56px;
+}
+
+/* ---------- Cabeçalho ---------- */
+.pagina__titulo {
+  margin: 0 0 8px;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--preto);
+}
+
+.pagina__subtitulo {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--cinza-texto);
+}
+
+.trilha {
+  margin-bottom: 24px;
+}
+
+.trilha ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: var(--cinza-texto);
+}
+
+.trilha li + li::before {
+  content: "/";
+  margin-right: 8px;
+  color: var(--cinza-claro);
+}
+
+.trilha a {
+  color: var(--cinza-texto);
+  text-decoration: none;
+}
+
+.trilha a:hover {
+  color: var(--preto);
+  text-decoration: underline;
+}
+
+/* ---------- Layout principal ---------- */
+.associacao__conteudo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  align-items: start;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.associacao__principal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+/* ---------- Cartões ---------- */
+.associacao__card,
+.associacao__orientacoes {
+  padding: 28px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+}
+
+.associacao__card h2,
+.associacao__orientacoes h2 {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--preto);
+}
+
+/* ---------- Dados do aluno ---------- */
+.aluno__dados {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.aluno__foto {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  overflow: hidden;
+  background: var(--cinza-claro);
+  border-radius: 50%;
+}
+
+.aluno__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aluno__informacoes {
+  min-width: 0;
+}
+
+.aluno__informacoes h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--preto);
+}
+
+.aluno__informacoes p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--cinza-texto);
+}
+
+/* ---------- Situação cadastral ---------- */
+.aluno__situacao {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--preto);
+  background: var(--cinza-claro);
+  border-radius: 20px;
+}
+
+/* ---------- Formulário ---------- */
+.associacao__formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--preto);
+}
+
+.campo select,
+.campo input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--preto);
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo select:focus,
+.campo input:focus {
+  border-color: var(--preto);
+  box-shadow: 0 0 0 3px rgb(0 0 0 / 7%);
+}
+
+.campo__ajuda {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--cinza-texto);
+}
+
+/* ---------- Resumo da turma ---------- */
+.turma__resumo {
+  padding: 20px;
+  background: var(--cinza-claro);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+}
+
+.turma__resumo h3 {
+  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--preto);
+}
+
+.turma__resumo p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--cinza-texto);
+}
+
+.turma__resumo p:last-child {
+  margin-bottom: 0;
+}
+
+.turma__resumo strong {
+  color: var(--preto);
+  font-weight: 600;
+}
+
+/* ---------- Orientações laterais ---------- */
+.associacao__orientacoes {
+  position: sticky;
+  top: 24px;
+}
+
+.associacao__orientacoes h2 {
+  font-size: 17px;
+}
+
+.associacao__orientacoes p {
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--cinza-texto);
+}
+
+.associacao__orientacoes ul {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.associacao__orientacoes li {
+  padding-left: 2px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--cinza-texto);
+}
+
+.associacao__orientacoes li::marker {
+  color: var(--preto);
+}
+
+/* ---------- Botões ---------- */
+.associacao__acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borda);
+}
+
+.associacao__acoes button,
+.associacao__acoes a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 22px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.associacao__botao--cancelar {
+  color: var(--preto);
+  background: var(--branco);
+}
+
+.associacao__botao--cancelar:hover {
+  background: var(--cinza-claro);
+  border-color: var(--preto);
+}
+
+.associacao__botao--confirmar {
+  color: var(--branco);
+  background: var(--preto);
+  border-color: var(--preto);
+}
+
+.associacao__botao--confirmar:hover {
+  opacity: 0.85;
+}
+
+.associacao__acoes button:focus-visible,
+.associacao__acoes a:focus-visible {
+  outline: 2px solid var(--preto);
+  outline-offset: 3px;
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 850px) {
+  .associacao__conteudo {
+    grid-template-columns: 1fr;
+  }
+
+  .associacao__orientacoes {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .pagina {
+    padding: 28px 16px 40px;
+  }
+
+  .pagina__titulo {
+    font-size: 30px;
+  }
+
+  .associacao__card,
+  .associacao__orientacoes {
+    padding: 20px;
+  }
+
+  .aluno__dados {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .aluno__foto {
+    width: 60px;
+    height: 60px;
+  }
+
+  .associacao__acoes {
+    flex-direction: column-reverse;
+  }
+
+  .associacao__acoes button,
+  .associacao__acoes a {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   Ajustes para ficar igual ao protótipo da tela
+   "Associar aluno à turma" (coordenacao/turmas/associar-alunos.html).
+   As regras acima continuam valendo; estas só completam ou ajustam.
+   ============================================================ */
+
+/* ---------- Menu do topo ---------- */
+/* Três colunas no topo: marca, menu e ações (o componentes.css prevê só duas) */
+.topo__linha {
+  grid-template-columns: 1fr auto 1fr;
+  gap: 32px;
+  min-height: 92px;
+}
+
+.topo__menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.topo__menu a {
+  position: relative;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--branco);
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.topo__menu a:hover {
+  opacity: 1;
+}
+
+.topo__menu a[aria-current="page"] {
+  font-weight: 700;
+  opacity: 1;
+}
+
+.topo__menu a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  left: 0;
+  height: 3px;
+  background: var(--vermelho);
+}
+
+/* ---------- Cabeçalho da página ---------- */
+.trilha {
+  margin-bottom: 16px;
+}
+
+.trilha ol {
+  gap: 6px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.trilha li + li::before {
+  margin-right: 6px;
+}
+
+.pagina__titulo {
+  margin-bottom: 12px;
+}
+
+.pagina__subtitulo {
+  margin-bottom: 48px;
+  font-size: 15px;
+}
+
+/* ---------- Cartões ---------- */
+.associacao__card,
+.associacao__orientacoes {
+  border-radius: 8px;
+}
+
+.associacao__card h2,
+.associacao__orientacoes h2 {
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* ---------- Cartão do aluno ---------- */
+.associacao__aluno {
+  margin-bottom: 24px;
+  padding: 22px 24px;
+}
+
+.associacao__aluno .aluno__foto {
+  width: 72px;
+  height: 72px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+}
+
+.associacao__aluno .aluno__informacoes h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* ---------- Layout: formulário + orientações ---------- */
+.associacao__conteudo {
+  grid-template-columns: minmax(0, 1fr) 352px;
+  gap: 32px;
+  margin-top: 0;
+}
+
+/* ---------- Formulário ---------- */
+.associacao__formulario {
+  gap: 0;
+}
+
+.campo label {
+  font-weight: 500;
+}
+
+.campo__seletor {
+  position: relative;
+}
+
+/* Seta do seletor desenhada em CSS, igual em todos os navegadores */
+.campo__seletor::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--cinza-texto);
+  border-bottom: 1.5px solid var(--cinza-texto);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.campo select {
+  min-height: 48px;
+  padding: 0 48px 0 14px;
+  font-size: 14px;
+  border-radius: 4px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.campo select:hover {
+  border-color: var(--cinza-claro);
+}
+
+.campo__ajuda {
+  color: var(--cinza-claro);
+}
+
+/* ---------- Resumo da turma (três colunas) ---------- */
+.turma__resumo {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0 0;
+  padding: 22px 20px;
+  background: var(--fundo);
+  border: none;
+  border-radius: 4px;
+}
+
+.turma__resumo dt {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cinza-texto);
+}
+
+.turma__resumo dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--preto);
+}
+
+/* ---------- Orientações laterais ---------- */
+.associacao__orientacoes p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.associacao__orientacoes p + p {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borda);
+}
+
+/* ---------- Botões ---------- */
+.associacao__acoes {
+  margin-top: 22px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.associacao__acoes button,
+.associacao__acoes a {
+  min-height: 46px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.associacao__botao--cancelar:hover {
+  background: var(--fundo);
+  border-color: var(--cinza-claro);
+}
+
+.associacao__botao--confirmar {
+  background: var(--vermelho);
+  border-color: var(--vermelho);
+}
+
+.associacao__botao--confirmar:hover {
+  opacity: 1;
+  background: var(--vermelho-escuro);
+  border-color: var(--vermelho-escuro);
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 900px) {
+  .topo__linha {
+    grid-template-columns: 1fr auto;
+  }
+
+  .topo__menu {
+    display: none;
+  }
+
+  .associacao__conteudo {
+    grid-template-columns: 1fr;
+  }
+
+  .associacao__orientacoes {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .pagina__subtitulo {
+    margin-bottom: 28px;
+  }
+
+  .associacao__aluno .aluno__foto {
+    width: 56px;
+    height: 56px;
+  }
+
+  .turma__resumo {
+    grid-template-columns: 1fr;
+  }
+}
