@@ -341,6 +341,14 @@ O pacote `tzdata` fornece as regras de fuso em ambientes sem base de fusos do si
 A documentação de RF20 não define o fuso nem eventos que atravessam a meia-noite. Provisoriamente, início e término são interpretados na data cadastrada.
 
 Se o término for anterior ao início, a duração noturna não pode ser representada corretamente sem uma regra ou data final definida pelo grupo.
+### 8.4. Páginas públicas
+
+Os templates públicos de eventos ficam em `frontend/publico/`:
+
+| Template | Estilo | Conteúdo |
+|---|---|---|
+| `modulo-eventos.html` | `modulo-conteudo.css`, `modulo-eventos.css` | Agenda pública (`/eventos`) listando os eventos com data, horário de Brasília, local e etiqueta de estado (`Em breve`, `Em andamento` ou `Encerrado`). |
+| `detalhe-evento.html` | `modulo-conteudo.css`, `modulo-eventos.css`, `imagem-tela-cheia.css` | Página pública (`/eventos/{evento_id}`) com ficha completa do evento (alimentação, pesagem, cobrança/pagamento), descrição, vídeo e imagem com visualização em tela cheia (`imagem-tela-cheia.js`). |
 
 ## 9. Gestão de turmas
 
@@ -455,7 +463,10 @@ SigCECP/
 │   │   ├── schemas.py
 │   │   └── services.py
 │   ├── publicacoes/
+│   │   ├── media.py
+│   │   ├── models.py
 │   │   ├── router.py
+│   │   ├── schemas.py
 │   │   └── services.py
 │   ├── media/
 │   │   └── eventos/
@@ -518,3 +529,69 @@ Sessão: access token (JWT, 15 min) e refresh token (opaco, 7 dias de inatividad
 - Todo `<form method="post">` administrativo deve conter `{{ csrf_input }}`.
 - Nos testes de rotas administrativas a autenticação é substituída automaticamente; para testá-la de verdade use `pytestmark = pytest.mark.auth_real`.
 
+## 13. Conteúdo institucional e publicações
+
+O módulo de publicações (`backend/publicacoes/`) atende ao gerenciamento e à consulta de conteúdo institucional (RF13 a RF16).
+
+A estrutura de banco de dados do módulo é criada na revisão inicial `0001_baseline_publicacoes`, que define as tabelas `publicacoes` e `publicacao_midias` (com exclusão em cascata `ON DELETE CASCADE` das mídias vinculadas).
+
+### 13.1. Operações disponíveis
+
+Os serviços em `backend/publicacoes/services.py` recebem uma `Session` do SQLAlchemy e disponibilizam as seguintes operações:
+
+| Serviço | Responsabilidade |
+|---|---|
+| `criar_conteudo_com_midias(db, dados, imagens, video)` | Cria uma publicação, salva múltiplas imagens e até um vídeo no disco e persiste os registros na mesma transação. |
+| `listar_conteudos(db)` | Retorna todas as publicações ordenadas por identificador decrescente (`id` mais recente primeiro). |
+| `buscar_conteudo_por_id(db, conteudo_id)` | Retorna a publicação ou `None`. |
+| `buscar_conteudo(db, conteudo_id)` | Retorna a publicação com suas mídias carregadas (`selectinload`) ou gera erro HTTP 404 quando não encontrada. |
+| `atualizar_conteudo(db, conteudo_id, dados)` | Atualiza apenas título e texto da publicação. |
+| `atualizar_conteudo_com_midias(db, conteudo_id, dados, ...)` | Atualiza título e texto, remove imagens selecionadas, adiciona novas imagens e substitui ou remove o vídeo existente. |
+| `remover_conteudo(db, conteudo_id)` | Remove a publicação do banco e apaga os arquivos de mídia associados no disco. |
+
+Na criação e na edição, se ocorrer falha de validação de mídia (`ValueError`) ou erro na persistência, o serviço executa `rollback` da transação, remove os novos arquivos que já haviam sido gravados no disco e retorna erro HTTP 400 (`Bad Request`). Na edição e na remoção, arquivos antigos só são excluídos do sistema de arquivos após o `commit` no banco.
+
+### 13.2. Estrutura dos dados e regras
+
+* **`publicacoes` (`Publicacao`):**
+  * `titulo`: `String(200)` obrigatório (`PublicacaoCreate` remove espaços externos com `strip()` e rejeita títulos vazios).
+  * `texto`: `Text` opcional, com limite de 16.000 caracteres no schema.
+  * `criada_em`: `DateTime(timezone=True)`, preenchido automaticamente pelo banco (`func.now()`).
+* **`publicacao_midias` (`PublicacaoMidia`):**
+  * `caminho`: `String(500)` com o caminho relativo do arquivo salvo.
+  * `tipo`: `String(20)`, classificando cada anexo como `imagem` (múltiplos permitidos) ou `video` (único por publicação).
+  * `nome_original`: `String(255)` preservando o nome original enviado no formulário.
+
+### 13.3. Rotas de gerenciamento e consulta pública
+
+Todas as rotas sob `/coordenacao/conteudo` utilizam `dependencies=PROTECAO_ADMIN` e exigem login de administrador. As páginas públicas não exigem autenticação[cite: 20, 22]:
+
+| Método | Rota | Finalidade |
+|---|---|---|
+| `GET` | `/` | Página inicial pública (`modulo_conteudo_publico`) com a vitrine institucional e as publicações recentes[cite: 16, 20]. |
+| `GET` | `/conteudo/{conteudo_id}` *(rota `detalhe_conteudo_publico`)* | Apresenta a leitura completa e as mídias de uma publicação institucional[cite: 20, 22]. |
+| `GET` | `/coordenacao/conteudo` | Lista as publicações cadastradas em ordem decrescente. |
+| `GET` | `/coordenacao/conteudo/novo` | Apresenta o formulário de publicação. |
+| `POST` | `/coordenacao/conteudo/novo` | Cadastra uma publicação com imagens e/ou vídeo opcionais. |
+| `GET` | `/coordenacao/conteudo/{conteudo_id}/editar` | Apresenta o formulário de edição da publicação e de suas mídias. |
+| `POST` | `/coordenacao/conteudo/{conteudo_id}/editar` | Atualiza dados, adiciona novas mídias ou remove imagens/vídeo marcados. |
+| `GET` | `/coordenacao/conteudo/{conteudo_id}/remover` | Apresenta a tela de confirmação de remoção. |
+| `POST` | `/coordenacao/conteudo/{conteudo_id}/remover` | Remove a publicação e redireciona para a página inicial pública. |
+
+### 13.4. Páginas
+
+Os templates administrativos ficam em `frontend/coordenacao/conteudo/`:
+
+| Template | Estilo | Conteúdo |
+|---|---|---|
+| `lista-conteudo.html` | `componentes.css`, `conteudos.css`, `remover-evento.css` | Listagem das publicações cadastradas com contagem de imagens/vídeos, data de publicação e ações de edição e remoção. |
+| `publicar-conteudo.html` | `publicar-conteudo.css`, `componentes.css` | Formulário de criação com título, texto, seleção múltipla de imagens e vídeo com pré-visualização local (`publicar-conteudo.js`). |
+| `editar-conteudo.html` | `editar-conteudo.css`, `componentes.css` | Formulário de edição com remoção individual de imagens existentes, substituição/remoção de vídeo (`editar-conteudo.js`) e painel lateral com a data de publicação. |
+| `remover-conteudo.html` | `remover-evento.css` | Modal (`<dialog>`) incluído em `lista-conteudo.html` para confirmar a exclusão definitiva da publicação e de seus anexos (`remover-conteudo.js`). |
+
+Os templates públicos ficam em `frontend/publico/`:
+
+| Template | Estilo | Conteúdo |
+|---|---|---|
+| `modulo-conteudo.html` | `modulo-conteudo.css` | Página inicial institucional (`/`) com destaque principal, contador e grade de cartões com resumo das publicações. |
+| `detalhe-conteudo.html` | `modulo-conteudo.css`, `detalhe-conteudo.css`, `imagem-tela-cheia.css` | Página de leitura completa com texto em parágrafos, player de vídeo e galeria de imagens com visualização em tela cheia (`imagem-tela-cheia.js`). |
