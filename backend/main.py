@@ -16,6 +16,9 @@ from backend.eventos.services import (
     listar_eventos,
 )
 from backend.publicacoes.router import router as publicacoes_router
+from backend.auth.errors import ErroAcessoAdmin
+from backend.auth.middleware import SessaoAdminMiddleware
+from backend.auth.router import router as auth_router, tratar_erro_acesso
 
 from backend.eventos.router import router as eventos_router
    
@@ -23,6 +26,10 @@ from backend.eventos.router import router as eventos_router
 app = FastAPI(
     title="SigCECP",
 )
+
+# Autenticação do administrador (/coordenacao)
+app.add_middleware(SessaoAdminMiddleware)
+app.add_exception_handler(ErroAcessoAdmin, tratar_erro_acesso)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_DIR = BASE_DIR / "backend" / "media"
@@ -98,5 +105,6 @@ def detalhe_conteudo_publico(
         },
     )
 
+app.include_router(auth_router)
 app.include_router(publicacoes_router)
 app.include_router(eventos_router)

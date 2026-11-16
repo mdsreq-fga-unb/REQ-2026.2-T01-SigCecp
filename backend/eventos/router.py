@@ -3,6 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Form, Request, UploadFile, File
 from fastapi.responses import RedirectResponse, HTMLResponse
 from sqlalchemy.orm import Session
+from backend.auth.dependencies import PROTECAO_ADMIN
 from backend.eventos.models import Evento
 from backend.config import templates
 from backend.database import get_db
@@ -18,7 +19,12 @@ from backend.eventos.services import (
 )
 
 
-router = APIRouter(tags=["Eventos"], prefix="/coordenacao/eventos")
+# Todas as rotas deste router são administrativas e exigem login.
+router = APIRouter(
+    prefix="/coordenacao/eventos",
+    tags=["Eventos"],
+    dependencies=PROTECAO_ADMIN
+)
 
 
 @router.get("", name="lista_evento")

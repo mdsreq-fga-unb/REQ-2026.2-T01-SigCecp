@@ -27,6 +27,7 @@
     <div class="topo__direita">
       <a class="topo__link" href="{{ url_for('modulo_conteudo_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
       <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_sair.html" %}
     </div>
   </div>
 </header>
@@ -47,6 +48,7 @@
 
   <form id="form" class="layout" method="post" enctype="multipart/form-data"
         action="{{ url_for('salvar_edicao_conteudo', conteudo_id=conteudo.id) }}">
+    {{ csrf_input }}
     <div class="coluna">
 
       <!-- 01 - Informações da publicação -->
