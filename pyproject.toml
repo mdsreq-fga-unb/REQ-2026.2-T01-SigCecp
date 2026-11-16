@@ -1,0 +1,7 @@
+[tool.ruff]
+target-version = "py314"
+# Migrações são geradas pelo Alembic
+extend-exclude = ["alembic/versions", "migrations"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

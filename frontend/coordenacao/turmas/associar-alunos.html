@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block titulo %}Associar aluno à turma | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/associar-aluno-turmas.css') }}">
+{% endblock %}
+
+{# "Segunda e quarta-feira" a partir de ['segunda', 'quarta'] #}
+{% macro dias_texto(dias) -%}
+  {%- set ordem = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'] -%}
+  {%- set nomes = {'segunda': 'segunda', 'terca': 'terça', 'quarta': 'quarta', 'quinta': 'quinta',
+                   'sexta': 'sexta', 'sabado': 'sábado', 'domingo': 'domingo'} -%}
+  {%- set selecionados = ordem | select('in', dias) | list -%}
+  {%- set textos = [] -%}
+  {%- for dia in selecionados -%}{%- set _ = textos.append(nomes[dia]) -%}{%- endfor -%}
+  {%- if textos -%}
+    {%- if selecionados[-1] not in ['sabado', 'domingo'] -%}
+      {%- set textos = textos[:-1] + [textos[-1] ~ '-feira'] -%}
+    {%- endif -%}
+    {%- if textos | length > 1 -%}
+      {{- (textos[:-1] | join(', ') ~ ' e ' ~ textos[-1]) | capitalize -}}
+    {%- else -%}
+      {{- textos[0] | capitalize -}}
+    {%- endif -%}
+  {%- endif -%}
+{%- endmacro %}
+
+{# "14h às 15h30" #}
+{% macro hora(valor) -%}
+  {{- valor.hour }}h{% if valor.minute %}{{ '%02d' % valor.minute }}{% endif -%}
+{%- endmacro %}
+
+{% macro horario_texto(t) -%}
+  {{- hora(t.inicio) }} às {{ hora(t.termino) -}}
+{%- endmacro %}
+
+{% block cabecalho %}
+<header class="topo">
+  <div class="container topo__linha">
+    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
+      <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+    </a>
+
+    {% with area = 'turmas' %}{% include "coordenacao/_menu.html" %}{% endwith %}
+
+    <div class="topo__direita">
+      <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_sair.html" %}
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block corpo %}
+{# A rota do GET envia todas as turmas; sem a lista, mostra só a turma atual. #}
+{% set opcoes = turmas if turmas else [turma] %}
+
+<main class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+      <li><a href="{{ url_for('lista_turma') }}">Alunos</a></li>
+      <li aria-current="page">Associar à turma</li>
+    </ol>
+  </nav>
+
+  <h1 class="pagina__titulo">Associar aluno à turma</h1>
+  <p class="pagina__subtitulo">Selecione uma turma cadastrada, confira os horários e confirme a associação do aluno.</p>
+
+  {# O cadastro de alunos (RF21) ainda não existe: o cartão mostra o lugar do aluno. #}
+  <section class="associacao__card associacao__aluno" aria-label="Aluno">
+    <div class="aluno__dados">
+      <div class="aluno__foto" aria-hidden="true"></div>
+      <div class="aluno__informacoes">
+        <h2>Nenhum aluno selecionado</h2>
+        <p>O cadastro de alunos ainda não está disponível • Selecione abaixo a turma para associação</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="associacao__conteudo">
+
+    <form class="associacao__card associacao__formulario" method="post" id="form-associar"
+          action="{{ url_for('salvar_alunos_associados', turma_id=turma.id) }}">
+      {{ csrf_input }}
+      <h2>Selecione a turma</h2>
+
+      <div class="campo">
+        <label for="turma_id">Turma cadastrada <span class="obrigatorio">*</span></label>
+        <div class="campo__seletor">
+          <select id="turma_id" name="turma_id" required>
+            {% for t in opcoes %}
+            <option value="{{ t.id }}"
+                    data-action="{{ url_for('salvar_alunos_associados', turma_id=t.id) }}"
+                    data-modalidade="{{ t.modalidade }}"
+                    data-dias="{{ dias_texto(t.dias) }}"
+                    data-horario="{{ horario_texto(t) }}"
+                    {{ 'selected' if t.id == turma.id }}>
+              {{ t.modalidade }} • {{ dias_texto(t.dias) }} • {{ horario_texto(t) }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        <p class="campo__ajuda">A lista apresenta apenas turmas já cadastradas.</p>
+      </div>
+
+      <dl class="turma__resumo" aria-live="polite">
+        <div>
+          <dt>Modalidade</dt>
+          <dd id="resumo-modalidade">{{ turma.modalidade }}</dd>
+        </div>
+        <div>
+          <dt>Dias</dt>
+          <dd id="resumo-dias">{{ dias_texto(turma.dias) }}</dd>
+        </div>
+        <div>
+          <dt>Horários</dt>
+          <dd id="resumo-horario">{{ horario_texto(turma) }}</dd>
+        </div>
+      </dl>
+
+      <div class="associacao__acoes">
+        <a class="associacao__botao--cancelar" href="{{ url_for('lista_turma') }}">Cancelar</a>
+        <button class="associacao__botao--confirmar" type="submit">Confirmar associação</button>
+      </div>
+    </form>
+
+    <aside class="associacao__orientacoes" aria-labelledby="titulo-orientacoes">
+      <h2 id="titulo-orientacoes">Antes de confirmar</h2>
+      <p>Confira a modalidade, os dias e o horário da turma selecionada.</p>
+      <p>Ao confirmar, o aluno será incluído na lista da turma com sua foto e nome completo.</p>
+    </aside>
+
+  </div>
+</main>
+
+<script>
+  const seletor = document.getElementById('turma_id');
+  const formulario = document.getElementById('form-associar');
+  const resumo = {
+    modalidade: document.getElementById('resumo-modalidade'),
+    dias: document.getElementById('resumo-dias'),
+    horario: document.getElementById('resumo-horario'),
+  };
+
+  seletor.addEventListener('change', () => {
+    const opcao = seletor.selectedOptions[0];
+    resumo.modalidade.textContent = opcao.dataset.modalidade;
+    resumo.dias.textContent = opcao.dataset.dias;
+    resumo.horario.textContent = opcao.dataset.horario;
+    formulario.action = opcao.dataset.action;
+  });
+</script>
+{% endblock %}

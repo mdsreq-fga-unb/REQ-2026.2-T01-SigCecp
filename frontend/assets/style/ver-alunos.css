@@ -1,0 +1,175 @@
+.pagina {
+  padding: 24px 24px 56px;
+}
+
+.pagina__cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.pagina__titulo {
+  margin: 0 0 8px;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--preto);
+}
+
+.pagina__subtitulo {
+  margin: 0;
+  font-size: 14px;
+  color: var(--cinza-texto);
+}
+
+/* ---------- Resumo da turma ---------- */
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 24px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+}
+
+.resumo__item {
+  margin: 0;
+}
+
+.resumo__item dt {
+  margin-bottom: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--cinza-texto);
+}
+
+.resumo__item dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--preto);
+}
+
+/* ---------- Cabeçalho da lista ---------- */
+.lista__cabecalho {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 32px 0 14px;
+}
+
+.lista__titulo {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lista__contagem {
+  font-size: 11px;
+  color: var(--cinza-texto);
+}
+
+/* ---------- Tabela de alunos ---------- */
+.tabela {
+  overflow: hidden;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+}
+
+.tabela__topo {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  padding: 14px 24px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--preto);
+  background: #efefed;
+  border-bottom: 1px solid var(--borda);
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  align-items: center;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.linha:hover {
+  background: #fafaf9;
+}
+
+.aluno {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.aluno__foto {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #d9d9d6;
+}
+
+.aluno__nome {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--preto);
+}
+
+.linha__link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--vermelho);
+  text-decoration: none;
+}
+
+.linha__link:hover,
+.linha__link:focus-visible {
+  color: var(--vermelho-escuro);
+  text-decoration: underline;
+}
+
+.tabela__vazio {
+  margin: 0;
+  padding: 40px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--cinza-texto);
+  border-bottom: 1px solid var(--borda);
+}
+
+.tabela__rodape {
+  padding: 18px 24px;
+  font-size: 11px;
+  color: var(--cinza-texto);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pagina__titulo { font-size: 30px; }
+  .pagina__cabecalho { flex-direction: column; }
+  .resumo { grid-template-columns: 1fr; }
+  .tabela__topo,
+  .linha { grid-template-columns: 1fr auto; padding: 14px 16px; }
+  .tabela__topo span:last-child { text-align: right; }
+}

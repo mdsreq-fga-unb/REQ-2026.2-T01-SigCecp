@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block titulo %}Lista de eventos | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/lista-evento.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/remover-evento.css') }}">
+{% endblock %}
+
+{% block cabecalho %}
+<header class="topo">
+  <div class="container topo__linha">
+    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
+      <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+    </a>
+
+    {% with area = 'eventos' %}{% include "coordenacao/_menu.html" %}{% endwith %}
+
+    <div class="topo__direita">
+      <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_sair.html" %}
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block corpo %}
+{% set estados = {'breve': 'Em breve', 'andamento': 'Em andamento', 'encerrado': 'Encerrado'} %}
+{% set total = eventos|length %}
+{% set n_breve = eventos|selectattr('estado', 'equalto', 'breve')|list|length %}
+{% set n_andamento = eventos|selectattr('estado', 'equalto', 'andamento')|list|length %}
+{% set n_encerrado = eventos|selectattr('estado', 'equalto', 'encerrado')|list|length %}
+
+<main class="pagina container">
+
+  <header class="eventos__cabecalho">
+    <div class="eventos__introducao">
+      <nav class="trilha" aria-label="Você está em">
+        <ol>
+          <li><a href="#">Coordenação</a></li>
+          <li aria-current="page">Eventos</li>
+        </ol>
+      </nav>
+
+      <h1>Eventos do CECP</h1>
+
+      <p class="eventos__descricao">
+        Organize as informações dos eventos e mantenha a comunidade informada.
+      </p>
+    </div>
+
+    <a class="botao-novo" href="{{ url_for('publicar_evento') }}">
+        Novo evento
+    </a>
+  </header>
+
+  <section class="eventos__resumo" aria-label="Resumo dos eventos">
+    <div class="resumo__card">
+      <p>{{ total }} evento{{ 's' if total != 1 }} publicado{{ 's' if total != 1 }}</p>
+    </div>
+
+    <div class="resumo__card">
+      <p>{{ n_breve }} em breve</p>
+    </div>
+
+    <div class="resumo__card">
+      <p>{{ n_andamento }} em andamento</p>
+    </div>
+
+    <div class="resumo__card">
+      <p>{{ n_encerrado }} encerrado{{ 's' if n_encerrado != 1 }}</p>
+    </div>
+  </section>
+
+  <section class="eventos__lista">
+
+    <div class="eventos__lista-cabecalho">
+      <h2>Todos os eventos</h2>
+
+      <p>{% if agora %}Estados em {{ agora.strftime('%d/%m/%Y às %Hh%M') }} • {% endif %}horário de Brasília</p>
+    </div>
+
+    <div class="tabela__container">
+
+      <table class="tabela-eventos">
+        <thead>
+          <tr>
+            <th scope="col">Evento</th>
+            <th scope="col">Data e horário</th>
+            <th scope="col">Local</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for evento in eventos %}
+          <tr>
+            <td>
+              <div class="evento__informacao">
+                <strong>{{ evento.titulo }}</strong>
+                <span>{{ evento.subtitulo }}</span>
+              </div>
+            </td>
+
+            <td>
+              <div class="evento__informacao">
+                <strong>{{ evento.data.strftime('%d/%m/%Y') }}</strong>
+                <span>{{ evento.inicio.strftime('%H:%M') }} às {{ evento.termino.strftime('%H:%M') }}</span>
+              </div>
+            </td>
+
+            <td>
+              <div class="evento__informacao">
+                <span class="evento__local">{{ evento.local }}</span>
+                <span>Planaltina-DF</span>
+              </div>
+            </td>
+
+            <td>
+              <span class="estado estado--{{ evento.estado }}">
+                <span class="estado__ponto"></span>
+                {{ estados[evento.estado] }}
+              </span>
+            </td>
+
+            <td>
+              <div class="evento__acoes">
+                <a class="acao acao--editar" href="{{ url_for('editar_evento', evento_id=evento.id) }}">
+                  Editar
+                </a>
+
+                <button type="button" class="acao acao--remover"
+                        data-remover-evento
+                        data-titulo="{{ evento.titulo }}"
+                        data-action="{{ url_for('salvar_remocao_evento', evento_id=evento.id) }}">
+                        Remover
+                </button>
+              </div>
+            </td>
+          </tr>
+          {% else %}
+          <tr>
+            <td class="tabela__vazio" colspan="5">Nenhum evento publicado ainda.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="tabela__rodape">
+        {{ total }} evento{{ 's' if total != 1 }} • todos os eventos publicados
+      </div>
+
+    </div>
+  </section>
+
+
+</main>
+
+{% include "coordenacao/eventos/remover-evento.html" %}
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block titulo %}Ver Alunos | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/ver-alunos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+{% endblock %}
+
+{% block cabecalho %}
+<header class="topo">
+  <div class="container topo__linha">
+    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
+      <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+    </a>
+
+    {% with area = 'turmas' %}{% include "coordenacao/_menu.html" %}{% endwith %}
+
+    <div class="topo__direita">
+      <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_sair.html" %}
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block corpo %}
+    {% macro hora(t) %}{{ t.strftime('%Hh') if t.minute == 0 else t.strftime('%Hh%M') }}{% endmacro %}
+    {% set ordem = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'] %}
+    {% set nomes = {'segunda': 'Segunda', 'terca': 'Terça', 'quarta': 'Quarta', 'quinta': 'Quinta',
+                'sexta': 'Sexta', 'sabado': 'Sábado', 'domingo': 'Domingo'} %}
+
+    <main class="pagina container">
+
+    <nav class="trilha" aria-label="Você está em">
+        <ol>
+        <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+        <li><a href="#">Alunos</a></li>
+        <li><a href="{{ url_for('lista_turma') }}">Turmas</a></li>
+        <li aria-current="page">Alunos da turma</li>
+        </ol>
+    </nav>
+
+    <header class="pagina__cabecalho">
+        <div>
+        <h1 class="pagina__titulo">Alunos da turma</h1>
+        <p class="pagina__subtitulo">Consulte os alunos associados e selecione um aluno para acessar sua ficha.</p>
+        </div>
+        <a class="botao botao--claro" href="{{ url_for('lista_turma') }}">Voltar para turmas</a>
+    </header>
+
+    <section class="resumo" aria-label="Resumo da turma">
+        <dl class="resumo__item">
+        <dt>Modalidade</dt>
+        <dd>{{ turma.modalidade }}</dd>
+        </dl>
+        <dl class="resumo__item">
+        <dt>Dias</dt>
+        <dd>{% for dia in ordem if dia in turma.dias %}{{ nomes[dia] }}{{ ', ' if not loop.last }}{% endfor %}</dd>
+        </dl>
+        <dl class="resumo__item">
+        <dt>Horários</dt>
+        <dd>{{ hora(turma.inicio) }} às {{ hora(turma.termino) }}</dd>
+        </dl>
+        <dl class="resumo__item">
+        <dt>Alunos associados</dt>
+        <dd>{{ alunos | length }} {{ 'aluno' if alunos | length == 1 else 'alunos' }}</dd>
+        </dl>
+    </section>
+
+    <div class="lista__cabecalho">
+        <h2 class="lista__titulo">Alunos associados</h2>
+        <span class="lista__contagem">{{ alunos | length }} {{ 'aluno' if alunos | length == 1 else 'alunos' }} nesta turma</span>
+    </div>
+
+    <section class="tabela" aria-label="Alunos associados">
+        <div class="tabela__topo">
+        <span>Aluno</span>
+        <span>Ações</span>
+        </div>
+
+        {% for aluno in alunos %}
+        <article class="linha">
+        <div class="aluno">
+            {% if aluno.foto %}
+            <img class="aluno__foto" src="{{ aluno.foto }}" alt="" width="48" height="48">
+            {% else %}
+            <span class="aluno__foto aluno__foto--vazia" aria-hidden="true"></span>
+            {% endif %}
+            <span class="aluno__nome">{{ aluno }}</span>
+        </div>
+        <a class="linha__link" href="#">
+            Ver ficha do aluno <span aria-hidden="true">→</span>
+        </a>
+        </article>
+        {% else %}
+        <p class="tabela__vazio">Nenhum aluno associado a esta turma ainda.</p>
+        {% endfor %}
+
+        <footer class="tabela__rodape">
+        {{ alunos | length }} {{ 'aluno' if alunos | length == 1 else 'alunos' }} •
+        {{ turma.modalidade }} • {% for dia in ordem if dia in turma.dias %}{{ nomes[dia] }}{{ ', ' if not loop.last }}{% endfor %} •
+        {{ hora(turma.inicio) }} às {{ hora(turma.termino) }}
+        </footer>
+    </section>
+
+    </main>
+{% endblock %}

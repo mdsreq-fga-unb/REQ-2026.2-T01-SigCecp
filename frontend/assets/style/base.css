@@ -1,0 +1,68 @@
+/* ---------- Variáveis globais ---------- */
+:root {
+  --preto: #161616;
+  --branco: #ffffff;
+  --vermelho: #d4202a;
+  --vermelho-escuro: #b51a23;
+  --fundo: #f5f5f4;
+  --cinza-texto: #4a4a4a;
+  --cinza-claro: #6b6b6b;
+  --borda: #e3e3e1;
+  --largura: 1120px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- Base do documento ---------- */
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--preto);
+  background: var(--fundo);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid #f2c200;
+  outline-offset: 2px;
+}
+
+/* ---------- Container ---------- */
+.container {
+  width: 100%;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding-inline: 32px;
+}
+
+/* ---------- Ícones ---------- */
+.icone {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icone--grande {
+  width: 22px;
+  height: 22px;
+}
+
+/* ---------- Responsividade global ---------- */
+@media (max-width: 640px) {
+  .container {
+    padding-inline: 16px;
+  }
+}

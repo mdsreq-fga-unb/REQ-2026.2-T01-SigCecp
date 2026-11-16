@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  backend:
+    name: Testes e Ruff (Python)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+          cache: pip
+      - name: Instalar dependências
+        run: pip install -r requirements.txt -r requirements-test.txt
+      - name: Linter (Ruff)
+        run: ruff check .
+      - name: Testes (pytest)
+        run: pytest -v
+
+  frontend:
+    name: ESLint (JavaScript)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Instalar dependências
+        run: npm ci
+      - name: Linter (ESLint)
+        run: npm run lint

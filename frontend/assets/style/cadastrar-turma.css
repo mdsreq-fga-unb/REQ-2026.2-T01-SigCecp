@@ -1,0 +1,183 @@
+.pagina {
+  padding: 40px 24px 56px;
+}
+
+.pagina__titulo {
+  margin: 0 0 8px;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--preto);
+}
+
+.pagina__subtitulo {
+  margin: 0 0 32px;
+  font-size: 14px;
+  color: var(--cinza-texto);
+}
+
+/* ---------- Cartão ---------- */
+.formulario {
+  margin-top: 24px;
+}
+
+.cartao {
+  padding: 32px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+}
+
+.cartao__titulo {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0 0 28px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.cartao__numero {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cinza-texto);
+}
+
+/* ---------- Dias da semana ---------- */
+.grupo {
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+}
+
+.grupo legend {
+  margin-bottom: 8px;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+.dia {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+/* checkbox escondido, mas acessível pelo teclado */
+.dia__input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.dia__rotulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cinza-texto);
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+}
+
+.dia__rotulo::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--cinza-claro);
+  border-radius: 2px;
+  background: var(--branco);
+}
+
+.dia:hover .dia__rotulo {
+  border-color: #b9b9b6;
+}
+
+.dia__input:checked + .dia__rotulo {
+  font-weight: 700;
+  color: var(--preto);
+  border-color: var(--preto);
+}
+
+.dia__input:checked + .dia__rotulo::before {
+  background: var(--preto);
+  border-color: var(--preto);
+}
+
+.dia__input:focus-visible + .dia__rotulo {
+  outline: 2px solid var(--preto);
+  outline-offset: 2px;
+}
+
+/* ---------- Textos de ajuda e horários ---------- */
+.ajuda {
+  margin: 12px 0 0;
+  font-size: 11px;
+  color: var(--cinza-texto);
+}
+
+.horarios {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.horarios + .ajuda {
+  margin-top: 4px;
+}
+
+/* ---------- Rodapé do formulário ---------- */
+.rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--borda);
+}
+
+.rodape__texto {
+  margin: 0;
+  font-size: 11px;
+  color: var(--cinza-texto);
+}
+
+.rodape__acoes {
+  display: flex;
+  gap: 12px;
+}
+
+.rodape .botao {
+  padding: 14px 24px;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .dias {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pagina__titulo { font-size: 30px; }
+  .cartao { padding: 20px; }
+  .dias { grid-template-columns: repeat(2, 1fr); }
+  .horarios { grid-template-columns: 1fr; }
+  .rodape { flex-direction: column; align-items: stretch; }
+  .rodape__acoes { justify-content: flex-end; }
+}

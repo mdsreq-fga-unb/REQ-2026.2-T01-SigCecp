@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+<head> {% block titulo %}Publicar conteúdo | SigCECP{% endblock %}
+
+    {% block estilos %}
+        {{ super() }}
+        <link rel="stylesheet" href="{{ url_for('static', path='style/publicar-conteudo.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    {% endblock %}
+</head>
+
+
+
+
+{% block cabecalho %}
+  <header class="topo">
+    <div class="container topo__linha">
+      <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+        <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
+        <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+      </a>
+
+      {% with area = 'conteudos' %}{% include "coordenacao/_menu.html" %}{% endwith %}
+
+      <div class="topo__direita">
+        <a class="topo__link" href="{{ url_for('modulo_conteudo_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+        <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+        {% include "coordenacao/_sair.html" %}
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+{% block corpo %}
+<main class="pagina container">
+    <div class="layout">
+
+    <section class="publicar-conteudo">
+    <header class="pagina-cabecalho">
+       <nav class="trilha" aria-label="Você está em">
+      <ol>
+        <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+        <li><a href="{{ url_for('lista_conteudo') }}">Conteúdos</a></li>
+        <li aria-current="page">Nova Publicação</li>
+      </ol>
+    </nav>
+        <h1>Publicar conteúdo</h1>
+
+        <p class="pagina-descricao">
+            Compartilhe as histórias e iniciativas do CECP.
+        </p>
+    </header>
+
+
+    
+
+    <form class="formulario-publicacao" method="post" enctype="multipart/form-data" action="{{ url_for('salvar_conteudo') }}">
+    {{ csrf_input }}
+    <section class="formulario-card">
+        <div class="secao-cabecalho">
+            <span class="secao-numero">01</span>
+            <h2>Informações da publicação</h2>
+        </div>
+
+
+            <div class="campo-formulario">
+                <label for="titulo">Título <span>*</span></label>
+
+                <input
+                    type="text"
+                    id="titulo"
+                    name="titulo"
+                    placeholder="Digite um Título"
+                    required
+                >
+            </div>
+
+            <div class="campo-formulario">
+                <label for="texto">Texto (opcional)</label>
+
+<textarea
+    id="texto"
+    name="texto"
+    placeholder="Digite o conteúdo da publicação..."
+    required
+></textarea>
+            </div>
+    </section>
+
+
+    
+  <section class="midias-card">
+    <header class="midias-cabecalho">
+        <span class="midias-numero">02</span>
+
+        <div class="midias-titulo">
+            <h2>Imagens e vídeo</h2>
+            <p>
+                Mídias opcionais. O conteúdo também pode ser publicado sem anexos.
+            </p>
+        </div>
+    </header>
+
+    <div class="midias-conteudo">
+        <!-- Área de imagens -->
+          <div class="grupo-midias">
+            <h3>Imagens</h3>
+
+            
+
+            <label class="area-upload" for="adicionar-imagens">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <rect x="3" y="3" width="13" height="13" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <path d="m16 13-4-4-6 7"/>
+                    <path d="M19 3v6"/>
+                    <path d="M16 6h6"/>
+                </svg>
+
+                <div class="upload-informacoes">
+                    <span>Adicionar imagens</span>
+                    <small>
+                        Selecione ou arraste arquivos de imagem • opcional
+                    </small>
+                </div>
+
+                <span class="upload-mais" aria-hidden="true">+</span>
+            </label>
+
+            <input
+                type="file"
+                id="adicionar-imagens"
+                name="imagem"
+                accept="image/png, image/jpeg, image/webp"
+                multiple
+            >
+<div class="imagem-preview" hidden>
+    <img
+        id="preview-imagem"
+        alt="Pré-visualização da imagem"
+    >
+</div>  
+        </div>
+
+        <!-- Área de vídeo -->
+        <div class="grupo-midias">
+            <h3>Vídeo</h3>
+
+            <label class="area-upload" for="adicionar-video">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <rect x="3" y="6" width="13" height="12" rx="2"/>
+                    <path d="m16 10 5-3v10l-5-3"/>
+                </svg>
+
+                <div class="upload-informacoes">
+                    <span>Adicionar vídeo</span>
+                    <small>
+                        Selecione um arquivo de vídeo • opcional
+                    </small>
+                </div>
+
+                <span class="upload-mais" aria-hidden="true">+</span>
+            </label>
+
+    <input
+        type="file"
+        id="adicionar-video"
+        name="video"
+        accept="video/mp4, video/webm, video/ogg"
+    >
+
+<div class="video-preview" hidden>
+    <video id="preview-video" controls></video>
+</div>
+</div>
+        </div>
+    </div>
+  </section>
+
+    <div class="acoes">
+          <div class="acoes__botoes">
+            <a class="botao botao--claro" href="{{ url_for('lista_conteudo') }}" id="cancelar">Cancelar</a>
+            <button class="botao botao--vermelho" type="submit" id="salvar">Publicar conteúdo</button>
+          </div>
+        </div>
+
+
+    </form>
+  </div>
+  </main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/publicar-conteudo.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SigCECP</title>
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', path='style/modulo-conteudo.css') }}"
+    >
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', path='style/modulo-eventos.css') }}"
+    >
+    <link rel="icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/png">
+</head>
+<body>
+    <div>
+        <header class="topo">
+            <div class="container topo__linha">
+            <a class="marca" href="/" aria-label="Centro Esportivo Cultural de Planaltina-DF, página inicial">
+                <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="52" height="52">
+                <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+            </a>
+
+            <nav class="menu" aria-label="Principal">
+                <a class="menu__item" href="/">Institucional</a>
+                <a class="menu__item menu__item--ativo" href="/eventos" aria-current="page">Eventos</a>
+            </nav>
+
+            <a class="acesso" href="/coordenacao/conteudo">Acesso da coordenação <span aria-hidden="true">↗</span></a>
+            </div>
+        </header>
+    </div>
+
+
+    <main class="container agenda">
+        <section class="agenda__abertura" aria-labelledby="agenda-titulo">
+            <div>
+                <p class="agenda__rotulo"><span class="agenda__traco" aria-hidden="true"></span>Agenda CECP</p>
+                <h1 id="agenda-titulo" class="agenda__titulo">Nosso próximo encontro começa aqui.</h1>
+            </div>
+            <p class="agenda__resumo">Acompanhe os eventos esportivos e culturais de Planaltina. Veja a programação e todos os detalhes.</p>
+        </section>
+
+        {% if eventos %}
+        <p class="agenda__referencia">Datas e horários de Brasília.</p>
+        <ul class="lista-eventos" aria-label="Eventos publicados">
+            {% for evento, estado in eventos %}
+            <li class="cartao-evento{% if estado == 'Em breve' %} cartao-evento--em-breve{% endif %}">
+                <div class="cartao-evento__data" aria-label="{{ evento.data.strftime('%d/%m/%Y') }}">
+                    <span class="cartao-evento__dia">{{ evento.data.strftime('%d') }}</span>
+                    <span class="cartao-evento__mes">{{ evento.data.strftime('%m') }}</span>
+                    <span class="cartao-evento__ano">{{ evento.data.strftime('%Y') }}</span>
+                </div>
+                <div class="cartao-evento__corpo">
+                    <span class="etiqueta-estado{% if estado == 'Em breve' %} etiqueta-estado--em-breve{% elif estado == 'Em andamento' %} etiqueta-estado--em-andamento{% endif %}">{{ estado }}</span>
+                    <div class="cartao-evento__texto">
+                        <h2 class="cartao-evento__titulo">{{ evento.titulo }}</h2>
+                        <p class="cartao-evento__subtitulo">{{ evento.subtitulo }}</p>
+                        <ul class="cartao-evento__info">
+                            <li>Horário: {{ evento.inicio.strftime('%H:%M') }}–{{ evento.termino.strftime('%H:%M') }}</li>
+                            <li>Local: {{ evento.local }}</li>
+                        </ul>
+                    </div>
+                    <a class="cartao-evento__link" href="{{ url_for('detalhe_evento_publico', evento_id=evento.id) }}">Ver detalhes</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <p class="agenda__contagem">{{ eventos|length }} evento{% if eventos|length != 1 %}s{% endif %} publicado{% if eventos|length != 1 %}s{% endif %}.</p>
+        {% else %}
+        <div class="lista-eventos__vazio">
+            <h2 class="lista-eventos__vazio-titulo">Nenhum evento publicado.</h2>
+            <p class="lista-eventos__vazio-texto">Volte em breve para conferir a programação.</p>
+        </div>
+        {% endif %}
+    </main>
+
+    <footer class="rodape">
+        <div class="container rodape__linha">
+        <div class="rodape__marca">
+        <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="52" height="52">
+        <div>
+            <p class="rodape__nome">Centro Esportivo Cultural de Planaltina-DF</p>
+            <p class="rodape__lema">Esporte e cultura que conectam pessoas.</p>
+        </div>
+        </div>
+    
+        <nav class="rodape__nav" aria-label="Rodapé">
+            <a href="/">Institucional</a>
+            <a href="/eventos">Eventos</a>
+            <a href="/coordenacao/conteudo">Acesso da coordenação</a>
+        </nav>
+        </div>
+    
+        <div class="container rodape__base">
+        <p>&copy; <span id="ano">2026</span> Centro Esportivo Cultural de Planaltina-DF. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
