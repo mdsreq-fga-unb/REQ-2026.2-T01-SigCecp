@@ -20,6 +20,8 @@ jobs:
         run: ruff check .
       - name: Testes (pytest)
         run: pytest -v
+      - name: Testes line coverage (pytest-cov)
+        run: pytest --cov
 
   frontend:
     name: ESLint (JavaScript)
