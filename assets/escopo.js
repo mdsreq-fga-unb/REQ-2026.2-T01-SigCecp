@@ -1861,9 +1861,13 @@ window.ESCOPO = {
       "decs": [
         "DEC15"
       ],
-      "pens": [],
+      "pens": [
+        "PEN10"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN10: Confirmar com o cliente se o acompanhamento previsto em OE2 e CP5 deve se restringir a frequência e medidas disciplinares, como premissa da equipe na DEC15. Não existe RF para registrar ou consultar informações escolares (notas, situação escolar de origem)"
+      ]
     },
     "RF27": {
       "nome": "Consultar frequência",
@@ -1921,9 +1925,13 @@ window.ESCOPO = {
       "decs": [
         "DEC15"
       ],
-      "pens": [],
+      "pens": [
+        "PEN10"
+      ],
       "its": [],
-      "lacunas": []
+      "lacunas": [
+        "PEN10: Confirmar com o cliente se o acompanhamento previsto em OE2 e CP5 deve se restringir a frequência e medidas disciplinares, como premissa da equipe na DEC15. Não existe RF para registrar ou consultar informações escolares (notas, situação escolar de origem)"
+      ]
     },
     "RF28": {
       "nome": "Emitir alerta de faltas críticas",
@@ -1982,10 +1990,12 @@ window.ESCOPO = {
         "DEC15"
       ],
       "pens": [
+        "PEN10",
         "PEN15"
       ],
       "its": [],
       "lacunas": [
+        "PEN10: Confirmar com o cliente se o acompanhamento previsto em OE2 e CP5 deve se restringir a frequência e medidas disciplinares, como premissa da equipe na DEC15. Não existe RF para registrar ou consultar informações escolares (notas, situação escolar de origem)",
         "PEN15: Definir a regra de contagem de faltas do alerta: período (mês, semestre), reinício da contagem e tratamento de faltas justificadas"
       ]
     },
@@ -2049,10 +2059,12 @@ window.ESCOPO = {
         "DEC17"
       ],
       "pens": [
+        "PEN10",
         "PEN13"
       ],
       "its": [],
       "lacunas": [
+        "PEN10: Confirmar com o cliente se o acompanhamento previsto em OE2 e CP5 deve se restringir a frequência e medidas disciplinares, como premissa da equipe na DEC15. Não existe RF para registrar ou consultar informações escolares (notas, situação escolar de origem)",
         "PEN13: Definir quem registra uma medida disciplinar, se a data é a da ocorrência ou a do registro, e o efeito de suspensão e desligamento sobre a matrícula e a turma"
       ]
     },
@@ -3078,7 +3090,7 @@ window.ESCOPO = {
     {
       "id": "DEC15",
       "data": "14/11/2026",
-      "texto": "OE2 e CP5 tratam apenas de frequência nas aulas do CECP e de medidas disciplinares. O desempenho na escola de origem (RN15) continua sendo conferido pela coordenação fora do sistema; o produto não registra notas nem situação escolar. Encerra a PEN10",
+      "texto": "Premissa assumida pela equipe, ainda pendente de confirmação com o cliente: restringir OE2 e CP5 à frequência nas aulas do CECP e às medidas disciplinares, mantendo o acompanhamento do desempenho na escola de origem (RN15) fora do sistema, sem registro de notas nem situação escolar. Não há evidência de confirmação do cliente registrada para essa restrição; a PEN10 permanece aberta",
       "rfs": [
         "RF26",
         "RF27",
@@ -3257,6 +3269,17 @@ window.ESCOPO = {
   ],
   "pen": [
     {
+      "id": "PEN10",
+      "texto": "Confirmar com o cliente se o acompanhamento previsto em OE2 e CP5 deve se restringir a frequência e medidas disciplinares, como premissa da equipe na DEC15. Não existe RF para registrar ou consultar informações escolares (notas, situação escolar de origem)",
+      "rfs": [
+        "RF26",
+        "RF27",
+        "RF28",
+        "RF29"
+      ],
+      "acao": "Aberta: confirmar com o cliente a premissa da equipe registrada na DEC15 e registrar a evidência da resposta; a alteração de OE2 e CP5 na solução proposta não constitui validação do cliente"
+    },
+    {
       "id": "PEN12",
       "texto": "Definir o que a aprovação de uma solicitação de matrícula gera: reserva de vaga na turma, prazo para a confirmação presencial e documentos que ficam pendentes. Afeta só a matrícula online (pós-MVP); o cadastro definitivo continua sendo feito pelo RF21",
       "rfs": [
@@ -3304,17 +3327,6 @@ window.ESCOPO = {
       "texto": "Data da reunião de priorização (08/10 no texto, 09/10 nos arquivos)",
       "rfs": [],
       "acao": "Encerrada em 03/11/2026: a própria ata registra 08/10/2026; 09/10 é só o nome do arquivo. A DEC01 foi atualizada."
-    },
-    {
-      "id": "PEN10",
-      "texto": "OE2 menciona \"condicionalidades pedagógicas\" e CP5 promete \"acompanhamento pedagógico do aluno\", mas não existe RF para registrar ou consultar informações escolares (notas, situação escolar de origem). Confirmar se essa é uma limitação de escopo deliberada e, se for, registrar na descrição de OE2 e CP5 que o acompanhamento pedagógico se restringe a frequência e medidas disciplinares",
-      "rfs": [
-        "RF26",
-        "RF27",
-        "RF28",
-        "RF29"
-      ],
-      "acao": "Encerrada em 14/11/2026 pela DEC15: OE2 e CP5 foram restritos a frequência e disciplina na solução proposta"
     },
     {
       "id": "PEN21",
