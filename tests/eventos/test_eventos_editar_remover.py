@@ -9,7 +9,6 @@ from fastapi.staticfiles import StaticFiles
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from pydantic import BaseModel
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
@@ -136,7 +135,8 @@ def test_editar_so_mexe_no_evento_certo(client, evento, db_session):
         inicio=time(8, 0), termino=time(9, 0), local="Sala", descricao="d",
         alimentacao=False, pesagem="nao", cobrado=False,
     )
-    db_session.add(outro); db_session.commit()
+    db_session.add(outro)
+    db_session.commit()
     client.post(f"/coordenacao/eventos/{evento.id}/editar", data=DADOS)
     db_session.refresh(outro)
     assert outro.nome == "Outro evento"

@@ -1,8 +1,7 @@
-from datetime import date, time
-from decimal import Decimal
-from typing import Literal, Self
+from datetime import time
+from typing import Literal
 
-from pydantic import BaseModel, Field, ValidationInfo, field_validator, model_validator
+from pydantic import BaseModel, Field, ValidationInfo, field_validator
 
 DiaSemana = Literal[
     "segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"

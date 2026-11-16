@@ -405,11 +405,23 @@ A tela de associação segue o protótipo aprovado em 10/11/2026:
 ### 9.5. Pendências
 
 - **Associação ainda não grava.** O cartão do aluno mostra "Nenhum aluno selecionado", porque não há cadastro de alunos. O botão Confirmar associação envia para `POST /coordenacao/turmas/{turma_id}/alunos`, que hoje só reapresenta a tela, sem gravar. A função `associar_alunos` do serviço já existe para quando houver alunos.
-- **Rota POST duplicada.** Há duas funções `salvar_alunos_associados` registradas para `POST /coordenacao/turmas/{turma_id}/alunos`. Vale a primeira, que reapresenta a tela de associação.
 - **Edição apaga os alunos.** `atualizar_turma` grava todos os campos do formulário, inclusive `alunos`, que chega vazio. Editar uma turma substitui a lista de alunos por uma lista vazia.
 - A quantidade de alunos por turma e o acesso à ficha do aluno dependem do cadastro de alunos (RF21 a RF24).
 
-## 10. Como sair do ambiente virtual
+## 10. Testes e linters
+
+Os mesmos comandos rodam na CI (`.github/workflows/ci.yml`) a cada push e pull request:
+
+```bash
+ruff check .          # linter Python (configuração em pyproject.toml)
+pytest -v             # testes do backend
+npm ci                # instala o ESLint (só na primeira vez)
+npm run lint          # linter JavaScript de frontend/assets/js
+```
+
+O Ruff vem do `requirements-test.txt`; o ESLint precisa do Node.js 20.19 ou mais recente.
+
+## 11. Como sair do ambiente virtual
 
 Quando terminar de trabalhar, você pode desativar o ambiente virtual com:
 
@@ -421,7 +433,7 @@ Isso não apaga o ambiente virtual; apenas encerra a ativação naquele terminal
 
 Na próxima vez que abrir um terminal para trabalhar no projeto, entre na pasta do projeto e ative o ambiente virtual novamente.
 
-## 11. Estrutura principal do projeto
+## 12. Estrutura principal do projeto
 
 A organização principal dos diretórios é:
 
@@ -475,11 +487,11 @@ O diretório `backend/media` armazena os arquivos enviados pelos usuários.
 
 O diretório `alembic` contém as configurações e revisões utilizadas para controlar a evolução do banco de dados.
 
-## 12. Autenticação da área administrativa
+## 13. Autenticação da área administrativa
 
 Somente `/coordenacao/*` exige login; todo o restante do site é público. O administrador é um registro da tabela `administradores` (senha apenas como hash bcrypt).
 
-### 12.1. Configuração
+### 13.1. Configuração
 
 1. Copie `.env.example` para `.env` e defina `AUTH_SECRET_KEY` (obrigatória em produção; `python -c "import secrets; print(secrets.token_urlsafe(48))"`). Em produção use `APP_ENV=production` e sirva por HTTPS.
 2. Aplique as migrações (`python -m alembic upgrade head`); a revisão `0003_cria_administradores` cria as tabelas de administrador e de refresh tokens.
@@ -490,7 +502,7 @@ python -m backend.auth.criar_admin --usuario CECP0001
 python -m backend.auth.criar_admin --usuario CECP0001 --redefinir-senha   # troca a senha e encerra as sessões
 ```
 
-### 12.2. Rotas
+### 13.2. Rotas
 
 | Método | Rota | Finalidade |
 |---|---|---|
@@ -500,7 +512,7 @@ python -m backend.auth.criar_admin --usuario CECP0001 --redefinir-senha   # troc
 
 Sessão: access token (JWT, 15 min) e refresh token (opaco, 7 dias de inatividade, teto de 30 dias) em cookies `HttpOnly` distintos. Com o access expirado, a renovação é transparente (`backend/auth/middleware.py`).
 
-### 12.3. Ao criar novas rotas ou formulários administrativos
+### 13.3. Ao criar novas rotas ou formulários administrativos
 
 - Rotas sob `/coordenacao` devem estar em um router com `dependencies=PROTECAO_ADMIN` (`backend.auth.dependencies`). Um teste (`test_todas_as_rotas_administrativas_exigem_admin`) falha se alguma ficar sem proteção.
 - Todo `<form method="post">` administrativo deve conter `{{ csrf_input }}`.

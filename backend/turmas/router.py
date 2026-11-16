@@ -175,17 +175,4 @@ def salvar_alunos_associados(
         name="coordenacao/turmas/associar-alunos.html",
         context={"turma": turma},
     )
-
-@router.post("/{turma_id}/alunos")
-def salvar_alunos_associados(
-    turma_id: int,
-    request: Request,
-    dados: Annotated[TurmaCreate, Form()],
-    db: Session = Depends(get_db),
-):
-    atualizar_turma(db, turma_id, dados)
-    return RedirectResponse(
-        request.url_for("ver_alunos_associados", turma_id=turma_id),
-        status_code=303,
-    )
     

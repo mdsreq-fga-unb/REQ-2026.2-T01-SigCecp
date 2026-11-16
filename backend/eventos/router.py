@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Annotated
 from fastapi import APIRouter, Depends, Form, Request, UploadFile, File
-from fastapi.responses import RedirectResponse, HTMLResponse
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from backend.auth.dependencies import PROTECAO_ADMIN
 from backend.eventos.models import Evento

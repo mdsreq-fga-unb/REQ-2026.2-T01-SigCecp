@@ -237,3 +237,5 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Node (ESLint)
+node_modules/

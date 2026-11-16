@@ -1,10 +1,11 @@
 from alembic import context
 
 from backend.database import Base, DATABASE_URL, engine
-from backend.auth import models as auth_models
-from backend.eventos import models as eventos_models
-from backend.publicacoes import models as publicacoes_models
-from backend.turmas import models as turmas_models
+# Os models são importados para registrar as tabelas em Base.metadata
+from backend.auth import models as auth_models  # noqa: F401
+from backend.eventos import models as eventos_models  # noqa: F401
+from backend.publicacoes import models as publicacoes_models  # noqa: F401
+from backend.turmas import models as turmas_models  # noqa: F401
 
 target_metadata = Base.metadata
 

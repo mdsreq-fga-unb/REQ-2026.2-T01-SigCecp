@@ -20,7 +20,6 @@ from backend.publicacoes.models import Publicacao
 from backend.publicacoes.schemas import PublicacaoCreate
 
 from backend.publicacoes.services import (
-    atualizar_conteudo,
     atualizar_conteudo_com_midias,
     buscar_conteudo,
     criar_conteudo_com_midias,
