@@ -1,5 +1,7 @@
 # 4. Estratégias de Engenharia de Software
 
+Esta seção apresenta a estratégia de Engenharia de Software adotada pela equipe, sua justificativa e a aplicação do processo ao projeto.
+
 ## 4.1. Estratégia Priorizada
 
 - **Abordagem:** Híbrida
@@ -98,6 +100,6 @@ O andamento de cada requisito também aparece na seção *Andamento* da sua fich
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) | [Rafael Melatti](https://github.com/Romm-0) |
 | 1.1 | 06/09/2026 | Substituição do Scrum pelo OpenUP no quadro comparativo e revisão da justificativa da escolha do RAD | [Enzo Costa](https://github.com/enzocostaj) | 
 | 1.2 | 15/09/2026 | Adequação ao feedback do professor: inclusão do Kanban como framework de gestão, justificativa da abordagem híbrida, revisão da criticidade do sistema e inclusão do quadro de adaptações do processo. | [Enzo Costa](https://github.com/enzocostaj) |
-| 1.3 | 14/11/2026 | Issue #25: justificativa da abordagem híbrida corrigida (a documentação não caracteriza a abordagem); nova seção 4.4 com o ciclo do RAD aplicado ao incremento de CP3 e suas evidências | — |
-| 1.4 | 14/11/2026 | Seção 4.4: construção e validação de CP3 com evidência da reunião de 10/11/2026 | — |
-| 1.5 | 15/11/2026 | Seção 4.4: expansão da imagem ao clicar construída, aguardando a validação do cliente | — |
+| 1.3 | 14/11/2026 | Issue #25: justificativa da abordagem híbrida corrigida (a documentação não caracteriza a abordagem); nova seção 4.4 com o ciclo do RAD aplicado ao incremento de CP3 e suas evidências | [Marcos Monteiro](https://github.com/montmarcos) |
+| 1.4 | 14/11/2026 | Seção 4.4: construção e validação de CP3 com evidência da reunião de 10/11/2026 | [Marcos Monteiro](https://github.com/montmarcos) |
+| 1.5 | 15/11/2026 | Seção 4.4: expansão da imagem ao clicar construída, aguardando a validação do cliente | [Marcos Monteiro](https://github.com/montmarcos) |

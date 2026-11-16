@@ -1,5 +1,7 @@
 # 7. Interação entre Equipe e Cliente
 
+Esta seção define os papéis da equipe e a forma de interação com o cliente para avaliar os incrementos e registrar acordos e decisões.
+
 ## 7.1 Composição da Equipe
 
 | Papel | Descrição | Responsável | Participantes |
@@ -78,8 +80,8 @@ O mesmo fluxo se repete para as demais características do MVP (CP1 e CP4, além
 | 1.1 | 12/09/2026 | Correções da issue #22: composição da equipe, disponibilidade do cliente, definições de iteração/unidade, registro de decisões, ampliação de stakeholders e processo de validação | Maria Eduarda | — |
 | 1.2 | 21/09/2026 | Adição da disponibilidade de Ivan e Sandra e detalhamento dos papéis na ampliação de stakeholders | Maria Eduarda | — |
 | 1.3 | 22/09/2026 | Revisão para tornar o documento prático: remoção das definições de iteração/unidade, aplicação concreta de DoR/DoD com exemplo real (matrícula online), e detalhamento da atuação prática do Analista de Requisitos | Maria Eduarda | — |
-| 1.4 | 14/11/2026 | Corrigida referência da seção 7.3: "matrícula online (CP2)" passou a "matrícula online (CP7)" — CP2 é Registro de doações e prestação de contas, não matrícula | — | — |
-| 1.5 | 14/11/2026 | Issues #26, #30, #31 e #35: 7.3 reescrita como fluxo por incremento que referencia o DoR e o DoD da seção 9 (sem checklists paralelos); DoR passa a vir depois da avaliação do protótipo; responsabilidade planejada separada da participação registrada nas atas; exemplo hipotético da matrícula substituído pelo incremento real de CP3 | — | — |
-| 1.6 | 14/11/2026 | Participação registrada e aplicação a CP3 atualizadas com a reunião de 10/11/2026 | — | — |
-| 1.7 | 14/11/2026 | Rotina de reuniões: a frequência semanal passa a ser a planejada, e o texto registra as reuniões que de fato ocorreram | — | — |
-| 1.8 | 14/11/2026 | Registro de decisões: decisões e pendências ficam na página de decisões e no painel, aprovações nas atas e nas fichas, e as Issues do GitHub ficam para as tarefas de construção | — | — |
+| 1.4 | 14/11/2026 | Corrigida referência da seção 7.3: "matrícula online (CP2)" passou a "matrícula online (CP7)" — CP2 é Registro de doações e prestação de contas, não matrícula | [Marcos Monteiro](https://github.com/montmarcos) | — |
+| 1.5 | 14/11/2026 | Issues #26, #30, #31 e #35: 7.3 reescrita como fluxo por incremento que referencia o DoR e o DoD da seção 9 (sem checklists paralelos); DoR passa a vir depois da avaliação do protótipo; responsabilidade planejada separada da participação registrada nas atas; exemplo hipotético da matrícula substituído pelo incremento real de CP3 | [Marcos Monteiro](https://github.com/montmarcos) | — |
+| 1.6 | 14/11/2026 | Participação registrada e aplicação a CP3 atualizadas com a reunião de 10/11/2026 | [Marcos Monteiro](https://github.com/montmarcos) | — |
+| 1.7 | 14/11/2026 | Rotina de reuniões: a frequência semanal passa a ser a planejada, e o texto registra as reuniões que de fato ocorreram | [Marcos Monteiro](https://github.com/montmarcos) | — |
+| 1.8 | 14/11/2026 | Registro de decisões: decisões e pendências ficam na página de decisões e no painel, aprovações nas atas e nas fichas, e as Issues do GitHub ficam para as tarefas de construção | [Marcos Monteiro](https://github.com/montmarcos) | — |
