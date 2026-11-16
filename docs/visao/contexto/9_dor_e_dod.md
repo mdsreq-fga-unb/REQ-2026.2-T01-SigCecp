@@ -23,7 +23,7 @@ O **Definition of Done (DoD)** é o conjunto de critérios para que um requisito
 | 2 | Testes e verificação de estilo rodam no CI | O GitHub Actions executa testes e linters em cada PR, e o PR só é integrado com a execução aprovada |
 | 3 | Os critérios de aceitação da ficha foram executados e aprovados | Cada critério é executado no ambiente de homologação. O resultado (aprovado ou reprovado, data e responsável) é registrado na linha *Teste de aceite* do *Andamento* da ficha, com link para a evidência |
 | 4 | O código foi revisado | O PR foi aprovado por ao menos um membro além do autor |
-| 5 | O código segue os padrões da equipe | Python: PEP 8, verificado por linter (por exemplo, ruff ou flake8). HTML, CSS e JavaScript: linter e formatador definidos pela equipe (por exemplo, ESLint e Prettier) |
+| 5 | O código segue os padrões da equipe | Python: ruff check sem erros (regras padrão do Ruff: subconjunto do pycodestyle E4, E7, E9 e Pyflakes F, que detectam erros de sintaxe, imports não usados ou inválidos, variáveis indefinidas ou não usadas e comparações incorretas). HTML, CSS e JavaScript: linter e formatador definidos pela equipe (por exemplo, ESLint e Prettier) |
 | 6 | A funcionalidade está documentada | A forma de uso está descrita na documentação do produto |
 
 ## 9.3 Aplicação registrada
@@ -98,4 +98,5 @@ Verificação feita em 14/11/2026, antes da validação com o cliente, como prev
 | 1.5 | 14/11/2026 | Seção 9.3: verificação do DoR e do DoD de turmas (RF03, RF06 e RF07), da Iteração 8 | — |  |
 | 1.6 | 14/11/2026 | DoR critério 2: a evidência da aprovação do protótipo passa a ser a ata citada no *Andamento* da ficha, e não mais uma decisão no painel (as decisões de aprovação foram retiradas) | — |  |
 | 1.7 | 15/11/2026 | Atualização da Seção 9.3 (Issues #30 e #31): consolidação das evidências de execução da pipeline no GitHub Actions (testes automatizados e linters de Python e JavaScript), registro dos Pull Requests revisados e aprovados, vinculação da documentação técnica atualizada no readme.md e estruturação do controle de dependências e capacidade para o DoR. | [Maria Eduarda](https://github.com/Mariaeduardara) | [Alexandre](https://github.com/El-flipante) |
-| 1.8 | 16/11/2026 | Seção 9.3: critério 3 do DoR (cabe na capacidade) verificado para CP3 e turmas, comparando as estimativas da matriz com a capacidade da equipe da seção 10.2.3 do backlog | — |  |
+| 1.8 | 16/11/2026 | Seção 9.3: critério 3 do DoR (cabe na capacidade) verificado para CP3 e turmas, comparando as estimativas da matriz com a capacidade da equipe da seção 10.2.3 do backlog | [Alexandre](https://github.com/El-flipante) | [Rafael Melatti](https://github.com/Romm-0) |
+| 1.9 | 16/11/2026 | Atualização do tópico 5 do DoD | [Rafael Melatti](https://github.com/Romm-0) | - |
