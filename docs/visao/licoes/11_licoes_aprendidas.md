@@ -33,3 +33,4 @@ Durante a elaboração dos requisitos da plataforma de gestão para o CECP (Cent
 | 1.0 | 05/09/2026 | Transcrição do documento para Markdown | Ana Paula Jardim | Marcos Monteiro |
 | 1.1 | 11/09/2026 | Adequação do documento com base na [issue #23](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/23) | Rafael Melatti | - |
 | 1.2 | 08/10/2026 | Adição das lições aprendidas da Unidade 2 | [Enzo Costa](https://github.com/enzocostaj) | - |
+| 1.3 | 15/11/2026 | Adição das lições aprendidas da Unidade 3 | — | - |

@@ -61,6 +61,8 @@ A proposta é viável no contexto da disciplina, considerando o acesso ao client
  
 O principal risco técnico está no gerenciamento de dados, uma vez que a transição de processos hoje registrados em papel para um sistema digital exige modelagem cuidadosa das entidades (alunos, matrículas, turmas, frequência, medidas disciplinares e documentos de doações/prestação de contas), além de mecanismos que garantam integridade e consistência das informações migradas. Esse risco é mitigado por meio da definição incremental do modelo de dados junto à cliente, reduzindo a probabilidade de inconsistências propagarem-se para as demais funcionalidades do sistema.
  
+Quanto ao esforço, os 18 RFs do MVP somam até cerca de 45 horas de implementação, incluindo persistência, validação, segurança e testes, frente a cerca de 168 horas disponíveis da equipe nas Iterações 5 a 10. O cálculo e a justificativa da matriz estão na [seção 10.2.3 do backlog](../../historico/10_backlog_produto.md#1023-justificativa-da-matriz-e-viabilidade-do-mvp).
+ 
 Assim, a proposta é considerada viável, desde que:
  
 - O escopo do MVP permaneça controlado;
@@ -97,3 +99,4 @@ O acesso à área administrativa (RF00 a RF02) é pré-requisito de todos os ite
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) |  |
 | 1.1 | 18/09/2026 | Ajustando conforme o feedback da issue: Unidade 1 - Solução proposta #14| [Marcos Monteiro](https://github.com/montmarcos) |  |
 | 1.2 | 14/11/2026 | Issue #24: fluxo da matrícula online consolidado (pré-matrícula online e efetivação presencial, RN02) em 2.1 e CP7; OE2 e CP5 restritos a frequência e disciplina (desempenho escolar fora do escopo); benefícios marcados como MVP ou pós-MVP; nova seção 2.8 | — |  |
+| 1.3 | 15/11/2026 | Issue #33: seção 2.6 compara o esforço estimado do MVP com as horas disponíveis da equipe | — |  |

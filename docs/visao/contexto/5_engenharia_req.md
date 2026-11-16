@@ -47,7 +47,7 @@ Representar não é só desenhar telas: é tornar visível qualquer estrutura, c
 
 - **Rastreabilidade visual (semiformal):** o grafo de rastreabilidade (problema → objetivos → características → RFs) e os vínculos navegáveis do painel do escopo (RF ↔ RN, RNF, decisões e pendências).
     - **Status:** realizada
-    - **Evidências:** [grafo da seção 8.3 (arquivada)](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/historico/8_0_requisitos/), [Painel do Escopo](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/painel/)
+    - **Evidências:** [matriz-síntese e grafo de rastreabilidade](8_rastreabilidade.md), [Painel do Escopo](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-SigCecp/painel/)
 
 **Verificação e Validação de Requisitos:**
 
@@ -177,5 +177,11 @@ Dizer que um requisito "deve ser claro" não basta. Cada critério abaixo vira u
 | 1.1 | 19/09/2026 | Revisão das técnicas de Engenharia de Requisitos com base em feedback recebido durante o desenvolvimento do projeto | Ana Paula Jardim | Marcos Monteiro |
 | 1.2 | 13/11/2026 | Inclusão de status e evidências por técnica de ER; atualização da descrição da Declaração Estruturada de Requisitos e Organização e Atualização | Ana Paula Jardim |  |
 | 1.3 | 14/11/2026 | Issue #26: MoSCoW e priorização com as três reuniões e a confirmação do MVP em 30/10 (DEC03); ressalva sobre a reconciliação do esforço (PEN06); status de prototipação e validação com protótipo atualizados para CP3 | — |  |
+<<<<<<< HEAD
 | 1.4 | 14/11/2026 | Evidências da reunião de 10/11/2026 (protótipo das demais telas do MVP e aceite de CP3 e do acesso) e alinhamento às aulas dos capítulos 10 a 12: representação além das telas (contextuais, protótipos, diagramas comportamentais e rastreabilidade), sem atribuir aos protótipos a identidade visual; novas técnicas de verificação (análise de consistência e rastreabilidade, checklists e critérios de qualidade); organização e atualização descritas por escopos, propagação de mudanças e calibragem; novas seções 5.3 (diagramas de estados e de fluxo) e 5.4 (critérios de qualidade) | Marcos Monteiro | Ana Paula Jardim |
 
+=======
+| 1.4 | 14/11/2026 | Evidências da reunião de 10/11/2026 (protótipo das demais telas do MVP e aceite de CP3 e do acesso) | — |  |
+| 1.5 | 14/11/2026 | Alinhamento às aulas dos capítulos 10 a 12: representação além das telas (contextuais, protótipos, diagramas comportamentais e rastreabilidade), sem atribuir aos protótipos a identidade visual; novas técnicas de verificação (análise de consistência e rastreabilidade, checklists e critérios de qualidade); organização e atualização descritas por escopos, propagação de mudanças e calibragem; novas seções 5.3 (diagramas de estados e de fluxo) e 5.4 (critérios de qualidade) | — |  |
+| 1.6 | 15/11/2026 | A evidência da rastreabilidade visual passa a apontar para a página vigente de [Rastreabilidade](8_rastreabilidade.md), e não para o documento arquivado | — |  |
+>>>>>>> aebb0eb (Ajustes issue 33)

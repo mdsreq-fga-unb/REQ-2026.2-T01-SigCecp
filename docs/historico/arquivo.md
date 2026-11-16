@@ -8,7 +8,7 @@ Esta página reúne os documentos que cumpriram sua função em uma etapa espec�
 
 [Acessar →](8_0_requisitos.md)
 
-Documento original de levantamento de requisitos (RF00–RF42 e RNF01–RNF13) e a matriz-síntese de rastreabilidade (8.3), incluindo o grafo interativo de rastreabilidade. As definições vigentes de cada requisito estão nas fichas acessíveis pelo [painel do escopo](../painel.md).
+Documento original de levantamento de requisitos (RF00–RF42 e RNF01–RNF13). As definições vigentes de cada requisito estão nas fichas acessíveis pelo [painel do escopo](../painel.md). A matriz-síntese de rastreabilidade (8.3) e o grafo de rastreabilidade vigentes estão na página [Rastreabilidade](../visao/contexto/8_rastreabilidade.md).
 
 ---
 
