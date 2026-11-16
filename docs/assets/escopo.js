@@ -10,6 +10,7 @@ window.ESCOPO = {
       "pre": "Usuário autenticado",
       "proc": "Invalida a sessão ativa e suas credenciais e redireciona para a tela de login",
       "saidas": "Sessão encerrada; tela de login exibida",
+      "origem": "DEC04: redirecionamento para a tela de login, confirmado no protótipo apresentado em 10/11/2026\nProtótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo\nTestado e aceito pelo cliente em 10/11/2026",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -74,6 +75,7 @@ window.ESCOPO = {
       "pre": "Usuário previamente cadastrado ou usuário administrador padrão",
       "proc": "Valida usuário e senha; se corretos, inicia a sessão e libera a área de coordenação",
       "saidas": "Acesso à área de coordenação; mensagem de erro quando as credenciais forem inválidas",
+      "origem": "Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo\nTestado e aceito pelo cliente em 10/11/2026",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -141,6 +143,7 @@ window.ESCOPO = {
       "pre": "Funcionalidade administrativa existente",
       "proc": "Verifica se há sessão autenticada com perfil de coordenador; se houver, libera a funcionalidade; caso contrário, nega a requisição",
       "saidas": "Funcionalidade liberada ou acesso negado",
+      "origem": "Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo\nTestado e aceito pelo cliente em 10/11/2026\nPor que é um requisito próprio: o RF01 verifica quem é o usuário (autenticação); o RF02 decide o que ele pode acessar (autorização). A regra vale para todas as funcionalidades administrativas, inclusive quando alguém tenta acessá-las sem passar pelo login, e tem critérios de aceitação e testes próprios. Separado, o RF02 é o único ponto a mudar se surgir outro perfil além do coordenador (RN20)",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -206,6 +209,7 @@ window.ESCOPO = {
       "pre": "Coordenador autenticado",
       "proc": "Valida os campos obrigatórios e grava a turma",
       "saidas": "Turma disponível para associação de alunos e exibida na lista de turmas (modalidade, dias, horário e quantidade de alunos); mensagem indicando o campo obrigatório ausente",
+      "origem": "Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo",
       "pdf": false,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -274,6 +278,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -333,6 +338,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "DEC02: confirmação antes de ações críticas",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -393,6 +399,7 @@ window.ESCOPO = {
       "pre": "Aluno e turma cadastrados",
       "proc": "Vincula o aluno à turma escolhida.",
       "saidas": "Aluno vinculado à turma",
+      "origem": "Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo\nRetirar o aluno da turma ou trocá-lo de turma é feito pela edição da ficha do aluno (RF22); a saída do projeto é a inativação (RF24). Ver DEC35",
       "pdf": false,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -443,7 +450,8 @@ window.ESCOPO = {
         "DEC03",
         "DEC17",
         "DEC24",
-        "DEC33"
+        "DEC33",
+        "DEC35"
       ],
       "pens": [],
       "its": [
@@ -461,6 +469,7 @@ window.ESCOPO = {
       "pre": "Turma cadastrada; coordenador autenticado",
       "proc": "Busca os alunos associados à turma e exibe a listagem; ao selecionar um aluno, abre a ficha (RF23)",
       "saidas": "Lista de alunos da turma (foto e nome completo)",
+      "origem": "Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -527,6 +536,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "1, Não precisa ter",
@@ -584,6 +594,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "1, Não precisa ter",
@@ -642,6 +653,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "1, Não precisa ter",
@@ -699,6 +711,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "1, Não precisa ter",
@@ -757,6 +770,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "1, Não precisa ter",
@@ -813,6 +827,7 @@ window.ESCOPO = {
       "pre": "Coordenador autenticado no sistema",
       "proc": "Valida a presença do título, armazena os anexos informados e grava a publicação como visível no módulo público",
       "saidas": "Conteúdo exibido no módulo público; mensagem de erro quando o título não for informado",
+      "origem": "",
       "pdf": true,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -885,6 +900,7 @@ window.ESCOPO = {
       "pre": "Coordenador autenticado; conteúdo institucional já publicado",
       "proc": "Carrega o conteúdo existente, permite alterar texto e substituir ou remover fotos e vídeos, valida o título e grava as alterações",
       "saidas": "Conteúdo atualizado exibido no módulo público",
+      "origem": "",
       "pdf": true,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -959,6 +975,7 @@ window.ESCOPO = {
       "pre": "Existir ao menos um conteúdo institucional publicado",
       "proc": "Recupera os conteúdos publicados e os exibe com título, texto, fotos e vídeos",
       "saidas": "Lista e visualização dos conteúdos institucionais; mensagem informativa quando não houver conteúdo publicado",
+      "origem": "Imagem expansível ao clicar, pedida pelo cliente no teste de 10/11/2026",
       "pdf": true,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -1050,6 +1067,7 @@ window.ESCOPO = {
       "pre": "Coordenador autenticado; conteúdo institucional existente",
       "proc": "Solicita confirmação, exclui o conteúdo e seus anexos do sistema",
       "saidas": "Confirmação da remoção; conteúdo deixa de ser exibido a qualquer usuário",
+      "origem": "DEC02: confirmação antes de ações críticas",
       "pdf": true,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -1122,6 +1140,7 @@ window.ESCOPO = {
       "pre": "Coordenador autenticado",
       "proc": "Valida todos os campos obrigatórios, grava o evento, define seu estado conforme a data e o torna visível no módulo público",
       "saidas": "Evento exibido no módulo público; mensagem indicando os campos pendentes quando a validação falhar",
+      "origem": "",
       "pdf": true,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -1197,6 +1216,7 @@ window.ESCOPO = {
       "pre": "Coordenador autenticado; evento já publicado",
       "proc": "Carrega os dados atuais, aplica as alterações, revalida os campos obrigatórios e grava",
       "saidas": "Evento atualizado exibido no módulo público",
+      "origem": "",
       "pdf": true,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -1272,6 +1292,7 @@ window.ESCOPO = {
       "pre": "Coordenador autenticado; evento existente",
       "proc": "Solicita confirmação e exclui o evento e seus anexos",
       "saidas": "Confirmação da remoção; evento deixa de ser exibido",
+      "origem": "DEC02: confirmação antes de ações críticas",
       "pdf": true,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -1344,6 +1365,7 @@ window.ESCOPO = {
       "pre": "Existir ao menos um evento publicado. Não exige autenticação para visitantes",
       "proc": "Recupera os eventos, calcula o estado de cada um e os exibe em lista; a coordenação acessa também as opções de editar e remover",
       "saidas": "Lista com título, data, local e estado (Em breve, Em andamento, Encerrado); detalhes completos ao selecionar um evento",
+      "origem": "Imagem expansível ao clicar, pedida pelo cliente no teste de 10/11/2026",
       "pdf": true,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -1436,6 +1458,7 @@ window.ESCOPO = {
       "pre": "Coordenador autenticado; turma cadastrada (RN22)",
       "proc": "Valida os campos obrigatórios, grava o aluno e seus anexos e o associa à turma",
       "saidas": "Aluno cadastrado; mensagem de erro indicando os campos obrigatórios ausentes",
+      "origem": "Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -1514,13 +1537,15 @@ window.ESCOPO = {
       "pre": "Aluno cadastrado; coordenador autenticado",
       "proc": "Valida e atualiza os dados e armazena os novos anexos",
       "saidas": "Ficha atualizada; mensagem de erro se um campo obrigatório for esvaziado",
+      "origem": "Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo\nCritério 3 incluído pela DEC35: a retirada ou troca de turma é feita na ficha; será confirmado com o cliente no teste de aceite da Iteração 10",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
       "entrega": "MVP",
       "criterios": [
         "1. Dado um aluno sem laudo, quando a coordenação anexa o laudo, então ele passa a constar na ficha.",
-        "2. Dada a edição de um campo obrigatório para vazio, quando tenta salvar, então o sistema bloqueia."
+        "2. Dada a edição de um campo obrigatório para vazio, quando tenta salvar, então o sistema bloqueia.",
+        "3. Dado um aluno associado a uma turma, quando a coordenação troca ou retira a turma na ficha, então o aluno deixa de constar na turma anterior e o histórico da associação é preservado."
       ],
       "rns": [
         "RN41",
@@ -1564,7 +1589,8 @@ window.ESCOPO = {
       ],
       "ajustes": [],
       "decs": [
-        "DEC03"
+        "DEC03",
+        "DEC35"
       ],
       "pens": [],
       "its": [
@@ -1582,6 +1608,7 @@ window.ESCOPO = {
       "pre": "Coordenador autenticado",
       "proc": "Exibe a listagem (foto e nome completo) e, ao selecionar o aluno, o perfil com dados cadastrais, anexos e histórico de turmas",
       "saidas": "Ficha exibida; documentos baixáveis; pendências visíveis; contagem de alunos ativos e inativos",
+      "origem": "Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -1651,6 +1678,7 @@ window.ESCOPO = {
       "pre": "Aluno ativo; coordenador autenticado",
       "proc": "Exibe confirmação (\"Deseja inativar [nome]?\") e, ao confirmar, altera o status para inativo mantendo todos os dados",
       "saidas": "Aluno exibido como inativo, com a data da inativação; aviso de que a inativação foi feita; contagem de ativos/inativos atualizada",
+      "origem": "DEC02: confirmação antes de ações críticas\nProtótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo",
       "pdf": false,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -1702,7 +1730,8 @@ window.ESCOPO = {
       "decs": [
         "DEC02",
         "DEC03",
-        "DEC17"
+        "DEC17",
+        "DEC35"
       ],
       "pens": [
         "PEN23"
@@ -1724,6 +1753,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "DEC02: confirmação antes de ações críticas",
       "pdf": false,
       "pendente": 0,
       "moscow": "1, Não precisa ter",
@@ -1784,6 +1814,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -1844,6 +1875,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -1903,6 +1935,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -1966,6 +1999,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "DEC02: confirmação antes de ações críticas",
       "pdf": false,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -2032,6 +2066,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -2089,6 +2124,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -2146,6 +2182,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -2202,6 +2239,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -2260,6 +2298,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "1, Não precisa ter",
@@ -2318,6 +2357,7 @@ window.ESCOPO = {
       "pre": "Nenhuma: o formulário é público",
       "proc": "(a detalhar)",
       "saidas": "Solicitação registrada e número de protocolo (RF41); ou indicação dos campos que faltam",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -2388,6 +2428,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -2443,6 +2484,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -2498,6 +2540,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -2563,6 +2606,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "4, Tem que ter",
@@ -2628,6 +2672,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "2, Poderia ter",
@@ -2682,6 +2727,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "",
       "pdf": false,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -2739,6 +2785,7 @@ window.ESCOPO = {
       "pre": "(a detalhar)",
       "proc": "(a detalhar)",
       "saidas": "(a detalhar)",
+      "origem": "DEC02: confirmação antes de ações críticas",
       "pdf": false,
       "pendente": 0,
       "moscow": "3, Deveria ter",
@@ -3195,6 +3242,17 @@ window.ESCOPO = {
         "RF05"
       ],
       "fonte": "Decisão da equipe em 14/11/2026"
+    },
+    {
+      "id": "DEC35",
+      "data": "15/11/2026",
+      "texto": "Retirar um aluno de uma turma ou trocá-lo de turma é feito pela edição da ficha do aluno (RF22), porque a turma faz parte da ficha (RN23); o RF06 trata só da associação. A saída do aluno do projeto continua sendo a inativação (RF24), que preserva o histórico. Por isso a sugestão da Unidade 2 de criar um RF \"Remover aluno da turma\" não foi adotada. O novo critério do RF22 será confirmado com o cliente no teste de aceite da ficha do aluno, na Iteração 10",
+      "rfs": [
+        "RF06",
+        "RF22",
+        "RF24"
+      ],
+      "fonte": "Decisão da equipe em 15/11/2026, issue #28"
     }
   ],
   "pen": [
@@ -3204,7 +3262,7 @@ window.ESCOPO = {
       "rfs": [
         "RF42"
       ],
-      "acao": "Confirmar com o cliente no detalhamento da matrícula online"
+      "acao": "Aberta de propósito: o RF42 é pós-MVP (DEC03). Será resolvida com o cliente no detalhamento da matrícula online (CP7), depois da entrega do MVP; até lá não bloqueia nenhum requisito do MVP"
     },
     {
       "id": "PEN13",
@@ -3229,7 +3287,7 @@ window.ESCOPO = {
       "rfs": [
         "RF28"
       ],
-      "acao": "Confirmar com o cliente no detalhamento de CP5"
+      "acao": "Aberta de propósito: o RF28 é pós-MVP (DEC03). Será resolvida com o cliente no detalhamento de frequência (CP5), depois da entrega do MVP; até lá não bloqueia nenhum requisito do MVP"
     },
     {
       "id": "PEN23",

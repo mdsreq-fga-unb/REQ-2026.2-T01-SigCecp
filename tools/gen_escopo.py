@@ -52,7 +52,7 @@ for f in sorted((E/"requisitos").glob("RF*.md")):
     mo = d.get("Valor de negócio (MoSCoW)", "")
     rfs[f.stem] = {"nome": re.match(r"### RF\d+: (.*)", t)[1], "estado": d["Estado e versão"].split(",")[0],
         "cp": re.split(r" \(ver", clean(d["CP de origem"]))[0], "ator": clean(d.get("Ator principal", "")),
-        "declaracao": clean(d.get("Declaração", "")), "entradas": clean(d.get("Entradas", "")), "pre": clean(d.get("Pré-condições", "")), "proc": clean(d.get("Processamento", "")), "saidas": clean(d.get("Saídas", "")), "pdf": (E/"pdf"/f"{f.stem}.pdf").exists(), "pendente": t.count("[PENDENTE]"), "moscow": mo.split("·")[0].strip(),
+        "declaracao": clean(d.get("Declaração", "")), "entradas": clean(d.get("Entradas", "")), "pre": clean(d.get("Pré-condições", "")), "proc": clean(d.get("Processamento", "")), "saidas": clean(d.get("Saídas", "")), "origem": clean(d.get("Origem e decisões", "")), "pdf": (E/"pdf"/f"{f.stem}.pdf").exists(), "pendente": t.count("[PENDENTE]"), "moscow": mo.split("·")[0].strip(),
         "entrega": "Pós-MVP" if "Pós-MVP" in mo else "MVP", "criterios": clean(d.get("Critérios de aceitação", "")).split("\n"),
         "rns": ids(d.get("Regras de negócio", ""), "RN"), "rnfs": ids(d.get("RNFs aplicáveis", ""), "RNF"),
         "andamento": [e for e in etapas if not e[0].startswith("Ajuste (")],

@@ -382,6 +382,9 @@
   const htmlCriterios = (r) => secao('Critérios de aceitação',
     '<ol>' + r.criterios.map((c) => '<li>' + esc(c.replace(/^\d+\.\s*/, '')) + '</li>').join('') + '</ol>');
 
+  const htmlOrigem = (r) => !r.origem ? '' : secao('Origem e decisões',
+    r.origem.split('\n').map((l) => '<p>' + esc(l) + '</p>').join(''));
+
   // Os códigos RN/RNF levam à aba de regras (ver o clique delegado em abrirFicha)
   const htmlRegras = (r) => secao('Regras de negócio', !r.rns.length ? vazio('Nenhuma regra vinculada.') :
     '<ul>' + r.rns.map((n) => '<li><b class="pn-ln" data-go="reg|rn-' + n + '">' + n + '</b> ' +
@@ -438,7 +441,7 @@
     gaveta.setAttribute('role', 'dialog');
     gaveta.setAttribute('aria-label', cod + ' ' + r.nome);
     gaveta.innerHTML = htmlCabecalho(cod, r) + htmlFalta(r) + htmlParaImplementar(r) + htmlAndamento(r) + htmlAjustes(r) +
-      htmlCriterios(r) + htmlRegras(r) + htmlRnfs(r);
+      htmlCriterios(r) + htmlOrigem(r) + htmlRegras(r) + htmlRnfs(r);
     gaveta.append(blocoRelacionados(r), linksDaFicha(cod, r));
 
     // Clique em elementos com data-go="aba|id" leva ao item correspondente
