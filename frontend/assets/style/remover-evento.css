@@ -1,0 +1,126 @@
+/* Pop-up de remoção de evento */
+
+.modal {
+  width: min(560px, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  padding: 0;
+  color: var(--preto);
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.modal::backdrop {
+  background: rgba(20, 20, 20, 0.45);
+}
+
+.modal[open] {
+  animation: modal-entrada 0.15s ease-out;
+}
+
+@keyframes modal-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.modal__corpo {
+  padding: 32px;
+}
+
+.modal__topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modal__icone {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: #d91c24;
+  background: #fdeeee;
+  border-radius: 8px;
+}
+
+.modal__fechar {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  color: var(--cinza-texto);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.modal__fechar:hover {
+  color: var(--preto);
+  background: #f0f0ee;
+}
+
+.modal__fechar:focus-visible {
+  outline: 3px solid #f2c200;
+  outline-offset: 2px;
+}
+
+.modal__titulo {
+  margin: 0 0 20px;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.modal__evento {
+  margin: 0 0 12px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.modal__texto {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--cinza-texto);
+}
+
+.modal__aviso {
+  margin: 0;
+  font-size: 14px;
+  color: var(--preto);
+}
+
+.modal__acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+@media (max-width: 640px) {
+  .modal__corpo {
+    padding: 24px 20px;
+  }
+
+  .modal__titulo {
+    font-size: 1.5rem;
+  }
+
+  .modal__acoes {
+    flex-direction: column-reverse;
+  }
+
+  .modal__acoes .botao {
+    width: 100%;
+  }
+}
