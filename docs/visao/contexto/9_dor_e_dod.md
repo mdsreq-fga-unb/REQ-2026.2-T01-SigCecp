@@ -43,18 +43,18 @@ Verificação feita a partir das evidências publicadas até 14/11/2026. A const
 
 A dependência do critério 4 foi tratada construindo a autenticação (RF00 a RF02) junto com CP3.
 
-### DoD: acesso e conteúdo institucional e eventos (RF00 a RF02, RF13 a RF20)
+### DoD: acesso, conteúdo institucional e eventos (RF00 a RF02, RF13 a RF20)
 
 Verificação feita a partir das evidências publicadas até 14/11/2026. Nesta iteração, a validação com o cliente ocorreu em 10/11 ([ata](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md)), antes da verificação formal do DoD. A partir da próxima iteração, o DoD é verificado e registrado antes da validação com o cliente.
 
 | # | Critério | Situação | Evidência |
 |---|---|---|---|
-| 1 | Testes automatizados cobrem o backend | **Sem evidência publicada** | — |
-| 2 | Testes e linters rodam no CI | **Sem evidência publicada** | — |
+| 1 | Testes automatizados cobrem o backend | Cumprido 289 testes passaram e ouveram 7 erros esperados | [PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/pull/63/checks) / [Execução CI](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/actions/runs/43797081941) |
+| 2 | Testes e linters rodam no CI | Cumprido: suíte de testes e verificação PEP 8 executadas e aprovadas no GitHub Actions |[PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/pull/63/checks) / [Execução CI](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/actions/runs/43797081941)|
 | 3 | Critérios de aceitação executados e aprovados | Executados com o cliente na reunião de 10/11; todos os comportamentos testados funcionaram. Falta registrar o resultado de cada critério na ficha | [Ata 10/11](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md), seção 4 |
-| 4 | Código revisado | **Sem evidência publicada** | — |
-| 5 | Padrões de código | **Sem evidência publicada** | — |
-| 6 | Funcionalidade documentada | **Sem evidência publicada** | — |
+| 4 | Código revisado |Cumprido: PR revisado e aprovado por [Alexandre](https://github.com/El-flipante), [Enzo](https://github.com/enzocostaj) e [Marcos](https://github.com/MontMarcos) também foi produzido em par programin com [Ana Paula](https://github.com/beibeharry) | [PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/pull/63) |
+| 5 | Padrões de código | Cumprido: linter PEP 8 (ruff) aprovado sem erros na pipeline do PR |[Execução CI](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/actions/runs/43797081941)|
+| 6 | Funcionalidade documentada | Cumprido: configuração, rotas e regras de autenticação (seção 12), eventos (seções 6 a 8) e conteúdo institucional (seção 13) descritas |Seções 6–8, 12 e 13 do read.me nda branch iteração_oito|
 
 **Pendências para fechar o DoD desta entrega:** relatório de cobertura, execução do CI, aprovação do PR, saída dos linters, link da documentação de uso e o resultado de cada critério de aceitação registrado na ficha.
 
@@ -77,11 +77,11 @@ Verificação feita em 14/11/2026, antes da validação com o cliente, como prev
 
 | # | Critério | Situação | Evidência |
 |---|---|---|---|
-| 1 | Testes automatizados cobrem o backend | **Em parte**: há testes automatizados de turmas, e toda a suíte passa; a cobertura de linhas não foi medida | Pasta `tests/turmas` na branch `iteracao_oito` |
-| 2 | Testes e linters rodam no CI | **Sem evidência publicada** | — |
+| 1 | Testes automatizados cobrem o backend | **Em parte**: há testes automatizados de turmas, e toda a suíte passa; a cobertura de linhas não foi medida | [PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/pull/63/checks) / [Execução CI](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/actions/runs/43797081941) |
+| 2 | Testes e linters rodam no CI |  Cumprido: suíte de testes e verificação PEP 8 executadas e aprovadas no GitHub Actions |[PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/pull/63/checks) / [Execução CI](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/actions/runs/43797081941)|
 | 3 | Critérios de aceitação executados e aprovados | **Pendente**: o teste de aceite com o cliente passou para a Iteração 10 ([DEC33](../../painel.md#DEC33)) | Linha *Teste de aceite* das fichas |
-| 4 | Código revisado | **Sem evidência publicada** | — |
-| 5 | Padrões de código | **Sem evidência publicada** | — |
+| 4 | Código revisado |Cumprido: PR revisado e aprovado por [Alexandre](https://github.com/El-flipante), [Enzo](https://github.com/enzocostaj) e [Marcos](https://github.com/MontMarcos) também foi produzido em par programin com [Ana Paula](https://github.com/beibeharry) | [PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/pull/63) |
+| 5 | Padrões de código | Cumprido: linter PEP 8 (ruff) aprovado sem erros na pipeline do PR |[Execução CI](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/actions/runs/43797081941)|
 | 6 | Funcionalidade documentada | Cumprido: rotas, regras e pendências de turmas descritas | Seção 9 do `readme.md` na branch `iteracao_oito` |
 
 **Pendências para fechar o DoD desta entrega:** relatório de cobertura, execução do CI, aprovação do PR, saída dos linters e o resultado do teste de aceite registrado em cada ficha.
@@ -97,3 +97,5 @@ Verificação feita em 14/11/2026, antes da validação com o cliente, como prev
 | 1.4 | 14/11/2026 | Seção 9.3 enxugada: o DoR 1 e o texto depois da tabela do DoR deixam de recontar o que a DEC12, a DEC27 e a PEN01 já registram e passam a apontar para elas | — |  |
 | 1.5 | 14/11/2026 | Seção 9.3: verificação do DoR e do DoD de turmas (RF03, RF06 e RF07), da Iteração 8 | — |  |
 | 1.6 | 14/11/2026 | DoR critério 2: a evidência da aprovação do protótipo passa a ser a ata citada no *Andamento* da ficha, e não mais uma decisão no painel (as decisões de aprovação foram retiradas) | — |  |
+| 1.7 | 15/11/2026 | Atualização da Seção 9.3 (Issues #30 e #31): consolidação das evidências de execução da pipeline no GitHub Actions (testes automatizados e linters de Python e JavaScript), registro dos Pull Requests revisados e aprovados, vinculação da documentação técnica atualizada no readme.md e estruturação do controle de dependências e capacidade para o DoR. | [Maria Eduarda](https://github.com/Mariaeduardara) | [Alexandre](https://github.com/El-flipante) |
+
