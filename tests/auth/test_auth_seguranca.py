@@ -1,3 +1,5 @@
+import base64
+import json
 from dataclasses import replace
 from datetime import timedelta
 
@@ -12,7 +14,8 @@ pytestmark = pytest.mark.auth_real
 
 # ---------- senha ----------
 def test_hash_e_bcrypt_com_salt_e_nunca_texto_puro():
-    h1, h2 = security.hash_senha("uma-senha-bem-longa"), security.hash_senha("uma-senha-bem-longa")
+    h1 = security.hash_senha("uma-senha-bem-longa")
+    h2 = security.hash_senha("uma-senha-bem-longa")
     assert h1.startswith("$2b$") and len(h1) == 60
     assert "uma-senha-bem-longa" not in h1
     assert h1 != h2
@@ -60,8 +63,15 @@ def test_access_token_ida_e_volta():
 
 def _assinar(claims_extra=None, chave=None, alg="HS256", remover=()):
     s = cfg.settings
-    claims = {"sub": "1", "sid": "x", "typ": "access", "iss": s.jwt_emissor, "aud": s.jwt_audiencia,
-              "iat": 1, "exp": 4102444800}
+    claims = {
+        "sub": "1",
+        "sid": "x",
+        "typ": "access",
+        "iss": s.jwt_emissor,
+        "aud": s.jwt_audiencia,
+        "iat": 1,
+        "exp": 4102444800,
+    }
     claims.update(claims_extra or {})
     for k in remover:
         claims.pop(k)
@@ -90,20 +100,44 @@ def test_jwt_assinado_com_outra_chave():
 
 
 def test_jwt_adulterado_no_payload():
-    cabecalho, payload, assinatura = _assinar().split(".")
+    cabecalho, _, assinatura = _assinar().split(".")
     outro = _assinar({"sub": "999"}).split(".")[1]
-    assert security.decodificar_access_token(f"{cabecalho}.{outro}.{assinatura}") is None
+    adulterado = f"{cabecalho}.{outro}.{assinatura}"
+    assert security.decodificar_access_token(adulterado) is None
 
 
 def test_jwt_alg_none_e_rejeitado():
-    import base64, json
-    b64 = lambda d: base64.urlsafe_b64encode(json.dumps(d).encode()).rstrip(b"=").decode()
+    def b64(dados):
+        bruto = json.dumps(dados).encode()
+        return base64.urlsafe_b64encode(bruto).rstrip(b"=").decode()
+
     s = cfg.settings
-    token = f"{b64({'alg': 'none', 'typ': 'JWT'})}.{b64({'sub': '1', 'sid': 'x', 'typ': 'access', 'iss': s.jwt_emissor, 'aud': s.jwt_audiencia, 'iat': 1, 'exp': 4102444800})}."
+    cabecalho = b64({"alg": "none", "typ": "JWT"})
+    corpo = b64(
+        {
+            "sub": "1",
+            "sid": "x",
+            "typ": "access",
+            "iss": s.jwt_emissor,
+            "aud": s.jwt_audiencia,
+            "iat": 1,
+            "exp": 4102444800,
+        }
+    )
+    token = f"{cabecalho}.{corpo}."
     assert security.decodificar_access_token(token) is None
 
 
-@pytest.mark.parametrize("extra", [{"aud": "outro"}, {"iss": "outro"}, {"typ": "refresh"}, {"sub": "abc"}, {"sid": 5}])
+@pytest.mark.parametrize(
+    "extra",
+    [
+        {"aud": "outro"},
+        {"iss": "outro"},
+        {"typ": "refresh"},
+        {"sub": "abc"},
+        {"sid": 5},
+    ],
+)
 def test_jwt_claims_incorretas(extra):
     assert security.decodificar_access_token(_assinar(extra)) is None
 
@@ -125,7 +159,10 @@ def test_csrf_muda_a_cada_geracao_mas_ambos_validam():
     assert a != b and csrf.validar_token(a, "s") and csrf.validar_token(b, "s")
 
 
-@pytest.mark.parametrize("token", ["", ".", "abc", "abc.def", "." + "a" * 64, "a" * 500])
+@pytest.mark.parametrize(
+    "token",
+    ["", ".", "abc", "abc.def", "." + "a" * 64, "a" * 500],
+)
 def test_csrf_invalido(token):
     assert not csrf.validar_token(token, "s")
 
@@ -162,7 +199,12 @@ def test_segredo_curto_e_recusado(monkeypatch):
 
 
 def test_producao_nao_aceita_cookie_sem_secure(monkeypatch):
-    _env(monkeypatch, APP_ENV="production", AUTH_SECRET_KEY="s" * 40, COOKIE_SECURE="false")
+    _env(
+        monkeypatch,
+        APP_ENV="production",
+        AUTH_SECRET_KEY="s" * 40,
+        COOKIE_SECURE="false",
+    )
     with pytest.raises(RuntimeError, match="COOKIE_SECURE"):
         cfg.Settings.from_env()
 

@@ -10,10 +10,15 @@ from backend.auth.dependencies import exigir_admin
 from backend.auth.models import Administrador, RefreshToken
 from backend.auth.tempo import agora, como_utc
 from backend.main import app
-
-from conftest import SENHA, USUARIO
 from conftest import (
-    access_com_expiracao, cookies_set, logar, token_csrf, trocar_cookie, valor_cookie,
+    SENHA,
+    USUARIO,
+    access_com_expiracao,
+    cookies_set,
+    logar,
+    token_csrf,
+    trocar_cookie,
+    valor_cookie,
 )
 
 pytestmark = pytest.mark.auth_real
@@ -25,9 +30,13 @@ HTML = {"accept": "text/html"}
 def test_todas_as_rotas_administrativas_exigem_admin():
     desprotegidas = []
     for r in app.routes:
-        if isinstance(r, APIRoute) and r.path.startswith("/coordenacao") and not r.path.startswith("/coordenacao/auth"):
-            if not any(d.call is exigir_admin for d in r.dependant.dependencies):
-                desprotegidas.append(r.path)
+        if (
+            isinstance(r, APIRoute)
+            and r.path.startswith("/coordenacao")
+            and not r.path.startswith("/coordenacao/auth")
+            and not any(d.call is exigir_admin for d in r.dependant.dependencies)
+        ):
+            desprotegidas.append(r.path)
     assert desprotegidas == []
 
 
@@ -42,7 +51,7 @@ def test_rotas_publicas_nao_recebem_cabecalhos_do_painel(client):
     assert "x-frame-options" not in r.headers
 
 
-@pytest.mark.parametrize("metodo,caminho", [
+@pytest.mark.parametrize(("metodo", "caminho"), [
     ("get", "/coordenacao/conteudo"), ("get", "/coordenacao/eventos"),
     ("get", "/coordenacao/eventos/novo"), ("post", "/coordenacao/conteudo/novo"),
     ("post", "/coordenacao/eventos/1/remover"),
@@ -97,7 +106,10 @@ def test_login_aceita_usuario_sem_diferenciar_caixa_e_espacos(client, admin):
 
 
 def test_login_falho_nao_revela_o_motivo_nem_define_cookies(client, admin):
-    erradas = [logar(client, senha="errada-errada-1"), logar(client, usuario="naoexiste")]
+    erradas = [
+        logar(client, senha="errada-errada-1"),
+        logar(client, usuario="naoexiste"),
+    ]
     assert all(r.status_code == 401 for r in erradas)
     assert erradas[0].text.count("Usuário ou senha inválidos") == 1
     corpos = {r.text.replace("naoexiste", "").replace(USUARIO, "") for r in erradas}
@@ -123,14 +135,20 @@ def test_bloqueio_apos_tentativas_e_liberacao_por_tempo(client, admin, db):
 
 
 def test_login_origem_externa_e_recusado(client, admin):
-    r = client.post("/coordenacao/auth/login", data={"usuario": USUARIO, "senha": SENHA},
-                    headers={"origin": "https://evil.example"})
+    r = client.post(
+        "/coordenacao/auth/login",
+        data={"usuario": USUARIO, "senha": SENHA},
+        headers={"origin": "https://evil.example"},
+    )
     assert r.status_code == 403 and not cookies_set(r)
 
 
 def test_login_origem_propria_e_aceita(client, admin):
-    r = client.post("/coordenacao/auth/login", data={"usuario": USUARIO, "senha": SENHA},
-                    headers={"origin": "http://testserver"})
+    r = client.post(
+        "/coordenacao/auth/login",
+        data={"usuario": USUARIO, "senha": SENHA},
+        headers={"origin": "http://testserver"},
+    )
     assert r.status_code == 303
 
 
@@ -163,7 +181,8 @@ def test_access_adulterado_com_refresh_valido_e_descartado_e_renovado(client, ad
 
 
 def test_access_forjado_sem_sessao_no_banco_e_recusado(client, admin):
-    client.cookies.set(ACCESS, access_com_expiracao(admin.id, "sidfalso", 600), path="/coordenacao")
+    forjado = access_com_expiracao(admin.id, "sidfalso", 600)
+    client.cookies.set(ACCESS, forjado, path="/coordenacao")
     assert client.get("/coordenacao/conteudo").status_code == 401
 
 
@@ -191,7 +210,8 @@ def test_post_com_csrf_de_outra_sessao_e_recusado(client, admin):
 def test_post_com_csrf_valido_funciona(client, admin):
     logar(client)
     r = _novo(client, csrf_token=token_csrf(client))
-    assert r.status_code == 303 and r.headers["location"].endswith("/coordenacao/conteudo")
+    assert r.status_code == 303
+    assert r.headers["location"].endswith("/coordenacao/conteudo")
 
 
 def test_csrf_aceito_no_cabecalho(client, admin):
@@ -205,8 +225,11 @@ def test_csrf_valido_mas_origem_externa_e_recusado(client, admin):
     logar(client)
     r = _novo(client, csrf_token=token_csrf(client))
     assert r.status_code == 303
-    r = client.post("/coordenacao/conteudo/novo", data={"titulo": "T", "csrf_token": token_csrf(client)},
-                    headers={"origin": "https://evil.example"})
+    r = client.post(
+        "/coordenacao/conteudo/novo",
+        data={"titulo": "T", "csrf_token": token_csrf(client)},
+        headers={"origin": "https://evil.example"},
+    )
     assert r.status_code == 403
 
 
@@ -215,8 +238,11 @@ def test_csrf_em_upload_multipart(client, admin):
     token = token_csrf(client)
     sem = client.post("/coordenacao/conteudo/novo", data={"titulo": "T"},
                       files={"imagem": ("a.png", b"x", "image/png")})
-    com = client.post("/coordenacao/conteudo/novo", data={"titulo": "T", "csrf_token": token},
-                      files={"video": ("", b"", "application/octet-stream")})
+    com = client.post(
+        "/coordenacao/conteudo/novo",
+        data={"titulo": "T", "csrf_token": token},
+        files={"video": ("", b"", "application/octet-stream")},
+    )
     assert sem.status_code == 403 and com.status_code == 303
 
 
@@ -244,7 +270,9 @@ def test_access_expirado_e_renovado_com_rotacao_do_refresh(client, admin, db):
     assert ACCESS in novos and REFRESH in novos
     assert valor_cookie(client, REFRESH) != antigo_refresh
     linhas = _familia(db)
-    assert len(linhas) == 2 and linhas[0].usado_em is not None and linhas[1].usado_em is None
+    assert len(linhas) == 2
+    assert linhas[0].usado_em is not None
+    assert linhas[1].usado_em is None
     assert _novo(client, csrf_token=csrf_antes).status_code == 303
 
 
@@ -277,11 +305,14 @@ def test_refresh_expirado_exige_novo_login_e_limpa_cookies(client, admin, db):
 
 def test_teto_absoluto_da_sessao_limita_a_rotacao(db, admin, monkeypatch):
     from dataclasses import replace
-    monkeypatch.setattr(cfg, "settings", replace(cfg.settings, sessao_max=timedelta(days=1)))
+    monkeypatch.setattr(
+        cfg, "settings", replace(cfg.settings, sessao_max=timedelta(days=1))
+    )
     s1 = services.iniciar_sessao(db, admin)
     s2 = services.renovar_sessao(db, s1.refresh_token)
     ultima = _familia(db)[-1]
-    assert como_utc(ultima.expira_em) <= como_utc(ultima.sessao_iniciada_em) + timedelta(days=1)
+    limite = como_utc(ultima.sessao_iniciada_em) + timedelta(days=1)
+    assert como_utc(ultima.expira_em) <= limite
     assert s2.refresh_max_age <= 86400
 
 
@@ -304,7 +335,10 @@ def test_refresh_sem_cookie_retorna_401(client, admin):
 
 def test_refresh_com_origem_externa_e_recusado(client, admin):
     logar(client)
-    r = client.post("/coordenacao/auth/refresh", headers={"origin": "https://evil.example"})
+    r = client.post(
+        "/coordenacao/auth/refresh",
+        headers={"origin": "https://evil.example"},
+    )
     assert r.status_code == 403
 
 
@@ -319,12 +353,14 @@ def test_reaproveitar_refresh_dentro_da_tolerancia_nao_derruba_a_sessao(db, admi
 
 def test_reuso_de_refresh_revoga_a_familia_inteira(db, admin, monkeypatch):
     from dataclasses import replace
-    monkeypatch.setattr(cfg, "settings", replace(cfg.settings, refresh_reuse_grace=timedelta(0)))
+    monkeypatch.setattr(
+        cfg, "settings", replace(cfg.settings, refresh_reuse_grace=timedelta(0))
+    )
     s1 = services.iniciar_sessao(db, admin)
     s2 = services.renovar_sessao(db, s1.refresh_token)
     with pytest.raises(services.RefreshInvalido, match="reuso"):
         services.renovar_sessao(db, s1.refresh_token)
-    assert all(l.revogado_em is not None for l in _familia(db))
+    assert all(linha.revogado_em is not None for linha in _familia(db))
     with pytest.raises(services.RefreshInvalido):
         services.renovar_sessao(db, s2.refresh_token)
     assert services.validar_sessao(db, admin.id, s1.familia) is None

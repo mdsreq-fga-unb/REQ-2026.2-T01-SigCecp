@@ -44,7 +44,11 @@ def config_de_teste(monkeypatch):
 
 @pytest.fixture
 def sessionmaker_teste(monkeypatch):
-    engine = create_engine("sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool)
+    engine = create_engine(
+        "sqlite://",
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
+    )
     Base.metadata.create_all(engine)
     fabrica = sessionmaker(bind=engine, autoflush=False)
 
@@ -83,7 +87,10 @@ def client(sessionmaker_teste):
 # ---------- helpers ----------
 
 def logar(client, usuario=USUARIO, senha=SENHA):
-    return client.post("/coordenacao/auth/login", data={"usuario": usuario, "senha": senha})
+    return client.post(
+        "/coordenacao/auth/login",
+        data={"usuario": usuario, "senha": senha},
+    )
 
 
 def cookies_set(resposta) -> dict[str, str]:

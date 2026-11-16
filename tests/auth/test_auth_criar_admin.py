@@ -18,7 +18,9 @@ def test_cria_admin_com_hash_bcrypt(sessionmaker_teste, db, monkeypatch, capsys)
     _senhas(monkeypatch, SENHA, SENHA)
     assert criar_admin.main(["--usuario", "CECP0002"]) == 0
     a = db.execute(select(Administrador)).scalar_one()
-    assert a.usuario == "cecp0002" and a.senha_hash.startswith("$2b$") and SENHA not in a.senha_hash
+    assert a.usuario == "cecp0002"
+    assert a.senha_hash.startswith("$2b$")
+    assert SENHA not in a.senha_hash
     assert SENHA not in capsys.readouterr().out
 
 
@@ -39,7 +41,9 @@ def test_usuario_duplicado_exige_flag(sessionmaker_teste, admin, monkeypatch):
     assert criar_admin.main(["--usuario", "cecp0001"]) == 1
 
 
-def test_redefinir_troca_senha_e_encerra_sessoes(sessionmaker_teste, db, admin, monkeypatch):
+def test_redefinir_troca_senha_e_encerra_sessoes(
+    sessionmaker_teste, db, admin, monkeypatch
+):
     services.iniciar_sessao(db, admin)
     antigo = admin.senha_hash
     _senhas(monkeypatch, "nova-senha-forte-9", "nova-senha-forte-9")
