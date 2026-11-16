@@ -574,6 +574,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../visao/contexto/8_rastreabilidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rastreabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../visao/contexto/7_interacao_equipe_e_cliente/" class="md-nav__link">
         
   
@@ -843,6 +871,17 @@
     <span class="md-ellipsis">
       
         10.2.2 Matriz 4 × 4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1023-justificativa-da-matriz-e-viabilidade-do-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.3 Justificativa da matriz e viabilidade do MVP
       
     </span>
   </a>
@@ -2295,6 +2334,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#1023-justificativa-da-matriz-e-viabilidade-do-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.3 Justificativa da matriz e viabilidade do MVP
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2946,6 +2996,9 @@
 </tbody>
 </table>
 <p>As notas do cliente e da equipe, os votos individuais e o cálculo que levaram aos resultados acima estão registrados em <a href="../priorizacao_geral_e_mvp/">Comprovação de Evidência</a>. </p>
+<h3 id="1023-justificativa-da-matriz-e-viabilidade-do-mvp">10.2.3 Justificativa da matriz e viabilidade do MVP</h3>
+<p><strong>Por que alguns RFs ficaram com esforço alto.</strong> Na votação de 26/09/2026, as notas de esforço consideraram principalmente a tela de cada requisito. Ao montar a matriz final, em 30/10/2026, depois do detalhamento com o cliente de 21/10, a equipe reavaliou o esforço considerando todo o trabalho de um requisito pronto: persistência dos dados, validação das entradas, segurança e controle de acesso, testes automatizados e dependências de outros requisitos. Com isso, RF29, RF35 (com RF36 e RF37, depois incorporados a ele), RF38, RF39, RF41 e RF42, que pela média das notas (ET de 1,0 a 2,0) entrariam no MVP, passaram para esforço 3. A matrícula online (RF35 a RF42) recebe dados pessoais de crianças e adolescentes por um formulário público, o que exige validação e proteção dos dados exigidas pela LGPD, além do registro dos consentimentos com a versão vigente dos termos (<a href="../../painel/#PEN14">PEN14</a>), e só se completa com o cadastro do aluno (RF21, <a href="../../painel/#DEC18">DEC18</a>). O registro de medida disciplinar (RF29) ainda tem regras a definir com o cliente, como quem registra e o efeito sobre a matrícula (<a href="../../painel/#PEN13">PEN13</a>). A posição de cada RF na matriz e a diferença em relação ao ET estão na seção 5 da <a href="../priorizacao_geral_e_mvp/">comprovação de evidência</a>.</p>
+<p><strong>Viabilidade.</strong> As estimativas de esforço da matriz cobrem a implementação completa de cada requisito: interface, persistência, validação, segurança e testes automatizados. Pela escala da seção 10.2.1, os 18 RFs do MVP somam até cerca de 45 horas de implementação (15 RFs com esforço 1, até 2 horas cada, e 3 com esforço 2, até 5 horas cada). A capacidade da equipe é de cerca de 168 horas nas seis semanas de design e construção (Iterações 5 a 10): sete membros com cerca de 4 horas semanais cada. A implementação estimada ocupa cerca de um quarto dessa capacidade; o restante cobre prototipação, reuniões com o cliente, testes de aceite, documentação e correções. Por isso o MVP de 18 RFs cabe no prazo, enquanto os RFs de valor alto e esforço alto ficam para depois dele.</p>
 <h2 id="103-backlog-do-mvp-ordem-de-construcao-e-acompanhamento">10.3 Backlog do MVP: ordem de construção e acompanhamento</h2>
 <p>A ordem segue as dependências: nenhuma ação da coordenação funciona sem autenticação, e as consultas dependem de existir o que consultar. O estado vem da seção <em>Andamento</em> de cada ficha, atualizada em 14/11/2026 com a <a href="../organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11/">reunião de 10/11</a>. As issues de construção estão no GitHub, e nenhuma tem responsável atribuído até esta data.</p>
 <table>
@@ -3282,6 +3335,13 @@
 <td style="text-align: left;">1.3</td>
 <td style="text-align: left;">14/11/2026</td>
 <td style="text-align: left;">Estado de RF03, RF06 e RF07 atualizado com a construção da Iteração 8; ordem de turmas e alunos revista (DEC33)</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.4</td>
+<td style="text-align: left;">15/11/2026</td>
+<td style="text-align: left;">Issue #33: nova seção 10.2.3 com a justificativa dos RFs que ficaram com esforço alto na matriz e a viabilidade do MVP (o que as estimativas cobrem e comparação com as horas disponíveis da equipe)</td>
 <td style="text-align: left;">—</td>
 <td style="text-align: left;"></td>
 </tr>
