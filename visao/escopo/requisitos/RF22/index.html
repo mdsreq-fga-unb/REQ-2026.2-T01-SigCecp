@@ -2202,7 +2202,7 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Estado e versão</strong></td>
-<td style="text-align: left;">Validado, v1.2</td>
+<td style="text-align: left;">Validado, v1.3</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>CP de origem</strong></td>
@@ -2246,11 +2246,11 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Critérios de aceitação</strong></td>
-<td style="text-align: left;">1. Dado um aluno sem laudo, quando a coordenação anexa o laudo, então ele passa a constar na ficha.<br>2. Dada a edição de um campo obrigatório para vazio, quando tenta salvar, então o sistema bloqueia.</td>
+<td style="text-align: left;">1. Dado um aluno sem laudo, quando a coordenação anexa o laudo, então ele passa a constar na ficha.<br>2. Dada a edição de um campo obrigatório para vazio, quando tenta salvar, então o sistema bloqueia.<br>3. Dado um aluno associado a uma turma, quando a coordenação troca ou retira a turma na ficha, então o aluno deixa de constar na turma anterior e o histórico da associação é preservado.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Origem e decisões</strong></td>
-<td style="text-align: left;">Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo</td>
+<td style="text-align: left;">Protótipo aprovado pelo cliente em 10/11/2026; o retorno das demais pessoas do CECP também foi positivo<br>Critério 3 incluído pela <a href="../../../../painel/#DEC35">DEC35</a>: a retirada ou troca de turma é feita na ficha; será confirmado com o cliente no teste de aceite da Iteração 10</td>
 </tr>
 </tbody>
 </table>
@@ -2332,6 +2332,12 @@
 <td style="text-align: left;">RNF12 incluído: os dados de saúde e os anexos do aluno são protegidos por criptografia</td>
 <td style="text-align: left;">consistência com a ficha do RNF12</td>
 </tr>
+<tr>
+<td style="text-align: left;">1.3</td>
+<td style="text-align: left;">15/11/2026</td>
+<td style="text-align: left;">Critério 3: retirar ou trocar a turma do aluno pela ficha</td>
+<td style="text-align: left;"><a href="../../../../painel/#DEC35">DEC35</a>, issue #28</td>
+</tr>
 </tbody>
 </table></div>
 
@@ -2394,9 +2400,9 @@
     
       <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../../assets/escopo.js?v=a44f98ea"></script>
+        <script src="../../../../assets/escopo.js?v=c171824e"></script>
       
-        <script src="../../../../assets/painel.js?v=7e273141"></script>
+        <script src="../../../../assets/painel.js?v=a62f3fc2"></script>
       
     
   </body>
