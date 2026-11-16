@@ -38,7 +38,7 @@ Verificação feita a partir das evidências publicadas até 14/11/2026. A const
 |---|---|---|---|
 | 1 | Claro e detalhado | Cumprido para RF13 a RF16, RF19 e RF20. Para RF17 e RF18, cumprido depois do encerramento da [PEN01](../../painel.md#PEN01) | Fichas em estado *Validado*; [detalhamento de 21/10](../../historico/detalhamento_iteracao5.md); [DEC27](../../painel.md#DEC27) |
 | 2 | Protótipo aprovado | Cumprido | [ata 30/10](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10.md), [design do usuário](../../historico/designUser_iteracao5.md) |
-| 3 | Cabe na capacidade | **Sem evidência**: não há registro das horas disponíveis nem das estimativas da iteração | — |
+| 3 | Cabe na capacidade | Cumprido. Capacidade: cerca de 28 horas por semana (sete membros, cerca de 4 horas cada). Estimativa: RF13 a RF20 têm esforço 1 na matriz, até 2 horas cada, no total até 16 horas; somados à autenticação construída junto (RF00 a RF02, até 6 horas), chegam a até 22 horas. As horas restantes cobrem protótipos, reuniões e documentação. Verificação registrada depois da construção, com a capacidade média da equipe, e não com as horas informadas em cada planejamento | [Backlog, seção 10.2.3](../../historico/10_backlog_produto.md#1023-justificativa-da-matriz-e-viabilidade-do-mvp) |
 | 4 | Sem dependência bloqueante | **Não cumprido para as ações da coordenação** (RF13, RF14, RF16 a RF19): elas exigem coordenador autenticado, mas RF01 e RF02 estão previstos só para a Iteração 7. RF15 e RF20 (consulta pública) não têm esse bloqueio | Pré-condições das fichas; [cronograma](../../cronograma/6_cronograma.md) |
 
 A dependência do critério 4 foi tratada construindo a autenticação (RF00 a RF02) junto com CP3.
@@ -66,7 +66,7 @@ Verificação feita em 14/11/2026, depois da construção da Iteração 8. Como 
 |---|---|---|---|
 | 1 | Claro e detalhado | Cumprido. As pendências desses RFs foram encerradas pela [DEC23](../../painel.md#DEC23), pela [DEC24](../../painel.md#DEC24) e pela [DEC33](../../painel.md#DEC33) | Fichas em estado *Validado* |
 | 2 | Protótipo aprovado | Cumprido | [ata 10/11](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md) |
-| 3 | Cabe na capacidade | **Sem evidência**: não há registro das horas disponíveis nem das estimativas da iteração | — |
+| 3 | Cabe na capacidade | Cumprido. Capacidade: cerca de 28 horas na Iteração 8 (sete membros, cerca de 4 horas cada). Estimativa: RF03 tem esforço 2 na matriz (até 5 horas) e RF06 e RF07 têm esforço 1 (até 2 horas cada), no total até 9 horas. As horas restantes cobrem o protótipo de turmas e alunos, reuniões e documentação. Verificação registrada depois da construção, com a capacidade média da equipe, e não com as horas informadas no planejamento | [Backlog, seção 10.2.3](../../historico/10_backlog_produto.md#1023-justificativa-da-matriz-e-viabilidade-do-mvp) |
 | 4 | Sem dependência bloqueante | Cumprido para RF03. **Não cumprido para RF06**, que depende do cadastro de alunos (RF21), previsto para a Iteração 10, nem para RF07, que depende do RF06 | [Backlog](../../historico/10_backlog_produto.md), seção 10.3 |
 
 A dependência do critério 4 foi tratada assim: RF03 e RF07 foram concluídos com alunos de exemplo, e o RF06 só termina junto com o RF21 ([DEC33](../../painel.md#DEC33)).
@@ -98,4 +98,4 @@ Verificação feita em 14/11/2026, antes da validação com o cliente, como prev
 | 1.5 | 14/11/2026 | Seção 9.3: verificação do DoR e do DoD de turmas (RF03, RF06 e RF07), da Iteração 8 | — |  |
 | 1.6 | 14/11/2026 | DoR critério 2: a evidência da aprovação do protótipo passa a ser a ata citada no *Andamento* da ficha, e não mais uma decisão no painel (as decisões de aprovação foram retiradas) | — |  |
 | 1.7 | 15/11/2026 | Atualização da Seção 9.3 (Issues #30 e #31): consolidação das evidências de execução da pipeline no GitHub Actions (testes automatizados e linters de Python e JavaScript), registro dos Pull Requests revisados e aprovados, vinculação da documentação técnica atualizada no readme.md e estruturação do controle de dependências e capacidade para o DoR. | [Maria Eduarda](https://github.com/Mariaeduardara) | [Alexandre](https://github.com/El-flipante) |
-
+| 1.8 | 16/11/2026 | Seção 9.3: critério 3 do DoR (cabe na capacidade) verificado para CP3 e turmas, comparando as estimativas da matriz com a capacidade da equipe da seção 10.2.3 do backlog | — |  |
