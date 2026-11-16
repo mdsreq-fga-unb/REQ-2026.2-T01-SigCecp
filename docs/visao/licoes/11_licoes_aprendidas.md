@@ -25,12 +25,25 @@ Durante a elaboração dos requisitos da plataforma de gestão para o CECP (Cent
 | Inconsistências entre os requisitos e outros artefatos do projeto | Alterações nos requisitos sem a atualização imediata dos documentos relacionados | Documentos com informações divergentes, gerando retrabalho na revisão e risco de entregar artefatos que se contradizem | Sempre que um requisito for alterado, registrar na issue ou no pull request quais artefatos são afetados, e só aprovar a alteração depois que todos estiverem atualizados | Marcos | 26/09/2026 | Nenhuma divergência entre requisitos e demais artefatos encontrada na revisão da entrega seguinte | Resolvido |
 | Feedback dos requisitos de outra equipe com apontamentos em níveis de abstração diferentes e tom excessivamente crítico | Ausência de um alinhamento prévio sobre os critérios de avaliação e sobre o nível de detalhe esperado, além da análise de partes do documento de forma isolada | Feedback desigual entre os membros, com excesso de apontamentos e alguns problemas indicados que já estavam resolvidos em outras partes do documento avaliado | Antes de avaliar artefatos de outras equipes, alinhar os critérios de qualidade e o nível de detalhe, ler o documento completo e revisar o feedback em conjunto antes do envio, priorizando os apontamentos mais relevantes | Ana, Alexandre, Enzo, Maria, Marcos, Rafael, Renato | 24/09/2026 | Próxima avaliação realizada com critérios definidos previamente e feedback consolidado pela equipe antes do envio | Em teste |
 
+## 11.3 Unidade 3
+
+Durante o desenvolvimento do projeto da plataforma de gestão para o CECP (Centro Esportivo Cultural de Planaltina), foram identificadas novas lições que devem orientar a condução das próximas fases. A seguir, são apresentadas as lições aprendidas, os desafios enfrentados e as ações propostas para superá-los.
+
+### Dificuldades e Ações para Superá-las
+
+| Situação observada | Causa | Consequência | Ação | Responsável | Data | Evidência do resultado | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| A atualização e uso dos requisitos e outras informações do projeto | Redundância de informações no projeto, tanto na mesma página quanto em outras páginas | Ao atualizar um requisito, é necessário encontrar todas as repetições dele espalhadas pelo projeto para garantir a consistência | Criar uma solução de automação para atualizar todas as repetições com base em um documento único e centralizado | Marcos | 05/11/2026 | Entrega do script testado e conferência manual do resultado | Resolvido |
+| Falta de evidências dos artefatos produzidos | O não uso completo do que foi definido para a engenharia de requisitos | Dificuldade interna e externa para verificar o estado de completude dos artefatos do projeto | Atualizar o quadro Kanban com todas as atividades executadas | Enzo | 16/11/2026 | Issues de cada artefato a ser produzido com: problema, o que deve ser feito e critérios de aceitação | Resolvido |
+| Os requisitos funcionais e não funcionais não estão no mesmo nível de granularidade e apresentam inconsistências com backlog e atas | Com o decorrer do projeto, nem todos os requisitos passaram pelo processo de amadurecimento necessário e não houve um critério único para descrevê-los | Alguns requisitos não têm informações suficientes para a produção de seus artefatos e não podem ser verificados de forma objetiva | Definir um critério de granularidade e revisar os requisitos, corrigindo divergências e completando as regras que faltam, com validação da coordenação | Alexandre, Rafael | 17/11/2026 | Documento centralizado atualizado, tabela de rastreabilidade das correções e registro de validação com a coordenação | Em teste |
+
+
 
 ## Versionamento
 
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 05/09/2026 | Transcrição do documento para Markdown | Ana Paula Jardim | Marcos Monteiro |
-| 1.1 | 11/09/2026 | Adequação do documento com base na [issue #23](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/23) | Rafael Melatti | - |
+| 1.1 | 11/09/2026 | Adequação do documento com base na [issue #23](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/issues/23) | [Rafael Melatti](https://github.com/Romm-0) | - |
 | 1.2 | 08/10/2026 | Adição das lições aprendidas da Unidade 2 | [Enzo Costa](https://github.com/enzocostaj) | - |
-| 1.3 | 15/11/2026 | Adição das lições aprendidas da Unidade 3 | — | - |
+| 1.3 | 15/11/2026 | Adição das lições aprendidas da Unidade 3 | [Rafael Melatti](https://github.com/Romm-0) | - |
