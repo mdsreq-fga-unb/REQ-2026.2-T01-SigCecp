@@ -54,7 +54,7 @@ Verificação feita a partir das evidências publicadas até 14/11/2026. Nesta i
 | 3 | Critérios de aceitação executados e aprovados | Executados com o cliente na reunião de 10/11; todos os comportamentos testados funcionaram. Falta registrar o resultado de cada critério na ficha | [Ata 10/11](../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md), seção 4 |
 | 4 | Código revisado |Cumprido: PR revisado e aprovado por [Alexandre](https://github.com/El-flipante), [Enzo](https://github.com/enzocostaj) e [Marcos](https://github.com/MontMarcos) também foi produzido em par programin com [Ana Paula](https://github.com/beibeharry) | [PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/pull/63) |
 | 5 | Padrões de código | Cumprido: linter PEP 8 (ruff) aprovado sem erros na pipeline do PR |[Execução CI](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/actions/runs/43797081941)|
-| 6 | Funcionalidade documentada | Cumprido: configuração, rotas e regras de autenticação (seção 12), eventos (seções 6 a 8) e conteúdo institucional (seção 13) descritas |Seções 6–8, 12 e 13 do `read.me` na branch `iteração_oito`|
+| 6 | Funcionalidade documentada | Cumprido: configuração, rotas e regras de autenticação (seção 13), eventos (seções 6 a 8) e conteúdo institucional (seção 14) descritas |Seções 6–8, 13 e 14 do `read.me` na branch `iteração_oito`|
 
 **Pendências para fechar o DoD desta entrega:** relatório de cobertura, execução do CI, aprovação do PR, saída dos linters, link da documentação de uso e o resultado de cada critério de aceitação registrado na ficha.
 
