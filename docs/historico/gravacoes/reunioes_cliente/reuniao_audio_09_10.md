@@ -1,0 +1,18 @@
+# Apresentação em áudio da Reunião 08/10/2026
+
+Essa reunião foi feita de maneira síncrona e gravada apenas em áudio. A data é 08/10/2026, como registra a própria ata; 09/10 é só o nome do arquivo ([PEN05](../../../painel.md#PEN05))<br>
+A ata dessa reunião pode ser visualizada em [Ata reunião 08/10/2026](../../organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10.md)<br>
+
+## Áudio
+
+<audio controls preload="metadata" style="width: 80%;">
+    <source src="../audio/audio_reuniao_09_10.mp3" type="audio/mpeg">
+</audio>
+
+
+## Versionamento
+
+| Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1.0 | 27/09/2026 | Adição do áudio ao documento | [Marcos Monteiro](https://github.com/montmarcos) | - |
+| 1.1 | 14/11/2026 | Título corrigido (dizia 26/09/2026) e data da reunião alinhada à ata: 08/10/2026 | — | - |

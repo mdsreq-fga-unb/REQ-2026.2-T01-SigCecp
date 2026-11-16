@@ -1,0 +1,115 @@
+site_name: SigCECP
+site_url: https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp
+
+nav:
+  - Home: index.md
+
+  - Visão de produto e projeto:
+    - Cenário atual: visao/contexto/1_cenario_atual.md
+    - Solução proposta: visao/contexto/2_solucao_proposta.md
+    - Intervenção social: visao/contexto/3_intervencao_social.md
+    - Estratégias de ESW: visao/contexto/4_estrategias_esw.md
+    - Engenharia de requisitos: visao/contexto/5_engenharia_req.md
+    - Rastreabilidade: visao/contexto/8_rastreabilidade.md
+    - Interação da equipe e do cliente: visao/contexto/7_interacao_equipe_e_cliente.md
+    - DoR e DoD: visao/contexto/9_dor_e_dod.md
+    - Lições aprendidas: visao/licoes/11_licoes_aprendidas.md
+  
+  - Painel do escopo: painel.md
+  - Priorização e MVP:
+    - Backlog e MVP: historico/10_backlog_produto.md
+    - Evidências da priorização: historico/priorizacao_geral_e_mvp.md
+
+  - Apresentações das unidades:
+    - Unidade 1: apresentacoes_unidades/apresentacao_unidade_1.md
+    - Unidade 2: apresentacoes_unidades/apresentacao_unidade_2.md
+  - Histórico:
+      - Documentos arquivados: historico/arquivo.md
+      - Gravações:
+          - Reuniões com o cliente:
+              - 17/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_17_09.md
+              - 22/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_22_09.md
+              - 24/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_24_09.md
+              - 26/09/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_26_09.md
+              - 08/10/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_09_10.md
+              - 21/10/2026: historico/gravacoes/reunioes_cliente/reuniao_audio_21_10.md
+              - 30/10/2026: historico/gravacoes/reunioes_cliente/reuniao_video_30_10.md
+          - Reuniões da equipe:
+              - 28/08/2026: historico/gravacoes/reunioes_equipe/reuniao_video_28_08.md
+              - 04/09/2026: historico/gravacoes/reunioes_equipe/reuniao_video_04_09.md
+              - 24/09/2026: historico/gravacoes/reunioes_equipe/reuniao_video_24_09.md
+              - 26/09/2026: historico/gravacoes/reunioes_equipe/reuniao_video_26_09.md
+
+      - Organização e planejamento:
+          - Atas de reuniões:
+              - Cliente:
+                  - 17/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_17_09.md
+                  - 22/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_22_09.md
+                  - 24/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09.md
+                  - 26/09/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_26_09.md
+                  - 08/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10.md
+                  - 21/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10.md
+                  - 30/10/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10.md
+                  - 10/11/2026: historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11.md
+              - Equipe:
+                  - 28/08/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_28_08.md
+                  - 04/09/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_04_09.md
+                  - 24/09/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_24_09.md
+                  - 26/09/2026: historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_26_09.md
+
+# Páginas acessadas pelo painel do escopo e pelos documentos arquivados
+not_in_nav: |
+  /visao/escopo/
+  /cronograma/
+  /historico/8_0_requisitos.md
+  /historico/ajuste_e_validacao.md
+  /historico/declaracao_de_requisitos.md
+  /historico/designUser_iteracao5.md
+  /historico/detalhamento_iteracao5.md
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: black
+      accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search
+  - mkdocs-pdf
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tabbed
+  - admonition
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - toc:
+      toc_depth: 2-4
+  - pymdownx.snippets:
+      base_path: [docs]
+
+extra_css:
+  - stylesheets/extra.css
+  - assets/painel.css
+
+extra_javascript:
+  - assets/escopo.js
+  - assets/painel.js
+
+hooks:
+  - tools/mkdocs_hook.py
