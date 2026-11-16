@@ -1,5 +1,7 @@
 # 5 ENGENHARIA DE REQUISITOS
 
+Esta seção descreve as atividades e técnicas de Engenharia de Requisitos usadas para elicitar, analisar, representar, verificar e manter os requisitos do projeto.
+
 ## 5.1 Atividades e Técnicas de ER
 
 **Elicitação e Descoberta:**
@@ -176,12 +178,7 @@ Dizer que um requisito "deve ser claro" não basta. Cada critério abaixo vira u
 | 1.0 | 05/09/2026 | Transcrição do documento para markdown | [Marcos Monteiro](https://github.com/montmarcos) |  |
 | 1.1 | 19/09/2026 | Revisão das técnicas de Engenharia de Requisitos com base em feedback recebido durante o desenvolvimento do projeto | Ana Paula Jardim | Marcos Monteiro |
 | 1.2 | 13/11/2026 | Inclusão de status e evidências por técnica de ER; atualização da descrição da Declaração Estruturada de Requisitos e Organização e Atualização | Ana Paula Jardim |  |
-| 1.3 | 14/11/2026 | Issue #26: MoSCoW e priorização com as três reuniões e a confirmação do MVP em 30/10 (DEC03); ressalva sobre a reconciliação do esforço (PEN06); status de prototipação e validação com protótipo atualizados para CP3 | — |  |
-<<<<<<< HEAD
-| 1.4 | 14/11/2026 | Evidências da reunião de 10/11/2026 (protótipo das demais telas do MVP e aceite de CP3 e do acesso) e alinhamento às aulas dos capítulos 10 a 12: representação além das telas (contextuais, protótipos, diagramas comportamentais e rastreabilidade), sem atribuir aos protótipos a identidade visual; novas técnicas de verificação (análise de consistência e rastreabilidade, checklists e critérios de qualidade); organização e atualização descritas por escopos, propagação de mudanças e calibragem; novas seções 5.3 (diagramas de estados e de fluxo) e 5.4 (critérios de qualidade) | Marcos Monteiro | Ana Paula Jardim |
-
-=======
-| 1.4 | 14/11/2026 | Evidências da reunião de 10/11/2026 (protótipo das demais telas do MVP e aceite de CP3 e do acesso) | — |  |
-| 1.5 | 14/11/2026 | Alinhamento às aulas dos capítulos 10 a 12: representação além das telas (contextuais, protótipos, diagramas comportamentais e rastreabilidade), sem atribuir aos protótipos a identidade visual; novas técnicas de verificação (análise de consistência e rastreabilidade, checklists e critérios de qualidade); organização e atualização descritas por escopos, propagação de mudanças e calibragem; novas seções 5.3 (diagramas de estados e de fluxo) e 5.4 (critérios de qualidade) | — |  |
-| 1.6 | 15/11/2026 | A evidência da rastreabilidade visual passa a apontar para a página vigente de [Rastreabilidade](8_rastreabilidade.md), e não para o documento arquivado | — |  |
->>>>>>> aebb0eb (Ajustes issue 33)
+| 1.3 | 14/11/2026 | Issue #26: MoSCoW e priorização com as três reuniões e a confirmação do MVP em 30/10 (DEC03); ressalva sobre a reconciliação do esforço (PEN06); status de prototipação e validação com protótipo atualizados para CP3 | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.4 | 14/11/2026 | Evidências da reunião de 10/11/2026 (protótipo das demais telas do MVP e aceite de CP3 e do acesso) | Marcos Monteiro | Ana Paula Jardim |
+| 1.5 | 14/11/2026 | Alinhamento às aulas dos capítulos 10 a 12: representação além das telas (contextuais, protótipos, diagramas comportamentais e rastreabilidade), sem atribuir aos protótipos a identidade visual; novas técnicas de verificação (análise de consistência e rastreabilidade, checklists e critérios de qualidade); organização e atualização descritas por escopos, propagação de mudanças e calibragem; novas seções 5.3 (diagramas de estados e de fluxo) e 5.4 (critérios de qualidade) | Marcos Monteiro | Ana Paula Jardim |
+| 1.6 | 15/11/2026 | A evidência da rastreabilidade visual passa a apontar para a página vigente de [Rastreabilidade](8_rastreabilidade.md), e não para o documento arquivado | [Marcos Monteiro](https://github.com/montmarcos) |  |
