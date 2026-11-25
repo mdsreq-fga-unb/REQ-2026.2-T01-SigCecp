@@ -27,10 +27,6 @@ def test_aceita_turma_valida():
     assert turma.termino == time(15, 0)
 
 
-def test_alunos_comeca_vazio_quando_nao_informado():
-    assert TurmaCreate(**dados()).alunos == []
-
-
 def test_modalidade_vazia_e_recusada():
     with pytest.raises(ValidationError):
         TurmaCreate(**dados(modalidade=""))

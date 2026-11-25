@@ -34,11 +34,16 @@
       </div>
 
       {% if publicacoes %}
-      <div class="banner">
-          <p class="selo selo--amarelo">Esporte • Cultura • Comunidade</p>
-          <p class="banner__frase">{{ publicacoes[0].titulo }}</p>
-          <p class="banner__assinatura">Centro Esportivo Cultural de Planaltina</p>
-      </div>
+      {# Destaque: a publicação mais recente, com a imagem dela quando houver #}
+      {% set destaque = publicacoes[0] %}
+      <a class="banner{{ ' banner--foto' if destaque.imagem_capa }}" href="{{ url_for('detalhe_conteudo_publico', conteudo_id=destaque.id) }}">
+          {% if destaque.imagem_capa %}
+          <img class="banner__imagem" src="{{ url_for('media', path=destaque.imagem_capa.caminho) }}" alt="">
+          {% endif %}
+          <p class="selo selo--amarelo">Destaque</p>
+          <p class="banner__frase">{{ destaque.titulo }}</p>
+          <p class="banner__assinatura">Ler publicação <span aria-hidden="true">→</span></p>
+      </a>
       {% endif %}
     </section>
 
@@ -53,17 +58,13 @@
       <div id="lista" class="grade">
         {% for publicacao in publicacoes %}
         <article class="cartao">
-          {% if loop.first %}
-          <div class="cartao__capa" aria-hidden="true">
-            <p class="selo selo--amarelo">Esporte • Cultura • Comunidade</p>
-            <p class="banner__frase">{{ publicacao.titulo }}</p>
-            <p class="banner__assinatura">Centro Esportivo Cultural de Planaltina</p>
-          </div>
+          {% if publicacao.imagem_capa %}
+          <img class="cartao__imagem" src="{{ url_for('media', path=publicacao.imagem_capa.caminho) }}" alt="" loading="lazy">
           {% endif %}
 
           <div class="cartao__corpo">
             <p class="cartao__meta">
-              {% if publicacao.criado_em %}{{ publicacao.criado_em.strftime('%d/%m/%Y') }} • {% endif %}Institucional
+              {% if publicacao.criada_em %}{{ publicacao.criada_em.strftime('%d/%m/%Y') }} • {% endif %}Institucional
             </p>
             <h3 class="cartao__titulo">{{ publicacao.titulo }}</h3>
             {% if publicacao.texto %}

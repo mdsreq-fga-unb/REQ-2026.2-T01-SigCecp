@@ -40,7 +40,7 @@
 {% block cabecalho %}
 <header class="topo">
   <div class="container topo__linha">
-    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+    <a class="marca" href="{{ url_for('inicio_coordenacao') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
       <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
       <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
     </a>
@@ -49,7 +49,7 @@
 
     <div class="topo__direita">
       <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
-      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_usuario.html" %}
       {% include "coordenacao/_sair.html" %}
     </div>
   </div>
@@ -64,8 +64,8 @@
 
   <nav class="trilha" aria-label="Você está em">
     <ol>
-      <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
-      <li><a href="{{ url_for('lista_turma') }}">Alunos</a></li>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
+      <li><a href="{{ url_for('lista_turma') }}">Turmas</a></li>
       <li aria-current="page">Associar à turma</li>
     </ol>
   </nav>
@@ -73,22 +73,33 @@
   <h1 class="pagina__titulo">Associar aluno à turma</h1>
   <p class="pagina__subtitulo">Selecione uma turma cadastrada, confira os horários e confirme a associação do aluno.</p>
 
-  {# O cadastro de alunos (RF21) ainda não existe: o cartão mostra o lugar do aluno. #}
-  <section class="associacao__card associacao__aluno" aria-label="Aluno">
-    <div class="aluno__dados">
-      <div class="aluno__foto" aria-hidden="true"></div>
-      <div class="aluno__informacoes">
-        <h2>Nenhum aluno selecionado</h2>
-        <p>O cadastro de alunos ainda não está disponível • Selecione abaixo a turma para associação</p>
-      </div>
-    </div>
-  </section>
+  {% if erro %}
+  <p class="erro associacao__erro" role="alert">{{ erro }}</p>
+  {% endif %}
 
   <div class="associacao__conteudo">
 
     <form class="associacao__card associacao__formulario" method="post" id="form-associar"
           action="{{ url_for('salvar_alunos_associados', turma_id=turma.id) }}">
       {{ csrf_input }}
+      <h2>Selecione o aluno</h2>
+
+      <div class="campo">
+        <label for="aluno_id">Aluno ativo <span class="obrigatorio">*</span></label>
+        <div class="campo__seletor">
+          <select id="aluno_id" name="aluno_id" required>
+            <option value="">{{ 'Selecione um aluno' if alunos else 'Nenhum aluno disponível' }}</option>
+            {% for a in alunos %}
+            <option value="{{ a.id }}" {{ 'selected' if aluno_escolhido == a.id | string }}>{{ a.nome }}{% if a.vinculo_atual %} • hoje em {{ a.vinculo_atual.turma.modalidade }}{% endif %}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <p class="campo__ajuda">
+          {% if alunos %}Se o aluno já estiver em outra turma, o vínculo anterior é encerrado e fica no histórico.
+          {% else %}Todos os alunos ativos já estão nesta turma. <a href="{{ url_for('cadastrar_aluno') }}">Cadastrar aluno</a>{% endif %}
+        </p>
+      </div>
+
       <h2>Selecione a turma</h2>
 
       <div class="campo">
@@ -126,7 +137,7 @@
       </dl>
 
       <div class="associacao__acoes">
-        <a class="associacao__botao--cancelar" href="{{ url_for('lista_turma') }}">Cancelar</a>
+        <a class="associacao__botao--cancelar" href="{{ url_for('ver_alunos_associados', turma_id=turma.id) }}">Cancelar</a>
         <button class="associacao__botao--confirmar" type="submit">Confirmar associação</button>
       </div>
     </form>

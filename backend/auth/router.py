@@ -85,7 +85,8 @@ def login(
             encerrar_sessao(db, familia)
 
     sessao = iniciar_sessao(db, admin)
-    resposta = _redirecionar(request, "lista_conteudo")
+    # Todos entram pela Central da coordenação
+    resposta = _redirecionar(request, "inicio_coordenacao")
     definir_cookies(resposta, sessao)
     return resposta
 

@@ -32,10 +32,7 @@ def criar_turma(db: Session, dados: TurmaCreate) -> Turma:
             detail="Já existe uma turma com essa modalidade, esses dias e esses horários.",
         )
 
-    dados_turma = dados.model_dump()
-    dados_turma["alunos"] = alunos_mock
-
-    turma = Turma(**dados_turma)
+    turma = Turma(**dados.model_dump())
 
     try:
         db.add(turma)
@@ -103,18 +100,3 @@ def deletar_turma(db: Session, turma_id: int) -> None:
         db.rollback()
         logger.exception("Erro ao deletar turma")
         raise
-
-alunos_mock = [
-    "João da Silva",
-    "Maria Oliveira",
-    "Pedro Santos",
-]
-
-def listar_alunos(db: Session, turma_id: int) -> list[str]:
-    turma = buscar_turma(db, turma_id)
-    return turma.alunos
-
-def associar_alunos(db: Session, turma_id: int, alunos: list[str]) -> None:
-    turma = buscar_turma(db, turma_id)
-    turma.alunos = alunos
-    db.commit()

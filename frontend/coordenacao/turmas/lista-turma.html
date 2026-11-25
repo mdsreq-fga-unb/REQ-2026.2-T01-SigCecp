@@ -1,17 +1,18 @@
 {% extends "base.html" %}
+{% import "coordenacao/alunos/_macros.html" as m with context %}
 
 {% block titulo %}Turmas | SigCECP{% endblock %}
 
 {% block estilos %}
     {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', path='style/lista-evento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/alunos.css') }}">
 {% endblock %}
 
 {% block cabecalho %}
 <header class="topo">
   <div class="container topo__linha">
-    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+    <a class="marca" href="{{ url_for('inicio_coordenacao') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
       <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
       <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
     </a>
@@ -20,7 +21,7 @@
 
     <div class="topo__direita">
       <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
-      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_usuario.html" %}
       {% include "coordenacao/_sair.html" %}
     </div>
   </div>
@@ -28,102 +29,83 @@
 {% endblock %}
 
 {% block corpo %}
-{% set ordem = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'] %}
-{% set nomes = {'segunda': 'Segunda', 'terca': 'Terça', 'quarta': 'Quarta', 'quinta': 'Quinta',
-                'sexta': 'Sexta', 'sabado': 'Sábado', 'domingo': 'Domingo'} %}
-{% set total = turmas|length %}
-
+{% set total = turmas | length %}
+{% set modalidades = turmas | map(attribute='modalidade') | unique | list | length %}
+{% set associados = alunos_por_turma.values() | sum %}
 <main class="pagina container">
 
-  <header class="eventos__cabecalho">
-    <div class="eventos__introducao">
-      <nav class="trilha" aria-label="Você está em">
-        <ol>
-          <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
-          <li aria-current="page">Turmas</li>
-        </ol>
-      </nav>
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
+      <li aria-current="page">Turmas</li>
+    </ol>
+  </nav>
 
-      <h1>Turmas do CECP</h1>
-
-      <p class="eventos__descricao">
-        Cadastre as turmas com modalidade, dias e horários.
+  <header class="pagina__cabecalho">
+    <div>
+      <h1 class="pagina__titulo">Turmas do CECP</h1>
+      <p class="pagina__subtitulo">
+        {% if turmas %}Organize as modalidades, os dias e os horários e consulte os alunos de cada turma.
+        {% else %}Comece pela organização das turmas para depois associar os alunos.{% endif %}
       </p>
     </div>
-
-    <a class="botao-novo" href="{{ url_for('cadastrar_turma') }}">
-        Nova turma
-    </a>
+    {% if turmas %}
+    <a class="botao botao--vermelho" href="{{ url_for('cadastrar_turma') }}">+ Cadastrar turma</a>
+    {% endif %}
   </header>
 
-  <section class="eventos__lista">
-
-    <div class="eventos__lista-cabecalho">
-      <h2>Todas as turmas</h2>
-      <p>Horário de Brasília</p>
-    </div>
-
-    <div class="tabela__container">
-
-      <table class="tabela-eventos">
-        <thead>
-          <tr>
-            <th scope="col">Modalidade</th>
-            <th scope="col">Dias</th>
-            <th scope="col">Horário</th>
-            <th scope="col">Ações</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {% for turma in turmas %}
-          <tr>
-            <td>
-              <div class="evento__informacao">
-                <strong>{{ turma.modalidade }}</strong>
-              </div>
-            </td>
-
-            <td>
-              <div class="evento__informacao">
-                <span>{% for dia in ordem if dia in turma.dias %}{{ nomes[dia] }}{{ ', ' if not loop.last }}{% endfor %}</span>
-              </div>
-            </td>
-
-            <td>
-              <div class="evento__informacao">
-                <span>{{ turma.inicio.strftime('%H:%M') }} às {{ turma.termino.strftime('%H:%M') }}</span>
-              </div>
-            </td>
-
-            <td>
-              <div class="evento__acoes">
-                <!-- <a class="acao acao--editar" href="{{ url_for('editar_turma', turma_id=turma.id) }}">
-                  Editar
-                </a>
-                <a class="acao acao--remover" href="{{ url_for('confirmar_remocao_turma', turma_id=turma.id) }}">
-                  Remover
-                </a> -->
-                <a class="acao acao--ver-alunos" href="{{ url_for('ver_alunos_associados', turma_id=turma.id) }}">
-                  Ver Alunos
-                </a> 
-              </div>
-            </td>
-          </tr>
-          {% else %}
-          <tr>
-            <td class="tabela__vazio" colspan="4">Nenhuma turma cadastrada ainda.</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-
-      <div class="tabela__rodape">
-        {{ total }} turma{{ 's' if total != 1 }} cadastrada{{ 's' if total != 1 }}
-      </div>
-
-    </div>
+  {% if turmas %}
+  <section class="cartoes-resumo" aria-label="Resumo das turmas">
+    <p class="cartao-resumo">{{ total }} {{ 'turma cadastrada' if total == 1 else 'turmas cadastradas' }}</p>
+    <p class="cartao-resumo">{{ modalidades }} {{ 'modalidade' if modalidades == 1 else 'modalidades' }}</p>
+    <p class="cartao-resumo">{{ associados }} {{ 'aluno associado' if associados == 1 else 'alunos associados' }}</p>
   </section>
 
+  <div class="lista__cabecalho">
+    <h2 class="lista__titulo">Todas as turmas</h2>
+  </div>
+
+  <div class="tabela__container">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th scope="col">Modalidade</th>
+          <th scope="col">Dias</th>
+          <th scope="col">Horários</th>
+          <th scope="col">Alunos</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for turma in turmas %}
+        {% set quantidade = alunos_por_turma.get(turma.id, 0) %}
+        <tr>
+          <td><strong>{{ turma.modalidade }}</strong></td>
+          <td>{{ m.dias_texto(turma.dias) }}</td>
+          <td>{{ m.horario_texto(turma) }}</td>
+          <td><span class="tabela__numero">{{ quantidade }} {{ 'aluno' if quantidade == 1 else 'alunos' }}</span></td>
+          <td>
+            {# Editar e remover turma estão fora do MVP e sem acesso pela tela (DEC34) #}
+            <a class="linha__link" href="{{ url_for('ver_alunos_associados', turma_id=turma.id) }}">Ver alunos <span aria-hidden="true">→</span></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="tabela__rodape">{{ total }} {{ 'turma' if total == 1 else 'turmas' }} • todas as turmas cadastradas</p>
+  </div>
+  <p class="nota-rodape">As turmas cadastradas ficam disponíveis para associação na ficha de um aluno.</p>
+
+  {% else %}
+  {# Sem turma não há como cadastrar aluno (RN22) #}
+  <section class="cartao vazio">
+    <svg class="vazio__icone" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01"/>
+    </svg>
+    <h2 class="vazio__titulo">Cadastre a primeira turma</h2>
+    <p>Ainda não há turmas cadastradas. Esta é a primeira ação necessária: informe a modalidade, os dias e os horários para disponibilizar uma turma aos alunos.</p>
+    <a class="botao botao--vermelho" href="{{ url_for('cadastrar_turma') }}">+ Cadastrar turma</a>
+  </section>
+  {% endif %}
 </main>
 {% endblock %}

@@ -28,8 +28,8 @@
 .marca__nome {
   padding-left: 14px;
   border-left: 1px solid rgba(255, 255, 255, .25);
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.35;
 }
 
@@ -41,6 +41,7 @@
 }
 
 .topo__link {
+  white-space: nowrap;
   color: rgba(255, 255, 255, .8);
   font-size: 12px;
   text-decoration: none;
@@ -324,4 +325,19 @@ input[aria-invalid="true"] {
   .topo__link {
     display: none;
   }
+}
+
+
+/* Para o Root, o selo da conta abre a área de Coordenadores */
+.usuario--link {
+  padding: 6px 10px;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+.usuario--link:hover,
+.usuario--link:focus-visible,
+.usuario--link[aria-current="page"] {
+  background: rgba(255, 255, 255, .12);
 }

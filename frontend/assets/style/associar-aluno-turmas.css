@@ -570,3 +570,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+.associacao__erro {
+  margin: 0 0 16px;
+}

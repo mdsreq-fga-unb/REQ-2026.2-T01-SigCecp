@@ -6,7 +6,7 @@
 .detalhe__voltar {
   display: inline-block;
   margin-bottom: 28px;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--cinza-texto);
   text-decoration: none;
 }
@@ -18,7 +18,7 @@
 
 .detalhe__meta {
   margin: 0 0 12px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -49,7 +49,7 @@
 }
 
 .detalhe__capa .selo {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .detalhe__capa-frase {
@@ -64,7 +64,7 @@
 
 .detalhe__capa-assinatura {
   margin: 0;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -80,7 +80,7 @@
 
 .detalhe__texto p {
   margin: 0 0 22px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.75;
   color: var(--cinza-texto);
 }
@@ -103,7 +103,7 @@
 
 .detalhe__lateral p {
   margin: 0;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--cinza-claro);
 }
@@ -140,14 +140,14 @@
 
 .detalhe__figura figcaption {
   margin-top: 8px;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--cinza-claro);
 }
 
 .detalhe__todos {
   display: inline-block;
   margin-top: 8px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--vermelho);
   text-decoration: none;
@@ -179,4 +179,15 @@
     min-height: 190px;
     padding: 18px;
   }
+}
+.detalhe__capa-foto {
+  margin: 0 0 32px;
+}
+
+.detalhe__capa-foto img {
+  display: block;
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 8px;
 }

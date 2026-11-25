@@ -173,3 +173,25 @@
   .linha { grid-template-columns: 1fr auto; padding: 14px 16px; }
   .tabela__topo span:last-child { text-align: right; }
 }
+.pagina__acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.aviso--sucesso {
+  margin: 0 0 24px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #14532d;
+  background: #e8f5ec;
+  border: 1px solid #bfe3cb;
+  border-radius: 8px;
+}
+
+.aluno__situacao {
+  padding: 2px 8px;
+  font-size: 11px;
+  color: var(--cinza-texto);
+  background: #efefed;
+  border-radius: 999px;
+}

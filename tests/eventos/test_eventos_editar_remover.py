@@ -55,6 +55,14 @@ def client(db_session):
     def _lista_turma():
         return "ok"
 
+    @app.get("/coordenacao", name="inicio_coordenacao")
+    def _inicio():
+        return "ok"
+
+    @app.get("/coordenacao/alunos", name="lista_aluno")
+    def _lista_aluno():
+        return "ok"
+
     @app.post("/coordenacao/sair", name="logout")
     def _sair():
         return "ok"

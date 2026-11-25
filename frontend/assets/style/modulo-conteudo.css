@@ -69,8 +69,8 @@ a:focus-visible {
 .marca__logo { width: 52px; height: 52px; object-fit: contain; }
 
 .marca__nome {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
   line-height: 1.35;
   padding-left: 16px;
   border-left: 1px solid rgba(255, 255, 255, .25);
@@ -86,7 +86,7 @@ a:focus-visible {
   position: relative;
   padding-bottom: 14px;
   color: rgba(255, 255, 255, .85);
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
 }
 
@@ -110,7 +110,7 @@ a:focus-visible {
 .acesso {
   align-self: center;
   justify-self: end;
-  font-size: 12px;
+  font-size: 14px;
   color: rgba(255, 255, 255, .8);
   text-decoration: none;
 }
@@ -123,7 +123,7 @@ a:focus-visible {
   align-items: center;
   gap: 10px;
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .01em;
@@ -166,7 +166,7 @@ a:focus-visible {
 
 .hero__rodape {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
   color: var(--cinza-claro);
@@ -184,7 +184,7 @@ a:focus-visible {
   color: var(--branco);
 }
 
-.banner .selo { font-size: 11px; }
+.banner .selo { font-size: 14px; }
 
 .banner__frase {
   margin: 0;
@@ -198,7 +198,7 @@ a:focus-visible {
 
 .banner__assinatura {
   margin: 0;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -223,7 +223,7 @@ a:focus-visible {
 
 .publicacoes__contador {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--cinza-claro);
 }
 
@@ -255,9 +255,9 @@ a:focus-visible {
   min-height: 230px;
 }
 
-.cartao__capa .selo { font-size: 10px; }
+.cartao__capa .selo { font-size: 14px; }
 .cartao__capa .banner__frase { font-size: 2.25rem; }
-.cartao__capa .banner__assinatura { font-size: 10px; }
+.cartao__capa .banner__assinatura { font-size: 14px; }
 
 .cartao__corpo {
   display: flex;
@@ -268,7 +268,7 @@ a:focus-visible {
 
 .cartao__meta {
   margin: 0 0 14px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--cinza-claro);
 }
 
@@ -281,14 +281,14 @@ a:focus-visible {
 
 .cartao__resumo {
   margin: 0 0 20px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--cinza-texto);
 }
 
 .cartao__link {
   margin-top: auto;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--vermelho);
   text-decoration: none;
@@ -380,8 +380,8 @@ a:focus-visible {
   gap: 16px;
 }
 
-.rodape__nome { margin: 0; font-size: 15px; font-weight: 600; }
-.rodape__lema { margin: 4px 0 0; font-size: 13px; color: rgba(255, 255, 255, .7); }
+.rodape__nome { margin: 0; font-size: 17px; font-weight: 600; }
+.rodape__lema { margin: 4px 0 0; font-size: 15px; color: rgba(255, 255, 255, .7); }
 
 .rodape__nav {
   display: flex;
@@ -390,7 +390,7 @@ a:focus-visible {
 }
 
 .rodape__nav a {
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(255, 255, 255, .85);
   text-decoration: none;
 }
@@ -402,8 +402,60 @@ a:focus-visible {
   border-top: 1px solid rgba(255, 255, 255, .15);
 }
 
-.rodape__base p { margin: 0; font-size: 12px; color: rgba(255, 255, 255, .6); }
+.rodape__base p { margin: 0; font-size: 14px; color: rgba(255, 255, 255, .6); }
 
 @media (max-width: 720px) {
   .rodape__linha { flex-direction: column; align-items: flex-start; padding-block: 32px 24px; }
+}
+/* ---------- Imagens enviadas pela coordenação ---------- */
+a.banner {
+  text-decoration: none;
+}
+
+.banner--foto {
+  position: relative;
+  overflow: hidden;
+  justify-content: flex-end;
+}
+
+.banner__imagem {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Escurece a foto para o título continuar legível */
+.banner--foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, .85), rgba(0, 0, 0, .15));
+}
+
+.banner--foto > p {
+  position: relative;
+  z-index: 1;
+}
+
+.cartao__imagem {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #ececea;
+}
+
+a.banner,
+a.banner * {
+  text-decoration: none;
+}
+
+a.banner {
+  color: var(--branco);
+}
+
+a.banner:hover .banner__assinatura,
+a.banner:focus-visible .banner__assinatura {
+  text-decoration: underline;
 }

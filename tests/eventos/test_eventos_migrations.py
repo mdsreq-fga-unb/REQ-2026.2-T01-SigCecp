@@ -10,6 +10,8 @@ from sqlalchemy.orm import Session
 
 from backend.eventos.models import Evento
 from backend.publicacoes.models import Publicacao, PublicacaoMidia
+from backend.alunos.models import Aluno, AlunoDocumento, AlunoTurma
+from backend.turmas.models import Turma
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 
@@ -32,8 +34,9 @@ def verificar_estrutura(engine):
     assert set(inspetor.get_table_names()) == {
         "alembic_version", "publicacoes", "publicacao_midias", "eventos",
         "administradores", "refresh_tokens_admin", "turmas",
+        "alunos", "aluno_turmas", "aluno_documentos",
     }
-    for modelo in (Publicacao, PublicacaoMidia, Evento):
+    for modelo in (Publicacao, PublicacaoMidia, Evento, Turma, Aluno, AlunoTurma, AlunoDocumento):
         colunas = {coluna["name"]: coluna for coluna in inspetor.get_columns(modelo.__tablename__)}
         assert set(colunas) == set(modelo.__table__.columns.keys())
         for coluna in modelo.__table__.columns:

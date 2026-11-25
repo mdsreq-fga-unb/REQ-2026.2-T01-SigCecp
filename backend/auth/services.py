@@ -17,6 +17,8 @@ from backend.auth.tempo import agora, como_utc
 logger = logging.getLogger("sigcecp.auth")
 
 USUARIO_MAX = 50
+PERFIL_ROOT = "root"
+PERFIL_COORDENADOR = "coordenador"
 
 
 class CredenciaisInvalidas(Exception):
@@ -214,11 +216,20 @@ def _revogar_familia(db: Session, familia: str, momento: datetime) -> None:
     )
 
 
-def criar_administrador(db: Session, usuario: str, senha: str) -> Administrador:
+def criar_administrador(
+    db: Session, usuario: str, senha: str, nome_completo: str | None = None, perfil: str = PERFIL_ROOT
+) -> Administrador:
+    """Cria a conta. Pelo terminal (RN21) a conta é Root; pela tela de coordenadores, Coordenador."""
     nome = normalizar_usuario(usuario)
     if not (3 <= len(nome) <= USUARIO_MAX):
         raise ValueError(f"O usuário deve ter entre 3 e {USUARIO_MAX} caracteres.")
-    admin = Administrador(usuario=nome, senha_hash=security.hash_senha(senha), ativo=True)
+    if perfil not in (PERFIL_ROOT, PERFIL_COORDENADOR):
+        raise ValueError("Perfil desconhecido.")
+    if db.execute(select(Administrador.id).where(Administrador.usuario == nome)).first():
+        raise ValueError("Usuário já cadastrado.")
+    admin = Administrador(
+        usuario=nome, nome=nome_completo, perfil=perfil, senha_hash=security.hash_senha(senha), ativo=True
+    )
     db.add(admin)
     db.commit()
     return admin

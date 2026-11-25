@@ -10,7 +10,6 @@ from backend.auth.dependencies import exigir_admin
 from backend.database import Base, get_db
 from backend.main import app
 from backend.turmas.models import Turma
-from backend.turmas.services import alunos_mock
 
 BASE = "/coordenacao/turmas"
 
@@ -64,7 +63,7 @@ def test_lista_vazia(ambiente):
     resposta = cliente.get(BASE)
 
     assert resposta.status_code == 200
-    assert "Nenhuma turma cadastrada ainda." in resposta.text
+    assert "Cadastre a primeira turma" in resposta.text
 
 
 def test_lista_mostra_turma_e_link_para_ver_alunos(ambiente):
@@ -76,7 +75,9 @@ def test_lista_mostra_turma_e_link_para_ver_alunos(ambiente):
 
     assert resposta.status_code == 200
     assert "Judô" in resposta.text
-    assert "Nenhuma turma cadastrada ainda." not in resposta.text
+    assert "Cadastre a primeira turma" not in resposta.text
+    assert "1 turma cadastrada" in resposta.text
+    assert "0 alunos" in resposta.text
     assert f'{BASE}/{turma_id}/alunos"' in resposta.text
 
 
@@ -100,7 +101,6 @@ def test_cadastrar_redireciona_para_a_lista_e_grava(ambiente):
     [turma] = turmas_no_banco(sessoes)
     assert turma.modalidade == "Judô"
     assert turma.dias == ["segunda", "quarta"]
-    assert turma.alunos == alunos_mock
 
 
 @pytest.mark.parametrize(
@@ -195,7 +195,7 @@ def test_remover_apaga_e_redireciona(ambiente):
 
 # ---------- Ver alunos associados ----------
 
-def test_ver_alunos_mostra_turma_e_alunos(ambiente):
+def test_ver_alunos_mostra_turma_sem_alunos(ambiente):
     cliente, sessoes = ambiente
     cadastrar(cliente)
     turma_id = turmas_no_banco(sessoes)[0].id
@@ -205,8 +205,7 @@ def test_ver_alunos_mostra_turma_e_alunos(ambiente):
     assert resposta.status_code == 200
     assert "Alunos da turma" in resposta.text
     assert "Judô" in resposta.text
-    for aluno in alunos_mock:
-        assert aluno in resposta.text
+    assert "Nenhum aluno associado a esta turma ainda." in resposta.text
 
 
 # ---------- Associar alunos ----------
@@ -221,7 +220,8 @@ def test_pagina_de_associar(ambiente):
     assert resposta.status_code == 200
     html = resposta.text
     assert "Associar aluno à turma" in html
-    assert "Nenhum aluno selecionado" in html
+    assert 'name="aluno_id"' in html
+    assert "Nenhum aluno disponível" in html
     assert "Judô • Segunda e quarta-feira • 14h às 15h" in html
     assert f'action="{BASE}/{turma_id}/alunos"' in html.replace("http://testserver", "")
     for campo in ("resumo-modalidade", "resumo-dias", "resumo-horario"):
@@ -256,30 +256,15 @@ def test_dias_em_sequencia_usam_virgula_e_e(ambiente):
     assert "Segunda, quarta e sexta-feira" in resposta.text
 
 
-def test_confirmar_associacao_volta_para_a_pagina(ambiente):
+def test_confirmar_associacao_sem_aluno_pede_o_aluno(ambiente):
     cliente, sessoes = ambiente
     cadastrar(cliente)
     turma_id = turmas_no_banco(sessoes)[0].id
 
     resposta = cliente.post(f"{BASE}/{turma_id}/alunos", data={"turma_id": turma_id})
 
-    assert resposta.status_code == 200
-    assert "Associar aluno à turma" in resposta.text
-
-
-@pytest.mark.xfail(
-    reason="Pendência do readme (9.5): a associação ainda não grava (falta o cadastro de alunos, RF21).",
-    strict=True,
-)
-def test_confirmar_associacao_grava_o_aluno(ambiente):
-    cliente, sessoes = ambiente
-    cadastrar(cliente)
-    turma_id = turmas_no_banco(sessoes)[0].id
-
-    resposta = cliente.post(f"{BASE}/{turma_id}/alunos", data={"turma_id": turma_id, "aluno": "Ana Clara"})
-
-    assert resposta.status_code == 303
-    assert "Ana Clara" in turmas_no_banco(sessoes)[0].alunos
+    assert resposta.status_code == 422
+    assert "Selecione o aluno que será associado à turma." in resposta.text
 
 
 # ---------- Turma inexistente ----------

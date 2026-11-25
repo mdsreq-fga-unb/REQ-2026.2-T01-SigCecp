@@ -1,0 +1,9 @@
+{# Selo da conta no topo. Para o Root, é a entrada da área de Coordenadores. #}
+{% if request.state.admin is defined and request.state.admin.perfil == 'root' %}
+<a class="usuario usuario--link" href="{{ url_for('lista_coordenador') }}" title="Gerenciar coordenadores"
+   {% if area == 'coordenadores' %}aria-current="page"{% endif %}>
+  <span class="usuario__foto" aria-hidden="true"></span>Coordenação
+</a>
+{% else %}
+<span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+{% endif %}

@@ -15,7 +15,7 @@
 {% block cabecalho %}
   <header class="topo">
     <div class="container topo__linha">
-      <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <a class="marca" href="{{ url_for('inicio_coordenacao') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
         <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
         <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
       </a>
@@ -24,7 +24,7 @@
 
       <div class="topo__direita">
         <a class="topo__link" href="{{ url_for('modulo_conteudo_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
-        <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+        {% include "coordenacao/_usuario.html" %}
         {% include "coordenacao/_sair.html" %}
       </div>
     </div>
@@ -39,7 +39,7 @@
     <header class="pagina-cabecalho">
        <nav class="trilha" aria-label="Você está em">
       <ol>
-        <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+        <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
         <li><a href="{{ url_for('lista_conteudo') }}">Conteúdos</a></li>
         <li aria-current="page">Nova Publicação</li>
       </ol>

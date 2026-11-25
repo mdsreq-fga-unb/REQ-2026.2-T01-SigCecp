@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+{% import "coordenacao/alunos/_macros.html" as m with context %}
+
+{% set editar = modo == 'editar' %}
+
+{% block titulo %}{{ 'Editar aluno' if editar else 'Cadastrar aluno' }} | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/cadastrar-turma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/alunos.css') }}">
+{% endblock %}
+
+{% block cabecalho %}{% include "coordenacao/alunos/_topo.html" %}{% endblock %}
+
+{# Campo de texto com rótulo, valor anterior e mensagem de erro #}
+{% macro campo(nome, rotulo, obrigatorio=false, tipo='text', ajuda=none, modo_entrada=none) -%}
+<div class="campo">
+  <label for="{{ nome }}">{{ rotulo }} {% if obrigatorio %}<span class="obrigatorio">*</span>{% else %}<span class="opcional">(opcional)</span>{% endif %}</label>
+  <input type="{{ tipo }}" id="{{ nome }}" name="{{ nome }}" value="{{ valores.get(nome, '') }}"
+         {% if modo_entrada %}inputmode="{{ modo_entrada }}"{% endif %}
+         {% if obrigatorio %}required{% endif %}
+         {% if erros.get(nome) %}aria-invalid="true" aria-describedby="erro-{{ nome }}"{% endif %}>
+  {% if ajuda %}<p class="ajuda">{{ ajuda }}</p>{% endif %}
+  {% if erros.get(nome) %}<p class="erro" id="erro-{{ nome }}">{{ erros[nome] }}</p>{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro opcoes(nome, legenda, itens, obrigatorio=false) -%}
+<fieldset class="grupo">
+  <legend>{{ legenda }} {% if obrigatorio %}<span class="obrigatorio">*</span>{% else %}<span class="opcional">(opcional)</span>{% endif %}</legend>
+  <div class="escolhas">
+    {% for valor, rotulo in itens.items() %}
+    <label class="escolha"><input type="radio" name="{{ nome }}" value="{{ valor }}" {{ 'checked' if valores.get(nome) == valor }}> {{ rotulo }}</label>
+    {% endfor %}
+  </div>
+  {% if erros.get(nome) %}<p class="erro">{{ erros[nome] }}</p>{% endif %}
+</fieldset>
+{%- endmacro %}
+
+{% macro anexo(tipo) -%}
+{% set atual = aluno.documento(tipo) if aluno else none %}
+<div class="anexo">
+  <div>
+    <label class="anexo__titulo" for="doc_{{ tipo }}">{{ tipos_documento[tipo] }}</label>
+    <p class="anexo__situacao">
+      {% if atual %}Anexado: {{ atual.nome_original }} • envie outro arquivo para substituir{% else %}Não anexado • opcional • {{ 'imagem' if tipo in ['foto', 'foto_3x4'] else 'imagem ou PDF' }}{% endif %}
+    </p>
+  </div>
+  <input type="file" id="doc_{{ tipo }}" name="doc_{{ tipo }}"
+         accept="{{ 'image/jpeg,image/png,image/webp' if tipo in ['foto', 'foto_3x4'] else 'image/jpeg,image/png,image/webp,application/pdf' }}">
+  {% if erros.get('doc_' ~ tipo) %}<p class="erro">{{ erros['doc_' ~ tipo] }}</p>{% endif %}
+</div>
+{%- endmacro %}
+
+{% block corpo %}
+{% set sim_nao = {'sim': 'Sim', 'nao': 'Não'} %}
+<main class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
+      <li><a href="{{ url_for('lista_aluno') }}">Alunos</a></li>
+      <li aria-current="page">{{ 'Editar aluno' if editar else 'Cadastrar aluno' }}</li>
+    </ol>
+  </nav>
+
+  <header class="pagina__cabecalho">
+    <div>
+      <h1 class="pagina__titulo">{{ 'Editar aluno' if editar else 'Cadastrar aluno' }}</h1>
+      <p class="pagina__subtitulo">
+        {% if editar %}Atualize os dados da ficha, complete os documentos pendentes e revise a turma antes de salvar.
+        {% else %}Preencha a ficha digital e associe o aluno a uma turma cadastrada.{% endif %}
+      </p>
+    </div>
+    {% if editar %}
+    <a class="botao botao--claro" href="{{ url_for('ficha_aluno', aluno_id=aluno.id) }}">Voltar para ficha</a>
+    {% else %}
+    <a class="botao botao--claro" href="{{ url_for('lista_aluno') }}">Voltar para alunos</a>
+    {% endif %}
+  </header>
+
+  {% if erros %}
+  <div class="alerta alerta--erro" role="alert">
+    <p class="alerta__titulo">{{ 'Alterações ainda não salvas' if editar else 'Cadastro não realizado' }}</p>
+    <p>Revise os campos indicados. {{ 'Os dados anteriores permanecem na ficha.' if editar else 'Nenhum cadastro foi concluído nesta tentativa.' }}</p>
+    <ul>{% for mensagem in erros.values() %}<li>{{ mensagem }}</li>{% endfor %}</ul>
+  </div>
+  {% else %}
+  <div class="aviso">
+    <div>
+      <p class="aviso__titulo">Informações necessárias para cadastrar</p>
+      <p>Os campos com <span class="obrigatorio">*</span> são obrigatórios. Os anexos são opcionais e podem ser enviados depois, sem bloquear o cadastro.</p>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if not turmas %}
+  {# A turma precisa existir antes do aluno (RN22) #}
+  <div class="alerta alerta--erro" role="alert">
+    <p class="alerta__titulo">Cadastre uma turma antes</p>
+    <p>A turma faz parte da ficha do aluno. <a href="{{ url_for('cadastrar_turma') }}">Cadastrar turma</a></p>
+  </div>
+  {% endif %}
+
+  <div class="ficha__layout">
+  <form class="formulario" method="post" enctype="multipart/form-data" novalidate
+        action="{{ url_for('salvar_edicao_aluno', aluno_id=aluno.id) if editar else url_for('salvar_aluno') }}">
+    {{ csrf_input }}
+
+    <section class="cartao" aria-labelledby="titulo-identificacao">
+      <h2 class="cartao__titulo" id="titulo-identificacao"><span class="cartao__numero">01</span> Identificação do aluno</h2>
+      {{ campo('nome', 'Nome completo', true) }}
+      <div class="colunas">
+        {{ campo('data_inicio', 'Data de início', true, 'date') }}
+        {{ campo('documento_identificacao', 'Documento de identificação', true) }}
+        {{ campo('data_nascimento', 'Data de nascimento', false, 'date') }}
+        {{ campo('celular', 'Celular', true, modo_entrada='tel') }}
+        {{ campo('cpf', 'CPF do aluno', modo_entrada='numeric') }}
+        {{ campo('cep', 'CEP', modo_entrada='numeric') }}
+      </div>
+      {{ campo('endereco', 'Endereço') }}
+      {{ campo('cidade', 'Cidade') }}
+      {{ anexo('foto') }}
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-responsaveis">
+      <h2 class="cartao__titulo" id="titulo-responsaveis"><span class="cartao__numero">02</span> Responsáveis e contatos</h2>
+      {{ campo('nome_mae', 'Nome da mãe', true, ajuda='Se o dado não existir, escreva "não aplicável".') }}
+      <div class="colunas">
+        {{ campo('telefone_mae', 'Telefone da mãe', true, modo_entrada='tel') }}
+        {{ campo('telefone_pai', 'Telefone do pai', modo_entrada='tel') }}
+        {{ campo('nome_pai', 'Nome do pai') }}
+        {{ campo('telefone_residencial', 'Telefone residencial', modo_entrada='tel') }}
+        {{ campo('nome_contato_urgencia', 'Contato em caso de urgência') }}
+        {{ campo('telefone_emergencia', 'Telefone de emergência', modo_entrada='tel') }}
+        {{ campo('responsavel_nome', 'Nome do responsável legal', true, ajuda='É quem aceita o termo da seção 07 pelo aluno.') }}
+        {{ campo('responsavel_cpf', 'CPF do responsável legal', modo_entrada='numeric') }}
+      </div>
+      {{ campo('responsavel_identidade', 'Identidade do responsável legal') }}
+      {{ opcoes('saida_aluno', 'Saída do aluno no fim do treino', saidas) }}
+      <div data-mostrar-se="saida_aluno=acompanhado">{{ campo('acompanhante', 'Acompanhante') }}</div>
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-escola">
+      <h2 class="cartao__titulo" id="titulo-escola"><span class="cartao__numero">03</span> Informações escolares</h2>
+      {{ opcoes('tipo_escola', 'Tipo de escola', tipos_escola, true) }}
+      {{ campo('nome_escola', 'Nome da escola') }}
+      {{ opcoes('turno_escolar', 'Turno escolar', turnos) }}
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-turma">
+      <h2 class="cartao__titulo" id="titulo-turma"><span class="cartao__numero">04</span> Graduação e vínculo com a turma</h2>
+      <div class="campo">
+        <label for="graduacao">Graduação declarada <span class="obrigatorio">*</span></label>
+        <input type="text" id="graduacao" name="graduacao" list="lista-graduacoes" value="{{ valores.get('graduacao', '') }}" required
+               {% if erros.get('graduacao') %}aria-invalid="true" aria-describedby="erro-graduacao"{% endif %}>
+        <datalist id="lista-graduacoes">{% for g in graduacoes %}<option value="{{ g }}">{% endfor %}</datalist>
+        <p class="ajuda">O certificado não é exigido no cadastro. Acima da faixa branca, a coordenação cobra o documento; sem ele, o aluno não é considerado graduado.</p>
+        {% if erros.get('graduacao') %}<p class="erro" id="erro-graduacao">{{ erros['graduacao'] }}</p>{% endif %}
+      </div>
+      <div class="campo">
+        <label for="turma_id">Turma (modalidade, dias e horário) <span class="obrigatorio">*</span></label>
+        <select id="turma_id" name="turma_id" required {% if erros.get('turma_id') %}aria-invalid="true"{% endif %}>
+          <option value="">Selecione uma turma cadastrada</option>
+          {% for t in turmas %}
+          <option value="{{ t.id }}" {{ 'selected' if valores.get('turma_id') | string == t.id | string }}>{{ m.turma_texto(t) }}</option>
+          {% endfor %}
+        </select>
+        <p class="ajuda">{% if editar %}Trocar a turma encerra o vínculo anterior; o histórico de participação é preservado.{% else %}O vínculo com a turma é salvo na própria ficha do aluno.{% endif %}</p>
+        {% if erros.get('turma_id') %}<p class="erro">{{ erros['turma_id'] }}</p>{% endif %}
+      </div>
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-saude">
+      <h2 class="cartao__titulo" id="titulo-saude"><span class="cartao__numero">05</span> Saúde e necessidades especiais</h2>
+      {{ opcoes('problema_saude', 'Há problema de saúde ou necessidade especial?', sim_nao, true) }}
+      {# Descrição e laudo aparecem só com "Sim" (RN38); o laudo pode ser entregue depois (RN37) #}
+      <div data-mostrar-se="problema_saude=sim">
+        <div class="campo">
+          <label for="descricao_saude">Descrição <span class="opcional">(opcional)</span></label>
+          <textarea id="descricao_saude" name="descricao_saude">{{ valores.get('descricao_saude', '') }}</textarea>
+        </div>
+        {{ anexo('laudo') }}
+        <p class="ajuda">O laudo pode ser entregue depois, no prazo combinado com a coordenação.</p>
+      </div>
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-questionario">
+      <h2 class="cartao__titulo" id="titulo-questionario"><span class="cartao__numero">06</span> Questionário de prontidão para atividade física</h2>
+      <p class="ajuda">Responda Sim ou Não em todas as perguntas. Sem o questionário completo, o cadastro não é liberado.</p>
+      {% if erros.get('questionario') %}<p class="erro">{{ erros['questionario'] }}</p>{% endif %}
+      <ol class="questionario">
+        {% for codigo, pergunta, tem_qual in questoes %}
+        <li>
+          <fieldset class="grupo">
+            <legend>{{ pergunta }} <span class="obrigatorio">*</span></legend>
+            <div class="escolhas">
+              {% for valor, rotulo in sim_nao.items() %}
+              <label class="escolha"><input type="radio" name="{{ codigo }}" value="{{ valor }}" {{ 'checked' if valores.get(codigo) == valor }}> {{ rotulo }}</label>
+              {% endfor %}
+            </div>
+            {% if tem_qual %}
+            <div class="campo" data-mostrar-se="{{ codigo }}=sim">
+              <label for="{{ codigo }}_qual">Qual? <span class="opcional">(preencher se Sim)</span></label>
+              <input type="text" id="{{ codigo }}_qual" name="{{ codigo }}_qual" value="{{ valores.get(codigo ~ '_qual', '') }}">
+            </div>
+            {% endif %}
+          </fieldset>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-termo">
+      <h2 class="cartao__titulo" id="titulo-termo"><span class="cartao__numero">07</span> Termo de responsabilidade, dados e uso de imagem</h2>
+      <p class="ajuda">Leia o termo com o responsável legal. O aceite, que inclui o uso de imagem, é necessário para o cadastro.</p>
+      {% include "coordenacao/alunos/_termo.html" %}
+
+
+      {% if editar %}
+      <p class="termo__aceite">Termo aceito em {{ aluno.termo_aceito_em.strftime('%d/%m/%Y às %H:%M') }} por {{ aluno.responsavel_nome }} (versão {{ aluno.termo_versao }}).</p>
+      {% else %}
+      <label class="escolha escolha--termo">
+        <input type="checkbox" name="termo_aceito" value="sim" {{ 'checked' if valores.get('termo_aceito') == 'sim' }}>
+        O responsável leu e aceita o termo, inclusive o tratamento dos dados de saúde e o uso de imagem do aluno <span class="obrigatorio">*</span>
+      </label>
+      {% if erros.get('termo_aceito') %}<p class="erro">{{ erros['termo_aceito'] }}</p>{% endif %}
+      {% endif %}
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-documentos">
+      <h2 class="cartao__titulo" id="titulo-documentos"><span class="cartao__numero">08</span> Documentos complementares</h2>
+      <p class="ajuda">Todos os anexos são opcionais. Aceita imagem digitalizada (JPG, PNG ou WEBP) e PDF, até 10 MB.</p>
+      {% for tipo in ['ficha_assinada', 'foto_3x4', 'atestado', 'comprovante_residencia', 'certificado_graduacao'] %}{{ anexo(tipo) }}{% endfor %}
+    </section>
+
+    <div class="rodape">
+      <p class="rodape__texto">{{ 'Os dados anteriores permanecem até salvar.' if editar else 'Cadastro liberado ao concluir as respostas, o aceite e os dados obrigatórios.' }}</p>
+      <div class="rodape__acoes">
+        <a class="botao botao--claro" href="{{ url_for('ficha_aluno', aluno_id=aluno.id) if editar else url_for('lista_aluno') }}">Cancelar</a>
+        <button class="botao botao--vermelho" type="submit" {{ 'disabled' if not turmas }}>{{ 'Salvar alterações' if editar else 'Cadastrar aluno' }}</button>
+      </div>
+    </div>
+  </form>
+
+  <aside class="ficha__lateral">
+    <section class="cartao cartao--lateral">
+      <h2 class="cartao__titulo">Antes de {{ 'salvar' if editar else 'cadastrar' }}</h2>
+      <p>Confira os dados obrigatórios, a turma e o questionário.</p>
+    </section>
+    <section class="cartao cartao--lateral">
+      <h2 class="cartao__titulo">Pendências não bloqueantes</h2>
+      <p>Ficha assinada, foto 3x4, atestado, comprovante, certificado e laudo podem ser anexados depois, na edição da ficha.</p>
+    </section>
+  </aside>
+  </div>
+</main>
+
+<script src="{{ url_for('static', path='js/ficha-aluno.js') }}"></script>
+{% endblock %}
