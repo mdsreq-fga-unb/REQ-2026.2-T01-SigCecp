@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ titulo }} | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/erro.css') }}">
+{% endblock %}
+
+{% block corpo %}
+{# Erros mostrados ao navegador em linguagem simples, no lugar do JSON técnico (WCAG 3.3.1 e 3.3.3) #}
+<main id="conteudo" tabindex="-1" class="pagina container erro-pagina">
+  <section class="erro-pagina__cartao" role="alert" aria-labelledby="erro-titulo">
+    <h1 id="erro-titulo">{{ titulo }}</h1>
+    <p>{{ mensagem }}</p>
+    {% if problemas %}
+    <ul class="erro-pagina__lista">
+      {% for problema in problemas %}<li>{{ problema }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+    <div class="erro-pagina__acoes">
+      {% if voltar %}
+      <a class="botao botao--vermelho" href="javascript:history.back()">Voltar e corrigir</a>
+      {% endif %}
+      <a class="botao botao--claro" href="{{ destino }}">{{ destino_rotulo }}</a>
+    </div>
+  </section>
+</main>
+{% endblock %}

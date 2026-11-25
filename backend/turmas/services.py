@@ -4,6 +4,8 @@ from fastapi import HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from backend.alunos.models import AlunoTurma
+from backend.alunos.services import agora
 from backend.turmas.models import Turma
 from backend.turmas.schemas import TurmaCreate
 
@@ -15,6 +17,7 @@ def _existe_turma_igual(
 ) -> bool:
     """Verifica se já existe turma com mesma modalidade, dias e horários."""
     consulta = select(Turma).where(
+        Turma.ativa.is_(True),
         Turma.modalidade == dados.modalidade,
         Turma.inicio == dados.inicio,
         Turma.termino == dados.termino,
@@ -32,10 +35,7 @@ def criar_turma(db: Session, dados: TurmaCreate) -> Turma:
             detail="Já existe uma turma com essa modalidade, esses dias e esses horários.",
         )
 
-    dados_turma = dados.model_dump()
-    dados_turma["alunos"] = alunos_mock
-
-    turma = Turma(**dados_turma)
+    turma = Turma(**dados.model_dump())
 
     try:
         db.add(turma)
@@ -49,7 +49,7 @@ def criar_turma(db: Session, dados: TurmaCreate) -> Turma:
 
 
 def listar_turmas(db: Session) -> list[Turma]:
-    consulta = select(Turma).order_by(Turma.id)
+    consulta = select(Turma).where(Turma.ativa.is_(True)).order_by(Turma.id)
     return list(db.scalars(consulta).all())
 
 
@@ -58,10 +58,10 @@ def buscar_turma_por_id(db: Session, turma_id: int) -> Turma | None:
 
 
 def buscar_turma(db: Session, turma_id: int) -> Turma:
-    """Busca uma turma ou retorna erro 404."""
+    """Busca uma turma ativa ou retorna erro 404. Turma removida não é editada nem recebe alunos."""
     turma = db.get(Turma, turma_id)
 
-    if turma is None:
+    if turma is None or not turma.ativa:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Turma não encontrada",
@@ -94,27 +94,17 @@ def atualizar_turma(db: Session, turma_id: int, dados: TurmaCreate) -> Turma:
 
 
 def deletar_turma(db: Session, turma_id: int) -> None:
+    """Remove a turma da lista sem apagar o histórico: encerra os vínculos abertos e desativa a turma (RN01, DEC35)."""
     turma = buscar_turma(db, turma_id)
+    quando = agora()
 
     try:
-        db.delete(turma)
+        abertos = db.scalars(select(AlunoTurma).where(AlunoTurma.turma_id == turma.id, AlunoTurma.fim.is_(None)))
+        for associacao in abertos:
+            associacao.fim = quando
+        turma.ativa = False
         db.commit()
     except Exception:
         db.rollback()
         logger.exception("Erro ao deletar turma")
         raise
-
-alunos_mock = [
-    "João da Silva",
-    "Maria Oliveira",
-    "Pedro Santos",
-]
-
-def listar_alunos(db: Session, turma_id: int) -> list[str]:
-    turma = buscar_turma(db, turma_id)
-    return turma.alunos
-
-def associar_alunos(db: Session, turma_id: int, alunos: list[str]) -> None:
-    turma = buscar_turma(db, turma_id)
-    turma.alunos = alunos
-    db.commit()

@@ -107,20 +107,3 @@
   margin-top: 28px;
 }
 
-@media (max-width: 640px) {
-  .modal__corpo {
-    padding: 24px 20px;
-  }
-
-  .modal__titulo {
-    font-size: 1.5rem;
-  }
-
-  .modal__acoes {
-    flex-direction: column-reverse;
-  }
-
-  .modal__acoes .botao {
-    width: 100%;
-  }
-}

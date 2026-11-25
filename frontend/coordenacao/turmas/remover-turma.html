@@ -11,7 +11,7 @@
 {% block cabecalho %}
 <header class="topo">
   <div class="container topo__linha">
-    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+    <a class="marca" href="{{ url_for('inicio_coordenacao') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
       <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
       <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
     </a>
@@ -20,7 +20,7 @@
 
     <div class="topo__direita">
       <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
-      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_usuario.html" %}
       {% include "coordenacao/_sair.html" %}
     </div>
   </div>
@@ -32,11 +32,11 @@
 {% set nomes = {'segunda': 'Segunda', 'terca': 'Terça', 'quarta': 'Quarta', 'quinta': 'Quinta',
                 'sexta': 'Sexta', 'sabado': 'Sábado', 'domingo': 'Domingo'} %}
 
-<main class="pagina container">
+<main id="conteudo" tabindex="-1" class="pagina container">
 
   <nav class="trilha" aria-label="Você está em">
     <ol>
-      <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
       <li><a href="{{ url_for('lista_turma') }}">Turmas</a></li>
       <li aria-current="page">Remover turma</li>
     </ol>
@@ -51,7 +51,11 @@
       <h2 class="cartao__titulo" id="titulo-turma">{{ turma.modalidade }}</h2>
       <p>{% for dia in ordem if dia in turma.dias %}{{ nomes[dia] }}{{ ', ' if not loop.last }}{% endfor %}
         · {{ turma.inicio.strftime('%H:%M') }} às {{ turma.termino.strftime('%H:%M') }}</p>
-      <p class="ajuda">A turma será excluída definitivamente e deixará de aparecer na lista de turmas.</p>
+      <p class="ajuda">A turma deixará de aparecer na lista de turmas e não poderá mais receber alunos.</p>
+      {% if alunos %}
+      <p class="ajuda"><strong>{{ alunos | length }} {{ 'aluno está vinculado' if alunos | length == 1 else 'alunos estão vinculados' }} a esta turma</strong>
+        e {{ 'ficará' if alunos | length == 1 else 'ficarão' }} sem turma. O vínculo é encerrado e continua no histórico da ficha.</p>
+      {% endif %}
     </section>
 
     <div class="rodape">

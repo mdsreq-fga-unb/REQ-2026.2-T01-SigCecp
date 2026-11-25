@@ -1,0 +1,36 @@
+.erro-pagina {
+  padding: 64px 24px;
+}
+
+.erro-pagina__cartao {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--vermelho);
+  border-radius: 12px;
+}
+
+.erro-pagina__cartao h1 {
+  margin: 0 0 12px;
+  font-size: 28px;
+}
+
+.erro-pagina__cartao p {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.erro-pagina__lista {
+  margin: 0 0 20px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.erro-pagina__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}

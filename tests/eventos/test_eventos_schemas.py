@@ -165,3 +165,27 @@ def test_data_ou_horario_invalido(dados_evento, campo, valor):
 def test_horario_com_fuso_ou_fracao(dados_evento, campo, valor):
     with pytest.raises(ValidationError):
         EventoCreate(**{**dados_evento, campo: valor})
+
+
+@pytest.mark.parametrize("termino", ["08:30", "09:00"])
+def test_termino_antes_ou_igual_ao_inicio_e_recusado(dados_evento, termino):
+    with pytest.raises(ValidationError, match="término deve ser depois"):
+        EventoCreate(**{**dados_evento, "inicio": "09:00", "termino": termino})
+
+
+@pytest.mark.parametrize(("valor", "esperado"), [
+    ("25,50", "25.50"),
+    ("1.234,56", "1234.56"),
+    ("1.234.567,8", "1234567.8"),
+    ("25.50", "25.50"),
+])
+def test_valor_aceita_virgula_decimal_e_separador_de_milhar(dados_evento, valor, esperado):
+    evento = EventoCreate(**{
+        **dados_evento,
+        "cobrado": True,
+        "valor": valor,
+        "data_limite_pagamento": "2026-11-10",
+        "meio_pagamento": "PIX",
+    })
+
+    assert evento.valor == Decimal(esperado)

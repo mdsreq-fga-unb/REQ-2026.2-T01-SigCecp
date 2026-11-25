@@ -43,7 +43,7 @@
     align-items: center;
     gap: 14px;
     margin: 0 0 22px;
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -90,7 +90,7 @@
 
 .filtros__botao {
     font: inherit;
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
     padding: 10px 18px;
     border-radius: 999px;
     border: 1px solid var(--ev-cinza-claro);
@@ -118,7 +118,7 @@
 
 .agenda__referencia {
     margin: 0;
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     color: var(--ev-cinza-texto);
 }
 
@@ -165,7 +165,7 @@
 
 .cartao-evento__mes {
     margin-top: 14px;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
@@ -175,7 +175,7 @@
 }
 
 .cartao-evento__ano {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.7);
 }
 
@@ -190,7 +190,7 @@
     gap: 8px;
     padding: 5px 12px;
     border-radius: 999px;
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     background: var(--ev-fundo-etiqueta);
     color: var(--ev-preto);
 }
@@ -246,7 +246,7 @@
     margin: 0 0 16px;
     padding: 0;
     list-style: none;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--ev-cinza-escuro);
 }
 
@@ -265,7 +265,7 @@
 .cartao-evento__link {
     display: inline-flex;
     gap: 6px;
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
     font-weight: 700;
     color: var(--ev-vermelho);
     text-decoration: none;
@@ -308,7 +308,7 @@
 
 .agenda__contagem {
     margin: 40px 0 0;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--ev-cinza-texto);
 }
 
@@ -390,7 +390,7 @@
     }
 
     .filtros__botao {
-        font-size: 0.875rem;
+        font-size: 1rem;
         padding: 9px 14px;
     }
 
@@ -416,11 +416,11 @@
 
     .cartao-evento__mes {
         margin-top: 6px;
-        font-size: 0.75rem;
+        font-size: 0.875rem;
     }
 
     .cartao-evento__ano {
-        font-size: 0.6875rem;
+        font-size: 0.875rem;
     }
 
     /* No celular a etiqueta de estado sobe para o lado da data */
@@ -465,4 +465,31 @@
     .cartao-evento__link {
         transition: background-color 0.15s, border-color 0.15s, color 0.15s;
     }
+}
+
+/* ---------- Próximos e encerrados ---------- */
+.agenda__secao {
+  margin: 32px 0 16px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.agenda__secao--encerrados {
+  margin-top: 56px;
+  color: var(--cinza-texto, #555);
+}
+
+.agenda__sem-proximos {
+  margin: 0 0 24px;
+  font-size: 16px;
+  color: var(--cinza-texto, #555);
+}
+
+/* Encerrados ficam mais discretos */
+.cartao-evento--encerrado {
+  opacity: .75;
+}
+
+.agenda__referencia {
+  margin-top: 16px;
 }

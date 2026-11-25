@@ -55,6 +55,14 @@ def client(db_session):
     def _lista_turma():
         return "ok"
 
+    @app.get("/coordenacao", name="inicio_coordenacao")
+    def _inicio():
+        return "ok"
+
+    @app.get("/coordenacao/alunos", name="lista_aluno")
+    def _lista_aluno():
+        return "ok"
+
     @app.post("/coordenacao/sair", name="logout")
     def _sair():
         return "ok"
@@ -188,3 +196,9 @@ def test_remover_apos_confirmacao(client, evento, db_session):
 def test_remover_evento_inexistente_404(client):
     assert client.get("/coordenacao/eventos/999/remover").status_code == 404
     assert client.post("/coordenacao/eventos/999/remover").status_code == 404
+
+def test_cancelar_publicacao_volta_para_a_lista(client):
+    html = client.get("/coordenacao/eventos/novo").text
+
+    assert 'href="http://testserver/coordenacao/eventos" id="cancelar"' in html
+    assert "conteudos.html" not in html

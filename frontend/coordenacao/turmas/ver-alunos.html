@@ -11,7 +11,7 @@
 {% block cabecalho %}
 <header class="topo">
   <div class="container topo__linha">
-    <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+    <a class="marca" href="{{ url_for('inicio_coordenacao') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
       <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
       <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
     </a>
@@ -20,7 +20,7 @@
 
     <div class="topo__direita">
       <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
-      <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+      {% include "coordenacao/_usuario.html" %}
       {% include "coordenacao/_sair.html" %}
     </div>
   </div>
@@ -33,12 +33,11 @@
     {% set nomes = {'segunda': 'Segunda', 'terca': 'Terça', 'quarta': 'Quarta', 'quinta': 'Quinta',
                 'sexta': 'Sexta', 'sabado': 'Sábado', 'domingo': 'Domingo'} %}
 
-    <main class="pagina container">
+    <main id="conteudo" tabindex="-1" class="pagina container">
 
     <nav class="trilha" aria-label="Você está em">
         <ol>
-        <li><a href="{{ url_for('lista_conteudo') }}">Coordenação</a></li>
-        <li><a href="#">Alunos</a></li>
+        <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
         <li><a href="{{ url_for('lista_turma') }}">Turmas</a></li>
         <li aria-current="page">Alunos da turma</li>
         </ol>
@@ -49,8 +48,15 @@
         <h1 class="pagina__titulo">Alunos da turma</h1>
         <p class="pagina__subtitulo">Consulte os alunos associados e selecione um aluno para acessar sua ficha.</p>
         </div>
+        <div class="pagina__acoes">
         <a class="botao botao--claro" href="{{ url_for('lista_turma') }}">Voltar para turmas</a>
+        <a class="botao botao--vermelho" href="{{ url_for('associar_alunos', turma_id=turma.id) }}">Associar aluno</a>
+        </div>
     </header>
+
+    {% if aviso == 'associado' %}
+    <p class="aviso aviso--sucesso" role="status">Aluno associado à turma.</p>
+    {% endif %}
 
     <section class="resumo" aria-label="Resumo da turma">
         <dl class="resumo__item">
@@ -85,14 +91,16 @@
         {% for aluno in alunos %}
         <article class="linha">
         <div class="aluno">
-            {% if aluno.foto %}
-            <img class="aluno__foto" src="{{ aluno.foto }}" alt="" width="48" height="48">
+            {% set foto = aluno.documento('foto') %}
+            {% if foto %}
+            <img class="aluno__foto" src="{{ url_for('documento_aluno', aluno_id=aluno.id, documento_id=foto.id) }}" alt="" width="48" height="48">
             {% else %}
             <span class="aluno__foto aluno__foto--vazia" aria-hidden="true"></span>
             {% endif %}
-            <span class="aluno__nome">{{ aluno }}</span>
+            <span class="aluno__nome">{{ aluno.nome }}</span>
+            {% if not aluno.ativo %}<span class="aluno__situacao">Inativo</span>{% endif %}
         </div>
-        <a class="linha__link" href="#">
+        <a class="linha__link" href="{{ url_for('ficha_aluno', aluno_id=aluno.id) }}">
             Ver ficha do aluno <span aria-hidden="true">→</span>
         </a>
         </article>

@@ -3,7 +3,9 @@ from datetime import datetime
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from sqlalchemy.orm import Session
 from backend.publicacoes.models import Publicacao
 from backend.config import ASSETS_DIR, templates
@@ -17,9 +19,13 @@ from backend.eventos.services import (
 )
 from backend.publicacoes.router import router as publicacoes_router
 from backend.auth.errors import ErroAcessoAdmin
+from backend.erros import tratar_http, tratar_validacao
 from backend.auth.middleware import SessaoAdminMiddleware
 from backend.auth.router import router as auth_router, tratar_erro_acesso
 from backend.turmas.router import router as turmas_router
+from backend.alunos.router import router as alunos_router
+from backend.coordenadores.router import router as coordenadores_router
+from backend.coordenacao.router import router as coordenacao_router
 from backend.eventos.router import router as eventos_router
    
 
@@ -30,13 +36,29 @@ app = FastAPI(
 # Autenticação do administrador (/coordenacao)
 app.add_middleware(SessaoAdminMiddleware)
 app.add_exception_handler(ErroAcessoAdmin, tratar_erro_acesso)
+# Erros como página em português para o navegador (acessibilidade: WCAG 3.3.1 e 3.3.3)
+app.add_exception_handler(RequestValidationError, tratar_validacao)
+app.add_exception_handler(StarletteHTTPException, tratar_http)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_DIR = BASE_DIR / "backend" / "media"
+class ArquivosEstaticos(StaticFiles):
+    """Pede ao navegador que confira se o CSS e o JavaScript mudaram antes de usar a cópia guardada.
+
+    Sem isso, depois de uma atualização o navegador pode continuar usando o CSS antigo.
+    Quando o arquivo não mudou, a resposta é um 304, sem baixar de novo.
+    """
+
+    async def get_response(self, path, scope):
+        resposta = await super().get_response(path, scope)
+        resposta.headers["Cache-Control"] = "no-cache"
+        return resposta
+
+
 # Arquivos estáticos: CSS, JavaScript e imagens.
 app.mount(
     "/static",
-    StaticFiles(directory=ASSETS_DIR),
+    ArquivosEstaticos(directory=ASSETS_DIR),
     name="static",
 )
 
@@ -65,10 +87,13 @@ def modulo_eventos_publico(request: Request, db: Session = Depends(get_db)):
         (evento, calcular_estado(evento, agora))
         for evento in listar_eventos(db)
     ]
+    # Próximos e em andamento primeiro, do mais perto ao mais distante; encerrados à parte, do mais recente
+    proximos = [item for item in eventos if item[1] != "Encerrado"]
+    encerrados = [item for item in reversed(eventos) if item[1] == "Encerrado"]
     return templates.TemplateResponse(
         request=request,
         name="publico/modulo-eventos.html",
-        context={"eventos": eventos},
+        context={"eventos": eventos, "proximos": proximos, "encerrados": encerrados},
     )
 
 
@@ -109,3 +134,6 @@ app.include_router(auth_router)
 app.include_router(publicacoes_router)
 app.include_router(eventos_router)
 app.include_router(turmas_router)
+app.include_router(alunos_router)
+app.include_router(coordenadores_router)
+app.include_router(coordenacao_router)

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', path='style/modulo-eventos.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='style/imagem-tela-cheia.css') }}">
     <link rel="icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/png">
+  <link rel="stylesheet" href="{{ url_for('static', path='style/acessibilidade.css') }}">
 </head>
 <body>
     <header class="topo">
@@ -24,7 +25,7 @@
         </div>
     </header>
 
-    <main class="container agenda">
+    <main id="conteudo" tabindex="-1" class="container agenda">
         <a class="cartao-evento__link" href="/eventos">← Voltar aos eventos</a>
         <article class="detalhe-evento" aria-labelledby="evento-titulo">
             <p class="agenda__rotulo"><span class="agenda__traco" aria-hidden="true"></span>Agenda CECP</p>
@@ -83,7 +84,6 @@
             <nav class="rodape__nav" aria-label="Rodapé">
                 <a href="/">Institucional</a>
                 <a href="/eventos">Eventos</a>
-                <a href="/coordenacao/conteudo">Acesso da coordenação</a>
             </nav>
         </div>
         <div class="container rodape__base">

@@ -38,6 +38,14 @@ class EventoCreate(BaseModel):
             raise ValueError(f"O campo {info.field_name} deve ser preenchido.")
         return valor
 
+    @field_validator("valor", mode="before")
+    @classmethod
+    def aceitar_virgula_decimal(cls, valor: object) -> object:
+        # Com vírgula decimal, os pontos são separadores de milhar: "1.234,56" -> "1234.56"
+        if isinstance(valor, str) and "," in valor:
+            return valor.replace(".", "").replace(",", ".")
+        return valor
+
     @field_validator("meio_pagamento")
     @classmethod
     def normalizar_meio_pagamento(cls, valor: str | None) -> str | None:
@@ -51,6 +59,12 @@ class EventoCreate(BaseModel):
         if valor.microsecond:
             raise ValueError("Informe o horário com precisão de segundos, sem frações.")
         return valor
+
+    @model_validator(mode="after")
+    def validar_termino_depois_do_inicio(self) -> Self:
+        if self.termino <= self.inicio:
+            raise ValueError("O horário de término deve ser depois do horário de início.")
+        return self
 
     @model_validator(mode="after")
     def validar_pagamento(self) -> Self:

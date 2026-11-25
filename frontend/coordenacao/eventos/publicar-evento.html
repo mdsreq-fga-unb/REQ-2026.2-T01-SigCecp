@@ -25,7 +25,7 @@
   {% block cabecalho %}
   <header class="topo">
     <div class="container topo__linha">
-      <a class="marca" href="{{ url_for('lista_conteudo') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <a class="marca" href="{{ url_for('inicio_coordenacao') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
         <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
         <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
       </a>
@@ -34,7 +34,7 @@
 
       <div class="topo__direita">
         <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
-        <span class="usuario"><span class="usuario__foto" aria-hidden="true"></span>Coordenação</span>
+        {% include "coordenacao/_usuario.html" %}
         {% include "coordenacao/_sair.html" %}
       </div>
     </div>
@@ -42,11 +42,11 @@
   {% endblock %}
 
   {% block corpo %}
-  <main class="pagina container">
+  <main id="conteudo" tabindex="-1" class="pagina container">
     <nav class="trilha" aria-label="Você está em">
       <ol>
-        <li><a href="#">Coordenação</a></li>
-        <li><a href="lista-evento.html">Eventos</a></li>
+        <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
+        <li><a href="{{ url_for('lista_evento') }}">Eventos</a></li>
         <li aria-current="page">Novo Evento</li>
       </ol>
     </nav>
@@ -122,8 +122,8 @@
           
         <div class="linha-dois">
 
-        <div class="campo-opcoes">
-            <label>Alimentação <span class="obrigatorio">*</span></label>
+        <div class="campo-opcoes" role="radiogroup" aria-labelledby="grupo-opcoes-1">
+            <label id="grupo-opcoes-1">Alimentação <span class="obrigatorio">*</span></label>
 
             <div class="opcoes-radio">
             <label class="opcao-radio">
@@ -138,8 +138,8 @@
             </div>
         </div>
 
-        <div class="campo-opcoes">
-            <label>Pesagem <span class="obrigatorio">*</span></label>
+        <div class="campo-opcoes" role="radiogroup" aria-labelledby="grupo-opcoes-2">
+            <label id="grupo-opcoes-2">Pesagem <span class="obrigatorio">*</span></label>
 
             <div class="opcoes-radio">
             <label class="opcao-radio">
@@ -170,8 +170,8 @@
         <section class="bloco" aria-labelledby="bloco-info">
           <h2 id="bloco-info" class="bloco__titulo"><span class="bloco__num">04</span>Informações da publicação</h2>
 
-          <div class="campo-opcoes">
-            <label>O evento é cobrado? <span class="obrigatorio">*</span></label>
+          <div class="campo-opcoes" role="radiogroup" aria-labelledby="grupo-opcoes-3">
+            <label id="grupo-opcoes-3">O evento é cobrado? <span class="obrigatorio">*</span></label>
 
             <div class="opcoes-radio">
             <label class="opcao-radio">
@@ -331,7 +331,7 @@
 
         <div class="acoes">
           <div class="acoes__botoes">
-            <a class="botao botao--claro" href="conteudos.html" id="cancelar">Cancelar</a>
+            <a class="botao botao--claro" href="{{ url_for('lista_evento') }}" id="cancelar">Cancelar</a>
             <button class="botao botao--vermelho" type="submit" id="salvar">Publicar evento</button>
           </div>
         </div>
@@ -368,5 +368,6 @@
 
 
 {% block scripts %}
+<script src="{{ url_for('static', path='js/horarios.js') }}"></script>
 <script src="{{ url_for('static', path='js/publicar-evento.js') }}"></script>
 {% endblock %}

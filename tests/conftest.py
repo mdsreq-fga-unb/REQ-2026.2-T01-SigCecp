@@ -14,6 +14,9 @@ os.environ["DATABASE_URL"] = f"sqlite:///{_database_path.as_posix()}"
 # Ele está no .gitignore, então não existe em um clone limpo nem na CI.
 (Path(__file__).resolve().parents[1] / "backend" / "media").mkdir(exist_ok=True)
 
+# Chave dos dados sensíveis do aluno (RNF12), para os testes não criarem a chave de desenvolvimento.
+os.environ.setdefault("DADOS_CHAVE", "x3k3Y0lYHq7m4i5yqk8Z1rjQGQ6oQkL9rH2bAqk3v8M=")
+
 
 def pytest_unconfigure() -> None:
     _database_directory.cleanup()

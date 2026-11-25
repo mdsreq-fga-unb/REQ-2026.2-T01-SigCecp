@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SigCECP</title>
+    <title>Eventos | SigCECP</title>
   <link
     rel="stylesheet"
     href="{{ url_for('static', path='style/modulo-conteudo.css') }}"
@@ -13,6 +13,7 @@
     href="{{ url_for('static', path='style/modulo-eventos.css') }}"
     >
     <link rel="icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/png">
+  <link rel="stylesheet" href="{{ url_for('static', path='style/acessibilidade.css') }}">
 </head>
 <body>
     <div>
@@ -34,7 +35,7 @@
     </div>
 
 
-    <main class="container agenda">
+    <main id="conteudo" tabindex="-1" class="container agenda">
         <section class="agenda__abertura" aria-labelledby="agenda-titulo">
             <div>
                 <p class="agenda__rotulo"><span class="agenda__traco" aria-hidden="true"></span>Agenda CECP</p>
@@ -43,31 +44,50 @@
             <p class="agenda__resumo">Acompanhe os eventos esportivos e culturais de Planaltina. Veja a programação e todos os detalhes.</p>
         </section>
 
-        {% if eventos %}
-        <p class="agenda__referencia">Datas e horários de Brasília.</p>
-        <ul class="lista-eventos" aria-label="Eventos publicados">
-            {% for evento, estado in eventos %}
-            <li class="cartao-evento{% if estado == 'Em breve' %} cartao-evento--em-breve{% endif %}">
+        {% set meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'] %}
+        {% macro hora(valor) -%}
+          {{- valor.hour }}h{% if valor.minute %}{{ '%02d' % valor.minute }}{% endif -%}
+        {%- endmacro %}
+        {% macro cartao(evento, estado) %}
+            <li class="cartao-evento{% if estado == 'Em breve' %} cartao-evento--em-breve{% elif estado == 'Encerrado' %} cartao-evento--encerrado{% endif %}">
                 <div class="cartao-evento__data" aria-label="{{ evento.data.strftime('%d/%m/%Y') }}">
                     <span class="cartao-evento__dia">{{ evento.data.strftime('%d') }}</span>
-                    <span class="cartao-evento__mes">{{ evento.data.strftime('%m') }}</span>
+                    <span class="cartao-evento__mes">{{ meses[evento.data.month - 1] }}</span>
                     <span class="cartao-evento__ano">{{ evento.data.strftime('%Y') }}</span>
                 </div>
                 <div class="cartao-evento__corpo">
                     <span class="etiqueta-estado{% if estado == 'Em breve' %} etiqueta-estado--em-breve{% elif estado == 'Em andamento' %} etiqueta-estado--em-andamento{% endif %}">{{ estado }}</span>
                     <div class="cartao-evento__texto">
-                        <h2 class="cartao-evento__titulo">{{ evento.titulo }}</h2>
-                        <p class="cartao-evento__subtitulo">{{ evento.subtitulo }}</p>
+                        <h3 class="cartao-evento__titulo">{{ evento.titulo }}</h3>
+                        {% if evento.subtitulo %}<p class="cartao-evento__subtitulo">{{ evento.subtitulo }}</p>{% endif %}
                         <ul class="cartao-evento__info">
-                            <li>Horário: {{ evento.inicio.strftime('%H:%M') }}–{{ evento.termino.strftime('%H:%M') }}</li>
+                            <li>Horário: {{ hora(evento.inicio) }} às {{ hora(evento.termino) }}</li>
                             <li>Local: {{ evento.local }}</li>
                         </ul>
                     </div>
                     <a class="cartao-evento__link" href="{{ url_for('detalhe_evento_publico', evento_id=evento.id) }}">Ver detalhes</a>
                 </div>
             </li>
-            {% endfor %}
+        {% endmacro %}
+
+        {% if eventos %}
+        <p class="agenda__referencia">Datas e horários de Brasília.</p>
+
+        <h2 class="agenda__secao">Próximos eventos</h2>
+        {% if proximos %}
+        <ul class="lista-eventos" aria-label="Próximos eventos">
+            {% for evento, estado in proximos %}{{ cartao(evento, estado) }}{% endfor %}
         </ul>
+        {% else %}
+        <p class="agenda__sem-proximos">Nenhum evento marcado no momento. Volte em breve para conferir a programação.</p>
+        {% endif %}
+
+        {% if encerrados %}
+        <h2 class="agenda__secao agenda__secao--encerrados">Eventos encerrados</h2>
+        <ul class="lista-eventos lista-eventos--encerrados" aria-label="Eventos encerrados">
+            {% for evento, estado in encerrados %}{{ cartao(evento, estado) }}{% endfor %}
+        </ul>
+        {% endif %}
         <p class="agenda__contagem">{{ eventos|length }} evento{% if eventos|length != 1 %}s{% endif %} publicado{% if eventos|length != 1 %}s{% endif %}.</p>
         {% else %}
         <div class="lista-eventos__vazio">
@@ -90,7 +110,6 @@
         <nav class="rodape__nav" aria-label="Rodapé">
             <a href="/">Institucional</a>
             <a href="/eventos">Eventos</a>
-            <a href="/coordenacao/conteudo">Acesso da coordenação</a>
         </nav>
         </div>
     

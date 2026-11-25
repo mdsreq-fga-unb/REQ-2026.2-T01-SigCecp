@@ -166,18 +166,3 @@
   padding: 14px 24px;
 }
 
-/* ---------- Responsivo ---------- */
-@media (max-width: 900px) {
-  .dias {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .pagina__titulo { font-size: 30px; }
-  .cartao { padding: 20px; }
-  .dias { grid-template-columns: repeat(2, 1fr); }
-  .horarios { grid-template-columns: 1fr; }
-  .rodape { flex-direction: column; align-items: stretch; }
-  .rodape__acoes { justify-content: flex-end; }
-}

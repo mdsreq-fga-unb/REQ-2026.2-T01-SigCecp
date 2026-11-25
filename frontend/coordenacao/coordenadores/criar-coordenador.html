@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block titulo %}Criar coordenador | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/cadastrar-turma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/alunos.css') }}">
+{% endblock %}
+
+{% block cabecalho %}{% include "coordenacao/coordenadores/_topo.html" %}{% endblock %}
+
+{% macro erro(campo) -%}
+  {% if erros.get(campo) %}<p class="erro" id="erro-{{ campo }}">{{ erros[campo] }}</p>{% endif %}
+{%- endmacro %}
+
+{% macro invalido(campo) -%}
+  {% if erros.get(campo) %}aria-invalid="true" aria-describedby="erro-{{ campo }}"{% endif %}
+{%- endmacro %}
+
+{% block corpo %}
+<main id="conteudo" tabindex="-1" class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Root</a></li>
+      <li><a href="{{ url_for('lista_coordenador') }}">Coordenadores</a></li>
+      <li aria-current="page">Criar coordenador</li>
+    </ol>
+  </nav>
+
+  <header class="pagina__cabecalho">
+    <div>
+      <h1 class="pagina__titulo">Criar coordenador</h1>
+      <p class="pagina__subtitulo">Informe os dados de acesso do novo coordenador do CECP.</p>
+    </div>
+  </header>
+
+  <div class="ficha__layout">
+    <div>
+      {% if erros %}
+      <div class="alerta alerta--erro" role="alert">
+        <p class="alerta__titulo">Não foi possível criar a conta</p>
+        <p>Revise {{ 'o campo indicado' if erros | length == 1 else 'os ' ~ (erros | length) ~ ' campos indicados' }} abaixo. Nenhuma conta foi criada e os demais dados foram mantidos.</p>
+      </div>
+      {% else %}
+      <div class="aviso">
+        <div>
+          <p class="aviso__titulo">Informações necessárias para criar a conta</p>
+          <p>Os campos com <span class="obrigatorio">*</span> são obrigatórios. Defina um usuário exclusivo e uma senha inicial segura.</p>
+        </div>
+      </div>
+      {% endif %}
+
+      <form class="formulario" method="post" action="{{ url_for('salvar_coordenador') }}" novalidate autocomplete="off">
+        {{ csrf_input }}
+
+        <section class="cartao" aria-labelledby="titulo-identificacao">
+          <h2 class="cartao__titulo" id="titulo-identificacao"><span class="cartao__numero">01</span> Identificação do coordenador</h2>
+          <div class="colunas">
+            <div class="campo">
+              <label for="nome">Nome completo <span class="obrigatorio">*</span></label>
+              <input type="text" id="nome" name="nome" value="{{ valores.get('nome', '') }}" placeholder="Informe o nome completo" required {{ invalido('nome') }}>
+              {{ erro('nome') }}
+            </div>
+            <div class="campo">
+              <label for="usuario">Usuário <span class="obrigatorio">*</span></label>
+              <input type="text" id="usuario" name="usuario" value="{{ valores.get('usuario', '') }}" placeholder="Ex.: CECP0004" required autocapitalize="characters" {{ invalido('usuario') }}>
+              <p class="ajuda">Identificador utilizado para entrar no sistema.</p>
+              {{ erro('usuario') }}
+            </div>
+          </div>
+        </section>
+
+        <section class="cartao" aria-labelledby="titulo-senha">
+          <h2 class="cartao__titulo" id="titulo-senha"><span class="cartao__numero">02</span> Senha inicial</h2>
+          <div class="colunas">
+            <div class="campo">
+              <label for="senha">Senha inicial <span class="obrigatorio">*</span></label>
+              <input type="password" id="senha" name="senha" required autocomplete="new-password" {{ invalido('senha') }}>
+              {{ erro('senha') }}
+            </div>
+            <div class="campo">
+              <label for="confirmar_senha">Confirmar senha inicial <span class="obrigatorio">*</span></label>
+              <input type="password" id="confirmar_senha" name="confirmar_senha" required autocomplete="new-password" {{ invalido('confirmar_senha') }}>
+              {{ erro('confirmar_senha') }}
+            </div>
+          </div>
+          <p class="ajuda">Use pelo menos 8 caracteres, combinando letras, números e símbolos. Não utilize dados pessoais.</p>
+        </section>
+
+        <div class="rodape">
+          <p class="rodape__texto">A conta será criada com o perfil Coordenador.</p>
+          <div class="rodape__acoes">
+            <a class="botao botao--claro" href="{{ url_for('lista_coordenador') }}">Cancelar</a>
+            <button class="botao botao--vermelho" type="submit">Criar coordenador</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <aside class="ficha__lateral">
+      <section class="cartao cartao--lateral">
+        <h2 class="cartao__titulo">Perfil Coordenador</h2>
+        <p>Acesso à gestão de conteúdos, eventos, alunos e turmas do CECP.</p>
+        <hr class="separador">
+        <p><strong>Somente o Root gerencia contas.</strong></p>
+        <p>Coordenadores não podem criar outras contas nem atribuir o perfil Root.</p>
+        <p class="ajuda">O perfil desta conta é fixo e não pode ser alterado.</p>
+      </section>
+    </aside>
+  </div>
+</main>
+{% endblock %}

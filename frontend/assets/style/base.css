@@ -60,9 +60,3 @@ body {
   height: 22px;
 }
 
-/* ---------- Responsividade global ---------- */
-@media (max-width: 640px) {
-  .container {
-    padding-inline: 16px;
-  }
-}

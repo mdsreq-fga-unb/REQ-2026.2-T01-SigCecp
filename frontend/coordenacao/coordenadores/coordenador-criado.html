@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block titulo %}Conta criada | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/cadastrar-turma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/alunos.css') }}">
+{% endblock %}
+
+{% block cabecalho %}{% include "coordenacao/coordenadores/_topo.html" %}{% endblock %}
+
+{% block corpo %}
+<main id="conteudo" tabindex="-1" class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Root</a></li>
+      <li><a href="{{ url_for('lista_coordenador') }}">Coordenadores</a></li>
+      <li aria-current="page">Conta criada</li>
+    </ol>
+  </nav>
+
+  <header class="pagina__cabecalho">
+    <div>
+      <h1 class="pagina__titulo">Conta criada com sucesso</h1>
+      <p class="pagina__subtitulo">{{ conta.nome }} já pode acessar a área de Coordenação do CECP.</p>
+    </div>
+  </header>
+
+  <div class="alerta alerta--sucesso" role="status">
+    <p class="alerta__titulo">Coordenador cadastrado. A conta está ativa.</p>
+  </div>
+
+  <div class="ficha__layout">
+    <div class="ficha__principal">
+      <section class="cartao">
+        <h2 class="cartao__titulo">Dados da conta criada</h2>
+        <dl class="dados">
+          <div class="dado"><dt>Nome completo</dt><dd>{{ conta.nome }}</dd></div>
+          <div class="dado"><dt>Usuário</dt><dd>{{ conta.usuario }}</dd></div>
+          <div class="dado"><dt>Perfil</dt><dd>Coordenador</dd></div>
+          <div class="dado"><dt>Status</dt><dd>{{ 'Ativo' if conta.ativo else 'Inativo' }}</dd></div>
+        </dl>
+      </section>
+
+      <section class="cartao">
+        <h2 class="cartao__titulo">Entregue as credenciais com segurança</h2>
+        <p>Forneça o usuário <strong>{{ conta.usuario }}</strong> e a senha inicial definida por você diretamente a {{ conta.nome }}, de forma presencial ou por um canal privado e seguro.</p>
+        <p class="ajuda">Por segurança, a senha não é exibida nesta confirmação. Não compartilhe credenciais em grupos ou canais públicos.</p>
+      </section>
+
+      <div class="ficha__acoes">
+        <a class="botao botao--claro" href="{{ url_for('criar_coordenador') }}">Criar outro coordenador</a>
+        <a class="botao botao--vermelho" href="{{ url_for('lista_coordenador') }}">Voltar para coordenadores</a>
+      </div>
+    </div>
+
+    <aside class="ficha__lateral">
+      <section class="cartao cartao--lateral">
+        <h2 class="cartao__titulo">Perfil Coordenador</h2>
+        <p>Acesso à gestão de conteúdos, eventos, alunos e turmas do CECP.</p>
+        <p class="ajuda">O perfil desta conta é fixo e não pode ser alterado.</p>
+      </section>
+    </aside>
+  </div>
+</main>
+{% endblock %}
