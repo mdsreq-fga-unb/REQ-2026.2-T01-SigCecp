@@ -525,7 +525,9 @@ def test_detalhe_exibe_imagens_e_video(cliente, sessoes):
     resposta = cliente.get(f"/conteudo/{publicacao_id}")
 
     assert "/media/publicacoes/foto.png" in resposta.text
-    assert 'alt="foto.png"' in resposta.text
+    # A primeira imagem vira a capa, com texto alternativo descritivo e não o nome do arquivo
+    assert 'alt="Imagem da publicação Com mídias"' in resposta.text
+    assert 'alt="foto.png"' not in resposta.text
     assert "<video" in resposta.text
     assert "/media/publicacoes/clipe.mp4" in resposta.text
 
@@ -543,12 +545,16 @@ def test_detalhe_de_publicacao_inexistente_retorna_404(cliente):
     assert resposta.json()["detail"] == "Publicação não encontrada."
 
 
-@pytest.mark.xfail(
-    reason="Os templates públicos usam 'criado_em', mas o modelo define 'criada_em'; "
-           "a data de publicação nunca é exibida.",
-)
-def test_paginas_publicas_deveriam_exibir_a_data_de_publicacao(cliente, sessoes):
+def test_paginas_publicas_exibem_a_data_de_publicacao(cliente, sessoes):
     publicacao_id = criar(sessoes, "Com data", criada_em=datetime(2026, 3, 5, 10, 0))
 
     assert "05/03/2026" in cliente.get("/").text
     assert "5 de março de 2026" in cliente.get(f"/conteudo/{publicacao_id}").text
+
+def test_lista_publica_usa_a_imagem_enviada_e_nao_repete_o_destaque(cliente, sessoes):
+    criar(sessoes, "Com foto", midias=[("imagem", "publicacoes/capa.png", "capa.png")])
+
+    html = cliente.get("/").text
+
+    assert html.count("/media/publicacoes/capa.png") == 2
+    assert "cartao__capa" not in html

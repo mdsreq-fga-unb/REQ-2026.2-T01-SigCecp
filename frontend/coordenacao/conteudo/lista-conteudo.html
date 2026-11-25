@@ -35,7 +35,7 @@
 
 <header class="topo">
     <div class="container topo__linha">
-        <a class="marca" href="{{ url_for('lista_conteudo') }}"
+        <a class="marca" href="{{ url_for('inicio_coordenacao') }}"
            aria-label="Início da coordenação">
             <img class="marca__logo"
                  src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}"
@@ -56,10 +56,7 @@
                 Ver site público <span aria-hidden="true">↗</span>
             </a>
 
-            <span class="usuario">
-                <span class="usuario__foto" aria-hidden="true"></span>
-                Coordenação
-            </span>
+            {% include "coordenacao/_usuario.html" %}
             {% include "coordenacao/_sair.html" %}
         </div>
     </div>
@@ -67,12 +64,12 @@
 {% endblock %}
 
 {% block corpo %}
-<main class="pagina container">
+<main id="conteudo" tabindex="-1" class="pagina container">
 
     <nav class="trilha" aria-label="Você está em">
         <ol>
             <li>
-                <a href="{{ url_for('lista_conteudo') }}">Coordenação</a>
+                <a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a>
             </li>
             <li aria-current="page">Conteúdos</li>
         </ol>

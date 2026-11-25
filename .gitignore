@@ -239,3 +239,7 @@ __marimo__/
 .streamlit/secrets.toml
 # Node (ESLint)
 node_modules/
+
+# Chave de desenvolvimento e documentos cifrados dos alunos
+backend/.chave_dados_dev
+backend/arquivos/

@@ -1,0 +1,51 @@
+{# Textos usados nas telas de alunos e turmas #}
+
+{# "Segunda e quarta-feira" a partir de ['segunda', 'quarta'] #}
+{% macro dias_texto(dias) -%}
+  {%- set ordem = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'] -%}
+  {%- set nomes = {'segunda': 'segunda', 'terca': 'terça', 'quarta': 'quarta', 'quinta': 'quinta',
+                   'sexta': 'sexta', 'sabado': 'sábado', 'domingo': 'domingo'} -%}
+  {%- set selecionados = ordem | select('in', dias) | list -%}
+  {%- set textos = [] -%}
+  {%- for dia in selecionados -%}{%- set _ = textos.append(nomes[dia]) -%}{%- endfor -%}
+  {%- if textos -%}
+    {%- if selecionados[-1] not in ['sabado', 'domingo'] -%}
+      {%- set textos = textos[:-1] + [textos[-1] ~ '-feira'] -%}
+    {%- endif -%}
+    {%- if textos | length > 1 -%}
+      {{- (textos[:-1] | join(', ') ~ ' e ' ~ textos[-1]) | capitalize -}}
+    {%- else -%}
+      {{- textos[0] | capitalize -}}
+    {%- endif -%}
+  {%- endif -%}
+{%- endmacro %}
+
+{# "14h às 15h30" #}
+{% macro hora(valor) -%}
+  {{- valor.hour }}h{% if valor.minute %}{{ '%02d' % valor.minute }}{% endif -%}
+{%- endmacro %}
+
+{% macro horario_texto(t) -%}
+  {{- hora(t.inicio) }} às {{ hora(t.termino) -}}
+{%- endmacro %}
+
+{% macro turma_texto(t) -%}
+  {{- t.modalidade }} • {{ dias_texto(t.dias) }} • {{ horario_texto(t) -}}
+{%- endmacro %}
+
+{% macro data(valor) -%}
+  {{- valor.strftime('%d/%m/%Y') if valor else 'Não informado' -}}
+{%- endmacro %}
+
+{% macro foto(aluno, tamanho=48) -%}
+  {%- set doc = aluno.documento('foto') -%}
+  {%- if doc -%}
+  <img class="aluno__foto" src="{{ url_for('documento_aluno', aluno_id=aluno.id, documento_id=doc.id) }}" alt="" width="{{ tamanho }}" height="{{ tamanho }}">
+  {%- else -%}
+  <span class="aluno__foto aluno__foto--vazia" aria-hidden="true"></span>
+  {%- endif -%}
+{%- endmacro %}
+
+{% macro situacao(aluno) -%}
+  <span class="etiqueta etiqueta--{{ 'ativo' if aluno.ativo else 'inativo' }}">{{ 'Ativo' if aluno.ativo else 'Inativo' }}</span>
+{%- endmacro %}

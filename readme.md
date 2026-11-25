@@ -340,73 +340,85 @@ O pacote `tzdata` fornece as regras de fuso em ambientes sem base de fusos do si
 
 A documentação de RF20 não define o fuso nem eventos que atravessam a meia-noite. Provisoriamente, início e término são interpretados na data cadastrada.
 
-Se o término for anterior ao início, a duração noturna não pode ser representada corretamente sem uma regra ou data final definida pelo grupo.
+Por isso, eventos e turmas só aceitam término depois do início, no navegador (`assets/js/horarios.js`) e no servidor (schemas de eventos e turmas). Eventos que atravessam a meia-noite dependem de uma regra ou data final definida pelo grupo.
 
-## 9. Gestão de turmas
+## 9. Gestão de turmas e alunos
 
-O módulo de turmas (`backend/turmas/`) atende ao RF03, à edição e à remoção de turmas e, em parte, à associação de alunos (RF06 e RF07).
+O módulo de turmas (`backend/turmas/`) atende ao RF03 e à consulta dos alunos da turma (RF07). O módulo de alunos (`backend/alunos/`) atende à ficha do aluno (RF21 a RF24) e à associação aluno–turma (RF06).
 
 As migrações relacionadas são:
 
 - `0004_cria_turmas`: cria a tabela `turmas`, com modalidade, dias da semana (lista em JSON), horário de início e horário de término.
-- `aee2e4d6d5df_adiciona_coluna_alunos_em_turmas`: adiciona a coluna `alunos` (lista em JSON).
-- `a875dcabae5a_adiciona_alunos_as_turmas`: revisão vazia, sem alterações no banco.
+- `aee2e4d6d5df_adiciona_coluna_alunos_em_turmas` e `a875dcabae5a_adiciona_alunos_as_turmas`: coluna `alunos` com nomes de exemplo, usada antes do cadastro de alunos.
+- `0005_cria_alunos`: cria `alunos`, `aluno_turmas` (vínculo com início e fim, para o histórico) e `aluno_documentos`, e remove a coluna `turmas.alunos`.
+- `0007_versao_do_termo`: guarda em `alunos.termo_versao` a versão do termo aceito; alunos cadastrados antes ficam com "anterior".
 
 ### 9.1. Rotas
 
 | Método | Rota | Finalidade |
 |---|---|---|
 | GET | `/coordenacao/turmas` | Lista as turmas cadastradas. |
-| GET | `/coordenacao/turmas/novo` | Apresenta o formulário de cadastro. |
-| POST | `/coordenacao/turmas/novo` | Cadastra uma turma. |
-| GET | `/coordenacao/turmas/{turma_id}/editar` | Apresenta o formulário de edição. |
-| POST | `/coordenacao/turmas/{turma_id}/editar` | Atualiza a turma. |
-| GET | `/coordenacao/turmas/{turma_id}/remover` | Apresenta a confirmação de remoção. |
-| POST | `/coordenacao/turmas/{turma_id}/remover` | Remove a turma. |
-| GET | `/coordenacao/turmas/{turma_id}/alunos` | Apresenta os alunos da turma. |
-| GET | `/coordenacao/turmas/{turma_id}/alunos/associar` | Apresenta a tela de associar aluno à turma. |
-| POST | `/coordenacao/turmas/{turma_id}/alunos` | Recebe a confirmação da associação. |
+| GET/POST | `/coordenacao/turmas/novo` | Cadastra uma turma. |
+| GET/POST | `/coordenacao/turmas/{turma_id}/editar` | Edita a turma (sem acesso pela tela, DEC34). |
+| GET/POST | `/coordenacao/turmas/{turma_id}/remover` | Remove a turma (sem acesso pela tela, DEC34). |
+| GET | `/coordenacao/turmas/{turma_id}/alunos` | Alunos da turma, inclusive os inativos (DEC23). |
+| GET | `/coordenacao/turmas/{turma_id}/alunos/associar` | Tela de associar um aluno ativo à turma. |
+| POST | `/coordenacao/turmas/{turma_id}/alunos` | Grava a associação (campo `aluno_id`). |
+| GET | `/coordenacao/alunos` | Lista com foto, nome, turma e status; busca por nome, filtro de status e contagem de ativos e inativos. |
+| GET/POST | `/coordenacao/alunos/novo` | Cadastra o aluno (RF21). |
+| GET | `/coordenacao/alunos/{aluno_id}` | Ficha do aluno (RF23), com pendências, anexos, questionário e histórico de turmas. |
+| GET/POST | `/coordenacao/alunos/{aluno_id}/editar` | Edita a ficha, anexa documentos e troca a turma (RF22, DEC35). |
+| GET/POST | `/coordenacao/alunos/{aluno_id}/inativar` | Confirmação e inativação (RF24). |
+| GET | `/coordenacao/alunos/{aluno_id}/documentos/{documento_id}` | Entrega o documento decifrado; `?baixar=true` força o download. |
 
 Todas exigem login de administrador.
 
 ### 9.2. Regras
 
-- Todos os campos são obrigatórios, e é preciso escolher ao menos um dia da semana.
-- Não é permitido cadastrar duas turmas com a mesma modalidade, os mesmos dias e os mesmos horários: o serviço retorna erro 409.
-- Os horários são locais, sem fuso nem frações de segundo.
+- Turmas: todos os campos são obrigatórios, ao menos um dia da semana, e não pode haver duas turmas com a mesma modalidade, os mesmos dias e os mesmos horários (erro 409).
+- O cadastro do aluno só é gravado com os campos obrigatórios do RF21, o nome do responsável legal, a turma e o questionário de prontidão completo (RN35). Se um dado obrigatório não existir, a coordenação escreve "não aplicável".
+- O termo é único (RN40, DEC25), com responsabilidade, dados pessoais e de saúde e uso de imagem, e traz as informações exigidas pela LGPD (arts. 8º, 9º, 11 e 14). Um aceite obrigatório cobre responsabilidade, dados e uso de imagem; sem ele, o cadastro não é feito (como na RN16), e o termo informa isso em destaque (LGPD, art. 9º §3). A ficha guarda a data, a versão do termo (`TERMO_VERSAO`) e o responsável que aceitou. A ficha assinada em papel (RN02) pode ser anexada e aparece como pendência até ser enviada.
+- Formatos (`backend/alunos/validacao.py`), conferidos ao salvar e com máscara no formulário:
+  - **telefone:** DDD válido + 9 dígitos começando com 9 (celular) ou + 8 dígitos começando com 2 a 5 (fixo); aceita o 0 antes do DDD; o campo Celular só aceita celular;
+  - **CPF:** 11 dígitos com dígitos verificadores corretos (do aluno e do responsável);
+  - **CEP:** 8 dígitos;
+  - **nomes:** nome e sobrenome, só com letras;
+  - **datas:** nascimento não pode ser no futuro, e a data de início não pode ser anterior ao nascimento;
+  - os valores são gravados num formato único, como `(61) 99999-0101`, `529.982.247-25` e `73355-001`; nome e telefone da mãe aceitam "não aplicável".
+- Os documentos são opcionais (RN39): fotos em JPG, PNG ou WEBP; os demais também em PDF (RN42); até 10 MB cada.
+- Descrição de saúde e laudo só aparecem com "Sim" em problema de saúde (RN38).
+- Pendências da ficha: ficha assinada, atestado e comprovante sempre; certificado acima da faixa branca (RN36); laudo quando há problema de saúde (RN37).
+- O aluno tem uma turma atual. Trocar a turma na ficha, ou associar o aluno a outra turma pela tela da turma, encerra o vínculo anterior e mantém o histórico (DEC35).
+- A inativação é manual, pede confirmação e não apaga dados nem histórico (RN01, RN47, RN48). Aluno inativo não pode ser associado a outra turma. Ainda não existe reativação (PEN23).
+- Cadastro, edição, associação e inativação são registrados no log `sigcecp.alunos`, com data e usuário (RNF09).
 
-### 9.3. Alunos da turma (mock)
+### 9.3. Dados sensíveis (RNF12)
 
-O cadastro de alunos (RF21) ainda não existe. Até lá, os alunos são nomes da lista `alunos_mock`, em `backend/turmas/services.py`:
-
-- toda turma nova é criada com a lista `alunos_mock` na coluna `alunos`;
-- a página de alunos da turma exibe a lista `alunos_mock`.
+- A descrição de saúde e o questionário ficam cifrados no banco (tipo `TextoCifrado`, em `backend/cripto.py`).
+- Os documentos ficam cifrados em `backend/arquivos/alunos/`, fora da pasta pública `/media`, e só saem pela rota autenticada de documentos.
+- A chave é a variável `DADOS_CHAVE` (obrigatória em produção). Gere uma com `python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"`. Em desenvolvimento, sem a variável, o sistema cria `backend/.chave_dados_dev`. Sem a mesma chave, os dados gravados não podem ser lidos: guarde-a junto com o backup do banco.
 
 ### 9.4. Páginas
 
-Os templates ficam em `frontend/coordenacao/turmas/`:
+Os templates ficam em `frontend/coordenacao/turmas/` e `frontend/coordenacao/alunos/`, seguindo o protótipo aprovado em 10/11/2026:
 
-| Template | Estilo | Conteúdo |
-|---|---|---|
-| `lista-turma.html` | `lista-evento.css` | Tabela com modalidade, dias e horário, e o acesso aos alunos da turma. As ações de editar e remover estão comentadas no template. |
-| `cadastrar-turma.html` e `editar-turma.html` | `cadastrar-turma.css` | Formulários com os mesmos campos. |
-| `remover-turma.html` | `cadastrar-turma.css` | Confirmação antes da remoção definitiva. |
-| `ver-alunos.html` | `ver-alunos.css` | Dados da turma e lista dos alunos associados. |
-| `associar-alunos.html` | `associar-aluno-turmas.css` | Tela de associar aluno à turma, conforme o protótipo. |
+| Template | Conteúdo |
+|---|---|
+| `turmas/lista-turma.html` | Turmas, com as abas Alunos e Turmas. |
+| `turmas/ver-alunos.html` | Dados da turma e alunos associados, com acesso à ficha. |
+| `turmas/associar-alunos.html` | Seleção do aluno e da turma, com o resumo da turma. |
+| `alunos/lista-aluno.html` | Contagem, busca, filtro de status e lista de alunos. |
+| `alunos/form-aluno.html` | Ficha em oito seções, usada no cadastro e na edição. |
+| `alunos/ficha-aluno.html` | Ficha completa, pendências e histórico; pode ser impressa (RN45). |
+| `alunos/inativar-aluno.html` | Confirmação da inativação. |
 
-A tela de associação segue o protótipo aprovado em 10/11/2026:
-
-- menu do topo com Conteúdos, Eventos e Alunos / Turmas;
-- cartão do aluno;
-- seletor com as turmas cadastradas, no formato "Judô • Segunda e quarta-feira • 14h às 15h", já com a turma da URL selecionada;
-- resumo com modalidade, dias e horários, atualizado no navegador ao trocar de turma;
-- orientações "Antes de confirmar" e os botões Cancelar e Confirmar associação.
+O termo único (`alunos/_termo.html`) é um modelo provisório, montado a partir do termo da ficha de papel e com as informações exigidas pela LGPD (controlador, finalidade, dados de saúde, compartilhamento, guarda, direitos e revogação), até o CECP enviar o definitivo (RN40).
 
 ### 9.5. Pendências
 
-- **Associação ainda não grava.** O cartão do aluno mostra "Nenhum aluno selecionado", porque não há cadastro de alunos. O botão Confirmar associação envia para `POST /coordenacao/turmas/{turma_id}/alunos`, que hoje só reapresenta a tela, sem gravar. A função `associar_alunos` do serviço já existe para quando houver alunos.
-- **Edição apaga os alunos.** `atualizar_turma` grava todos os campos do formulário, inclusive `alunos`, que chega vazio. Editar uma turma substitui a lista de alunos por uma lista vazia.
-- A quantidade de alunos por turma e o acesso à ficha do aluno dependem do cadastro de alunos (RF21 a RF24).
+- A reativação de aluno inativo não existe (PEN23).
+- O termo definitivo depende do modelo do CECP (RN40) e de revisão jurídica.
+- Editar e remover turma continuam sem acesso pela tela (DEC34).
 
 ## 10. Testes e linters
 
@@ -493,7 +505,7 @@ Somente `/coordenacao/*` exige login; todo o restante do site é público. O adm
 
 ### 13.1. Configuração
 
-1. Copie `.env.example` para `.env` e defina `AUTH_SECRET_KEY` (obrigatória em produção; `python -c "import secrets; print(secrets.token_urlsafe(48))"`). Em produção use `APP_ENV=production` e sirva por HTTPS.
+1. Copie `.env.example` para `.env` e defina `AUTH_SECRET_KEY` e `DADOS_CHAVE` (seção 9.3), as duas obrigatórias em produção (`AUTH_SECRET_KEY`: `python -c "import secrets; print(secrets.token_urlsafe(48))"`). Em produção use `APP_ENV=production` e sirva por HTTPS.
 2. Aplique as migrações (`python -m alembic upgrade head`); a revisão `0003_cria_administradores` cria as tabelas de administrador e de refresh tokens.
 3. Crie o administrador (a senha é pedida no terminal, mínimo de 12 caracteres e no máximo 72 bytes):
 
@@ -502,7 +514,20 @@ python -m backend.auth.criar_admin --usuario CECP0001
 python -m backend.auth.criar_admin --usuario CECP0001 --redefinir-senha   # troca a senha e encerra as sessões
 ```
 
-### 13.2. Rotas
+### 13.2. Perfis e criação de coordenadores
+
+- **Root:** conta criada pelo terminal (`criar_admin`, RN21). Usa toda a área administrativa e é o único que gerencia contas, em **Coordenadores** no menu. A migração `0006_perfil_administradores` torna Root as contas que já existiam.
+- **Coordenador:** conta criada pelo Root em `/coordenacao/coordenadores/novo`, com nome completo, usuário e senha inicial (política de `security.validar_politica_senha`). O perfil é fixo: o coordenador não cria contas nem vê o menu Coordenadores, e as rotas de coordenadores respondem 403 para ele.
+- A confirmação da conta criada não mostra a senha; o Root entrega as credenciais por um canal privado.
+- Depois do login, todos entram pela **Central da coordenação** (`/coordenacao`, aberta também pelo logo do topo), com as ações de conteúdos, eventos, alunos e turmas. No topo, o selo "Coordenação" é o atalho do Root para a área de Coordenadores.
+
+| Método | Rota | Finalidade |
+|---|---|---|
+| GET | `/coordenacao/coordenadores` | Lista os coordenadores, com busca por nome ou usuário e filtro de status. |
+| GET/POST | `/coordenacao/coordenadores/novo` | Cria o coordenador. |
+| GET | `/coordenacao/coordenadores/{id}/criado` | Confirmação da conta criada. |
+
+### 13.3. Rotas
 
 | Método | Rota | Finalidade |
 |---|---|---|
@@ -512,9 +537,8 @@ python -m backend.auth.criar_admin --usuario CECP0001 --redefinir-senha   # troc
 
 Sessão: access token (JWT, 15 min) e refresh token (opaco, 7 dias de inatividade, teto de 30 dias) em cookies `HttpOnly` distintos. Com o access expirado, a renovação é transparente (`backend/auth/middleware.py`).
 
-### 13.3. Ao criar novas rotas ou formulários administrativos
+### 13.4. Ao criar novas rotas ou formulários administrativos
 
 - Rotas sob `/coordenacao` devem estar em um router com `dependencies=PROTECAO_ADMIN` (`backend.auth.dependencies`). Um teste (`test_todas_as_rotas_administrativas_exigem_admin`) falha se alguma ficar sem proteção.
 - Todo `<form method="post">` administrativo deve conter `{{ csrf_input }}`.
 - Nos testes de rotas administrativas a autenticação é substituída automaticamente; para testá-la de verdade use `pytestmark = pytest.mark.auth_real`.
-

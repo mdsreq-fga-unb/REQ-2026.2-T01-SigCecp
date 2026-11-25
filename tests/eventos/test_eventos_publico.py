@@ -49,17 +49,17 @@ def test_listagem_vazia(consulta_publica):
 def test_listagem_exibe_eventos_reais_e_links(consulta_publica, dados_evento):
     cliente, sessoes = consulta_publica
     primeiro_id = criar_registro(
-        sessoes, dados_evento, titulo="Primeiro encontro", data="2026-11-10",
+        sessoes, dados_evento, titulo="Primeiro encontro", data="2099-11-10",
     )
     segundo_id = criar_registro(
-        sessoes, dados_evento, titulo="Segundo encontro", data="2026-11-20",
+        sessoes, dados_evento, titulo="Segundo encontro", data="2099-11-20",
     )
 
     resposta = cliente.get("/eventos")
 
     assert resposta.status_code == 200
     assert resposta.text.index("Primeiro encontro") < resposta.text.index("Segundo encontro")
-    assert "10/11/2026" in resposta.text
+    assert "10/11/2099" in resposta.text
     assert "Quadra CECP" in resposta.text
     assert f'/eventos/{primeiro_id}' in resposta.text
     assert f'/eventos/{segundo_id}' in resposta.text
@@ -160,3 +160,15 @@ def test_instante_sem_fuso_e_rejeitado():
 
     with pytest.raises(ValueError, match="fuso horário"):
         calcular_estado(evento, datetime(2026, 11, 15, 9, 0))
+
+
+def test_proximos_eventos_vem_antes_dos_encerrados(consulta_publica, dados_evento):
+    cliente, sessoes = consulta_publica
+    criar_registro(sessoes, dados_evento, titulo="Festival antigo", data="2020-05-10")
+    criar_registro(sessoes, dados_evento, titulo="Copa futura", data="2099-05-10")
+
+    html = cliente.get("/eventos").text
+
+    assert html.index("Próximos eventos") < html.index("Copa futura") < html.index("Eventos encerrados")
+    assert html.index("Eventos encerrados") < html.index("Festival antigo")
+    assert ">MAI<" in html

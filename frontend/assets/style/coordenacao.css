@@ -38,9 +38,9 @@ td{padding:22px;border-top:1px solid var(--line);font-size:13px}td:first-child{f
 .lnk{color:var(--red);background:none;border:0;font:inherit;font-size:13px;font-weight:500;cursor:pointer;padding:0}
 .contagem{padding:18px 22px;font-size:12px;color:var(--mut);border-top:1px solid var(--line)}
 .grade{display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:30px;align-items:start}
-@media(max-width:900px){.grade{grid-template-columns:1fr}nav .ativo{position:static;transform:none;padding:0}.some-mobile{display:none}}
+
 .sec{margin-bottom:24px}.sec h2{font-size:20px;font-weight:400;margin:0 0 24px}.sec h2 span{font-size:12px;font-weight:600;color:var(--mut);margin-right:14px}
-.duas{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:600px){.duas{grid-template-columns:1fr}}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .pw{position:relative}.pw input{padding-right:42px}.pw button{position:absolute;right:6px;top:5px;width:32px;height:32px;border:0;background:none;cursor:pointer;color:var(--mut)}
 .lateral h3{font-size:20px;font-weight:400;margin:14px 0 24px}.lateral p{font-size:13px;color:var(--mut);margin:0 0 16px}.lateral hr{border:0;border-top:1px solid var(--line);margin:16px 0}
 .acoes{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:20px;flex-wrap:wrap;font-size:12px;color:var(--mut)}

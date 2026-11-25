@@ -45,6 +45,11 @@ class Publicacao(Base):
         cascade="all, delete-orphan",
     )
 
+    @property
+    def imagem_capa(self) -> "PublicacaoMidia | None":
+        """Primeira imagem enviada; vira a capa na lista e no detalhe do site público."""
+        return next((m for m in self.midias if m.tipo == "imagem"), None)
+
   
 
 class PublicacaoMidia(Base):

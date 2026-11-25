@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block titulo %}Central da coordenação | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/inicio.css') }}">
+{% endblock %}
+
+{% block cabecalho %}
+<header class="topo">
+  <div class="container topo__linha">
+    <a class="marca" href="{{ url_for('inicio_coordenacao') }}" aria-label="Centro Esportivo Cultural de Planaltina-DF, início da coordenação">
+      <img class="marca__logo" src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="44" height="44">
+      <span class="marca__nome">Centro Esportivo Cultural<br>de Planaltina-DF</span>
+    </a>
+
+    {% with area = 'inicio' %}{% include "coordenacao/_menu.html" %}{% endwith %}
+
+    <div class="topo__direita">
+      <a class="topo__link" href="{{ url_for('modulo_eventos_publico') }}" target="_blank" rel="noopener">Ver site público <span aria-hidden="true">↗</span></a>
+      {% include "coordenacao/_usuario.html" %}
+      {% include "coordenacao/_sair.html" %}
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{# Cartão de uma área: ação principal em destaque e as demais como links #}
+{% macro area_cartao(titulo, descricao, icone, principal, links) -%}
+<section class="central__cartao" aria-labelledby="titulo-{{ icone }}">
+  <div class="central__cabecalho">
+    <span class="central__icone" aria-hidden="true">{{ caller() }}</span>
+    <div>
+      <h2 class="central__titulo" id="titulo-{{ icone }}">{{ titulo }}</h2>
+      <p class="central__descricao">{{ descricao }}</p>
+    </div>
+  </div>
+  <div class="central__acoes">
+    <a class="botao botao--vermelho central__principal" href="{{ principal[1] }}">+ {{ principal[0] }}</a>
+    <ul class="central__links">
+      {% for rotulo, destino in links %}
+      <li><a href="{{ destino }}">{{ rotulo }} <span aria-hidden="true">→</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{%- endmacro %}
+
+{% block corpo %}
+<main id="conteudo" tabindex="-1" class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
+      <li aria-current="page">Início</li>
+    </ol>
+  </nav>
+
+  <h1 class="pagina__titulo">Central da coordenação</h1>
+  <p class="pagina__subtitulo">Acesse as áreas do CECP e escolha a ação que deseja realizar.</p>
+
+  <h2 class="central__pergunta">O que você deseja fazer?</h2>
+
+  <div class="central__grade">
+    {% call area_cartao(
+      'Conteúdos institucionais',
+      'Gerencie as publicações que apresentam o CECP à comunidade.',
+      'conteudos',
+      ('Publicar conteúdo', url_for('publicar_conteudo')),
+      [('Ver conteúdos publicados', url_for('lista_conteudo'))]) %}
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="3" width="12" height="15" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h10"/></svg>
+    {% endcall %}
+
+    {% call area_cartao(
+      'Eventos',
+      'Organize as informações dos eventos e mantenha a comunidade informada.',
+      'eventos',
+      ('Publicar evento', url_for('publicar_evento')),
+      [('Ver eventos publicados', url_for('lista_evento'))]) %}
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01"/></svg>
+    {% endcall %}
+
+    {% call area_cartao(
+      'Alunos',
+      'Cadastre alunos e mantenha os dados e a documentação atualizados.',
+      'alunos',
+      ('Cadastrar aluno', url_for('cadastrar_aluno')),
+      [('Ver alunos', url_for('lista_aluno'))]) %}
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 4a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6.3"/></svg>
+    {% endcall %}
+
+    {% call area_cartao(
+      'Turmas',
+      'Organize as modalidades, os dias e os horários das turmas do CECP.',
+      'turmas',
+      ('Cadastrar turma', url_for('cadastrar_turma')),
+      [('Ver turmas', url_for('lista_turma'))]) %}
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></svg>
+    {% endcall %}
+  </div>
+</main>
+{% endblock %}

@@ -9,9 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', path='style/coordenacao.css') }}">
 <link rel="icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/png">
+  <link rel="stylesheet" href="{{ url_for('static', path='style/acessibilidade.css') }}">
 </head>
 <body>
-<main class="estreito">
+<main id="conteudo" tabindex="-1" class="estreito">
   <div class="crumb">Coordenação / Acesso</div>
   <h1>{{ titulo or 'Acesso restrito' }}</h1>
   <p class="sub">Esta área é exclusiva para a Coordenação do CECP.</p>

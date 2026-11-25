@@ -27,10 +27,6 @@ def test_aceita_turma_valida():
     assert turma.termino == time(15, 0)
 
 
-def test_alunos_comeca_vazio_quando_nao_informado():
-    assert TurmaCreate(**dados()).alunos == []
-
-
 def test_modalidade_vazia_e_recusada():
     with pytest.raises(ValidationError):
         TurmaCreate(**dados(modalidade=""))
@@ -68,3 +64,9 @@ def test_horario_com_fuso_e_recusado():
 def test_horario_com_fracao_de_segundo_e_recusado():
     with pytest.raises(ValidationError):
         TurmaCreate(**dados(termino=time(15, 0, 0, 500)))
+
+
+@pytest.mark.parametrize("termino", ["13:00", "14:00"])
+def test_termino_antes_ou_igual_ao_inicio_e_recusado(termino):
+    with pytest.raises(ValidationError, match="término deve ser depois"):
+        TurmaCreate(**dados(termino=termino))

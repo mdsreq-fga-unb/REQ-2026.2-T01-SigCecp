@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% import "coordenacao/alunos/_macros.html" as m with context %}
+
+{% block titulo %}Alunos | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/alunos.css') }}">
+{% endblock %}
+
+{% block cabecalho %}{% include "coordenacao/alunos/_topo.html" %}{% endblock %}
+
+{% block corpo %}
+{% set total = contagem.ativos + contagem.inativos %}
+<main id="conteudo" tabindex="-1" class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
+      <li aria-current="page">Alunos</li>
+    </ol>
+  </nav>
+
+  <header class="pagina__cabecalho">
+    <div>
+      <h1 class="pagina__titulo">Alunos</h1>
+      <p class="pagina__subtitulo">Consulte os alunos cadastrados e selecione um aluno para acessar sua ficha.</p>
+    </div>
+    <a class="botao botao--vermelho" href="{{ url_for('cadastrar_aluno') }}">+ Cadastrar aluno</a>
+  </header>
+
+  {# Contagem de ativos e inativos (RN46) #}
+  <section class="resumo" aria-label="Resumo dos alunos">
+    <dl class="resumo__item"><dt>Total de alunos</dt><dd>{{ total }} {{ 'aluno' if total == 1 else 'alunos' }}</dd></dl>
+    <dl class="resumo__item"><dt>Ativos</dt><dd>{{ contagem.ativos }} {{ 'aluno' if contagem.ativos == 1 else 'alunos' }}</dd></dl>
+    <dl class="resumo__item"><dt>Inativos</dt><dd>{{ contagem.inativos }} {{ 'aluno' if contagem.inativos == 1 else 'alunos' }}</dd></dl>
+  </section>
+
+  <form class="filtros" method="get" action="{{ url_for('lista_aluno') }}" role="search">
+    <div class="campo filtros__busca">
+      <label for="busca">Buscar aluno</label>
+      <input type="text" id="busca" name="busca" value="{{ busca }}" placeholder="Buscar por nome completo">
+    </div>
+    <div class="campo">
+      <label for="situacao">Status</label>
+      <select id="situacao" name="situacao">
+        <option value="todos" {{ 'selected' if situacao == 'todos' }}>Todos os status</option>
+        <option value="ativos" {{ 'selected' if situacao == 'ativos' }}>Ativos</option>
+        <option value="inativos" {{ 'selected' if situacao == 'inativos' }}>Inativos</option>
+      </select>
+    </div>
+    <button class="botao botao--claro" type="submit">Buscar</button>
+  </form>
+
+  <div class="lista__cabecalho">
+    <h2 class="lista__titulo">Alunos cadastrados</h2>
+    <span class="lista__contagem">{{ alunos | length }} {{ 'aluno encontrado' if alunos | length == 1 else 'alunos encontrados' }}</span>
+  </div>
+
+  <div class="tabela__container">
+    <table class="tabela">
+      <caption class="visualmente-oculto">Alunos cadastrados</caption>
+      <thead>
+        <tr>
+          <th scope="col">Aluno</th>
+          <th scope="col">Turma</th>
+          <th scope="col">Status</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for aluno in alunos %}
+        {# Aluno ativo cuja turma foi removida aparece sem turma; só o inativo mostra o último vínculo #}
+        {% set vinculo = aluno.vinculo_atual or (aluno.ultimo_vinculo if not aluno.ativo else none) %}
+        <tr>
+          <td><div class="aluno">{{ m.foto(aluno) }}<span class="aluno__nome">{{ aluno.nome }}</span></div></td>
+          <td>
+            {% if vinculo %}
+            <strong>{{ vinculo.turma.modalidade }}</strong>
+            <span class="tabela__detalhe">{{ m.dias_texto(vinculo.turma.dias) }} • {{ m.horario_texto(vinculo.turma) }}{% if not aluno.ativo %} • último vínculo preservado{% endif %}</span>
+            {% else %}
+            <span class="tabela__detalhe">Sem turma</span>
+            {% endif %}
+          </td>
+          <td>{{ m.situacao(aluno) }}</td>
+          <td><a class="linha__link" href="{{ url_for('ficha_aluno', aluno_id=aluno.id) }}">Ver ficha do aluno <span aria-hidden="true">→</span></a></td>
+        </tr>
+        {% else %}
+        <tr>
+          <td class="tabela__vazio" colspan="4">{{ 'Nenhum aluno encontrado com esses filtros.' if busca or situacao != 'todos' else 'Nenhum aluno cadastrado ainda.' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="tabela__rodape">{{ total }} {{ 'aluno' if total == 1 else 'alunos' }} • {{ contagem.ativos }} {{ 'ativo' if contagem.ativos == 1 else 'ativos' }} e {{ contagem.inativos }} {{ 'inativo' if contagem.inativos == 1 else 'inativos' }}</p>
+  </div>
+</main>
+{% endblock %}

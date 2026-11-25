@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ url_for('static', path='style/detalhe-conteudo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', path='style/imagem-tela-cheia.css') }}">
   <link rel="icon" href="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" type="image/png">
+  <link rel="stylesheet" href="{{ url_for('static', path='style/acessibilidade.css') }}">
 </head>
 <body>
   <header class="topo">
@@ -26,7 +27,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="conteudo" tabindex="-1">
     {% set meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'] %}
 
     <article class="detalhe container" aria-labelledby="conteudo-titulo">
@@ -35,16 +36,26 @@
 
       <p class="detalhe__meta">
         Institucional
-        {% if conteudo.criado_em %}• {{ conteudo.criado_em.day }} de {{ meses[conteudo.criado_em.month - 1] }} de {{ conteudo.criado_em.year }}{% endif %}
+        {% if conteudo.criada_em %}• {{ conteudo.criada_em.day }} de {{ meses[conteudo.criada_em.month - 1] }} de {{ conteudo.criada_em.year }}{% endif %}
       </p>
 
       <h1 id="conteudo-titulo" class="detalhe__titulo">{{ conteudo.titulo }}</h1>
 
+      {% set capa = conteudo.imagem_capa %}
+      {% if capa %}
+      {# A primeira imagem é a capa; as demais ficam na galeria abaixo do texto #}
+      <figure class="detalhe__capa-foto">
+        <button type="button" class="tela-cheia__gatilho" data-tela-cheia aria-label="Ver imagem em tela cheia">
+          <img src="{{ url_for('media', path=capa.caminho) }}" alt="Imagem da publicação {{ conteudo.titulo }}">
+        </button>
+      </figure>
+      {% else %}
       <div class="detalhe__capa" aria-hidden="true">
         <p class="selo selo--amarelo">Esporte • Cultura • Comunidade</p>
         <p class="detalhe__capa-frase">{{ conteudo.titulo }}</p>
         <p class="detalhe__capa-assinatura">Centro Esportivo Cultural de Planaltina</p>
       </div>
+      {% endif %}
 
       <div class="detalhe__layout">
         <div class="detalhe__principal">
@@ -58,16 +69,17 @@
           {% endif %}
 
           {# Imagens: só aparecem se o modelo tiver "imagens" (cada uma com url e, opcionalmente, legenda) #}
-{% if conteudo.midias %}
+{% set outras = conteudo.midias | reject('equalto', capa) | list %}
+{% if outras %}
 <div class="detalhe__midias">
-  {% for midia in conteudo.midias %}
+  {% for midia in outras %}
 
     {% if midia.tipo == "imagem" %}
     <figure class="detalhe__figura">
       <button type="button" class="tela-cheia__gatilho" data-tela-cheia aria-label="Ver imagem em tela cheia">
         <img
           src="{{ url_for('media', path=midia.caminho) }}"
-          alt="{{ midia.nome_original }}"
+          alt="Imagem {{ loop.index + 1 }} da publicação {{ conteudo.titulo }}"
           loading="lazy"
         >
       </button>
@@ -110,7 +122,6 @@
       <nav class="rodape__nav" aria-label="Rodapé">
         <a href="/">Institucional</a>
         <a href="/eventos">Eventos</a>
-        <a href="/coordenacao/conteudo">Acesso da coordenação</a>
       </nav>
     </div>
 

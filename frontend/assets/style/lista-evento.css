@@ -1,12 +1,8 @@
 
 
-
-
 .pagina {
   padding-block: 28px 64px;
 }
-
-
 
 .eventos__cabecalho {
   display: flex;
@@ -41,7 +37,6 @@
   color: var(--cinza-texto);
   line-height: 1.5;
 }
-
 
 .botao-novo {
   display: inline-flex;
@@ -81,9 +76,6 @@
   outline-offset: 3px;
 }
 
-
-
-
 .eventos__resumo {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -110,9 +102,6 @@
   color: var(--preto);
 }
 
-
-
-
 .eventos__lista-cabecalho {
   display: flex;
   justify-content: space-between;
@@ -135,9 +124,6 @@
   text-align: right;
 }
 
-
-
-
 .tabela__container {
   width: 100%;
   overflow-x: auto;
@@ -153,9 +139,6 @@
   border-collapse: collapse;
   table-layout: fixed;
 }
-
-
-
 
 .tabela-eventos th:nth-child(1),
 .tabela-eventos td:nth-child(1) {
@@ -182,9 +165,6 @@
   width: 16%;
 }
 
-
-
-
 .tabela-eventos thead {
   background: #eeeeec;
 }
@@ -201,9 +181,6 @@
   white-space: nowrap;
 }
 
-
-
-
 .tabela-eventos td {
   padding: 24px 20px;
   border-bottom: 1px solid #dedede;
@@ -213,9 +190,6 @@
 .tabela-eventos tbody tr:last-child td {
   border-bottom: none;
 }
-
-
-
 
 .evento__informacao {
   display: flex;
@@ -240,9 +214,6 @@
   color: var(--preto);
 }
 
-
-
-
 .estado {
   display: inline-flex;
   align-items: center;
@@ -264,9 +235,6 @@
   border-radius: 50%;
 }
 
-
-
-
 .estado--breve {
   background: #f0f0ee;
   color: #333333;
@@ -275,9 +243,6 @@
 .estado--breve .estado__ponto {
   background: #e21d2b;
 }
-
-
-
 
 .estado--andamento {
   background: #fff4c9;
@@ -288,9 +253,6 @@
   background: #252525;
 }
 
-
-
-
 .estado--encerrado {
   background: #eeeeec;
   color: #333333;
@@ -299,9 +261,6 @@
 .estado--encerrado .estado__ponto {
   background: #777777;
 }
-
-
-
 
 .evento__acoes {
   display: flex;
@@ -344,9 +303,6 @@
   text-decoration: underline;
 }
 
-
-
-
 .tabela__rodape {
   padding: 18px;
   border-top: 1px solid #dedede;
@@ -355,9 +311,6 @@
   color: var(--cinza-claro);
 }
 
-
-
-
 .eventos__observacao {
   margin: 22px 0 0;
   font-size: 10px;
@@ -365,62 +318,3 @@
   color: var(--cinza-claro);
 }
 
-
-
-
-@media (max-width: 900px) {
-
-  .eventos__resumo {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .eventos__cabecalho {
-    margin-bottom: 32px;
-  }
-
-  .eventos__introducao h1 {
-    font-size: 30px;
-  }
-
-}
-
-@media (max-width: 600px) {
-
-  .pagina-eventos {
-    padding: 22px 12px;
-  }
-
-  .eventos__cabecalho {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
-  }
-
-  .eventos__introducao h1 {
-    font-size: 27px;
-  }
-
-  .botao-novo {
-    align-self: flex-start;
-  }
-
-  .eventos__resumo {
-    gap: 10px;
-  }
-
-  .resumo__card {
-    padding: 12px;
-    min-height: 50px;
-  }
-
-  .eventos__lista-cabecalho {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .eventos__lista-cabecalho p {
-    text-align: left;
-  }
-
-}

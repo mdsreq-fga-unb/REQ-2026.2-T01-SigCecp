@@ -6,6 +6,7 @@ from backend.auth import models as auth_models  # noqa: F401
 from backend.eventos import models as eventos_models  # noqa: F401
 from backend.publicacoes import models as publicacoes_models  # noqa: F401
 from backend.turmas import models as turmas_models  # noqa: F401
+from backend.alunos import models as alunos_models  # noqa: F401
 
 target_metadata = Base.metadata
 

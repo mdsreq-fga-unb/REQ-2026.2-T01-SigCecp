@@ -4,6 +4,12 @@ from fastapi import APIRouter, Depends, Form, Request
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
+from backend.alunos.services import (
+    alunos_da_turma,
+    alunos_para_associar,
+    associar_aluno_turma,
+    contar_alunos_por_turma,
+)
 from backend.auth.dependencies import PROTECAO_ADMIN
 from backend.config import templates
 from backend.database import get_db
@@ -14,7 +20,6 @@ from backend.turmas.services import (
     criar_turma,
     deletar_turma,
     listar_turmas,
-    alunos_mock,
 )
 
 # Todas as rotas deste router são administrativas e exigem login.
@@ -32,7 +37,7 @@ def lista_turmas_pagina(request: Request, db: Session = Depends(get_db)):
     return templates.TemplateResponse(
         request=request,
         name="coordenacao/turmas/lista-turma.html",
-        context={"turmas": turmas},
+        context={"turmas": turmas, "alunos_por_turma": contar_alunos_por_turma(db)},
     )
 
 
@@ -113,7 +118,7 @@ def confirmar_remocao_turma(
     return templates.TemplateResponse(
         request=request,
         name="coordenacao/turmas/remover-turma.html",
-        context={"turma": turma},
+        context={"turma": turma, "alunos": alunos_da_turma(db, turma_id)},
     )
 
 
@@ -144,35 +149,51 @@ def ver_alunos_associados(
     return templates.TemplateResponse(
         request=request,
         name="coordenacao/turmas/ver-alunos.html",
-        context={"turma": turma, "alunos": alunos_mock},
+        context={"turma": turma, "alunos": alunos_da_turma(db, turma_id), "aviso": request.query_params.get("aviso")},
     )
 
 #---------------------------
-# Associar Alunos
+# Associar Alunos (RF06)
 #---------------------------
-@router.get("/{turma_id}/alunos/associar")
+def _tela_associar(request: Request, db: Session, turma_id: int, erro: str | None = None, status_code: int = 200):
+    turma = buscar_turma(db, turma_id)
+    return templates.TemplateResponse(
+        request=request,
+        name="coordenacao/turmas/associar-alunos.html",
+        context={
+            "turma": turma,
+            "turmas": listar_turmas(db),
+            "alunos": alunos_para_associar(db, turma_id),
+            "aluno_escolhido": request.query_params.get("aluno"),
+            "erro": erro,
+        },
+        status_code=status_code,
+    )
+
+
+@router.get("/{turma_id}/alunos/associar", name="associar_alunos")
 def associar_alunos(
     turma_id: int,
     request: Request,
     db: Session = Depends(get_db),
 ):
-    turma = buscar_turma(db, turma_id)
-    return templates.TemplateResponse(
-        request=request,
-        name="coordenacao/turmas/associar-alunos.html",
-        context={"turma": turma, "turmas": listar_turmas(db)},
-    )
+    return _tela_associar(request, db, turma_id)
 
-@router.post("/{turma_id}/alunos")
+
+@router.post("/{turma_id}/alunos", name="salvar_alunos_associados")
 def salvar_alunos_associados(
     turma_id: int,
     request: Request,
+    aluno_id: Annotated[str, Form()] = "",
     db: Session = Depends(get_db),
 ):
-    turma = buscar_turma(db, turma_id)
-    return templates.TemplateResponse(
-        request=request,
-        name="coordenacao/turmas/associar-alunos.html",
-        context={"turma": turma},
+    buscar_turma(db, turma_id)
+    if not aluno_id.isdigit():
+        return _tela_associar(request, db, turma_id, "Selecione o aluno que será associado à turma.", 422)
+
+    admin = getattr(request.state, "admin", None)
+    associar_aluno_turma(db, turma_id, int(aluno_id), getattr(admin, "usuario", "coordenação"))
+    return RedirectResponse(
+        str(request.url_for("ver_alunos_associados", turma_id=turma_id)) + "?aviso=associado",
+        status_code=303,
     )
-    

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block titulo %}Coordenadores | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/alunos.css') }}">
+{% endblock %}
+
+{% block cabecalho %}{% include "coordenacao/coordenadores/_topo.html" %}{% endblock %}
+
+{% block corpo %}
+{% set total = coordenadores | length %}
+<main id="conteudo" tabindex="-1" class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Root</a></li>
+      <li aria-current="page">Coordenadores</li>
+    </ol>
+  </nav>
+
+  <header class="pagina__cabecalho">
+    <div>
+      <h1 class="pagina__titulo">Coordenadores do CECP</h1>
+      <p class="pagina__subtitulo">Crie e gerencie as contas de acesso dos coordenadores.</p>
+    </div>
+    <a class="botao botao--vermelho" href="{{ url_for('criar_coordenador') }}">+ Criar coordenador</a>
+  </header>
+
+  <form class="filtros filtros--coordenadores" method="get" action="{{ url_for('lista_coordenador') }}" role="search">
+    <div class="campo filtros__busca">
+      <label for="busca">Buscar coordenador</label>
+      <input type="text" id="busca" name="busca" value="{{ busca }}" placeholder="Buscar por nome ou usuário">
+    </div>
+    <div class="campo">
+      <label for="situacao">Status</label>
+      <select id="situacao" name="situacao">
+        <option value="todos" {{ 'selected' if situacao == 'todos' }}>Todos os status</option>
+        <option value="ativos" {{ 'selected' if situacao == 'ativos' }}>Ativos</option>
+        <option value="inativos" {{ 'selected' if situacao == 'inativos' }}>Inativos</option>
+      </select>
+    </div>
+    <button class="botao botao--claro" type="submit">Buscar</button>
+  </form>
+
+  <div class="lista__cabecalho">
+    <h2 class="lista__titulo">Todos os coordenadores</h2>
+  </div>
+
+  <div class="tabela__container">
+    <table class="tabela">
+      <caption class="visualmente-oculto">Coordenadores cadastrados</caption>
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Usuário</th>
+          <th scope="col">Perfil</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for conta in coordenadores %}
+        <tr>
+          <td><strong>{{ conta.nome or 'Nome não informado' }}</strong></td>
+          <td>{{ conta.usuario }}</td>
+          <td>Coordenador</td>
+          <td><span class="etiqueta etiqueta--{{ 'ativo' if conta.ativo else 'inativo' }}">{{ 'Ativo' if conta.ativo else 'Inativo' }}</span></td>
+        </tr>
+        {% else %}
+        <tr>
+          <td class="tabela__vazio" colspan="4">{{ 'Nenhum coordenador encontrado com esses filtros.' if busca or situacao != 'todos' else 'Nenhum coordenador cadastrado ainda.' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="tabela__rodape">{{ total }} {{ 'coordenador' if total == 1 else 'coordenadores' }}</p>
+  </div>
+  <p class="nota-rodape">Contas inativas não podem acessar a área administrativa.</p>
+</main>
+{% endblock %}

@@ -15,6 +15,11 @@ class Administrador(Base):
 
     usuario: Mapped[str] = mapped_column(String(50), nullable=False, unique=True, index=True)
 
+    nome: Mapped[str | None] = mapped_column(String(200), nullable=True)
+
+    # "root" gerencia as contas; "coordenador" usa a área administrativa e não cria contas
+    perfil: Mapped[str] = mapped_column(String(20), nullable=False, default="coordenador", server_default="coordenador")
+
     senha_hash: Mapped[str] = mapped_column(String(255), nullable=False)
 
     ativo: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default=true())

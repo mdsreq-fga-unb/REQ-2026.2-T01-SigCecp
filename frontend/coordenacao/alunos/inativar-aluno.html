@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% import "coordenacao/alunos/_macros.html" as m with context %}
+
+{% block titulo %}Inativar aluno | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/cadastrar-turma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/alunos.css') }}">
+{% endblock %}
+
+{% block cabecalho %}{% include "coordenacao/alunos/_topo.html" %}{% endblock %}
+
+{% block corpo %}
+<main id="conteudo" tabindex="-1" class="pagina container">
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
+      <li><a href="{{ url_for('lista_aluno') }}">Alunos</a></li>
+      <li><a href="{{ url_for('ficha_aluno', aluno_id=aluno.id) }}">Ficha do aluno</a></li>
+      <li aria-current="page">Inativar aluno</li>
+    </ol>
+  </nav>
+
+  {# Confirmação antes da inativação (RN48) #}
+  <section class="cartao confirmacao" aria-labelledby="titulo-confirmacao">
+    <div class="aluno">{{ m.foto(aluno, 64) }}{{ m.situacao(aluno) }}</div>
+    {% if aluno.ativo %}
+    <h1 class="confirmacao__titulo" id="titulo-confirmacao">Deseja inativar {{ aluno.nome }}?</h1>
+    <p>O aluno passará de ativo para inativo. Todos os dados, documentos e o histórico de participação em turmas serão preservados.</p>
+    <p class="ajuda">Ao cancelar, o aluno permanece ativo e nada é alterado.</p>
+    <form method="post" action="{{ url_for('salvar_inativacao_aluno', aluno_id=aluno.id) }}" class="confirmacao__acoes">
+      {{ csrf_input }}
+      <a class="botao botao--claro" href="{{ url_for('ficha_aluno', aluno_id=aluno.id) }}">Cancelar</a>
+      <button class="botao botao--vermelho" type="submit">Inativar aluno</button>
+    </form>
+    {% else %}
+    <h1 class="confirmacao__titulo" id="titulo-confirmacao">{{ aluno.nome }} já está inativo</h1>
+    <p>Inativado em {{ m.data(aluno.inativado_em) }}.</p>
+    <div class="confirmacao__acoes">
+      <a class="botao botao--claro" href="{{ url_for('ficha_aluno', aluno_id=aluno.id) }}">Voltar para a ficha</a>
+    </div>
+    {% endif %}
+  </section>
+</main>
+{% endblock %}

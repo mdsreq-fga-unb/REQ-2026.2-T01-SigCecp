@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+{% import "coordenacao/alunos/_macros.html" as m with context %}
+
+{% block titulo %}Ficha de {{ aluno.nome }} | SigCECP{% endblock %}
+
+{% block estilos %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', path='style/componentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/cadastrar-turma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style/alunos.css') }}">
+{% endblock %}
+
+{% block cabecalho %}{% include "coordenacao/alunos/_topo.html" %}{% endblock %}
+
+{% macro dado(rotulo, valor, classe='') -%}
+<div class="dado{{ ' ' ~ classe if classe }}"><dt>{{ rotulo }}</dt><dd>{{ valor if valor else 'Não informado' }}</dd></div>
+{%- endmacro %}
+
+{% block corpo %}
+<main id="conteudo" tabindex="-1" class="pagina container">
+
+  {# Cabeçalho só da impressão, no lugar do topo do sistema (RN45) #}
+  {# "hidden" mantém o bloco fora da tela mesmo se o navegador ainda tiver um CSS antigo #}
+  <div class="impressao__cabecalho so-impressao" hidden>
+    <img src="{{ url_for('static', path='img/Águia_de_Fogo_em_Voo_Rasante-removebg-preview.png') }}" alt="" width="40" height="40">
+    <div>
+      <p class="impressao__instituicao">Centro Esportivo Cultural de Planaltina-DF (CECP)</p>
+      <p class="impressao__titulo">Ficha do aluno</p>
+    </div>
+    <p class="impressao__data">Impressa em {{ impressa_em.strftime('%d/%m/%Y às %H:%M') }}</p>
+  </div>
+
+  <nav class="trilha" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ url_for('inicio_coordenacao') }}">Coordenação</a></li>
+      <li><a href="{{ url_for('lista_aluno') }}">Alunos</a></li>
+      <li aria-current="page">Ficha do aluno</li>
+    </ol>
+  </nav>
+
+  <header class="pagina__cabecalho">
+    <div>
+      <h1 class="pagina__titulo">Ficha do aluno</h1>
+      <p class="pagina__subtitulo">Consulte os dados cadastrais, acompanhe os documentos e preserve o histórico do aluno.</p>
+    </div>
+    <a class="botao botao--claro nao-imprimir" href="{{ url_for('lista_aluno') }}">Voltar para alunos</a>
+  </header>
+
+  {% if aviso %}
+  <div class="alerta alerta--sucesso" role="status"><p class="alerta__titulo">{{ aviso }}</p></div>
+  {% endif %}
+
+  <section class="cartao ficha__identidade">
+    <div class="aluno">
+      {{ m.foto(aluno, 64) }}
+      <div>
+        <h2 class="ficha__nome">{{ aluno.nome }}</h2>
+        <p class="tabela__detalhe">
+          {% if aluno.ativo %}Aluno cadastrado em {{ m.data(aluno.criado_em) }}{% else %}Inativado em {{ m.data(aluno.inativado_em) }}{% endif %}
+        </p>
+      </div>
+    </div>
+    {{ m.situacao(aluno) }}
+  </section>
+
+  <div class="ficha__acoes nao-imprimir">
+    {# A ficha pode ser impressa (RN45) #}
+    <button class="botao botao--claro" type="button" data-imprimir>Imprimir ficha</button>
+    <a class="botao botao--vermelho" href="{{ url_for('editar_aluno', aluno_id=aluno.id) }}">Editar aluno</a>
+    {% if aluno.ativo %}
+    <a class="botao botao--claro" href="{{ url_for('confirmar_inativacao_aluno', aluno_id=aluno.id) }}">Inativar aluno</a>
+    {% endif %}
+  </div>
+
+  <div class="ficha__layout">
+    <div class="ficha__principal">
+
+      <section class="cartao">
+        <h2 class="cartao__titulo">Dados cadastrais</h2>
+        <dl class="dados">
+          {{ dado('Nome completo', aluno.nome) }}
+          {{ dado('Data de início', m.data(aluno.data_inicio)) }}
+          {{ dado('Data de nascimento', aluno.data_nascimento and m.data(aluno.data_nascimento)) }}
+          {{ dado('Documento de identificação', aluno.documento_identificacao) }}
+          {{ dado('CPF do aluno', aluno.cpf) }}
+          {{ dado('Celular', aluno.celular) }}
+          {{ dado('Endereço', aluno.endereco) }}
+          {{ dado('Cidade', aluno.cidade) }}
+          {{ dado('CEP', aluno.cep) }}
+          {{ dado('Nome da mãe', aluno.nome_mae) }}
+          {{ dado('Telefone da mãe', aluno.telefone_mae) }}
+          {{ dado('Nome do pai', aluno.nome_pai) }}
+          {{ dado('Telefone do pai', aluno.telefone_pai) }}
+          {{ dado('Telefone residencial', aluno.telefone_residencial) }}
+          {{ dado('Contato em caso de urgência', aluno.nome_contato_urgencia) }}
+          {{ dado('Telefone de emergência', aluno.telefone_emergencia) }}
+          {{ dado('Responsável legal', aluno.responsavel_nome) }}
+          {{ dado('CPF do responsável legal', aluno.responsavel_cpf) }}
+          {{ dado('Identidade do responsável legal', aluno.responsavel_identidade) }}
+          {{ dado('Saída do aluno', {'sozinho': 'Sozinho', 'acompanhado': 'Acompanhado'}.get(aluno.saida_aluno)) }}
+          {{ dado('Acompanhante', aluno.acompanhante) }}
+          {{ dado('Tipo de escola', tipos_escola.get(aluno.tipo_escola)) }}
+          {{ dado('Nome da escola', aluno.nome_escola) }}
+          {{ dado('Turno escolar', {'manha': 'Manhã', 'tarde': 'Tarde', 'noite': 'Noite', 'integral': 'Integral'}.get(aluno.turno_escolar)) }}
+        </dl>
+      </section>
+
+      <section class="cartao">
+        <h2 class="cartao__titulo">Graduação e vínculo atual</h2>
+        {% if vinculo %}
+        <dl class="dados dados--destaque">
+          {{ dado('Modalidade', vinculo.turma.modalidade) }}
+          {{ dado('Dias', m.dias_texto(vinculo.turma.dias)) }}
+          {{ dado('Horário', m.horario_texto(vinculo.turma)) }}
+        </dl>
+        <p><a class="linha__link nao-imprimir" href="{{ url_for('ver_alunos_associados', turma_id=vinculo.turma_id) }}">Ver alunos desta turma <span aria-hidden="true">→</span></a></p>
+        {% else %}
+        <p class="tabela__detalhe">Sem turma atual.</p>
+        {% endif %}
+        <dl class="dados">
+          {{ dado('Graduação declarada', aluno.graduacao) }}
+          {{ dado('Certificado de graduação', 'Anexado' if aluno.documento('certificado_graduacao') else ('Não exigido na faixa branca' if aluno.graduacao | lower == 'branca' else 'Pendente • certificado não apresentado')) }}
+        </dl>
+      </section>
+
+      <section class="cartao">
+        <h2 class="cartao__titulo">Saúde e necessidades especiais</h2>
+        <dl class="dados">
+          {{ dado('Há problema de saúde ou necessidade especial?', 'Sim' if aluno.problema_saude else 'Não') }}
+          {% if aluno.problema_saude %}
+          {{ dado('Descrição declarada', aluno.descricao_saude) }}
+          {{ dado('Laudo', 'Anexado' if aluno.documento('laudo') else 'Pendente • entrega posterior') }}
+          {% endif %}
+        </dl>
+        {% if aluno.problema_saude %}
+        <p class="ajuda">O prazo de entrega do laudo é controlado pela coordenação. Nenhuma suspensão é automática.</p>
+        {% endif %}
+      </section>
+
+      <section class="cartao">
+        <h2 class="cartao__titulo">Documentos e anexos</h2>
+        <p class="ajuda">Documentos ausentes podem ser acrescentados em "Editar aluno", como imagem digitalizada ou PDF.</p>
+        <ul class="documentos">
+          {% for tipo, rotulo in tipos_documento.items() %}
+          {% set doc = aluno.documento(tipo) %}
+          <li class="documento">
+            <div>
+              <p class="documento__titulo">{{ rotulo }}</p>
+              <p class="tabela__detalhe">{% if doc %}{{ doc.nome_original }} • enviado em {{ m.data(doc.enviado_em) }}{% else %}Não anexado{% endif %}</p>
+            </div>
+            {% if doc %}
+            <a class="linha__link nao-imprimir" href="{{ url_for('documento_aluno', aluno_id=aluno.id, documento_id=doc.id) }}?baixar=true">Baixar <span aria-hidden="true">↓</span></a>
+            {% else %}
+            <a class="linha__link nao-imprimir" href="{{ url_for('editar_aluno', aluno_id=aluno.id) }}">Completar na edição <span aria-hidden="true">→</span></a>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section class="cartao">
+        <h2 class="cartao__titulo">Questionário e termo</h2>
+        <ol class="questionario questionario--leitura">
+          {% for codigo, pergunta, tem_qual in questoes %}
+          {% set resposta = aluno.respostas.get(codigo, {}) %}
+          <li>
+            <p>{{ pergunta }}</p>
+            <p><strong>{{ {'sim': 'Sim', 'nao': 'Não'}.get(resposta.get('resposta'), 'Não informado') }}</strong>{% if resposta.get('qual') %} • {{ resposta.qual }}{% endif %}</p>
+          </li>
+          {% endfor %}
+        </ol>
+        <h3 class="termo__titulo">Termo de responsabilidade, dados e uso de imagem</h3>
+        <dl class="dados">
+          {{ dado('Termo (responsabilidade, dados e uso de imagem)', 'Aceito em ' ~ aluno.termo_aceito_em.strftime('%d/%m/%Y às %H:%M')) }}
+          {{ dado('Versão do termo', aluno.termo_versao, 'nao-imprimir') }}
+          {{ dado('Aceite dado por', aluno.responsavel_nome ~ (' (CPF ' ~ aluno.responsavel_cpf ~ ')' if aluno.responsavel_cpf else '')) }}
+        </dl>
+      </section>
+
+      <section class="cartao">
+        <h2 class="cartao__titulo">Histórico de participação em turmas</h2>
+        <div class="tabela__container">
+          <table class="tabela">
+      <caption class="visualmente-oculto">Histórico de participação em turmas</caption>
+            <thead><tr><th scope="col">Turma e programação</th><th scope="col">Período</th><th scope="col">Situação</th></tr></thead>
+            <tbody>
+              {% for a in aluno.vinculos | reverse %}
+              <tr>
+                <td><strong>{{ a.turma.modalidade }}</strong><span class="tabela__detalhe">{{ m.dias_texto(a.turma.dias) }} • {{ m.horario_texto(a.turma) }}{% if not a.turma.ativa %} • turma removida{% endif %}</span></td>
+                <td>{% if a.fim %}{{ m.data(a.inicio) }} a {{ m.data(a.fim) }}{% else %}Desde {{ m.data(a.inicio) }}{% endif %}</td>
+                <td>{{ 'Encerrado' if a.fim else 'Vínculo atual' }}</td>
+              </tr>
+              {% else %}
+              <tr><td class="tabela__vazio" colspan="3">Nenhuma participação registrada.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <p class="ajuda">Mudanças de turma e a inativação não apagam participações anteriores.</p>
+      </section>
+    </div>
+
+    <aside class="ficha__lateral">
+      <section class="cartao cartao--lateral">
+        <h2 class="cartao__titulo">Pendências da ficha</h2>
+        {% if pendencias %}
+        <p><strong>{{ pendencias | length }} {{ 'documento pendente' if pendencias | length == 1 else 'documentos pendentes' }}</strong></p>
+        <ul class="pendencias">{% for p in pendencias %}<li>{{ p }}</li>{% endfor %}</ul>
+        <p class="ajuda">As pendências não impedem o cadastro. A coordenação acompanha cada entrega manualmente.</p>
+        {% else %}
+        <p>Nenhum documento pendente.</p>
+        {% endif %}
+      </section>
+      <section class="cartao cartao--lateral nao-imprimir">
+        <h2 class="cartao__titulo">Situação do cadastro</h2>
+        <dl class="dados">
+          {{ dado('Status', 'Ativo' if aluno.ativo else 'Inativo desde ' ~ m.data(aluno.inativado_em)) }}
+        </dl>
+        <p class="ajuda">A inativação é manual e exige confirmação. Ela preserva todos os dados e o histórico.</p>
+      </section>
+    </aside>
+  </div>
+  {# Assinatura presencial do responsável (RN02), como na ficha de papel #}
+  <section class="impressao__assinatura so-impressao" aria-hidden="true" hidden>
+    <p>Planaltina-DF, ______ de ____________________ de ________.</p>
+    <div class="impressao__linhas">
+      <p>Assinatura do responsável legal{% if aluno.responsavel_nome %}: {{ aluno.responsavel_nome }}{% endif %}</p>
+      <p>Assinatura da coordenação</p>
+    </div>
+  </section>
+</main>
+
+<script src="{{ url_for('static', path='js/ficha-aluno.js') }}"></script>
+{% endblock %}

@@ -1,5 +1,6 @@
 <nav class="topo__menu" aria-label="Áreas da coordenação">
   <a href="{{ url_for('lista_conteudo') }}"{% if area == 'conteudos' %} aria-current="page"{% endif %}>Conteúdos</a>
   <a href="{{ url_for('lista_evento') }}"{% if area == 'eventos' %} aria-current="page"{% endif %}>Eventos</a>
-  <a href="{{ url_for('lista_turma') }}"{% if area == 'turmas' %} aria-current="page"{% endif %}>Alunos / Turmas</a>
+  <a href="{{ url_for('lista_aluno') }}"{% if area == 'alunos' %} aria-current="page"{% endif %}>Alunos</a>
+  <a href="{{ url_for('lista_turma') }}"{% if area == 'turmas' %} aria-current="page"{% endif %}>Turmas</a>
 </nav>

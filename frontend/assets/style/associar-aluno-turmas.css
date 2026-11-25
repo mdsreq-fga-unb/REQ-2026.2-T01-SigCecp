@@ -313,51 +313,6 @@
   outline-offset: 3px;
 }
 
-/* ---------- Responsividade ---------- */
-@media (max-width: 850px) {
-  .associacao__conteudo {
-    grid-template-columns: 1fr;
-  }
-
-  .associacao__orientacoes {
-    position: static;
-  }
-}
-
-@media (max-width: 640px) {
-  .pagina {
-    padding: 28px 16px 40px;
-  }
-
-  .pagina__titulo {
-    font-size: 30px;
-  }
-
-  .associacao__card,
-  .associacao__orientacoes {
-    padding: 20px;
-  }
-
-  .aluno__dados {
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .aluno__foto {
-    width: 60px;
-    height: 60px;
-  }
-
-  .associacao__acoes {
-    flex-direction: column-reverse;
-  }
-
-  .associacao__acoes button,
-  .associacao__acoes a {
-    width: 100%;
-  }
-}
-
 /* ============================================================
    Ajustes para ficar igual ao protótipo da tela
    "Associar aluno à turma" (coordenacao/turmas/associar-alunos.html).
@@ -545,28 +500,6 @@
   border-color: var(--vermelho-escuro);
 }
 
-/* ---------- Responsividade ---------- */
-@media (max-width: 900px) {
-  .associacao__conteudo {
-    grid-template-columns: 1fr;
-  }
-
-  .associacao__orientacoes {
-    position: static;
-  }
-}
-
-@media (max-width: 640px) {
-  .pagina__subtitulo {
-    margin-bottom: 28px;
-  }
-
-  .associacao__aluno .aluno__foto {
-    width: 56px;
-    height: 56px;
-  }
-
-  .turma__resumo {
-    grid-template-columns: 1fr;
-  }
+.associacao__erro {
+  margin: 0 0 16px;
 }

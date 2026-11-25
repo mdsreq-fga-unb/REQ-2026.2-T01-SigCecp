@@ -10,6 +10,8 @@ from sqlalchemy.orm import Session
 
 from backend.eventos.models import Evento
 from backend.publicacoes.models import Publicacao, PublicacaoMidia
+from backend.alunos.models import Aluno, AlunoDocumento, AlunoTurma
+from backend.turmas.models import Turma
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 
@@ -32,8 +34,9 @@ def verificar_estrutura(engine):
     assert set(inspetor.get_table_names()) == {
         "alembic_version", "publicacoes", "publicacao_midias", "eventos",
         "administradores", "refresh_tokens_admin", "turmas",
+        "alunos", "aluno_turmas", "aluno_documentos",
     }
-    for modelo in (Publicacao, PublicacaoMidia, Evento):
+    for modelo in (Publicacao, PublicacaoMidia, Evento, Turma, Aluno, AlunoTurma, AlunoDocumento):
         colunas = {coluna["name"]: coluna for coluna in inspetor.get_columns(modelo.__tablename__)}
         assert set(colunas) == set(modelo.__table__.columns.keys())
         for coluna in modelo.__table__.columns:
@@ -95,5 +98,58 @@ def test_publicacao_e_midia_sobrevivem_a_migracao_de_eventos(tmp_path):
             assert publicacao.texto == "Exemplo"
             assert midia.publicacao_id == publicacao.id
             assert midia.caminho == "exemplo.png"
+    finally:
+        engine.dispose()
+
+
+def test_migracao_apaga_associacoes_a_turmas_removidas(tmp_path):
+    url = f"sqlite:///{(tmp_path / 'orfas.db').as_posix()}"
+    executar_alembic(url, "upgrade", "0007_versao_do_termo")
+
+    engine = create_engine(url)
+    try:
+        with engine.begin() as conexao:
+            conexao.exec_driver_sql(
+                "INSERT INTO turmas (id, modalidade, dias, inicio, termino) VALUES (2, 'Judô', '[\"segunda\"]', '14:00:00', '15:00:00')"
+            )
+            conexao.exec_driver_sql(
+                "INSERT INTO alunos (id, nome, data_inicio, documento_identificacao, nome_mae, telefone_mae, celular,"
+                " tipo_escola, graduacao, problema_saude, questionario, termo_aceito_em, termo_versao, ativo, criado_em)"
+                " VALUES (1, 'Ana', '2026-01-01', 'RG', 'Maria', '61999990101', '61999990101', 'publica', 'Branca', 0,"
+                " 'x', '2026-01-01', '1.0', 1, '2026-01-01')"
+            )
+            conexao.exec_driver_sql(
+                "INSERT INTO aluno_turmas (aluno_id, turma_id, inicio) VALUES (1, 1, '2026-01-01'), (1, 2, '2026-02-01')"
+            )
+
+        executar_alembic(url, "upgrade", "head")
+
+        with engine.connect() as conexao:
+            restantes = conexao.exec_driver_sql("SELECT turma_id FROM aluno_turmas").scalars().all()
+        assert restantes == [2]
+    finally:
+        engine.dispose()
+
+
+def test_upgrade_de_banco_com_turmas_na_0004(tmp_path):
+    """A coluna temporária turmas.alunos (NOT NULL) não pode quebrar o upgrade quando já há turmas."""
+    url = f"sqlite:///{(tmp_path / 'com_turmas.db').as_posix()}"
+    executar_alembic(url, "upgrade", "0004_cria_turmas")
+
+    engine = create_engine(url)
+    try:
+        with engine.begin() as conexao:
+            conexao.exec_driver_sql(
+                "INSERT INTO turmas (modalidade, dias, inicio, termino)"
+                " VALUES ('Judô', '[\"segunda\"]', '14:00:00', '15:00:00')"
+            )
+
+        executar_alembic(url, "upgrade", "head")
+
+        verificar_estrutura(engine)
+        with Session(engine) as db:
+            [turma] = db.query(Turma).all()
+            assert turma.modalidade == "Judô"
+            assert turma.ativa is True
     finally:
         engine.dispose()
