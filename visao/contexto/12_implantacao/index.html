@@ -1,0 +1,2976 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-SigCecp/visao/contexto/12_implantacao/">
+      
+      
+        <link rel="prev" href="../../licoes/11_licoes_aprendidas/">
+      
+      
+        <link rel="next" href="../../../painel/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Implantação - SigCECP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/painel.css?v=591a61fc">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#121-visao-geral" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="SigCECP" class="md-header__button md-logo" aria-label="SigCECP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SigCECP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Implantação
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../1_cenario_atual/" class="md-tabs__link">
+          
+  
+  
+  Visão de produto e projeto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../painel/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Painel do escopo
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../historico/10_backlog_produto/" class="md-tabs__link">
+          
+  
+  
+  Priorização e MVP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../apresentacoes_unidades/apresentacao_unidade_1/" class="md-tabs__link">
+          
+  
+  
+  Apresentações das unidades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../historico/arquivo/" class="md-tabs__link">
+          
+  
+  
+  Histórico
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SigCECP" class="md-nav__button md-logo" aria-label="SigCECP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SigCECP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão de produto e projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visão de produto e projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_cenario_atual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cenário atual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_solucao_proposta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solução proposta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_intervencao_social/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intervenção social
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_estrategias_esw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estratégias de ESW
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_engenharia_req/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engenharia de requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_rastreabilidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rastreabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_interacao_equipe_e_cliente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interação da equipe e do cliente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_dor_e_dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DoR e DoD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licoes/11_licoes_aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lições aprendidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implantação
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implantação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121-visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Visão geral
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Servidor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Componentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124-dominio-e-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Domínio e HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#125-configuracao-da-aplicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 Configuração da aplicação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#126-inicializacao-e-desligamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 Inicialização e desligamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#127-operacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.7 Operação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#128-decisoes-de-implantacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.8 Decisões de implantação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#129-problemas-encontrados-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.9 Problemas encontrados e soluções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1210-pendencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.10 Pendências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versionamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../painel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Painel do escopo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Priorização e MVP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Priorização e MVP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/10_backlog_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backlog e MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/priorizacao_geral_e_mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidências da priorização
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apresentações das unidades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Apresentações das unidades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apresentacoes_unidades/apresentacao_unidade_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apresentacoes_unidades/apresentacao_unidade_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apresentacoes_unidades/apresentacao_unidade_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Histórico
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Histórico
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/arquivo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentos arquivados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravações
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gravações
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reuniões com o cliente
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reuniões com o cliente
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_17_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_22_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_24_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_26_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_09_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_audio_21_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_cliente/reuniao_video_30_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reuniões da equipe
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reuniões da equipe
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_equipe/reuniao_video_28_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_equipe/reuniao_video_04_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_equipe/reuniao_video_24_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/gravacoes/reunioes_equipe/reuniao_video_26_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organização e planejamento
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Organização e planejamento
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atas de reuniões
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Atas de reuniões
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1_1" id="__nav_6_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cliente
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cliente
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_17_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_22_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_24_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_26_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_09_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_21_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_30_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/cliente/ata_reuniao_10_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1_2" id="__nav_6_3_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Equipe
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Equipe
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_28_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_04_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_24_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../historico/organizacao_e_planejamento/atas_reunioes/equipe/ata_reuniao_26_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121-visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Visão geral
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Servidor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Componentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124-dominio-e-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Domínio e HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#125-configuracao-da-aplicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 Configuração da aplicação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#126-inicializacao-e-desligamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 Inicialização e desligamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#127-operacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.7 Operação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#128-decisoes-de-implantacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.8 Decisões de implantação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#129-problemas-encontrados-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.9 Problemas encontrados e soluções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1210-pendencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.10 Pendências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versionamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div><h1 id="12-implantacao">12 Implantação</h1>
+<p>Esta seção registra como o SigCECP foi colocado em produção: onde ele roda, como o acesso chega até ele, como é mantido e quais problemas apareceram durante a implantação.</p>
+<p>O sistema foi publicado em <strong>25/11/2026</strong> no endereço <strong><a href="https://sistema.centroesportivocecp.org">https://sistema.centroesportivocecp.org</a></strong>, com HTTPS. Nesta primeira fase, o site institucional atual do CECP (hospedado no Wix) continua no endereço principal, <code>centroesportivocecp.org</code>. O SigCECP passa a ocupar o endereço principal na fase 2 (seção 12.10), depois de rodar alguns dias na ONG sem problemas.</p>
+<h2 id="121-visao-geral">12.1 Visão geral</h2>
+<p>O sistema roda num servidor que fica na própria ONG. O acesso pela internet passa pela Cloudflare, que entrega o HTTPS e leva cada pedido por um túnel até o servidor. Como o túnel é aberto <strong>de dentro do servidor para fora</strong>, não é preciso abrir portas nem mexer no roteador da ONG.</p>
+<pre class="mermaid"><code>flowchart LR
+    V[Visitante&lt;br&gt;navegador ou celular] -- HTTPS --&gt; CF[Cloudflare&lt;br&gt;DNS, certificado e proxy]
+    CF -- túnel cifrado --&gt; CD
+    subgraph NAS[Servidor na ONG: Debian 12 em chroot]
+        CD[cloudflared] --&gt; NG[Nginx&lt;br&gt;porta 8080]
+        NG --&gt; UV[Uvicorn / FastAPI&lt;br&gt;porta 8000]
+        UV --&gt; DB[(SQLite&lt;br&gt;mídias e documentos)]
+        SV[Supervisor] -. mantém no ar .-&gt; CD
+        SV -. mantém no ar .-&gt; NG
+        SV -. mantém no ar .-&gt; UV
+    end</code></pre>
+<p>O caminho de um acesso é:</p>
+<ol>
+<li>A pessoa abre <code>https://sistema.centroesportivocecp.org</code>.</li>
+<li>A Cloudflare responde com o certificado HTTPS e encaminha o pedido pelo túnel.</li>
+<li>No servidor, o <code>cloudflared</code> entrega o pedido ao Nginx, na porta 8080.</li>
+<li>O Nginx repassa ao Uvicorn, que executa a aplicação FastAPI na porta 8000.</li>
+<li>A aplicação lê e grava no banco SQLite e nas pastas de mídias e documentos.</li>
+</ol>
+<h2 id="122-servidor">12.2 Servidor</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Equipamento</td>
+<td style="text-align: left;">NAS Lenovo Iomega ix4-300d</td>
+</tr>
+<tr>
+<td style="text-align: left;">Processador e memória</td>
+<td style="text-align: left;">ARMv7 de 32 bits, dual core de 1,3 GHz; 512 MB de RAM</td>
+</tr>
+<tr>
+<td style="text-align: left;">Armazenamento</td>
+<td style="text-align: left;">3 discos de 2 TB em <strong>RAID 5</strong> (cerca de 3,6 TB úteis); o sistema continua funcionando e sem perda de dados se um disco falhar</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sistema original</td>
+<td style="text-align: left;">Firmware da Lenovo (Debian 7, kernel 3.2), de 2013</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sistema da aplicação</td>
+<td style="text-align: left;"><strong>Debian 12</strong> instalado numa pasta do volume de dados e executado com <code>chroot</code></td>
+</tr>
+</tbody>
+</table>
+<p>O firmware original é antigo demais para rodar a aplicação: não tem Python moderno e não recebe atualizações. Por isso foi criado um Debian 12 completo dentro de uma pasta do servidor (<code>chroot</code>). Os programas da aplicação (Python 3.11, Nginx, SQLite e <code>cloudflared</code>) rodam nesse Debian e são atualizados com <code>apt</code>, enquanto o firmware da Lenovo continua cuidando dos discos e da rede. O kernel continua o antigo, e por isso nenhuma porta do servidor fica exposta à internet: todo o acesso externo passa pelo túnel.</p>
+<h2 id="123-componentes">12.3 Componentes</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Função</th>
+<th style="text-align: left;">Onde fica (dentro do chroot)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Código do SigCECP</td>
+<td style="text-align: left;">Aplicação FastAPI</td>
+<td style="text-align: left;"><code>/srv/sigcecp/app</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Ambiente virtual</td>
+<td style="text-align: left;">Dependências Python da aplicação</td>
+<td style="text-align: left;"><code>/srv/sigcecp/app/.venv</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Banco de dados</td>
+<td style="text-align: left;">SQLite em modo de produção</td>
+<td style="text-align: left;"><code>/srv/sigcecp/data/sigcecp.db</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Mídias e documentos</td>
+<td style="text-align: left;">Imagens e vídeos publicados (<code>backend/media</code>) e documentos dos alunos, cifrados (<code>backend/arquivos</code>)</td>
+<td style="text-align: left;">Dentro de <code>/srv/sigcecp/app/backend</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Uvicorn</td>
+<td style="text-align: left;">Servidor da aplicação, só em <code>127.0.0.1:8000</code></td>
+<td style="text-align: left;">Programa <code>sigcecp</code> no Supervisor</td>
+</tr>
+<tr>
+<td style="text-align: left;">Nginx</td>
+<td style="text-align: left;">Recebe o túnel na porta 8080 e repassa à aplicação; limite de 50 MB por envio de arquivo</td>
+<td style="text-align: left;"><code>/etc/nginx/sites-available/sigcecp</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">cloudflared</td>
+<td style="text-align: left;">Túnel até a Cloudflare</td>
+<td style="text-align: left;"><code>/root/.cloudflared/config.yml</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Supervisor</td>
+<td style="text-align: left;">Sobe os três programas acima, reinicia se algum cair e guarda os logs</td>
+<td style="text-align: left;"><code>/etc/supervisor/conf.d/</code></td>
+</tr>
+</tbody>
+</table>
+<p>A aplicação roda com o usuário de sistema <code>sigcecp</code>, sem senha e sem permissão de administrador.</p>
+<h2 id="124-dominio-e-https">12.4 Domínio e HTTPS</h2>
+<p>O domínio <code>centroesportivocecp.org</code> é do CECP, registrado na HostGator e gerenciado pelo José Ivan. Para usar o túnel, o DNS do domínio passou do Wix para a Cloudflare (plano gratuito):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Etapa</th>
+<th style="text-align: left;">O que foi feito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Cópia dos registros</td>
+<td style="text-align: left;">A Cloudflare importou os registros que existiam no Wix: três registros A e o <code>www</code> (site atual), um registro A <code>mail</code> e um MX. Todos ficaram como <strong>DNS only</strong>, para o site do Wix continuar funcionando como antes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Troca dos servidores DNS</td>
+<td style="text-align: left;">Na HostGator, os servidores <code>ns4.wixdns.net</code> e <code>ns5.wixdns.net</code> foram trocados pelos da Cloudflare. O registro e a renovação do domínio continuam na HostGator</td>
+</tr>
+<tr>
+<td style="text-align: left;">Endereço do sistema</td>
+<td style="text-align: left;">O comando <code>cloudflared tunnel route dns</code> criou o registro <code>sistema.centroesportivocecp.org</code>, apontando para o túnel</td>
+</tr>
+<tr>
+<td style="text-align: left;">HTTPS</td>
+<td style="text-align: left;">O certificado é emitido e renovado automaticamente pela Cloudflare; não há certificado para renovar no servidor</td>
+</tr>
+</tbody>
+</table>
+<p>Para desfazer a troca, basta colocar de volta os servidores DNS do Wix na HostGator.</p>
+<h2 id="125-configuracao-da-aplicacao">12.5 Configuração da aplicação</h2>
+<p><strong>Dependências:</strong> o servidor usa um <code>requirements-prod.txt</code> só com os pacotes que o código importa (FastAPI, Uvicorn, SQLAlchemy, Alembic, bcrypt, python-dotenv, python-jose, python-multipart, Jinja2, MarkupSafe e cryptography). O <code>requirements.txt</code> completo não instala no processador ARM do servidor, porque alguns pacotes de desenvolvimento (<code>uvloop</code>, <code>httptools</code>) precisariam ser compilados e não são usados pela aplicação.</p>
+<p><strong>Variáveis de ambiente:</strong> ficam no arquivo <code>.env</code> da pasta do projeto, com permissão restrita, e <strong>nunca</strong> vão para o repositório. Os valores não são registrados nesta documentação.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variável</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>APP_ENV</code></td>
+<td style="text-align: left;"><code>production</code> no servidor: exige HTTPS para os cookies de login</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>AUTH_SECRET_KEY</code></td>
+<td style="text-align: left;">Assina as sessões da coordenação</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DATABASE_URL</code></td>
+<td style="text-align: left;">Caminho do banco SQLite</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DADOS_CHAVE</code></td>
+<td style="text-align: left;">Chave que cifra os dados de saúde e os documentos dos alunos (<a href="../../escopo/rnf/RNF12/">RNF12</a>). Se for perdida, esses dados não podem mais ser lidos; por isso tem cópia guardada fora do servidor</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TRUSTED_ORIGINS</code></td>
+<td style="text-align: left;">Endereço aceito nos formulários (<code>https://sistema.centroesportivocecp.org</code>), usado na proteção contra CSRF</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Banco de dados:</strong> criado pelas migrações do Alembic (<code>alembic upgrade head</code>), como descrito no <code>readme.md</code> do código. O administrador inicial é criado com <code>python -m backend.auth.criar_admin</code>.</p>
+<h2 id="126-inicializacao-e-desligamento">12.6 Inicialização e desligamento</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Situação</th>
+<th style="text-align: left;">Como funciona</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Servidor ligado</td>
+<td style="text-align: left;">Uma tarefa <code>@reboot</code> em <code>/etc/cron.d/sigcecp</code> (no sistema da Lenovo, onde o arquivo é persistente) espera o volume de dados montar e executa <code>iniciar-chroot.sh</code>, que prepara o chroot e inicia o Supervisor</td>
+</tr>
+<tr>
+<td style="text-align: left;">Programa caiu</td>
+<td style="text-align: left;">O Supervisor reinicia automaticamente</td>
+</tr>
+<tr>
+<td style="text-align: left;">Desligamento</td>
+<td style="text-align: left;">Antes de desligar, executar <code>desligar-chroot.sh</code>, que para os programas e desmonta o chroot. Desligar sem isso faz o RAID refazer a verificação completa dos discos no próximo boot</td>
+</tr>
+</tbody>
+</table>
+<p>Os dois scripts ficam no volume de dados do servidor, e o registro de cada inicialização fica em <code>iniciar-chroot.log</code>.</p>
+<h2 id="127-operacao">12.7 Operação</h2>
+<p><strong>Atualizar o sistema com uma nova versão do código</strong> (como usuário <code>sigcecp</code>, na pasta do projeto):</p>
+<ol>
+<li><code>git pull</code> na branch de produção.</li>
+<li>Se o <code>requirements-prod.txt</code> mudou: <code>.venv/bin/pip install -r requirements-prod.txt</code>.</li>
+<li>Se há migrações novas em <code>alembic/versions/</code>: fazer backup do banco (<code>sqlite3 ... ".backup ..."</code>) e depois <code>.venv/bin/python -m alembic upgrade head</code>.</li>
+<li>Como administrador: <code>supervisorctl restart sigcecp</code>.</li>
+</ol>
+<p><strong>Consultas do dia a dia</strong> (como administrador, no chroot):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Para quê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>supervisorctl status</code></td>
+<td style="text-align: left;">Ver se <code>sigcecp</code>, <code>nginx</code> e <code>cloudflared</code> estão rodando</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>supervisorctl restart sigcecp</code></td>
+<td style="text-align: left;">Reiniciar a aplicação</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tail -50 /var/log/sigcecp.err.log</code></td>
+<td style="text-align: left;">Ver erros da aplicação</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tail -50 /var/log/cloudflared.err.log</code></td>
+<td style="text-align: left;">Ver o estado do túnel</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cat /proc/mdstat</code> (fora do chroot)</td>
+<td style="text-align: left;">Ver o estado dos discos e do RAID</td>
+</tr>
+</tbody>
+</table>
+<h2 id="128-decisoes-de-implantacao">12.8 Decisões de implantação</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Decisão</th>
+<th style="text-align: left;">Alternativas consideradas</th>
+<th style="text-align: left;">Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Servidor próprio na ONG (NAS)</td>
+<td style="text-align: left;">Hospedagem paga em nuvem</td>
+<td style="text-align: left;">Implantação em servidor próprio da ONG, como combinado com o cliente, sem custo mensal de hospedagem</td>
+</tr>
+<tr>
+<td style="text-align: left;">Debian 12 em <code>chroot</code></td>
+<td style="text-align: left;">Usar o firmware original; instalar o Debian no lugar do firmware</td>
+<td style="text-align: left;">O firmware não roda a aplicação. Trocar o firmware exige cabo serial e, se falhar, deixa o servidor sem ligar. O <code>chroot</code> dá um sistema atualizado sem mexer no boot do servidor</td>
+</tr>
+<tr>
+<td style="text-align: left;">SQLite</td>
+<td style="text-align: left;">MySQL</td>
+<td style="text-align: left;">Não consome memória com um servidor de banco, o que importa com 512 MB de RAM, e atende à carga prevista de até 10 sessões simultâneas (<a href="../../escopo/rnf/RNF08/">RNF08</a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Supervisor</td>
+<td style="text-align: left;">systemd; Docker</td>
+<td style="text-align: left;">O systemd não funciona dentro do <code>chroot</code>, e o Docker exige um kernel mais novo que o do servidor</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cloudflare Tunnel</td>
+<td style="text-align: left;">Abrir portas no roteador da ONG</td>
+<td style="text-align: left;">Não expõe o servidor nem o kernel antigo à internet, entrega HTTPS automaticamente e funciona em qualquer rede, sem configurar o roteador</td>
+</tr>
+<tr>
+<td style="text-align: left;">Subdomínio <code>sistema</code> antes do domínio principal</td>
+<td style="text-align: left;">Substituir o site do Wix de imediato</td>
+<td style="text-align: left;">Permite testar a produção sem tirar do ar o site atual do CECP; a troca do domínio principal leva poucos minutos quando o sistema estiver estável</td>
+</tr>
+</tbody>
+</table>
+<h2 id="129-problemas-encontrados-e-solucoes">12.9 Problemas encontrados e soluções</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Problema</th>
+<th style="text-align: left;">Causa</th>
+<th style="text-align: left;">Solução</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Servidor não aparecia na rede</td>
+<td style="text-align: left;">Estava com IP fixo de outra rede, configurado por um dono anterior</td>
+<td style="text-align: left;">Endereço descoberto pelos anúncios de rede (ARP) do servidor; redefinição de fábrica, que voltou a rede para IP automático</td>
+</tr>
+<tr>
+<td style="text-align: left;">Disco 1 com defeito</td>
+<td style="text-align: left;">O disco passou a informar 3,86 GB em vez de 2 TB</td>
+<td style="text-align: left;">Disco retirado; RAID 5 montado com os 3 discos bons</td>
+</tr>
+<tr>
+<td style="text-align: left;">Relógio do servidor 1 hora adiantado</td>
+<td style="text-align: left;">O firmware de 2013 ainda aplica o horário de verão de Brasília</td>
+<td style="text-align: left;">Fuso trocado para outro GMT−03:00 sem horário de verão</td>
+</tr>
+<tr>
+<td style="text-align: left;">Aplicação quebrava num clone novo</td>
+<td style="text-align: left;">A pasta <code>backend/media</code> está no <code>.gitignore</code> e não existe num clone novo</td>
+<td style="text-align: left;">Pasta criada no servidor; proposta issue para o código criá-la ao iniciar</td>
+</tr>
+<tr>
+<td style="text-align: left;">Página sem CSS e redirecionamentos para a porta errada</td>
+<td style="text-align: left;">O Nginx repassava o cabeçalho <code>Host</code> sem a porta, e os links gerados por <code>url_for</code> saíam sem ela</td>
+<td style="text-align: left;"><code>proxy_set_header Host $http_host</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Erro 500 no login (<code>no such column: administradores.nome</code>)</td>
+<td style="text-align: left;">Código atualizado sem aplicar as migrações novas</td>
+<td style="text-align: left;"><code>alembic upgrade head</code>; a atualização passou a incluir esse passo (12.7)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Login recusado (401) pelo endereço local</td>
+<td style="text-align: left;">Em produção, o cookie de sessão só é aceito por HTTPS</td>
+<td style="text-align: left;">Esperado: o login em produção é feito pelo endereço com HTTPS</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sistema não subia sozinho ao ligar o servidor</td>
+<td style="text-align: left;">O firmware da Lenovo apaga o crontab do root a cada reinício</td>
+<td style="text-align: left;">Tarefa movida para <code>/etc/cron.d</code>, que é persistente</td>
+</tr>
+<tr>
+<td style="text-align: left;">Verificação completa do RAID (cerca de 18 horas) depois de reiniciar</td>
+<td style="text-align: left;">Desligamento sem parar os programas do <code>chroot</code></td>
+<td style="text-align: left;">Script de desligamento (12.6) e bitmap do RAID (pendência em 12.10)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Túnel sem acesso à aplicação</td>
+<td style="text-align: left;">No <code>chroot</code>, <code>localhost</code> apontava só para o endereço IPv6, e o Nginx escuta em IPv4</td>
+<td style="text-align: left;">Túnel configurado para <code>127.0.0.1:8080</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Endereço novo não abria em algumas redes logo após a publicação</td>
+<td style="text-align: left;">Servidores DNS de operadoras guardavam a resposta anterior em cache</td>
+<td style="text-align: left;">Resolve-se sozinho quando o cache expira; testes feitos pelo 4G</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1210-pendencias">12.10 Pendências</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pendência</th>
+<th style="text-align: left;">Situação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Ativar o bitmap do RAID, para que um desligamento inesperado não exija a verificação completa dos discos</td>
+<td style="text-align: left;">Aguardando o fim da sincronização do RAID</td>
+</tr>
+<tr>
+<td style="text-align: left;">Teste de reinício completo: desligar com o script, ligar e conferir se tudo volta sozinho</td>
+<td style="text-align: left;">Depois do bitmap</td>
+</tr>
+<tr>
+<td style="text-align: left;">Backup automático do banco e das pastas de mídias e documentos, com cópia fora do servidor</td>
+<td style="text-align: left;">Scripts em preparação</td>
+</tr>
+<tr>
+<td style="text-align: left;">Versão estável em produção: hoje o servidor roda a branch <code>iteracao_dez</code>; deve passar a rodar a <code>main</code> (ou uma tag)</td>
+<td style="text-align: left;">A combinar com a equipe</td>
+</tr>
+<tr>
+<td style="text-align: left;">Issues de produção no código: criar <code>backend/media</code> ao iniciar, separar dependências de produção, ativar <code>PRAGMA foreign_keys</code> no SQLite, <code>render_as_batch</code> no Alembic e desligar o <code>/docs</code> em produção</td>
+<td style="text-align: left;">A abrir</td>
+</tr>
+<tr>
+<td style="text-align: left;">Levar o servidor para a ONG e testar na rede de lá</td>
+<td style="text-align: left;">Depois do teste de reinício</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fase 2: apontar <code>centroesportivocecp.org</code> e <code>www</code> para o SigCECP, no lugar do site do Wix</td>
+<td style="text-align: left;">Depois de alguns dias de funcionamento estável na ONG</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dar acesso de administrador à conta da Cloudflare para uma pessoa do CECP</td>
+<td style="text-align: left;">A fazer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="versionamento">Versionamento</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Versão</th>
+<th style="text-align: left;">Data</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Autor(es/as)</th>
+<th style="text-align: left;">Revisor(es/as)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1.0</td>
+<td style="text-align: left;">25/11/2026</td>
+<td style="text-align: left;">Documento inicial: arquitetura, servidor, domínio, configuração, operação, decisões, problemas e pendências da implantação</td>
+<td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../assets/escopo.js?v=70e1076a"></script>
+      
+        <script src="../../../assets/painel.js?v=a62f3fc2"></script>
+      
+    
+  </body>
+</html>
