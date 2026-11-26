@@ -1,4 +1,5 @@
 
+import os
 from datetime import datetime
 from pathlib import Path
 
@@ -29,8 +30,16 @@ from backend.coordenacao.router import router as coordenacao_router
 from backend.eventos.router import router as eventos_router
    
 
+def _rotas_documentacao() -> dict:
+    """Em produção, não publica /docs, /redoc e /openapi.json (o mapa da API)."""
+    if os.getenv("APP_ENV", "development").strip().lower() == "production":
+        return {"docs_url": None, "redoc_url": None, "openapi_url": None}
+    return {}
+
+
 app = FastAPI(
     title="SigCECP",
+    **_rotas_documentacao(),
 )
 
 # Autenticação do administrador (/coordenacao)
@@ -42,6 +51,9 @@ app.add_exception_handler(StarletteHTTPException, tratar_http)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_DIR = BASE_DIR / "backend" / "media"
+# A pasta está no .gitignore: num clone novo ela não existe e o StaticFiles falharia.
+MEDIA_DIR.mkdir(parents=True, exist_ok=True)
+
 class ArquivosEstaticos(StaticFiles):
     """Pede ao navegador que confira se o CSS e o JavaScript mudaram antes de usar a cópia guardada.
 

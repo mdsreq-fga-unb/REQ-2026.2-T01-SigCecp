@@ -18,6 +18,7 @@ def run_migrations_offline() -> None:
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
         compare_type=True,
+        render_as_batch=True,
     )
 
     with context.begin_transaction():
@@ -26,10 +27,18 @@ def run_migrations_offline() -> None:
 
 def run_migrations_online() -> None:
     with engine.connect() as connection:
+        if connection.dialect.name == "sqlite":
+            # O app ativa as chaves estrangeiras em cada conexão (backend/database.py).
+            # Nas migrações elas ficam desligadas: o modo em lote recria tabelas
+            # (DROP + CREATE), o que falharia com tabelas que têm dependentes.
+            connection.exec_driver_sql("PRAGMA foreign_keys=OFF")
+            connection.commit()
+
         context.configure(
             connection=connection,
             target_metadata=target_metadata,
             compare_type=True,
+            render_as_batch=True,
         )
 
         with context.begin_transaction():

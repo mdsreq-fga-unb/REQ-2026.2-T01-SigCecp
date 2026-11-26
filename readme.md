@@ -54,6 +54,12 @@ python -m pip install -r requirements.txt
 
 Sempre execute esse comando com o ambiente virtual ativado.
 
+> **Produção:** no servidor, instale só o `requirements-prod.txt`, que tem apenas o necessário para rodar a aplicação (sem ferramentas de teste e sem pacotes que precisam ser compilados):
+>
+> ```bash
+> python -m pip install -r requirements-prod.txt
+> ```
+
 ## 4. Configurar e preparar o banco de dados
 
 O projeto utiliza SQLAlchemy para o mapeamento objeto-relacional e Alembic para controlar as alterações na estrutura do banco de dados.
@@ -486,6 +492,7 @@ SigCECP/
 │   ├── publico/
 │   └── base.html
 ├── tests/
+├── requirements-prod.txt
 ├── requirements.txt
 ├── alembic.ini
 └── readme.md

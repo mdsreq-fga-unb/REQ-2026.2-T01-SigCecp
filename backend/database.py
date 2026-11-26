@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, event
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 # Raiz do projeto
@@ -30,6 +30,16 @@ engine = create_engine(
     connect_args=connect_args,
     echo=False,
 )
+
+if DATABASE_URL.startswith("sqlite"):
+    @event.listens_for(engine, "connect")
+    def _configurar_sqlite(conexao, _registro):
+        """O SQLite só verifica chaves estrangeiras se isso for ativado em cada conexão."""
+        cursor = conexao.cursor()
+        cursor.execute("PRAGMA foreign_keys=ON")
+        cursor.execute("PRAGMA journal_mode=WAL")
+        cursor.close()
+
 
 # Fábrica de sessões para consultas e transações
 SessionLocal = sessionmaker(
