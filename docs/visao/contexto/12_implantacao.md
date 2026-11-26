@@ -36,7 +36,7 @@ O caminho de um acesso é:
 | :--- | :--- |
 | Equipamento | NAS Lenovo Iomega ix4-300d |
 | Processador e memória | ARMv7 de 32 bits, dual core de 1,3 GHz; 512 MB de RAM |
-| Armazenamento | 3 discos de 2 TB em **RAID 5** (cerca de 3,6 TB úteis); o sistema continua funcionando e sem perda de dados se um disco falhar |
+| Armazenamento | 3 discos de 2 TB em **RAID 5** (cerca de 3,6 TB úteis), com **bitmap interno**; o sistema continua funcionando e sem perda de dados se um disco falhar |
 | Sistema original | Firmware da Lenovo (Debian 7, kernel 3.2), de 2013 |
 | Sistema da aplicação | **Debian 12** instalado numa pasta do volume de dados e executado com `chroot` |
 
@@ -54,6 +54,7 @@ O firmware original é antigo demais para rodar a aplicação: não tem Python m
 | Nginx | Recebe o túnel na porta 8080 e repassa à aplicação; limite de 50 MB por envio de arquivo | `/etc/nginx/sites-available/sigcecp` |
 | cloudflared | Túnel até a Cloudflare | `/root/.cloudflared/config.yml` |
 | Supervisor | Sobe os três programas acima, reinicia se algum cair e guarda os logs | `/etc/supervisor/conf.d/` |
+| rclone | Envia a cópia cifrada dos backups ao Google Drive da ONG | `/root/.config/rclone/rclone.conf` (permissão 600) |
 
 A aplicação roda com o usuário de sistema `sigcecp`, sem senha e sem permissão de administrador.
 
@@ -94,9 +95,13 @@ Para desfazer a troca, basta colocar de volta os servidores DNS do Wix na HostGa
 | :--- | :--- |
 | Servidor ligado | Uma tarefa `@reboot` em `/etc/cron.d/sigcecp` (no sistema da Lenovo, onde o arquivo é persistente) espera o volume de dados montar e executa `iniciar-chroot.sh`, que prepara o chroot e inicia o Supervisor |
 | Programa caiu | O Supervisor reinicia automaticamente |
-| Desligamento | Antes de desligar, executar `desligar-chroot.sh`, que para os programas e desmonta o chroot. Desligar sem isso faz o RAID refazer a verificação completa dos discos no próximo boot |
+| Desligamento | **Apertar e soltar o botão de energia** (ou desligar pelo painel da Lenovo). O desligamento do firmware chama o script `/etc/init.d/sigcecp-chroot` (ligado como `K05` em `rc0.d` e `rc6.d`), que executa `desligar-chroot.sh`: para os programas e desmonta o chroot antes de o firmware parar o RAID. Pelo terminal, o equivalente é `desligar-chroot.sh` seguido de `poweroff` |
+| O que não fazer | Segurar o botão por 4 segundos (força o desligamento) ou tirar o servidor da tomada ligado |
+| Queda de energia | O SQLite com `WAL` não corrompe o banco, e o bitmap do RAID faz a verificação dos discos levar minutos em vez de horas. Recomenda-se um nobreak com USB: o ix4-300d tem suporte e se desliga sozinho, de forma segura, quando falta energia |
 
-Os dois scripts ficam no volume de dados do servidor, e o registro de cada inicialização fica em `iniciar-chroot.log`.
+Os scripts `iniciar-chroot.sh` e `desligar-chroot.sh` ficam no volume de dados do servidor (`/mnt/pools/A/A0/`), e o registro de cada inicialização e desligamento fica em `iniciar-chroot.log`. O script de `/etc/init.d` e seus links ficam gravados em `/mnt/etc`, a parte persistente do `/etc` do firmware.
+
+**Testes realizados em 26/11/2026:** reinício pelo comando e desligamento pelo botão. Nos dois casos, o log registrou o desligamento ordenado do chroot, o RAID voltou sem verificação, e o sistema subiu sozinho em cerca de 3 minutos.
 
 ## 12.7 Operação
 
@@ -115,7 +120,25 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 | Registro de execução | `/mnt/pools/A/A0/backup-sigcecp.log` |
 | Restaurar | Parar a aplicação, copiar o `sigcecp.db` do backup para `/srv/sigcecp/data/` (dono `sigcecp`), extrair o `arquivos.tar.gz` em `backend/` e iniciar a aplicação |
 
-Os backups ficam no mesmo servidor: protegem contra erro humano e banco corrompido, mas não contra perda do servidor. Por isso falta uma cópia periódica fora dele (12.10).
+**Cópia fora do servidor:** logo após o backup local, o mesmo script envia a pasta do dia para o **Google Drive da ONG** com o `rclone`, numa pasta cifrada (`SigCecp-backups`): o Google vê só nomes e conteúdos embaralhados. No Drive ficam os últimos 30 dias. Se o envio falhar (por exemplo, sem internet), o backup local é mantido e o log registra o erro. O acesso ao Drive usa a permissão `drive.file`: o rclone só enxerga os arquivos que ele mesmo criou.
+
+| Item | Local |
+| :--- | :--- |
+| Cópia cifrada | Google Drive da ONG, pasta `SigCecp-backups` (remoto `backup-cifrado:` no rclone) |
+| Senhas da cifragem | Duas senhas (`password` e `password2`) guardadas no gerenciador de senhas, nunca no repositório |
+
+**Restaurar a partir do Drive** (se o servidor for perdido), em qualquer computador:
+
+1. Instalar o rclone e criar um remoto do Google Drive com a conta da ONG (`rclone config`, permissão `drive.file`).
+2. Criar um remoto `crypt` apontando para `<remoto do drive>:SigCecp-backups`, com as duas senhas guardadas.
+3. Baixar a pasta desejada: `rclone copy backup-cifrado:AAAA-MM-DD_HHMM ./restauracao`.
+4. Instalar o sistema normalmente e usar o `sigcecp.db` e o `arquivos.tar.gz` baixados. A `DADOS_CHAVE` original é obrigatória para abrir os dados de saúde e os documentos.
+
+Sem a conta Google da ONG, as duas senhas do rclone e a `DADOS_CHAVE`, os backups do Drive não podem ser usados. Os três ficam fora do servidor.
+
+**Acesso de manutenção:** o SSH fica **desligado** no painel da Lenovo. Para atualizar o código ou consultar logs, liga-se o SSH no painel, faz-se a manutenção e desliga-se de novo. A aplicação não depende do SSH.
+
+**Teste de carga (25 e 26/11/2026):** com o Locust, pela rede local, 50 visitantes simultâneos nas páginas públicas e, pelo HTTPS, 10 coordenadores logados ao mesmo tempo foram atendidos sem nenhuma falha ([RNF08](../escopo/rnf/RNF08.md)). Numa carga bem maior, o teste revelou um travamento do servidor, corrigido na issue #87 (12.9).
 
 **Consultas do dia a dia** (como administrador, no chroot):
 
@@ -125,7 +148,8 @@ Os backups ficam no mesmo servidor: protegem contra erro humano e banco corrompi
 | `supervisorctl restart sigcecp` | Reiniciar a aplicação |
 | `tail -50 /var/log/sigcecp.err.log` | Ver erros da aplicação |
 | `tail -50 /var/log/cloudflared.err.log` | Ver o estado do túnel |
-| `cat /proc/mdstat` (fora do chroot) | Ver o estado dos discos e do RAID |
+| `cat /proc/mdstat` (fora do chroot) | Ver o estado dos discos e do RAID; a linha `bitmap` confirma o bitmap ativo |
+| `cat /mnt/pools/A/A0/backup-sigcecp.log` (fora do chroot) | Ver se o backup e o envio ao Drive da madrugada deram certo (horário em UTC) |
 
 ## 12.8 Decisões de implantação
 
@@ -137,6 +161,9 @@ Os backups ficam no mesmo servidor: protegem contra erro humano e banco corrompi
 | Supervisor | systemd; Docker | O systemd não funciona dentro do `chroot`, e o Docker exige um kernel mais novo que o do servidor |
 | Cloudflare Tunnel | Abrir portas no roteador da ONG | Não expõe o servidor nem o kernel antigo à internet, entrega HTTPS automaticamente e funciona em qualquer rede, sem configurar o roteador |
 | Subdomínio `sistema` antes do domínio principal | Substituir o site do Wix de imediato | Permite testar a produção sem tirar do ar o site atual do CECP; a troca do domínio principal leva poucos minutos quando o sistema estiver estável |
+| Cópia do backup no Google Drive da ONG, cifrada com rclone | HD externo USB no servidor; computador de um integrante da equipe | Fica fora do local físico do servidor (protege contra roubo, incêndio e queima), é automática e gratuita, e pertence à ONG, não a um integrante. A cifragem protege os dados pessoais dos alunos no serviço do Google |
+| Desligamento pelo botão chamando o script do chroot | Ensinar o uso do terminal à ONG | As pessoas da ONG não são da área de TI; o botão é o jeito natural de desligar o servidor e agora é seguro |
+| Rotas que usam o banco como `def` (ou com `run_in_threadpool`) | SQLAlchemy assíncrono (`AsyncSession` com `aiosqlite`) | Correção pequena, recomendada pela documentação do FastAPI e no padrão que o projeto já usava; o modo assíncrono exigiria reescrever serviços e testes, com pouco ganho num SQLite local |
 
 ## 12.9 Problemas encontrados e soluções
 
@@ -150,29 +177,39 @@ Os backups ficam no mesmo servidor: protegem contra erro humano e banco corrompi
 | Erro 500 no login (`no such column: administradores.nome`) | Código atualizado sem aplicar as migrações novas | `alembic upgrade head`; a atualização passou a incluir esse passo (12.7) |
 | Login recusado (401) pelo endereço local | Em produção, o cookie de sessão só é aceito por HTTPS | Esperado: o login em produção é feito pelo endereço com HTTPS |
 | Sistema não subia sozinho ao ligar o servidor | O firmware da Lenovo apaga o crontab do root a cada reinício | Tarefa movida para `/etc/cron.d`, que é persistente |
-| Verificação completa do RAID (cerca de 18 horas) depois de reiniciar | Desligamento sem parar os programas do `chroot` | Script de desligamento (12.6) e bitmap do RAID (pendência em 12.10) |
+| Verificação completa do RAID (cerca de 18 horas) depois de reiniciar | Desligamento sem parar os programas do `chroot` | Script de desligamento chamado pelo próprio desligamento do firmware (12.6) e bitmap do RAID, ativado em 26/11/2026 |
 | Túnel sem acesso à aplicação | No `chroot`, `localhost` apontava só para o endereço IPv6, e o Nginx escuta em IPv4 | Túnel configurado para `127.0.0.1:8080` |
 | Git recusava o repositório (`detected dubious ownership`) | Comandos do Git executados como administrador num repositório do usuário `sigcecp` | Executar o Git sempre como `sigcecp` (12.7), sem exceção de `safe.directory` |
 | Linha do backup duplicada no cron | `/etc/cron.d/sigcecp` e `/mnt/etc/cron.d/sigcecp` são o mesmo arquivo, e a linha foi adicionada nos dois caminhos | Linha duplicada removida; basta editar um dos caminhos |
 | Valor da `DADOS_CHAVE` exibido fora do terminal durante a configuração | A chave foi copiada para um canal que não é seguro | Como ainda não havia dados reais, o banco de testes foi apagado, uma chave nova foi gerada direto no `.env` sem aparecer na tela e o banco foi recriado; a chave nova foi guardada no gerenciador de senhas |
+| Servidor travava sob carga e só voltava reiniciando (`QueuePool limit of size 5 overflow 10 reached`) | Rotas `async def` consultavam o banco de forma síncrona, bloqueando o laço de eventos; sob carga, as 15 conexões do pool se esgotavam e o servidor congelava | Rotas passaram a `def` ou levam o banco para uma thread com `run_in_threadpool`, e um teste impede a regressão (issue #87, PR #88). Depois da correção, 1000 requisições simultâneas foram atendidas |
+| Desligar pelo botão não parava os programas do chroot | O firmware da Lenovo não conhece o chroot | Script `/etc/init.d/sigcecp-chroot` ligado como `K05` em `rc0.d` e `rc6.d` (12.6) |
+| Script de desligamento com erro de sintaxe | O terminal do firmware quebrou uma linha de comentário com caractere acentuado | Scripts do servidor escritos sem acentos e conferidos com `sh -n` |
+| Configuração do rclone gravada em `/.config` | Dentro do chroot, a variável `HOME` não está definida | Arquivo movido para `/root/.config/rclone/` com permissão 600; o script de backup define `RCLONE_CONFIG` |
+| Senha de cifragem do backup exibida fora do terminal | A saída da configuração do rclone foi copiada para um canal que não é seguro | Remoto cifrado recriado com senhas novas antes do primeiro envio ao Drive |
+| Arquivo `/mnt/system/config/exports` esvaziado | A saída de um comando foi colada de volta no terminal, e as linhas com `->` viraram redirecionamentos do shell | Arquivo restaurado da cópia `exports.prev` gerada pelo firmware; nunca colar saída de comandos no terminal |
 | Endereço novo não abria em algumas redes logo após a publicação | Servidores DNS de operadoras guardavam a resposta anterior em cache | Resolve-se sozinho quando o cache expira; testes feitos pelo 4G |
 
 ## 12.10 Pendências
 
 | Pendência | Situação |
 | :--- | :--- |
-| Ativar o bitmap do RAID, para que um desligamento inesperado não exija a verificação completa dos discos | Aguardando o fim da sincronização do RAID |
-| Teste de reinício completo: desligar com o script, ligar e conferir se tudo volta sozinho | Depois do bitmap |
+| Ativar o bitmap do RAID, para que um desligamento inesperado não exija a verificação completa dos discos | Concluída em 26/11/2026 |
+| Teste de reinício completo: desligar com o script, ligar e conferir se tudo volta sozinho | Concluída em 26/11/2026 (pelo comando e pelo botão) |
+| Desligamento seguro pelo botão, sem terminal | Concluída em 26/11/2026 |
 | Backup automático diário do banco e das pastas de mídias e documentos (12.7) | Concluída em 25/11/2026 |
-| Cópia periódica do backup para fora do servidor (computador da equipe ou Drive da ONG) | A fazer |
+| Cópia periódica do backup para fora do servidor | Concluída em 26/11/2026 (Google Drive da ONG, cifrada, últimos 30 dias) |
 | Versão estável em produção: o servidor passou a rodar a branch `main`, com a versão final do projeto (PR #65) | Concluída em 25/11/2026 |
 | Issues de produção no código: criar `backend/media` ao iniciar, separar dependências de produção, ativar `PRAGMA foreign_keys` no SQLite, `render_as_batch` no Alembic e desligar o `/docs` em produção | Concluída em 25/11/2026 (issues #81 a #85, PR #86); servidor atualizado |
 | Troca da `DADOS_CHAVE` e cópia em gerenciador de senhas | Concluída em 25/11/2026 |
-| Entregar à ONG uma cópia da `DADOS_CHAVE` | Na entrega do servidor |
-| Fechar o SSH no painel da Lenovo | Depois do teste de reinício |
+| Correção do travamento do servidor sob carga | Concluída em 26/11/2026 (issue #87, PR #88); servidor atualizado |
+| Entregar à ONG uma cópia da `DADOS_CHAVE` e das duas senhas de cifragem do backup | Na entrega do servidor |
+| Fechar o SSH no painel da Lenovo | Concluída em 26/11/2026 |
 | Levar o servidor para a ONG e testar na rede de lá | Depois do teste de reinício |
 | Fase 2: apontar `centroesportivocecp.org` e `www` para o SigCECP, no lugar do site do Wix | Depois de alguns dias de funcionamento estável na ONG |
 | Dar acesso de administrador à conta da Cloudflare para uma pessoa do CECP | A fazer |
+| Aviso automático quando o site sair do ar (monitor de disponibilidade) | Opcional |
+| Nobreak com USB para o servidor | Recomendado à ONG |
 
 ## Versionamento
 
@@ -181,3 +218,4 @@ Os backups ficam no mesmo servidor: protegem contra erro humano e banco corrompi
 | 1.0 | 25/11/2026 | Documento inicial: arquitetura, servidor, domínio, configuração, operação, decisões, problemas e pendências da implantação | [Marcos Monteiro](https://github.com/montmarcos) |  |
 | 1.1 | 25/11/2026 | Servidor atualizado para a branch `main` (versão final); procedimento de atualização e problemas ajustados | [Marcos Monteiro](https://github.com/montmarcos) |  |
 | 1.2 | 25/11/2026 | Backup automático, cuidados com a `DADOS_CHAVE` e sua troca, correções de produção (issues #81 a #85) e pendências atualizadas | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.3 | 26/11/2026 | Bitmap do RAID, testes de reinício, desligamento seguro pelo botão, cópia cifrada do backup no Google Drive com procedimento de restauração, SSH fechado, teste de carga e correção do travamento sob carga (issue #87) | [Marcos Monteiro](https://github.com/montmarcos) |  |
