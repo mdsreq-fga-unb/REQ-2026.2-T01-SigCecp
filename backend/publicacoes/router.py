@@ -36,7 +36,7 @@ router = APIRouter(
 
 
 @router.get("", name="lista_conteudo")
-async def lista_conteudo(
+def lista_conteudo(
     request: Request,
     db: Session = Depends(get_db),
 ):
@@ -54,7 +54,7 @@ async def lista_conteudo(
 
 
 @router.get("/novo", name="publicar_conteudo")
-async def publicar_conteudo(request: Request):
+def publicar_conteudo(request: Request):
     return templates.TemplateResponse(
         request=request,
         name="coordenacao/conteudo/publicar-conteudo.html",
@@ -63,7 +63,7 @@ async def publicar_conteudo(request: Request):
 
 
 @router.post("/novo", name="salvar_conteudo")
-async def salvar_conteudo(
+def salvar_conteudo(
     request: Request,
     titulo: Annotated[str, Form(...)],
     texto: Annotated[str, Form()] = "",

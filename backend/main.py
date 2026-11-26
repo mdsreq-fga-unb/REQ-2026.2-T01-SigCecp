@@ -82,7 +82,7 @@ app.mount(
 )
 
 @app.get("/", name="modulo_conteudo_publico")
-async def modulo_conteudo_publico(request: Request, db: Session = Depends(get_db)):
+def modulo_conteudo_publico(request: Request, db: Session = Depends(get_db)):
     publicacoes = db.query(Publicacao).order_by(Publicacao.id.desc()).all()
 
     return templates.TemplateResponse(
