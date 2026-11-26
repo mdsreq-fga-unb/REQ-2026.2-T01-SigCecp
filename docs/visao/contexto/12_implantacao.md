@@ -100,7 +100,7 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 
 **Atualizar o sistema com uma nova versão do código** (como usuário `sigcecp`, na pasta do projeto):
 
-1. `git pull` na branch de produção.
+1. `git pull` na branch `main`, que é a de produção. Os comandos do Git rodam sempre como `sigcecp`: como administrador, o Git recusa o repositório (*dubious ownership*), e isso não deve ser contornado com `safe.directory`.
 2. Se o `requirements-prod.txt` mudou: `.venv/bin/pip install -r requirements-prod.txt`.
 3. Se há migrações novas em `alembic/versions/`: fazer backup do banco (`sqlite3 ... ".backup ..."`) e depois `.venv/bin/python -m alembic upgrade head`.
 4. Como administrador: `supervisorctl restart sigcecp`.
@@ -140,6 +140,7 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 | Sistema não subia sozinho ao ligar o servidor | O firmware da Lenovo apaga o crontab do root a cada reinício | Tarefa movida para `/etc/cron.d`, que é persistente |
 | Verificação completa do RAID (cerca de 18 horas) depois de reiniciar | Desligamento sem parar os programas do `chroot` | Script de desligamento (12.6) e bitmap do RAID (pendência em 12.10) |
 | Túnel sem acesso à aplicação | No `chroot`, `localhost` apontava só para o endereço IPv6, e o Nginx escuta em IPv4 | Túnel configurado para `127.0.0.1:8080` |
+| Git recusava o repositório (`detected dubious ownership`) | Comandos do Git executados como administrador num repositório do usuário `sigcecp` | Executar o Git sempre como `sigcecp` (12.7), sem exceção de `safe.directory` |
 | Endereço novo não abria em algumas redes logo após a publicação | Servidores DNS de operadoras guardavam a resposta anterior em cache | Resolve-se sozinho quando o cache expira; testes feitos pelo 4G |
 
 ## 12.10 Pendências
@@ -149,7 +150,7 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 | Ativar o bitmap do RAID, para que um desligamento inesperado não exija a verificação completa dos discos | Aguardando o fim da sincronização do RAID |
 | Teste de reinício completo: desligar com o script, ligar e conferir se tudo volta sozinho | Depois do bitmap |
 | Backup automático do banco e das pastas de mídias e documentos, com cópia fora do servidor | Scripts em preparação |
-| Versão estável em produção: hoje o servidor roda a branch `iteracao_dez`; deve passar a rodar a `main` (ou uma tag) | A combinar com a equipe |
+| Versão estável em produção: o servidor passou a rodar a branch `main`, com a versão final do projeto (PR #65) | Concluída em 25/11/2026 |
 | Issues de produção no código: criar `backend/media` ao iniciar, separar dependências de produção, ativar `PRAGMA foreign_keys` no SQLite, `render_as_batch` no Alembic e desligar o `/docs` em produção | A abrir |
 | Levar o servidor para a ONG e testar na rede de lá | Depois do teste de reinício |
 | Fase 2: apontar `centroesportivocecp.org` e `www` para o SigCECP, no lugar do site do Wix | Depois de alguns dias de funcionamento estável na ONG |
@@ -160,3 +161,4 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 | Versão | Data | Descrição | Autor(es/as) | Revisor(es/as) |
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 25/11/2026 | Documento inicial: arquitetura, servidor, domínio, configuração, operação, decisões, problemas e pendências da implantação | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.1 | 25/11/2026 | Servidor atualizado para a branch `main` (versão final); procedimento de atualização e problemas ajustados | [Marcos Monteiro](https://github.com/montmarcos) |  |
