@@ -2638,7 +2638,7 @@
 </table>
 <p>Para desfazer a troca, basta colocar de volta os servidores DNS do Wix na HostGator.</p>
 <h2 id="125-configuracao-da-aplicacao">12.5 Configuração da aplicação</h2>
-<p><strong>Dependências:</strong> o servidor usa um <code>requirements-prod.txt</code> só com os pacotes que o código importa (FastAPI, Uvicorn, SQLAlchemy, Alembic, bcrypt, python-dotenv, python-jose, python-multipart, Jinja2, MarkupSafe e cryptography). O <code>requirements.txt</code> completo não instala no processador ARM do servidor, porque alguns pacotes de desenvolvimento (<code>uvloop</code>, <code>httptools</code>) precisariam ser compilados e não são usados pela aplicação.</p>
+<p><strong>Dependências:</strong> o servidor usa o <code>requirements-prod.txt</code> do repositório (issue #82), só com os pacotes que o código importa (FastAPI, Uvicorn, SQLAlchemy, Alembic, bcrypt, python-dotenv, python-jose, python-multipart, Jinja2, MarkupSafe e cryptography). O <code>requirements.txt</code> completo não instala no processador ARM do servidor, porque alguns pacotes de desenvolvimento (<code>uvloop</code>, <code>httptools</code>) precisariam ser compilados e não são usados pela aplicação.</p>
 <p><strong>Variáveis de ambiente:</strong> ficam no arquivo <code>.env</code> da pasta do projeto, com permissão restrita, e <strong>nunca</strong> vão para o repositório. Os valores não são registrados nesta documentação.</p>
 <table>
 <thead>
@@ -2670,7 +2670,8 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Banco de dados:</strong> criado pelas migrações do Alembic (<code>alembic upgrade head</code>), como descrito no <code>readme.md</code> do código. O administrador inicial é criado com <code>python -m backend.auth.criar_admin</code>.</p>
+<p><strong>Banco de dados:</strong> criado pelas migrações do Alembic (<code>alembic upgrade head</code>), como descrito no <code>readme.md</code> do código. O administrador inicial é criado com <code>python -m backend.auth.criar_admin</code>. A aplicação ativa em cada conexão a verificação de chaves estrangeiras (<code>PRAGMA foreign_keys</code>) e o modo <code>WAL</code>, que cria os arquivos <code>sigcecp.db-wal</code> e <code>sigcecp.db-shm</code> ao lado do banco (issue #83). A pasta do banco pertence ao usuário <code>sigcecp</code> e só ele tem acesso.</p>
+<p><strong>Chave <code>DADOS_CHAVE</code>:</strong> guardada num gerenciador de senhas, com uma cópia a ser entregue à ONG. O valor só é exibido no terminal do servidor, nunca em conversas, mensagens ou documentos; para conferir se a cópia está certa, compara-se o <code>sha256sum</code> do valor no servidor com o da cópia. A chave não pode ser trocada com dados no banco, porque os dados já cifrados deixariam de abrir.</p>
 <h2 id="126-inicializacao-e-desligamento">12.6 Inicialização e desligamento</h2>
 <table>
 <thead>
@@ -2700,9 +2701,33 @@
 <ol>
 <li><code>git pull</code> na branch <code>main</code>, que é a de produção. Os comandos do Git rodam sempre como <code>sigcecp</code>: como administrador, o Git recusa o repositório (<em>dubious ownership</em>), e isso não deve ser contornado com <code>safe.directory</code>.</li>
 <li>Se o <code>requirements-prod.txt</code> mudou: <code>.venv/bin/pip install -r requirements-prod.txt</code>.</li>
-<li>Se há migrações novas em <code>alembic/versions/</code>: fazer backup do banco (<code>sqlite3 ... ".backup ..."</code>) e depois <code>.venv/bin/python -m alembic upgrade head</code>.</li>
+<li>Se há migrações novas em <code>alembic/versions/</code>: fazer um backup antes (como administrador, <code>/usr/local/bin/backup-sigcecp.sh</code>) e depois <code>.venv/bin/python -m alembic upgrade head</code>.</li>
 <li>Como administrador: <code>supervisorctl restart sigcecp</code>.</li>
 </ol>
+<p><strong>Backup automático:</strong> o script <code>/usr/local/bin/backup-sigcecp.sh</code>, dentro do chroot, copia o banco pela API de backup do SQLite (cópia consistente mesmo com a aplicação rodando e com o modo <code>WAL</code>) e compacta as pastas <code>backend/media</code> e <code>backend/arquivos</code> (os documentos já ficam cifrados). Ele roda todo dia às 3h30, por uma linha em <code>/etc/cron.d/sigcecp</code> no sistema da Lenovo, e mantém os 7 backups mais recentes.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Local</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Backups</td>
+<td style="text-align: left;"><code>/srv/backups/sigcecp/AAAA-MM-DD_HHMM/</code> no chroot (no volume de dados: <code>/mnt/pools/A/A0/debian/srv/backups/sigcecp/</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Registro de execução</td>
+<td style="text-align: left;"><code>/mnt/pools/A/A0/backup-sigcecp.log</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Restaurar</td>
+<td style="text-align: left;">Parar a aplicação, copiar o <code>sigcecp.db</code> do backup para <code>/srv/sigcecp/data/</code> (dono <code>sigcecp</code>), extrair o <code>arquivos.tar.gz</code> em <code>backend/</code> e iniciar a aplicação</td>
+</tr>
+</tbody>
+</table>
+<p>Os backups ficam no mesmo servidor: protegem contra erro humano e banco corrompido, mas não contra perda do servidor. Por isso falta uma cópia periódica fora dele (12.10).</p>
 <p><strong>Consultas do dia a dia</strong> (como administrador, no chroot):</p>
 <table>
 <thead>
@@ -2804,7 +2829,7 @@
 <tr>
 <td style="text-align: left;">Aplicação quebrava num clone novo</td>
 <td style="text-align: left;">A pasta <code>backend/media</code> está no <code>.gitignore</code> e não existe num clone novo</td>
-<td style="text-align: left;">Pasta criada no servidor; proposta issue para o código criá-la ao iniciar</td>
+<td style="text-align: left;">Pasta criada no servidor e, depois, o código passou a criá-la ao iniciar (issue #81)</td>
 </tr>
 <tr>
 <td style="text-align: left;">Página sem CSS e redirecionamentos para a porta errada</td>
@@ -2842,6 +2867,16 @@
 <td style="text-align: left;">Executar o Git sempre como <code>sigcecp</code> (12.7), sem exceção de <code>safe.directory</code></td>
 </tr>
 <tr>
+<td style="text-align: left;">Linha do backup duplicada no cron</td>
+<td style="text-align: left;"><code>/etc/cron.d/sigcecp</code> e <code>/mnt/etc/cron.d/sigcecp</code> são o mesmo arquivo, e a linha foi adicionada nos dois caminhos</td>
+<td style="text-align: left;">Linha duplicada removida; basta editar um dos caminhos</td>
+</tr>
+<tr>
+<td style="text-align: left;">Valor da <code>DADOS_CHAVE</code> exibido fora do terminal durante a configuração</td>
+<td style="text-align: left;">A chave foi copiada para um canal que não é seguro</td>
+<td style="text-align: left;">Como ainda não havia dados reais, o banco de testes foi apagado, uma chave nova foi gerada direto no <code>.env</code> sem aparecer na tela e o banco foi recriado; a chave nova foi guardada no gerenciador de senhas</td>
+</tr>
+<tr>
 <td style="text-align: left;">Endereço novo não abria em algumas redes logo após a publicação</td>
 <td style="text-align: left;">Servidores DNS de operadoras guardavam a resposta anterior em cache</td>
 <td style="text-align: left;">Resolve-se sozinho quando o cache expira; testes feitos pelo 4G</td>
@@ -2866,8 +2901,12 @@
 <td style="text-align: left;">Depois do bitmap</td>
 </tr>
 <tr>
-<td style="text-align: left;">Backup automático do banco e das pastas de mídias e documentos, com cópia fora do servidor</td>
-<td style="text-align: left;">Scripts em preparação</td>
+<td style="text-align: left;">Backup automático diário do banco e das pastas de mídias e documentos (12.7)</td>
+<td style="text-align: left;">Concluída em 25/11/2026</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cópia periódica do backup para fora do servidor (computador da equipe ou Drive da ONG)</td>
+<td style="text-align: left;">A fazer</td>
 </tr>
 <tr>
 <td style="text-align: left;">Versão estável em produção: o servidor passou a rodar a branch <code>main</code>, com a versão final do projeto (PR #65)</td>
@@ -2875,7 +2914,19 @@
 </tr>
 <tr>
 <td style="text-align: left;">Issues de produção no código: criar <code>backend/media</code> ao iniciar, separar dependências de produção, ativar <code>PRAGMA foreign_keys</code> no SQLite, <code>render_as_batch</code> no Alembic e desligar o <code>/docs</code> em produção</td>
-<td style="text-align: left;">A abrir</td>
+<td style="text-align: left;">Concluída em 25/11/2026 (issues #81 a #85, PR #86); servidor atualizado</td>
+</tr>
+<tr>
+<td style="text-align: left;">Troca da <code>DADOS_CHAVE</code> e cópia em gerenciador de senhas</td>
+<td style="text-align: left;">Concluída em 25/11/2026</td>
+</tr>
+<tr>
+<td style="text-align: left;">Entregar à ONG uma cópia da <code>DADOS_CHAVE</code></td>
+<td style="text-align: left;">Na entrega do servidor</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fechar o SSH no painel da Lenovo</td>
+<td style="text-align: left;">Depois do teste de reinício</td>
 </tr>
 <tr>
 <td style="text-align: left;">Levar o servidor para a ONG e testar na rede de lá</td>
@@ -2914,6 +2965,13 @@
 <td style="text-align: left;">1.1</td>
 <td style="text-align: left;">25/11/2026</td>
 <td style="text-align: left;">Servidor atualizado para a branch <code>main</code> (versão final); procedimento de atualização e problemas ajustados</td>
+<td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.2</td>
+<td style="text-align: left;">25/11/2026</td>
+<td style="text-align: left;">Backup automático, cuidados com a <code>DADOS_CHAVE</code> e sua troca, correções de produção (issues #81 a #85) e pendências atualizadas</td>
 <td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
 <td style="text-align: left;"></td>
 </tr>
