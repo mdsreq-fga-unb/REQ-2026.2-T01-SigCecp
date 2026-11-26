@@ -4,6 +4,8 @@ Esta seção registra como o SigCECP foi colocado em produção: onde ele roda, 
 
 O sistema foi publicado em **25/11/2026** no endereço **[https://sistema.centroesportivocecp.org](https://sistema.centroesportivocecp.org)**, com HTTPS. Nesta primeira fase, o site institucional atual do CECP (hospedado no Wix) continua no endereço principal, `centroesportivocecp.org`. O SigCECP passa a ocupar o endereço principal na fase 2 (seção 12.10), depois de rodar alguns dias na ONG sem problemas.
 
+Em **26/11/2026**, o servidor foi instalado na sede da ONG, ligado à rede de lá, e os acessos foram entregues ao CECP (seção 12.5).
+
 ## 12.1 Visão geral
 
 O sistema roda num servidor que fica na própria ONG. O acesso pela internet passa pela Cloudflare, que entrega o HTTPS e leva cada pedido por um túnel até o servidor. Como o túnel é aberto **de dentro do servidor para fora**, não é preciso abrir portas nem mexer no roteador da ONG.
@@ -71,6 +73,8 @@ O domínio `centroesportivocecp.org` é do CECP, registrado na HostGator e geren
 
 Para desfazer a troca, basta colocar de volta os servidores DNS do Wix na HostGator.
 
+**Acesso da ONG à Cloudflare:** o e-mail institucional do CECP foi convidado para a conta da Cloudflare como **Super Administrator** e aceitou o convite em 26/11/2026. Assim, a ONG tem controle total do DNS e do túnel, inclusive para gerenciar membros, sem depender de um integrante da equipe.
+
 ## 12.5 Configuração da aplicação
 
 **Dependências:** o servidor usa o `requirements-prod.txt` do repositório (issue #82), só com os pacotes que o código importa (FastAPI, Uvicorn, SQLAlchemy, Alembic, bcrypt, python-dotenv, python-jose, python-multipart, Jinja2, MarkupSafe e cryptography). O `requirements.txt` completo não instala no processador ARM do servidor, porque alguns pacotes de desenvolvimento (`uvloop`, `httptools`) precisariam ser compilados e não são usados pela aplicação.
@@ -87,17 +91,31 @@ Para desfazer a troca, basta colocar de volta os servidores DNS do Wix na HostGa
 
 **Banco de dados:** criado pelas migrações do Alembic (`alembic upgrade head`), como descrito no `readme.md` do código. O administrador inicial é criado com `python -m backend.auth.criar_admin`. A aplicação ativa em cada conexão a verificação de chaves estrangeiras (`PRAGMA foreign_keys`) e o modo `WAL`, que cria os arquivos `sigcecp.db-wal` e `sigcecp.db-shm` ao lado do banco (issue #83). A pasta do banco pertence ao usuário `sigcecp` e só ele tem acesso.
 
+**Acessos e senhas:** nenhum valor é registrado nesta documentação. Todos estão guardados no gerenciador de senhas e foram entregues a um responsável do CECP em 26/11/2026.
+
+| Acesso | Para quê | Observação |
+| :--- | :--- | :--- |
+| Administrador do SigCECP (`CECP0001`) | Entrar na área da coordenação | Para trocar a senha: `python -m backend.auth.criar_admin --usuario CECP0001 --redefinir-senha` (como `sigcecp`, no chroot); a troca encerra as sessões abertas |
+| Administrador do painel da Lenovo | Painel web do servidor | A senha do `root` no SSH é sempre `soho` seguido dessa senha; para trocar a do `root`, troca-se a do painel (não usar `passwd`, que o firmware pode sobrescrever) |
+| `DADOS_CHAVE` | Abrir os dados de saúde e os documentos dos alunos | Ver abaixo |
+| Duas senhas do backup (`rclone`) | Decifrar a cópia do backup no Google Drive | Ver 12.7 |
+| Conta Google da ONG | Drive com a cópia do backup | Também é a conta convidada na Cloudflare (12.4) |
+
+As senhas do administrador do SigCECP e do painel foram trocadas em 26/11/2026, antes da entrega. O usuário de sistema `sigcecp` não tem senha, de propósito: só é acessado com `su` a partir do `root`.
+
 **Chave `DADOS_CHAVE`:** guardada num gerenciador de senhas, com uma cópia a ser entregue à ONG. O valor só é exibido no terminal do servidor, nunca em conversas, mensagens ou documentos; para conferir se a cópia está certa, compara-se o `sha256sum` do valor no servidor com o da cópia. A chave não pode ser trocada com dados no banco, porque os dados já cifrados deixariam de abrir.
 
 ## 12.6 Inicialização e desligamento
 
 | Situação | Como funciona |
 | :--- | :--- |
-| Servidor ligado | Uma tarefa `@reboot` em `/etc/cron.d/sigcecp` (no sistema da Lenovo, onde o arquivo é persistente) espera o volume de dados montar e executa `iniciar-chroot.sh`, que prepara o chroot e inicia o Supervisor |
+| Servidor ligado | Uma tarefa `@reboot` em `/etc/cron.d/sigcecp` (no sistema da Lenovo, onde o arquivo é persistente) espera o volume de dados montar e executa `iniciar-chroot.sh`, que prepara o chroot, **atualiza o DNS do chroot** e inicia o Supervisor |
 | Programa caiu | O Supervisor reinicia automaticamente |
 | Desligamento | **Apertar e soltar o botão de energia** (ou desligar pelo painel da Lenovo). O desligamento do firmware chama o script `/etc/init.d/sigcecp-chroot` (ligado como `K05` em `rc0.d` e `rc6.d`), que executa `desligar-chroot.sh`: para os programas e desmonta o chroot antes de o firmware parar o RAID. Pelo terminal, o equivalente é `desligar-chroot.sh` seguido de `poweroff` |
 | O que não fazer | Segurar o botão por 4 segundos (força o desligamento) ou tirar o servidor da tomada ligado |
 | Queda de energia | O SQLite com `WAL` não corrompe o banco, e o bitmap do RAID faz a verificação dos discos levar minutos em vez de horas. Recomenda-se um nobreak com USB: o ix4-300d tem suporte e se desliga sozinho, de forma segura, quando falta energia |
+
+**DNS do chroot:** a cada inicialização, o `iniciar-chroot.sh` reescreve o `/etc/resolv.conf` do chroot com o servidor DNS que a rede entregou ao firmware (o roteador do local onde o servidor estiver), seguido de `1.1.1.1` e `8.8.8.8` como reserva e de `options timeout:2`. Assim, o servidor funciona em qualquer rede, sem ajuste manual.
 
 Os scripts `iniciar-chroot.sh` e `desligar-chroot.sh` ficam no volume de dados do servidor (`/mnt/pools/A/A0/`), e o registro de cada inicialização e desligamento fica em `iniciar-chroot.log`. O script de `/etc/init.d` e seus links ficam gravados em `/mnt/etc`, a parte persistente do `/etc` do firmware.
 
@@ -136,7 +154,14 @@ Os scripts `iniciar-chroot.sh` e `desligar-chroot.sh` ficam no volume de dados d
 
 Sem a conta Google da ONG, as duas senhas do rclone e a `DADOS_CHAVE`, os backups do Drive não podem ser usados. Os três ficam fora do servidor.
 
-**Acesso de manutenção:** o SSH fica **desligado** no painel da Lenovo. Para atualizar o código ou consultar logs, liga-se o SSH no painel, faz-se a manutenção e desliga-se de novo. A aplicação não depende do SSH.
+**Acesso de manutenção:** o SSH fica **desligado**. Para atualizar o código ou consultar logs:
+
+1. Na rede da ONG, descobrir o IP do servidor no visor do NAS (os botões ao lado da tela passam as informações).
+2. Abrir `http://IP/manage/diagnostics.html` no navegador, entrar com o administrador do painel e habilitar o acesso remoto (SSH). Nesta versão do firmware, a página fica em `/manage`; o endereço `/diagnostics.html` dá "página não encontrada".
+3. Conectar com `ssh root@IP`; a senha é `soho` seguido da senha do painel.
+4. Ao terminar, desabilitar o SSH na mesma página.
+
+A aplicação não depende do SSH.
 
 **Teste de carga (25 e 26/11/2026):** com o Locust, pela rede local, 50 visitantes simultâneos nas páginas públicas e, pelo HTTPS, 10 coordenadores logados ao mesmo tempo foram atendidos sem nenhuma falha ([RNF08](../escopo/rnf/RNF08.md)). Numa carga bem maior, o teste revelou um travamento do servidor, corrigido na issue #87 (12.9).
 
@@ -188,6 +213,7 @@ Sem a conta Google da ONG, as duas senhas do rclone e a `DADOS_CHAVE`, os backup
 | Configuração do rclone gravada em `/.config` | Dentro do chroot, a variável `HOME` não está definida | Arquivo movido para `/root/.config/rclone/` com permissão 600; o script de backup define `RCLONE_CONFIG` |
 | Senha de cifragem do backup exibida fora do terminal | A saída da configuração do rclone foi copiada para um canal que não é seguro | Remoto cifrado recriado com senhas novas antes do primeiro envio ao Drive |
 | Arquivo `/mnt/system/config/exports` esvaziado | A saída de um comando foi colada de volta no terminal, e as linhas com `->` viraram redirecionamentos do shell | Arquivo restaurado da cópia `exports.prev` gerada pelo firmware; nunca colar saída de comandos no terminal |
+| Na ONG, o site mostrava "Error 1033" da Cloudflare (túnel desconectado) | O `/etc/resolv.conf` do chroot guardava o DNS do provedor da rede onde o Debian foi instalado; na rede da ONG, esse servidor não respondia, e o `cloudflared` não conseguia encontrar a Cloudflare. A internet funcionava (o `ping` para `1.1.1.1` respondia) | DNS do chroot trocado na hora e, de forma definitiva, o `iniciar-chroot.sh` passou a atualizá-lo a cada inicialização (12.6). Confirmado com desligamento e religamento pelo botão na rede da ONG |
 | Endereço novo não abria em algumas redes logo após a publicação | Servidores DNS de operadoras guardavam a resposta anterior em cache | Resolve-se sozinho quando o cache expira; testes feitos pelo 4G |
 
 ## 12.10 Pendências
@@ -203,11 +229,12 @@ Sem a conta Google da ONG, as duas senhas do rclone e a `DADOS_CHAVE`, os backup
 | Issues de produção no código: criar `backend/media` ao iniciar, separar dependências de produção, ativar `PRAGMA foreign_keys` no SQLite, `render_as_batch` no Alembic e desligar o `/docs` em produção | Concluída em 25/11/2026 (issues #81 a #85, PR #86); servidor atualizado |
 | Troca da `DADOS_CHAVE` e cópia em gerenciador de senhas | Concluída em 25/11/2026 |
 | Correção do travamento do servidor sob carga | Concluída em 26/11/2026 (issue #87, PR #88); servidor atualizado |
-| Entregar à ONG uma cópia da `DADOS_CHAVE` e das duas senhas de cifragem do backup | Na entrega do servidor |
+| Entregar à ONG uma cópia da `DADOS_CHAVE` e das duas senhas de cifragem do backup | Concluída em 26/11/2026, junto com as senhas do administrador do SigCECP e do painel |
+| Trocar as senhas do painel (e do `root`) e do administrador do SigCECP antes da entrega | Concluída em 26/11/2026 |
 | Fechar o SSH no painel da Lenovo | Concluída em 26/11/2026 |
-| Levar o servidor para a ONG e testar na rede de lá | Depois do teste de reinício |
+| Levar o servidor para a ONG e testar na rede de lá | Concluída em 26/11/2026 (com a correção do DNS do chroot) |
 | Fase 2: apontar `centroesportivocecp.org` e `www` para o SigCECP, no lugar do site do Wix | Depois de alguns dias de funcionamento estável na ONG |
-| Dar acesso de administrador à conta da Cloudflare para uma pessoa do CECP | A fazer |
+| Dar acesso de administrador à conta da Cloudflare para uma pessoa do CECP | Concluída em 26/11/2026 (e-mail institucional do CECP como Super Administrator) |
 | Aviso automático quando o site sair do ar (monitor de disponibilidade) | Opcional |
 | Nobreak com USB para o servidor | Recomendado à ONG |
 
@@ -219,3 +246,4 @@ Sem a conta Google da ONG, as duas senhas do rclone e a `DADOS_CHAVE`, os backup
 | 1.1 | 25/11/2026 | Servidor atualizado para a branch `main` (versão final); procedimento de atualização e problemas ajustados | [Marcos Monteiro](https://github.com/montmarcos) |  |
 | 1.2 | 25/11/2026 | Backup automático, cuidados com a `DADOS_CHAVE` e sua troca, correções de produção (issues #81 a #85) e pendências atualizadas | [Marcos Monteiro](https://github.com/montmarcos) |  |
 | 1.3 | 26/11/2026 | Bitmap do RAID, testes de reinício, desligamento seguro pelo botão, cópia cifrada do backup no Google Drive com procedimento de restauração, SSH fechado, teste de carga e correção do travamento sob carga (issue #87) | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.4 | 26/11/2026 | Instalação na ONG: correção do DNS do chroot, acesso de manutenção pela página de diagnóstico, troca de senhas, entrega dos acessos e acesso da ONG à Cloudflare | [Marcos Monteiro](https://github.com/montmarcos) |  |
