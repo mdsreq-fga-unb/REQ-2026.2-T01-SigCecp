@@ -72,7 +72,7 @@ Para desfazer a troca, basta colocar de volta os servidores DNS do Wix na HostGa
 
 ## 12.5 Configuração da aplicação
 
-**Dependências:** o servidor usa um `requirements-prod.txt` só com os pacotes que o código importa (FastAPI, Uvicorn, SQLAlchemy, Alembic, bcrypt, python-dotenv, python-jose, python-multipart, Jinja2, MarkupSafe e cryptography). O `requirements.txt` completo não instala no processador ARM do servidor, porque alguns pacotes de desenvolvimento (`uvloop`, `httptools`) precisariam ser compilados e não são usados pela aplicação.
+**Dependências:** o servidor usa o `requirements-prod.txt` do repositório (issue #82), só com os pacotes que o código importa (FastAPI, Uvicorn, SQLAlchemy, Alembic, bcrypt, python-dotenv, python-jose, python-multipart, Jinja2, MarkupSafe e cryptography). O `requirements.txt` completo não instala no processador ARM do servidor, porque alguns pacotes de desenvolvimento (`uvloop`, `httptools`) precisariam ser compilados e não são usados pela aplicação.
 
 **Variáveis de ambiente:** ficam no arquivo `.env` da pasta do projeto, com permissão restrita, e **nunca** vão para o repositório. Os valores não são registrados nesta documentação.
 
@@ -84,7 +84,9 @@ Para desfazer a troca, basta colocar de volta os servidores DNS do Wix na HostGa
 | `DADOS_CHAVE` | Chave que cifra os dados de saúde e os documentos dos alunos ([RNF12](../escopo/rnf/RNF12.md)). Se for perdida, esses dados não podem mais ser lidos; por isso tem cópia guardada fora do servidor |
 | `TRUSTED_ORIGINS` | Endereço aceito nos formulários (`https://sistema.centroesportivocecp.org`), usado na proteção contra CSRF |
 
-**Banco de dados:** criado pelas migrações do Alembic (`alembic upgrade head`), como descrito no `readme.md` do código. O administrador inicial é criado com `python -m backend.auth.criar_admin`.
+**Banco de dados:** criado pelas migrações do Alembic (`alembic upgrade head`), como descrito no `readme.md` do código. O administrador inicial é criado com `python -m backend.auth.criar_admin`. A aplicação ativa em cada conexão a verificação de chaves estrangeiras (`PRAGMA foreign_keys`) e o modo `WAL`, que cria os arquivos `sigcecp.db-wal` e `sigcecp.db-shm` ao lado do banco (issue #83). A pasta do banco pertence ao usuário `sigcecp` e só ele tem acesso.
+
+**Chave `DADOS_CHAVE`:** guardada num gerenciador de senhas, com uma cópia a ser entregue à ONG. O valor só é exibido no terminal do servidor, nunca em conversas, mensagens ou documentos; para conferir se a cópia está certa, compara-se o `sha256sum` do valor no servidor com o da cópia. A chave não pode ser trocada com dados no banco, porque os dados já cifrados deixariam de abrir.
 
 ## 12.6 Inicialização e desligamento
 
@@ -102,8 +104,18 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 
 1. `git pull` na branch `main`, que é a de produção. Os comandos do Git rodam sempre como `sigcecp`: como administrador, o Git recusa o repositório (*dubious ownership*), e isso não deve ser contornado com `safe.directory`.
 2. Se o `requirements-prod.txt` mudou: `.venv/bin/pip install -r requirements-prod.txt`.
-3. Se há migrações novas em `alembic/versions/`: fazer backup do banco (`sqlite3 ... ".backup ..."`) e depois `.venv/bin/python -m alembic upgrade head`.
+3. Se há migrações novas em `alembic/versions/`: fazer um backup antes (como administrador, `/usr/local/bin/backup-sigcecp.sh`) e depois `.venv/bin/python -m alembic upgrade head`.
 4. Como administrador: `supervisorctl restart sigcecp`.
+
+**Backup automático:** o script `/usr/local/bin/backup-sigcecp.sh`, dentro do chroot, copia o banco pela API de backup do SQLite (cópia consistente mesmo com a aplicação rodando e com o modo `WAL`) e compacta as pastas `backend/media` e `backend/arquivos` (os documentos já ficam cifrados). Ele roda todo dia às 3h30, por uma linha em `/etc/cron.d/sigcecp` no sistema da Lenovo, e mantém os 7 backups mais recentes.
+
+| Item | Local |
+| :--- | :--- |
+| Backups | `/srv/backups/sigcecp/AAAA-MM-DD_HHMM/` no chroot (no volume de dados: `/mnt/pools/A/A0/debian/srv/backups/sigcecp/`) |
+| Registro de execução | `/mnt/pools/A/A0/backup-sigcecp.log` |
+| Restaurar | Parar a aplicação, copiar o `sigcecp.db` do backup para `/srv/sigcecp/data/` (dono `sigcecp`), extrair o `arquivos.tar.gz` em `backend/` e iniciar a aplicação |
+
+Os backups ficam no mesmo servidor: protegem contra erro humano e banco corrompido, mas não contra perda do servidor. Por isso falta uma cópia periódica fora dele (12.10).
 
 **Consultas do dia a dia** (como administrador, no chroot):
 
@@ -133,7 +145,7 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 | Servidor não aparecia na rede | Estava com IP fixo de outra rede, configurado por um dono anterior | Endereço descoberto pelos anúncios de rede (ARP) do servidor; redefinição de fábrica, que voltou a rede para IP automático |
 | Disco 1 com defeito | O disco passou a informar 3,86 GB em vez de 2 TB | Disco retirado; RAID 5 montado com os 3 discos bons |
 | Relógio do servidor 1 hora adiantado | O firmware de 2013 ainda aplica o horário de verão de Brasília | Fuso trocado para outro GMT−03:00 sem horário de verão |
-| Aplicação quebrava num clone novo | A pasta `backend/media` está no `.gitignore` e não existe num clone novo | Pasta criada no servidor; proposta issue para o código criá-la ao iniciar |
+| Aplicação quebrava num clone novo | A pasta `backend/media` está no `.gitignore` e não existe num clone novo | Pasta criada no servidor e, depois, o código passou a criá-la ao iniciar (issue #81) |
 | Página sem CSS e redirecionamentos para a porta errada | O Nginx repassava o cabeçalho `Host` sem a porta, e os links gerados por `url_for` saíam sem ela | `proxy_set_header Host $http_host` |
 | Erro 500 no login (`no such column: administradores.nome`) | Código atualizado sem aplicar as migrações novas | `alembic upgrade head`; a atualização passou a incluir esse passo (12.7) |
 | Login recusado (401) pelo endereço local | Em produção, o cookie de sessão só é aceito por HTTPS | Esperado: o login em produção é feito pelo endereço com HTTPS |
@@ -141,6 +153,8 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 | Verificação completa do RAID (cerca de 18 horas) depois de reiniciar | Desligamento sem parar os programas do `chroot` | Script de desligamento (12.6) e bitmap do RAID (pendência em 12.10) |
 | Túnel sem acesso à aplicação | No `chroot`, `localhost` apontava só para o endereço IPv6, e o Nginx escuta em IPv4 | Túnel configurado para `127.0.0.1:8080` |
 | Git recusava o repositório (`detected dubious ownership`) | Comandos do Git executados como administrador num repositório do usuário `sigcecp` | Executar o Git sempre como `sigcecp` (12.7), sem exceção de `safe.directory` |
+| Linha do backup duplicada no cron | `/etc/cron.d/sigcecp` e `/mnt/etc/cron.d/sigcecp` são o mesmo arquivo, e a linha foi adicionada nos dois caminhos | Linha duplicada removida; basta editar um dos caminhos |
+| Valor da `DADOS_CHAVE` exibido fora do terminal durante a configuração | A chave foi copiada para um canal que não é seguro | Como ainda não havia dados reais, o banco de testes foi apagado, uma chave nova foi gerada direto no `.env` sem aparecer na tela e o banco foi recriado; a chave nova foi guardada no gerenciador de senhas |
 | Endereço novo não abria em algumas redes logo após a publicação | Servidores DNS de operadoras guardavam a resposta anterior em cache | Resolve-se sozinho quando o cache expira; testes feitos pelo 4G |
 
 ## 12.10 Pendências
@@ -149,9 +163,13 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 | :--- | :--- |
 | Ativar o bitmap do RAID, para que um desligamento inesperado não exija a verificação completa dos discos | Aguardando o fim da sincronização do RAID |
 | Teste de reinício completo: desligar com o script, ligar e conferir se tudo volta sozinho | Depois do bitmap |
-| Backup automático do banco e das pastas de mídias e documentos, com cópia fora do servidor | Scripts em preparação |
+| Backup automático diário do banco e das pastas de mídias e documentos (12.7) | Concluída em 25/11/2026 |
+| Cópia periódica do backup para fora do servidor (computador da equipe ou Drive da ONG) | A fazer |
 | Versão estável em produção: o servidor passou a rodar a branch `main`, com a versão final do projeto (PR #65) | Concluída em 25/11/2026 |
-| Issues de produção no código: criar `backend/media` ao iniciar, separar dependências de produção, ativar `PRAGMA foreign_keys` no SQLite, `render_as_batch` no Alembic e desligar o `/docs` em produção | A abrir |
+| Issues de produção no código: criar `backend/media` ao iniciar, separar dependências de produção, ativar `PRAGMA foreign_keys` no SQLite, `render_as_batch` no Alembic e desligar o `/docs` em produção | Concluída em 25/11/2026 (issues #81 a #85, PR #86); servidor atualizado |
+| Troca da `DADOS_CHAVE` e cópia em gerenciador de senhas | Concluída em 25/11/2026 |
+| Entregar à ONG uma cópia da `DADOS_CHAVE` | Na entrega do servidor |
+| Fechar o SSH no painel da Lenovo | Depois do teste de reinício |
 | Levar o servidor para a ONG e testar na rede de lá | Depois do teste de reinício |
 | Fase 2: apontar `centroesportivocecp.org` e `www` para o SigCECP, no lugar do site do Wix | Depois de alguns dias de funcionamento estável na ONG |
 | Dar acesso de administrador à conta da Cloudflare para uma pessoa do CECP | A fazer |
@@ -162,3 +180,4 @@ Os dois scripts ficam no volume de dados do servidor, e o registro de cada inici
 | :--- | :--- | :--- | :--- | :--- |
 | 1.0 | 25/11/2026 | Documento inicial: arquitetura, servidor, domínio, configuração, operação, decisões, problemas e pendências da implantação | [Marcos Monteiro](https://github.com/montmarcos) |  |
 | 1.1 | 25/11/2026 | Servidor atualizado para a branch `main` (versão final); procedimento de atualização e problemas ajustados | [Marcos Monteiro](https://github.com/montmarcos) |  |
+| 1.2 | 25/11/2026 | Backup automático, cuidados com a `DADOS_CHAVE` e sua troca, correções de produção (issues #81 a #85) e pendências atualizadas | [Marcos Monteiro](https://github.com/montmarcos) |  |
