@@ -3,6 +3,7 @@ from urllib.parse import quote
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import RedirectResponse, Response
 from sqlalchemy.orm import Session
+from starlette.concurrency import run_in_threadpool
 from starlette.datastructures import UploadFile
 
 from backend.alunos.arquivos import ler_arquivo
@@ -137,8 +138,13 @@ def cadastrar_aluno(request: Request, db: Session = Depends(get_db)):
 @router.post("/novo", name="salvar_aluno")
 async def salvar_aluno(request: Request, db: Session = Depends(get_db)):
     formulario = await request.form()
-    ficha, erros = validar_ficha(formulario, exigir_termo=True)
     documentos = await _documentos_enviados(formulario)
+    # O acesso ao banco é síncrono: roda numa thread para não travar o servidor.
+    return await run_in_threadpool(_salvar_aluno, request, db, formulario, documentos)
+
+
+def _salvar_aluno(request: Request, db: Session, formulario, documentos):
+    ficha, erros = validar_ficha(formulario, exigir_termo=True)
     erros |= validar_documentos(documentos)
     if ficha:
         erros |= validar_turma(db, ficha.turma_id)
@@ -219,11 +225,16 @@ def editar_aluno(aluno_id: int, request: Request, db: Session = Depends(get_db))
 
 @router.post("/{aluno_id}/editar", name="salvar_edicao_aluno")
 async def salvar_edicao_aluno(aluno_id: int, request: Request, db: Session = Depends(get_db)):
-    aluno = buscar_aluno(db, aluno_id)
     formulario = await request.form()
+    documentos = await _documentos_enviados(formulario)
+    # O acesso ao banco é síncrono: roda numa thread para não travar o servidor.
+    return await run_in_threadpool(_salvar_edicao_aluno, aluno_id, request, db, formulario, documentos)
+
+
+def _salvar_edicao_aluno(aluno_id: int, request: Request, db: Session, formulario, documentos):
+    aluno = buscar_aluno(db, aluno_id)
     # A edição mantém as regras de obrigatoriedade do cadastro (RN43); o termo já foi aceito no cadastro.
     ficha, erros = validar_ficha(formulario, exigir_termo=False, exigir_turma=aluno.ativo)
-    documentos = await _documentos_enviados(formulario)
     erros |= validar_documentos(documentos)
     if ficha and ficha.turma_id is not None:
         atual = aluno.vinculo_atual.turma_id if aluno.vinculo_atual else None

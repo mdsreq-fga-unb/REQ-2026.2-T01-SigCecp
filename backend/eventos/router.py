@@ -28,7 +28,7 @@ router = APIRouter(
 
 
 @router.get("", name="lista_evento")
-async def lista_eventos_pagina(request: Request, db: Session = Depends(get_db)):
+def lista_eventos_pagina(request: Request, db: Session = Depends(get_db)):
     agora = datetime.now(FUSO_BRASILIA)
 
     eventos = db.query(Evento).order_by(Evento.data.desc(), Evento.inicio.desc()).all()
