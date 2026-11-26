@@ -2542,7 +2542,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Armazenamento</td>
-<td style="text-align: left;">3 discos de 2 TB em <strong>RAID 5</strong> (cerca de 3,6 TB úteis); o sistema continua funcionando e sem perda de dados se um disco falhar</td>
+<td style="text-align: left;">3 discos de 2 TB em <strong>RAID 5</strong> (cerca de 3,6 TB úteis), com <strong>bitmap interno</strong>; o sistema continua funcionando e sem perda de dados se um disco falhar</td>
 </tr>
 <tr>
 <td style="text-align: left;">Sistema original</td>
@@ -2604,6 +2604,11 @@
 <td style="text-align: left;">Supervisor</td>
 <td style="text-align: left;">Sobe os três programas acima, reinicia se algum cair e guarda os logs</td>
 <td style="text-align: left;"><code>/etc/supervisor/conf.d/</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">rclone</td>
+<td style="text-align: left;">Envia a cópia cifrada dos backups ao Google Drive da ONG</td>
+<td style="text-align: left;"><code>/root/.config/rclone/rclone.conf</code> (permissão 600)</td>
 </tr>
 </tbody>
 </table>
@@ -2691,11 +2696,20 @@
 </tr>
 <tr>
 <td style="text-align: left;">Desligamento</td>
-<td style="text-align: left;">Antes de desligar, executar <code>desligar-chroot.sh</code>, que para os programas e desmonta o chroot. Desligar sem isso faz o RAID refazer a verificação completa dos discos no próximo boot</td>
+<td style="text-align: left;"><strong>Apertar e soltar o botão de energia</strong> (ou desligar pelo painel da Lenovo). O desligamento do firmware chama o script <code>/etc/init.d/sigcecp-chroot</code> (ligado como <code>K05</code> em <code>rc0.d</code> e <code>rc6.d</code>), que executa <code>desligar-chroot.sh</code>: para os programas e desmonta o chroot antes de o firmware parar o RAID. Pelo terminal, o equivalente é <code>desligar-chroot.sh</code> seguido de <code>poweroff</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">O que não fazer</td>
+<td style="text-align: left;">Segurar o botão por 4 segundos (força o desligamento) ou tirar o servidor da tomada ligado</td>
+</tr>
+<tr>
+<td style="text-align: left;">Queda de energia</td>
+<td style="text-align: left;">O SQLite com <code>WAL</code> não corrompe o banco, e o bitmap do RAID faz a verificação dos discos levar minutos em vez de horas. Recomenda-se um nobreak com USB: o ix4-300d tem suporte e se desliga sozinho, de forma segura, quando falta energia</td>
 </tr>
 </tbody>
 </table>
-<p>Os dois scripts ficam no volume de dados do servidor, e o registro de cada inicialização fica em <code>iniciar-chroot.log</code>.</p>
+<p>Os scripts <code>iniciar-chroot.sh</code> e <code>desligar-chroot.sh</code> ficam no volume de dados do servidor (<code>/mnt/pools/A/A0/</code>), e o registro de cada inicialização e desligamento fica em <code>iniciar-chroot.log</code>. O script de <code>/etc/init.d</code> e seus links ficam gravados em <code>/mnt/etc</code>, a parte persistente do <code>/etc</code> do firmware.</p>
+<p><strong>Testes realizados em 26/11/2026:</strong> reinício pelo comando e desligamento pelo botão. Nos dois casos, o log registrou o desligamento ordenado do chroot, o RAID voltou sem verificação, e o sistema subiu sozinho em cerca de 3 minutos.</p>
 <h2 id="127-operacao">12.7 Operação</h2>
 <p><strong>Atualizar o sistema com uma nova versão do código</strong> (como usuário <code>sigcecp</code>, na pasta do projeto):</p>
 <ol>
@@ -2727,7 +2741,35 @@
 </tr>
 </tbody>
 </table>
-<p>Os backups ficam no mesmo servidor: protegem contra erro humano e banco corrompido, mas não contra perda do servidor. Por isso falta uma cópia periódica fora dele (12.10).</p>
+<p><strong>Cópia fora do servidor:</strong> logo após o backup local, o mesmo script envia a pasta do dia para o <strong>Google Drive da ONG</strong> com o <code>rclone</code>, numa pasta cifrada (<code>SigCecp-backups</code>): o Google vê só nomes e conteúdos embaralhados. No Drive ficam os últimos 30 dias. Se o envio falhar (por exemplo, sem internet), o backup local é mantido e o log registra o erro. O acesso ao Drive usa a permissão <code>drive.file</code>: o rclone só enxerga os arquivos que ele mesmo criou.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Local</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Cópia cifrada</td>
+<td style="text-align: left;">Google Drive da ONG, pasta <code>SigCecp-backups</code> (remoto <code>backup-cifrado:</code> no rclone)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Senhas da cifragem</td>
+<td style="text-align: left;">Duas senhas (<code>password</code> e <code>password2</code>) guardadas no gerenciador de senhas, nunca no repositório</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Restaurar a partir do Drive</strong> (se o servidor for perdido), em qualquer computador:</p>
+<ol>
+<li>Instalar o rclone e criar um remoto do Google Drive com a conta da ONG (<code>rclone config</code>, permissão <code>drive.file</code>).</li>
+<li>Criar um remoto <code>crypt</code> apontando para <code>&lt;remoto do drive&gt;:SigCecp-backups</code>, com as duas senhas guardadas.</li>
+<li>Baixar a pasta desejada: <code>rclone copy backup-cifrado:AAAA-MM-DD_HHMM ./restauracao</code>.</li>
+<li>Instalar o sistema normalmente e usar o <code>sigcecp.db</code> e o <code>arquivos.tar.gz</code> baixados. A <code>DADOS_CHAVE</code> original é obrigatória para abrir os dados de saúde e os documentos.</li>
+</ol>
+<p>Sem a conta Google da ONG, as duas senhas do rclone e a <code>DADOS_CHAVE</code>, os backups do Drive não podem ser usados. Os três ficam fora do servidor.</p>
+<p><strong>Acesso de manutenção:</strong> o SSH fica <strong>desligado</strong> no painel da Lenovo. Para atualizar o código ou consultar logs, liga-se o SSH no painel, faz-se a manutenção e desliga-se de novo. A aplicação não depende do SSH.</p>
+<p><strong>Teste de carga (25 e 26/11/2026):</strong> com o Locust, pela rede local, 50 visitantes simultâneos nas páginas públicas e, pelo HTTPS, 10 coordenadores logados ao mesmo tempo foram atendidos sem nenhuma falha (<a href="../../escopo/rnf/RNF08/">RNF08</a>). Numa carga bem maior, o teste revelou um travamento do servidor, corrigido na issue #87 (12.9).</p>
 <p><strong>Consultas do dia a dia</strong> (como administrador, no chroot):</p>
 <table>
 <thead>
@@ -2755,7 +2797,11 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>cat /proc/mdstat</code> (fora do chroot)</td>
-<td style="text-align: left;">Ver o estado dos discos e do RAID</td>
+<td style="text-align: left;">Ver o estado dos discos e do RAID; a linha <code>bitmap</code> confirma o bitmap ativo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cat /mnt/pools/A/A0/backup-sigcecp.log</code> (fora do chroot)</td>
+<td style="text-align: left;">Ver se o backup e o envio ao Drive da madrugada deram certo (horário em UTC)</td>
 </tr>
 </tbody>
 </table>
@@ -2798,6 +2844,21 @@
 <td style="text-align: left;">Subdomínio <code>sistema</code> antes do domínio principal</td>
 <td style="text-align: left;">Substituir o site do Wix de imediato</td>
 <td style="text-align: left;">Permite testar a produção sem tirar do ar o site atual do CECP; a troca do domínio principal leva poucos minutos quando o sistema estiver estável</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cópia do backup no Google Drive da ONG, cifrada com rclone</td>
+<td style="text-align: left;">HD externo USB no servidor; computador de um integrante da equipe</td>
+<td style="text-align: left;">Fica fora do local físico do servidor (protege contra roubo, incêndio e queima), é automática e gratuita, e pertence à ONG, não a um integrante. A cifragem protege os dados pessoais dos alunos no serviço do Google</td>
+</tr>
+<tr>
+<td style="text-align: left;">Desligamento pelo botão chamando o script do chroot</td>
+<td style="text-align: left;">Ensinar o uso do terminal à ONG</td>
+<td style="text-align: left;">As pessoas da ONG não são da área de TI; o botão é o jeito natural de desligar o servidor e agora é seguro</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rotas que usam o banco como <code>def</code> (ou com <code>run_in_threadpool</code>)</td>
+<td style="text-align: left;">SQLAlchemy assíncrono (<code>AsyncSession</code> com <code>aiosqlite</code>)</td>
+<td style="text-align: left;">Correção pequena, recomendada pela documentação do FastAPI e no padrão que o projeto já usava; o modo assíncrono exigiria reescrever serviços e testes, com pouco ganho num SQLite local</td>
 </tr>
 </tbody>
 </table>
@@ -2854,7 +2915,7 @@
 <tr>
 <td style="text-align: left;">Verificação completa do RAID (cerca de 18 horas) depois de reiniciar</td>
 <td style="text-align: left;">Desligamento sem parar os programas do <code>chroot</code></td>
-<td style="text-align: left;">Script de desligamento (12.6) e bitmap do RAID (pendência em 12.10)</td>
+<td style="text-align: left;">Script de desligamento chamado pelo próprio desligamento do firmware (12.6) e bitmap do RAID, ativado em 26/11/2026</td>
 </tr>
 <tr>
 <td style="text-align: left;">Túnel sem acesso à aplicação</td>
@@ -2877,6 +2938,36 @@
 <td style="text-align: left;">Como ainda não havia dados reais, o banco de testes foi apagado, uma chave nova foi gerada direto no <code>.env</code> sem aparecer na tela e o banco foi recriado; a chave nova foi guardada no gerenciador de senhas</td>
 </tr>
 <tr>
+<td style="text-align: left;">Servidor travava sob carga e só voltava reiniciando (<code>QueuePool limit of size 5 overflow 10 reached</code>)</td>
+<td style="text-align: left;">Rotas <code>async def</code> consultavam o banco de forma síncrona, bloqueando o laço de eventos; sob carga, as 15 conexões do pool se esgotavam e o servidor congelava</td>
+<td style="text-align: left;">Rotas passaram a <code>def</code> ou levam o banco para uma thread com <code>run_in_threadpool</code>, e um teste impede a regressão (issue #87, PR #88). Depois da correção, 1000 requisições simultâneas foram atendidas</td>
+</tr>
+<tr>
+<td style="text-align: left;">Desligar pelo botão não parava os programas do chroot</td>
+<td style="text-align: left;">O firmware da Lenovo não conhece o chroot</td>
+<td style="text-align: left;">Script <code>/etc/init.d/sigcecp-chroot</code> ligado como <code>K05</code> em <code>rc0.d</code> e <code>rc6.d</code> (12.6)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Script de desligamento com erro de sintaxe</td>
+<td style="text-align: left;">O terminal do firmware quebrou uma linha de comentário com caractere acentuado</td>
+<td style="text-align: left;">Scripts do servidor escritos sem acentos e conferidos com <code>sh -n</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Configuração do rclone gravada em <code>/.config</code></td>
+<td style="text-align: left;">Dentro do chroot, a variável <code>HOME</code> não está definida</td>
+<td style="text-align: left;">Arquivo movido para <code>/root/.config/rclone/</code> com permissão 600; o script de backup define <code>RCLONE_CONFIG</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Senha de cifragem do backup exibida fora do terminal</td>
+<td style="text-align: left;">A saída da configuração do rclone foi copiada para um canal que não é seguro</td>
+<td style="text-align: left;">Remoto cifrado recriado com senhas novas antes do primeiro envio ao Drive</td>
+</tr>
+<tr>
+<td style="text-align: left;">Arquivo <code>/mnt/system/config/exports</code> esvaziado</td>
+<td style="text-align: left;">A saída de um comando foi colada de volta no terminal, e as linhas com <code>-&gt;</code> viraram redirecionamentos do shell</td>
+<td style="text-align: left;">Arquivo restaurado da cópia <code>exports.prev</code> gerada pelo firmware; nunca colar saída de comandos no terminal</td>
+</tr>
+<tr>
 <td style="text-align: left;">Endereço novo não abria em algumas redes logo após a publicação</td>
 <td style="text-align: left;">Servidores DNS de operadoras guardavam a resposta anterior em cache</td>
 <td style="text-align: left;">Resolve-se sozinho quando o cache expira; testes feitos pelo 4G</td>
@@ -2894,19 +2985,23 @@
 <tbody>
 <tr>
 <td style="text-align: left;">Ativar o bitmap do RAID, para que um desligamento inesperado não exija a verificação completa dos discos</td>
-<td style="text-align: left;">Aguardando o fim da sincronização do RAID</td>
+<td style="text-align: left;">Concluída em 26/11/2026</td>
 </tr>
 <tr>
 <td style="text-align: left;">Teste de reinício completo: desligar com o script, ligar e conferir se tudo volta sozinho</td>
-<td style="text-align: left;">Depois do bitmap</td>
+<td style="text-align: left;">Concluída em 26/11/2026 (pelo comando e pelo botão)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Desligamento seguro pelo botão, sem terminal</td>
+<td style="text-align: left;">Concluída em 26/11/2026</td>
 </tr>
 <tr>
 <td style="text-align: left;">Backup automático diário do banco e das pastas de mídias e documentos (12.7)</td>
 <td style="text-align: left;">Concluída em 25/11/2026</td>
 </tr>
 <tr>
-<td style="text-align: left;">Cópia periódica do backup para fora do servidor (computador da equipe ou Drive da ONG)</td>
-<td style="text-align: left;">A fazer</td>
+<td style="text-align: left;">Cópia periódica do backup para fora do servidor</td>
+<td style="text-align: left;">Concluída em 26/11/2026 (Google Drive da ONG, cifrada, últimos 30 dias)</td>
 </tr>
 <tr>
 <td style="text-align: left;">Versão estável em produção: o servidor passou a rodar a branch <code>main</code>, com a versão final do projeto (PR #65)</td>
@@ -2921,12 +3016,16 @@
 <td style="text-align: left;">Concluída em 25/11/2026</td>
 </tr>
 <tr>
-<td style="text-align: left;">Entregar à ONG uma cópia da <code>DADOS_CHAVE</code></td>
+<td style="text-align: left;">Correção do travamento do servidor sob carga</td>
+<td style="text-align: left;">Concluída em 26/11/2026 (issue #87, PR #88); servidor atualizado</td>
+</tr>
+<tr>
+<td style="text-align: left;">Entregar à ONG uma cópia da <code>DADOS_CHAVE</code> e das duas senhas de cifragem do backup</td>
 <td style="text-align: left;">Na entrega do servidor</td>
 </tr>
 <tr>
 <td style="text-align: left;">Fechar o SSH no painel da Lenovo</td>
-<td style="text-align: left;">Depois do teste de reinício</td>
+<td style="text-align: left;">Concluída em 26/11/2026</td>
 </tr>
 <tr>
 <td style="text-align: left;">Levar o servidor para a ONG e testar na rede de lá</td>
@@ -2939,6 +3038,14 @@
 <tr>
 <td style="text-align: left;">Dar acesso de administrador à conta da Cloudflare para uma pessoa do CECP</td>
 <td style="text-align: left;">A fazer</td>
+</tr>
+<tr>
+<td style="text-align: left;">Aviso automático quando o site sair do ar (monitor de disponibilidade)</td>
+<td style="text-align: left;">Opcional</td>
+</tr>
+<tr>
+<td style="text-align: left;">Nobreak com USB para o servidor</td>
+<td style="text-align: left;">Recomendado à ONG</td>
 </tr>
 </tbody>
 </table>
@@ -2972,6 +3079,13 @@
 <td style="text-align: left;">1.2</td>
 <td style="text-align: left;">25/11/2026</td>
 <td style="text-align: left;">Backup automático, cuidados com a <code>DADOS_CHAVE</code> e sua troca, correções de produção (issues #81 a #85) e pendências atualizadas</td>
+<td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.3</td>
+<td style="text-align: left;">26/11/2026</td>
+<td style="text-align: left;">Bitmap do RAID, testes de reinício, desligamento seguro pelo botão, cópia cifrada do backup no Google Drive com procedimento de restauração, SSH fechado, teste de carga e correção do travamento sob carga (issue #87)</td>
 <td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
 <td style="text-align: left;"></td>
 </tr>
