@@ -2698,7 +2698,7 @@
 <h2 id="127-operacao">12.7 Operação</h2>
 <p><strong>Atualizar o sistema com uma nova versão do código</strong> (como usuário <code>sigcecp</code>, na pasta do projeto):</p>
 <ol>
-<li><code>git pull</code> na branch de produção.</li>
+<li><code>git pull</code> na branch <code>main</code>, que é a de produção. Os comandos do Git rodam sempre como <code>sigcecp</code>: como administrador, o Git recusa o repositório (<em>dubious ownership</em>), e isso não deve ser contornado com <code>safe.directory</code>.</li>
 <li>Se o <code>requirements-prod.txt</code> mudou: <code>.venv/bin/pip install -r requirements-prod.txt</code>.</li>
 <li>Se há migrações novas em <code>alembic/versions/</code>: fazer backup do banco (<code>sqlite3 ... ".backup ..."</code>) e depois <code>.venv/bin/python -m alembic upgrade head</code>.</li>
 <li>Como administrador: <code>supervisorctl restart sigcecp</code>.</li>
@@ -2837,6 +2837,11 @@
 <td style="text-align: left;">Túnel configurado para <code>127.0.0.1:8080</code></td>
 </tr>
 <tr>
+<td style="text-align: left;">Git recusava o repositório (<code>detected dubious ownership</code>)</td>
+<td style="text-align: left;">Comandos do Git executados como administrador num repositório do usuário <code>sigcecp</code></td>
+<td style="text-align: left;">Executar o Git sempre como <code>sigcecp</code> (12.7), sem exceção de <code>safe.directory</code></td>
+</tr>
+<tr>
 <td style="text-align: left;">Endereço novo não abria em algumas redes logo após a publicação</td>
 <td style="text-align: left;">Servidores DNS de operadoras guardavam a resposta anterior em cache</td>
 <td style="text-align: left;">Resolve-se sozinho quando o cache expira; testes feitos pelo 4G</td>
@@ -2865,8 +2870,8 @@
 <td style="text-align: left;">Scripts em preparação</td>
 </tr>
 <tr>
-<td style="text-align: left;">Versão estável em produção: hoje o servidor roda a branch <code>iteracao_dez</code>; deve passar a rodar a <code>main</code> (ou uma tag)</td>
-<td style="text-align: left;">A combinar com a equipe</td>
+<td style="text-align: left;">Versão estável em produção: o servidor passou a rodar a branch <code>main</code>, com a versão final do projeto (PR #65)</td>
+<td style="text-align: left;">Concluída em 25/11/2026</td>
 </tr>
 <tr>
 <td style="text-align: left;">Issues de produção no código: criar <code>backend/media</code> ao iniciar, separar dependências de produção, ativar <code>PRAGMA foreign_keys</code> no SQLite, <code>render_as_batch</code> no Alembic e desligar o <code>/docs</code> em produção</td>
@@ -2902,6 +2907,13 @@
 <td style="text-align: left;">1.0</td>
 <td style="text-align: left;">25/11/2026</td>
 <td style="text-align: left;">Documento inicial: arquitetura, servidor, domínio, configuração, operação, decisões, problemas e pendências da implantação</td>
+<td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">25/11/2026</td>
+<td style="text-align: left;">Servidor atualizado para a branch <code>main</code> (versão final); procedimento de atualização e problemas ajustados</td>
 <td style="text-align: left;"><a href="https://github.com/montmarcos">Marcos Monteiro</a></td>
 <td style="text-align: left;"></td>
 </tr>
